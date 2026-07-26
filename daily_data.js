@@ -26,6 +26,18 @@ var DAILY_DATA = {
   "tip_of_day": "💡 新手的投资第一课：不亏钱比赚钱更重要。开始定投沪深300ETF前，先读《彼得·林奇的成功投资》。"
 };
 
+var DAILY_BRIEFING = {
+  date: "2026-07-26",
+  highlights: [
+    {priority:1, icon:"📈", section:"股市基金", headline:"A股三连阳：上证收复3867，银行暴涨4.5%", summary:"高股息策略持续吸金，四大行齐创新高。科技回调2-3%是上车机会？", action:"查看行情分析", link:"#stock", deepLink:"https://www.perplexity.ai/search?q=2026年7月A股银行板块大涨原因"},
+    {priority:2, icon:"🤖", section:"AI科技", headline:"Kimi K3明日开源：2.8万亿参数全球最大", summary:"月之暗面发布Kimi K3，性能仅次于Claude Fable 5。50家美企联名支持开源。", action:"AI深度解读", link:"#learning", deepLink:"https://www.perplexity.ai/search?q=Kimi+K3开源模型2.8万亿参数性能对比"},
+    {priority:3, icon:"💼", section:"求职市场", headline:"AI产品运营岗需求暴涨87.7%", summary:"AI产品经理校招月薪3万+，供需比仅5.1:1。BOSS直聘Q1 AI岗收入涨超100%。", action:"查看求职攻略", link:"#career", deepLink:"https://www.perplexity.ai/search?q=2026年AI产品运营岗位需求和薪资"},
+    {priority:4, icon:"🎬", section:"动漫区", headline:"BLEACH最终章开播：20年史诗收官", summary:"千年血战篇-祸进谭-7/25首播，本季战斗热血独挑大梁。咒术/怪兽8号同步中场休息。", action:"查看追番指南", link:"#anime", deepLink:"https://www.perplexity.ai/search?q=BLEACH千年血战篇最终章评价"},
+    {priority:5, icon:"🎵", section:"音乐区", headline:"FKJ新单曲+亚洲巡演：Neo-Soul升温", summary:"FKJ为9月新专预热，11月台北/香港站。周深/李荣浩/告五人7月集中发新歌。", action:"查看听歌指南", link:"#music", deepLink:"https://www.perplexity.ai/search?q=FKJ+2026年新专辑+Neo+Soul音乐趋势"},
+    {priority:6, icon:"🚗", section:"购车推荐", headline:"7月新能源抄底窗口：库存343万辆", summary:"以旧换新补贴最高2万+购置税减半。极氪007/海豹07EV/MONA三车横评。", action:"查看购车攻略", link:"#car", deepLink:"https://www.perplexity.ai/search?q=2026年7月15万新能源车推荐对比"}
+  ]
+};
+
 var PICKS = {
   anime: [
     {icon:"🥇", title:"咒术回战 死灭回游篇", desc:"规则系智斗巅峰 · 2026夏季最期待", link:"https://www.bilibili.com/search?keyword=咒术回战"},
