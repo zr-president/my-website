@@ -322,5 +322,6 @@ var DAILY_QUIZ = {
   ]
 };
 
-// Trigger picks rendering (function defined in index.html)
+// Trigger renders (functions defined in index.html)
 if(typeof renderAllPicks === 'function') renderAllPicks();
+if(typeof renderBriefing === 'function') renderBriefing();
