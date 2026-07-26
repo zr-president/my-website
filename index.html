@@ -106,6 +106,13 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 .pick-card .pick-desc{font-size:10px;color:var(--text3)}
 .pick-card .pick-arrow{font-size:14px;color:var(--accent);flex-shrink:0}
 
+/* Insight callout */
+.insight-box{background:linear-gradient(135deg,var(--accent-light),var(--bg2));border-left:3px solid var(--accent);border-radius:8px;padding:10px 14px;margin-bottom:7px;font-size:12px;line-height:1.8}
+.insight-box .insight-summary{color:var(--text);margin-bottom:4px}
+.insight-box .insight-trend{font-size:11px;color:var(--text2)}
+.insight-box .insight-trend span{font-weight:600}
+.insight-box .insight-tip{font-size:11px;color:var(--accent);font-weight:600;margin-top:4px}
+
 /* Detail overlay */
 .detail-overlay{position:fixed;top:0;left:0;width:100%;height:100%;z-index:500;pointer-events:none}
 .detail-overlay.active{pointer-events:all}
@@ -227,8 +234,9 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div id="picks-beer" class="picks-container"></div>
 <div class="card clickable" onclick="openDetail('beer')"><h3>🍻 查看精酿品鉴指南</h3><p>啤酒四大原料+风格树+3档酒单+8款鸡尾酒配方+家庭Bar搭建。</p></div></section>
 
-<section id="stock" class="section" data-search="股票 基金 A股 投资 理财"><div class="section-header"><h2>📈 股市基金</h2><p>实时行情 · 小白入门 · 博主推荐 · 投资工具</p></div>
-<div class="card" style="padding:12px 16px"><div class="info-grid" id="liveStockTicker" style="margin:0"><div class="info-item"><div class="num">--</div><div class="label">加载中...</div></div></div><p style="font-size:10px;color:var(--text3);text-align:center;margin-top:4px" id="stockUpdateTime">实时数据来自东方财富 · 每30秒刷新</p></div>
+<section id="stock" class="section" data-search="股票 基金 A股 投资 理财"><div class="section-header"><h2>📈 股市基金</h2><p>实时行情 · 趋势分析 · 投资学习</p></div>
+<div id="picks-stock" class="picks-container"></div>
+<div class="card" style="padding:12px 16px"><div class="info-grid" id="liveStockTicker" style="margin:0"><div class="info-item"><div class="num">--</div><div class="label">加载中...</div></div></div><p style="font-size:10px;color:var(--text3);text-align:center;margin-top:4px" id="stockUpdateTime">实时数据来自东方财富 · 每60秒刷新</p></div>
 <div class="card clickable" onclick="openDetail('stock')"><h3>📊 股市学习中心</h3><p>从零开始的A股入门教学、10+财经博主推荐、学习路径、交易工具。</p></div></section>
 
 <section id="car" class="section" data-search="买车 汽车 新能源 比亚迪 小鹏"><div class="section-header"><h2>🚗 购车推荐</h2><p>热门车型 · 点击查看对比</p></div>
@@ -243,7 +251,8 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div class="card" style="padding:12px 16px" id="travelWeather"><div class="info-item"><div class="num">--°C</div><div class="label">加载天气中...</div></div></div>
 <div class="card clickable" onclick="openDetail('travel')"><h3>🌴 查看本周出行方案</h3><p>基于7月天气数据，国内3条避暑路线+国际2个推荐目的地，含全程预算和行程安排。</p></div></section>
 
-<section id="news" class="section" data-search="新闻 资讯 财经 国际"><div class="section-header"><h2>📰 新闻资讯</h2><p>实时快讯 · 信息源配置 · 每日阅读方案</p></div>
+<section id="news" class="section" data-search="新闻 资讯 财经 国际"><div class="section-header"><h2>📰 新闻资讯</h2><p>今日要闻 · 每日阅读方案</p></div>
+<div id="picks-news" class="picks-container"></div>
 <div class="card" style="padding:12px 16px" id="rssNewsFeed"><p style="font-size:12px;color:var(--text3)">📡 正在加载实时资讯...</p></div>
 <div class="card clickable" onclick="openDetail('news')"><h3>🌍 资讯获取方案</h3><p>高效信息源配置、每日阅读时间表、RSS订阅方案。</p></div></section>
 
@@ -271,6 +280,17 @@ function toggleTheme(){
 
 function openDetail(id){
   var c=DETAIL[id]||'<p>内容加载中...</p>';
+  // Prepend daily insight if available
+  if(typeof INSIGHTS!=='undefined' && INSIGHTS[id] && INSIGHTS[id].summary){
+    var ins=INSIGHTS[id];
+    var insightHtml='<div class="callout info" style="margin-bottom:16px">';
+    insightHtml+='<strong>📊 今日分析'+(ins.updated?'（'+ins.updated+'更新）':'')+'：</strong><br>';
+    insightHtml+=ins.summary+'<br>';
+    if(ins.trend) insightHtml+='<span style="font-size:12px;color:var(--text2)">'+ins.trend+'</span><br>';
+    if(ins.tip) insightHtml+='<strong style="color:var(--accent)">'+ins.tip+'</strong>';
+    insightHtml+='</div>';
+    c=insightHtml+c;
+  }
   document.getElementById('detailContent').innerHTML=c;
   document.getElementById('detailOverlay').classList.add('active');
   document.body.style.overflow='hidden';
@@ -651,27 +671,43 @@ function refreshContent(){
   localStorage.setItem('lastRefresh',now.toISOString());
 }
 
-// ===== Render Section Picks =====
+// ===== Render Section Picks + Insights =====
 function renderSectionPicks(sectionId){
   var container = document.getElementById('picks-'+sectionId);
   if(!container) return;
-  var picks = (typeof PICKS!=='undefined' && PICKS[sectionId]) ? PICKS[sectionId] : null;
-  if(!picks || picks.length===0){ container.style.display='none'; return; }
   var h='';
-  picks.forEach(function(p){
-    var hasLink = p.link && p.link!=='#';
-    var tag = hasLink ? 'a' : 'div';
-    h+='<'+tag+' '+(hasLink?'href="'+p.link+'" target="_blank" ':'')+'class="pick-card">';
-    h+='<span class="pick-icon">'+p.icon+'</span>';
-    h+='<span class="pick-info"><div class="pick-title">'+p.title+'</div><div class="pick-desc">'+p.desc+'</div></span>';
-    if(hasLink) h+='<span class="pick-arrow">→</span>';
-    h+='</'+tag+'>';
-  });
+
+  // Show insight callout if available
+  var insight = (typeof INSIGHTS!=='undefined' && INSIGHTS[sectionId]) ? INSIGHTS[sectionId] : null;
+  if(insight && insight.summary){
+    h+='<div class="insight-box">';
+    h+='<div class="insight-summary">📊 '+insight.summary+'</div>';
+    if(insight.trend) h+='<div class="insight-trend">'+insight.trend+'</div>';
+    if(insight.tip) h+='<div class="insight-tip">'+insight.tip+'</div>';
+    if(insight.updated) h+='<span style="font-size:10px;color:var(--text3)">更新于'+insight.updated+'</span>';
+    h+='</div>';
+  }
+
+  // Show picks
+  var picks = (typeof PICKS!=='undefined' && PICKS[sectionId]) ? PICKS[sectionId] : null;
+  if(picks && picks.length>0){
+    picks.forEach(function(p){
+      var hasLink = p.link && p.link!=='#';
+      var tag = hasLink ? 'a' : 'div';
+      h+='<'+tag+' '+(hasLink?'href="'+p.link+'" target="_blank" ':'')+'class="pick-card">';
+      h+='<span class="pick-icon">'+p.icon+'</span>';
+      h+='<span class="pick-info"><div class="pick-title">'+p.title+'</div><div class="pick-desc">'+p.desc+'</div></span>';
+      if(hasLink) h+='<span class="pick-arrow">→</span>';
+      h+='</'+tag+'>';
+    });
+  }
+
+  if(!h){ container.style.display='none'; return; }
   container.innerHTML=h;
 }
 
 function renderAllPicks(){
-  var sections = ['anime','music','novel','beer','gaming','learning','fashion','fitness','diet','career','car','house'];
+  var sections = ['anime','music','novel','beer','gaming','learning','fashion','fitness','diet','career','car','house','stock','news'];
   sections.forEach(function(s){ renderSectionPicks(s); });
 }
 
