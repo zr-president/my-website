@@ -324,4 +324,3 @@ var DAILY_QUIZ = {
 
 // Trigger renders (functions defined in index.html)
 if(typeof renderAllPicks === 'function') renderAllPicks();
-if(typeof renderBriefing === 'function') renderBriefing();

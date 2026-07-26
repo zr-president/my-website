@@ -197,15 +197,6 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <button onclick="event.stopPropagation();refreshContent()" style="background:rgba(255,255,255,.15);color:#fff;border:none;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:12px">📋 每日推荐</button>
 </div></div>
 
-<!-- Daily Briefing -->
-<div id="dailyBriefing" style="margin-bottom:16px">
-<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-<h2 style="font-size:15px">📡 今日要闻速览</h2>
-<span style="font-size:10px;color:var(--text3)" id="briefingDate"></span>
-</div>
-<div id="briefingContent" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:8px"></div>
-</div>
-
 <!-- 0. 每日待办汇总 -->
 <section id="dashboard" class="section" data-search="每日待办 行程 打卡 日程">
 <div class="section-header"><h2>📋 每日待办汇总</h2><p id="dashboardDate"></p></div>
@@ -1107,27 +1098,6 @@ window.addEventListener('scroll', function(){
   else { fab.classList.remove('visible'); }
 });
 
-// ===== Daily Briefing Renderer =====
-function renderBriefing(){
-  if(typeof DAILY_BRIEFING==='undefined') return;
-  document.getElementById('briefingDate').textContent = DAILY_BRIEFING.date;
-  var h='';
-  DAILY_BRIEFING.highlights.forEach(function(item){
-    var borderColor = item.priority===1?'var(--red)':item.priority===2?'var(--accent)':item.priority===3?'var(--orange)':'var(--border)';
-    h+='<div style="background:var(--card);border-left:3px solid '+borderColor+';border-radius:8px;padding:10px 14px;transition:.15s;cursor:pointer" onclick="navigateTo(\'section\',\''+item.link.replace(\'#\',\'\')+'\')">';
-    h+='<div style="display:flex;align-items:center;gap:6px;margin-bottom:2px">';
-    h+='<span style="font-size:16px">'+item.icon+'</span>';
-    h+='<span style="font-size:10px;color:var(--text3);background:var(--bg2);padding:1px 6px;border-radius:8px">'+item.section+'</span>';
-    h+='<span style="font-size:13px;font-weight:700;color:var(--text)">'+item.headline+'</span>';
-    h+='</div>';
-    h+='<div style="font-size:11px;color:var(--text2);margin-bottom:6px">'+item.summary+'</div>';
-    h+='<div style="display:flex;gap:8px">';
-    h+='<span style="font-size:10px;color:var(--accent);cursor:pointer;font-weight:500" onclick="event.stopPropagation();navigateTo(\'section\',\''+item.link.replace(\'#\',\'\')+'\')">'+item.action+' →</span>';
-    if(item.deepLink) h+='<a href="'+item.deepLink+'" target="_blank" style="font-size:10px;color:var(--accent);text-decoration:none;font-weight:500" onclick="event.stopPropagation()">🤖 AI深究 →</a>';
-    h+='</div></div>';
-  });
-  document.getElementById('briefingContent').innerHTML = h;
-}
 // Initialize
 startBannerRotation();
 fetchRSSNews();
