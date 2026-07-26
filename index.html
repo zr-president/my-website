@@ -506,7 +506,7 @@ function jsonp(url, callback){
   };
   var s = document.createElement('script');
   s.id = name;
-  s.src = url + (url.indexOf('?')>=0?'&':'?') + 'callback=' + name;
+  s.src = url + (url.indexOf('?')>=0?'&':'?') + 'cb=' + name;
   document.head.appendChild(s);
 }
 
@@ -520,17 +520,17 @@ function fetchStockData(){
   ];
   var fields = 'f2,f3,f4,f12';
   var codes = indices.map(function(i){return i.code;}).join(',');
-  var url = 'https://push2.eastmoney.com/api/qt/ulist.np/get?fltt=2&secids='+codes+'&fields='+fields;
+  var url = 'https://push2.eastmoney.com/api/qt/ulist.np/get?fltt=2&secids='+encodeURIComponent(codes)+'&fields='+fields;
 
   jsonp(url, function(res){
     if(!res || !res.data || !res.data.diff) return;
     var html = '';
     res.data.diff.forEach(function(item, i){
-      var price = (item.f2/100).toFixed(2);
+      var price = item.f2;
       var chg = item.f3;
       var cls = chg >= 0 ? 'green' : 'red';
       var sign = chg >= 0 ? '+' : '';
-      html += '<div class="info-item"><div class="num" style="font-size:16px">'+price+'</div><div class="label">'+indices[i].name+' <span style="color:'+(cls==='green'?'var(--green)':'var(--red)')+'">'+sign+chg.toFixed(2)+'%</span></div></div>';
+      html += '<div class="info-item"><div class="num" style="font-size:16px">'+price.toFixed(2)+'</div><div class="label">'+indices[i].name+' <span style="color:'+(cls==='green'?'var(--green)':'var(--red)')+';font-weight:600">'+sign+chg.toFixed(2)+'%</span></div></div>';
     });
     var el = document.getElementById('liveStockTicker');
     if(el) el.innerHTML = html;
@@ -538,15 +538,17 @@ function fetchStockData(){
   });
 }
 
-// Daily quote from Hitokoto API
+// Daily quote from Hitokoto API (supports HTTPS)
 function fetchQuote(){
-  fetch('https://v1.hitokoto.cn/?c=a&c=b&c=c&c=d&c=k&encode=text&max_length=30')
-    .then(function(r){return r.text();})
-    .then(function(text){
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'https://v1.hitokoto.cn/?c=a&c=b&c=c&c=d&c=k&encode=text&max_length=30', true);
+  xhr.onload = function(){
+    if(xhr.status === 200){
       var el = document.getElementById('dailyQuote');
-      if(el && text) el.textContent = '💬 '+text;
-    })
-    .catch(function(){});
+      if(el) el.textContent = '💬 '+xhr.responseText;
+    }
+  };
+  xhr.send();
 }
 
 // Init APIs
