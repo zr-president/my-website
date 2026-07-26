@@ -136,6 +136,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <main class="main">
 <div id="dailyBanner" style="background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:12px 18px;border-radius:var(--radius);margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;font-size:13px;flex-wrap:wrap;gap:8px">
 <span id="dailyMsg">🔄 每日内容已就绪</span>
+<span id="dailyQuote" style="font-size:11px;opacity:.85;flex:1;min-width:200px;text-align:center"></span>
 <div style="display:flex;gap:8px">
 <button onclick="manualRefresh()" id="refreshBtn" style="background:rgba(255,255,255,.2);color:#fff;border:none;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:12px;font-weight:500">🔄 刷新今日资讯</button>
 <button onclick="refreshContent()" style="background:rgba(255,255,255,.15);color:#fff;border:none;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:12px">📋 每日推荐</button>
@@ -205,7 +206,8 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <section id="beer" class="section" data-search="精酿 啤酒 调酒 鸡尾酒"><div class="section-header"><h2>🍺 精酿与调酒</h2><p>精酿品鉴 · 鸡尾酒入门</p></div>
 <div class="card clickable" onclick="openDetail('beer')"><h3>🍻 查看精酿品鉴指南</h3><p>啤酒分类知识、Untappd教程、进阶酒单+淘宝购买、鸡尾酒配方。</p></div></section>
 
-<section id="stock" class="section" data-search="股票 基金 A股 投资 理财"><div class="section-header"><h2>📈 股市基金</h2><p>小白入门 · 博主推荐 · 投资工具</p></div>
+<section id="stock" class="section" data-search="股票 基金 A股 投资 理财"><div class="section-header"><h2>📈 股市基金</h2><p>实时行情 · 小白入门 · 博主推荐 · 投资工具</p></div>
+<div class="card" style="padding:12px 16px"><div class="info-grid" id="liveStockTicker" style="margin:0"><div class="info-item"><div class="num">--</div><div class="label">加载中...</div></div></div><p style="font-size:10px;color:var(--text3);text-align:center;margin-top:4px" id="stockUpdateTime">实时数据来自东方财富 · 每30秒刷新</p></div>
 <div class="card clickable" onclick="openDetail('stock')"><h3>📊 股市学习中心</h3><p>从零开始的A股入门教学、10+财经博主推荐、学习路径、交易工具。</p></div></section>
 
 <section id="car" class="section" data-search="买车 汽车 新能源 比亚迪 小鹏"><div class="section-header"><h2>🚗 购车推荐</h2><p>车型对比 · 评测资源</p></div>
@@ -493,6 +495,64 @@ DETAIL.travel = '<h2>✈️ 旅游区 · 本周出行推荐</h2><p class="detail
 '<div class="callout tip"><strong>💡 出行建议：</strong>①暑期旺季，机票提前2-3周订最划算；②学生证/应届生带好，多数景区有优惠；③旅行保险一定要买（¥30-50保7天）；④7月全国多雨，雨衣>雨伞。</div>';
 
 function escHtml(t){var d=document.createElement('div');d.textContent=t;return d.innerHTML;}
+
+// ===== API Integration: Real-time Stock Ticker =====
+function jsonp(url, callback){
+  var name = 'jsonp_'+Math.random().toString(36).substr(2,9);
+  window[name] = function(data){
+    callback(data);
+    delete window[name];
+    document.head.removeChild(document.getElementById(name));
+  };
+  var s = document.createElement('script');
+  s.id = name;
+  s.src = url + (url.indexOf('?')>=0?'&':'?') + 'callback=' + name;
+  document.head.appendChild(s);
+}
+
+function fetchStockData(){
+  var indices = [
+    {code:'1.000001', name:'上证指数'},
+    {code:'0.399001', name:'深证成指'},
+    {code:'0.399006', name:'创业板指'},
+    {code:'1.000300', name:'沪深300'},
+    {code:'1.000688', name:'科创50'}
+  ];
+  var fields = 'f2,f3,f4,f12';
+  var codes = indices.map(function(i){return i.code;}).join(',');
+  var url = 'https://push2.eastmoney.com/api/qt/ulist.np/get?fltt=2&secids='+codes+'&fields='+fields;
+
+  jsonp(url, function(res){
+    if(!res || !res.data || !res.data.diff) return;
+    var html = '';
+    res.data.diff.forEach(function(item, i){
+      var price = (item.f2/100).toFixed(2);
+      var chg = item.f3;
+      var cls = chg >= 0 ? 'green' : 'red';
+      var sign = chg >= 0 ? '+' : '';
+      html += '<div class="info-item"><div class="num" style="font-size:16px">'+price+'</div><div class="label">'+indices[i].name+' <span style="color:'+(cls==='green'?'var(--green)':'var(--red)')+'">'+sign+chg.toFixed(2)+'%</span></div></div>';
+    });
+    var el = document.getElementById('liveStockTicker');
+    if(el) el.innerHTML = html;
+    document.getElementById('stockUpdateTime').textContent = '实时 · '+new Date().toLocaleTimeString('zh-CN');
+  });
+}
+
+// Daily quote from Hitokoto API
+function fetchQuote(){
+  fetch('https://v1.hitokoto.cn/?c=a&c=b&c=c&c=d&c=k&encode=text&max_length=30')
+    .then(function(r){return r.text();})
+    .then(function(text){
+      var el = document.getElementById('dailyQuote');
+      if(el && text) el.textContent = '💬 '+text;
+    })
+    .catch(function(){});
+}
+
+// Init APIs
+fetchStockData();
+fetchQuote();
+setInterval(fetchStockData, 30000); // Refresh stock every 30s
 
 document.getElementById('lastUpdate').textContent='最后更新：'+new Date().toLocaleString('zh-CN');
 
