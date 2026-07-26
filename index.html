@@ -197,6 +197,15 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <button onclick="event.stopPropagation();refreshContent()" style="background:rgba(255,255,255,.15);color:#fff;border:none;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:12px">📋 每日推荐</button>
 </div></div>
 
+<!-- Daily Briefing (safe: event delegation, no inline onclick) -->
+<div id="dailyBriefing" style="margin-bottom:16px;display:none">
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+<h2 style="font-size:15px">📡 今日要闻速览</h2>
+<span style="font-size:10px;color:var(--text3)" id="briefingDate"></span>
+</div>
+<div id="briefingContent" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:8px"></div>
+</div>
+
 <!-- 0. 每日待办汇总 -->
 <section id="dashboard" class="section" data-search="每日待办 行程 打卡 日程">
 <div class="section-header"><h2>📋 每日待办汇总</h2><p id="dashboardDate"></p></div>
@@ -1096,6 +1105,48 @@ window.addEventListener('scroll', function(){
   if(!fab) return;
   if(window.scrollY > 600){ fab.classList.add('visible'); }
   else { fab.classList.remove('visible'); }
+});
+
+// ===== Daily Briefing (safe: event delegation) =====
+function renderBriefing(){
+  var container = document.getElementById('dailyBriefing');
+  if(!container) return;
+  if(typeof DAILY_BRIEFING==='undefined'){ container.style.display='none'; return; }
+  var dateEl = document.getElementById('briefingDate');
+  if(dateEl) dateEl.textContent = DAILY_BRIEFING.date;
+  var content = document.getElementById('briefingContent');
+  if(!content) return;
+  var h='';
+  DAILY_BRIEFING.highlights.forEach(function(item, i){
+    var bc = item.priority===1?'var(--red)':item.priority===2?'var(--accent)':item.priority===3?'var(--orange)':'var(--border)';
+    h+='<div class="briefing-item" data-link="'+item.link.replace('#','')+'" data-deep="'+(item.deepLink||'')+'" style="background:var(--card);border-left:3px solid '+bc+';border-radius:8px;padding:10px 14px;transition:.15s;cursor:pointer">';
+    h+='<div style="display:flex;align-items:center;gap:6px;margin-bottom:2px"><span style="font-size:16px">'+item.icon+'</span><span style="font-size:10px;color:var(--text3);background:var(--bg2);padding:1px 6px;border-radius:8px">'+item.section+'</span><span style="font-size:13px;font-weight:700;color:var(--text)">'+item.headline+'</span></div>';
+    h+='<div style="font-size:11px;color:var(--text2);margin-bottom:6px">'+item.summary+'</div>';
+    h+='<div style="display:flex;gap:8px"><span class="briefing-action" data-link="'+item.link.replace('#','')+'" style="font-size:10px;color:var(--accent);cursor:pointer;font-weight:500">'+item.action+' →</span>';
+    if(item.deepLink) h+='<a href="'+item.deepLink+'" target="_blank" style="font-size:10px;color:var(--accent);text-decoration:none;font-weight:500">🤖 AI深究 →</a>';
+    h+='</div></div>';
+  });
+  content.innerHTML = h;
+  container.style.display = 'block';
+}
+
+// Event delegation for briefing clicks (no inline onclick!)
+document.addEventListener('click', function(e){
+  var target = e.target;
+  // Handle briefing-item clicks → navigate to section
+  var item = target.closest('.briefing-item');
+  if(item){
+    var link = item.getAttribute('data-link');
+    if(link && typeof navigateTo === 'function') navigateTo('section', link);
+    return;
+  }
+  // Handle briefing-action clicks (same behavior, stop bubbling already handled)
+  var action = target.closest('.briefing-action');
+  if(action){
+    var link = action.getAttribute('data-link');
+    if(link && typeof navigateTo === 'function') navigateTo('section', link);
+    return;
+  }
 });
 
 // Initialize
