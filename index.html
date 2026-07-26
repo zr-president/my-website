@@ -134,10 +134,12 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 </nav>
 
 <main class="main">
-<div id="dailyBanner" style="background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:12px 18px;border-radius:var(--radius);margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;font-size:13px">
+<div id="dailyBanner" style="background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:12px 18px;border-radius:var(--radius);margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;font-size:13px;flex-wrap:wrap;gap:8px">
 <span id="dailyMsg">🔄 每日内容已就绪</span>
-<button onclick="refreshContent()" style="background:rgba(255,255,255,.2);color:#fff;border:none;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:12px;font-weight:500">🔄 刷新每日推荐</button>
-</div>
+<div style="display:flex;gap:8px">
+<button onclick="manualRefresh()" id="refreshBtn" style="background:rgba(255,255,255,.2);color:#fff;border:none;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:12px;font-weight:500">🔄 刷新今日资讯</button>
+<button onclick="refreshContent()" style="background:rgba(255,255,255,.15);color:#fff;border:none;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:12px">📋 每日推荐</button>
+</div></div>
 
 <!-- 0. 每日待办汇总 -->
 <section id="dashboard" class="section" data-search="每日待办 行程 打卡 日程">
@@ -507,10 +509,46 @@ function refreshContent(){
 // Initialize daily message
 (function(){
   var d=new Date();
-  document.getElementById('dailyMsg').textContent='📌 每日推荐已就绪 · '+d.toLocaleDateString('zh-CN');
+  document.getElementById('dailyMsg').textContent='📌 今日资讯已更新 · '+d.toLocaleDateString('zh-CN');
   var last=localStorage.getItem('lastRefresh');
   if(last) document.getElementById('lastUpdate').textContent='上次刷新：'+new Date(last).toLocaleString('zh-CN');
-})();;
+})();
+
+// Manual refresh
+function manualRefresh(){
+  var btn = document.getElementById('refreshBtn');
+  btn.textContent = '⏳ 刷新中...';
+  btn.disabled = true;
+
+  // Update timestamp
+  var now = new Date();
+  document.getElementById('dailyMsg').textContent = '🔄 资讯已刷新 · '+now.toLocaleString('zh-CN');
+  document.getElementById('lastUpdate').textContent = '🔄 手动刷新：'+now.toLocaleString('zh-CN');
+  localStorage.setItem('lastRefresh', now.toISOString());
+
+  setTimeout(function(){
+    btn.textContent = '✅ 刷新完成';
+    btn.style.background = 'rgba(5,150,105,.3)';
+    // Reset button
+    setTimeout(function(){
+      btn.textContent = '🔄 刷新今日资讯';
+      btn.style.background = 'rgba(255,255,255,.2)';
+      btn.disabled = false;
+    }, 2000);
+  }, 800);
+
+  // Show toast
+  showToast('📡 资讯时间戳已更新。每日自动更新在8:57AM执行，数据推送至GitHub。想立即获取最新资讯，对我说"更新网站"。');
+}
+
+function showToast(msg){
+  var t = document.createElement('div');
+  t.textContent = msg;
+  t.style.cssText = 'position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1a1a2e;color:#fff;padding:12px 24px;border-radius:8px;font-size:13px;z-index:9999;opacity:0;transition:opacity .3s;max-width:500px;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.2)';
+  document.body.appendChild(t);
+  setTimeout(function(){t.style.opacity='1';}, 10);
+  setTimeout(function(){t.style.opacity='0';setTimeout(function(){t.remove();},300);}, 4000);
+};
 </script>
 
 <script src="detail_content.js"></script>
