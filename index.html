@@ -144,6 +144,16 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 .cat-card .cat-subs{font-size:11px;color:var(--text3);line-height:1.6}
 .cat-card .cat-arrow{position:absolute;right:14px;bottom:14px;font-size:20px;color:var(--accent);opacity:0;transition:.2s}
 .cat-card:hover .cat-arrow{opacity:1}
+
+/* Homepage: show only key sections, hide detail-heavy ones */
+.section.home-hidden{display:none!important}
+
+/* Section Detail Full-Page View */
+.section-detail-header{display:flex;align-items:center;gap:12px;margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid var(--accent-light)}
+.section-detail-header .back-btn{width:36px;height:36px;border-radius:50%;border:1px solid var(--border);background:var(--card);cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;color:var(--text);transition:.15s}
+.section-detail-header .back-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.section-detail-header h2{font-size:20px;font-weight:700;margin:0}
+.section-detail-header p{font-size:11px;color:var(--text3);margin:0}
 .quick-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:20px}
 .quick-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px}
 .quick-card .qc-title{font-size:11px;color:var(--text3);margin-bottom:4px}
@@ -255,6 +265,9 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div class="card clickable" onclick="openDetail('career')"><h3>📋 查看完整简历 & 求职攻略</h3><p>完整电子简历、个人优势分析、打招呼模板库、高频面试题深度拆解。</p></div>
 
 <!-- Resume Workbench -->
+<!-- Category Navigation Cards (Homepage only) -->
+<div id="homeCategoryGrid" class="dashboard-grid" style="margin-bottom:14px"></div>
+
 <div class="card" style="padding:14px 16px">
 <h3 style="margin-bottom:10px">📋 简历工作台 <span style="font-size:10px;color:var(--text3);font-weight:400">编辑后自动保存到本地</span></h3>
 <div style="display:flex;gap:4px;margin-bottom:10px;flex-wrap:wrap" id="resumeTabs">
@@ -355,6 +368,11 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 </div><!-- /dashboardView -->
 <div id="categoryView" class="view-container"><div id="categoryContent" class="dashboard-grid"></div></div>
 
+<div id="sectionView" class="view-container">
+<div class="section-detail-header"><button class="back-btn" onclick="goBackFromSection()">←</button><div><h2 id="sectionDetailTitle"></h2><p id="sectionDetailSub"></p></div></div>
+<div id="sectionDetailContent"></div>
+</div>
+
 <button class="fab-top" id="fabTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="回到顶部">↑</button>
 
 <nav class="mobile-tabbar">
@@ -405,12 +423,15 @@ function closeDetail(){
 }
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeDetail();});
 
-// Nav
+// Nav — navigate to section detail (not scroll)
 document.querySelectorAll('.nav-section a').forEach(function(a){
   a.addEventListener('click',function(e){
     e.preventDefault();
-    var t=document.querySelector(a.getAttribute('href'));
-    if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+    var href = a.getAttribute('href');
+    if(href && href.startsWith('#')){
+      var sid = href.replace('#','');
+      if(typeof navigateTo === 'function') navigateTo('section-detail', sid);
+    }
   });
 });
 window.addEventListener('scroll',function(){
@@ -1008,66 +1029,127 @@ var CATEGORIES = {
   tools:    {icon:'🤖', name:'工具·AI', subs:'使用指南 | 工具收藏夹 | AI助手 | 优化日记', sections:['guide','tools-collection','ai-assistant','optimization']}
 };
 
+// Key sections to show on homepage (everything else hidden)
+var HOME_SECTIONS = ['dashboard','guide','optimization'];
+
 function showView(viewName, categoryKey){
   // Hide all views
   document.querySelectorAll('.view-container').forEach(function(v){ v.classList.remove('active'); });
-  // Hide all sections
-  document.querySelectorAll('.section').forEach(function(s){ s.style.display=''; });
-
-  var bc = document.getElementById('breadcrumb');
-  var catView = document.getElementById('categoryView');
   var dashView = document.getElementById('dashboardView');
+  var catView = document.getElementById('categoryView');
+  var secView = document.getElementById('sectionView');
+  var bc = document.getElementById('breadcrumb');
+
+  // Reset mobile tabs
+  document.querySelectorAll('.mobile-tabbar a').forEach(function(a){ a.classList.remove('active'); });
 
   if(viewName==='home'){
+    // Show only key sections on homepage, hide the rest
+    document.querySelectorAll('.section').forEach(function(s){
+      if(HOME_SECTIONS.indexOf(s.id) >= 0) s.classList.remove('home-hidden');
+      else s.classList.add('home-hidden');
+    });
+    // Render category navigation cards
+    var grid = document.getElementById('homeCategoryGrid');
+    if(grid){
+      var h = '';
+      Object.keys(CATEGORIES).forEach(function(k){
+        var cat = CATEGORIES[k];
+        h += '<div class=\"cat-card\" onclick=\"navigateTo(\'category\',\''+k+'\')\">';
+        h += '<div class=\"cat-icon\">'+cat.icon+'</div>';
+        h += '<div class=\"cat-name\">'+cat.name+'</div>';
+        h += '<div class=\"cat-subs\">'+cat.subs+'</div>';
+        h += '<div class=\"cat-arrow\" style=\"opacity:1;position:static;margin-top:8px;font-size:14px\">浏览 →</div>';
+        h += '</div>';
+      });
+      grid.innerHTML = h;
+    }
     dashView.classList.add('active');
-    bc.style.display='none';
-    catView.classList.remove('active');
-    // Update mobile tab
-    document.querySelectorAll('.mobile-tabbar a').forEach(function(a){ a.classList.remove('active'); });
-    var homeTab = document.querySelector('.mobile-tabbar a[data-nav="home"]');
-    if(homeTab) homeTab.classList.add('active');
+    bc.style.display = 'none';
     window.location.hash = 'home';
+    var ht = document.querySelector('.mobile-tabbar a[data-nav=\"home\"]');
+    if(ht) ht.classList.add('active');
   } else if(viewName==='category' && categoryKey){
     var cat = CATEGORIES[categoryKey];
     if(!cat) return;
+    // Show all sections temporarily to read their headers
+    document.querySelectorAll('.section').forEach(function(s){ s.classList.remove('home-hidden'); });
     // Build category page
     var grid = document.getElementById('categoryContent');
     var h = '';
     cat.sections.forEach(function(sid){
       var sec = document.getElementById(sid);
-      var title = sec ? (sec.querySelector('.section-header h2')||{}).textContent || sid : sid;
-      var desc = sec ? (sec.querySelector('.section-header p')||{}).textContent || '' : '';
+      var title = sec ? ((sec.querySelector('.section-header h2')||{}).textContent || sid) : sid;
       var insight = (typeof INSIGHTS!=='undefined' && INSIGHTS[sid]) ? INSIGHTS[sid].summary.substring(0,60)+'...' : '';
-      h += '<div class="cat-card" onclick="navigateTo(\'section\',\''+sid+'\')">';
-      h += '<div class="cat-icon" style="font-size:28px">'+cat.icon+'</div>';
-      h += '<div class="cat-name">'+title+'</div>';
-      if(insight) h += '<div class="cat-desc" style="font-size:11px;color:var(--text2)">'+insight+'</div>';
-      h += '<div class="cat-arrow" style="opacity:1;position:static;margin-top:6px">查看详情 →</div>';
+      h += '<div class="cat-card" onclick="navigateTo(\'section-detail\',\''+sid+'\')">';
+      h += '<div class="cat-name" style="font-size:14px">'+title+'</div>';
+      if(insight) h += '<div style="font-size:11px;color:var(--text2);margin-top:4px">'+insight+'</div>';
+      h += '<div style="font-size:10px;color:var(--accent);margin-top:6px">查看详情 →</div>';
       h += '</div>';
     });
     grid.innerHTML = h;
     catView.classList.add('active');
     dashView.classList.remove('active');
     bc.style.display='block';
-    bc.innerHTML='<a onclick="navigateTo(\'home\')">🏠 首页</a> <span>›</span> '+cat.icon+' '+cat.name;
+    bc.innerHTML='<a onclick=\"navigateTo(\'home\')\">🏠 首页</a> <span>›</span> '+cat.icon+' '+cat.name;
     window.location.hash = 'category-'+categoryKey;
-    document.querySelectorAll('.mobile-tabbar a').forEach(function(a){ a.classList.remove('active'); });
-    var catTab = document.querySelector('.mobile-tabbar a[data-nav="category"]');
-    if(catTab) catTab.classList.add('active');
+    var ct = document.querySelector('.mobile-tabbar a[data-nav=\"category\"]');
+    if(ct) ct.classList.add('active');
     window.scrollTo({top:0,behavior:'smooth'});
-  } else if(viewName==='section' && categoryKey){
-    // Navigate to section: scroll to it + open detail
-    var sec = document.getElementById(categoryKey);
-    if(sec){
-      dashView.classList.add('active');
-      catView.classList.remove('active');
-      bc.style.display='none';
-      sec.scrollIntoView({behavior:'smooth',block:'start'});
-      // Auto-open detail after short delay
-      setTimeout(function(){ if(typeof openDetail==='function') openDetail(categoryKey); }, 400);
-      window.location.hash = categoryKey;
+  } else if(viewName==='section-detail' && categoryKey){
+    // Full-page section detail view
+    var secEl = document.getElementById(categoryKey);
+    var title = '';
+    if(secEl){
+      var h2 = secEl.querySelector('.section-header h2');
+      if(h2) title = h2.textContent;
     }
+    document.getElementById('sectionDetailTitle').textContent = title || categoryKey;
+    document.getElementById('sectionDetailSub').textContent = '全屏详情 · 点击←返回';
+
+    // Build section detail content
+    var detailHtml = '';
+    // Insight callout (full)
+    if(typeof INSIGHTS!=='undefined' && INSIGHTS[categoryKey]){
+      var ins = INSIGHTS[categoryKey];
+      detailHtml += '<div class=\"callout info\" style=\"margin-bottom:16px\"><strong>📊 今日分析（'+ins.updated+'更新）</strong><br>'+ins.summary+'<br><span style=\"font-size:12px;color:var(--text2)\">'+ins.trend+'</span><br><strong style=\"color:var(--accent)\">'+ins.tip+'</strong></div>';
+    }
+    // Picks
+    if(typeof PICKS!=='undefined' && PICKS[categoryKey]){
+      PICKS[categoryKey].forEach(function(p){
+        var hasLink = p.link && p.link!=='#';
+        detailHtml += '<div class=\"pick-card\">';
+        detailHtml += '<span class=\"pick-icon\">'+p.icon+'</span>';
+        detailHtml += '<span class=\"pick-info\"><div class=\"pick-title\">'+p.title+'</div><div class=\"pick-desc\">'+p.desc+'</div></span>';
+        if(hasLink) detailHtml += '<a href=\"'+p.link+'\" target=\"_blank\" class=\"pick-arrow\" style=\"text-decoration:none\">→</a>';
+        detailHtml += '</div>';
+      });
+    }
+    // Full guide content from DETAIL
+    if(typeof DETAIL!=='undefined' && DETAIL[categoryKey]){
+      detailHtml += '<div style=\"margin-top:16px\">'+DETAIL[categoryKey]+'</div>';
+    }
+    document.getElementById('sectionDetailContent').innerHTML = detailHtml;
+
+    secView.classList.add('active');
+    dashView.classList.remove('active');
+    catView.classList.remove('active');
+    bc.style.display='block';
+    bc.innerHTML='<a onclick=\"navigateTo(\'home\')\">🏠 首页</a> <span>›</span> '+title;
+    window.location.hash = categoryKey;
+    window.scrollTo({top:0,behavior:'smooth'});
   }
+}
+
+function goBackFromSection(){
+  var hash = window.location.hash.replace('#','');
+  // Find which category this section belongs to
+  var foundCat = null;
+  Object.keys(CATEGORIES).forEach(function(k){
+    if(CATEGORIES[k].sections.indexOf(hash) >= 0) foundCat = k;
+  });
+  if(foundCat) navigateTo('category', foundCat);
+  else navigateTo('home');
 }
 
 function navigateTo(view, key){
@@ -1081,11 +1163,9 @@ window.addEventListener('hashchange', function(){
     showView('home');
   } else if(hash.startsWith('category-')){
     showView('category', hash.replace('category-',''));
-  } else {
-    // Direct section hash — show home + scroll to section
-    showView('home');
-    var sec = document.getElementById(hash);
-    if(sec){ setTimeout(function(){ sec.scrollIntoView({behavior:'smooth'}); }, 200); }
+  } else if(hash && document.getElementById(hash)){
+    // Direct section hash → section detail view
+    showView('section-detail', hash);
   }
 });
 
