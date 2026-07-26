@@ -231,6 +231,17 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <section id="career" class="section" data-search="求职 简历 面试 工作"><div class="section-header"><h2>💼 求职中心</h2><p>招聘平台直达 · 完整简历</p></div>
 <div id="picks-career" class="picks-container"></div>
 <div class="info-grid"><div class="info-item"><div class="num">BOSS直聘</div><div class="label">主要渠道</div></div><div class="info-item"><div class="num">猎聘</div><div class="label">次要渠道</div></div><div class="info-item"><div class="num">09:30-11:00</div><div class="label">黄金窗口</div></div><div class="info-item"><div class="num">20家/天</div><div class="label">投递目标</div></div></div>
+<div class="card" style="padding:14px 16px">
+<h3 style="margin-bottom:8px">📊 投递追踪表 <span style="font-size:11px;color:var(--text3);font-weight:400" id="trackerStats"></span></h3>
+<div style="display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap">
+<input type="text" id="trackCompany" placeholder="公司" style="flex:1;min-width:80px;padding:6px 8px;border:1px solid var(--border);border-radius:6px;font-size:11px;font-family:inherit;background:var(--bg);color:var(--text)">
+<input type="text" id="trackPosition" placeholder="岗位" style="flex:1;min-width:80px;padding:6px 8px;border:1px solid var(--border);border-radius:6px;font-size:11px;font-family:inherit;background:var(--bg);color:var(--text)">
+<select id="trackPlatform" style="padding:6px;border:1px solid var(--border);border-radius:6px;font-size:11px;font-family:inherit;background:var(--bg);color:var(--text)"><option>BOSS直聘</option><option>猎聘</option><option>脉脉</option><option>官网</option><option>内推</option></select>
+<select id="trackStatus" style="padding:6px;border:1px solid var(--border);border-radius:6px;font-size:11px;font-family:inherit;background:var(--bg);color:var(--text)"><option>已投递</option><option>初筛中</option><option>面试中</option><option>Offer</option><option>已拒绝</option></select>
+<button onclick="addTrackerEntry()" style="padding:6px 12px;background:var(--accent);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:11px;font-weight:500;white-space:nowrap">＋ 记录</button>
+</div>
+<div id="trackerTable" style="max-height:300px;overflow-y:auto;font-size:11px"></div>
+</div>
 <div class="card clickable" onclick="openDetail('career')"><h3>📋 查看完整简历 & 求职攻略</h3><p>完整电子简历、个人优势分析、打招呼模板库、高频面试题深度拆解。</p></div>
 </section>
 
@@ -543,6 +554,61 @@ function autoGenerateSchedule(){
   document.getElementById('scheduleDisplay').style.display = 'block';
   document.getElementById('scheduleDisplay').scrollIntoView({behavior:'smooth'});
 }
+
+// ===== Job Application Tracker =====
+function loadTracker(){
+  var saved = localStorage.getItem('zhongrui_tracker');
+  if(saved){ try{return JSON.parse(saved);}catch(e){} }
+  return [];
+}
+function saveTracker(data){ localStorage.setItem('zhongrui_tracker', JSON.stringify(data)); }
+
+function renderTracker(){
+  var data = loadTracker();
+  var h = '';
+  if(data.length===0){
+    h = '<p style="color:var(--text3);text-align:center;padding:16px">还没有投递记录，用上方表单添加第一条吧 ✍️</p>';
+  } else {
+    h = '<table class="data-table" style="margin:0"><tr><th>日期</th><th>公司</th><th>岗位</th><th>平台</th><th>状态</th><th>操作</th></tr>';
+    data.forEach(function(item, i){
+      var statusColor = item.status==='Offer'?'var(--green)':item.status==='已拒绝'?'var(--red)':item.status==='面试中'?'var(--accent)':'var(--text2)';
+      h += '<tr><td>'+item.date+'</td><td>'+escHtml(item.company)+'</td><td>'+escHtml(item.position)+'</td><td>'+item.platform+'</td><td style="color:'+statusColor+';font-weight:600">'+item.status+'</td>';
+      h += '<td><button onclick="deleteTrackerEntry('+i+')" style="background:none;border:none;cursor:pointer;color:var(--red);font-size:12px">✕</button></td></tr>';
+    });
+    h += '</table>';
+  }
+  document.getElementById('trackerTable').innerHTML = h;
+  // Stats
+  var total = data.length;
+  var interviews = data.filter(function(d){ return d.status==='面试中'||d.status==='Offer'; }).length;
+  var offers = data.filter(function(d){ return d.status==='Offer'; }).length;
+  document.getElementById('trackerStats').textContent = '总投递 '+total+' | 面试 '+interviews+' | Offer '+offers;
+}
+function addTrackerEntry(){
+  var company = document.getElementById('trackCompany').value.trim();
+  var position = document.getElementById('trackPosition').value.trim();
+  if(!company){ alert('请填写公司名称'); return; }
+  var data = loadTracker();
+  var now = new Date();
+  data.unshift({
+    date: now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate(),
+    company: company,
+    position: position||'未填写',
+    platform: document.getElementById('trackPlatform').value,
+    status: document.getElementById('trackStatus').value
+  });
+  saveTracker(data);
+  renderTracker();
+  document.getElementById('trackCompany').value='';
+  document.getElementById('trackPosition').value='';
+}
+function deleteTrackerEntry(i){
+  var data = loadTracker();
+  data.splice(i,1);
+  saveTracker(data);
+  renderTracker();
+}
+renderTracker();
 
 // Init dashboard
 (function(){
