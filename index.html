@@ -134,12 +134,13 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 </nav>
 
 <main class="main">
-<div id="dailyBanner" style="background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:12px 18px;border-radius:var(--radius);margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;font-size:13px;flex-wrap:wrap;gap:8px">
+<div id="dailyBanner" style="background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:12px 18px;border-radius:var(--radius);margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;font-size:13px;flex-wrap:wrap;gap:8px;cursor:pointer" onclick="rotateBanner()" title="点击切换">
 <span id="dailyMsg">🔄 每日内容已就绪</span>
 <span id="dailyQuote" style="font-size:11px;opacity:.85;flex:1;min-width:200px;text-align:center"></span>
+<div style="display:flex;align-items:center;gap:4px" id="bannerDots"></div>
 <div style="display:flex;gap:8px">
-<button onclick="manualRefresh()" id="refreshBtn" style="background:rgba(255,255,255,.2);color:#fff;border:none;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:12px;font-weight:500">🔄 刷新今日资讯</button>
-<button onclick="refreshContent()" style="background:rgba(255,255,255,.15);color:#fff;border:none;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:12px">📋 每日推荐</button>
+<button onclick="event.stopPropagation();manualRefresh()" id="refreshBtn" style="background:rgba(255,255,255,.2);color:#fff;border:none;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:12px;font-weight:500">🔄 刷新今日资讯</button>
+<button onclick="event.stopPropagation();refreshContent()" style="background:rgba(255,255,255,.15);color:#fff;border:none;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:12px">📋 每日推荐</button>
 </div></div>
 
 <!-- 0. 每日待办汇总 -->
@@ -216,10 +217,12 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <section id="house" class="section" data-search="买房 租房 房价 广州 深圳"><div class="section-header"><h2>🏠 购房租房</h2><p>广深楼市 · 租房策略</p></div>
 <div class="card clickable" onclick="openDetail('house')"><h3>🏘️ 楼市数据中心</h3><p>广深五城房价对比、房价查询平台、租房黄金法则、购房规划。</p></div></section>
 
-<section id="travel" class="section" data-search="旅游 旅行 出行 避暑 度假 机票 酒店 云南 贵州 新疆"><div class="section-header"><h2>✈️ 旅游区</h2><p>本周出行推荐 · 天气分析 · 消费预估</p></div>
+<section id="travel" class="section" data-search="旅游 旅行 出行 避暑 度假 机票 酒店 云南 贵州 新疆"><div class="section-header"><h2>✈️ 旅游区</h2><p>本周出行推荐 · 实时天气 · 消费预估</p></div>
+<div class="card" style="padding:12px 16px" id="travelWeather"><div class="info-item"><div class="num">--°C</div><div class="label">加载天气中...</div></div></div>
 <div class="card clickable" onclick="openDetail('travel')"><h3>🌴 查看本周出行方案</h3><p>基于7月天气数据，国内3条避暑路线+国际2个推荐目的地，含全程预算和行程安排。</p></div></section>
 
-<section id="news" class="section" data-search="新闻 资讯 财经 国际"><div class="section-header"><h2>📰 新闻资讯</h2><p>信息源配置 · 每日阅读方案</p></div>
+<section id="news" class="section" data-search="新闻 资讯 财经 国际"><div class="section-header"><h2>📰 新闻资讯</h2><p>实时快讯 · 信息源配置 · 每日阅读方案</p></div>
+<div class="card" style="padding:12px 16px" id="rssNewsFeed"><p style="font-size:12px;color:var(--text3)">📡 正在加载实时资讯...</p></div>
 <div class="card clickable" onclick="openDetail('news')"><h3>🌍 资讯获取方案</h3><p>高效信息源配置、每日阅读时间表、RSS订阅方案。</p></div></section>
 
 <section id="ai-assistant" class="section" data-search="AI助手 聊天"><div class="section-header"><h2>💬 AI助手</h2><p>可视化问答 · 个人AI管家</p></div>
@@ -531,7 +534,163 @@ fetchStockData();
 fetchQuote();
 setInterval(fetchStockData, 60000);
 
-document.getElementById('lastUpdate').textContent='最后更新：'+new Date().toLocaleString('zh-CN');
+// ===== Dynamic Banner Rotation =====
+var bannerMessages = [];
+var bannerIndex = 0;
+var bannerTimer = null;
+
+function buildBannerMessages(){
+  var d = new Date();
+  var weekDay = d.getDay(); // 0=Sun, 1=Mon, ...
+  var data = typeof DAILY_DATA !== 'undefined' ? DAILY_DATA : null;
+
+  // Day-of-week focus message
+  var weekFocuses = {
+    0: '🌴 周末放松 · 旅游灵感+游戏时光',
+    1: '💼 周一能量 · 求职攻略+股市周报',
+    2: '📊 周二深度 · 动漫小说推荐+AI学习',
+    3: '🍹 周三生活 · 调酒品鉴+穿搭健身',
+    4: '📊 周四进阶 · 深度推荐+技能提升',
+    5: '🎵 周五音乐 · 周末歌单+放松计划',
+    6: '🌴 周末模式 · 旅游灵感+游戏推荐'
+  };
+
+  bannerMessages = [];
+
+  // Add weekly focus
+  bannerMessages.push({icon: '📌', text: weekFocuses[weekDay] || weekFocuses[1]});
+
+  // Add daily data content if available
+  if(data){
+    if(data.market_summary) bannerMessages.push({icon: '📈', text: '股市：'+data.market_summary});
+    if(data.news_headlines && data.news_headlines[0]) bannerMessages.push({icon: '📰', text: '头条：'+data.news_headlines[0].title});
+    if(data.daily_recommendation && data.daily_recommendation.music) bannerMessages.push({icon: '🎵', text: data.daily_recommendation.music.title+' — '+data.daily_recommendation.music.desc});
+    if(data.tip_of_day) bannerMessages.push({icon: '💡', text: data.tip_of_day});
+  } else {
+    // Fallback messages
+    bannerMessages.push({icon: '📈', text: '今日关注：AI板块财报季+科技股动态'});
+    bannerMessages.push({icon: '💡', text: '新手的投资第一课：不亏钱比赚钱更重要。先定投沪深300ETF。'});
+  }
+
+  // Add daily quote (will be filled by fetchQuote)
+  bannerMessages.push({icon: '💬', text: '加载中...', isQuote: true});
+}
+
+function rotateBanner(manual){
+  if(bannerMessages.length === 0) buildBannerMessages();
+  if(manual) { bannerIndex = (bannerIndex + 1) % bannerMessages.length; }
+  var msg = bannerMessages[bannerIndex];
+  document.getElementById('dailyMsg').textContent = msg.icon + ' ' + msg.text;
+  // Update dots
+  var dotsHtml = '';
+  for(var i=0; i<bannerMessages.length; i++){
+    dotsHtml += '<span style="display:inline-block;width:6px;height:6px;border-radius:50%;margin:0 2px;background:'+(i===bannerIndex?'#fff':'rgba(255,255,255,.4)')+'"></span>';
+  }
+  document.getElementById('bannerDots').innerHTML = dotsHtml;
+  bannerIndex = (bannerIndex + 1) % bannerMessages.length;
+}
+
+function startBannerRotation(){
+  buildBannerMessages();
+  rotateBanner();
+  bannerTimer = setInterval(function(){ rotateBanner(); }, 5000);
+}
+
+// Update daily quote into banner
+var origFetchQuote = fetchQuote;
+fetchQuote = function(){
+  var quotes = ['你在人群中看到的每一个耀眼的女孩，都是踩着刀尖过来的','如果结果不如你所愿，就在尘埃落定前奋力一搏','种一棵树最好的时间是十年前，其次是现在','我当然不会试图摘月，我要月亮奔我而来','世界上只有一种真正的英雄主义，那就是认清生活真相后依然热爱生活'];
+  var el = document.getElementById('dailyQuote');
+  function setFallback(){ var q = quotes[new Date().getDate() % quotes.length]; if(el) el.textContent = '💬 '+q; }
+
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'https://v1.hitokoto.cn/?c=a&c=b&c=c&c=d&encode=text&max_length=30', true);
+  xhr.timeout = 5000;
+  xhr.onload = function(){
+    if(xhr.status === 200 && xhr.responseText){
+      if(el) el.textContent = '💬 '+xhr.responseText;
+      // Also update banner quote slot
+      for(var i=0; i<bannerMessages.length; i++){
+        if(bannerMessages[i].isQuote) bannerMessages[i].text = xhr.responseText;
+      }
+    } else { setFallback(); }
+  };
+  xhr.onerror = setFallback;
+  xhr.ontimeout = setFallback;
+  xhr.send();
+};
+
+// Update timestamp from daily data
+if(typeof DAILY_DATA !== 'undefined' && DAILY_DATA.update_time){
+  document.getElementById('lastUpdate').textContent = '每日更新：'+DAILY_DATA.update_date+' · 下次更新明天8:57';
+} else {
+  document.getElementById('lastUpdate').textContent = '最后更新：'+new Date().toLocaleString('zh-CN');
+}
+
+// ===== RSS Feed for News Section =====
+function fetchRSSNews(){
+  // Try rss2json API to get 36kr news
+  var rssUrl = 'https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent('https://36kr.com/feed');
+  fetch(rssUrl).then(function(r){return r.json();}).then(function(data){
+    if(data && data.items && data.items.length > 0){
+      var headlines = data.items.slice(0,5);
+      var html = '';
+      headlines.forEach(function(item){
+        html += '<div style="padding:6px 0;border-bottom:1px solid var(--border);font-size:12px">';
+        html += '📰 <a href="'+item.link+'" target="_blank" style="color:var(--accent);text-decoration:none">'+item.title+'</a>';
+        html += ' <span style="color:var(--text3);font-size:10px">'+new Date(item.pubDate).toLocaleDateString('zh-CN')+'</span>';
+        html += '</div>';
+      });
+      var newsEl = document.getElementById('rssNewsFeed');
+      if(newsEl) newsEl.innerHTML = html + '<p style="font-size:10px;color:var(--text3);margin-top:4px">📡 实时数据来自36氪RSS · 每30分钟更新</p>';
+    }
+  }).catch(function(){
+    // Fallback to daily_data
+    var newsEl = document.getElementById('rssNewsFeed');
+    if(newsEl && typeof DAILY_DATA !== 'undefined' && DAILY_DATA.news_headlines){
+      var html = '';
+      DAILY_DATA.news_headlines.forEach(function(item){
+        html += '<div style="padding:6px 0;border-bottom:1px solid var(--border);font-size:12px">';
+        html += '📰 <a href="'+item.url+'" target="_blank" style="color:var(--accent);text-decoration:none">'+item.title+'</a>';
+        html += ' <span style="color:var(--text3);font-size:10px">'+item.source+'</span>';
+        html += '</div>';
+      });
+      newsEl.innerHTML = html + '<p style="font-size:10px;color:var(--text3);margin-top:4px">📋 离线数据 · 今早8:57更新</p>';
+    }
+  });
+}
+
+// ===== Weather Fetch for Travel Section =====
+function fetchWeather(){
+  fetch('https://api.open-meteo.com/v1/forecast?latitude=23.13&longitude=113.26&current=temperature_2m,relative_humidity_2m,weather_code&daily=temperature_2m_max,temperature_2m_min,weather_code&timezone=Asia/Shanghai&forecast_days=3')
+  .then(function(r){return r.json();}).then(function(data){
+    var weatherEl = document.getElementById('travelWeather');
+    if(!weatherEl) return;
+    var codes = {0:'☀️ 晴',1:'🌤️ 大部晴',2:'⛅ 多云',3:'☁️ 阴',45:'🌫️ 雾',51:'🌧️ 小雨',61:'🌧️ 中雨',80:'🌦️ 阵雨',95:'⛈️ 雷暴'};
+    var w = data.current;
+    var wcode = codes[w.weather_code] || '🌤️';
+    var html = '<div style="display:flex;gap:8px;flex-wrap:wrap">';
+    html += '<div class="info-item"><div class="num">'+w.temperature_2m+'°C</div><div class="label">广州现在 '+wcode+'</div></div>';
+    if(data.daily){
+      var days = ['今天','明天','后天'];
+      for(var i=0; i<Math.min(3,data.daily.time.length); i++){
+        var dc = codes[data.daily.weather_code[i]] || '🌤️';
+        html += '<div class="info-item"><div class="num">'+data.daily.temperature_2m_max[i]+'°/'+data.daily.temperature_2m_min[i]+'°</div><div class="label">'+days[i]+' '+dc+'</div></div>';
+      }
+    }
+    html += '</div><p style="font-size:10px;color:var(--text3);margin-top:4px">🌤️ 实时天气数据 · 更新于'+new Date().toLocaleTimeString('zh-CN')+'</p>';
+    weatherEl.innerHTML = html;
+    // Also update DAILY_DATA fallback
+    if(typeof DAILY_DATA !== 'undefined'){
+      DAILY_DATA.weather_summary = '广州 '+w.temperature_2m+'°C · '+wcode+' · 湿度'+w.relative_humidity_2m+'%';
+    }
+  }).catch(function(){
+    var weatherEl = document.getElementById('travelWeather');
+    if(weatherEl && typeof DAILY_DATA !== 'undefined'){
+      weatherEl.innerHTML = '<div class="info-item"><div class="num">'+DAILY_DATA.weather_summary+'</div><div class="label">离线天气（今早更新）</div></div>';
+    }
+  });
+}
 
 // Daily content rotation
 function refreshContent(){
@@ -540,16 +699,14 @@ function refreshContent(){
   var idx=now.getDate()%tips.length;
   document.getElementById('dailyMsg').textContent=tips[idx]+' · '+now.toLocaleDateString('zh-CN');
   document.getElementById('lastUpdate').textContent='🔄 已刷新：'+now.toLocaleString('zh-CN');
-  // Persist
   localStorage.setItem('lastRefresh',now.toISOString());
 }
-// Initialize daily message
-(function(){
-  var d=new Date();
-  document.getElementById('dailyMsg').textContent='📌 今日资讯已更新 · '+d.toLocaleDateString('zh-CN');
-  var last=localStorage.getItem('lastRefresh');
-  if(last) document.getElementById('lastUpdate').textContent='上次刷新：'+new Date(last).toLocaleString('zh-CN');
-})();
+
+// Initialize
+startBannerRotation();
+fetchRSSNews();
+fetchWeather();
+setInterval(fetchRSSNews, 1800000); // refresh RSS every 30 min
 
 // Manual refresh
 function manualRefresh(){
@@ -589,5 +746,6 @@ function showToast(msg){
 </script>
 
 <script src="detail_content.js"></script>
+<script src="daily_data.js"></script>
 </body>
 </html>
