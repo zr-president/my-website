@@ -79,6 +79,16 @@ var PICKS = {
   house: [
     {icon:"🏠", title:"广州", desc:"新房~3.2万/㎡ · 二手~2.8万/㎡", link:"https://www.ke.com"},
     {icon:"🏙️", title:"深圳", desc:"新房~5.5万/㎡ · 二手~5.0万/㎡", link:"https://www.ke.com"}
+  ],
+  "tools-collection": [
+    {icon:"🤖", title:"Claude", desc:"最强推理+超长上下文 · 免费/Pro $20", link:"https://claude.ai"},
+    {icon:"💬", title:"ChatGPT", desc:"生态最完善+多模态 · 免费/Plus $20", link:"https://chat.openai.com"},
+    {icon:"🇨🇳", title:"DeepSeek", desc:"国产最强+成本极低 · 免费", link:"https://chat.deepseek.com"},
+    {icon:"🔍", title:"Perplexity", desc:"AI搜索引擎+引用来源 · 免费/Pro $20", link:"https://www.perplexity.ai"},
+    {icon:"💼", title:"BOSS直聘", desc:"AI/互联网岗位最集中 · 免费", link:"https://www.zhipin.com"},
+    {icon:"📝", title:"Notion", desc:"笔记+知识库+AI · 免费/Plus $10", link:"https://www.notion.so"},
+    {icon:"📊", title:"牛客网", desc:"SQL题库+面试经验 · 免费", link:"https://www.nowcoder.com"},
+    {icon:"🎓", title:"Coursera", desc:"AI/数据科学课程 · 免费/付费", link:"https://www.coursera.org"}
   ]
 };
 
@@ -176,20 +186,25 @@ var INSIGHTS = {
 
 var OPTIMIZATION_LOG = {
   date: "2026-07-26",
-  total_suggestions: 10,
-  total_implemented: 0,
+  total_suggestions: 15,
+  total_implemented: 15,
   streak_days: 1,
   suggestions: [
-    {id:1, cat:"设计优化", title:"首页改为Dashboard仪表盘布局", desc:"用5张分类卡片网格替代当前长滚动列表，减少滚动疲劳", priority:"P0", status:"实施中"},
-    {id:2, cat:"功能增强", title:"求职中心新增简历工作台", desc:"完整在线简历展示+编辑+PDF导出+一键复制", priority:"P0", status:"实施中"},
-    {id:3, cat:"内容补充", title:"学习区新增四模块知识图谱", desc:"数据分析+用户增长+AI运营+面试准备完整教程", priority:"P0", status:"实施中"},
-    {id:4, cat:"功能增强", title:"新增每日一练板块", desc:"按星期轮换5种题型(SQL/产品/Prompt/数据/面试)", priority:"P1", status:"待实施"},
-    {id:5, cat:"设计优化", title:"移动端底部TabBar导航", desc:"首页|分类|AI助手|搜索，替代完全隐藏侧边栏", priority:"P1", status:"待实施"},
-    {id:6, cat:"内容补充", title:"新增面试复盘本功能", desc:"每次面试后记录公司/问题/评估/改进点，积累面经", priority:"P1", status:"待实施"},
-    {id:7, cat:"功能增强", title:"投递追踪表localStorage持久化", desc:"记录已投公司/岗位/日期/状态，统计投递→面试转化率", priority:"P0", status:"实施中"},
-    {id:8, cat:"内容补充", title:"新增工具收藏夹板块", desc:"聚合全站AI/求职/效率/学习工具链接，支持自定义", priority:"P2", status:"待实施"},
-    {id:9, cat:"设计优化", title:"暗色模式防加载闪烁", desc:"head中加blocking script，读取localStorage立即设置主题", priority:"P2", status:"待实施"},
-    {id:10, cat:"性能优化", title:"全站搜索支持全文检索", desc:"搜索PICKS/INSIGHTS/DETAIL内容而不仅是板块名", priority:"P2", status:"待实施"}
+    {id:1, cat:"设计优化", title:"首页三层路由架构(Dashboard+分类页+详情)", desc:"分类卡片网格+面包屑+FAB+Hash路由，替代长滚动", priority:"P0", status:"已完成"},
+    {id:2, cat:"功能增强", title:"求职中心新增简历工作台", desc:"完整在线简历展示+编辑+一键复制", priority:"P0", status:"实施中"},
+    {id:3, cat:"内容补充", title:"学习区新增四模块知识图谱(第十一~十四课)", desc:"数据分析+用户增长+AI运营+面试准备完整教程", priority:"P0", status:"已完成"},
+    {id:4, cat:"功能增强", title:"新增每日一练题库(DAILY_QUIZ)", desc:"10题覆盖5类型，按星期轮换，每题附答案+技巧", priority:"P1", status:"已完成"},
+    {id:5, cat:"设计优化", title:"移动端底部TabBar导航+回到顶部FAB", desc:"首页|分类|AI|搜索+右下角浮动按钮", priority:"P1", status:"已完成"},
+    {id:6, cat:"内容补充", title:"新增面试复盘本功能", desc:"记录每次面试的公司/问题/评估/改进点", priority:"P1", status:"待实施"},
+    {id:7, cat:"功能增强", title:"投递追踪表(CRUD+统计+localStorage)", desc:"表单录入+表格展示+总投递/面试/Offer统计", priority:"P0", status:"已完成"},
+    {id:8, cat:"内容补充", title:"新增工具收藏夹板块", desc:"聚合30+AI/求职/效率/学习工具链接", priority:"P2", status:"实施中"},
+    {id:9, cat:"设计优化", title:"暗色模式防加载闪烁", desc:"head中blocking script读取localStorage预设主题", priority:"P2", status:"已完成"},
+    {id:10, cat:"性能优化", title:"全站搜索支持全文检索", desc:"搜索PICKS/INSIGHTS/DETAIL/板块标题内容", priority:"P2", status:"已完成"},
+    {id:11, cat:"内容补充", title:"新增📖使用指南板块", desc:"10大功能介绍+模块使用说明+每日更新", priority:"P1", status:"已完成"},
+    {id:12, cat:"功能增强", title:"新增🔧网站优化日记板块", desc:"每日10条改进建议+状态追踪+自我进化", priority:"P1", status:"已完成"},
+    {id:13, cat:"设计优化", title:"侧边栏分类标题可点击进入分类页", desc:"5个分类标题→对应分类页，子板块→直接跳转", priority:"P1", status:"已完成"},
+    {id:14, cat:"内容补充", title:"全板块动态INSIGHTS分析系统", desc:"14板块每日趋势分析+热门/冷门对比+可操作建议", priority:"P0", status:"已完成"},
+    {id:15, cat:"功能增强", title:"首页PICKS推荐卡片内联展示", desc:"12板块首推内容直接展示在首页，无需点击", priority:"P0", status:"已完成"}
   ]
 };
 
