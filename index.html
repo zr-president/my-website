@@ -96,6 +96,16 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 .highlight-box{background:var(--accent-light);border-radius:8px;padding:12px 16px;margin:8px 0}
 .search-none{opacity:.25;pointer-events:none}
 
+/* Picks cards */
+.picks-container{margin-bottom:7px}
+.pick-card{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--card);border:1px solid var(--border);border-radius:8px;margin-bottom:5px;transition:.15s;text-decoration:none;color:var(--text)}
+.pick-card:hover{border-color:var(--accent);transform:translateX(2px);box-shadow:var(--shadow)}
+.pick-card .pick-icon{font-size:18px;flex-shrink:0;width:28px;text-align:center}
+.pick-card .pick-info{flex:1;min-width:0}
+.pick-card .pick-title{font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pick-card .pick-desc{font-size:10px;color:var(--text3)}
+.pick-card .pick-arrow{font-size:14px;color:var(--accent);flex-shrink:0}
+
 /* Detail overlay */
 .detail-overlay{position:fixed;top:0;left:0;width:100%;height:100%;z-index:500;pointer-events:none}
 .detail-overlay.active{pointer-events:all}
@@ -175,46 +185,58 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div class="card clickable" onclick="openDetail('about')"><h3>🧬 查看完整的个人介绍</h3><p>职业定位、核心竞争力、2026年度目标。</p></div>
 </section>
 
-<section id="career" class="section" data-search="求职 简历 面试 工作"><div class="section-header"><h2>💼 求职中心</h2><p>完整简历 · 投递策略 · 面试准备</p></div>
+<section id="career" class="section" data-search="求职 简历 面试 工作"><div class="section-header"><h2>💼 求职中心</h2><p>招聘平台直达 · 完整简历</p></div>
+<div id="picks-career" class="picks-container"></div>
 <div class="info-grid"><div class="info-item"><div class="num">BOSS直聘</div><div class="label">主要渠道</div></div><div class="info-item"><div class="num">猎聘</div><div class="label">次要渠道</div></div><div class="info-item"><div class="num">09:30-11:00</div><div class="label">黄金窗口</div></div><div class="info-item"><div class="num">20家/天</div><div class="label">投递目标</div></div></div>
 <div class="card clickable" onclick="openDetail('career')"><h3>📋 查看完整简历 & 求职攻略</h3><p>完整电子简历、个人优势分析、打招呼模板库、高频面试题深度拆解。</p></div>
 </section>
 
-<section id="learning" class="section" data-search="AI 大模型 GPT Claude Agent 智能体 模型对比"><div class="section-header"><h2>🎓 学习区</h2><p>AI完全科普 · 大模型对比 · Agent入门</p></div>
-<div class="card clickable" onclick="openDetail('learning')"><h3>📝 查看AI完全科普中心</h3><p>从零理解LLM、10+模型对比、Claude Code vs ChatGPT、Agent框架、RAG/MCP原理。</p></div></section>
+<section id="learning" class="section" data-search="AI 大模型 GPT Claude Agent 智能体 模型对比"><div class="section-header"><h2>🎓 学习区</h2><p>今日推荐 · AI完全科普中心</p></div>
+<div id="picks-learning" class="picks-container"></div>
+<div class="card clickable" onclick="openDetail('learning')"><h3>📝 查看完整AI科普中心</h3><p>10课完整体系：LLM→Prompt→路线图→工具清单→Agent搭建。</p></div></section>
 
-<section id="gaming" class="section" data-search="游戏 Steam B站UP主 CF"><div class="section-header"><h2>🎯 游戏区</h2><p>B站UP主 · Steam推荐 · 促销日历</p></div>
+<section id="gaming" class="section" data-search="游戏 Steam B站UP主 CF"><div class="section-header"><h2>🎯 游戏区</h2><p>今日推荐 · Steam促销日历</p></div>
+<div id="picks-gaming" class="picks-container"></div>
 <div class="card clickable" onclick="openDetail('gaming')"><h3>🎬 游戏资源中心</h3><p>B站主页直达、SteamDB查史低、促销日历、CF刀战运营策略。</p></div></section>
 
-<section id="music" class="section" data-search="音乐 歌单 网易云 播放"><div class="section-header"><h2>🎵 音乐区</h2><p>可播放推荐 · 歌单分析</p></div>
-<div class="card clickable" onclick="openDetail('music')"><h3>🎧 查看音乐推荐（点击即可播放）</h3><p>6首精准推荐，每首附网易云/QQ音乐/Spotify播放链接，一键跳转在线听歌。</p></div></section>
+<section id="music" class="section" data-search="音乐 歌单 网易云 播放"><div class="section-header"><h2>🎵 音乐区</h2><p>今日推荐 · 点击查看完整指南</p></div>
+<div id="picks-music" class="picks-container"></div>
+<div class="card clickable" onclick="openDetail('music')"><h3>🎧 查看完整音乐指南</h3><p>6大流派深度指南+场景歌单矩阵+新音乐发现体系。</p></div></section>
 
-<section id="novel" class="section" data-search="小说 网文 阅读 起点"><div class="section-header"><h2>📖 小说区</h2><p>可阅读推荐 · 40部档案</p></div>
-<div class="card clickable" onclick="openDetail('novel')"><h3>📚 查看小说推荐（点击即可阅读）</h3><p>8本精准推荐，每本附起点直达链接，一键跳转在线阅读。</p></div></section>
+<section id="novel" class="section" data-search="小说 网文 阅读 起点"><div class="section-header"><h2>📖 小说区</h2><p>今日阅读推荐 · 点击查看完整指南</p></div>
+<div id="picks-novel" class="picks-container"></div>
+<div class="card clickable" onclick="openDetail('novel')"><h3>📚 查看完整小说指南</h3><p>40部阅读记录分析+类型地图+推荐链+连载追踪表。</p></div></section>
 
-<section id="anime" class="section" data-search="动漫 番剧 追番 观看"><div class="section-header"><h2>🎬 动漫区</h2><p>可观看推荐 · 追番分析</p></div>
-<div class="card clickable" onclick="openDetail('anime')"><h3>🎌 查看动漫推荐（点击即可观看）</h3><p>6部2026必看+2部补番推荐，每部附B站/Bangumi直达链接。</p></div></section>
+<section id="anime" class="section" data-search="动漫 番剧 追番 观看"><div class="section-header"><h2>🎬 动漫区</h2><p>今日追番推荐 · 点击查看完整指南</p></div>
+<div id="picks-anime" class="picks-container"></div>
+<div class="card clickable" onclick="openDetail('anime')"><h3>🎌 查看完整追番指南</h3><p>夏季新番表+按类型推荐+JOJO/Fate观看顺序+国漫专区。</p></div></section>
 
-<section id="fashion" class="section" data-search="穿搭 搭配 淘宝 购买"><div class="section-header"><h2>👔 穿搭推荐</h2><p>体型分析 · 淘宝直达</p></div>
-<div class="card clickable" onclick="openDetail('fashion')"><h3>👕 查看穿搭方案（点击即可购买）</h3><p>170cm/118斤专属搭配，每件单品附淘宝搜索直达链接。</p></div></section>
+<section id="fashion" class="section" data-search="穿搭 搭配 淘宝 购买"><div class="section-header"><h2>👔 穿搭推荐</h2><p>今日Look推荐 · 淘宝直达</p></div>
+<div id="picks-fashion" class="picks-container"></div>
+<div class="card clickable" onclick="openDetail('fashion')"><h3>👕 查看完整穿搭方案</h3><p>170cm/118斤专属·3套Look×三档价位·每件附淘宝直达。</p></div></section>
 
-<section id="fitness" class="section" data-search="健身 训练 增肌 俯卧撑"><div class="section-header"><h2>💪 健身方案</h2><p>薄肌增肌 · 12周计划</p></div>
+<section id="fitness" class="section" data-search="健身 训练 增肌 俯卧撑"><div class="section-header"><h2>💪 健身方案</h2><p>今日训练 · 12周计划</p></div>
+<div id="picks-fitness" class="picks-container"></div>
 <div class="card clickable" onclick="openDetail('fitness')"><h3>🏋️ 查看完整训练体系</h3><p>增肌底层原理、12周渐进训练计划、拉力绳动作详解、博主和App推荐。</p></div></section>
 
-<section id="diet" class="section" data-search="饮食 食谱 营养 肾结石"><div class="section-header"><h2>🍽️ 饮食助手</h2><p>肾结石·甲状腺结节·增肌食谱</p></div>
-<div class="card clickable" onclick="openDetail('diet')"><h3>🥗 查看饮食全方案</h3><p>疾病饮食红线、一日六餐精准食谱（含营养素计算）、饮水追踪。</p></div></section>
+<section id="diet" class="section" data-search="饮食 食谱 营养 肾结石"><div class="section-header"><h2>🍽️ 饮食助手</h2><p>今日食谱 · 增肌饮食方案</p></div>
+<div id="picks-diet" class="picks-container"></div>
+<div class="card clickable" onclick="openDetail('diet')"><h3>🥗 查看完整饮食方案</h3><p>疾病饮食红线、一日六餐精准食谱（含营养素计算）、饮水追踪。</p></div></section>
 
-<section id="beer" class="section" data-search="精酿 啤酒 调酒 鸡尾酒"><div class="section-header"><h2>🍺 精酿与调酒</h2><p>精酿品鉴 · 鸡尾酒入门</p></div>
-<div class="card clickable" onclick="openDetail('beer')"><h3>🍻 查看精酿品鉴指南</h3><p>啤酒分类知识、Untappd教程、进阶酒单+淘宝购买、鸡尾酒配方。</p></div></section>
+<section id="beer" class="section" data-search="精酿 啤酒 调酒 鸡尾酒"><div class="section-header"><h2>🍺 精酿与调酒</h2><p>今日推荐 · 点击查看完整指南</p></div>
+<div id="picks-beer" class="picks-container"></div>
+<div class="card clickable" onclick="openDetail('beer')"><h3>🍻 查看精酿品鉴指南</h3><p>啤酒四大原料+风格树+3档酒单+8款鸡尾酒配方+家庭Bar搭建。</p></div></section>
 
 <section id="stock" class="section" data-search="股票 基金 A股 投资 理财"><div class="section-header"><h2>📈 股市基金</h2><p>实时行情 · 小白入门 · 博主推荐 · 投资工具</p></div>
 <div class="card" style="padding:12px 16px"><div class="info-grid" id="liveStockTicker" style="margin:0"><div class="info-item"><div class="num">--</div><div class="label">加载中...</div></div></div><p style="font-size:10px;color:var(--text3);text-align:center;margin-top:4px" id="stockUpdateTime">实时数据来自东方财富 · 每30秒刷新</p></div>
 <div class="card clickable" onclick="openDetail('stock')"><h3>📊 股市学习中心</h3><p>从零开始的A股入门教学、10+财经博主推荐、学习路径、交易工具。</p></div></section>
 
-<section id="car" class="section" data-search="买车 汽车 新能源 比亚迪 小鹏"><div class="section-header"><h2>🚗 购车推荐</h2><p>车型对比 · 评测资源</p></div>
+<section id="car" class="section" data-search="买车 汽车 新能源 比亚迪 小鹏"><div class="section-header"><h2>🚗 购车推荐</h2><p>热门车型 · 点击查看对比</p></div>
+<div id="picks-car" class="picks-container"></div>
 <div class="card clickable" onclick="openDetail('car')"><h3>🚘 购车攻略</h3><p>15-20万新能源车深度对比、汽车评测App、试驾重点、购车时机。</p></div></section>
 
-<section id="house" class="section" data-search="买房 租房 房价 广州 深圳"><div class="section-header"><h2>🏠 购房租房</h2><p>广深楼市 · 租房策略</p></div>
+<section id="house" class="section" data-search="买房 租房 房价 广州 深圳"><div class="section-header"><h2>🏠 购房租房</h2><p>广深速览 · 租房策略</p></div>
+<div id="picks-house" class="picks-container"></div>
 <div class="card clickable" onclick="openDetail('house')"><h3>🏘️ 楼市数据中心</h3><p>广深五城房价对比、房价查询平台、租房黄金法则、购房规划。</p></div></section>
 
 <section id="travel" class="section" data-search="旅游 旅行 出行 避暑 度假 机票 酒店 云南 贵州 新疆"><div class="section-header"><h2>✈️ 旅游区</h2><p>本周出行推荐 · 实时天气 · 消费预估</p></div>
@@ -510,22 +532,22 @@ function fetchStockData(){
   });
 }
 
-// Daily quote with fallback
+// Daily quote with fallback (also updates banner quote slot)
 function fetchQuote(){
   var quotes = ['你在人群中看到的每一个耀眼的女孩，都是踩着刀尖过来的','如果结果不如你所愿，就在尘埃落定前奋力一搏','种一棵树最好的时间是十年前，其次是现在','我当然不会试图摘月，我要月亮奔我而来','世界上只有一种真正的英雄主义，那就是认清生活真相后依然热爱生活'];
   var el = document.getElementById('dailyQuote');
-  function setFallback(){ var q = quotes[new Date().getDate() % quotes.length]; if(el) el.textContent = '💬 '+q; }
-
+  function fallback(){ var q = quotes[new Date().getDate() % quotes.length]; if(el) el.textContent = '💬 '+q; }
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://v1.hitokoto.cn/?c=a&c=b&c=c&c=d&encode=text&max_length=30', true);
   xhr.timeout = 5000;
   xhr.onload = function(){
     if(xhr.status === 200 && xhr.responseText){
       if(el) el.textContent = '💬 '+xhr.responseText;
-    } else { setFallback(); }
+      for(var i=0; i<bannerMessages.length; i++){ if(bannerMessages[i]&&bannerMessages[i].isQuote) bannerMessages[i].text = xhr.responseText; }
+    } else { fallback(); }
   };
-  xhr.onerror = setFallback;
-  xhr.ontimeout = setFallback;
+  xhr.onerror = fallback;
+  xhr.ontimeout = fallback;
   xhr.send();
 }
 
@@ -555,7 +577,8 @@ function buildBannerMessages(){
 function rotateBanner(manual){
   if(bannerMessages.length===0) buildBannerMessages();
   if(manual) bannerIndex=(bannerIndex+1)%bannerMessages.length;
-  document.getElementById('dailyMsg').textContent=bannerMessages[bannerIndex].icon+' '+bannerMessages[bannerIndex].text;
+  var msg = bannerMessages[bannerIndex];
+  document.getElementById('dailyMsg').textContent=msg.icon+' '+msg.text;
   var dots='';
   for(var i=0;i<bannerMessages.length;i++) dots+='<span style="display:inline-block;width:6px;height:6px;border-radius:50%;margin:0 2px;background:'+(i===bannerIndex?'#fff':'rgba(255,255,255,.4)')+'"></span>';
   document.getElementById('bannerDots').innerHTML=dots;
@@ -568,31 +591,10 @@ function startBannerRotation(){
   bannerTimer=setInterval(rotateBanner,5000);
 }
 
-// Update quote in banner when it arrives
-var _origQuoteCallback = null;
-(function(){
-  var origFetchQuote = fetchQuote;
-  fetchQuote = function(){
-    var quotes = ['你在人群中看到的每一个耀眼的女孩，都是踩着刀尖过来的','如果结果不如你所愿，就在尘埃落定前奋力一搏','种一棵树最好的时间是十年前，其次是现在','我当然不会试图摘月，我要月亮奔我而来','世界上只有一种真正的英雄主义，那就是认清生活真相后依然热爱生活'];
-    var el = document.getElementById('dailyQuote');
-    function fallback(){ var q = quotes[new Date().getDate() % quotes.length]; if(el) el.textContent = '💬 '+q; }
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET','https://v1.hitokoto.cn/?c=a&c=b&c=c&c=d&encode=text&max_length=30',true);
-    xhr.timeout=5000;
-    xhr.onload=function(){
-      if(xhr.status===200&&xhr.responseText){
-        if(el) el.textContent='💬 '+xhr.responseText;
-        for(var i=0;i<bannerMessages.length;i++){if(bannerMessages[i].isQuote) bannerMessages[i].text=xhr.responseText;}
-      }else{fallback();}
-    };
-    xhr.onerror=fallback; xhr.ontimeout=fallback; xhr.send();
-  };
-})();
-
-// Timestamp
+// Footer timestamp
 if(typeof DAILY_DATA!=='undefined'&&DAILY_DATA.update_time){
   document.getElementById('lastUpdate').textContent='每日更新：'+DAILY_DATA.update_date;
-}else{
+} else {
   document.getElementById('lastUpdate').textContent='最后更新：'+new Date().toLocaleString('zh-CN');
 }
 
@@ -649,8 +651,33 @@ function refreshContent(){
   localStorage.setItem('lastRefresh',now.toISOString());
 }
 
+// ===== Render Section Picks =====
+function renderSectionPicks(sectionId){
+  var container = document.getElementById('picks-'+sectionId);
+  if(!container) return;
+  var picks = (typeof PICKS!=='undefined' && PICKS[sectionId]) ? PICKS[sectionId] : null;
+  if(!picks || picks.length===0){ container.style.display='none'; return; }
+  var h='';
+  picks.forEach(function(p){
+    var hasLink = p.link && p.link!=='#';
+    var tag = hasLink ? 'a' : 'div';
+    h+='<'+tag+' '+(hasLink?'href="'+p.link+'" target="_blank" ':'')+'class="pick-card">';
+    h+='<span class="pick-icon">'+p.icon+'</span>';
+    h+='<span class="pick-info"><div class="pick-title">'+p.title+'</div><div class="pick-desc">'+p.desc+'</div></span>';
+    if(hasLink) h+='<span class="pick-arrow">→</span>';
+    h+='</'+tag+'>';
+  });
+  container.innerHTML=h;
+}
+
+function renderAllPicks(){
+  var sections = ['anime','music','novel','beer','gaming','learning','fashion','fitness','diet','career','car','house'];
+  sections.forEach(function(s){ renderSectionPicks(s); });
+}
+
 // Initialize
 startBannerRotation();
+renderAllPicks();
 fetchRSSNews();
 fetchWeather();
 setInterval(fetchRSSNews, 1800000); // refresh RSS every 30 min
