@@ -368,14 +368,6 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div class="detail-overlay" id="detailOverlay" onclick="if(event.target===this.querySelector('.backdrop'))closeDetail()"><div class="backdrop"></div><div class="detail-panel" id="detailPanel"><button class="detail-close" onclick="closeDetail()">✕</button><div class="detail-panel-inner" id="detailContent"></div></div></div>
 
 <script>
-// ===== Global Error Diagnostics =====
-window.onerror = function(msg, url, line, col, err){
-  var el = document.getElementById('dailyMsg');
-  if(el) el.textContent = '⚠️ JS错误: ' + String(msg).substring(0,80) + ' (行'+line+')';
-  console.error('Page error:', msg, 'at line', line);
-  return false; // let default handler run too
-};
-
 // ===== Core Functions =====
 function toggleTheme(){
   const h=document.documentElement,is=h.getAttribute('data-theme')==='dark';
@@ -1136,19 +1128,11 @@ function renderBriefing(){
   });
   document.getElementById('briefingContent').innerHTML = h;
 }
-// Initialize (with error isolation)
-function safeInit(fn, name){
-  try { fn(); } catch(e) {
-    console.error('Init error '+name+':', e.message);
-    var el=document.getElementById('dailyMsg');
-    if(el) el.textContent='⚠️ '+name+'失败: '+e.message.substring(0,50);
-  }
-}
-safeInit(renderBriefing, 'renderBriefing');
-safeInit(startBannerRotation, 'startBannerRotation');
-safeInit(fetchRSSNews, 'fetchRSSNews');
-safeInit(fetchWeather, 'fetchWeather');
-safeInit(function(){ showView('home'); }, 'showView');
+// Initialize
+startBannerRotation();
+fetchRSSNews();
+fetchWeather();
+showView('home');
 // Note: renderAllPicks() called at end of daily_data.js after PICKS data loads
 setInterval(fetchRSSNews, 1800000);
 
