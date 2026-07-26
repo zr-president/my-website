@@ -393,19 +393,14 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <section id="music-player" class="section" data-search="音乐 播放 听歌 QQ音乐 在线"><div class="section-header"><h2>🎧 在线音乐</h2><p>每日推荐 · QQ音乐在线播放</p></div>
 <div id="musicPlayerContent" class="card" style="padding:14px 16px"><p style="font-size:12px;color:var(--text3)">🎵 加载播放列表...</p></div></section>
 
-<section id="daily-quiz" class="section" data-search="每日一练 练习 题目 面试 SQL 题库"><div class="section-header"><h2>📝 每日一练</h2><p id="quizDayLabel">今日题目 · 每天一道实战题</p></div>
-<div class="card" style="padding:14px 16px" id="quizCard">
-<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-<span class="tag" id="quizTypeTag"></span>
-<button onclick="refreshQuiz()" style="padding:4px 10px;border:1px solid var(--border);border-radius:14px;background:var(--bg);cursor:pointer;font-size:10px;color:var(--text2)">🔄 换一批</button>
+<section id="daily-quiz" class="section" data-search="每日一练 练习 题目 面试 SQL 题库"><div class="section-header"><h2>📝 每日一练</h2><p>首页展示3道 · 共<span id="quizTotalCount">0</span>题</p></div>
+<div id="quizPreview" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px;margin-bottom:8px"></div>
+<div style="display:flex;gap:8px;margin-bottom:4px">
+<button onclick="refreshQuiz()" style="padding:5px 12px;border:1px solid var(--border);border-radius:14px;background:var(--bg);cursor:pointer;font-size:11px;color:var(--text2)">🔄 换一批</button>
+<button onclick="showAllQuiz()" style="padding:5px 12px;background:var(--accent);color:#fff;border:none;border-radius:14px;cursor:pointer;font-size:11px">📋 查看全部10道</button>
 </div>
-<div style="font-size:13px;font-weight:600;margin-bottom:8px" id="quizQuestion"></div>
-<div id="quizAnswer" style="display:none;font-size:11px;color:var(--text2);line-height:1.8;padding:10px;background:var(--bg);border-radius:6px;margin-bottom:8px"></div>
-<div style="display:flex;gap:8px">
-<button onclick="toggleQuizAnswer()" id="quizToggleBtn" style="padding:6px 12px;background:var(--accent);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:11px">📖 查看答案</button>
-<span id="quizTip" style="font-size:10px;color:var(--text3);align-self:center"></span>
-</div>
-</div></section>
+<!-- Full quiz detail (hidden by default) -->
+<div id="quizFullView" style="display:none;margin-top:8px"></div></section>
 
 <section id="guide" class="section" data-search="帮助 指南 使用 说明 教程 功能 介绍"><div class="section-header"><h2>📖 使用指南</h2><p>功能介绍 · 模块说明 · 每日更新</p></div>
 <div id="picks-guide" class="picks-container"></div></section>
@@ -1101,47 +1096,62 @@ var CATEGORIES = {
 
 // Key sections to show on homepage (everything else hidden)
 var HOME_SECTIONS = ['dashboard','music-player','daily-quiz','guide','optimization'];
-var quizVisible = false;
-var currentQuiz = null;
+var quizShuffled = [];
+var quizShowingAll = false;
+
+function renderQuizCards(questions, containerId, limit){
+  var el = document.getElementById(containerId);
+  if(!el) return;
+  var h = '';
+  var list = questions.slice(0, limit || questions.length);
+  list.forEach(function(q, i){
+    var typeColor = q.type==='SQL'?'var(--blue)':q.type==='数据分析'?'var(--green)':q.type==='行为面试'?'var(--orange)':'var(--accent)';
+    var qid = 'quiz_ans_'+Date.now()+'_'+i;
+    h += '<div class=\"card\" style=\"padding:12px 14px\">';
+    h += '<div style=\"display:flex;justify-content:space-between;align-items:center;margin-bottom:6px\">';
+    h += '<span class=\"tag\" style=\"background:'+typeColor+';color:#fff\">'+q.type+'</span>';
+    h += '<span style=\"font-size:10px;color:var(--text3)\">#'+(i+1)+'</span>';
+    h += '</div>';
+    h += '<div style=\"font-size:12px;font-weight:600;margin-bottom:6px\">'+q.question+'</div>';
+    h += '<div id=\"'+qid+'\" style=\"display:none;font-size:11px;color:var(--text2);line-height:1.7;padding:8px;background:var(--bg2);border-radius:6px;margin-bottom:6px\">'+q.answer+'</div>';
+    h += '<div style=\"display:flex;gap:8px;align-items:center\">';
+    h += '<button onclick=\"var e=document.getElementById(\''+qid+'\');e.style.display=e.style.display===\'none\'?\'block\':\'none\';this.textContent=e.style.display===\'none\'?\'📖 查看答案\':\'🔼 收起\'\" style=\"padding:4px 10px;background:var(--accent);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:10px\">📖 查看答案</button>';
+    h += '<span style=\"font-size:10px;color:var(--text3)\">💡 '+q.tip+'</span>';
+    h += '</div></div>';
+  });
+  el.innerHTML = h;
+}
 
 function renderQuiz(){
   if(typeof DAILY_QUIZ==='undefined'||!DAILY_QUIZ.questions){ return; }
-  var d=new Date();var wd=d.getDay();
-  var typeMap={1:'SQL',2:'产品分析',3:'Prompt设计',4:'数据分析',5:'行为面试',0:'行为面试',6:'行为面试'};
-  var todayType=typeMap[wd];
-  // Filter questions by today's type, pick a random one
-  var pool=DAILY_QUIZ.questions.filter(function(q){return q.type===todayType;});
-  if(pool.length===0) pool=DAILY_QUIZ.questions;
-  var idx=Math.floor(Math.random()*pool.length);
-  currentQuiz=pool[idx];
-  document.getElementById('quizTypeTag').textContent=todayType;
-  document.getElementById('quizDayLabel').textContent='今日题型：'+todayType+' · 每天一道实战题';
-  document.getElementById('quizQuestion').textContent=currentQuiz.question;
-  document.getElementById('quizAnswer').innerHTML=currentQuiz.answer;
-  document.getElementById('quizAnswer').style.display='none';
-  document.getElementById('quizToggleBtn').textContent='📖 查看答案';
-  document.getElementById('quizTip').textContent='💡 '+currentQuiz.tip;
-  quizVisible=false;
+  quizShuffled = DAILY_QUIZ.questions.slice().sort(function(){return Math.random()-0.5;});
+  document.getElementById('quizTotalCount').textContent = quizShuffled.length;
+  // Homepage: 3 preview
+  renderQuizCards(quizShuffled, 'quizPreview', 3);
+  quizShowingAll = false;
+  document.getElementById('quizFullView').style.display = 'none';
 }
-function toggleQuizAnswer(){
-  var ans=document.getElementById('quizAnswer');
-  var btn=document.getElementById('quizToggleBtn');
-  quizVisible=!quizVisible;
-  ans.style.display=quizVisible?'block':'none';
-  btn.textContent=quizVisible?'🔼 收起答案':'📖 查看答案';
-}
+
 function refreshQuiz(){
-  if(typeof DAILY_QUIZ==='undefined') return;
-  var pool=DAILY_QUIZ.questions;
-  var idx=Math.floor(Math.random()*pool.length);
-  currentQuiz=pool[idx];
-  document.getElementById('quizTypeTag').textContent=currentQuiz.type;
-  document.getElementById('quizQuestion').textContent=currentQuiz.question;
-  document.getElementById('quizAnswer').innerHTML=currentQuiz.answer;
-  document.getElementById('quizAnswer').style.display='none';
-  document.getElementById('quizToggleBtn').textContent='📖 查看答案';
-  document.getElementById('quizTip').textContent='💡 '+currentQuiz.tip;
-  quizVisible=false;
+  if(quizShuffled.length===0) return;
+  quizShuffled = quizShuffled.slice().sort(function(){return Math.random()-0.5;});
+  renderQuizCards(quizShuffled, 'quizPreview', 3);
+  if(quizShowingAll){
+    renderQuizCards(quizShuffled, 'quizFullView', 10);
+  }
+}
+
+function showAllQuiz(){
+  if(quizShuffled.length===0) return;
+  quizShowingAll = !quizShowingAll;
+  var fv = document.getElementById('quizFullView');
+  if(quizShowingAll){
+    renderQuizCards(quizShuffled, 'quizFullView', 10);
+    fv.style.display = 'block';
+    fv.scrollIntoView({behavior:'smooth'});
+  } else {
+    fv.style.display = 'none';
+  }
 }
 // ===== Music Player (QQ Music) =====
 function renderMusicPlayer(){
