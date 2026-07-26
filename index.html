@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-theme="light">
+<html lang="zh-CN">
 <head>
+<script>!function(){var t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t)}()</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>钟锐|个人数字空间</title>
 <style>
@@ -381,11 +382,31 @@ window.addEventListener('scroll',function(){
   document.querySelectorAll('.nav-section a').forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c);});
 });
 
-// Search
+// Search (enhanced with full-text)
 function doSearch(q){
+  var term = q.toLowerCase().trim();
   document.querySelectorAll('.section').forEach(function(s){
-    var d=s.getAttribute('data-search')||'';
-    s.classList.toggle('search-none',q.length>0&&d.toLowerCase().indexOf(q.toLowerCase())===-1);
+    if(term.length===0){ s.classList.remove('search-none'); return; }
+    // Check section data-search attribute
+    var d = (s.getAttribute('data-search')||'').toLowerCase();
+    if(d.indexOf(term)>=0){ s.classList.remove('search-none'); return; }
+    // Check section id
+    if(s.id.toLowerCase().indexOf(term)>=0){ s.classList.remove('search-none'); return; }
+    // Check section header text
+    var h2 = s.querySelector('h2');
+    if(h2 && h2.textContent.toLowerCase().indexOf(term)>=0){ s.classList.remove('search-none'); return; }
+    // Check PICKS content
+    if(typeof PICKS!=='undefined' && PICKS[s.id]){
+      var found = PICKS[s.id].some(function(p){ return (p.title+p.desc).toLowerCase().indexOf(term)>=0; });
+      if(found){ s.classList.remove('search-none'); return; }
+    }
+    // Check INSIGHTS content
+    if(typeof INSIGHTS!=='undefined' && INSIGHTS[s.id]){
+      var ins = INSIGHTS[s.id];
+      var insText = (ins.summary||'')+(ins.trend||'')+(ins.tip||'');
+      if(insText.toLowerCase().indexOf(term)>=0){ s.classList.remove('search-none'); return; }
+    }
+    s.classList.add('search-none');
   });
 }
 
