@@ -1,3 +1,5 @@
+var SITE_VERSION = "1.1.1";
+
 var DAILY_DATA = {
   "update_time": "2026-07-26T08:57:00+08:00",
   "update_date": "2026年7月26日",

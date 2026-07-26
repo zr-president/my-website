@@ -371,7 +371,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <section id="ai-assistant" class="section" data-search="AI助手 聊天"><div class="section-header"><h2>💬 AI助手</h2><p>可视化问答 · 个人AI管家</p></div>
 <div class="card" style="padding:0"><div class="chat-box"><div class="chat-messages" id="chatMessages"><div class="chat-msg assistant"><div class="bubble">👋 你好钟锐！我是你的AI助手。可以直接问我求职、AI科普、游戏、学习、健身、饮食等任何问题。</div></div></div><div class="chat-input-area"><input type="text" id="chatInput" placeholder="输入问题，Enter发送..." onkeydown="if(event.key==='Enter')sendMessage()"><button onclick="sendMessage()">发送</button></div></div></div></section>
 
-<p style="text-align:center;color:var(--text3);font-size:10px;padding:24px 0">钟锐的个人数字空间 · 每天9:00更新 · <span id="lastUpdate"></span></p>
+<p style="text-align:center;color:var(--text3);font-size:10px;padding:24px 0">钟锐的个人数字空间 · 每天9:00更新 · <span id="lastUpdate"></span> · v<span id="siteVersion"></span></p>
 </div><!-- /dashboardView -->
 <div id="categoryView" class="view-container"><div id="categoryContent" class="dashboard-grid"></div></div>
 
@@ -885,11 +885,14 @@ function startBannerRotation(){
   bannerTimer=setInterval(rotateBanner,5000);
 }
 
-// Footer timestamp
+// Footer: timestamp + version
 if(typeof DAILY_DATA!=='undefined'&&DAILY_DATA.update_time){
   document.getElementById('lastUpdate').textContent='每日更新：'+DAILY_DATA.update_date;
 } else {
   document.getElementById('lastUpdate').textContent='最后更新：'+new Date().toLocaleString('zh-CN');
+}
+if(typeof SITE_VERSION!=='undefined'){
+  document.getElementById('siteVersion').textContent = SITE_VERSION;
 }
 
 // ===== RSS Feed (offline-only, reliable) =====
