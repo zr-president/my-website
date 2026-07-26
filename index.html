@@ -453,47 +453,6 @@ function autoGenerateSchedule(){
   renderTodos();
 })();
 
-// ===== Travel detail content (add to DETAIL) =====
-DETAIL.travel = '<h2>✈️ 旅游区 · 本周出行推荐</h2><p class="detail-subtitle">2026年7月底出发 · 基于实时天气的最佳出行方案</p>'+
-'<div class="callout info"><strong>🌤️ 当前季节分析：</strong>7月底全国高温，避暑是核心需求。高纬度（新疆/东北）、高海拔（云南/贵州/西藏）是首选。暑期旺季——机票酒店需提前预订，7月中旬-8月中旬价格最高。</div>'+
-
-'<h3>🇨🇳 国内推荐一：贵州避暑环线（🏆 性价比之王）</h3>'+
-'<table class="data-table"><tr><th>天数</th><th>行程</th><th>亮点</th></tr>'+
-'<tr><td>Day1</td><td>抵达贵阳 · 甲秀楼 · 青云市集</td><td>夏季均温23℃，比广州低10℃+</td></tr>'+
-'<tr><td>Day2</td><td>黄果树瀑布（天星桥+大瀑布）</td><td>亚洲最大瀑布，水雾降温</td></tr>'+
-'<tr><td>Day3-4</td><td>荔波小七孔 · 卧龙潭漂流</td><td>"地球腰带上的绿宝石"，全天玩水</td></tr>'+
-'<tr><td>Day5</td><td>西江千户苗寨 · 观景台夜景</td><td>万家灯火，苗服拍照</td></tr>'+
-'<tr><td>Day6-7</td><td>镇远古镇 · 舞阳河 · 返程</td><td>慢节奏收尾</td></tr>'+
-'</table>'+
-'<div class="highlight-box"><p><strong>💰 7天预算（广州出发，人均）：</strong><br>✈️ 广州→贵阳往返机票：¥800-1200（提前2周订）<br>🏨 住宿6晚：¥150×6=¥900（经济型酒店/民宿）<br>🚌 省内交通（高铁+大巴）：¥400<br>🎫 门票：学生免票！成人约¥500<br>🍜 餐饮：¥80×7=¥560（贵州小吃极便宜，羊肉粉7元/碗）<br><strong>📊 合计：约¥3,160-3,560/人</strong></p></div>'+
-
-'<h3>🇨🇳 国内推荐二：云南文艺之旅（📸 出片首选）</h3>'+
-'<table class="data-table"><tr><th>天数</th><th>行程</th><th>亮点</th></tr>'+
-'<tr><td>Day1-2</td><td>昆明 · 斗南花市 · 翠湖</td><td>春城15-25℃，亚洲最大花市</td></tr>'+
-'<tr><td>Day3-4</td><td>大理 · 环洱海 · 喜洲古镇 · 双廊</td><td>骑行洱海，拍照圣地</td></tr>'+
-'<tr><td>Day5-7</td><td>丽江 · 古城 · 玉龙雪山 · 束河古镇</td><td>雪山+古城，注意提前抢索道票</td></tr>'+
-'</table>'+
-'<div class="highlight-box"><p><strong>💰 7天预算（广州出发，人均）：</strong><br>✈️ 广州→昆明/丽江往返：¥1000-1500<br>🏨 住宿6晚：¥180×6=¥1080<br>🚄 省内高铁（昆明-大理-丽江）：¥300<br>🎫 门票：¥500<br>🍜 餐饮：¥100×7=¥700<br><strong>📊 合计：约¥3,580-4,080/人</strong></p></div>'+
-
-'<h3>🇨🇳 国内推荐三：新疆伊犁草原（🏔️ 极致风光）</h3>'+
-'<table class="data-table"><tr><th>天数</th><th>行程</th><th>亮点</th></tr>'+
-'<tr><td>Day1-2</td><td>飞乌鲁木齐 · 天山天池</td><td>均温22℃，避暑天堂</td></tr>'+
-'<tr><td>Day3-4</td><td>伊宁 · 赛里木湖 · 果子沟大桥</td><td>"大西洋最后一滴眼泪"</td></tr>'+
-'<tr><td>Day5-6</td><td>夏塔古道 · 草原徒步 · 冰川</td><td>徒步45分钟到冰川末端，19℃</td></tr>'+
-'<tr><td>Day7</td><td>返程</td><td></td></tr>'+
-'</table>'+
-'<div class="highlight-box"><p><strong>💰 7天预算（广州出发，人均）：</strong><br>✈️ 广州→乌鲁木齐往返：¥2000-2800（暑期较贵）<br>🏨 住宿6晚：¥200×6=¥1200<br>🚗 租车/拼车：¥800<br>🎫 门票：¥400<br>🍜 餐饮：¥100×7=¥700<br><strong>📊 合计：约¥5,100-5,900/人</strong></p></div>'+
-
-'<h3>🌍 国际推荐：日本北海道（🗾 花海+温泉+美食）</h3>'+
-'<p>7月底正值北海道薰衣草花期（富良野）。均温20-25℃，比广州低10℃以上。札幌→富良野→美瑛→小樽→登别温泉。</p>'+
-'<div class="highlight-box"><p><strong>💰 7天预算（广州出发，人均）：</strong><br>✈️ 广州→札幌往返：¥3000-4500（暑期旺季）<br>🏨 住宿6晚：¥400×6=¥2400<br>🚃 JR Pass 7日：¥1200<br>🎫 景点：¥500<br>🍣 餐饮：¥200×7=¥1400<br><strong>📊 合计：约¥8,500-9,900/人</strong><br>📌 需提前办签证（约7个工作日）</p></div>'+
-
-'<h3>🌍 国际推荐：泰国清迈+曼谷（💰 高性价比出境）</h3>'+
-'<p>7月泰国为雨季，但多为阵雨不影响出行。清迈素贴山+夜间动物园+尼曼路→曼谷大皇宫+水上市场。美食+按摩+购物一条龙。</p>'+
-'<div class="highlight-box"><p><strong>💰 7天预算（广州出发，人均）：</strong><br>✈️ 广州→清迈+曼谷→广州：¥1500-2200（亚航）<br>🏨 住宿6晚：¥200×6=¥1200（清迈民宿极便宜）<br>🚌 境内交通：¥400<br>🎫 景点+按摩：¥600<br>🍜 餐饮：¥80×7=¥560<br><strong>📊 合计：约¥4,260-4,960/人</strong><br>📌 落地签/免签，说走就走</p></div>'+
-
-'<div class="callout tip"><strong>💡 出行建议：</strong>①暑期旺季，机票提前2-3周订最划算；②学生证/应届生带好，多数景区有优惠；③旅行保险一定要买（¥30-50保7天）；④7月全国多雨，雨衣>雨伞。</div>';
-
 function escHtml(t){var d=document.createElement('div');d.textContent=t;return d.innerHTML;}
 
 // ===== Stock Ticker (fetch with fallback) =====
