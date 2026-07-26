@@ -129,7 +129,7 @@ DETAIL.novel = '<h2>📖 小说区 · 深度阅读指南</h2><p class="detail-su
 // ===== 股市基金 =====
 DETAIL.stock = '<h2>📈 股市基金 · 从零开始</h2><p class="detail-subtitle">五步法——从小白到能独立判断</p>'+
 
-'<div class="highlight-box"><p><strong>💡 在开始之前——最重要的一句话：</strong>股市不是赌场。投资是"用今天的钱买未来的现金流"。如果你理解不了这句话，先不要碰个股——从ETF定投开始。</p></div>'+
+'<div class="callout warn"><strong>📊 7月26日行情速览（每日自动更新）：</strong>上证~3,867点 | 本周涨+1.33% | 大盘价值领涨（银行+4.5%）| 科技板块调整中 | 外资高盛/花旗喊超配A股 | <strong>新手策略：</strong>短期红利防御+中长期AI主线，先定投沪深300ETF</div>'+
 
 '<h3>💰 第一课：理解四个核心概念</h3>'+
 '<table class="data-table"><tr><th>概念</th><th>公式</th><th>大白话解释</th><th>怎么看</th></tr>'+
@@ -294,7 +294,15 @@ DETAIL.house = '<h2>🏠 购房租房</h2><p class="detail-subtitle">广深楼�
 '<table class="data-table"><tr><th>城市</th><th>新房</th><th>二手</th><th>月租</th></tr><tr><td>深圳</td><td>~5.5万</td><td>~5.0万</td><td>2500-5000</td></tr><tr><td>广州</td><td>~3.2万</td><td>~2.8万</td><td>1500-3000</td></tr></table>'+
 '<h3>🔑 租房</h3><ul><li><strong>广州：</strong>天河→番禺大石/厦滘（1500-2200）|黄埔→萝岗（1500-2500）</li><li><strong>深圳：</strong>南山→宝安西乡（2500-4000）|福田→龙华民治（2500-3500）</li><li><strong>铁律：</strong>通勤≤45分钟|租金≤月收入30%|避开6-8月</li></ul>';
 
-DETAIL.news = '<h2>📰 新闻资讯</h2><p class="detail-subtitle">高效信息获取</p>'+
+DETAIL.news = '<h2>📰 新闻资讯</h2><p class="detail-subtitle">7月26日更新 · 高效信息获取</p>'+
+'<h3>🔥 本周AI重磅</h3>'+
+'<ul><li><strong>Kimi K3发布：</strong>7月16日，月之暗面发布全球最大开源模型Kimi K3，参数2.8万亿，100万Token上下文，7月27日开源。马斯克公开称赞。</li>'+
+'<li><strong>中美模型差距缩至3-5个月：</strong>美国研究者判断中美AI差距从此前6-9个月进一步缩小。</li>'+
+'<li><strong>开源vs闭源大战：</strong>7月24日，Meta/英伟达/微软等25家美国科技巨头联名支持开源，黄仁勋发人生第一条推特。</li>'+
+'<li><strong>DeepSeek筹备IPO：</strong>最快今年提交申请，V4模型预计月底发布。</li></ul>'+
+'<h3>📊 A股动态</h3>'+
+'<ul><li>7月A股经历"急跌→维稳→V型反弹"，上证从4000点急跌至3800后V型修复至3867</li><li>央企增持超600亿+央行净投放8000亿流动性护盘</li><li>高盛/花旗/渣打均给予A股超配评级</li></ul>'+
+'<h3>📱 推荐资讯App</h3>'+
 '<div class="resource-card"><div class="rc-icon">⚡</div><div class="rc-info"><div class="rc-name">财联社</div><div class="rc-desc">最快财经资讯</div></div><a href="https://www.cls.cn" target="_blank" class="rc-link">打开 →</a></div>'+
 '<div class="resource-card"><div class="rc-icon">🌐</div><div class="rc-info"><div class="rc-name">华尔街见闻</div><div class="rc-desc">全球宏观+AI产业链</div></div><a href="https://wallstreetcn.com" target="_blank" class="rc-link">打开 →</a></div>'+
 '<div class="resource-card"><div class="rc-icon">🌍</div><div class="rc-info"><div class="rc-name">BBC News / Reuters</div><div class="rc-desc">国际视角+英语学习</div></div><a href="https://www.bbc.com/news" target="_blank" class="rc-link">打开 →</a></div>'+
