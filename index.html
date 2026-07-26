@@ -520,7 +520,7 @@ function fetchStockData(){
   ];
   var fields = 'f2,f3,f4,f12';
   var codes = indices.map(function(i){return i.code;}).join(',');
-  var url = 'https://push2.eastmoney.com/api/qt/ulist.np/get?fltt=2&secids='+encodeURIComponent(codes)+'&fields='+fields;
+  var url = 'https://push2.eastmoney.com/api/qt/ulist.np/get?fltt=2&secids='+codes+'&fields='+fields;
 
   jsonp(url, function(res){
     if(!res || !res.data || !res.data.diff) return;
