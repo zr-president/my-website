@@ -174,5 +174,24 @@ var INSIGHTS = {
   },
 };
 
+var OPTIMIZATION_LOG = {
+  date: "2026-07-26",
+  total_suggestions: 10,
+  total_implemented: 0,
+  streak_days: 1,
+  suggestions: [
+    {id:1, cat:"设计优化", title:"首页改为Dashboard仪表盘布局", desc:"用5张分类卡片网格替代当前长滚动列表，减少滚动疲劳", priority:"P0", status:"实施中"},
+    {id:2, cat:"功能增强", title:"求职中心新增简历工作台", desc:"完整在线简历展示+编辑+PDF导出+一键复制", priority:"P0", status:"实施中"},
+    {id:3, cat:"内容补充", title:"学习区新增四模块知识图谱", desc:"数据分析+用户增长+AI运营+面试准备完整教程", priority:"P0", status:"实施中"},
+    {id:4, cat:"功能增强", title:"新增每日一练板块", desc:"按星期轮换5种题型(SQL/产品/Prompt/数据/面试)", priority:"P1", status:"待实施"},
+    {id:5, cat:"设计优化", title:"移动端底部TabBar导航", desc:"首页|分类|AI助手|搜索，替代完全隐藏侧边栏", priority:"P1", status:"待实施"},
+    {id:6, cat:"内容补充", title:"新增面试复盘本功能", desc:"每次面试后记录公司/问题/评估/改进点，积累面经", priority:"P1", status:"待实施"},
+    {id:7, cat:"功能增强", title:"投递追踪表localStorage持久化", desc:"记录已投公司/岗位/日期/状态，统计投递→面试转化率", priority:"P0", status:"实施中"},
+    {id:8, cat:"内容补充", title:"新增工具收藏夹板块", desc:"聚合全站AI/求职/效率/学习工具链接，支持自定义", priority:"P2", status:"待实施"},
+    {id:9, cat:"设计优化", title:"暗色模式防加载闪烁", desc:"head中加blocking script，读取localStorage立即设置主题", priority:"P2", status:"待实施"},
+    {id:10, cat:"性能优化", title:"全站搜索支持全文检索", desc:"搜索PICKS/INSIGHTS/DETAIL内容而不仅是板块名", priority:"P2", status:"待实施"}
+  ]
+};
+
 // Trigger picks rendering (function defined in index.html)
 if(typeof renderAllPicks === 'function') renderAllPicks();

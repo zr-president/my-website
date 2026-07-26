@@ -256,6 +256,10 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div class="card" style="padding:12px 16px" id="rssNewsFeed"><p style="font-size:12px;color:var(--text3)">📡 正在加载实时资讯...</p></div>
 <div class="card clickable" onclick="openDetail('news')"><h3>🌍 资讯获取方案</h3><p>高效信息源配置、每日阅读时间表、RSS订阅方案。</p></div></section>
 
+<section id="optimization" class="section" data-search="优化 建议 改进 迭代 日记"><div class="section-header"><h2>🔧 网站优化日记</h2><p>每日10条改进建议 · 自我迭代 · 持续进化</p></div>
+<div id="picks-optimization" class="picks-container"></div>
+<div class="card" style="padding:12px 16px" id="optimizationStats"><p style="font-size:12px;color:var(--text3)">📊 加载优化数据...</p></div></section>
+
 <section id="ai-assistant" class="section" data-search="AI助手 聊天"><div class="section-header"><h2>💬 AI助手</h2><p>可视化问答 · 个人AI管家</p></div>
 <div class="card" style="padding:0"><div class="chat-box"><div class="chat-messages" id="chatMessages"><div class="chat-msg assistant"><div class="bubble">👋 你好钟锐！我是你的AI助手。可以直接问我求职、AI科普、游戏、学习、健身、饮食等任何问题。</div></div></div><div class="chat-input-area"><input type="text" id="chatInput" placeholder="输入问题，Enter发送..." onkeydown="if(event.key==='Enter')sendMessage()"><button onclick="sendMessage()">发送</button></div></div></div></section>
 
@@ -677,6 +681,31 @@ function renderSectionPicks(sectionId){
   if(!container) return;
   var h='';
 
+  // Special handling: Optimization Log
+  if(sectionId==='optimization'){
+    if(typeof OPTIMIZATION_LOG!=='undefined'){
+      var log=OPTIMIZATION_LOG;
+      h+='<div class="insight-box">📅 '+log.date+' · 已累计'+log.total_suggestions+'条建议 · 已实施'+log.total_implemented+'条 · 连续'+log.streak_days+'天迭代</div>';
+      log.suggestions.forEach(function(s){
+        var badge = s.priority==='P0'?'background:var(--red);color:#fff' : s.priority==='P1'?'background:var(--orange);color:#fff' : 'background:var(--blue);color:#fff';
+        var statusBadge = s.status==='实施中'?'background:var(--green);color:#fff' : s.status==='已完成'?'background:var(--accent);color:#fff' : 'background:var(--bg2);color:var(--text2)';
+        h+='<div class="pick-card" style="cursor:default">';
+        h+='<span class="pick-icon" style="font-size:14px">#'+s.id+'</span>';
+        h+='<span class="pick-info"><div class="pick-title">'+s.title+' <span style="font-size:9px;padding:1px 5px;border-radius:8px;'+badge+'">'+s.priority+'</span> <span style="font-size:9px;padding:1px 5px;border-radius:8px;'+statusBadge+'">'+s.status+'</span></div><div class="pick-desc">['+s.cat+'] '+s.desc+'</div></span>';
+        h+='</div>';
+      });
+    }
+    if(h){ container.innerHTML=h; }
+    // Update stats card
+    var statsEl=document.getElementById('optimizationStats');
+    if(statsEl && typeof OPTIMIZATION_LOG!=='undefined'){
+      var done=OPTIMIZATION_LOG.suggestions.filter(function(s){return s.status==='已完成';}).length;
+      var prog=OPTIMIZATION_LOG.suggestions.filter(function(s){return s.status==='实施中';}).length;
+      statsEl.innerHTML='<div style="display:flex;gap:16px;flex-wrap:wrap;font-size:13px"><div>✅ 已完成 <strong style="color:var(--green)">'+done+'</strong></div><div>🚧 实施中 <strong style="color:var(--orange)">'+prog+'</strong></div><div>📋 待实施 <strong>'+(OPTIMIZATION_LOG.total_suggestions-done-prog)+'</strong></div><div>🔥 连续迭代 <strong style="color:var(--accent)">'+OPTIMIZATION_LOG.streak_days+'</strong> 天</div></div><p style="font-size:10px;color:var(--text3);margin-top:4px">💡 每天8:57自动分析网站+生成10条新建议，驱动网站持续进化</p>';
+    }
+    return;
+  }
+
   // Show insight callout if available
   var insight = (typeof INSIGHTS!=='undefined' && INSIGHTS[sectionId]) ? INSIGHTS[sectionId] : null;
   if(insight && insight.summary){
@@ -707,7 +736,7 @@ function renderSectionPicks(sectionId){
 }
 
 function renderAllPicks(){
-  var sections = ['anime','music','novel','beer','gaming','learning','fashion','fitness','diet','career','car','house','stock','news'];
+  var sections = ['anime','music','novel','beer','gaming','learning','fashion','fitness','diet','career','car','house','stock','news','optimization'];
   sections.forEach(function(s){ renderSectionPicks(s); });
 }
 
