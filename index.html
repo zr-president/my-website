@@ -136,14 +136,21 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 /* Dashboard & Category Views */
 .view-container{display:none}
 .view-container.active{display:block;animation:fadeIn .3s ease-out}
-.dashboard-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-bottom:20px}
-.cat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;cursor:pointer;transition:.2s;position:relative;overflow:hidden}
-.cat-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--accent)}
-.cat-card .cat-icon{font-size:32px;margin-bottom:8px}
-.cat-card .cat-name{font-size:16px;font-weight:700;margin-bottom:4px}
-.cat-card .cat-subs{font-size:11px;color:var(--text3);line-height:1.6}
-.cat-card .cat-arrow{position:absolute;right:14px;bottom:14px;font-size:20px;color:var(--accent);opacity:0;transition:.2s}
-.cat-card:hover .cat-arrow{opacity:1}
+.dashboard-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-bottom:20px}
+/* Home category grid: 3+2 layout on desktop, 2+2+1 on tablet, 1 on mobile */
+#homeCategoryGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:16px}
+@media(max-width:1100px){#homeCategoryGrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){#homeCategoryGrid{grid-template-columns:1fr}}
+.cat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;cursor:pointer;transition:.2s;position:relative;display:flex;flex-direction:column;gap:8px}
+.cat-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg);border-color:var(--accent)}
+.cat-card .cat-header{display:flex;align-items:center;gap:10px}
+.cat-card .cat-icon{font-size:28px;flex-shrink:0}
+.cat-card .cat-name{font-size:15px;font-weight:700}
+.cat-card .cat-tags{display:flex;flex-wrap:wrap;gap:4px}
+.cat-card .cat-tags span{font-size:10px;padding:2px 8px;border-radius:10px;background:var(--bg2);color:var(--text2);white-space:nowrap;transition:.15s}
+.cat-card:hover .cat-tags span{background:var(--accent-light);color:var(--accent)}
+.cat-card .cat-summary{font-size:11px;color:var(--text3);line-height:1.5;flex:1}
+.cat-card .cat-footer{display:flex;justify-content:space-between;align-items:center;font-size:10px;color:var(--accent)}
 
 /* Homepage: show only key sections, hide detail-heavy ones */
 .section.home-hidden{display:none!important}
@@ -1049,17 +1056,34 @@ function showView(viewName, categoryKey){
       if(HOME_SECTIONS.indexOf(s.id) >= 0) s.classList.remove('home-hidden');
       else s.classList.add('home-hidden');
     });
-    // Render category navigation cards
+    // Render category navigation cards with sub-section tags + summary
     var grid = document.getElementById('homeCategoryGrid');
     if(grid){
       var h = '';
       Object.keys(CATEGORIES).forEach(function(k){
         var cat = CATEGORIES[k];
+        // Build sub-section tags
+        var tagsHtml = '';
+        cat.sections.forEach(function(sid){
+          var sec = document.getElementById(sid);
+          var label = sid;
+          if(sec){
+            var h2 = sec.querySelector('.section-header h2');
+            if(h2){ var t = h2.textContent; label = t.replace(/^[^\s]+\s/,'').substring(0,6); }
+          }
+          tagsHtml += '<span>'+label+'</span>';
+        });
+        // Build key summary from first section's insight
+        var summary = '';
+        var firstSid = cat.sections[0];
+        if(typeof INSIGHTS!=='undefined' && INSIGHTS[firstSid] && INSIGHTS[firstSid].summary){
+          summary = INSIGHTS[firstSid].summary.substring(0,80)+'...';
+        }
         h += '<div class=\"cat-card\" onclick=\"navigateTo(\'category\',\''+k+'\')\">';
-        h += '<div class=\"cat-icon\">'+cat.icon+'</div>';
-        h += '<div class=\"cat-name\">'+cat.name+'</div>';
-        h += '<div class=\"cat-subs\">'+cat.subs+'</div>';
-        h += '<div class=\"cat-arrow\" style=\"opacity:1;position:static;margin-top:8px;font-size:14px\">浏览 →</div>';
+        h += '<div class=\"cat-header\"><span class=\"cat-icon\">'+cat.icon+'</span><span class=\"cat-name\">'+cat.name+'</span></div>';
+        h += '<div class=\"cat-tags\">'+tagsHtml+'</div>';
+        if(summary) h += '<div class=\"cat-summary\">📊 '+summary+'</div>';
+        h += '<div class=\"cat-footer\"><span>'+cat.sections.length+'个板块</span><span>浏览分类 →</span></div>';
         h += '</div>';
       });
       grid.innerHTML = h;
