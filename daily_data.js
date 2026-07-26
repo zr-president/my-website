@@ -193,5 +193,22 @@ var OPTIMIZATION_LOG = {
   ]
 };
 
+var WEBSITE_GUIDE = {
+  updated: "2026-07-26",
+  summary: "欢迎来到钟锐的个人数字空间！这是一个持续进化的智能信息中枢，每天8:57自动更新所有内容。",
+  features: [
+    {icon:"🏠", title:"首页仪表盘", desc:"一屏总览所有板块精华。分类卡片快速导航、实时股市/天气/新闻一目了然。"},
+    {icon:"📂", title:"分类浏览", desc:"点击侧边栏分类标题(👤关于/🎮娱乐/🏃生活/📊财经/🤖工具)，进入分类页集中浏览该类别所有板块。"},
+    {icon:"📋", title:"板块详情", desc:"点击任意板块卡片→弹出全屏详情。顶部显示今日AI分析结论+推荐内容+完整指南。"},
+    {icon:"🔄", title:"每日自动更新", desc:"每天8:57AM，AI自动搜索最新资讯→更新股市/新闻/推荐/分析→推送到网站。你每天打开都是新的。"},
+    {icon:"🔧", title:"自我优化系统", desc:"网站每天分析自身→生成10条改进建议(🔧优化日记板块)→逐步迭代。这是活的网站，不是静态页面。"},
+    {icon:"📱", title:"移动端适配", desc:"手机访问时底部显示TabBar(首页|分类|AI|搜索)，触屏友好。"},
+    {icon:"🌙", title:"暗色模式", desc:"侧边栏底部切换按钮。自动记忆偏好，下次打开保持。"},
+    {icon:"🔍", title:"搜索", desc:"侧边栏搜索框支持板块名称搜索。输入关键词快速定位。"},
+    {icon:"📈", title:"实时数据", desc:"股市行情(60秒刷新)、新闻快讯(30分钟刷新)、天气数据(实时API)——不是静态截图，是活数据。"},
+    {icon:"💡", title:"每日一练", desc:"按星期轮换5种题型(SQL/产品分析/Prompt设计/数据分析/行为面试)，每天一道，附答案和答题技巧。"}
+  ]
+};
+
 // Trigger picks rendering (function defined in index.html)
 if(typeof renderAllPicks === 'function') renderAllPicks();

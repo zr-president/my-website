@@ -181,7 +181,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','fun')">🎮 娱乐</div><a href="#gaming">🎯 游戏区</a><a href="#music">🎵 音乐区</a><a href="#novel">📖 小说区</a><a href="#anime">🎬 动漫区</a></div>
 <div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','life')">🏃 生活</div><a href="#fashion">👔 穿搭推荐</a><a href="#fitness">💪 健身方案</a><a href="#diet">🍽️ 饮食助手</a><a href="#beer">🍺 精酿与调酒</a></div>
 <div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','finance')">📊 财经·学习</div><a href="#stock">📈 股市基金</a><a href="#car">🚗 购车推荐</a><a href="#house">🏠 购房租房</a><a href="#learning">🎓 学习区</a><a href="#travel">✈️ 旅游区</a><a href="#news">📰 新闻资讯</a></div>
-<div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','tools')">🤖 工具</div><a href="#ai-assistant">💬 AI助手</a><a href="#optimization">🔧 优化日记</a></div>
+<div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','tools')">🤖 工具</div><a href="#guide">📖 使用指南</a><a href="#ai-assistant">💬 AI助手</a><a href="#optimization">🔧 优化日记</a></div>
 </nav>
 
 <main class="main">
@@ -291,6 +291,9 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div id="picks-news" class="picks-container"></div>
 <div class="card" style="padding:12px 16px" id="rssNewsFeed"><p style="font-size:12px;color:var(--text3)">📡 正在加载实时资讯...</p></div>
 <div class="card clickable" onclick="openDetail('news')"><h3>🌍 资讯获取方案</h3><p>高效信息源配置、每日阅读时间表、RSS订阅方案。</p></div></section>
+
+<section id="guide" class="section" data-search="帮助 指南 使用 说明 教程 功能 介绍"><div class="section-header"><h2>📖 使用指南</h2><p>功能介绍 · 模块说明 · 每日更新</p></div>
+<div id="picks-guide" class="picks-container"></div></section>
 
 <section id="optimization" class="section" data-search="优化 建议 改进 迭代 日记"><div class="section-header"><h2>🔧 网站优化日记</h2><p>每日10条改进建议 · 自我迭代 · 持续进化</p></div>
 <div id="picks-optimization" class="picks-container"></div>
@@ -728,6 +731,22 @@ function renderSectionPicks(sectionId){
   if(!container) return;
   var h='';
 
+  // Special handling: Website Guide
+  if(sectionId==='guide'){
+    if(typeof WEBSITE_GUIDE!=='undefined'){
+      var g=WEBSITE_GUIDE;
+      h+='<div class="insight-box">📖 '+g.summary+' <span style="font-size:10px;color:var(--text3)">更新于'+g.updated+'</span></div>';
+      g.features.forEach(function(f){
+        h+='<div class="pick-card" style="cursor:default">';
+        h+='<span class="pick-icon" style="font-size:22px">'+f.icon+'</span>';
+        h+='<span class="pick-info"><div class="pick-title">'+f.title+'</div><div class="pick-desc">'+f.desc+'</div></span>';
+        h+='</div>';
+      });
+    }
+    if(h){ container.innerHTML=h; }
+    return;
+  }
+
   // Special handling: Optimization Log
   if(sectionId==='optimization'){
     if(typeof OPTIMIZATION_LOG!=='undefined'){
@@ -783,7 +802,7 @@ function renderSectionPicks(sectionId){
 }
 
 function renderAllPicks(){
-  var sections = ['anime','music','novel','beer','gaming','learning','fashion','fitness','diet','career','car','house','stock','news','optimization'];
+  var sections = ['guide','anime','music','novel','beer','gaming','learning','fashion','fitness','diet','career','car','house','stock','news','optimization'];
   sections.forEach(function(s){ renderSectionPicks(s); });
 }
 
@@ -793,7 +812,7 @@ var CATEGORIES = {
   fun:      {icon:'🎮', name:'娱乐空间', subs:'游戏区 | 音乐区 | 小说区 | 动漫区', sections:['gaming','music','novel','anime']},
   life:     {icon:'🏃', name:'生活方式', subs:'穿搭 | 健身 | 饮食 | 精酿与调酒', sections:['fashion','fitness','diet','beer']},
   finance:  {icon:'📊', name:'财经·学习', subs:'股市 | 购车 | 购房 | 学习 | 旅游 | 新闻', sections:['stock','car','house','learning','travel','news']},
-  tools:    {icon:'🤖', name:'工具·AI', subs:'AI助手 | 优化日记', sections:['ai-assistant','optimization']}
+  tools:    {icon:'🤖', name:'工具·AI', subs:'使用指南 | AI助手 | 优化日记', sections:['guide','ai-assistant','optimization']}
 };
 
 function showView(viewName, categoryKey){
