@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI产品运营面试准备完整指南</title>
+<style>
+  :root {
+    --bg: #f8f9fb;
+    --card: #fff;
+    --text: #1a1a2e;
+    --muted: #6b7280;
+    --accent: #6366f1;
+    --accent-light: #eef2ff;
+    --border: #e5e7eb;
+    --tag-bg: #f3f4f6;
+    --good: #059669;
+    --good-bg: #ecfdf5;
+    --bad: #dc2626;
+    --bad-bg: #fef2f2;
+    --star: #f59e0b;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.75;
+    padding: 40px 20px 80px;
+  }
+  .container { max-width: 860px; margin: 0 auto; }
+
+  /* Header */
+  .hero {
+    text-align: center;
+    padding: 48px 24px;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
+    border-radius: 20px;
+    color: #fff;
+    margin-bottom: 48px;
+  }
+  .hero h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.02em; }
+  .hero p { opacity: 0.9; font-size: 1.05rem; }
+  .hero .badges { margin-top: 16px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .hero .badges span {
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(6px);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+  }
+
+  /* Section */
+  .section { margin-bottom: 48px; }
+  .section-title {
+    font-size: 1.45rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--accent);
+    display: inline-block;
+  }
+
+  /* Cards */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+
+  /* STAR framework */
+  .star-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .star-cell {
+    background: var(--accent-light);
+    border-radius: 12px;
+    padding: 18px 14px;
+    text-align: center;
+  }
+  .star-cell .letter {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent);
+    display: block;
+  }
+  .star-cell .label { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+  .star-cell .desc { font-size: 0.88rem; margin-top: 6px; line-height: 1.5; }
+
+  .compare-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .example-good { background: var(--good-bg); border: 1px solid var(--good); border-radius: 12px; padding: 20px; }
+  .example-bad  { background: var(--bad-bg);  border: 1px solid var(--bad);  border-radius: 12px; padding: 20px; }
+  .example-good h4 { color: var(--good); margin-bottom: 8px; }
+  .example-bad  h4 { color: var(--bad);  margin-bottom: 8px; }
+  .example-good .line, .example-bad .line { margin: 6px 0; font-size: 0.92rem; }
+  .example-good .line i { color: var(--good); margin-right: 4px; }
+  .example-bad  .line i { color: var(--bad);  margin-right: 4px; }
+
+  /* QA cards */
+  .qa-card { margin-bottom: 20px; }
+  .qa-card .q {
+    font-size: 1.08rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #111827;
+  }
+  .qa-card .q::before { content: "Q. "; color: var(--accent); font-weight: 800; }
+  .qa-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .qa-meta span {
+    font-size: 0.78rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: var(--tag-bg);
+    color: var(--muted);
+  }
+  .qa-meta span.label { background: var(--accent-light); color: var(--accent); font-weight: 600; }
+  .framework { background: #f9fafb; border-left: 3px solid var(--accent); padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 12px 0; }
+  .framework strong { color: var(--accent); }
+  .bonus { margin-top: 8px; font-size: 0.9rem; }
+  .bonus::before { content: "🌟 加分点："; font-weight: 700; color: var(--star); }
+
+  /* Tips */
+  .tip-list { list-style: none; }
+  .tip-list li { padding: 8px 0 8px 28px; position: relative; }
+  .tip-list li::before { content: "▸"; position: absolute; left: 4px; color: var(--accent); font-weight: 700; }
+
+  /* Numbered indicator */
+  .n { display: inline-block; width: 26px; height: 26px; line-height: 26px; text-align: center; background: var(--accent); color: #fff; border-radius: 50%; font-size: 0.8rem; font-weight: 700; margin-right: 8px; flex-shrink: 0; }
+
+  /* Salary table */
+  .salary-table { width:100%; border-collapse:collapse; margin:16px 0; }
+  .salary-table th { background:var(--accent-light); color:var(--accent); padding:10px 14px; text-align:left; font-size:0.88rem; }
+  .salary-table td { padding:10px 14px; border-bottom:1px solid var(--border); font-size:0.92rem; }
+
+  @media (max-width: 640px) {
+    .star-grid { grid-template-columns: repeat(2, 1fr); }
+    .compare-box { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ========== HERO ========== -->
+<div class="hero">
+  <h1>AI 产品运营 · 面试准备完整指南</h1>
+  <p>行为面试 + 高频考题 + 项目展示 + 薪资谈判，一套带走</p>
+  <div class="badges">
+    <span>STAR 法则</span><span>Top 10 真题</span><span>项目经验包装</span><span>薪资策略</span>
+  </div>
+</div>
+
+<!-- ========== PART 1 ========== -->
+<div class="section">
+  <h2 class="section-title">一、行为面试 STAR 法则</h2>
+
+  <p style="margin-bottom:16px;">STAR 是面试官评估行为问题的黄金标准。它迫使你把模糊的"我很努力"翻译成可验证的事实链条。四个部分缺一不可：</p>
+
+  <div class="star-grid">
+    <div class="star-cell">
+      <span class="letter">S</span>
+      <span class="label">Situation</span>
+      <span class="desc">时间、地点、背景、你面临的具体困境是什么</span>
+    </div>
+    <div class="star-cell">
+      <span class="letter">T</span>
+      <span class="label">Task</span>
+      <span class="desc">你的任务/目标是什么，量化到具体数字</span>
+    </div>
+    <div class="star-cell">
+      <span class="letter">A</span>
+      <span class="label">Action</span>
+      <span class="desc">你做了什么——用"我"开头，不是"我们"</span>
+    </div>
+    <div class="star-cell">
+      <span class="letter">R</span>
+      <span class="label">Result</span>
+      <span class="desc">可量化的结果：数据、效率、收入变化</span>
+    </div>
+  </div>
+
+  <h3 style="margin-bottom:12px;">示例对比：同一个经历，两种讲法</h3>
+  <div class="compare-box">
+
+    <div class="example-good">
+      <h4>✅ 正面示例（STAR 完整版）</h4>
+      <p class="line"><i>S</i> 2025年Q3，我负责的AI客服SaaS产品激活率仅18%，远低于行业均值30%。</p>
+      <p class="line"><i>T</i> 我需要在两个月内将新用户7日激活率提升到28%以上。</p>
+      <p class="line"><i>A</i> 我建立了一套AI驱动的Onboarding流程：①用大模型分析3000条用户行为日志，把用户聚类为4类画像；②针对每类画像设计差异化引导路径；③在关键流失节点设置智能弹窗，用类ChatGPT式对话挽留。同时我每周输出一份激活漏斗分析报告反馈给产品团队。</p>
+      <p class="line"><i>R</i> 两个月后激活率达到32%，超出目标；月活增长41%；该项目方法论被推广到公司另外3条产品线。</p>
+    </div>
+
+    <div class="example-bad">
+      <h4>❌ 反面示例（模糊叙述）</h4>
+      <p class="line"><i>✗</i> 我们产品激活不太好，领导让我想想办法。</p>
+      <p class="line"><i>✗</i> 我就做了一些用户调研，然后优化了流程。</p>
+      <p class="line"><i>✗</i> 团队一起讨论后改了几版方案，效果还行。</p>
+      <p class="line"><i>✗</i> 最后数据涨上去了，领导挺满意的。</p>
+      <p style="margin-top:12px;font-size:0.85rem;color:var(--muted);">
+        问题：没有数字、没有"我"的动作、没有清晰的因果链。面试官无法判断到底是你厉害还是运气好。
+      </p>
+    </div>
+
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <strong>🔧 STAR 实战口诀</strong>
+    <ul class="tip-list">
+      <li>数据先行：每一个 R 至少带一个数字</li>
+      <li>第一人称：A 段全部用"我"，展示 ownership</li>
+      <li>控制时长：单题 2-3 分钟，不要超过 4 分钟</li>
+      <li>提前准备 5-6 个 STAR 故事覆盖：增长、数据分析、跨部门协作、失败复盘、从0到1</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ========== PART 2 ========== -->
+<div class="section">
+  <h2 class="section-title">二、AI 产品运营高频面试题 Top 10</h2>
+
+  <!-- Q1 -->
+  <div class="card qa-card">
+    <p class="q">AI产品运营和传统运营有什么区别？</p>
+    <div class="qa-meta"><span class="label">考察意图</span><span>看你对AI行业的认知深度，不是背定义</span></div>
+    <p>面试官想知道你是否理解AI产品的特殊性：数据飞轮、模型迭代、用户预期管理、AIGC合规等。</p>
+    <div class="framework">
+      <strong>答题框架：</strong>从三个维度对比——①<strong>驱动逻辑</strong>：传统运营靠流程和经验，AI运营靠数据和模型反馈闭环；②<strong>核心指标</strong>：传统看重转化率/GMV，AI额外关注模型准确率、幻觉率、用户采纳率；③<strong>工作方式</strong>：AI运营需要频繁与算法/工程团队协作，甚至自己用Prompt或低代码工具做实验。
+    </div>
+    <p class="bonus">能举一个具体场景（比如"传统推送 vs AI个性化推送在效果上的差距"），比空谈理论强10倍。</p>
+  </div>
+
+  <!-- Q2 -->
+  <div class="card qa-card">
+    <p class="q">你怎么理解用户增长？举一个你做的增长案例。</p>
+    <div class="qa-meta"><span class="label">考察意图</span><span>增长sense + 实战能力 + 数据驱动思维</span></div>
+    <p>面试官想确认你不是只会"发优惠券"，而是有系统增长框架的人。</p>
+    <div class="framework">
+      <strong>答题框架：</strong>先简述你的增长模型（AARRR 或 RARRA），再用 STAR 法讲案例。重点展示你如何<strong>找到增长杠杆</strong>——是通过数据分析发现的高价值渠道？还是通过A/B测试验证的某个onboarding改动？说明你在哪个环节发力、为什么选那个环节。
+    </div>
+    <p class="bonus">提到AI在增长中的应用：比如用大模型自动生成多版本文案做A/B测试，或用推荐算法做个性化承接——把增长和AI能力绑定。</p>
+  </div>
+
+  <!-- Q3 -->
+  <div class="card qa-card">
+    <p class="q">你用过哪些AI工具？怎么用到工作中的？</p>
+    <div class="qa-meta"><span class="label">考察意图</span><span>工具敏感度 + 效率思维 + 是否真的在用</span></div>
+    <p>这是一道"筛人题"。答不出来或只列名字的，大概率挂了。</p>
+    <div class="framework">
+      <strong>答题框架：</strong>分类讲——①<strong>内容创作类</strong>：ChatGPT/Claude用于文案、方案、数据分析（给具体场景，比如"我用Claude写活动复盘，效率提了60%"）；②<strong>效率工具类</strong>：Notion AI做知识管理、Cursor/Copilot辅助写SQL/Python脚本；③<strong>专业工具</strong>：扣子/Dify搭Bot，或者Midjourney做视觉素材。每类至少一个工具 + 一个具体使用场景。
+    </div>
+    <p class="bonus">展示你用AI工具的自制工作流——比如"用ChatGPT生成活动idea→用Claude写文案→用扣子搭一个自动回复Bot接管咨询"，说明你不是浅尝辄止。</p>
+  </div>
+
+  <!-- Q4 -->
+  <div class="card qa-card">
+    <p class="q">如果让你从0到1搭建一个AI产品的运营体系，你会怎么做？</p>
+    <div class="qa-meta"><span class="label">考察意图</span><span>体系化思维 + 对运营全链路的理解</span></div>
+    <p>面试官想知道你是否有"搭台子"的能力，而不仅仅是"做活动"。</p>
+    <div class="framework">
+      <strong>答题框架（按阶段讲）：</strong><br>
+      ① <strong>第1个月——定方向</strong>：做用户分层和竞品分析，明确核心指标（北极星指标）；<br>
+      ② <strong>第2-3个月——建基建</strong>：搭建数据看板、用户标签体系、内容SOP、AI自动化工具链；<br>
+      ③ <strong>第3-6个月——跑增长</strong>：设计增长实验（拉新/激活/留存各1-2个抓手），用A/B测试快速迭代；<br>
+      ④ <strong>第6个月起——建飞轮</strong>：沉淀方法论、培养用户社区/KOL、搭建AI反馈闭环（用户行为→模型优化→体验提升→留存提升）。
+    </div>
+    <p class="bonus">主动提到"这个阶段不需要大团队，2-3人+AI工具即可跑通MVP"，体现创业思维和效率意识。</p>
+  </div>
+
+  <!-- Q5 -->
+  <div class="card qa-card">
+    <p class="q">你用过哪些Agent框架？说一个具体项目。</p>
+    <div class="qa-meta"><span class="label">考察意图</span><span>技术理解力 + 动手能力 + 是不是只会"用ChatGPT"</span></div>
+    <p>AI运营的差异化竞争力=懂业务+懂技术。这道题把纯"运营执行"和"AI-native运营"分开。</p>
+    <div class="framework">
+      <strong>答题框架：</strong>先列出你熟悉的框架——扣子（Coze）、Dify、LangChain、AutoGPT等，任选1-2个。然后讲一个完整项目：为什么选这个框架→解决什么业务问题→用了哪些组件（知识库/RAG/工作流/插件）→最终效果。注意用运营视角（降本增效/用户体验提升）而非纯技术视角。
+    </div>
+    <p class="bonus">如果没做过Agent项目——现在立刻做一个。用Dify或扣子搭一个"面试模拟Bot"或"运营数据日报自动推送Agent"，两周内可交付。面试时说："我为了测试Agent在运营场景的可行性，自己做了一个XX，实际跑下来发现……"这就是最好的答案。</p>
+  </div>
+
+  <!-- Q6 -->
+  <div class="card qa-card">
+    <p class="q">怎么衡量一个运营活动的ROI？</p>
+    <div class="qa-meta"><span class="label">考察意图</span><span>商业思维 + 数据基本功</span></div>
+    <p>如果只会说"花了多少钱，赚了多少钱"，说明你的分析深度不够。</p>
+    <div class="framework">
+      <strong>答题框架：</strong>分三层——①<strong>直接ROI</strong>：(活动带来收入 - 活动总成本) / 活动总成本；②<strong>间接ROI</strong>：新用户的LTV预估、品牌曝光折算价值；③<strong>边际ROI</strong>：投入每增加1元带来的增量收益，找到最优投入点。<br>
+      特别强调<strong>归因问题</strong>：你怎么区分活动带来的增长 vs 自然增长？用到对照组、增量测试等方法。
+    </div>
+    <p class="bonus">提到AI产品的特殊考量：比如一次Prompt优化使模型调用成本降了30%，虽不直接创收，但每100万次调用省了几千美金——这也是运营的ROI。</p>
+  </div>
+
+  <!-- Q7 -->
+  <div class="card qa-card">
+    <p class="q">说一个你通过数据分析发现问题并解决的案例。</p>
+    <div class="qa-meta"><span class="label">考察意图</span><span>数据敏感度 + 分析逻辑 + 落地能力</span></div>
+    <p>面试官想看到完整链条：发现异常→下钻分析→找到根因→采取措施→验证效果。缺任何一环都减分。</p>
+    <div class="framework">
+      <strong>答题框架（STAR + 分析链路）：</strong><br>
+      ① 你监控什么数据时发现了什么异常？（比如"某功能的使用率一周内从45%掉到12%"）<br>
+      ② 怎么拆解的？（按用户群、渠道、时间段、版本号下钻）<br>
+      ③ 根因是什么？（不是表面现象，而是深层原因——比如"新版本默认关闭了XX开关导致新用户找不到入口"）<br>
+      ④ 你怎么解决的？效果如何？
+    </div>
+    <p class="bonus">展示工具使用：SQL/Excel做数据提取、用AI辅助分析（"我把数据丢给Claude让它帮我找规律"）——证明你独立自主，不需等BI排期。</p>
+  </div>
+
+  <!-- Q8 -->
+  <div class="card qa-card">
+    <p class="q">你对Prompt Engineering的理解。</p>
+    <div class="qa-meta"><span class="label">考察意图</span><span>是否理解大模型的工作方式 + 是否在实操中使用</span></div>
+    <p>Prompt Engineering 不是"把话说清楚"——面试官期待听到系统性的理解。</p>
+    <div class="framework">
+      <strong>答题框架：</strong><br>
+      ① <strong>定义</strong>：通过设计输入文本的结构、上下文和约束，引导大模型产生高质量输出的方法论。<br>
+      ② <strong>核心技巧</strong>：角色设定（system prompt）、few-shot示例、思维链（CoT）、输出格式约束、分步拆解复杂任务。<br>
+      ③ <strong>运营场景应用</strong>：用Prompt批量生成100条推送文案（不同用户画像用不同风格）；设计客服Bot的System Prompt控制语气和安全边界；用结构化Prompt让AI输出标准化的数据分析报告。<br>
+      ④ <strong>进阶认知</strong>：Prompt需要像代码一样迭代和版本管理；不同模型对Prompt敏感度不同；好的Prompt = 清晰指令 + 充分上下文 + 好的示例 + 输出约束。
+    </div>
+    <p class="bonus">展示你自用的Prompt模板库——哪怕一个飞书/Notion文档截图也行。面试官超吃这一套。</p>
+  </div>
+
+  <!-- Q9 -->
+  <div class="card qa-card">
+    <p class="q">为什么想做AI方向？你的职业规划是什么？</p>
+    <div class="qa-meta"><span class="label">考察意图</span><span>动机真实度 + 稳定性 + 自驱力</span></div>
+    <p>"因为AI火"是死亡回答。面试官要的是可持续的热情和清晰的职业目标。</p>
+    <div class="framework">
+      <strong>答题框架：</strong><br>
+      ① <strong>动机（感性+理性）</strong>：讲一个契机（某次使用AI工具的惊叹、某个被AI提效的经历），然后过渡到理性——"我认为未来3-5年，所有运营岗位都会被AI重塑，我希望成为第一波懂AI的运营，而不是被替代的那一拨。"<br>
+      ② <strong>规划（3年期）</strong>：第1年——深耕AI产品运营，跑通增长模型，积累AI工具链经验；第2-3年——成长为能独立负责一条AI产品线的运营负责人，建立可复制的方法论；更长期——成为AI-Native运营专家或创业。
+    </div>
+    <p class="bonus">主动提到你在这份工作之前已经做了什么准备（学了哪些工具、做了哪些项目、读了哪些论文/博客），证明不自嗨。</p>
+  </div>
+
+  <!-- Q10 -->
+  <div class="card qa-card">
+    <p class="q">你有什么想问我们的？</p>
+    <div class="qa-meta"><span class="label">考察意图</span><span>用心程度 + 思考深度 + 双向选择意识</span></div>
+    <p>回答"没什么问题"=提前淘汰。面试本质是双向筛选，好的提问展示你也在评估对方。</p>
+    <div class="framework">
+      <strong>建议提问方向（选2-3个）：</strong><br>
+      ① <strong>业务类</strong>："目前产品最核心的北极星指标是什么？运营团队怎么和算法团队协作？"<br>
+      ② <strong>团队类</strong>："团队目前几个人？我这岗位是新增还是替换？你们期望这个人前3个月达成什么？"<br>
+      ③ <strong>成长类</strong>："公司对AI方向的人才培养有什么机制？有内部AI工具或算力资源支持吗？"<br>
+      ④ <strong>挑战类</strong>："目前产品在运营上最大的难点是什么？是获客、激活还是留存？"
+    </div>
+    <p class="bonus">不要只问"薪资""加不加班"——这些该问，但不该是你唯一的提问。先展示业务深度思考，再关心待遇。</p>
+  </div>
+</div>
+
+<!-- ========== PART 3 ========== -->
+<div class="section">
+  <h2 class="section-title">三、如何展示 AI 项目经验</h2>
+
+  <div class="card">
+    <h3 style="margin-bottom:8px;">"没有正式AI工作经验怎么办？"</h3>
+    <p style="color:var(--muted);margin-bottom:16px;">——这是最常见的焦虑，但也是最好解决的问题。AI行业的特殊性在于，最好的能力证明不是履历上的公司名，而是你的输出物。</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;">
+      <div style="background:var(--accent-light);border-radius:12px;padding:20px;">
+        <h4 style="color:var(--accent);margin-bottom:8px;">💡 把个人项目讲成"实验"</h4>
+        <p style="font-size:0.92rem;">
+          面试时不要说"我就是自己玩玩"，而是这样说：<br>
+          <em>"我为了验证AI在运营场景的可行性，独立做了一个实验项目——搭了一个自动内容分发Agent。用Dify做工作流编排，接入了飞书和微信，实际跑了2周，处理了200+条用户咨询，准确率87%。这是一个非正式但有完整闭环的实践。"</em>
+        </p>
+      </div>
+      <div style="background:#fef3c7;border-radius:12px;padding:20px;">
+        <h4 style="color:#d97706;margin-bottom:8px;">📂 你的个人网站 = 最佳作品集</h4>
+        <p style="font-size:0.92rem;">
+          你的个人网站可以展示：<br>
+          · AI工具使用清单（具体到场景）<br>
+          · 自建Agent/自动化工作流案例<br>
+          · 数据分析和增长实验记录<br>
+          · 行业分析文章或读书笔记<br>
+          面试时直接打开网站："这是我持续更新的个人数字空间，上面的所有内容都是我实操过的。"——比简历有说服力100倍。
+        </p>
+      </div>
+    </div>
+
+    <div style="margin-top:20px;">
+      <strong>🎯 行动清单（面试前2周完成）：</strong>
+      <ul class="tip-list">
+        <li>用 Dify 或 扣子 搭一个运营相关的 Agent，写一篇复盘文章</li>
+        <li>选一个AI产品（比如ChatGPT、Notion AI、Cursor），写一份深度体验报告</li>
+        <li>用AI工具完成一项运营任务（比如自动生成周报、自动回复邮件），记录效率提升数据</li>
+        <li>把以上内容整理到个人网站，配上截图和数据</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ========== PART 4 ========== -->
+<div class="section">
+  <h2 class="section-title">四、薪资谈判策略</h2>
+
+  <div class="card">
+    <h3 style="margin-bottom:12px;">阶段一：面试前——数据武装</h3>
+    <table class="salary-table">
+      <tr><th>平台</th><th>用途</th><th>操作</th></tr>
+      <tr><td>BOSS直聘</td><td>看同岗位薪资区间</td><td>搜索"AI产品运营"，筛选城市+经验，看JD里写的薪资范围</td></tr>
+      <tr><td>脉脉</td><td>看真实offer分享</td><td>搜索"AI运营 offer""大模型运营 薪资"，看匿名爆料帖</td></tr>
+      <tr><td>看准网 / 牛客</td><td>看公司面经含薪资</td><td>搜目标公司+岗位，找往年校招/社招的薪资包</td></tr>
+      <tr><td>OfferShow小程序</td><td>查具体公司薪资</td><td>微信搜"OfferShow"，输入公司名+岗位</td></tr>
+    </table>
+    <p style="font-size:0.88rem;color:var(--muted);">目标：面试前已心中有数——知道该岗位的市场价区间（下限/中位数/上限）。</p>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-bottom:12px;">阶段二：报价——让子弹飞一会儿</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+      <div style="background:var(--bad-bg);border-radius:10px;padding:16px;">
+        <h4 style="color:var(--bad);margin-bottom:6px;">❌ 错误操作</h4>
+        <p style="font-size:0.9rem;">· 第一个报价："我想要20K"——直接封死了上限<br>
+        · 给一个精确数字："18.5K"——显得你在胡猜<br>
+        · 被问薪资时回答"按公司规定来"——显得没有自我认知</p>
+      </div>
+      <div style="background:var(--good-bg);border-radius:10px;padding:16px;">
+        <h4 style="color:var(--good);margin-bottom:6px;">✅ 正确话术</h4>
+        <p style="font-size:0.9rem;">
+          <strong>当对方问期望薪资：</strong><br>
+          "我了解这个岗位的市场范围大概在X-Y之间。我更看重成长空间和团队氛围，薪资希望能在这个范围内根据岗位职责和我的匹配度来聊。方便先了解一下贵司对这个岗位的预算范围吗？"<br><br>
+          <strong>核心原则：</strong>给范围不给点、让对方先出价、把话题引回价值匹配。
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-bottom:12px;">阶段三：谈判筹码——你手里有什么牌</h3>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px;">
+      <div style="text-align:center;padding:16px;border:1px solid var(--border);border-radius:10px;">
+        <span style="font-size:1.6rem;">🎫</span>
+        <p style="font-weight:700;margin:6px 0;">多Offer</p>
+        <p style="font-size:0.82rem;color:var(--muted);">最硬的牌。即使只有一个，也可以说"有在聊其他机会"</p>
+      </div>
+      <div style="text-align:center;padding:16px;border:1px solid var(--border);border-radius:10px;">
+        <span style="font-size:1.6rem;">🔧</span>
+        <p style="font-weight:700;margin:6px 0;">技能稀缺性</p>
+        <p style="font-size:0.82rem;color:var(--muted);">AI运营+会搭Agent+懂Prompt工程=复合稀缺人才</p>
+      </div>
+      <div style="text-align:center;padding:16px;border:1px solid var(--border);border-radius:10px;">
+        <span style="font-size:1.6rem;">📊</span>
+        <p style="font-weight:700;margin:6px 0;">项目成果</p>
+        <p style="font-size:0.82rem;color:var(--muted);">可复用的方法论和可量化的增长数据是议价硬通货</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-bottom:8px;">📋 谈判禁忌速查</h3>
+    <ul class="tip-list">
+      <li>不要第一个报数——永远让对方先给范围</li>
+      <li>不要只谈月薪——谈年包（含年终、股票、补贴）</li>
+      <li>不要用"生活成本高"作为理由——用"市场价值"和"能力匹配"来说服</li>
+      <li>不要在面试早期透露当前薪资——等offer阶段再谈</li>
+      <li>不要因为"不好意思"接受低于市场的报价——HR的KPI不是给你省钱，是招到合适的人</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ========== FOOTER ========== -->
+<div style="text-align:center;padding:32px 0;color:var(--muted);font-size:0.85rem;">
+  <p>祝你面试顺利，拿下心仪的AI产品运营offer 🚀</p>
+  <p style="margin-top:4px;">这份指南和你的个人网站作品集搭配食用，效果最佳。</p>
+</div>
+
+</div>
+</body>
+</html>
