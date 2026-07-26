@@ -677,9 +677,9 @@ function renderAllPicks(){
 
 // Initialize
 startBannerRotation();
-renderAllPicks();
 fetchRSSNews();
 fetchWeather();
+// Note: renderAllPicks() called at end of daily_data.js after PICKS data loads
 setInterval(fetchRSSNews, 1800000); // refresh RSS every 30 min
 
 // Manual refresh

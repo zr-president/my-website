@@ -81,3 +81,6 @@ var PICKS = {
     {icon:"🏙️", title:"深圳", desc:"新房~5.5万/㎡ · 二手~5.0万/㎡", link:"https://www.ke.com"}
   ]
 };
+
+// Trigger picks rendering (function defined in index.html)
+if(typeof renderAllPicks === 'function') renderAllPicks();
