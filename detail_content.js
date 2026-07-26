@@ -516,6 +516,131 @@ DETAIL.learning = '<h2>🎓 AI学习中心 · 从零科普</h2><p class="detail-
 '</table>'+
 '<div class="callout tip"><strong>🚀 新手建议：</strong>先用Coze（零成本+零代码+快速出成果）→ 做出第一个Agent后，再用Dify深入学习（简历含金量更高）。两个都做过，面试时就是"有Agent实操经验"而不是"了解过Agent概念"——这是质的区别。</div>';
 
+// ===== 第十一课：数据分析实战（SQL+Excel+A/B测试） =====
+'<h3>📊 第十一课：数据分析实战（SQL+Excel+A/B测试）</h3>'+
+'<p>数据分析是AI产品运营的核心竞争力。本课覆盖三个最重要的分析工具：SQL查数据、Excel透视表快速分析、A/B测试验证决策。</p>'+
+
+'<h4>🔍 SQL速成——运营必备的7个关键字</h4>'+
+'<p><strong>SELECT + FROM + WHERE：</strong>最基础的查询组合。从用户表中找出特定渠道注册的用户ID和日期。</p>'+
+'<p><strong>JOIN（INNER/LEFT）：</strong>连接多张表。LEFT JOIN最常用——保留左表全部记录，常用于计算留存率。</p>'+
+'<p><strong>GROUP BY + HAVING：</strong>聚合统计。"GROUP BY channel"按渠道分组，"HAVING COUNT(*) > 100"筛掉样本量过小的分组。</p>'+
+'<p><strong>窗口函数：</strong>排名类问题利器。"ROW_NUMBER() OVER (PARTITION BY category ORDER BY sales DESC)"按品类分组后按销售额排名。</p>'+
+'<div class="highlight-box"><p><strong>运营常用SQL场景：</strong>①次日/7日/30日留存率 ②各渠道用户LTV对比 ③商品销售额排名 ④漏斗转化率 ⑤用户分层（按活跃度/消费金额分段）。每个场景建议保存为模板。</p></div>'+
+
+'<h4>📋 Excel透视表——5步出洞察</h4>'+
+'<p><span class="step-num">1</span>选中数据区域 → 插入 → 数据透视表<br><span class="step-num">2</span>行标签放"渠道"、列标签放"月份"、值放"用户数"<br><span class="step-num">3</span>右键值字段 → 值字段设置 → 选择"计数"或"求和"<br><span class="step-num">4</span>添加筛选器：按用户类型筛选新老用户<br><span class="step-num">5</span>插入数据透视图 → 选择折线图或柱状图</p>'+
+'<p><strong>常用计算：</strong>求和（GMV/营收）、计数（用户数/订单数）、百分比（转化率/占比）、同比环比（增长率）。</p>'+
+
+'<h4>🧪 A/B测试——运营的科学方法</h4>'+
+'<p><strong>核心概念：</strong>p值——假设实验组和对照组无差异，观察到当前数据的概率。p<0.05说明结果不太可能是随机波动。置信区间——真实效果的范围，如"5%±2%"。</p>'+
+'<p><strong>样本量估算：</strong>最小样本量 ≈ 16 × (标准差/期望检测的最小差异)²。标准差10、检测2%差异约需400样本。</p>'+
+'<p><strong>四大陷阱：</strong>Peeking（别每天偷看结果）| 新奇效应（用户因新鲜感短暂活跃）| 辛普森悖论（总体涨但细分跌）| 多重检验（用Bonferroni修正p值阈值）。</p>'+
+
+'<h4>🗓️ 30天学习路线</h4>'+
+'<div class="highlight-box"><p><strong>第1周：SQL基础——</strong>SELECT/WHERE/JOIN/GROUP BY，每天2道练习<br><strong>第2周：Excel进阶——</strong>透视表+VLOOKUP+图表，做2个分析报告<br><strong>第3周：A/B测试——</strong>p值+样本量计算+模拟分析<br><strong>第4周：综合实战——</strong>选真实问题，SQL取数→Excel分析→A/B方案→分析报告</p></div>'+
+
+'<h4>📚 推荐资源</h4>'+
+'<ul><li><strong>书：</strong>《SQL必知必会》《精益数据分析》《Trustworthy Online Controlled Experiments》</li><li><strong>课：</strong>B站SQL教程、Coursera Google Data Analytics</li></ul>'+
+
+// ===== 第十二课：用户增长体系（AARRR+RFM+增长实验） =====
+'<h3>📈 第十二课：用户增长体系（AARRR+RFM+增长实验）</h3>'+
+'<p>用户增长是运营的最终KPI。本课覆盖增长领域三大核心模型。</p>'+
+
+'<h4>🏴‍☠️ AARRR海盗模型</h4>'+
+'<table class="data-table"><tr><th>阶段</th><th>定义</th><th>关键指标</th><th>运营策略</th></tr>'+
+'<tr><td><strong>Acquisition 获客</strong></td><td>用户从哪来</td><td>CAC、渠道占比</td><td>渠道ROI评估、ASO/SEO、社交裂变</td></tr>'+
+'<tr><td><strong>Activation 激活</strong></td><td>Aha Moment</td><td>激活率、首次关键行为</td><td>简化注册、新手引导、个性化推荐</td></tr>'+
+'<tr><td><strong>Retention 留存</strong></td><td>用户持续回来</td><td>次日/7日/30日留存率</td><td>Push推送、签到、内容更新</td></tr>'+
+'<tr><td><strong>Revenue 变现</strong></td><td>用户付费</td><td>LTV、ARPU、付费率</td><td>会员体系、限时优惠、定价实验</td></tr>'+
+'<tr><td><strong>Referral 传播</strong></td><td>用户推荐</td><td>K因子、邀请转化率</td><td>邀请奖励、拼团、社交裂变</td></tr>'+
+'</table>'+
+
+'<h4>📐 关键指标公式</h4>'+
+'<div class="highlight-box"><p>'+
+'<strong>CAC =</strong> 投放总费用 ÷ 新用户数<br>'+
+'<strong>LTV =</strong> ARPU × 平均生命周期。例：ARPU=$20/月×16个月=$320<br>'+
+'<strong>LTV/CAC ≥ 3</strong> 为健康，<1为严重亏损<br>'+
+'<strong>K因子 =</strong> 每人邀请数 × 邀请转化率。K>1=指数级增长</p></div>'+
+
+'<h4>🎯 RFM用户分层模型</h4>'+
+'<p>RFM是用户运营最实用的分层工具。</p>'+
+'<table class="data-table"><tr><th>维度</th><th>含义</th><th>评分标准</th></tr>'+
+'<tr><td><strong>R（Recency）</strong></td><td>最近一次消费距今天数</td><td>7天内=高，30天+=低</td></tr>'+
+'<tr><td><strong>F（Frequency）</strong></td><td>一段时间内消费次数</td><td>月均5次+=高</td></tr>'+
+'<tr><td><strong>M（Monetary）</strong></td><td>消费总金额（AI产品可改用Token消耗量）</td><td>月消费500元+=高</td></tr>'+
+'</table>'+
+'<p><strong>5类用户运营策略：</strong>①重要价值→VIP服务+专属权益 ②重要发展→提升频次+阶梯优惠 ③重要保持→流失预警+大额券挽回 ④一般价值→向上销售 ⑤流失用户→低成本召回，3次无效则放弃。</p>'+
+
+'<h4>🧪 ICE增长实验排序法</h4>'+
+'<p><strong>ICE三要素：</strong>Impact影响力(1-10)、Confidence信心(1-10)、Ease容易度(1-10)，总分=I×C×E，按分排序实验优先级。</p>'+
+'<p><strong>四步闭环：</strong>假设→实验→测量→结论。失败的实验不是浪费——每次验证"什么不行"都让下一次更接近"什么行"。</p>'+
+
+// ===== 第十三课：AI产品运营进阶（Prompt+Agent+RAG） =====
+'<h3>🤖 第十三课：AI产品运营进阶（Prompt+Agent+RAG）</h3>'+
+'<p>AI产品运营与传统运营的最大区别在于"与AI深度协作的能力"。本课覆盖四大核心技能。</p>'+
+
+'<h4>✍️ Prompt Engineering进阶</h4>'+
+'<div class="highlight-box"><p>'+
+'<strong>① Chain of Thought：</strong>Prompt末尾加"让我们一步一步思考"——GSM8K推理测试中，CoT将准确率从17.7%提升到58.3%。<br>'+
+'<strong>② Few-shot：</strong>给2-3个示例让AI模仿。选例要覆盖边界情况。<br>'+
+'<strong>③ 结构化输出：</strong>要求"输出JSON"或"Markdown表格"，便于程序处理。<br>'+
+'<strong>④ 角色设定：</strong>开头定义角色——角色越具体，回复质量越高。</p></div>'+
+
+'<h4>🏗️ Agent搭建三级路径</h4>'+
+'<table class="data-table"><tr><th>级别</th><th>平台</th><th>门槛</th><th>适合谁</th></tr>'+
+'<tr><td><strong>Level 1</strong></td><td>Coze（扣子）</td><td>⭐ 零代码</td><td>完全不懂技术的运营</td></tr>'+
+'<tr><td><strong>Level 2</strong></td><td>Dify</td><td>⭐⭐ 低代码</td><td>有技术概念的运营</td></tr>'+
+'<tr><td><strong>Level 3</strong></td><td>LangChain/CrewAI</td><td>⭐⭐⭐⭐ Python</td><td>有开发能力的运营/PM</td></tr>'+
+'</table>'+
+'<p><strong>建议路径：</strong>Coze（1天出成果）→ Dify（简历加分项）→ LangChain（职业护城河）。</p>'+
+
+'<h4>📚 RAG知识库5步搭建</h4>'+
+'<p><span class="step-num">1</span>准备文档（FAQ/SOP/产品说明）<br><span class="step-num">2</span>分段切割（每块500-1000字符，保留重叠）<br><span class="step-num">3</span>向量化（文本→向量，语义相近距离更近）<br><span class="step-num">4</span>存入向量数据库（Milvus/Pinecone/ChromaDB）<br><span class="step-num">5</span>检索+生成（用户提问→向量化→检索Top K→送LLM生成答案）</p>'+
+'<p><strong>进阶：</strong>Re-ranking二次排序 + Hybrid Search（关键词+语义双路召回）。</p>'+
+
+'<h4>📏 AI产品评估四维模型</h4>'+
+'<table class="data-table"><tr><th>维度</th><th>评估要点</th></tr>'+
+'<tr><td><strong>模型能力</strong></td><td>推理/上下文/多模态/响应速度/API稳定性</td></tr>'+
+'<tr><td><strong>产品体验</strong></td><td>交互设计/新手引导/错误处理/30秒内体验核心价值</td></tr>'+
+'<tr><td><strong>数据飞轮</strong></td><td>用户数据收集/模型微调/个性化推荐——用得越多越好？</td></tr>'+
+'<tr><td><strong>商业壁垒</strong></td><td>独家数据/品牌/生态锁定/用户切换成本</td></tr>'+
+'</table>'+
+
+// ===== 第十四课：面试准备指南（STAR+高频题+薪资谈判） =====
+'<h3>🎤 第十四课：面试准备指南（STAR+高频题+薪资谈判）</h3>'+
+'<p>面试是"可准备的表演"，而非"即兴发挥"。本课覆盖面试三大核心环节。</p>'+
+
+'<h4>⭐ STAR法则——最重要的结构化表达框架</h4>'+
+'<div class="highlight-box"><p>'+
+'<strong>S（情境）：</strong>什么公司/产品/阶段/角色——1-2句话<br>'+
+'<strong>T（任务）：</strong>目标必须可量化（提升X%、减少Y天）<br>'+
+'<strong>A（行动）：</strong>你做了什么——占60%篇幅，用"我做了A→B→C"结构<br>'+
+'<strong>R（结果）：</strong>必须有数据。"留存率从28%→37%"远好于"效果不错"</p></div>'+
+
+'<h4>📋 Top 10高频面试题框架</h4>'+
+'<table class="data-table"><tr><th>#</th><th>问题</th><th>答题框架</th></tr>'+
+'<tr><td>1</td><td>AI vs 传统运营的区别？</td><td>工具+能力+迭代速度三维对比+案例</td></tr>'+
+'<tr><td>2</td><td>如何搭建增长体系？</td><td>AARRR每环拆解→指标→策略→排序</td></tr>'+
+'<tr><td>3</td><td>用过哪些Agent框架？</td><td>Coze→Dify→LangChain三级描述，选Dify重点讲</td></tr>'+
+'<tr><td>4</td><td>如何评估AI产品？</td><td>四维模型+当场举例分析</td></tr>'+
+'<tr><td>5</td><td>数据发现问题的例子？</td><td>STAR+具体数字（参考每日一练）</td></tr>'+
+'<tr><td>6</td><td>如何设计A/B测试？</td><td>假设→样本量→分流→周期→检验→结论</td></tr>'+
+'<tr><td>7</td><td>看好的AI方向？</td><td>选1个细分深入讲+数据支撑</td></tr>'+
+'<tr><td>8</td><td>如何处理团队分歧？</td><td>1对1理解→转化目标→创造性方案</td></tr>'+
+'<tr><td>9</td><td>职业规划？</td><td>短期深耕→中期带团队→长期专家</td></tr>'+
+'<tr><td>10</td><td>你有什么要问的？</td><td>团队瓶颈/AI应用程度/前3个月期望</td></tr>'+
+'</table>'+
+
+'<h4>🚀 AI项目经验展示</h4>'+
+'<div class="highlight-box"><p>'+
+'<strong>话术：</strong>"虽然没有正式AI工作经验，但我在过去几个月系统自学了AI运营的核心技能，并做了X个实践项目（如本网站），包括Dify搭建Agent、Coze微信机器人、Prompt模板库。我用项目证明能力，而不是用履历。"<br>'+
+'<strong>作品集：</strong>①本网站——16板块AI数字中枢 ②Dify运营知识库Agent ③Prompt模板库 ④1-2份数据分析报告。整理成Notion页面，面试时直接分享屏幕。</p></div>'+
+
+'<h4>💰 薪资谈判四步法</h4>'+
+'<p><span class="step-num">1</span><strong>查数据：</strong>BOSS直聘/脉脉/看准网/OfferShow四个平台查薪资区间<br><span class="step-num">2</span><strong>报价话术：</strong>给范围不给点——"期望XX-XX之间"；让对方先出价——"贵司对这个岗位的预算是什么范围？"<br><span class="step-num">3</span><strong>三大筹码：</strong>另有offer+独特技能组合(AI+运营+数据)+降低招聘成本<br><span class="step-num">4</span><strong>禁忌：</strong>第一轮就问薪资 | 不说区间只说数字 | 用生活压力要价 | 接受offer后再谈价</p>'+
+'<div class="callout tip"><strong>💡 面试前2周清单：</strong>每天1道面试题→整理3个STAR案例→完善作品集→模拟面试2次→研究目标公司。面试不是考试——是你展示"我已经准备好了"的机会。</div>';
+
+
 // ===== 其余所有板块 =====
 DETAIL.career = '<h2>💼 求职中心 · 完整简历 & 攻略</h2><p class="detail-subtitle">电子简历 · 投递策略 · 面试题库</p>'+
 '<h3>📋 钟锐 · 个人简历</h3>'+
