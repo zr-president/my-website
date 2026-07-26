@@ -272,9 +272,6 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div class="card clickable" onclick="openDetail('career')"><h3>📋 查看完整简历 & 求职攻略</h3><p>完整电子简历、个人优势分析、打招呼模板库、高频面试题深度拆解。</p></div>
 
 <!-- Resume Workbench -->
-<!-- Category Navigation Cards (Homepage only) -->
-<div id="homeCategoryGrid" class="dashboard-grid" style="margin-bottom:14px"></div>
-
 <div class="card" style="padding:14px 16px">
 <h3 style="margin-bottom:10px">📋 简历工作台 <span style="font-size:10px;color:var(--text3);font-weight:400">编辑后自动保存到本地</span></h3>
 <div style="display:flex;gap:4px;margin-bottom:10px;flex-wrap:wrap" id="resumeTabs">
@@ -357,6 +354,9 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div id="picks-news" class="picks-container"></div>
 <div class="card" style="padding:12px 16px" id="rssNewsFeed"><p style="font-size:12px;color:var(--text3)">📡 正在加载实时资讯...</p></div>
 <div class="card clickable" onclick="openDetail('news')"><h3>🌍 资讯获取方案</h3><p>高效信息源配置、每日阅读时间表、RSS订阅方案。</p></div></section>
+
+<!-- Category Navigation Cards -->
+<div id="homeCategoryGrid"></div>
 
 <section id="guide" class="section" data-search="帮助 指南 使用 说明 教程 功能 介绍"><div class="section-header"><h2>📖 使用指南</h2><p>功能介绍 · 模块说明 · 每日更新</p></div>
 <div id="picks-guide" class="picks-container"></div></section>
