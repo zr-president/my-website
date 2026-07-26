@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<script>!function(){var t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t)}()</script>
+<script>!function(){var t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);var c=localStorage.getItem('themeColor')||'indigo';document.documentElement.setAttribute('data-theme-color',c)}()</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>钟锐|个人数字空间</title>
 <style>
@@ -17,6 +17,31 @@
   --bg:#0d0f15;--bg2:#161922;--card:#1a1d28;--text:#e8eaef;--text2:#a0a5b5;--text3:#656b7a;
   --accent:#818cf8;--accent2:#a78bfa;--accent-light:#1e2440;--border:#262a36;
 }
+
+/* ===== Color Themes ===== */
+/* 1. Indigo (default) */
+[data-theme-color="indigo"]{--accent:#4f46e5;--accent2:#7c3aed;--accent-light:#eef2ff}
+[data-theme="dark"][data-theme-color="indigo"]{--accent:#818cf8;--accent2:#a78bfa;--accent-light:#1e2440}
+
+/* 2. Ocean Blue 深海蓝 */
+[data-theme-color="ocean"]{--accent:#0284c7;--accent2:#0891b2;--accent-light:#ecfeff}
+[data-theme="dark"][data-theme-color="ocean"]{--accent:#38bdf8;--accent2:#22d3ee;--accent-light:#0c2d3a}
+
+/* 3. Emerald 墨绿金 */
+[data-theme-color="emerald"]{--accent:#0d9488;--accent2:#ca8a04;--accent-light:#ecfdf5}
+[data-theme="dark"][data-theme-color="emerald"]{--accent:#2dd4bf;--accent2:#facc15;--accent-light:#0a2e20}
+
+/* 4. Rose 玫瑰金 */
+[data-theme-color="rose"]{--accent:#e11d48;--accent2:#db2777;--accent-light:#fff1f2}
+[data-theme="dark"][data-theme-color="rose"]{--accent:#fb7185;--accent2:#f472b6;--accent-light:#2d1018}
+
+/* 5. Amber 琥珀暖阳 */
+[data-theme-color="amber"]{--accent:#d97706;--accent2:#ea580c;--accent-light:#fffbeb}
+[data-theme="dark"][data-theme-color="amber"]{--accent:#fbbf24;--accent2:#fb923c;--accent-light:#2d2010}
+
+/* 6. Slate 石墨灰 */
+[data-theme-color="slate"]{--accent:#475569;--accent2:#64748b;--accent-light:#f1f5f9}
+[data-theme="dark"][data-theme-color="slate"]{--accent:#94a3b8;--accent2:#cbd5e1;--accent-light:#1e2930}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.7;display:flex;min-height:100vh;overflow-x:hidden}
@@ -32,6 +57,18 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 .sidebar-footer{padding:10px 16px;border-top:1px solid var(--border);margin-top:auto;display:flex;gap:8px;align-items:center}
 .theme-toggle{width:34px;height:34px;border-radius:50%;border:1px solid var(--border);background:var(--card);cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;color:var(--text)}
 .search-box{flex:1}.search-box input{width:100%;padding:6px 10px;border:1px solid var(--border);border-radius:6px;font-size:11px;font-family:inherit;background:var(--bg);color:var(--text);outline:none}
+
+/* Theme color picker */
+.theme-colors{display:flex;gap:5px;flex-wrap:wrap;padding:4px 0}
+.theme-dot{width:20px;height:20px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:.15s;position:relative}
+.theme-dot:hover{transform:scale(1.2)}
+.theme-dot.active{border-color:var(--text);box-shadow:0 0 0 2px var(--bg),0 0 0 4px var(--accent)}
+.theme-dot.indigo{background:linear-gradient(135deg,#4f46e5,#7c3aed)}
+.theme-dot.ocean{background:linear-gradient(135deg,#0284c7,#0891b2)}
+.theme-dot.emerald{background:linear-gradient(135deg,#0d9488,#ca8a04)}
+.theme-dot.rose{background:linear-gradient(135deg,#e11d48,#db2777)}
+.theme-dot.amber{background:linear-gradient(135deg,#d97706,#ea580c)}
+.theme-dot.slate{background:linear-gradient(135deg,#475569,#64748b)}
 
 .main{margin-left:var(--nav-w);flex:1;padding:26px 32px;max-width:1400px;position:relative;z-index:1}
 @media(min-width:1800px){.main{max-width:1600px}}
@@ -195,6 +232,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div class="search-box"><input type="text" id="searchInput" placeholder="搜索板块..." oninput="doSearch(this.value)"></div>
 <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="切换暗色">🌙</button>
 </div>
+<div style="padding:4px 16px 0"><div style="font-size:9px;color:var(--text3);margin-bottom:4px">🎨 主题色</div><div class="theme-colors"><span class="theme-dot indigo active" onclick="setColorTheme('indigo')" title="靛蓝"></span><span class="theme-dot ocean" onclick="setColorTheme('ocean')" title="深海蓝"></span><span class="theme-dot emerald" onclick="setColorTheme('emerald')" title="墨绿金"></span><span class="theme-dot rose" onclick="setColorTheme('rose')" title="玫瑰金"></span><span class="theme-dot amber" onclick="setColorTheme('amber')" title="琥珀暖"></span><span class="theme-dot slate" onclick="setColorTheme('slate')" title="石墨灰"></span></div></div>
 <div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','about')">👤 关于</div><a href="#dashboard">📋 每日待办</a><a href="#about">🏠 个人介绍</a><a href="#career">💼 求职中心</a></div>
 <div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','fun')">🎮 娱乐</div><a href="#gaming">🎯 游戏区</a><a href="#music">🎵 音乐区</a><a href="#novel">📖 小说区</a><a href="#anime">🎬 动漫区</a></div>
 <div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','life')">🏃 生活</div><a href="#fashion">👔 穿搭推荐</a><a href="#fitness">💪 健身方案</a><a href="#diet">🍽️ 饮食助手</a><a href="#beer">🍺 精酿与调酒</a></div>
@@ -393,17 +431,30 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div class="detail-overlay" id="detailOverlay" onclick="if(event.target===this.querySelector('.backdrop'))closeDetail()"><div class="backdrop"></div><div class="detail-panel" id="detailPanel"><button class="detail-close" onclick="closeDetail()">✕</button><div class="detail-panel-inner" id="detailContent"></div></div></div>
 
 <script>
-// ===== Core Functions =====
+// ===== Theme System =====
 function toggleTheme(){
   const h=document.documentElement,is=h.getAttribute('data-theme')==='dark';
   h.setAttribute('data-theme',is?'light':'dark');
   document.getElementById('themeToggle').textContent=is?'🌙':'☀️';
   localStorage.setItem('theme',is?'light':'dark');
 }
+function setColorTheme(name){
+  document.documentElement.setAttribute('data-theme-color',name);
+  localStorage.setItem('themeColor',name);
+  // Update active dot
+  document.querySelectorAll('.theme-dot').forEach(function(d){ d.classList.remove('active'); });
+  var dot = document.querySelector('.theme-dot.'+name);
+  if(dot) dot.classList.add('active');
+}
+// Init theme + color
 (function(){
   const t=localStorage.getItem('theme')||'light';
   document.documentElement.setAttribute('data-theme',t);
   document.getElementById('themeToggle').textContent=t==='dark'?'☀️':'🌙';
+  const c=localStorage.getItem('themeColor')||'indigo';
+  document.documentElement.setAttribute('data-theme-color',c);
+  var dot = document.querySelector('.theme-dot.'+c);
+  if(dot) dot.classList.add('active');
 })();
 
 function openDetail(id){
