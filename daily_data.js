@@ -331,3 +331,4 @@ if(vel) vel.textContent = SITE_VERSION;
 // Trigger renders
 if(typeof renderAllPicks === 'function') renderAllPicks();
 if(typeof renderBriefing === 'function') renderBriefing();
+if(typeof renderQuiz === 'function') renderQuiz();
