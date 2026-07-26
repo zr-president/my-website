@@ -132,6 +132,40 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 .detail-panel a{color:var(--accent);text-decoration:none}
 .detail-panel a:hover{text-decoration:underline}
 
+/* Dashboard & Category Views */
+.view-container{display:none}
+.view-container.active{display:block;animation:fadeIn .3s ease-out}
+.dashboard-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-bottom:20px}
+.cat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;cursor:pointer;transition:.2s;position:relative;overflow:hidden}
+.cat-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--accent)}
+.cat-card .cat-icon{font-size:32px;margin-bottom:8px}
+.cat-card .cat-name{font-size:16px;font-weight:700;margin-bottom:4px}
+.cat-card .cat-subs{font-size:11px;color:var(--text3);line-height:1.6}
+.cat-card .cat-arrow{position:absolute;right:14px;bottom:14px;font-size:20px;color:var(--accent);opacity:0;transition:.2s}
+.cat-card:hover .cat-arrow{opacity:1}
+.quick-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:20px}
+.quick-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px}
+.quick-card .qc-title{font-size:11px;color:var(--text3);margin-bottom:4px}
+.quick-card .qc-value{font-size:18px;font-weight:700}
+
+/* Breadcrumb */
+.breadcrumb{padding:8px 0;margin-bottom:14px;font-size:12px;color:var(--text3)}
+.breadcrumb a{color:var(--accent);text-decoration:none;cursor:pointer}
+.breadcrumb a:hover{text-decoration:underline}
+.breadcrumb span{color:var(--text3)}
+
+/* Back to top FAB */
+.fab-top{position:fixed;bottom:24px;right:24px;width:42px;height:42px;border-radius:50%;background:var(--accent);color:#fff;border:none;cursor:pointer;font-size:18px;z-index:300;box-shadow:0 2px 12px rgba(79,70,229,.3);transition:.2s;display:none}
+.fab-top:hover{transform:scale(1.1)}
+.fab-top.visible{display:flex;align-items:center;justify-content:center}
+
+/* Mobile TabBar */
+.mobile-tabbar{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:1px solid var(--border);z-index:400;padding:8px 0 env(safe-area-inset-bottom)}
+.mobile-tabbar a{flex:1;text-align:center;text-decoration:none;color:var(--text2);font-size:10px;display:flex;flex-direction:column;align-items:center;gap:2px}
+.mobile-tabbar a .tb-icon{font-size:18px}
+.mobile-tabbar a.active{color:var(--accent)}
+@media(max-width:900px){.mobile-tabbar{display:flex}.fab-top{bottom:70px}.section{padding-bottom:20px}}
+
 @media print{.sidebar,.detail-overlay,#ai-assistant,#gaming,#music,#novel,#anime,#beer{display:none!important}.main{margin-left:0!important;padding:0!important;max-width:100%!important}.card{box-shadow:none!important;border:1px solid #ddd!important}body{background:#fff!important}}
 </style>
 </head>
@@ -143,14 +177,16 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div class="search-box"><input type="text" id="searchInput" placeholder="搜索板块..." oninput="doSearch(this.value)"></div>
 <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="切换暗色">🌙</button>
 </div>
-<div class="nav-section"><div class="nav-section-title">👤 关于</div><a href="#dashboard">📋 每日待办</a><a href="#about">🏠 个人介绍</a><a href="#career">💼 求职中心</a></div>
-<div class="nav-section"><div class="nav-section-title">🎮 娱乐</div><a href="#gaming">🎯 游戏区</a><a href="#music">🎵 音乐区</a><a href="#novel">📖 小说区</a><a href="#anime">🎬 动漫区</a></div>
-<div class="nav-section"><div class="nav-section-title">🏃 生活</div><a href="#fashion">👔 穿搭推荐</a><a href="#fitness">💪 健身方案</a><a href="#diet">🍽️ 饮食助手</a><a href="#beer">🍺 精酿与调酒</a></div>
-<div class="nav-section"><div class="nav-section-title">📊 财经·学习</div><a href="#stock">📈 股市基金</a><a href="#car">🚗 购车推荐</a><a href="#house">🏠 购房租房</a><a href="#learning">🎓 学习区</a><a href="#travel">✈️ 旅游区</a><a href="#news">📰 新闻资讯</a></div>
-<div class="nav-section"><div class="nav-section-title">🤖 工具</div><a href="#ai-assistant">💬 AI助手</a></div>
+<div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','about')">👤 关于</div><a href="#dashboard">📋 每日待办</a><a href="#about">🏠 个人介绍</a><a href="#career">💼 求职中心</a></div>
+<div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','fun')">🎮 娱乐</div><a href="#gaming">🎯 游戏区</a><a href="#music">🎵 音乐区</a><a href="#novel">📖 小说区</a><a href="#anime">🎬 动漫区</a></div>
+<div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','life')">🏃 生活</div><a href="#fashion">👔 穿搭推荐</a><a href="#fitness">💪 健身方案</a><a href="#diet">🍽️ 饮食助手</a><a href="#beer">🍺 精酿与调酒</a></div>
+<div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','finance')">📊 财经·学习</div><a href="#stock">📈 股市基金</a><a href="#car">🚗 购车推荐</a><a href="#house">🏠 购房租房</a><a href="#learning">🎓 学习区</a><a href="#travel">✈️ 旅游区</a><a href="#news">📰 新闻资讯</a></div>
+<div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','tools')">🤖 工具</div><a href="#ai-assistant">💬 AI助手</a><a href="#optimization">🔧 优化日记</a></div>
 </nav>
 
 <main class="main">
+<div id="breadcrumb" class="breadcrumb" style="display:none"></div>
+<div id="dashboardView" class="view-container active">
 <div id="dailyBanner" style="background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:12px 18px;border-radius:var(--radius);margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;font-size:13px;flex-wrap:wrap;gap:8px;cursor:pointer" onclick="rotateBanner()" title="点击切换">
 <span id="dailyMsg">🔄 每日内容已就绪</span>
 <span id="dailyQuote" style="font-size:11px;opacity:.85;flex:1;min-width:200px;text-align:center"></span>
@@ -264,6 +300,17 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div class="card" style="padding:0"><div class="chat-box"><div class="chat-messages" id="chatMessages"><div class="chat-msg assistant"><div class="bubble">👋 你好钟锐！我是你的AI助手。可以直接问我求职、AI科普、游戏、学习、健身、饮食等任何问题。</div></div></div><div class="chat-input-area"><input type="text" id="chatInput" placeholder="输入问题，Enter发送..." onkeydown="if(event.key==='Enter')sendMessage()"><button onclick="sendMessage()">发送</button></div></div></div></section>
 
 <p style="text-align:center;color:var(--text3);font-size:10px;padding:24px 0">钟锐的个人数字空间 · 每天9:00更新 · <span id="lastUpdate"></span></p>
+</div><!-- /dashboardView -->
+<div id="categoryView" class="view-container"><div id="categoryContent" class="dashboard-grid"></div></div>
+
+<button class="fab-top" id="fabTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="回到顶部">↑</button>
+
+<nav class="mobile-tabbar">
+<a href="#home" class="active" data-nav="home"><span class="tb-icon">🏠</span>首页</a>
+<a href="#category-finance" data-nav="category"><span class="tb-icon">📊</span>分类</a>
+<a href="#ai-assistant" data-nav="section"><span class="tb-icon">💬</span>AI助手</a>
+<a href="#" onclick="document.getElementById('searchInput').focus();return false"><span class="tb-icon">🔍</span>搜索</a>
+</nav>
 </main>
 
 <div class="detail-overlay" id="detailOverlay" onclick="if(event.target===this.querySelector('.backdrop'))closeDetail()"><div class="backdrop"></div><div class="detail-panel" id="detailPanel"><button class="detail-close" onclick="closeDetail()">✕</button><div class="detail-panel-inner" id="detailContent"></div></div></div>
@@ -740,10 +787,119 @@ function renderAllPicks(){
   sections.forEach(function(s){ renderSectionPicks(s); });
 }
 
+// ===== View Router =====
+var CATEGORIES = {
+  about:    {icon:'👤', name:'关于·求职', subs:'个人介绍 | 求职中心 | 每日待办', sections:['dashboard','about','career']},
+  fun:      {icon:'🎮', name:'娱乐空间', subs:'游戏区 | 音乐区 | 小说区 | 动漫区', sections:['gaming','music','novel','anime']},
+  life:     {icon:'🏃', name:'生活方式', subs:'穿搭 | 健身 | 饮食 | 精酿与调酒', sections:['fashion','fitness','diet','beer']},
+  finance:  {icon:'📊', name:'财经·学习', subs:'股市 | 购车 | 购房 | 学习 | 旅游 | 新闻', sections:['stock','car','house','learning','travel','news']},
+  tools:    {icon:'🤖', name:'工具·AI', subs:'AI助手 | 优化日记', sections:['ai-assistant','optimization']}
+};
+
+function showView(viewName, categoryKey){
+  // Hide all views
+  document.querySelectorAll('.view-container').forEach(function(v){ v.classList.remove('active'); });
+  // Hide all sections
+  document.querySelectorAll('.section').forEach(function(s){ s.style.display=''; });
+
+  var bc = document.getElementById('breadcrumb');
+  var catView = document.getElementById('categoryView');
+  var dashView = document.getElementById('dashboardView');
+
+  if(viewName==='home'){
+    dashView.classList.add('active');
+    bc.style.display='none';
+    catView.classList.remove('active');
+    // Update mobile tab
+    document.querySelectorAll('.mobile-tabbar a').forEach(function(a){ a.classList.remove('active'); });
+    var homeTab = document.querySelector('.mobile-tabbar a[data-nav="home"]');
+    if(homeTab) homeTab.classList.add('active');
+    window.location.hash = 'home';
+  } else if(viewName==='category' && categoryKey){
+    var cat = CATEGORIES[categoryKey];
+    if(!cat) return;
+    // Build category page
+    var grid = document.getElementById('categoryContent');
+    var h = '';
+    cat.sections.forEach(function(sid){
+      var sec = document.getElementById(sid);
+      var title = sec ? (sec.querySelector('.section-header h2')||{}).textContent || sid : sid;
+      var desc = sec ? (sec.querySelector('.section-header p')||{}).textContent || '' : '';
+      var insight = (typeof INSIGHTS!=='undefined' && INSIGHTS[sid]) ? INSIGHTS[sid].summary.substring(0,60)+'...' : '';
+      h += '<div class="cat-card" onclick="navigateTo(\'section\',\''+sid+'\')">';
+      h += '<div class="cat-icon" style="font-size:28px">'+cat.icon+'</div>';
+      h += '<div class="cat-name">'+title+'</div>';
+      if(insight) h += '<div class="cat-desc" style="font-size:11px;color:var(--text2)">'+insight+'</div>';
+      h += '<div class="cat-arrow" style="opacity:1;position:static;margin-top:6px">查看详情 →</div>';
+      h += '</div>';
+    });
+    grid.innerHTML = h;
+    catView.classList.add('active');
+    dashView.classList.remove('active');
+    bc.style.display='block';
+    bc.innerHTML='<a onclick="navigateTo(\'home\')">🏠 首页</a> <span>›</span> '+cat.icon+' '+cat.name;
+    window.location.hash = 'category-'+categoryKey;
+    document.querySelectorAll('.mobile-tabbar a').forEach(function(a){ a.classList.remove('active'); });
+    var catTab = document.querySelector('.mobile-tabbar a[data-nav="category"]');
+    if(catTab) catTab.classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  } else if(viewName==='section' && categoryKey){
+    // Navigate to section: scroll to it + open detail
+    var sec = document.getElementById(categoryKey);
+    if(sec){
+      dashView.classList.add('active');
+      catView.classList.remove('active');
+      bc.style.display='none';
+      sec.scrollIntoView({behavior:'smooth',block:'start'});
+      // Auto-open detail after short delay
+      setTimeout(function(){ if(typeof openDetail==='function') openDetail(categoryKey); }, 400);
+      window.location.hash = categoryKey;
+    }
+  }
+}
+
+function navigateTo(view, key){
+  showView(view, key);
+}
+
+// Handle back/forward browser buttons
+window.addEventListener('hashchange', function(){
+  var hash = window.location.hash.replace('#','');
+  if(!hash || hash==='home'){
+    showView('home');
+  } else if(hash.startsWith('category-')){
+    showView('category', hash.replace('category-',''));
+  } else {
+    // Direct section hash — show home + scroll to section
+    showView('home');
+    var sec = document.getElementById(hash);
+    if(sec){ setTimeout(function(){ sec.scrollIntoView({behavior:'smooth'}); }, 200); }
+  }
+});
+
+// Make category cards on dashboard clickable
+document.addEventListener('DOMContentLoaded', function(){
+  // Convert existing nav clicks to category navigation
+  document.querySelectorAll('.nav-section a').forEach(function(a){
+    a.addEventListener('click', function(e){
+      // Default smooth scroll behavior is fine for now
+    });
+  });
+});
+
+// FAB scroll visibility
+window.addEventListener('scroll', function(){
+  var fab = document.getElementById('fabTop');
+  if(!fab) return;
+  if(window.scrollY > 600){ fab.classList.add('visible'); }
+  else { fab.classList.remove('visible'); }
+});
+
 // Initialize
 startBannerRotation();
 fetchRSSNews();
 fetchWeather();
+showView('home');
 // Note: renderAllPicks() called at end of daily_data.js after PICKS data loads
 setInterval(fetchRSSNews, 1800000); // refresh RSS every 30 min
 
