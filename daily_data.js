@@ -325,8 +325,9 @@ var DAILY_QUIZ = {
 };
 
 // Trigger renders (functions defined in index.html)
-if(typeof renderAllPicks === 'function') renderAllPicks();
-if(typeof renderBriefing === 'function') renderBriefing();
-// Set version (defined above, but DOM only ready after index.html)
+// Set version first (before any render calls that might fail)
 var vel = document.getElementById('siteVersion');
 if(vel) vel.textContent = SITE_VERSION;
+// Trigger renders
+if(typeof renderAllPicks === 'function') renderAllPicks();
+if(typeof renderBriefing === 'function') renderBriefing();
