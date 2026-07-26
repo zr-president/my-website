@@ -891,9 +891,7 @@ if(typeof DAILY_DATA!=='undefined'&&DAILY_DATA.update_time){
 } else {
   document.getElementById('lastUpdate').textContent='最后更新：'+new Date().toLocaleString('zh-CN');
 }
-if(typeof SITE_VERSION!=='undefined'){
-  document.getElementById('siteVersion').textContent = SITE_VERSION;
-}
+// siteVersion set after daily_data.js loads
 
 // ===== RSS Feed (offline-only, reliable) =====
 function fetchRSSNews(){
