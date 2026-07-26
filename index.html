@@ -627,11 +627,51 @@ if(typeof DAILY_DATA !== 'undefined' && DAILY_DATA.update_time){
   document.getElementById('lastUpdate').textContent = '最后更新：'+new Date().toLocaleString('zh-CN');
 }
 
+// ===== Safe Fetch with Timeout =====
+function safeFetch(url, timeoutMs){
+  timeoutMs = timeoutMs || 5000;
+  return new Promise(function(resolve, reject){
+    var controller = new AbortController();
+    var timer = setTimeout(function(){ controller.abort(); }, timeoutMs);
+    fetch(url, {signal: controller.signal})
+      .then(function(r){
+        clearTimeout(timer);
+        resolve(r);
+      })
+      .catch(function(e){
+        clearTimeout(timer);
+        reject(e);
+      });
+  });
+}
+
 // ===== RSS Feed for News Section =====
 function fetchRSSNews(){
-  // Try rss2json API to get 36kr news
+  // Use daily_data.js as primary source (reliable, updated daily by cron)
+  var newsEl = document.getElementById('rssNewsFeed');
+  if(!newsEl) return;
+
+  function renderOffline(){
+    if(typeof DAILY_DATA !== 'undefined' && DAILY_DATA.news_headlines){
+      var html = '';
+      DAILY_DATA.news_headlines.forEach(function(item){
+        html += '<div style="padding:6px 0;border-bottom:1px solid var(--border);font-size:12px">';
+        html += '📰 <a href="'+item.url+'" target="_blank" style="color:var(--accent);text-decoration:none">'+item.title+'</a>';
+        html += ' <span style="color:var(--text3);font-size:10px">'+item.source+'</span>';
+        html += '</div>';
+      });
+      newsEl.innerHTML = html + '<p style="font-size:10px;color:var(--text3);margin-top:4px">📋 每日更新 · 下次更新明天8:57</p>';
+    } else {
+      newsEl.innerHTML = '<p style="font-size:12px;color:var(--text3)">📡 加载中...请稍候刷新页面</p>';
+    }
+  }
+
+  // Show offline data immediately
+  renderOffline();
+
+  // Try to fetch live RSS as enhancement (non-blocking, with timeout)
   var rssUrl = 'https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent('https://36kr.com/feed');
-  fetch(rssUrl).then(function(r){return r.json();}).then(function(data){
+  safeFetch(rssUrl, 4000).then(function(r){return r.json();}).then(function(data){
     if(data && data.items && data.items.length > 0){
       var headlines = data.items.slice(0,5);
       var html = '';
@@ -641,36 +681,36 @@ function fetchRSSNews(){
         html += ' <span style="color:var(--text3);font-size:10px">'+new Date(item.pubDate).toLocaleDateString('zh-CN')+'</span>';
         html += '</div>';
       });
-      var newsEl = document.getElementById('rssNewsFeed');
-      if(newsEl) newsEl.innerHTML = html + '<p style="font-size:10px;color:var(--text3);margin-top:4px">📡 实时数据来自36氪RSS · 每30分钟更新</p>';
+      if(newsEl) newsEl.innerHTML = html + '<p style="font-size:10px;color:var(--text3);margin-top:4px">📡 实时数据 · 每30分钟刷新</p>';
     }
   }).catch(function(){
-    // Fallback to daily_data
-    var newsEl = document.getElementById('rssNewsFeed');
-    if(newsEl && typeof DAILY_DATA !== 'undefined' && DAILY_DATA.news_headlines){
-      var html = '';
-      DAILY_DATA.news_headlines.forEach(function(item){
-        html += '<div style="padding:6px 0;border-bottom:1px solid var(--border);font-size:12px">';
-        html += '📰 <a href="'+item.url+'" target="_blank" style="color:var(--accent);text-decoration:none">'+item.title+'</a>';
-        html += ' <span style="color:var(--text3);font-size:10px">'+item.source+'</span>';
-        html += '</div>';
-      });
-      newsEl.innerHTML = html + '<p style="font-size:10px;color:var(--text3);margin-top:4px">📋 离线数据 · 今早8:57更新</p>';
-    }
+    // Already showing offline data, nothing to do
   });
 }
 
 // ===== Weather Fetch for Travel Section =====
 function fetchWeather(){
-  fetch('https://api.open-meteo.com/v1/forecast?latitude=23.13&longitude=113.26&current=temperature_2m,relative_humidity_2m,weather_code&daily=temperature_2m_max,temperature_2m_min,weather_code&timezone=Asia/Shanghai&forecast_days=3')
+  var weatherEl = document.getElementById('travelWeather');
+  if(!weatherEl) return;
+
+  function renderFallback(){
+    if(typeof DAILY_DATA !== 'undefined' && DAILY_DATA.weather_summary){
+      weatherEl.innerHTML = '<div class="info-item"><div class="num">'+DAILY_DATA.weather_summary+'</div><div class="label">每日天气（今早更新）</div></div>';
+    }
+  }
+
+  // Show fallback immediately
+  renderFallback();
+
+  // Try live weather with timeout
+  safeFetch('https://api.open-meteo.com/v1/forecast?latitude=23.13&longitude=113.26&current=temperature_2m,relative_humidity_2m,weather_code&daily=temperature_2m_max,temperature_2m_min,weather_code&timezone=Asia/Shanghai&forecast_days=3', 5000)
   .then(function(r){return r.json();}).then(function(data){
-    var weatherEl = document.getElementById('travelWeather');
     if(!weatherEl) return;
     var codes = {0:'☀️ 晴',1:'🌤️ 大部晴',2:'⛅ 多云',3:'☁️ 阴',45:'🌫️ 雾',51:'🌧️ 小雨',61:'🌧️ 中雨',80:'🌦️ 阵雨',95:'⛈️ 雷暴'};
     var w = data.current;
     var wcode = codes[w.weather_code] || '🌤️';
     var html = '<div style="display:flex;gap:8px;flex-wrap:wrap">';
-    html += '<div class="info-item"><div class="num">'+w.temperature_2m+'°C</div><div class="label">广州现在 '+wcode+'</div></div>';
+    html += '<div class="info-item"><div class="num">'+w.temperature_2m+'°C</div><div class="label">广州现在 '+wcode+' 湿度'+w.relative_humidity_2m+'%</div></div>';
     if(data.daily){
       var days = ['今天','明天','后天'];
       for(var i=0; i<Math.min(3,data.daily.time.length); i++){
@@ -678,17 +718,10 @@ function fetchWeather(){
         html += '<div class="info-item"><div class="num">'+data.daily.temperature_2m_max[i]+'°/'+data.daily.temperature_2m_min[i]+'°</div><div class="label">'+days[i]+' '+dc+'</div></div>';
       }
     }
-    html += '</div><p style="font-size:10px;color:var(--text3);margin-top:4px">🌤️ 实时天气数据 · 更新于'+new Date().toLocaleTimeString('zh-CN')+'</p>';
+    html += '</div><p style="font-size:10px;color:var(--text3);margin-top:4px">🌤️ 实时天气 · '+new Date().toLocaleTimeString('zh-CN')+'</p>';
     weatherEl.innerHTML = html;
-    // Also update DAILY_DATA fallback
-    if(typeof DAILY_DATA !== 'undefined'){
-      DAILY_DATA.weather_summary = '广州 '+w.temperature_2m+'°C · '+wcode+' · 湿度'+w.relative_humidity_2m+'%';
-    }
   }).catch(function(){
-    var weatherEl = document.getElementById('travelWeather');
-    if(weatherEl && typeof DAILY_DATA !== 'undefined'){
-      weatherEl.innerHTML = '<div class="info-item"><div class="num">'+DAILY_DATA.weather_summary+'</div><div class="label">离线天气（今早更新）</div></div>';
-    }
+    // Already showing fallback
   });
 }
 
