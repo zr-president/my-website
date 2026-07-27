@@ -381,7 +381,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <!-- Category Navigation Cards -->
 <div id="homeCategoryGrid"></div>
 
-<section id="music-player" class="section" data-search="音乐 播放 听歌 在线"><div class="section-header"><h2>🎧 在线音乐</h2><p>每日推荐 · 多平台播放 · <span onclick=\"renderMusicPlayer(true)\" style=\"color:var(--accent);cursor:pointer;font-size:11px;text-decoration:underline\">🔄 换一批</span></p></div>
+<section id="music-player" class="section" data-search="音乐 播放 听歌 在线"><div class="section-header"><h2>🎧 在线音乐</h2><p>每日推荐 · 多平台播放 · <button onclick=\"renderMusicPlayer()\" style=\"padding:2px 8px;border:1px solid var(--border);border-radius:10px;background:var(--bg);cursor:pointer;font-size:10px;color:var(--accent)\">🔄 换一批</button></p></div>
 <div id="musicPlayerContent" class="card" style="padding:14px 16px"><p style="font-size:12px;color:var(--text3)">🎵 加载播放列表...</p></div></section>
 
 <section id="daily-quiz" class="section" data-search="每日一练 练习 题目 面试 SQL 题库"><div class="section-header"><h2>📝 每日一练</h2><p>首页展示3道 · 共<span id="quizTotalCount">0</span>题</p></div>
@@ -1180,11 +1180,12 @@ function showAllQuiz(){
 }
 // ===== Music Player (QQ Music) =====
 var musicPool = [];
-function renderMusicPlayer(shuffle){
+function renderMusicPlayer(){
   var el=document.getElementById('musicPlayerContent');
   if(!el) return;
   if(typeof PICKS==='undefined'||!PICKS.music){ el.innerHTML='<p style=\"font-size:12px;color:var(--text3)\">🎵 等待每日更新...</p>'; return; }
-  if(musicPool.length===0 || shuffle){
+  // Build large pool once, then paginate
+  if(musicPool.length===0){
     musicPool = PICKS.music.slice();
     var extra = [
       {title:'李荣浩 — 年少有为', desc:'华语流行 · 叙事感极强的都市情歌'},
@@ -1194,11 +1195,18 @@ function renderMusicPlayer(shuffle){
       {title:'米津玄师 — Lemon', desc:'J-Pop · 日剧《非自然死亡》主题曲'},
       {title:'Daft Punk — Get Lucky', desc:'电子/Funk · 格莱美年度制作'},
       {title:'FKJ — Tadow', desc:'Neo-Soul · 与Masego的即兴神作'},
-      {title:'方大同 — Love Song', desc:'华语R&B · 经典永不过时'}
+      {title:'方大同 — Love Song', desc:'华语R&B · 经典永不过时'},
+      {title:'YOASOBI — 夜に駆ける', desc:'J-Pop · 2026全球热播'},
+      {title:'李荣浩 — 麻雀', desc:'华语流行 · 平凡生活的力量'},
+      {title:'告五人 — 爱人错过', desc:'独立摇滚 · 错过比相遇更刻骨'}
     ];
-    musicPool = musicPool.concat(extra).sort(function(){return Math.random()-0.5;});
+    musicPool = musicPool.concat(extra);
   }
-  var display = musicPool.slice(0, 6);
+  // Paginate: 6 per page, rotate through pool
+  var perPage=6, offset=(pageState.music*perPage)%musicPool.length;
+  var display=musicPool.slice(offset,offset+perPage);
+  if(display.length<perPage) display=display.concat(musicPool.slice(0,perPage-display.length));
+  pageState.music++;
   var h='<div style=\"display:flex;gap:12px;overflow-x:auto;padding-bottom:4px\">';
   display.forEach(function(song, i){
     var enc=encodeURIComponent(song.title);
@@ -1501,6 +1509,9 @@ window.addEventListener('scroll', function(){
 });
 
 // ===== Daily Briefing (safe: event delegation) =====
+// ===== Pagination state for "换一批" =====
+var pageState = { briefing:0, music:0, quiz:0 };
+
 function renderBriefing(){
   var container = document.getElementById('dailyBriefing');
   if(!container) return;
@@ -1509,9 +1520,13 @@ function renderBriefing(){
   if(dateEl) dateEl.textContent = DAILY_BRIEFING.date;
   var content = document.getElementById('briefingContent');
   if(!content) return;
+  // Sort by priority, then rotate pages
+  var pool = DAILY_BRIEFING.highlights.slice().sort(function(a,b){return a.priority-b.priority;});
+  var perPage = 5, offset = (pageState.briefing * perPage) % pool.length;
+  var items = pool.slice(offset, offset+perPage);
+  if(items.length < perPage) items = items.concat(pool.slice(0, perPage-items.length));
+  pageState.briefing++;
   var h='';
-  // Shuffle for variety
-  var items = DAILY_BRIEFING.highlights.slice().sort(function(){return Math.random()-0.5;});
   items.forEach(function(item, i){
     var bc = item.priority===1?'var(--red)':item.priority===2?'var(--accent)':item.priority===3?'var(--orange)':'var(--border)';
     h+='<div class="briefing-item" data-link="'+item.link.replace('#','')+'" data-deep="'+(item.deepLink||'')+'" style="background:var(--card);border-left:3px solid '+bc+';border-radius:8px;padding:10px 14px;transition:.15s;cursor:pointer">';
