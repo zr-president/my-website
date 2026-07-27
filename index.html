@@ -422,6 +422,13 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div id="sectionView" class="view-container">
 <div class="section-detail-header"><button class="back-btn" onclick="goBackFromSection()">←</button><div><h2 id="sectionDetailTitle"></h2><p id="sectionDetailSub"></p></div></div>
 <div id="sectionDetailContent"></div>
+<div class="card" style="margin-top:14px;padding:12px 14px" id="sectionQueryBox">
+<div style="font-size:11px;color:var(--text3);margin-bottom:6px">🤖 AI智能查询 · 输入名称获取整合分析+推荐建议</div>
+<div style="display:flex;gap:6px">
+<input type="text" id="sectionQueryInput" placeholder="输入关键词查询..." style="flex:1;padding:8px 10px;border:1px solid var(--border);border-radius:6px;font-size:12px;font-family:inherit;background:var(--bg);color:var(--text);outline:none" onkeydown="if(event.key==='Enter')doSectionQuery()">
+<button onclick="doSectionQuery()" style="padding:8px 14px;background:var(--accent);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:12px;white-space:nowrap">🔍 查询</button>
+</div>
+</div>
 </div>
 
 <button class="fab-top" id="fabTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="回到顶部">↑</button>
@@ -1258,6 +1265,7 @@ function showView(viewName, categoryKey){
     window.scrollTo({top:0,behavior:'smooth'});
   } else if(viewName==='section-detail' && categoryKey){
     // Full-page section detail view
+    setCurrentSection(categoryKey);
     var secEl = document.getElementById(categoryKey);
     var title = '';
     if(secEl){
@@ -1298,6 +1306,54 @@ function showView(viewName, categoryKey){
     bc.innerHTML='<a onclick=\"navigateTo(\'home\')\">🏠 首页</a> <span>›</span> '+title;
     window.location.hash = categoryKey;
     window.scrollTo({top:0,behavior:'smooth'});
+  }
+}
+
+// ===== AI Smart Query per Section =====
+var currentSectionId = null;
+var QUERY_PROMPTS = {
+  anime: '分析动漫《{q}》的剧情、制作、口碑、追番价值，结合2026年最新动态给出是否推荐',
+  novel: '分析小说《{q}》的类型、阅读体验、与类似作品对比，给出阅读推荐和适合人群',
+  music: '分析艺人/专辑《{q}》的音乐风格、代表作品、影响力和推荐理由',
+  gaming: '分析游戏《{q}》的类型、玩法亮点、Steam评价、性价比、是否值得入手',
+  car: '对比分析车型《{q}》的续航/价格/配置/竞品，给出购车建议',
+  travel: '分析旅游目的地《{q}》的最佳季节、路线推荐、预算参考、避坑指南',
+  learning: '分析学习主题《{q}》的核心知识点、入门路径、推荐资源和学习建议',
+  beer: '分析酒款《{q}》的风格、口感、品鉴笔记、购买建议和搭配推荐',
+  stock: '分析股票/基金《{q}》的基本面、近期走势、机构观点和投资风险',
+  career: '分析岗位《{q}》的招聘趋势、技能要求、薪资范围和求职建议',
+  house: '分析城市/区域《{q}》的房价走势、政策环境、购房租房建议',
+  diet: '分析食材/食谱《{q}》的营养价值、健康功效、适合人群和食用建议',
+  fitness: '分析训练动作/方法《{q}》的正确姿势、训练效果、注意事项',
+  fashion: '分析穿搭风格/单品《{q}》的搭配技巧、适合体型、购买建议'
+};
+
+function doSectionQuery(){
+  var input = document.getElementById('sectionQueryInput');
+  var q = (input?input.value:'').trim();
+  if(!q) return;
+  var sectionId = currentSectionId || 'learning';
+  var template = QUERY_PROMPTS[sectionId] || '分析《{q}》的相关信息，给出详细分析和建议';
+  var prompt = template.replace('{q}', q);
+  var url = 'https://www.perplexity.ai/search?q=' + encodeURIComponent(prompt);
+  window.open(url, '_blank');
+  if(input) input.value = '';
+}
+
+function setCurrentSection(sectionId){
+  currentSectionId = sectionId;
+  var box = document.getElementById('sectionQueryBox');
+  if(box){
+    var placeholderMap = {
+      anime:'输入动漫名称...', novel:'输入小说名称...', music:'输入艺人/专辑...',
+      gaming:'输入游戏名称...', car:'输入车型名称...', travel:'输入旅游目的地...',
+      learning:'输入学习主题...', beer:'输入酒款/鸡尾酒名称...', stock:'输入股票/基金代码...',
+      career:'输入岗位名称...', house:'输入城市/区域...', diet:'输入食材/食谱...',
+      fitness:'输入训练动作/方法...', fashion:'输入穿搭风格/单品...'
+    };
+    var ph = placeholderMap[sectionId] || '输入关键词查询...';
+    var input = document.getElementById('sectionQueryInput');
+    if(input) input.placeholder = ph;
   }
 }
 
