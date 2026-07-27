@@ -1,0 +1,53 @@
+name: 快速每日更新
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '57 0 * * *'  # 每天8:57 AM 北京时间
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 更新版本号和日期
+        run: |
+          # Bump version
+          CURRENT=$(grep "SITE_VERSION" daily_data.js | head -1 | grep -oP '\d+\.\d+\.\d+')
+          if [ -z "$CURRENT" ]; then CURRENT="1.1.1"; fi
+          IFS='.' read -r MAJOR MINOR PATCH <<< "$CURRENT"
+          PATCH=$((PATCH + 1))
+          if [ $PATCH -gt 9 ]; then PATCH=0; MINOR=$((MINOR + 1)); fi
+          if [ $MINOR -gt 9 ]; then MINOR=0; MAJOR=$((MAJOR + 1)); fi
+          NEW="$MAJOR.$MINOR.$PATCH"
+          sed -i "s/SITE_VERSION = \"$CURRENT\"/SITE_VERSION = \"$NEW\"/" daily_data.js
+
+          # Update date
+          TODAY=$(TZ='Asia/Shanghai' date '+%Y年%m月%d日')
+          ISO_DATE=$(TZ='Asia/Shanghai' date '+%Y-%m-%d')
+          sed -i "s/\"update_date\": \"[^\"]*\"/\"update_date\": \"$TODAY\"/" daily_data.js
+          sed -i "s/\"update_time\": \"[^\"]*\"/\"update_time\": \"${ISO_DATE}T08:57:00+08:00\"/" daily_data.js
+
+          # Update OPTIMIZATION_LOG date
+          sed -i "s/date: \"[^\"]*\"/date: \"$ISO_DATE\"/" daily_data.js
+
+          # Update WEBSITE_GUIDE date
+          sed -i "s/updated: \"[^\"]*\"/updated: \"$ISO_DATE\"/" daily_data.js
+
+          # Bump streak_days in OPTIMIZATION_LOG
+          STREAK=$(grep "streak_days:" daily_data.js | head -1 | grep -oP '\d+')
+          NEW_STREAK=$((STREAK + 1))
+          sed -i "s/streak_days: $STREAK/streak_days: $NEW_STREAK/" daily_data.js
+
+          echo "Updated to version $NEW, date $TODAY"
+
+      - name: 提交并推送
+        run: |
+          git config user.name "Auto Update Bot"
+          git config user.email "bot@auto-update.local"
+          git add daily_data.js
+          git commit -m "v$(grep SITE_VERSION daily_data.js | head -1 | grep -oP '\d+\.\d+\.\d+') 快速自动更新 $(TZ='Asia/Shanghai' date '+%Y-%m-%d')" || echo "No changes"
+          git push

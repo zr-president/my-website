@@ -1585,17 +1585,21 @@ function checkUpdateStatus(){
 // Auto-check on load (runs after daily_data.js loads)
 setTimeout(function(){ checkUpdateStatus(); }, 1500);
 
-// Manual refresh
+// Manual refresh — opens GitHub Actions to trigger real update
 function manualRefresh(){
-  checkUpdateStatus();
-  var now = new Date();
-  document.getElementById('dailyMsg').textContent = '🔄 已刷新 · '+now.toLocaleTimeString('zh-CN');
-  document.getElementById('lastUpdate').textContent = '手动刷新：'+now.toLocaleString('zh-CN');
+  var isUpdated = checkUpdateStatus();
+  if(isUpdated){
+    document.getElementById('dailyMsg').textContent = '✅ 今日已更新 · 点击按钮可强制刷新';
+  } else {
+    document.getElementById('dailyMsg').textContent = '⏳ 跳转至GitHub Actions触发更新...';
+    // Open GitHub Actions workflow trigger page
+    window.open('https://github.com/zr-president/my-website/actions/workflows/quick-update.yml', '_blank');
+  }
 }
 
 </script>
 
 <script src="detail_content.js"></script>
-<script src="daily_data.js?v=1.1.1"></script>
+<script src="daily_data.js?v=1.1.2"></script>
 </body>
 </html>
