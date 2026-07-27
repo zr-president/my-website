@@ -1179,48 +1179,43 @@ function showAllQuiz(){
   }
 }
 // ===== Music Player (QQ Music) =====
-var musicPool = [];
 function renderMusicPlayer(){
   var el=document.getElementById('musicPlayerContent');
   if(!el) return;
   if(typeof PICKS==='undefined'||!PICKS.music){ el.innerHTML='<p style=\"font-size:12px;color:var(--text3)\">🎵 等待每日更新...</p>'; return; }
-  // Build large pool once, then paginate
-  if(musicPool.length===0){
-    musicPool = PICKS.music.slice();
-    var extra = [
-      {title:'李荣浩 — 年少有为', desc:'华语流行 · 叙事感极强的都市情歌'},
-      {title:'告五人 — 带我去找夜生活', desc:'独立摇滚 · 青春不眠的躁动与浪漫'},
-      {title:'周兴哲 — 怎么了', desc:'华语R&B · 情感细腻的疗伤系情歌'},
-      {title:'草东没有派对 — 山海', desc:'独立摇滚 · 呐喊式的后青春寓言'},
-      {title:'米津玄师 — Lemon', desc:'J-Pop · 日剧《非自然死亡》主题曲'},
-      {title:'Daft Punk — Get Lucky', desc:'电子/Funk · 格莱美年度制作'},
-      {title:'FKJ — Tadow', desc:'Neo-Soul · 与Masego的即兴神作'},
-      {title:'方大同 — Love Song', desc:'华语R&B · 经典永不过时'},
-      {title:'YOASOBI — 夜に駆ける', desc:'J-Pop · 2026全球热播'},
-      {title:'李荣浩 — 麻雀', desc:'华语流行 · 平凡生活的力量'},
-      {title:'告五人 — 爱人错过', desc:'独立摇滚 · 错过比相遇更刻骨'}
-    ];
-    musicPool = musicPool.concat(extra);
+  // Build pool from PICKS + extras (once per session)
+  var key='music_pool_v2';
+  var pool=null;
+  try{ pool=JSON.parse(sessionStorage.getItem(key)); }catch(e){}
+  if(!pool||pool.length===0){
+    pool=PICKS.music.slice();
+    var ex=[{title:'李荣浩 — 年少有为',desc:'华语流行 · 叙事感极强的都市情歌'},{title:'告五人 — 带我去找夜生活',desc:'独立摇滚 · 青春不眠的躁动与浪漫'},{title:'周兴哲 — 怎么了',desc:'华语R&B · 情感细腻的疗伤系情歌'},{title:'草东没有派对 — 山海',desc:'独立摇滚 · 呐喊式的后青春寓言'},{title:'米津玄师 — Lemon',desc:'J-Pop · 《非自然死亡》主题曲'},{title:'Daft Punk — Get Lucky',desc:'电子/Funk · 格莱美年度制作'},{title:'FKJ — Tadow',desc:'Neo-Soul · 即兴演奏神作'},{title:'方大同 — Love Song',desc:'华语R&B · 经典永不过时'},{title:'YOASOBI — 夜に駆ける',desc:'J-Pop · 全球热播'},{title:'李荣浩 — 麻雀',desc:'华语流行 · 平凡生活的力量'},{title:'告五人 — 爱人错过',desc:'独立摇滚 · 错过比相遇更刻骨'}];
+    pool=pool.concat(ex);
+    sessionStorage.setItem(key,JSON.stringify(pool));
   }
-  // Paginate: 6 per page, rotate through pool
-  var perPage=6, offset=(pageState.music*perPage)%musicPool.length;
-  var display=musicPool.slice(offset,offset+perPage);
-  if(display.length<perPage) display=display.concat(musicPool.slice(0,perPage-display.length));
-  pageState.music++;
+  // Pagination
+  var pg=parseInt(sessionStorage.getItem('music_page')||'0');
+  var perPage=6, total=pool.length, pages=Math.ceil(total/perPage);
+  var offset=(pg*perPage)%total;
+  var items=pool.slice(offset,offset+perPage);
+  if(items.length<perPage) items=items.concat(pool.slice(0,perPage-items.length));
+  // Advance page for next click
+  sessionStorage.setItem('music_page',String((pg+1)%pages));
+  // Render
   var h='<div style=\"display:flex;gap:12px;overflow-x:auto;padding-bottom:4px\">';
-  display.forEach(function(song, i){
-    var enc=encodeURIComponent(song.title);
+  items.forEach(function(s,i){
+    var e=encodeURIComponent(s.title);
     h+='<div style=\"min-width:180px;flex-shrink:0;background:var(--bg);border-radius:8px;padding:12px;text-align:center\">';
     h+='<div style=\"font-size:22px;margin-bottom:6px\">'+['🎵','🎶','🎧','🎼','🎤','🎹'][i]+'</div>';
-    h+='<div class=\"pick-title\" style=\"margin-bottom:2px;font-size:11px\">'+song.title+'</div>';
-    h+='<div class=\"pick-desc\" style=\"font-size:10px\">'+song.desc+'</div>';
+    h+='<div class=\"pick-title\" style=\"margin-bottom:2px;font-size:11px\">'+s.title+'</div>';
+    h+='<div class=\"pick-desc\" style=\"font-size:10px\">'+s.desc+'</div>';
     h+='<div style=\"display:flex;gap:4px;justify-content:center;margin-top:8px\">';
-    h+='<a href=\"https://y.qq.com/portal/search.html#page=1&t=song&w='+enc+'\" target=\"_blank\" style=\"padding:4px 8px;background:#1ecc94;color:#fff;border-radius:10px;text-decoration:none;font-size:10px\">QQ</a>';
-    h+='<a href=\"https://music.163.com/#/search/m/?s='+enc+'\" target=\"_blank\" style=\"padding:4px 8px;background:#ec4141;color:#fff;border-radius:10px;text-decoration:none;font-size:10px\">网易云</a>';
-    h+='<a href=\"https://www.kugou.com/yy/html/search.html#searchType=song&searchKeyWord='+enc+'\" target=\"_blank\" style=\"padding:4px 8px;background:#2c8cf0;color:#fff;border-radius:10px;text-decoration:none;font-size:10px\">酷狗</a>';
+    h+='<a href=\"https://y.qq.com/portal/search.html#page=1&t=song&w='+e+'\" target=\"_blank\" style=\"padding:4px 8px;background:#1ecc94;color:#fff;border-radius:10px;text-decoration:none;font-size:10px\">QQ</a>';
+    h+='<a href=\"https://music.163.com/#/search/m/?s='+e+'\" target=\"_blank\" style=\"padding:4px 8px;background:#ec4141;color:#fff;border-radius:10px;text-decoration:none;font-size:10px\">网易云</a>';
+    h+='<a href=\"https://www.kugou.com/yy/html/search.html#searchType=song&searchKeyWord='+e+'\" target=\"_blank\" style=\"padding:4px 8px;background:#2c8cf0;color:#fff;border-radius:10px;text-decoration:none;font-size:10px\">酷狗</a>';
     h+='</div></div>';
   });
-  h+='</div><p style=\"font-size:10px;color:var(--text3);margin-top:8px\">🎧 QQ/网易云/酷狗 · 🔄换一批随机推荐 · 每日8:57更新</p>';
+  h+='</div><p style=\"font-size:10px;color:var(--text3);margin-top:8px\">🎧 第'+(pg+1)+'/'+pages+'页 · 🔄换一批 · 共'+total+'首精选</p>';
   el.innerHTML=h;
 }
 
