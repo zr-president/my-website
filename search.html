@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>知识库搜索 | 钟锐个人数字空间</title>
+<style>
+:root{--bg:#f5f6f8;--bg2:#eef0f4;--card:#fff;--text:#1a1a2e;--text2:#555;--text3:#888;--accent:#4f46e5;--border:#e5e7eb;--green:#059669;--font:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.7;min-height:100vh;padding:40px 20px}
+.container{max-width:800px;margin:0 auto}
+h1{font-size:24px;margin-bottom:4px}
+.sub{font-size:12px;color:var(--text3);margin-bottom:20px}
+.search-box{display:flex;gap:8px;margin-bottom:8px}
+.search-box input{flex:1;padding:12px 16px;border:2px solid var(--border);border-radius:10px;font-size:16px;font-family:inherit;outline:none;transition:.2s}
+.search-box input:focus{border-color:var(--accent)}
+.search-box button{padding:12px 24px;background:var(--accent);color:#fff;border:none;border-radius:10px;cursor:pointer;font-size:16px;font-weight:600}
+.stats{font-size:11px;color:var(--text3);margin-bottom:12px}
+.result{border:1px solid var(--border);border-radius:8px;padding:14px 16px;margin-bottom:8px;background:var(--card);transition:.15s}
+.result:hover{border-color:var(--accent)}
+.result .section-tag{display:inline-block;font-size:10px;padding:2px 8px;border-radius:8px;background:var(--accent);color:#fff;margin-right:6px}
+.result .info{font-size:13px;margin-top:4px;color:var(--text2)}
+.result .score{font-size:10px;color:var(--text3);float:right}
+.loading{text-align:center;padding:40px;color:var(--text3)}
+.back-link{display:inline-block;margin-top:20px;color:var(--accent);text-decoration:none;font-size:13px}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>📚 知识库搜索</h1>
+<p class="sub">已收录 <span id="kbCount">0</span> 条知识 · 覆盖15个板块 · <a href="index.html" class="back-link">← 返回主页</a></p>
+<div class="search-box">
+<input type="text" id="searchInput" placeholder="输入关键词搜索（如：周杰伦、七龙珠、Python...）" onkeydown="if(event.key==='Enter')doSearch()" autofocus>
+<button onclick="doSearch()">🔍 搜索</button>
+</div>
+<div class="stats" id="stats"></div>
+<div id="results"></div>
+</div>
+
+<script src="knowledge_index.js"></script>
+<script>
+var KB_TOTAL = 0;
+window.addEventListener('DOMContentLoaded', function(){
+  if(typeof KNOWLEDGE_INDEX !== 'undefined'){
+    KB_TOTAL = KNOWLEDGE_INDEX.length;
+    document.getElementById('kbCount').textContent = KB_TOTAL;
+  }
+});
+
+function doSearch(){
+  var q = document.getElementById('searchInput').value.trim();
+  if(!q) return;
+  if(typeof KNOWLEDGE_INDEX === 'undefined'){
+    document.getElementById('results').innerHTML = '<div class="loading">知识库加载失败，请刷新页面重试</div>';
+    return;
+  }
+  var qLower = q.toLowerCase();
+  var scored = [];
+  KNOWLEDGE_INDEX.forEach(function(entry){
+    var kw = entry.keyword.toLowerCase(), info = entry.info.toLowerCase(), score = 0;
+    if(kw === qLower) score = 100;
+    else if(qLower.indexOf(kw) >= 0) score = 80;
+    else if(kw.indexOf(qLower) >= 0) score = 70;
+    else if(info.indexOf(qLower) >= 0) score = 60;
+    else if(qLower.length >= 3){
+      var m = 0;
+      for(var i = 0; i < qLower.length; i++){ if(kw.indexOf(qLower[i]) >= 0 || info.indexOf(qLower[i]) >= 0) m++; }
+      if(m >= Math.max(2, qLower.length * 0.6)) score = m * 3;
+    }
+    if(score > 0) scored.push({score:score, keyword:entry.keyword, section:entry.section, info:entry.info});
+  });
+  scored.sort(function(a,b){return b.score - a.score});
+
+  var html = '';
+  if(scored.length === 0){
+    html = '<div class="loading">📭 未找到"' + q + '"的相关结果<br><a href="https://www.perplexity.ai/search?q=' + encodeURIComponent(q) + '" target="_blank">🤖 AI分析 →</a></div>';
+  } else {
+    document.getElementById('stats').textContent = '找到 ' + scored.length + ' 条结果（共' + KB_TOTAL + '条）';
+    var display = scored.slice(0, 30);
+    display.forEach(function(r){
+      html += '<div class="result"><span class="section-tag">' + r.section + '</span><strong>' + r.keyword + '</strong><span class="score">匹配度:' + r.score + '</span><div class="info">' + r.info + '</div></div>';
+    });
+    if(scored.length > 30) html += '<p style="color:var(--text3);text-align:center">... 还有 ' + (scored.length - 30) + ' 条结果</p>';
+  }
+  document.getElementById('results').innerHTML = html;
+}
+</script>
+</body>
+</html>
