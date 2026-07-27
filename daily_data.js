@@ -247,7 +247,7 @@ var OPTIMIZATION_LOG = {
     {id:17, cat:"设计优化", title:"板块详情增加返回顶部快捷导航", desc:"长内容页面一键回到顶部", priority:"P2", status:"已完成"},
     {id:18, cat:"内容补充", title:"健身区增加视频教程链接", desc:"嵌入YouTube/B站健身教学视频", priority:"P2", status:"已完成"},
     {id:19, cat:"功能增强", title:"优化移动端分类卡片响应式布局", desc:"手机端2列→1列自适应", priority:"P2", status:"已完成"},
-    {id:20, cat:"功能增强", title:"各板块增加B站视频教程链接", desc:"动漫/健身/调酒/旅游/穿搭/AI学习的B站相关视频", priority:"P1", status:"实施中"},
+    {id:20, cat:"功能增强", title:"各板块增加B站视频教程链接", desc:"动漫/健身/调酒/旅游/穿搭/AI学习的B站相关视频", priority:"P1", status:"已完成"},
     {id:21, cat:"内容补充", title:"在线音乐换一批支持真正分页轮换", desc:"sessionStorage持久化翻页状态+14首大曲库", priority:"P1", status:"已完成"},
     {id:22, cat:"设计优化", title:"待办系统增加优先级色标+截止时间+分类下拉", desc:"P0红/P1橙/P2蓝/P3灰+⏰deadline标注", priority:"P2", status:"已完成"}
   ]

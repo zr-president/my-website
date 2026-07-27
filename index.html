@@ -1095,7 +1095,9 @@ function renderSectionPicks(sectionId){
       var tag = hasLink ? 'a' : 'div';
       h+='<'+tag+' '+(hasLink?'href="'+p.link+'" target="_blank" ':'')+'class="pick-card">';
       h+='<span class="pick-icon">'+p.icon+'</span>';
-      h+='<span class="pick-info"><div class="pick-title">'+p.title+'</div><div class="pick-desc">'+p.desc+'</div></span>';
+      h+='<span class="pick-info"><div class="pick-title">'+p.title+'</div><div class="pick-desc">'+p.desc+'</div>';
+      if(p.video) h+='<a href=\"'+p.video+'\" target=\"_blank\" onclick=\"event.stopPropagation()\" style=\"display:inline-block;margin-top:3px;font-size:10px;color:#fb7299;text-decoration:none\">📺 B站视频 →</a>';
+      h+='</span>';
       if(hasLink) h+='<span class="pick-arrow">→</span>';
       h+='</'+tag+'>';
     });
@@ -1329,6 +1331,7 @@ function showView(viewName, categoryKey){
         detailHtml += '<div class=\"pick-card\">';
         detailHtml += '<span class=\"pick-icon\">'+p.icon+'</span>';
         detailHtml += '<span class=\"pick-info\"><div class=\"pick-title\">'+p.title+'</div><div class=\"pick-desc\">'+p.desc+'</div></span>';
+        if(p.video) detailHtml += '<a href=\"'+p.video+'\" target=\"_blank\" style=\"font-size:10px;color:#fb7299;text-decoration:none\">📺 B站 →</a>';
         if(hasLink) detailHtml += '<a href=\"'+p.link+'\" target=\"_blank\" class=\"pick-arrow\" style=\"text-decoration:none\">→</a>';
         detailHtml += '</div>';
       });
