@@ -391,7 +391,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <!-- Category Navigation Cards -->
 <div id="homeCategoryGrid"></div>
 
-<section id="music-player" class="section" data-search="音乐 播放 听歌 QQ音乐 在线"><div class="section-header"><h2>🎧 在线音乐</h2><p>每日推荐 · QQ音乐在线播放</p></div>
+<section id="music-player" class="section" data-search="音乐 播放 听歌 在线"><div class="section-header"><h2>🎧 在线音乐</h2><p>每日推荐 · 多平台播放 · <a onclick=\"renderMusicPlayer(true)\" style=\"color:var(--accent);cursor:pointer;font-size:11px\">🔄 换一批</a></p></div>
 <div id="musicPlayerContent" class="card" style="padding:14px 16px"><p style="font-size:12px;color:var(--text3)">🎵 加载播放列表...</p></div></section>
 
 <section id="daily-quiz" class="section" data-search="每日一练 练习 题目 面试 SQL 题库"><div class="section-header"><h2>📝 每日一练</h2><p>首页展示3道 · 共<span id="quizTotalCount">0</span>题</p></div>
@@ -1176,22 +1176,40 @@ function showAllQuiz(){
   }
 }
 // ===== Music Player (QQ Music) =====
-function renderMusicPlayer(){
+var musicPool = [];
+function renderMusicPlayer(shuffle){
   var el=document.getElementById('musicPlayerContent');
   if(!el) return;
-  var picks=(typeof PICKS!=='undefined'&&PICKS.music)?PICKS.music:[];
-  if(picks.length===0){ el.innerHTML='<p style=\"font-size:12px;color:var(--text3)\">🎵 暂无推荐，等待每日更新...</p>'; return; }
+  if(typeof PICKS==='undefined'||!PICKS.music){ el.innerHTML='<p style=\"font-size:12px;color:var(--text3)\">🎵 等待每日更新...</p>'; return; }
+  if(musicPool.length===0 || shuffle){
+    musicPool = PICKS.music.slice();
+    var extra = [
+      {title:'李荣浩 — 年少有为', desc:'华语流行 · 叙事感极强的都市情歌'},
+      {title:'告五人 — 带我去找夜生活', desc:'独立摇滚 · 青春不眠的躁动与浪漫'},
+      {title:'周兴哲 — 怎么了', desc:'华语R&B · 情感细腻的疗伤系情歌'},
+      {title:'草东没有派对 — 山海', desc:'独立摇滚 · 呐喊式的后青春寓言'},
+      {title:'米津玄师 — Lemon', desc:'J-Pop · 日剧《非自然死亡》主题曲'},
+      {title:'Daft Punk — Get Lucky', desc:'电子/Funk · 格莱美年度制作'},
+      {title:'FKJ — Tadow', desc:'Neo-Soul · 与Masego的即兴神作'},
+      {title:'方大同 — Love Song', desc:'华语R&B · 经典永不过时'}
+    ];
+    musicPool = musicPool.concat(extra).sort(function(){return Math.random()-0.5;});
+  }
+  var display = musicPool.slice(0, 6);
   var h='<div style=\"display:flex;gap:12px;overflow-x:auto;padding-bottom:4px\">';
-  picks.forEach(function(song, i){
-    var qqUrl='https://y.qq.com/portal/search.html#page=1&t=song&w='+encodeURIComponent(song.title);
-    h+='<div style=\"min-width:200px;flex-shrink:0;background:var(--bg);border-radius:8px;padding:12px;text-align:center\">';
-    h+='<div style=\"font-size:28px;margin-bottom:6px\">'+(i===0?'🎵':'🎶')+'</div>';
-    h+='<div class=\"pick-title\" style=\"margin-bottom:2px\">'+song.title+'</div>';
-    h+='<div class=\"pick-desc\">'+song.desc+'</div>';
-    h+='<a href=\"'+qqUrl+'\" target=\"_blank\" style=\"display:inline-block;margin-top:8px;padding:6px 14px;background:var(--accent);color:#fff;border-radius:14px;text-decoration:none;font-size:11px\">▶ QQ音乐播放</a>';
-    h+='</div>';
+  display.forEach(function(song, i){
+    var enc=encodeURIComponent(song.title);
+    h+='<div style=\"min-width:180px;flex-shrink:0;background:var(--bg);border-radius:8px;padding:12px;text-align:center\">';
+    h+='<div style=\"font-size:22px;margin-bottom:6px\">'+['🎵','🎶','🎧','🎼','🎤','🎹'][i]+'</div>';
+    h+='<div class=\"pick-title\" style=\"margin-bottom:2px;font-size:11px\">'+song.title+'</div>';
+    h+='<div class=\"pick-desc\" style=\"font-size:10px\">'+song.desc+'</div>';
+    h+='<div style=\"display:flex;gap:4px;justify-content:center;margin-top:8px\">';
+    h+='<a href=\"https://y.qq.com/portal/search.html#page=1&t=song&w='+enc+'\" target=\"_blank\" style=\"padding:4px 8px;background:#1ecc94;color:#fff;border-radius:10px;text-decoration:none;font-size:10px\">QQ</a>';
+    h+='<a href=\"https://music.163.com/#/search/m/?s='+enc+'\" target=\"_blank\" style=\"padding:4px 8px;background:#ec4141;color:#fff;border-radius:10px;text-decoration:none;font-size:10px\">网易云</a>';
+    h+='<a href=\"https://www.kugou.com/yy/html/search.html#searchType=song&searchKeyWord='+enc+'\" target=\"_blank\" style=\"padding:4px 8px;background:#2c8cf0;color:#fff;border-radius:10px;text-decoration:none;font-size:10px\">酷狗</a>';
+    h+='</div></div>';
   });
-  h+='</div><p style=\"font-size:10px;color:var(--text3);margin-top:8px\">🎧 点击"QQ音乐播放"在新标签页打开 · 每日8:57更新推荐</p>';
+  h+='</div><p style=\"font-size:10px;color:var(--text3);margin-top:8px\">🎧 QQ/网易云/酷狗 · 🔄换一批随机推荐 · 每日8:57更新</p>';
   el.innerHTML=h;
 }
 
