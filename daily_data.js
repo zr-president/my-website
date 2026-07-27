@@ -317,13 +317,5 @@ var DAILY_QUIZ = {
     }
   ]};
 
-// Trigger renders (functions defined in index.html)
-// Set version first (before any render calls that might fail)
-var vel = document.getElementById('siteVersion');
-if(vel) vel.textContent = SITE_VERSION;
-// Trigger renders
-if(typeof renderAllPicks === 'function') renderAllPicks();
-if(typeof renderBriefing === 'function') renderBriefing();
-if(typeof renderQuiz === 'function') renderQuiz();
-if(typeof renderMusicPlayer === 'function') renderMusicPlayer();
-if(typeof checkUpdateStatus === 'function') checkUpdateStatus();
+// Centralized data-ready dispatcher—one failure won't block others
+if(typeof onDataReady === 'function') onDataReady();

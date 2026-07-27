@@ -1450,6 +1450,18 @@ window.addEventListener('hashchange', function(){
   }
 });
 
+// ===== Centralized Data-Ready Dispatcher =====
+// Called by daily_data.js after all data loads. Each renderer is isolated.
+function onDataReady(){
+  var tasks = [
+    function(){ var e=document.getElementById('siteVersion'); if(e) e.textContent = (typeof SITE_VERSION!=='undefined'?SITE_VERSION:''); },
+    renderAllPicks, renderBriefing, renderQuiz, renderMusicPlayer, checkUpdateStatus
+  ];
+  tasks.forEach(function(fn){
+    try { if(typeof fn==='function') fn(); } catch(e){ console.error('Init error:', e.message); }
+  });
+}
+
 // FAB scroll visibility
 window.addEventListener('scroll', function(){
   var fab = document.getElementById('fabTop');
@@ -1502,13 +1514,11 @@ document.addEventListener('click', function(e){
   }
 });
 
-// Initialize
-startBannerRotation();
-fetchRSSNews();
-fetchWeather();
-showView('home');
-// Note: renderAllPicks() called at end of daily_data.js after PICKS data loads
-setInterval(fetchRSSNews, 1800000);
+// Init with error isolation
+[startBannerRotation,fetchRSSNews,fetchWeather,function(){showView('home');}].forEach(function(fn){
+  try{fn()}catch(e){console.error("Init:",e.message)}
+});
+setInterval(fetchRSSNews,1800000);
 
 // ===== Update Status Check =====
 function checkUpdateStatus(){
