@@ -1562,14 +1562,6 @@ function manualRefresh(){
   document.getElementById('lastUpdate').textContent = '手动刷新：'+now.toLocaleString('zh-CN');
 }
 
-function showToast(msg){
-  var t = document.createElement('div');
-  t.textContent = msg;
-  t.style.cssText = 'position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1a1a2e;color:#fff;padding:12px 24px;border-radius:8px;font-size:13px;z-index:9999;opacity:0;transition:opacity .3s;max-width:500px;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.2)';
-  document.body.appendChild(t);
-  setTimeout(function(){t.style.opacity='1';}, 10);
-  setTimeout(function(){t.style.opacity='0';setTimeout(function(){t.remove();},300);}, 4000);
-};
 </script>
 
 <script src="detail_content.js"></script>
