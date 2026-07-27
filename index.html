@@ -81,9 +81,6 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 .card.clickable:hover::after{opacity:1}
 .card h3{font-size:14px;font-weight:600;margin-bottom:3px}
 .card p{font-size:12px;color:var(--text2)}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:7px}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
-@media(max-width:900px){.grid2,.grid3{grid-template-columns:1fr}}
 
 .tag{display:inline-block;padding:3px 10px;border-radius:14px;font-size:10px;font-weight:600;background:var(--accent-light);color:var(--accent);margin:1px 3px}
 .callout{padding:11px 14px;border-radius:6px;font-size:12px;margin:7px 0;line-height:1.75}
@@ -117,7 +114,6 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 .resource-card .rc-icon{font-size:20px;flex-shrink:0;width:28px;text-align:center}
 .resource-card .rc-info{flex:1}.resource-card .rc-name{font-weight:600;font-size:12px}.resource-card .rc-desc{font-size:10px;color:var(--text3)}
 .resource-card .rc-link{font-size:10px;color:var(--accent);white-space:nowrap;text-decoration:none}
-.star{color:#f59e0b;font-size:13px;letter-spacing:1px}
 .step-num{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:10px;font-weight:700;margin-right:5px}
 .rec-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
 .rec-item{border:1px solid var(--border);border-radius:8px;padding:14px;background:var(--card);transition:.15s}
@@ -140,10 +136,6 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 
 /* Insight callout */
 .insight-box{background:linear-gradient(135deg,var(--accent-light),var(--bg2));border-left:3px solid var(--accent);border-radius:8px;padding:10px 14px;margin-bottom:7px;font-size:12px;line-height:1.8}
-.insight-box .insight-summary{color:var(--text);margin-bottom:4px}
-.insight-box .insight-trend{font-size:11px;color:var(--text2)}
-.insight-box .insight-trend span{font-weight:600}
-.insight-box .insight-tip{font-size:11px;color:var(--accent);font-weight:600;margin-top:4px}
 
 /* Detail overlay */
 .detail-overlay{position:fixed;top:0;left:0;width:100%;height:100%;z-index:500;pointer-events:none}
@@ -192,11 +184,6 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 .section-detail-header .back-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
 .section-detail-header h2{font-size:20px;font-weight:700;margin:0}
 .section-detail-header p{font-size:11px;color:var(--text3);margin:0}
-.quick-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:20px}
-.quick-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px}
-.quick-card .qc-title{font-size:11px;color:var(--text3);margin-bottom:4px}
-.quick-card .qc-value{font-size:18px;font-weight:700}
-
 /* Breadcrumb */
 .breadcrumb{padding:8px 0;margin-bottom:14px;font-size:12px;color:var(--text3)}
 .breadcrumb a{color:var(--accent);text-decoration:none;cursor:pointer}
@@ -558,14 +545,13 @@ function sendMessage(){
   var i=document.getElementById('chatInput'),m=i.value.trim();
   if(!m)return;
   var ms=document.getElementById('chatMessages');
-  ms.innerHTML+='<div class="chat-msg user"><div class="bubble">'+esc(m)+'</div></div>';
+  ms.innerHTML+='<div class="chat-msg user"><div class="bubble">'+escHtml(m)+'</div></div>';
   setTimeout(function(){
     ms.innerHTML+='<div class="chat-msg assistant"><div class="bubble">'+rep(m)+'</div></div>';
     ms.scrollTop=ms.scrollHeight;
   },500);
   i.value='';ms.scrollTop=ms.scrollHeight;
 }
-function esc(t){var d=document.createElement('div');d.textContent=t;return d.innerHTML;}
 function rep(m){
   var l=m.toLowerCase();
   if(l.indexOf('简历')!==-1||l.indexOf('面试')!==-1)return'💼 求职中心有完整攻略+详细简历。BOSS直聘/猎聘/脉脉直达。最佳投递：周二-周四9:30-11:00。';
@@ -1464,16 +1450,6 @@ window.addEventListener('hashchange', function(){
   }
 });
 
-// Make category cards on dashboard clickable
-document.addEventListener('DOMContentLoaded', function(){
-  // Convert existing nav clicks to category navigation
-  document.querySelectorAll('.nav-section a').forEach(function(a){
-    a.addEventListener('click', function(e){
-      // Default smooth scroll behavior is fine for now
-    });
-  });
-});
-
 // FAB scroll visibility
 window.addEventListener('scroll', function(){
   var fab = document.getElementById('fabTop');
@@ -1514,14 +1490,14 @@ document.addEventListener('click', function(e){
   var item = target.closest('.briefing-item');
   if(item){
     var link = item.getAttribute('data-link');
-    if(link && typeof navigateTo === 'function') navigateTo('section', link);
+    if(link && typeof navigateTo === 'function') navigateTo('section-detail', link);
     return;
   }
-  // Handle briefing-action clicks (same behavior, stop bubbling already handled)
+  // Handle briefing-action clicks
   var action = target.closest('.briefing-action');
   if(action){
     var link = action.getAttribute('data-link');
-    if(link && typeof navigateTo === 'function') navigateTo('section', link);
+    if(link && typeof navigateTo === 'function') navigateTo('section-detail', link);
     return;
   }
 });
