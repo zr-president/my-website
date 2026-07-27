@@ -489,12 +489,11 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeDetail(
 // Nav — navigate to section detail (not scroll)
 document.querySelectorAll('.nav-section a').forEach(function(a){
   a.addEventListener('click',function(e){
-    e.preventDefault();
     var href = a.getAttribute('href');
-    if(href && href.startsWith('#')){
-      var sid = href.replace('#','');
-      if(typeof navigateTo === 'function') navigateTo('section-detail', sid);
-    }
+    if(!href || !href.startsWith('#')) return; // allow external links (search.html etc)
+    e.preventDefault();
+    var sid = href.replace('#','');
+    if(typeof navigateTo === 'function') navigateTo('section-detail', sid);
   });
 });
 window.addEventListener('scroll',function(){
