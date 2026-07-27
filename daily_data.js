@@ -48,13 +48,13 @@ var DAILY_BRIEFING = {
 
 var PICKS = {
   anime: [
-    {icon:"🥇", title:"BLEACH 千年血战篇-祸进谭-", desc:"20年史诗最终章 · 全员卍解决战", link:"https://www.bilibili.com/search?keyword=BLEACH+千年血战"},
-    {icon:"🥈", title:"BLACK TORCH", desc:"忍者x妖怪新锐战斗 · 本季最大黑马", link:"https://www.bilibili.com/search?keyword=BLACK+TORCH"},
-    {icon:"🥉", title:"Re:从零开始 S4", desc:"死亡回归智斗巅峰 · 8月开播在即", link:"https://www.bilibili.com/search?keyword=Re从零开始的异世界生活"},
-    {icon:"🏅", title:"无职转生 S3", desc:"异世界天花板续作 · 冒险新篇章", link:"https://www.bilibili.com/search?keyword=无职转生+第三季"},
-    {icon:"🎖️", title:"幼女战记 S2", desc:"军事诡计博弈 · 谭雅的理性战场的再临", link:"https://www.bilibili.com/search?keyword=幼女战记+第二季"},
-    {icon:"🔮", title:"攻壳机动队 (Science SARU版)", desc:"科幻经典全新演绎 · 赛博朋克美学巅峰", link:"https://www.bilibili.com/search?keyword=攻壳机动队+2026"},
-    {icon:"📖", title:"二十世纪电气目录", desc:"京都动画最新力作 · 明治浪漫谭", link:"https://www.bilibili.com/search?keyword=二十世纪电气目录"}
+    {icon:"🥇", title:"BLEACH 千年血战篇-祸进谭-", desc:"20年史诗最终章 · 全员卍解决战", link:"https://www.bilibili.com/search?keyword=BLEACH+千年血战", video:"https://search.bilibili.com/all?keyword=BLEACH%E5%8D%83%E5%B9%B4%E8%A1%80%E6%88%98"},
+    {icon:"🥈", title:"BLACK TORCH", desc:"忍者x妖怪新锐战斗 · 本季最大黑马", link:"https://www.bilibili.com/search?keyword=BLACK+TORCH", video:"https://search.bilibili.com/all?keyword=BLACK+TORCH"},
+    {icon:"🥉", title:"Re:从零开始 S4", desc:"死亡回归智斗巅峰 · 8月开播在即", link:"https://www.bilibili.com/search?keyword=Re从零开始的异世界生活", video:"https://search.bilibili.com/all?keyword=Re%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E5%BC%82%E4%B8%96%E7%95%8C%E7%94%9F%E6%B4%BB"},
+    {icon:"🏅", title:"无职转生 S3", desc:"异世界天花板续作 · 冒险新篇章", link:"https://www.bilibili.com/search?keyword=无职转生+第三季", video:"https://search.bilibili.com/all?keyword=%E6%97%A0%E8%81%8C%E8%BD%AC%E7%94%9F+%E7%AC%AC%E4%B8%89%E5%AD%A3"},
+    {icon:"🎖️", title:"幼女战记 S2", desc:"军事诡计博弈 · 谭雅的理性战场的再临", link:"https://www.bilibili.com/search?keyword=幼女战记+第二季", video:"https://search.bilibili.com/all?keyword=%E5%B9%BC%E5%A5%B3%E6%88%98%E8%AE%B0+%E7%AC%AC%E4%BA%8C%E5%AD%A3"},
+    {icon:"🔮", title:"攻壳机动队 (Science SARU版)", desc:"科幻经典全新演绎 · 赛博朋克美学巅峰", link:"https://www.bilibili.com/search?keyword=攻壳机动队+2026", video:"https://search.bilibili.com/all?keyword=%E6%94%BB%E6%AE%BC%E6%9C%BA%E5%8A%A8%E9%98%9F+2026"},
+    {icon:"📖", title:"二十世纪电气目录", desc:"京都动画最新力作 · 明治浪漫谭", link:"https://www.bilibili.com/search?keyword=二十世纪电气目录", video:"https://search.bilibili.com/all?keyword=%E4%BA%8C%E5%8D%81%E4%B8%96%E7%BA%AA%E7%94%B5%E6%B0%94%E7%9B%AE%E5%BD%95"}
   ],
   music: [
     {icon:"🎹", title:"FKJ — Changes Rising", desc:"Neo-Soul新单曲 · 9月新专预热中", link:"https://music.163.com/#/search/m/?s=FKJ+Changes+Rising"},
@@ -76,9 +76,9 @@ var PICKS = {
     {icon:"🌌", title:"夜无疆", desc:"辰东新作 · 东方玄幻世界观再构建", link:"https://www.qidian.com/soushu/夜无疆.html"}
   ],
   beer: [
-    {icon:"🍺", title:"保拉纳酵母小麦", desc:"德式小麦入门首选 · 香蕉丁香", link:"https://s.taobao.com/search?q=保拉纳小麦啤酒"},
-    {icon:"🍻", title:"酿酒狗朋克IPA", desc:"IPA探险第一站 · 热带水果轰炸", link:"https://s.taobao.com/search?q=酿酒狗朋克IPA"},
-    {icon:"🍸", title:"金汤力 Gin & Tonic", desc:"周日微醺推荐 · 金酒+汤力水+柠檬", link:"https://s.taobao.com/search?q=哥顿金酒"}
+    {icon:"🍺", title:"保拉纳酵母小麦", desc:"德式小麦入门首选 · 香蕉丁香", link:"https://s.taobao.com/search?q=保拉纳小麦啤酒", video:"https://search.bilibili.com/all?keyword=%E7%B2%BE%E9%85%BF%E5%95%A4%E9%85%92%E5%85%A5%E9%97%A8%E6%8E%A8%E8%8D%90"},
+    {icon:"🍻", title:"酿酒狗朋克IPA", desc:"IPA探险第一站 · 热带水果轰炸", link:"https://s.taobao.com/search?q=酿酒狗朋克IPA", video:"https://search.bilibili.com/all?keyword=IPA%E5%95%A4%E9%85%92%E5%93%81%E9%89%B4"},
+    {icon:"🍸", title:"金汤力 Gin & Tonic", desc:"周日微醺推荐 · 金酒+汤力水+柠檬", link:"https://s.taobao.com/search?q=哥顿金酒", video:"https://search.bilibili.com/all?keyword=%E5%A8%81%E5%A3%AB%E5%BF%8C%E9%85%B8%E9%B8%A1%E5%B0%BE%E9%85%92%E6%95%99%E7%A8%8B"}
   ],
   gaming: [
     {icon:"⚔️", title:"只狼：影逝二度", desc:"拼刀战斗巅峰 · 等秋促史低¥134", link:"https://store.steampowered.com/app/814380/"},
@@ -88,20 +88,20 @@ var PICKS = {
     {icon:"🐾", title:"幻兽帕鲁 (Palworld)", desc:"正式版压倒性好评 · 生存建造新高度", link:"https://store.steampowered.com/app/1623730/"}
   ],
   learning: [
-    {icon:"🤖", title:"AI Agent开发入门", desc:"LangGraph+MCP协议 · 2026核心竞争力", link:"#"},
-    {icon:"🗺️", title:"2026 AI学习路线图", desc:"零代码到Agent开发者的6步路径", link:"#"},
+    {icon:"🤖", title:"AI Agent开发入门", desc:"LangGraph+MCP协议 · 2026核心竞争力", link:"#", video:"https://search.bilibili.com/all?keyword=AI+Agent%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B"},
+    {icon:"🗺️", title:"2026 AI学习路线图", desc:"零代码到Agent开发者的6步路径", link:"#", video:"https://search.bilibili.com/all?keyword=AI%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%E5%9B%BE2026"},
     {icon:"📊", title:"今日AI热点深度追踪", desc:"韩国9500亿芯片计划+谷歌FCF转负", link:"#"},
     {icon:"🔗", title:"LangChain实战指南", desc:"从链式调用到Agent编排 · 配套Notebook", link:"#"},
     {icon:"✍️", title:"Prompt Engineering进阶", desc:"Few-shot链式推理+结构化输出 · 2026必修", link:"#"},
     {icon:"📈", title:"数据分析SQL实战题库", desc:"牛客+LeetCode高频 · 面试必刷50题", link:"#"}
   ],
   fashion: [
-    {icon:"👕", title:"日系简约日常", desc:"重磅白T+黑色九分裤+帆布鞋", link:"https://s.taobao.com/search?q=重磅棉落肩T恤男250g"},
-    {icon:"👔", title:"韩系都市通勤", desc:"牛津纺衬衫+卡其裤+德训鞋", link:"https://s.taobao.com/search?q=优衣库牛津纺衬衫男浅蓝"}
+    {icon:"👕", title:"日系简约日常", desc:"重磅白T+黑色九分裤+帆布鞋", link:"https://s.taobao.com/search?q=重磅棉落肩T恤男250g", video:"https://search.bilibili.com/all?keyword=%E7%94%B7%E7%94%9F%E5%A4%8F%E5%AD%A3%E7%A9%BF%E6%90%AD170cm"},
+    {icon:"👔", title:"韩系都市通勤", desc:"牛津纺衬衫+卡其裤+德训鞋", link:"https://s.taobao.com/search?q=优衣库牛津纺衬衫男浅蓝", video:"https://search.bilibili.com/all?keyword=%E7%94%B7%E7%94%9F%E9%9F%A9%E7%B3%BB%E9%80%9A%E5%8B%A4%E7%A9%BF%E6%90%AD"}
   ],
   fitness: [
-    {icon:"💪", title:"周一：胸+三头", desc:"俯卧撑→钻石俯卧撑→拉力绳推胸", link:"#"},
-    {icon:"📈", title:"12周渐进训练计划", desc:"每周5练 · 适应→增肌→强化", link:"#"}
+    {icon:"💪", title:"周一：胸+三头", desc:"俯卧撑→钻石俯卧撑→拉力绳推胸", link:"#", video:"https://search.bilibili.com/all?keyword=%E5%AE%B6%E5%BA%AD%E5%81%A5%E8%BA%AB%E4%BF%AF%E5%8D%A7%E6%92%91%E6%95%99%E7%A8%8B%E6%8B%89%E5%8A%9B%E7%BB%B3"},
+    {icon:"📈", title:"12周渐进训练计划", desc:"每周5练 · 适应→增肌→强化", link:"#", video:"https://search.bilibili.com/all?keyword=12%E5%91%A8%E5%A2%9E%E8%82%8C%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92"}
   ],
   diet: [
     {icon:"🥗", title:"午餐：鸡胸肉+糙米饭", desc:"650kcal · 42g蛋白质", link:"#"},
@@ -146,7 +146,7 @@ var INSIGHTS = {
   anime: {
     summary: '2026年7月夏季新番呈现"终章盛宴"格局——超70部作品中，续作/IP重启占据绝对话语权。最值得关注的3部：(1) **《BLEACH 千年血战篇-祸进谭-》**(7/25开播)，20年动画史诗的最终章，护廷十三队vs友哈巴赫亲卫队的全员决战，战斗密度与作画规格均为本季天花板；(2) **《BLACK TORCH》**(7/4开播)，忍者x妖怪x现代都市的新锐少年战斗番，由100studio制作、MAPPA系核心班底参与，高速忍术对决+暗黑妖怪美学，被视为本季唯一能填补咒术/怪兽8号空窗期的原创战斗IP；(3) **《Re:从零开始的异世界生活 S4》**(8/12开播)，时间回溯式死亡轮回机制持续进化，心理博弈与战术推演并重。此外，无职转生S3、幼女战记S2、攻壳机动队(Science SARU版)、京都动画新作《二十世纪电气目录》构成强大的第二梯队。需注意：咒术回战死灭回游后篇、怪兽8号完结篇、坂本日常S2均不在本季（分别在制作中/2027年），Dr.STONE已于6月25日完结——这几部用户关注的作品恰好处于集体"中场休息"期。',
     trend: '本季类型结构为"异世界奇幻续作 > 战斗热血 > 科幻经典重启 > 日常/恋爱"。(1)**异世界/奇幻续作绝对主导**——无职转生S3、Re:Zero S4、幼女战记S2三巨头同时在线，加上Skeleton Knight S2等中量级作品，奇幻覆盖率约35%；(2)**战斗热血供给出现结构性缺口**——BLEACH最终季独挑大梁，BLACK TORCH作为新人补位但体量有限，整体战斗热血占比仅约20%，远低于用户偏好(40%)。咒术/怪兽8号/坂本日常三大战斗IP恰好同步进入间歇期，说明2026夏是一个"蓄力季"而非"爆发季"；(3)**智斗博弈元素集中在Re:Zero和幼女战记**——前者靠死亡回归的信息不对称递进推演，后者靠军事战术层级的博弈展开，合计覆盖用户偏好(25%)约七成。总结：对用户偏好而言，这是一个**战斗热血不足、奇幻溢出、智斗尚可**的非典型夏季档，需要用BLEACH+BLACK TORCH作为战斗核心，以Re:Zero/幼女战记补足博弈需求。',
-    tip: '建议本季追番三线并行：(1)**主菜**——《BLEACH 千年血战篇-祸进谭-》必须追，这是20年级别的战斗动画收官之作，队长级全员卍解+亲卫队灭却师完圣体对决的密度前所未有，满足战斗热血需求；(2)**新血**——《BLACK TORCH》作为本季唯一新锐少年战斗番，忍术x妖怪的融合体系与咒术/鬼灭的咒力x鬼怪体系异曲同工，首周就给足打戏，值得尝鲜；(3)**策略补位**——《Re:Zero S4》(8月开播)和《幼女战记 S2》覆盖智斗博弈维度，前者看486如何用死亡回归的信息差层层破局，后者看谭雅在战场上的军事诡计——两部恰好对应"个人级博弈"与"战役级策略"的不同尺度。如果时间有限，优先保证BLEACH一条线；如果喜欢奇幻调味，无职转生S3也值得一看。咒术/怪兽8号/坂本日常的死忠可以趁这个空窗期补漫画进度，等它们的续作归来时直接进入同步追番节奏。',
+    tip: '建议本季追番三线并行：(1)**主菜**——《BLEACH 千年血战篇-祸进谭-》必须追，这是20年级别的战斗动画收官之作，队长级全员卍解+亲卫队灭却师完圣体对决的密度前所未有，满足战斗热血需求；(2)**新血**——《BLACK TORCH》作为本季唯一新锐少年战斗番，忍术x妖怪的融合体系与咒术/鬼灭的咒力x鬼怪体系异曲同工，首周就给足打戏，值得尝鲜；(3)**策略补位**——《Re:Zero S4》(8月开播)和《幼女战记 S2》覆盖智斗博弈维度，前者看486如何用死亡回归的信息差层层破局，后者看谭雅在战场上的军事诡计——两部恰好对应"个人级博弈"与"战役级策略"的不同尺度。如果时间有限，优先保证BLEACH一条线；如果喜欢奇幻调味，无职转生S3也值得一看。咒术/怪兽8号/坂本日常的死忠可以趁这个空窗期补漫画进度，等它们的续作归来时直接进入同步追番节奏。 | B站搜索：每周新番推荐 → https://search.bilibili.com/all?keyword=%E6%AF%8F%E5%91%A8%E6%96%B0%E7%95%AA%E6%8E%A8%E8%8D%90',
     updated: '2026-07-27'
   },
   music: {
@@ -170,13 +170,13 @@ var INSIGHTS = {
   learning: {
     summary: '本周AI行业三大焦点：(1) 月之暗面发布全球最大开源模型Kimi K3（2.8万亿参数、100万token上下文），综合性能仅次于GPT-5.6和Claude Fable 5，计划7月27日全面开源，被业界称为继DeepSeek之后的"Kimi时刻"；(2) 微软、英伟达、Meta、谷歌等25家（后扩至50家）美国科技巨头联名签署公开信，反对美国政府限制中国开源AI模型，折射出硅谷内部在"封杀还是拥抱开源"问题上的深度撕裂；(3) DeepSeek正式启动IPO筹备，估值已达740亿美元，计划2027年登陆上交所科创板，成为全球AI领域最受瞩目的上市事件之一。',
     trend: '当前AI行业呈现三大趋势：(1) 开源与闭源之争进入白热化——中国以Kimi K3、DeepSeek V4、Qwen3.8等开源模型强势追赶，中美模型性能差距已缩至仅6%（3-5个月），美国科技巨头内部分裂为支持开放的"产业派"和维护封闭安全的"安全派"，开源生态正成为全球AI竞争的关键变量；(2) 2026年正式进入"Agent元年"——WAIC 2026上AI Agent手机（如阶跃星辰STEPX Neo、荣耀机器人手机）密集发布，多智能体编排（Multi-Agent Orchestration）成为企业落地主流架构，AI正从对话框走向真实世界的自主行动；(3) 多模态走向原生统一——从"拼接式"多模态升级为理解-生成-行动一体化的原生架构（如商汤SenseNova-U1 Pro），文本、视觉、语音在底层不再割裂。对AI产品运营从业者的影响：模型能力趋于同质化，真正的竞争壁垒正在从"选什么模型"转向"如何用Agent编排解决复杂业务场景"；开源模型的成本优势（仅为美国闭源模型的15%-20%）倒逼产品定价和商业模式重构；多模态原生能力要求运营者重新思考产品交互形态，从纯文本对话向语音+视觉+行动的多通道体验演进。',
-    tip: '三条具体建议：(1) 深度体验Kimi K3（7月27日开源后可在HuggingFace获取权重，API已可用），对比其与DeepSeek V4、GPT-5.6在相同任务上的表现差异，建立对主流模型能力的"手感"；(2) 系统学习多智能体编排框架（LangGraph的状态图编排和Anthropic的MCP协议是当前两条主流路径），Agent能力将成为2026下半年AI产品经理的核心竞争力；(3) 密切关注9月中美AI会谈进展及美国出口管制政策走向——这将直接影响开源模型的可用性边界和全球AI供应链格局，建议提前制定模型供应多元化的预案。',
+    tip: '三条具体建议：(1) 深度体验Kimi K3（7月27日开源后可在HuggingFace获取权重，API已可用），对比其与DeepSeek V4、GPT-5.6在相同任务上的表现差异，建立对主流模型能力的"手感"；(2) 系统学习多智能体编排框架（LangGraph的状态图编排和Anthropic的MCP协议是当前两条主流路径），Agent能力将成为2026下半年AI产品经理的核心竞争力；(3) 密切关注9月中美AI会谈进展及美国出口管制政策走向——这将直接影响开源模型的可用性边界和全球AI供应链格局，建议提前制定模型供应多元化的预案。 | B站搜索：AI Agent搭建教程 → https://search.bilibili.com/all?keyword=AI+Agent%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B',
     updated: '2026-07-27'
   },
   beer: {
     summary: '盛夏高温，人体对清爽、高碳酸、低苦度的饮品需求达到峰值。德式小麦啤酒（Hefeweizen）和比利时白啤（Witbier）凭借天然发酵产生的香蕉酯香与丁香酚香、柔和的麦芽甜感以及充沛的杀口感，是夏季消暑的教科书级选择——这正是你偏好的教士（Franziskaner）与福佳白（Hoegaarden）的主场。若想换换口味，金酒基鸡尾酒（金汤力、莫吉托）以草本清凉感和柑橘明亮度，同样构成夏日味觉的完美锚点。',
     trend: '2026年夏季精酿趋势呈现三个关键词：低ABV（Sessionable）、高碳酸、明亮果香。小麦啤酒（德式Hefeweizen/比利时Witbier）稳居夏季销量峰值区，清爽型Session IPA和浑浊IPA（Hazy IPA）持续上升，其中酿酒狗朋克IPA（BrewDog Punk IPA）作为入门级美式IPA代表，以热带水果香气（芒果/西柚/荔枝）和干净收口赢得广泛受众。鸡尾酒方面，金汤力（Gin & Tonic）凭借金酒的植物基调与汤力水的微苦回甘，叠加柠檬皮油脂，稳坐夏季长饮第一梯队；莫吉托（Mojito）以薄荷清凉+青柠酸爽+朗姆甜润的组合紧随其后。你的口味偏好（教士/福佳白→小麦系；皮尔森→清爽拉格）与2026夏季主流高度重合——小麦啤酒直接命中你的舒适区，朋克IPA则是从"柔和麦芽香"迈向"酒花香"最平滑的进阶跳板。',
-    tip: '夏天买精酿务必注意三点：①冷链运输——小麦啤酒和IPA对高温极为敏感，常温暴晒会迅速氧化产生湿纸板味，优先选择冷藏柜取货的渠道；②检查灌装日期——小麦啤酒最佳赏味期在出厂后3个月内，IPA则更短（2个月内），啤酒店或电商页面务必确认日期再下单；③增味小麦可尝鲜——在教士/福佳白基础上，可试保拉纳小麦（Paulaner Hefeweizen，比教士更浓郁的香蕉酯香）和艾英格小麦（Ayinger Bräu-Weisse，酵母特征更细腻优雅，被誉为"小麦啤酒中的劳斯莱斯"），两者均代表了巴伐利亚小麦啤酒的顶级水准。鸡尾酒方面，在家自制一杯金汤力无需调酒技巧：哥顿金酒（Gordon\'s）+ Fever-Tree Mediterranean汤力水+一片鲜切柠檬皮（挤油后投入），冰块加满至杯口，比例1:3即可。',
+    tip: '夏天买精酿务必注意三点：①冷链运输——小麦啤酒和IPA对高温极为敏感，常温暴晒会迅速氧化产生湿纸板味，优先选择冷藏柜取货的渠道；②检查灌装日期——小麦啤酒最佳赏味期在出厂后3个月内，IPA则更短（2个月内），啤酒店或电商页面务必确认日期再下单；③增味小麦可尝鲜——在教士/福佳白基础上，可试保拉纳小麦（Paulaner Hefeweizen，比教士更浓郁的香蕉酯香）和艾英格小麦（Ayinger Bräu-Weisse，酵母特征更细腻优雅，被誉为"小麦啤酒中的劳斯莱斯"），两者均代表了巴伐利亚小麦啤酒的顶级水准。鸡尾酒方面，在家自制一杯金汤力无需调酒技巧：哥顿金酒（Gordon\'s）+ Fever-Tree Mediterranean汤力水+一片鲜切柠檬皮（挤油后投入），冰块加满至杯口，比例1:3即可。 | B站搜索：调酒教程入门 → https://search.bilibili.com/all?keyword=%E8%B0%83%E9%85%92%E6%95%99%E7%A8%8B%E5%85%A5%E9%97%A8',
     updated: '2026-07-27'
   },
   fashion: {
@@ -188,7 +188,7 @@ var INSIGHTS = {
   fitness: {
     summary: '增肌第一阶段·适应期（第1-4周）。本周核心任务是建立神经肌肉连接，打磨复合动作模式。周一胸+三头：平板杠铃卧推、上斜哑铃卧推、绳索下压；周二背+二头：杠铃划船、高位下拉、哑铃弯举；周四肩+腹：哑铃推举、侧平举、悬垂举腿；周五腿：高杠深蹲、罗马尼亚硬拉、保加利亚分腿蹲。本周仍以中等重量（65%-75% 1RM）4组×10-12次为主，每次训练后记录RPE（自觉强度评分），为第5周进入增肌期建立数据基线。',
     trend: '170cm/59kg薄肌体型的核心策略是"渐进超负荷+热量盈余"双轨并行。训练端：每两周微增2.5kg-5kg负重或增加1组训练量，严禁跳跃式加重导致代偿；优先强化背阔肌和股四头肌这两个"视觉宽度肌群"，改善瘦高身形轮廓。饮食端：当前基础代谢约1550kcal，目标日摄入2600-2800kcal（蛋白质≥130g），碳水占55%以上，训练后30分钟内补充快碳+乳清蛋白。瘦子增肌的瓶颈从来不是训练强度，而是持续的热量正平衡——每周称重，若两周体重无增长，立即追加300kcal/日。',
-    tip: '本周重点：每次训练后即刻喝一杯香蕉乳清蛋白奶昔（1根香蕉+1勺乳清粉+300ml全脂牛奶≈420kcal/35g蛋白质），利用训练后30分钟代谢窗口最大化蛋白质合成。同时用手机录制深蹲和卧推侧面动作视频，检查杠铃轨迹是否垂直、膝盖是否内扣——适应期养成的错误模式会在增肌期被放大成伤病。',
+    tip: '本周重点：每次训练后即刻喝一杯香蕉乳清蛋白奶昔（1根香蕉+1勺乳清粉+300ml全脂牛奶≈420kcal/35g蛋白质），利用训练后30分钟代谢窗口最大化蛋白质合成。同时用手机录制深蹲和卧推侧面动作视频，检查杠铃轨迹是否垂直、膝盖是否内扣——适应期养成的错误模式会在增肌期被放大成伤病。 | B站搜索：闫帅奇家庭健身 → https://search.bilibili.com/all?keyword=%E9%97%AB%E5%B8%85%E5%A5%87%E5%AE%B6%E5%BA%AD%E5%81%A5%E8%BA%AB',
     updated: '2026-07-27'
   },
   diet: {
@@ -225,8 +225,8 @@ var INSIGHTS = {
 
 var OPTIMIZATION_LOG = {
   date: "2026-07-27",
-  total_suggestions: 19,
-  total_implemented: 17,
+  total_suggestions: 22,
+  total_implemented: 20,
   streak_days: 2,
   suggestions: [
     {id:1, cat:"设计优化", title:"首页三层路由架构(Dashboard+分类页+详情)", desc:"分类卡片网格+面包屑+FAB+Hash路由，替代长滚动", priority:"P0", status:"已完成"},
@@ -244,9 +244,12 @@ var OPTIMIZATION_LOG = {
     {id:14, cat:"内容补充", title:"全板块动态INSIGHTS分析系统", desc:"14板块每日趋势分析+热门/冷门对比+可操作建议", priority:"P0", status:"已完成"},
     {id:15, cat:"功能增强", title:"首页PICKS推荐卡片内联展示", desc:"12板块首推内容直接展示在首页，无需点击", priority:"P0", status:"已完成"},
     {id:16, cat:"数据集成", title:"AI自动抓取全球头条生成每日简报", desc:"韩国芯片计划/谷歌FCF转负等热点自动聚合", priority:"P1", status:"已完成"},
-    {id:17, cat:"设计优化", title:"板块详情增加返回顶部快捷导航", desc:"长内容页面一键回到顶部", priority:"P2", status:"待实施"},
-    {id:18, cat:"内容补充", title:"健身区增加视频教程链接", desc:"嵌入YouTube/B站健身教学视频", priority:"P2", status:"待实施"},
-    {id:19, cat:"功能增强", title:"优化移动端分类卡片响应式布局", desc:"手机端2列→1列自适应", priority:"P2", status:"待实施"}
+    {id:17, cat:"设计优化", title:"板块详情增加返回顶部快捷导航", desc:"长内容页面一键回到顶部", priority:"P2", status:"已完成"},
+    {id:18, cat:"内容补充", title:"健身区增加视频教程链接", desc:"嵌入YouTube/B站健身教学视频", priority:"P2", status:"已完成"},
+    {id:19, cat:"功能增强", title:"优化移动端分类卡片响应式布局", desc:"手机端2列→1列自适应", priority:"P2", status:"已完成"},
+    {id:20, cat:"功能增强", title:"各板块增加B站视频教程链接", desc:"动漫/健身/调酒/旅游/穿搭/AI学习的B站相关视频", priority:"P1", status:"实施中"},
+    {id:21, cat:"内容补充", title:"在线音乐换一批支持真正分页轮换", desc:"sessionStorage持久化翻页状态+14首大曲库", priority:"P1", status:"已完成"},
+    {id:22, cat:"设计优化", title:"待办系统增加优先级色标+截止时间+分类下拉", desc:"P0红/P1橙/P2蓝/P3灰+⏰deadline标注", priority:"P2", status:"已完成"}
   ]
 };
 
