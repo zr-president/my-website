@@ -381,7 +381,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <!-- Category Navigation Cards -->
 <div id="homeCategoryGrid"></div>
 
-<section id="music-player" class="section" data-search="音乐 播放 听歌 在线"><div class="section-header"><h2>🎧 在线音乐</h2><p>每日推荐 · 多平台播放 · <button onclick=\"renderMusicPlayer()\" style=\"padding:2px 8px;border:1px solid var(--border);border-radius:10px;background:var(--bg);cursor:pointer;font-size:10px;color:var(--accent)\">🔄 换一批</button></p></div>
+<section id="music-player" class="section" data-search="音乐 播放 听歌 在线"><div class="section-header"><h2>🎧 在线音乐</h2><p>每日推荐 · 多平台播放</p></div>
 <div id="musicPlayerContent" class="card" style="padding:14px 16px"><p style="font-size:12px;color:var(--text3)">🎵 加载播放列表...</p></div></section>
 
 <section id="daily-quiz" class="section" data-search="每日一练 练习 题目 面试 SQL 题库"><div class="section-header"><h2>📝 每日一练</h2><p>首页展示3道 · 共<span id="quizTotalCount">0</span>题</p></div>
@@ -1179,29 +1179,23 @@ function showAllQuiz(){
   }
 }
 // ===== Music Player (QQ Music) =====
-function renderMusicPlayer(){
+var MUSIC_POOL = [];
+function renderMusicPlayer(page){
   var el=document.getElementById('musicPlayerContent');
   if(!el) return;
-  if(typeof PICKS==='undefined'||!PICKS.music){ el.innerHTML='<p style=\"font-size:12px;color:var(--text3)\">🎵 等待每日更新...</p>'; return; }
-  // Build pool from PICKS + extras (once per session)
-  var key='music_pool_v2';
-  var pool=null;
-  try{ pool=JSON.parse(sessionStorage.getItem(key)); }catch(e){}
-  if(!pool||pool.length===0){
-    pool=PICKS.music.slice();
-    var ex=[{title:'李荣浩 — 年少有为',desc:'华语流行 · 叙事感极强的都市情歌'},{title:'告五人 — 带我去找夜生活',desc:'独立摇滚 · 青春不眠的躁动与浪漫'},{title:'周兴哲 — 怎么了',desc:'华语R&B · 情感细腻的疗伤系情歌'},{title:'草东没有派对 — 山海',desc:'独立摇滚 · 呐喊式的后青春寓言'},{title:'米津玄师 — Lemon',desc:'J-Pop · 《非自然死亡》主题曲'},{title:'Daft Punk — Get Lucky',desc:'电子/Funk · 格莱美年度制作'},{title:'FKJ — Tadow',desc:'Neo-Soul · 即兴演奏神作'},{title:'方大同 — Love Song',desc:'华语R&B · 经典永不过时'},{title:'YOASOBI — 夜に駆ける',desc:'J-Pop · 全球热播'},{title:'李荣浩 — 麻雀',desc:'华语流行 · 平凡生活的力量'},{title:'告五人 — 爱人错过',desc:'独立摇滚 · 错过比相遇更刻骨'}];
-    pool=pool.concat(ex);
-    sessionStorage.setItem(key,JSON.stringify(pool));
+  if(typeof PICKS==='undefined'||!PICKS.music){ el.innerHTML='<p style=\"font-size:12px;color:var(--text3)\">🎵 等待更新...</p>'; return; }
+  // Build pool once
+  if(MUSIC_POOL.length===0){
+    MUSIC_POOL=PICKS.music.slice();
+    var ex=[{title:'李荣浩 — 年少有为',desc:'华语流行 · 叙事感极强的都市情歌'},{title:'告五人 — 带我去找夜生活',desc:'独立摇滚 · 青春不眠躁动浪漫'},{title:'周兴哲 — 怎么了',desc:'华语R&B · 情感细腻疗伤系情歌'},{title:'草东没有派对 — 山海',desc:'独立摇滚 · 呐喊式后青春寓言'},{title:'米津玄师 — Lemon',desc:'J-Pop · 非自然死亡主题曲'},{title:'Daft Punk — Get Lucky',desc:'电子/Funk · 格莱美年度制作'},{title:'FKJ — Tadow',desc:'Neo-Soul · 即兴演奏神作'},{title:'方大同 — Love Song',desc:'华语R&B · 永不过时经典'},{title:'YOASOBI — 夜に駆ける',desc:'J-Pop · 2026全球热播'},{title:'李荣浩 — 麻雀',desc:'华语流行 · 平凡生活的力量'},{title:'告五人 — 爱人错过',desc:'独立摇滚 · 错过比相遇刻骨'}];
+    MUSIC_POOL=MUSIC_POOL.concat(ex);
   }
-  // Pagination
-  var pg=parseInt(sessionStorage.getItem('music_page')||'0');
-  var perPage=6, total=pool.length, pages=Math.ceil(total/perPage);
-  var offset=(pg*perPage)%total;
-  var items=pool.slice(offset,offset+perPage);
-  if(items.length<perPage) items=items.concat(pool.slice(0,perPage-items.length));
-  // Advance page for next click
-  sessionStorage.setItem('music_page',String((pg+1)%pages));
-  // Render
+  // Simple pagination
+  var perPage=6, total=MUSIC_POOL.length, pages=Math.ceil(total/perPage);
+  if(typeof page!=='number'||page<0) page=0;
+  var start=page*perPage;
+  var items=MUSIC_POOL.slice(start,start+perPage);
+  // Render songs
   var h='<div style=\"display:flex;gap:12px;overflow-x:auto;padding-bottom:4px\">';
   items.forEach(function(s,i){
     var e=encodeURIComponent(s.title);
@@ -1215,7 +1209,14 @@ function renderMusicPlayer(){
     h+='<a href=\"https://www.kugou.com/yy/html/search.html#searchType=song&searchKeyWord='+e+'\" target=\"_blank\" style=\"padding:4px 8px;background:#2c8cf0;color:#fff;border-radius:10px;text-decoration:none;font-size:10px\">酷狗</a>';
     h+='</div></div>';
   });
-  h+='</div><p style=\"font-size:10px;color:var(--text3);margin-top:8px\">🎧 第'+(pg+1)+'/'+pages+'页 · 🔄换一批 · 共'+total+'首精选</p>';
+  h+='</div>';
+  // Page buttons
+  h+='<div style=\"display:flex;gap:6px;justify-content:center;margin-top:8px\">';
+  h+='<span style=\"font-size:10px;color:var(--text3);align-self:center\">翻页：</span>';
+  for(var p=0;p<pages;p++){
+    h+='<button onclick=\"renderMusicPlayer('+p+')\" style=\"padding:3px 10px;border:1px solid '+(p===page?'var(--accent)':'var(--border)')+';border-radius:10px;background:'+(p===page?'var(--accent)':'var(--bg)')+';color:'+(p===page?'#fff':'var(--text2)')+';cursor:pointer;font-size:10px\">第'+(p+1)+'页</button>';
+  }
+  h+='</div><p style=\"font-size:9px;color:var(--text3);margin-top:4px\">🎧 QQ/网易云/酷狗 · 点击页码换歌 · 共'+total+'首</p>';
   el.innerHTML=h;
 }
 
