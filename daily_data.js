@@ -35,8 +35,14 @@ var DAILY_BRIEFING = {
     {priority:2, icon:"🤖", section:"AI科技", headline:"韩国9500亿美元AI芯片计划：改写全球芯片格局", summary:"三星+博通2000亿、SK+英伟达7500亿——韩国举国押注AI芯片。这会是AI时代的台积电时刻吗？", action:"AI深度解读", link:"#learning", deepLink:"https://www.perplexity.ai/search?q=韩国9500亿美元AI芯片合作计划影响"},
     {priority:3, icon:"💼", section:"财经要闻", headline:"高盛/穆迪警告AI烧钱风险：谷歌FCF历史性转负", summary:"谷歌年资本开支2050亿美元，自由现金流自2004年IPO以来首次转负。苹果不跟风AI军备反而涨15%。", action:"查看深度分析", link:"#stock", deepLink:"https://www.perplexity.ai/search?q=Google+AI+capex+free+cash+flow+negative+2026"},
     {priority:4, icon:"🏦", section:"科技金融", headline:"英伟达2500亿担保OpenAI数据中心：AI赌注再加码", summary:"英伟达洽谈为OpenAI数据中心提供史无前例的融资担保。AI基础设施竞赛已进入万亿级别。", action:"查看详情", link:"#learning", deepLink:"https://www.perplexity.ai/search?q=NVIDIA+OpenAI+data+center+financing+guarantee+2026"},
+    {priority:4, icon:"💱", section:"外汇市场", headline:"人民币兑美元中间价报6.79，央行净回笼800亿", summary:"中间价创近两周新高。央行连续三日净回笼累计2200亿，维持流动性合理充裕。中美利差收窄预期升温。", action:"查看汇率分析", link:"#stock", deepLink:"https://www.perplexity.ai/search?q=2026年7月27日人民币兑美元中间价央行操作"},
     {priority:5, icon:"🎬", section:"动漫区", headline:"周日补番推荐：BLEACH最终章+BLACK TORCH", summary:"BLEACH祸进谭全员决战继续燃爆，BLACK TORCH忍者x妖怪新锐战斗补位。周末追番正当时。", action:"查看追番指南", link:"#anime", deepLink:"https://www.perplexity.ai/search?q=BLEACH千年血战篇+BLACK+TORCH+2026夏季新番"},
-    {priority:6, icon:"🌿", section:"周末充电", headline:"周日复盘：市场恐慌中，哪些板块在默默吸金？", summary:"银行/保险高股息依旧稳健，黄金逆势拉升。周末花30分钟回顾本周操作，比盯盘更有价值。", action:"查看周报", link:"#stock", deepLink:"https://www.perplexity.ai/search?q=2026年7月A股资金流向与板块轮动"}
+    {priority:5, icon:"🍎", section:"科技动态", headline:"苹果WWDC 2026回顾：Vision Pro 2发布，AI全家桶落地", summary:"Vision Pro 2降价30%至$2,499、重量减40%。iOS 20 Apple Intelligence全面集成，Siri重大升级。", action:"查看详情", link:"#learning", deepLink:"https://www.perplexity.ai/search?q=Apple+WWDC+2026+Vision+Pro+2+AI"},
+    {priority:5, icon:"☀️", section:"生活贴士", headline:"全国多地高温预警持续：科学防暑降温指南", summary:"京津冀、长三角、川渝高温橙色预警。牢记「补水+遮阳+错峰出行」三原则，警惕热射病前兆。", action:"查看防暑指南", link:"#diet", deepLink:"https://www.perplexity.ai/search?q=2026年7月高温防暑降温科学指南"},
+    {priority:6, icon:"🌿", section:"周末充电", headline:"周日复盘：市场恐慌中，哪些板块在默默吸金？", summary:"银行/保险高股息依旧稳健，黄金逆势拉升。周末花30分钟回顾本周操作，比盯盘更有价值。", action:"查看周报", link:"#stock", deepLink:"https://www.perplexity.ai/search?q=2026年7月A股资金流向与板块轮动"},
+    {priority:6, icon:"🧠", section:"AI前沿", headline:"月之暗面Kimi K3全面开源：2.8万亿参数重塑格局", summary:"全球最大开源模型7月27日正式开源，100万token上下文。继DeepSeek之后的又一个「Kimi时刻」。", action:"AI深度解读", link:"#learning", deepLink:"https://www.perplexity.ai/search?q=Kimi+K3+开源+2.8万亿参数+2026"},
+    {priority:6, icon:"🏢", section:"AI财经", headline:"DeepSeek启动科创板IPO：估值740亿美元", summary:"中国AI独角兽正式筹备上市，计划2027年登陆上交所。AI行业从「烧钱」走向「变现」的标志事件。", action:"查看分析", link:"#stock", deepLink:"https://www.perplexity.ai/search?q=DeepSeek+IPO+科创板+估值740亿美元+2026"},
+    {priority:6, icon:"🎬", section:"影视娱乐", headline:"2026暑期档票房破80亿：国产科幻领跑", summary:"《流浪地球3》累计破35亿、《封神2》破22亿。动画电影《深海2》口碑逆袭，暑期观影指南更新。", action:"查看片单", link:"#anime", deepLink:"https://www.perplexity.ai/search?q=2026年暑期档票房排行榜"}
   ]
 };
 
@@ -44,17 +50,30 @@ var PICKS = {
   anime: [
     {icon:"🥇", title:"BLEACH 千年血战篇-祸进谭-", desc:"20年史诗最终章 · 全员卍解决战", link:"https://www.bilibili.com/search?keyword=BLEACH+千年血战"},
     {icon:"🥈", title:"BLACK TORCH", desc:"忍者x妖怪新锐战斗 · 本季最大黑马", link:"https://www.bilibili.com/search?keyword=BLACK+TORCH"},
-    {icon:"🥉", title:"Re:从零开始 S4", desc:"死亡回归智斗巅峰 · 8月开播在即", link:"https://www.bilibili.com/search?keyword=Re从零开始的异世界生活"}
+    {icon:"🥉", title:"Re:从零开始 S4", desc:"死亡回归智斗巅峰 · 8月开播在即", link:"https://www.bilibili.com/search?keyword=Re从零开始的异世界生活"},
+    {icon:"🏅", title:"无职转生 S3", desc:"异世界天花板续作 · 冒险新篇章", link:"https://www.bilibili.com/search?keyword=无职转生+第三季"},
+    {icon:"🎖️", title:"幼女战记 S2", desc:"军事诡计博弈 · 谭雅的理性战场的再临", link:"https://www.bilibili.com/search?keyword=幼女战记+第二季"},
+    {icon:"🔮", title:"攻壳机动队 (Science SARU版)", desc:"科幻经典全新演绎 · 赛博朋克美学巅峰", link:"https://www.bilibili.com/search?keyword=攻壳机动队+2026"},
+    {icon:"📖", title:"二十世纪电气目录", desc:"京都动画最新力作 · 明治浪漫谭", link:"https://www.bilibili.com/search?keyword=二十世纪电气目录"}
   ],
   music: [
     {icon:"🎹", title:"FKJ — Changes Rising", desc:"Neo-Soul新单曲 · 9月新专预热中", link:"https://music.163.com/#/search/m/?s=FKJ+Changes+Rising"},
     {icon:"🎸", title:"告五人 — 黑夜狂奔", desc:"英伦录制质感 · 华语独立流行标杆", link:"https://music.163.com/#/search/m/?s=告五人+黑夜狂奔"},
-    {icon:"🗾", title:"YOASOBI — Orion", desc:"守望先锋联动曲 · J-Pop电气化新高度", link:"https://music.163.com/#/search/m/?s=YOASOBI+Orion"}
+    {icon:"🗾", title:"YOASOBI — Orion", desc:"守望先锋联动曲 · J-Pop电气化新高度", link:"https://music.163.com/#/search/m/?s=YOASOBI+Orion"},
+    {icon:"🎤", title:"李荣浩 — 海陆风", desc:"华语雷鬼新尝试 · 巡演7月连走两城", link:"https://music.163.com/#/search/m/?s=李荣浩+海陆风"},
+    {icon:"🌊", title:"周深 — 如约", desc:"出道十二周年纪念曲 · 温暖治愈声线", link:"https://music.163.com/#/search/m/?s=周深+如约"},
+    {icon:"🍂", title:"草东没有派对 — 瓦合", desc:"华语独立摇滚标杆 · 持续长销霸榜", link:"https://music.163.com/#/search/m/?s=草东没有派对+瓦合"},
+    {icon:"🌸", title:"Fujii Kaze — 満ちてゆく", desc:"J-Pop新世代才子 · R&B x 流行融合", link:"https://music.163.com/#/search/m/?s=Fujii+Kaze+満ちてゆく"},
+    {icon:"⚡", title:"Charli XCX — Music, Fashion, Film", desc:"电子流行女王新作 · 前卫制作轰炸", link:"https://music.163.com/#/search/m/?s=Charli+XCX+Music+Fashion+Film"}
   ],
   novel: [
     {icon:"🥇", title:"剑烛大荒", desc:"乌贼新书 · 山海经修真 · 7月刚上架", link:"https://www.qidian.com/soushu/剑烛大荒.html"},
     {icon:"🥈", title:"白骨大圣", desc:"中式克系修真+民俗探案 · 500万字连载中", link:"https://www.qidian.com/soushu/白骨大圣.html"},
-    {icon:"🥉", title:"规则怪谈：孤狼玩家杀疯了", desc:"暑期黑马 · 社畜逆破怪谈世界", link:"https://www.qidian.com/soushu/规则怪谈.html"}
+    {icon:"🥉", title:"规则怪谈：孤狼玩家杀疯了", desc:"暑期黑马 · 社畜逆破怪谈世界", link:"https://www.qidian.com/soushu/规则怪谈.html"},
+    {icon:"🏅", title:"道诡异仙", desc:"中式克系修真开山之作 · 已完结经典", link:"https://www.qidian.com/soushu/道诡异仙.html"},
+    {icon:"🎖️", title:"玄鉴仙族", desc:"家族修仙群像史诗 · 均订超八万", link:"https://www.qidian.com/soushu/玄鉴仙族.html"},
+    {icon:"🌊", title:"捞尸人", desc:"南海民俗悬疑惊悚 · 地域志怪新标杆", link:"https://www.qidian.com/soushu/捞尸人.html"},
+    {icon:"🌌", title:"夜无疆", desc:"辰东新作 · 东方玄幻世界观再构建", link:"https://www.qidian.com/soushu/夜无疆.html"}
   ],
   beer: [
     {icon:"🍺", title:"保拉纳酵母小麦", desc:"德式小麦入门首选 · 香蕉丁香", link:"https://s.taobao.com/search?q=保拉纳小麦啤酒"},
@@ -64,12 +83,17 @@ var PICKS = {
   gaming: [
     {icon:"⚔️", title:"只狼：影逝二度", desc:"拼刀战斗巅峰 · 等秋促史低¥134", link:"https://store.steampowered.com/app/814380/"},
     {icon:"🐉", title:"怪物猎人：荒野", desc:"8月4日永降 · 联机狩猎最佳时机", link:"https://store.steampowered.com/app/2246340/"},
-    {icon:"🎨", title:"MECCHA CHAMELEON", desc:"涂鸦躲猫猫 · ¥36全球爆款1500万份", link:"https://store.steampowered.com/search/?term=MECCHA+CHAMELEON"}
+    {icon:"🎨", title:"MECCHA CHAMELEON", desc:"涂鸦躲猫猫 · ¥36全球爆款1500万份", link:"https://store.steampowered.com/search/?term=MECCHA+CHAMELEON"},
+    {icon:"🔥", title:"Hades 2", desc:"Roguelike神作续篇 · 夏促7折¥125入手", link:"https://store.steampowered.com/app/2402670/"},
+    {icon:"🐾", title:"幻兽帕鲁 (Palworld)", desc:"正式版压倒性好评 · 生存建造新高度", link:"https://store.steampowered.com/app/1623730/"}
   ],
   learning: [
     {icon:"🤖", title:"AI Agent开发入门", desc:"LangGraph+MCP协议 · 2026核心竞争力", link:"#"},
     {icon:"🗺️", title:"2026 AI学习路线图", desc:"零代码到Agent开发者的6步路径", link:"#"},
-    {icon:"📊", title:"今日AI热点深度追踪", desc:"韩国9500亿芯片计划+谷歌FCF转负", link:"#"}
+    {icon:"📊", title:"今日AI热点深度追踪", desc:"韩国9500亿芯片计划+谷歌FCF转负", link:"#"},
+    {icon:"🔗", title:"LangChain实战指南", desc:"从链式调用到Agent编排 · 配套Notebook", link:"#"},
+    {icon:"✍️", title:"Prompt Engineering进阶", desc:"Few-shot链式推理+结构化输出 · 2026必修", link:"#"},
+    {icon:"📈", title:"数据分析SQL实战题库", desc:"牛客+LeetCode高频 · 面试必刷50题", link:"#"}
   ],
   fashion: [
     {icon:"👕", title:"日系简约日常", desc:"重磅白T+黑色九分裤+帆布鞋", link:"https://s.taobao.com/search?q=重磅棉落肩T恤男250g"},
