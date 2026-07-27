@@ -225,7 +225,7 @@ var OPTIMIZATION_LOG = {
 };
 
 var WEBSITE_GUIDE = {
-  updated: "2026-07-26",
+  updated: "2026-07-27",
   summary: "欢迎来到钟锐的个人数字空间！这是一个持续进化的智能信息中枢，每天8:57自动更新所有内容。",
   features: [
     {icon:"🏠", title:"首页仪表盘", desc:"一屏总览所有板块精华。分类卡片快速导航、实时股市/天气/新闻一目了然。"},
