@@ -244,6 +244,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div style="display:flex;gap:8px">
 <button onclick="event.stopPropagation();manualRefresh()" id="refreshBtn" style="background:rgba(255,255,255,.2);color:#fff;border:none;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:12px;font-weight:500">🔄 刷新今日资讯</button>
 <button onclick="event.stopPropagation();refreshContent()" style="background:rgba(255,255,255,.15);color:#fff;border:none;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:12px">📋 每日推荐</button>
+<button onclick="event.stopPropagation();checkUpdateStatus()" id="updateCheckBtn" style="background:rgba(255,255,255,.2);color:#fff;border:none;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:12px;font-weight:500" title="检查今日是否已更新">🔍 自检更新</button>
 </div></div>
 
 <!-- Daily Briefing (safe: event delegation, no inline onclick) -->
@@ -1396,6 +1397,29 @@ fetchWeather();
 showView('home');
 // Note: renderAllPicks() called at end of daily_data.js after PICKS data loads
 setInterval(fetchRSSNews, 1800000);
+
+// ===== Update Status Check =====
+function checkUpdateStatus(){
+  var today = new Date();
+  var todayStr = today.getFullYear()+'年'+(today.getMonth()+1)+'月'+today.getDate()+'日';
+  var isUpdated = false;
+  if(typeof DAILY_DATA !== 'undefined' && DAILY_DATA.update_date === todayStr){
+    isUpdated = true;
+  }
+  var btn = document.getElementById('updateCheckBtn');
+  var msg = document.getElementById('dailyMsg');
+  if(isUpdated){
+    if(btn){ btn.textContent = '✅ 今日已更新'; btn.style.background = 'rgba(5,150,105,.4)'; }
+  } else {
+    if(btn){ btn.textContent = '⚠️ 点击更新'; btn.style.background = 'rgba(234,88,12,.4)'; }
+    if(msg && msg.textContent.indexOf('⚠️') < 0){
+      msg.textContent = '⚠️ 今日尚未更新 · 点击自检更新按钮或对Claude Code说"更新网站"';
+    }
+  }
+  return isUpdated;
+}
+// Auto-check on load (runs after daily_data.js loads)
+setTimeout(function(){ checkUpdateStatus(); }, 1500);
 
 // Manual refresh
 function manualRefresh(){

@@ -324,3 +324,4 @@ if(typeof renderAllPicks === 'function') renderAllPicks();
 if(typeof renderBriefing === 'function') renderBriefing();
 if(typeof renderQuiz === 'function') renderQuiz();
 if(typeof renderMusicPlayer === 'function') renderMusicPlayer();
+if(typeof checkUpdateStatus === 'function') checkUpdateStatus();
