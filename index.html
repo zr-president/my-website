@@ -251,6 +251,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
 <h2 style="font-size:15px">📡 今日要闻速览</h2>
 <span style="font-size:10px;color:var(--text3)" id="briefingDate"></span>
+<button onclick="event.stopPropagation();renderBriefing()" style="margin-left:auto;padding:3px 8px;border:1px solid var(--border);border-radius:10px;background:var(--bg);cursor:pointer;font-size:10px;color:var(--text2)">🔄 换一批</button>
 </div>
 <div id="briefingContent" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:8px"></div>
 </div>
@@ -428,6 +429,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <input type="text" id="sectionQueryInput" placeholder="输入关键词查询..." style="flex:1;padding:8px 10px;border:1px solid var(--border);border-radius:6px;font-size:12px;font-family:inherit;background:var(--bg);color:var(--text);outline:none" onkeydown="if(event.key==='Enter')doSectionQuery()">
 <button onclick="doSectionQuery()" style="padding:8px 14px;background:var(--accent);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:12px;white-space:nowrap">🔍 查询</button>
 </div>
+<div id="queryResultBox"></div>
 </div>
 </div>
 
@@ -1036,23 +1038,36 @@ function renderSectionPicks(sectionId){
   if(sectionId==='optimization'){
     if(typeof OPTIMIZATION_LOG!=='undefined'){
       var log=OPTIMIZATION_LOG;
-      h+='<div class="insight-box">📅 '+log.date+' · 已累计'+log.total_suggestions+'条建议 · 已实施'+log.total_implemented+'条 · 连续'+log.streak_days+'天迭代</div>';
-      log.suggestions.forEach(function(s){
+      var done=log.suggestions.filter(function(s){return s.status==='已完成';});
+      var active=log.suggestions.filter(function(s){return s.status!=='已完成';});
+      h+='<div class="insight-box">📅 '+log.date+' · 已累计'+log.total_suggestions+'条建议 · 已实施'+done.length+'条 · 连续'+log.streak_days+'天迭代</div>';
+      // Show only active (non-completed) items
+      active.forEach(function(s){
         var badge = s.priority==='P0'?'background:var(--red);color:#fff' : s.priority==='P1'?'background:var(--orange);color:#fff' : 'background:var(--blue);color:#fff';
-        var statusBadge = s.status==='实施中'?'background:var(--green);color:#fff' : s.status==='已完成'?'background:var(--accent);color:#fff' : 'background:var(--bg2);color:var(--text2)';
+        var statusBadge = s.status==='实施中'?'background:var(--green);color:#fff' : 'background:var(--bg2);color:var(--text2)';
         h+='<div class="pick-card" style="cursor:default">';
         h+='<span class="pick-icon" style="font-size:14px">#'+s.id+'</span>';
         h+='<span class="pick-info"><div class="pick-title">'+s.title+' <span style="font-size:9px;padding:1px 5px;border-radius:8px;'+badge+'">'+s.priority+'</span> <span style="font-size:9px;padding:1px 5px;border-radius:8px;'+statusBadge+'">'+s.status+'</span></div><div class="pick-desc">['+s.cat+'] '+s.desc+'</div></span>';
         h+='</div>';
       });
+      // Archive toggle for completed items
+      if(done.length>0){
+        h+='<div style="font-size:11px;color:var(--accent);cursor:pointer;padding:4px 0" onclick="var e=document.getElementById(\'optArchive\');e.style.display=e.style.display===\'none\'?\'block\':\'none\';this.textContent=e.style.display===\'none\'?\'📂 历史记录 ('+done.length+'条已完成) ▸\':\'📂 历史记录 ('+done.length+'条已完成) ▾\'">📂 历史记录 ('+done.length+'条已完成) ▸</div>';
+        h+='<div id="optArchive" style="display:none;opacity:.7">';
+        done.forEach(function(s){
+          h+='<div class="pick-card" style="cursor:default"><span class="pick-icon" style="font-size:14px">✅</span><span class="pick-info"><div class="pick-title" style="text-decoration:line-through">'+s.title+'</div><div class="pick-desc">['+s.cat+'] '+s.desc+'</div></span></div>';
+        });
+        h+='</div>';
+      }
     }
     if(h){ container.innerHTML=h; }
     // Update stats card
     var statsEl=document.getElementById('optimizationStats');
     if(statsEl && typeof OPTIMIZATION_LOG!=='undefined'){
-      var done=OPTIMIZATION_LOG.suggestions.filter(function(s){return s.status==='已完成';}).length;
+      var doneCount=OPTIMIZATION_LOG.suggestions.filter(function(s){return s.status==='已完成';}).length;
       var prog=OPTIMIZATION_LOG.suggestions.filter(function(s){return s.status==='实施中';}).length;
-      statsEl.innerHTML='<div style="display:flex;gap:16px;flex-wrap:wrap;font-size:13px"><div>✅ 已完成 <strong style="color:var(--green)">'+done+'</strong></div><div>🚧 实施中 <strong style="color:var(--orange)">'+prog+'</strong></div><div>📋 待实施 <strong>'+(OPTIMIZATION_LOG.total_suggestions-done-prog)+'</strong></div><div>🔥 连续迭代 <strong style="color:var(--accent)">'+OPTIMIZATION_LOG.streak_days+'</strong> 天</div></div><p style="font-size:10px;color:var(--text3);margin-top:4px">💡 每天8:57自动分析网站+生成10条新建议，驱动网站持续进化</p>';
+      var pend=OPTIMIZATION_LOG.total_suggestions-doneCount-prog;
+      statsEl.innerHTML='<div style="display:flex;gap:16px;flex-wrap:wrap;font-size:13px"><div>✅ 已完成 <strong style="color:var(--green)">'+doneCount+'</strong></div><div>🚧 实施中 <strong style="color:var(--orange)">'+prog+'</strong></div><div>📋 待实施 <strong>'+pend+'</strong></div><div>🔥 连续迭代 <strong style="color:var(--accent)">'+OPTIMIZATION_LOG.streak_days+'</strong> 天</div></div>';
     }
     return;
   }
@@ -1333,11 +1348,57 @@ function doSectionQuery(){
   var q = (input?input.value:'').trim();
   if(!q) return;
   var sectionId = currentSectionId || 'learning';
-  var template = QUERY_PROMPTS[sectionId] || '分析《{q}》的相关信息，给出详细分析和建议';
-  var prompt = template.replace('{q}', q);
-  var url = 'https://www.perplexity.ai/search?q=' + encodeURIComponent(prompt);
-  window.open(url, '_blank');
-  if(input) input.value = '';
+  var resultBox = document.getElementById('queryResultBox');
+  if(!resultBox) return;
+
+  // Search local data first (PICKS + INSIGHTS + DETAIL)
+  var results = [];
+  var qLower = q.toLowerCase();
+
+  // Search PICKS
+  if(typeof PICKS!=='undefined' && PICKS[sectionId]){
+    PICKS[sectionId].forEach(function(p){
+      if(p.title.toLowerCase().indexOf(qLower)>=0 || p.desc.toLowerCase().indexOf(qLower)>=0){
+        results.push({source:'📌 今日推荐', text:p.title+' — '+p.desc, link:p.link});
+      }
+    });
+  }
+  // Search INSIGHTS
+  if(typeof INSIGHTS!=='undefined' && INSIGHTS[sectionId]){
+    var ins = INSIGHTS[sectionId];
+    var insText = ins.summary+' '+ins.trend+' '+ins.tip;
+    if(insText.toLowerCase().indexOf(qLower)>=0){
+      results.push({source:'📊 今日分析', text:ins.summary.substring(0,200)+'...', link:null});
+    }
+  }
+  // Search DETAIL
+  if(typeof DETAIL!=='undefined' && DETAIL[sectionId]){
+    var detText = DETAIL[sectionId].replace(/<[^>]+>/g,' ');
+    if(detText.toLowerCase().indexOf(qLower)>=0){
+      var idx = detText.toLowerCase().indexOf(qLower);
+      var snippet = detText.substring(Math.max(0,idx-40), idx+120).trim()+'...';
+      results.push({source:'📋 完整指南', text:snippet, link:null});
+    }
+  }
+
+  // Render results
+  var h = '<div style="margin-top:8px;padding:10px;background:var(--bg);border-radius:6px;font-size:12px">';
+  if(results.length > 0){
+    h += '<div style="font-weight:600;margin-bottom:6px;color:var(--green)">✅ 找到 '+results.length+' 条相关内容：</div>';
+    results.forEach(function(r){
+      h += '<div style="padding:6px 0;border-bottom:1px solid var(--border)"><strong>'+r.source+'</strong><br>'+r.text;
+      if(r.link) h += ' <a href="'+r.link+'" target="_blank" style="color:var(--accent);font-size:10px">→ 直达</a>';
+      h += '</div>';
+    });
+  } else {
+    h += '<div style="color:var(--text2)">📭 本站暂未收录"'+q+'"的相关内容</div>';
+  }
+  // AI deep analysis link
+  var template = QUERY_PROMPTS[sectionId] || '分析《{q}》的相关信息';
+  var ppUrl = 'https://www.perplexity.ai/search?q=' + encodeURIComponent(template.replace('{q}', q));
+  h += '<a href="'+ppUrl+'" target="_blank" style="display:inline-block;margin-top:8px;padding:6px 12px;background:var(--accent);color:#fff;border-radius:6px;text-decoration:none;font-size:11px">🤖 AI深度分析：'+q+' →</a>';
+  h += '</div>';
+  resultBox.innerHTML = h;
 }
 
 function setCurrentSection(sectionId){
@@ -1413,7 +1474,9 @@ function renderBriefing(){
   var content = document.getElementById('briefingContent');
   if(!content) return;
   var h='';
-  DAILY_BRIEFING.highlights.forEach(function(item, i){
+  // Shuffle for variety
+  var items = DAILY_BRIEFING.highlights.slice().sort(function(){return Math.random()-0.5;});
+  items.forEach(function(item, i){
     var bc = item.priority===1?'var(--red)':item.priority===2?'var(--accent)':item.priority===3?'var(--orange)':'var(--border)';
     h+='<div class="briefing-item" data-link="'+item.link.replace('#','')+'" data-deep="'+(item.deepLink||'')+'" style="background:var(--card);border-left:3px solid '+bc+';border-radius:8px;padding:10px 14px;transition:.15s;cursor:pointer">';
     h+='<div style="display:flex;align-items:center;gap:6px;margin-bottom:2px"><span style="font-size:16px">'+item.icon+'</span><span style="font-size:10px;color:var(--text3);background:var(--bg2);padding:1px 6px;border-radius:8px">'+item.section+'</span><span style="font-size:13px;font-weight:700;color:var(--text)">'+item.headline+'</span></div>';
