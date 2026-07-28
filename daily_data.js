@@ -126,6 +126,13 @@ var PICKS = {
     {icon:"😂", title:"死侍与金刚狼", desc:"R级超英喜剧·狼叔贱贱同框", link:"https://search.bilibili.com/all?keyword=死侍与金刚狼", video:"https://search.bilibili.com/all?keyword=死侍与金刚狼"},
     {icon:"🧠", title:"奥本海默", desc:"诺兰烧脑巨制·原子弹之父传记", link:"https://search.bilibili.com/all?keyword=奥本海默", video:"https://search.bilibili.com/all?keyword=奥本海默"}
   ],
+  movie: [
+    {icon:"🦸", title:"复仇者联盟：秘密战争", desc:"漫威第六阶段收官·超英史诗", link:"https://search.bilibili.com/all?keyword=复仇者联盟", video:"https://search.bilibili.com/all?keyword=复仇者联盟"},
+    {icon:"🔍", title:"利刃出鞘3", desc:"丹尼尔·克雷格回归·悬疑推理", link:"https://search.bilibili.com/all?keyword=利刃出鞘3", video:"https://search.bilibili.com/all?keyword=利刃出鞘3"},
+    {icon:"🦖", title:"哥斯拉×金刚：新帝国", desc:"怪兽宇宙新作·巨兽对决", link:"https://search.bilibili.com/all?keyword=哥斯拉金刚", video:"https://search.bilibili.com/all?keyword=哥斯拉金刚"},
+    {icon:"😂", title:"死侍与金刚狼", desc:"R级超英喜剧·狼叔贱贱同框", link:"https://search.bilibili.com/all?keyword=死侍与金刚狼", video:"https://search.bilibili.com/all?keyword=死侍与金刚狼"},
+    {icon:"🧠", title:"奥本海默", desc:"诺兰烧脑巨制·原子弹之父传记", link:"https://search.bilibili.com/all?keyword=奥本海默", video:"https://search.bilibili.com/all?keyword=奥本海默"}
+  ],
   "tools-collection": [
     {icon:"🤖", title:"Claude", desc:"最强推理+超长上下文 · 免费/Pro $20", link:"https://claude.ai"},
     {icon:"💬", title:"ChatGPT", desc:"生态最完善+多模态 · 免费/Plus $20", link:"https://chat.openai.com"},
@@ -227,6 +234,12 @@ var INSIGHTS = {
     trend: '趋势：超英回暖|悬疑推理崛起|怪兽宇宙扩张|烧脑片持续受追捧',
     tip: '推荐：死侍与金刚狼解压、利刃出鞘3推理迷必看、奥本海默IMAX重映。B站搜索相关影评。',
     updated: '2026-07-28'
+  },
+  movie: {
+    summary: "本周院线：复仇者联盟秘密战争持续霸榜。利刃出鞘3豆瓣9.1。奥本海默IMAX重映。",
+    trend: "趋势：超英回暖|悬疑推理崛起|怪兽宇宙扩张|烧脑片受追捧",
+    tip: "推荐：死侍与金刚狼解压、利刃出鞘3推理迷必看。B站搜索相关影评。",
+    updated: "2026-07-28"
   },
   news: {
     summary: '1. 月之暗面Kimi K3今日正式开源：全球最大开源模型（2.8万亿参数、100万token上下文），综合性能仅次于GPT-5.6和Claude Fable 5，被业界称为继DeepSeek之后的第二个"Kimi时刻"。同日传出阿里巴巴即将开源Qwen3.8-Max，中国开源AI阵营持续壮大。2. 美国50家科技巨头联署公开信支持开源AI模型：微软、英伟达、Meta、OpenAI、谷歌等悉数在列，反对美国政府限制中国开源AI模型。这标志着硅谷内部"开放派"与"安全派"的博弈进入白热化阶段。3. 英伟达投资Ilya Sutskever的SSI公司，同时洽谈为OpenAI数据中心提供2500亿美元融资担保——AI基础设施竞赛已从企业级别升级至国家与超国家级别。4. Anthropic CEO Dario Amodei明确澄清：从未主张禁止开源权重模型，支持开放与安全并行发展。5. OpenAI CEO Sam Altman今日向美国官员预展新一代模型能力。6. A股强势反弹：上证从上周五3814低点反弹，创业板指涨超2%，成交突破万亿，4900+个股飘红，中美AI差距缩至3-5个月利好国内AI产业链。',
