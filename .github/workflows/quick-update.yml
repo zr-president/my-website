@@ -26,7 +26,7 @@ jobs:
           sed -i "s/SITE_VERSION = \"$CURRENT\"/SITE_VERSION = \"$NEW\"/" daily_data.js
 
           # Update date
-          TODAY=$(TZ='Asia/Shanghai' date '+%Y年%m月%d日')
+          TODAY=$(TZ='Asia/Shanghai' date '+%Y年%-m月%-d日')
           ISO_DATE=$(TZ='Asia/Shanghai' date '+%Y-%m-%d')
           sed -i "s/\"update_date\": \"[^\"]*\"/\"update_date\": \"$TODAY\"/" daily_data.js
           sed -i "s/\"update_time\": \"[^\"]*\"/\"update_time\": \"${ISO_DATE}T08:57:00+08:00\"/" daily_data.js

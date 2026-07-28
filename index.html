@@ -1569,14 +1569,21 @@ function checkUpdateStatus(){
   var todayStr = today.getFullYear()+'年'+(today.getMonth()+1)+'月'+today.getDate()+'日';
   var shortDate = (today.getMonth()+1)+'/'+today.getDate();
   var isUpdated = false;
-  if(typeof DAILY_DATA !== 'undefined' && DAILY_DATA.update_date === todayStr){
-    isUpdated = true;
+  if(typeof DAILY_DATA !== 'undefined' && DAILY_DATA.update_date){
+    // Extract numbers from update_date (tolerates 07月 vs 7月 format)
+    var m = DAILY_DATA.update_date.match(/(\d{4})年(\d{1,2})月(\d{1,2})日/);
+    if(m){
+      var dYear=parseInt(m[1]), dMonth=parseInt(m[2]), dDay=parseInt(m[3]);
+      if(dYear===today.getFullYear() && dMonth===(today.getMonth()+1) && dDay===today.getDate()){
+        isUpdated = true;
+      }
+    }
   }
   var btn = document.getElementById('updateCheckBtn');
   if(isUpdated){
-    if(btn){ btn.textContent = '✅ '+shortDate; btn.style.background = 'rgba(5,150,105,.45)'; btn.title = '今日已更新（'+todayStr+'）'; }
+    if(btn){ btn.textContent = '✅ '+shortDate; btn.style.background = 'rgba(5,150,105,.45)'; btn.title = '今日已更新'; }
   } else {
-    if(btn){ btn.textContent = '⚠️ '+shortDate; btn.style.background = 'rgba(234,88,12,.45)'; btn.title = '今日尚未更新，点击检查'; }
+    if(btn){ btn.textContent = '⚠️ '+shortDate; btn.style.background = 'rgba(234,88,12,.45)'; btn.title = '今日尚未更新'; }
   }
   return isUpdated;
 }
