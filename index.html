@@ -652,13 +652,14 @@ function setTodoPri(i, pri){ var todos=loadTodos(); todos[i].pri=pri; saveTodos(
 function setTodoDeadline(i, dl){ var todos=loadTodos(); todos[i].deadline=dl; saveTodos(todos); renderTodos(); }
 function sortTodosByPriority(){
   var todos=loadTodos();
-  var order={P0:0,P1:1,P2:2,P3:3};
+  var rank={P0:0,P1:1,P2:2,P3:3};
   todos.sort(function(a,b){
-    // Undone items first
     if(!a.done && b.done) return -1;
     if(a.done && !b.done) return 1;
-    // Then by priority (P0 first)
-    return (order[a.pri]||99)-(order[b.pri]||99);
+    var ra=rank[(a.pri||'').trim()], rb=rank[(b.pri||'').trim()];
+    if(ra===undefined) ra=99;
+    if(rb===undefined) rb=99;
+    return ra-rb;
   });
   saveTodos(todos);
   renderTodos();
