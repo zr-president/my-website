@@ -1,8 +1,8 @@
-var SITE_VERSION = "1.1.2";
+var SITE_VERSION = "1.1.3";
 
 var DAILY_DATA = {
-  "update_time": "2026-07-27T08:57:00+08:00",
-  "update_date": "2026年7月27日",
+  "update_time": "2026-07-28T08:57:00+08:00",
+  "update_date": "2026年07月28日",
 
   "market_summary": "上证~3,814点 | 今日低开高走强势反弹 | 创业板指涨超2% | 4,900+个股上涨 | 成交额突破万亿 | 黄金/锂矿/服务器领涨",
 
@@ -29,7 +29,7 @@ var DAILY_DATA = {
 };
 
 var DAILY_BRIEFING = {
-  date: "2026-07-27",
+  date: "2026-07-28",
   highlights: [
     {priority:1, icon:"📈", section:"股市基金", headline:"A股强势反弹：创业板指涨超2%，万亿成交回归", summary:"低开高走大逆转，4,900+个股飘红。黄金/锂矿/服务器/TMT领涨，油煤电力回调。恐慌后的抄底机会？", action:"查看行情分析", link:"#stock", deepLink:"https://www.perplexity.ai/search?q=2026年7月27日A股市场反弹分析"},
     {priority:2, icon:"🤖", section:"AI科技", headline:"韩国9500亿美元AI芯片计划：改写全球芯片格局", summary:"三星+博通2000亿、SK+英伟达7500亿——韩国举国押注AI芯片。这会是AI时代的台积电时刻吗？", action:"AI深度解读", link:"#learning", deepLink:"https://www.perplexity.ai/search?q=韩国9500亿美元AI芯片合作计划影响"},
@@ -224,10 +224,10 @@ var INSIGHTS = {
 };
 
 var OPTIMIZATION_LOG = {
-  date: "2026-07-27",
+  date: "2026-07-28",
   total_suggestions: 22,
   total_implemented: 20,
-  streak_days: 2,
+  streak_days: 3,
   suggestions: [
     {id:1, cat:"设计优化", title:"首页三层路由架构(Dashboard+分类页+详情)", desc:"分类卡片网格+面包屑+FAB+Hash路由，替代长滚动", priority:"P0", status:"已完成"},
     {id:2, cat:"功能增强", title:"求职中心新增简历工作台", desc:"完整在线简历展示+编辑+一键复制", priority:"P0", status:"已完成"},
@@ -254,7 +254,7 @@ var OPTIMIZATION_LOG = {
 };
 
 var WEBSITE_GUIDE = {
-  updated: "2026-07-27",
+  updated: "2026-07-28",
   summary: "欢迎来到钟锐的个人数字空间！这是一个持续进化的智能信息中枢，每天8:57自动更新所有内容。",
   features: [
     {icon:"🏠", title:"首页仪表盘", desc:"一屏总览所有板块精华。分类卡片快速导航、实时股市/天气/新闻一目了然。"},
