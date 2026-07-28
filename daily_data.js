@@ -219,31 +219,25 @@ var INSIGHTS = {
 
 var OPTIMIZATION_LOG = {
   date: "2026-07-28",
-  total_suggestions: 22,
-  total_implemented: 20,
+  total_suggestions: 15,
+  total_implemented: 10,
   streak_days: 3,
   suggestions: [
-    {id:1, cat:"设计优化", title:"首页三层路由架构(Dashboard+分类页+详情)", desc:"分类卡片网格+面包屑+FAB+Hash路由，替代长滚动", priority:"P0", status:"已完成"},
-    {id:2, cat:"功能增强", title:"求职中心新增简历工作台", desc:"完整在线简历展示+编辑+一键复制", priority:"P0", status:"已完成"},
-    {id:3, cat:"内容补充", title:"学习区新增四模块知识图谱(第十一~十四课)", desc:"数据分析+用户增长+AI运营+面试准备完整教程", priority:"P0", status:"已完成"},
-    {id:4, cat:"功能增强", title:"新增每日一练题库(DAILY_QUIZ)", desc:"10题覆盖5类型，按星期轮换，每题附答案+技巧", priority:"P1", status:"已完成"},
-    {id:5, cat:"设计优化", title:"移动端底部TabBar导航+回到顶部FAB", desc:"首页|分类|AI|搜索+右下角浮动按钮", priority:"P1", status:"已完成"},
-    {id:6, cat:"内容补充", title:"面试复盘本+投递追踪表", desc:"面试记录+投递统计+localStorage持久化", priority:"P0", status:"已完成"},
-    {id:8, cat:"内容补充", title:"新增工具收藏夹板块", desc:"聚合30+AI/求职/效率/学习工具链接", priority:"P2", status:"已完成"},
-    {id:9, cat:"设计优化", title:"暗色模式防加载闪烁", desc:"head中blocking script读取localStorage预设主题", priority:"P2", status:"已完成"},
-    {id:10, cat:"性能优化", title:"知识库日归档系统(knowledge_base/)", desc:"stock/ai/news每日自动生成markdown，可检索历史", priority:"P1", status:"已完成"},
-    {id:11, cat:"内容补充", title:"新增📖使用指南板块", desc:"10大功能介绍+模块使用说明+每日更新", priority:"P1", status:"已完成"},
-    {id:12, cat:"功能增强", title:"新增🔧网站优化日记板块", desc:"每日10条改进建议+状态追踪+自我进化", priority:"P1", status:"已完成"},
-    {id:13, cat:"设计优化", title:"侧边栏分类标题可点击进入分类页", desc:"5个分类标题→对应分类页，子板块→直接跳转", priority:"P1", status:"已完成"},
-    {id:14, cat:"内容补充", title:"全板块动态INSIGHTS分析系统", desc:"14板块每日趋势分析+热门/冷门对比+可操作建议", priority:"P0", status:"已完成"},
-    {id:15, cat:"功能增强", title:"首页PICKS推荐卡片内联展示", desc:"12板块首推内容直接展示在首页，无需点击", priority:"P0", status:"已完成"},
-    {id:16, cat:"数据集成", title:"AI自动抓取全球头条生成每日简报", desc:"韩国芯片计划/谷歌FCF转负等热点自动聚合", priority:"P1", status:"已完成"},
-    {id:17, cat:"设计优化", title:"板块详情增加返回顶部快捷导航", desc:"长内容页面一键回到顶部", priority:"P2", status:"已完成"},
-    {id:18, cat:"内容补充", title:"健身区增加视频教程链接", desc:"嵌入YouTube/B站健身教学视频", priority:"P2", status:"已完成"},
-    {id:19, cat:"功能增强", title:"优化移动端分类卡片响应式布局", desc:"手机端2列→1列自适应", priority:"P2", status:"已完成"},
-    {id:20, cat:"功能增强", title:"各板块增加B站视频教程链接", desc:"动漫/健身/调酒/旅游/穿搭/AI学习的B站相关视频", priority:"P1", status:"已完成"},
-    {id:21, cat:"内容补充", title:"在线音乐换一批支持真正分页轮换", desc:"sessionStorage持久化翻页状态+14首大曲库", priority:"P1", status:"已完成"},
-    {id:22, cat:"设计优化", title:"待办系统增加优先级色标+截止时间+分类下拉", desc:"P0红/P1橙/P2蓝/P3灰+⏰deadline标注", priority:"P2", status:"已完成"}
+    {id:1, cat:"功能增强", title:"音乐播放器页码按钮优化", desc:"当前翻页按钮偶有失效，需改用更可靠的交互方式", priority:"P1", status:"待实施"},
+    {id:2, cat:"内容补充", title:"知识库搜索集成到板块查询框", desc:"让主站板块内的AI查询框也能检索知识库数据", priority:"P1", status:"待实施"},
+    {id:3, cat:"设计优化", title:"移动端响应式布局深度优化", desc:"900px以下侧边栏完全隐藏，改用底部TabBar+汉堡菜单", priority:"P1", status:"实施中"},
+    {id:4, cat:"功能增强", title:"每日待办增加子任务和备注功能", desc:"支持主任务下添加子步骤+富文本备注", priority:"P2", status:"待实施"},
+    {id:5, cat:"内容补充", title:"影视区知识库扩充至300+部电影", desc:"当前214部，需覆盖更多华语佳片和经典老片", priority:"P2", status:"待实施"},
+    {id:6, cat:"系统优化", title:"GA自动更新增加内容质量检查", desc:"更新后验证关键字段非空+日期格式正确", priority:"P1", status:"实施中"},
+    {id:7, cat:"功能增强", title:"板块详情页增加一键分享功能", desc:"生成带标题的分享卡片，一键复制链接", priority:"P2", status:"待实施"},
+    {id:8, cat:"设计优化", title:"首页banner消息切换增加动画过渡", desc:"消息切换使用淡入淡出而非直接替换", priority:"P2", status:"待实施"},
+    {id:9, cat:"内容补充", title:"音乐区嵌入B站/YouTube嵌入式播放列表", desc:"精选10首BGM直接播放，不需跳转外站", priority:"P2", status:"待实施"},
+    {id:10, cat:"功能增强", title:"简历工作台增加PDF导出功能", desc:"一键将在线简历导出为格式化的PDF文件", priority:"P1", status:"待实施"},
+    {id:11, cat:"已归档", title:"三层路由架构+Dashboard+分类页", desc:"(2026-07-26完成)", priority:"P0", status:"已完成"},
+    {id:12, cat:"已归档", title:"14板块INSIGHTS分析+1561条知识库", desc:"(2026-07-27完成)", priority:"P0", status:"已完成"},
+    {id:13, cat:"已归档", title:"B站视频链接+QQ音乐播放器+影视区", desc:"(2026-07-27完成)", priority:"P1", status:"已完成"},
+    {id:14, cat:"已归档", title:"待办优先级+投递追踪+面试复盘本", desc:"(2026-07-26完成)", priority:"P0", status:"已完成"},
+    {id:15, cat:"已归档", title:"知识库独立搜索页+日期格式修复", desc:"(2026-07-28完成)", priority:"P1", status:"已完成"}
   ]
 };
 
