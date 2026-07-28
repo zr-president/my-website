@@ -251,12 +251,13 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <button class="btn btn-primary" onclick="addTodoItem()">＋ 新增待办</button>
 <button class="btn btn-outline" onclick="autoGenerateSchedule()">🤖 自动生成今日行程</button>
 <button class="btn btn-outline" onclick="clearDoneTodos()">🗑️ 清除已完成</button>
+<button class="btn btn-outline" onclick="sortTodosByPriority()">📊 优先级排序</button>
 </div>
 <div id="todoList" style="max-height:400px;overflow-y:auto"></div>
 <div style="margin-top:12px;display:flex;gap:8px">
 <input type="text" id="newTodoInput" placeholder="输入新待办..." style="flex:1;padding:8px 12px;border:1px solid var(--border);border-radius:6px;font-size:13px;font-family:inherit;background:var(--bg);color:var(--text)" onkeydown="if(event.key==='Enter')addTodoItem()">
 <select id="todoCategory" style="padding:8px;border:1px solid var(--border);border-radius:6px;font-size:12px;font-family:inherit;background:var(--bg);color:var(--text)">
-<option>💼 求职</option><option>💪 健身</option><option>📖 阅读</option><option>🎵 音乐</option><option>📊 学习</option><option>📈 股市</option><option>🍽️ 饮食</option><option>👔 穿搭</option><option>🎮 游戏</option><option>✈️ 旅游</option><option>📝 其他</option></select>
+<option>💼 求职</option><option>💪 健身</option><option>📖 阅读</option><option>🎵 音乐</option><option>📊 学习</option><option>📈 股市</option><option>🍽️ 饮食</option><option>👔 穿搭</option><option>🎮 游戏</option><option>🎬 动漫</option><option>🎥 影视</option><option>✈️ 旅游</option><option>📝 其他</option></select>
 <select id="todoPriority" style="padding:8px;border:1px solid var(--border);border-radius:6px;font-size:12px;font-family:inherit;background:var(--bg);color:var(--text)">
 <option>P0</option><option>P1</option><option selected>P2</option><option>P3</option></select>
 <input type="text" id="todoDeadline" placeholder="截止(如18:00)" style="width:110px;padding:8px;border:1px solid var(--border);border-radius:6px;font-size:12px;font-family:inherit;background:var(--bg);color:var(--text)">
@@ -571,7 +572,7 @@ function rep(m){
   return'收到！我可以帮你处理求职、AI科普、游戏、动漫、小说、健身、饮食、穿搭等几乎所有方面。具体说说？';
 }
 // ===== Daily Todo System =====
-var TODO_CATS = ['💼 求职','💪 健身','📖 阅读','🎵 音乐','📊 学习','📈 股市','🍽️ 饮食','👔 穿搭','🎮 游戏','✈️ 旅游','📝 其他'];
+var TODO_CATS = ['💼 求职','💪 健身','📖 阅读','🎵 音乐','📊 学习','📈 股市','🍽️ 饮食','👔 穿搭','🎮 游戏','🎬 动漫','🎥 影视','✈️ 旅游','📝 其他'];
 var TODO_PRIORITIES = ['P0','P1','P2','P3'];
 var PRIORITY_COLORS = {P0:'var(--red)',P1:'var(--orange)',P2:'var(--blue)',P3:'var(--text3)'};
 
@@ -617,7 +618,7 @@ function renderTodos(){
     html += '<input type="checkbox" '+(t.done?'checked':'')+' onchange="toggleTodo('+i+')" style="width:16px;height:16px;accent-color:var(--accent);cursor:pointer;flex-shrink:0">';
     html += '<span style="font-size:9px;font-weight:700;color:'+priColor+';min-width:20px;text-align:center;flex-shrink:0">'+(t.pri||'')+'</span>';
     html += '<span id="todoText'+i+'" style="flex:1;min-width:0" ondblclick="editTodoInline('+i+')" title="双击编辑">'+escHtml(t.text)+'</span>';
-    if(t.deadline) html += '<span style="font-size:9px;color:var(--accent);background:var(--accent-light);padding:1px 5px;border-radius:6px;flex-shrink:0;white-space:nowrap">⏰ '+t.deadline+'</span>';
+    html += '<input type="text" value="'+(t.deadline||'')+'" onchange="setTodoDeadline('+i+',this.value)" placeholder="截止" style="width:55px;font-size:9px;padding:1px 4px;border:1px solid var(--border);border-radius:4px;background:var(--bg);color:var(--accent);text-align:center;flex-shrink:0" onclick="event.stopPropagation()">';
     html += '<select onchange="setTodoCat('+i+',this.value)" style="font-size:10px;padding:2px 4px;border:1px solid var(--border);border-radius:4px;background:var(--bg);color:var(--text2);cursor:pointer;max-width:80px" onclick="event.stopPropagation()">';
     TODO_CATS.forEach(function(c){ html += '<option '+(t.cat===c?'selected':'')+'>'+c+'</option>'; });
     html += '</select>';
@@ -648,6 +649,14 @@ function editTodoInline(i){
 
 function setTodoCat(i, cat){ var todos=loadTodos(); todos[i].cat=cat; saveTodos(todos); renderTodos(); }
 function setTodoPri(i, pri){ var todos=loadTodos(); todos[i].pri=pri; saveTodos(todos); renderTodos(); }
+function setTodoDeadline(i, dl){ var todos=loadTodos(); todos[i].deadline=dl; saveTodos(todos); renderTodos(); }
+function sortTodosByPriority(){
+  var todos=loadTodos();
+  var order={P0:0,P1:1,P2:2,P3:3};
+  todos.sort(function(a,b){ return (order[a.pri]||99)-(order[b.pri]||99); });
+  saveTodos(todos);
+  renderTodos();
+}
 
 function toggleTodo(i){
   var todos = loadTodos();
