@@ -215,7 +215,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 </div>
 <div style="padding:4px 16px 0"><div style="font-size:9px;color:var(--text3);margin-bottom:4px">🎨 主题色</div><div class="theme-colors"><span class="theme-dot indigo active" onclick="setColorTheme('indigo')" title="靛蓝"></span><span class="theme-dot ocean" onclick="setColorTheme('ocean')" title="深海蓝"></span><span class="theme-dot emerald" onclick="setColorTheme('emerald')" title="墨绿金"></span><span class="theme-dot rose" onclick="setColorTheme('rose')" title="玫瑰金"></span><span class="theme-dot amber" onclick="setColorTheme('amber')" title="琥珀暖"></span><span class="theme-dot slate" onclick="setColorTheme('slate')" title="石墨灰"></span></div></div>
 <div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','about')">👤 关于</div><a href="#dashboard">📋 每日待办</a><a href="#about">🏠 个人介绍</a><a href="#career">💼 求职中心</a></div>
-<div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','fun')">🎮 娱乐</div><a href="#gaming">🎯 游戏区</a><a href="#music">🎵 音乐区</a><a href="#novel">📖 小说区</a><a href="#anime">🎬 动漫区</a></div>
+<div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','fun')">🎮 娱乐</div><a href="#gaming">🎯 游戏区</a><a href="#music">🎵 音乐区</a><a href="#novel">📖 小说区</a><a href="#anime">🎬 动漫区</a><a href="#movie">🎥 影视区</a></div>
 <div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','life')">🏃 生活</div><a href="#fashion">👔 穿搭推荐</a><a href="#fitness">💪 健身方案</a><a href="#diet">🍽️ 饮食助手</a><a href="#beer">🍺 精酿与调酒</a></div>
 <div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','finance')">📊 财经·学习</div><a href="#stock">📈 股市基金</a><a href="#car">🚗 购车推荐</a><a href="#house">🏠 购房租房</a><a href="#learning">🎓 学习区</a><a href="#travel">✈️ 旅游区</a><a href="#news">📰 新闻资讯</a></div>
 <div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','tools')">🤖 工具</div><a href="#guide">📖 使用指南</a><a href="#ai-assistant">💬 AI助手</a><a href="#optimization">🔧 优化日记</a><a href="search.html" target="_blank">📚 知识库搜索</a></div>
@@ -335,6 +335,8 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <section id="novel" class="section" data-search="小说 网文 阅读 起点"><div class="section-header"><h2>📖 小说区</h2><p>今日阅读推荐 · 点击查看完整指南</p></div>
 <div id="picks-novel" class="picks-container"></div>
 <div class="card clickable" onclick="openDetail('novel')"><h3>📚 查看完整小说指南</h3><p>40部阅读记录分析+类型地图+推荐链+连载追踪表。</p></div></section>
+
+<section id="movie" class="section" data-search="电影 电视剧 影视 超级英雄 悬疑 探案 怪兽 喜剧 烧脑 动作"><div class="section-header"><h2>🎥 影视区</h2><p>今日推荐 · 超级英雄/悬疑探案/怪兽/喜剧/烧脑/动作</p></div><div id="picks-movie" class="picks-container"></div><div class="card clickable" onclick="openDetail('movie')"><h3>🍿 查看完整影视推荐</h3><p>按类型分类推荐+最新上映+经典必看+观看平台直达。</p></div></section>
 
 <section id="anime" class="section" data-search="动漫 番剧 追番 观看"><div class="section-header"><h2>🎬 动漫区</h2><p>今日追番推荐 · 点击查看完整指南</p></div>
 <div id="picks-anime" class="picks-container"></div>
@@ -1107,14 +1109,14 @@ function renderSectionPicks(sectionId){
 }
 
 function renderAllPicks(){
-  var sections = ['guide','anime','music','novel','beer','gaming','learning','fashion','fitness','diet','career','car','house','stock','news','tools-collection','optimization'];
+  var sections = ['guide','anime','movie','music','novel','beer','gaming','learning','fashion','fitness','diet','career','car','house','stock','news','tools-collection','optimization'];
   sections.forEach(function(s){ renderSectionPicks(s); });
 }
 
 // ===== View Router =====
 var CATEGORIES = {
   about:    {icon:'👤', name:'关于·求职', subs:'个人介绍 | 求职中心 | 每日待办', sections:['dashboard','about','career']},
-  fun:      {icon:'🎮', name:'娱乐空间', subs:'游戏区 | 音乐区 | 小说区 | 动漫区', sections:['gaming','music','novel','anime']},
+  fun:      {icon:'🎮', name:'娱乐空间', subs:'游戏|音乐|小说|动漫|影视', sections:['gaming','music','novel','anime','movie']},
   life:     {icon:'🏃', name:'生活方式', subs:'穿搭 | 健身 | 饮食 | 精酿与调酒', sections:['fashion','fitness','diet','beer']},
   finance:  {icon:'📊', name:'财经·学习', subs:'股市 | 购车 | 购房 | 学习 | 旅游 | 新闻', sections:['stock','car','house','learning','travel','news']},
   tools:    {icon:'🤖', name:'工具·AI', subs:'使用指南 | 工具收藏夹 | AI助手 | 优化日记', sections:['guide','tools-collection','ai-assistant','optimization']}
@@ -1354,7 +1356,8 @@ function showView(viewName, categoryKey){
 // ===== AI Smart Query per Section =====
 var currentSectionId = null;
 var QUERY_PROMPTS = {
-  anime: '分析动漫《{q}》的剧情、制作、口碑、追番价值，结合2026年最新动态给出是否推荐',
+  anime: '分析动漫《{q}》的剧情',
+  movie: '分析电影/剧集《{q}》的剧情、口碑、看点，结合豆瓣/IMDb评分'、制作、口碑、追番价值，结合2026年最新动态给出是否推荐',
   novel: '分析小说《{q}》的类型、阅读体验、与类似作品对比，给出阅读推荐和适合人群',
   music: '分析艺人/专辑《{q}》的音乐风格、代表作品、影响力和推荐理由',
   gaming: '分析游戏《{q}》的类型、玩法亮点、Steam评价、性价比、是否值得入手',
