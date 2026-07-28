@@ -4,45 +4,39 @@ var DAILY_DATA = {
   "update_time": "2026-07-28T08:57:00+08:00",
   "update_date": "2026年07月28日",
 
-  "market_summary": "上证~3,814点 | 今日低开高走强势反弹 | 创业板指涨超2% | 4,900+个股上涨 | 成交额突破万亿 | 黄金/锂矿/服务器领涨",
+  "market_summary": "上证~3,814点 | 上周五触底后今日低开高走强势反弹 | 创业板指涨超2% | 4,900+个股上涨 | 成交额突破万亿 | 黄金/锂矿/服务器/TMT领涨 | 中美AI差距缩至3-5个月",
 
   "news_headlines": [
-    {"title": "韩国宣布9500亿美元AI芯片合作计划：三星+博通2000亿，SK+英伟达7500亿", "url": "https://wallstreetcn.com/", "source": "华尔街见闻", "category": "AI"},
-    {"title": "高盛/穆迪警告：AI资本开支侵蚀现金流，谷歌FCF首次转负", "url": "https://www.cls.cn/", "source": "财联社", "category": "财经"},
-    {"title": "英伟达洽谈2500亿美元融资担保，助力OpenAI数据中心项目", "url": "https://www.36kr.com/", "source": "36氪", "category": "AI"},
-    {"title": "A股强势反弹：创业板指涨超2%，万亿成交回归，4900+股飘红", "url": "https://www.cls.cn/", "source": "财联社", "category": "财经"},
-    {"title": "谷歌暴跌7%+：AI军备竞赛引发盈利担忧；苹果逆市涨15%避开烧钱陷阱", "url": "https://wallstreetcn.com/", "source": "华尔街见闻", "category": "科技"}
+    {"title": "Kimi K3正式开源：2.8万亿参数，100万token上下文，全球最大开源模型", "url": "https://www.36kr.com/", "source": "36氪", "category": "AI"},
+    {"title": "美国50家科技巨头联署公开信支持开源AI：微软、英伟达、Meta、OpenAI、谷歌均在列", "url": "https://wallstreetcn.com/", "source": "华尔街见闻", "category": "AI"},
+    {"title": "英伟达投资Ilya Sutskever的SSI，同时洽谈2500亿美元OpenAI数据中心融资担保", "url": "https://www.cls.cn/", "source": "财联社", "category": "AI"},
+    {"title": "Anthropic CEO澄清：从未主张禁止开源权重模型，支持开放与安全并行", "url": "https://www.36kr.com/", "source": "36氪", "category": "AI"},
+    {"title": "A股低开高走强势反弹：创业板指涨超2%，成交突破万亿，4900+股飘红", "url": "https://www.cls.cn/", "source": "财联社", "category": "财经"}
   ],
 
   "daily_recommendation": {
-    "music": {"title": "今日推荐：FKJ — Changes Rising", "desc": "Neo-Soul新单曲 · 周日午后完美配乐", "link": "https://music.163.com/#/search/m/?s=FKJ+Changes+Rising"},
-    "anime": {"title": "周日补番：BLACK TORCH", "desc": "忍者x妖怪新锐战斗 · 本季黑马之作", "link": "https://www.bilibili.com/search?keyword=BLACK+TORCH"},
-    "novel": {"title": "今日阅读：剑烛大荒", "desc": "乌贼新书 · 山海经修真 · 7月刚上架", "link": "https://www.qidian.com/soushu/剑烛大荒.html"},
-    "cocktail": {"title": "周日微醺：金汤力 Gin & Tonic", "desc": "金酒45ml+汤力水补满 · 夏日清爽经典", "link": "https://s.taobao.com/search?q=哥顿金酒"}
+    "music": {"title": "今日推荐：FKJ — Soulmates", "desc": "Neo-Soul先行单曲 · 周日午后完美配乐", "link": "https://music.163.com/#/search/m/?s=FKJ+Soulmates"},
+    "anime": {"title": "周日补番：BLEACH 千年血战篇-祸进谭-", "desc": "20年史诗最终章 · 全员卍解决战燃爆", "link": "https://www.bilibili.com/search?keyword=BLEACH+千年血战+祸进谭"},
+    "novel": {"title": "今日阅读：剑烛大荒", "desc": "乌贼新书 · 山海经修真 · 7月持续霸榜", "link": "https://www.qidian.com/soushu/剑烛大荒.html"},
+    "cocktail": {"title": "周日微醺：莫吉托 Mojito", "desc": "朗姆45ml+青柠+薄荷+苏打水 · 夏日清凉经典", "link": "https://s.taobao.com/search?q=百加得白朗姆酒"}
   },
 
   "weather_summary": "广州 34°C/27°C · 雷阵雨 · 湿度78% · 微风",
 
-  "weekly_focus": "🌿 周日：周末放松 · 补番看小说 · 回顾一周收获 · 为下周充电",
+  "weekly_focus": "🌿 周日：周末放松 · BLEACH补番 · 回顾一周AI开源浪潮 · 为下周充电",
 
-  "tip_of_day": "💡 周末思考：AI军备竞赛烧钱速度惊人——谷歌年资本开支2050亿美元，自由现金流首次转负。投资科技股前，先问自己：这家公司还能烧多久？"
+  "tip_of_day": "💡 开源浪潮：Kimi K3今日全面开源，50家美国科技巨头联署支持开源AI。Anthropic CEO明确澄清从未主张禁止开源模型。开源正在成为全球AI竞争的关键变量——拥抱开源，就是拥抱未来。"
 };
 
 var DAILY_BRIEFING = {
   date: "2026-07-28",
   highlights: [
-    {priority:1, icon:"📈", section:"股市基金", headline:"A股强势反弹：创业板指涨超2%，万亿成交回归", summary:"低开高走大逆转，4,900+个股飘红。黄金/锂矿/服务器/TMT领涨，油煤电力回调。恐慌后的抄底机会？", action:"查看行情分析", link:"#stock", deepLink:"https://www.perplexity.ai/search?q=2026年7月27日A股市场反弹分析"},
-    {priority:2, icon:"🤖", section:"AI科技", headline:"韩国9500亿美元AI芯片计划：改写全球芯片格局", summary:"三星+博通2000亿、SK+英伟达7500亿——韩国举国押注AI芯片。这会是AI时代的台积电时刻吗？", action:"AI深度解读", link:"#learning", deepLink:"https://www.perplexity.ai/search?q=韩国9500亿美元AI芯片合作计划影响"},
-    {priority:3, icon:"💼", section:"财经要闻", headline:"高盛/穆迪警告AI烧钱风险：谷歌FCF历史性转负", summary:"谷歌年资本开支2050亿美元，自由现金流自2004年IPO以来首次转负。苹果不跟风AI军备反而涨15%。", action:"查看深度分析", link:"#stock", deepLink:"https://www.perplexity.ai/search?q=Google+AI+capex+free+cash+flow+negative+2026"},
-    {priority:4, icon:"🏦", section:"科技金融", headline:"英伟达2500亿担保OpenAI数据中心：AI赌注再加码", summary:"英伟达洽谈为OpenAI数据中心提供史无前例的融资担保。AI基础设施竞赛已进入万亿级别。", action:"查看详情", link:"#learning", deepLink:"https://www.perplexity.ai/search?q=NVIDIA+OpenAI+data+center+financing+guarantee+2026"},
-    {priority:4, icon:"💱", section:"外汇市场", headline:"人民币兑美元中间价报6.79，央行净回笼800亿", summary:"中间价创近两周新高。央行连续三日净回笼累计2200亿，维持流动性合理充裕。中美利差收窄预期升温。", action:"查看汇率分析", link:"#stock", deepLink:"https://www.perplexity.ai/search?q=2026年7月27日人民币兑美元中间价央行操作"},
-    {priority:5, icon:"🎬", section:"动漫区", headline:"周日补番推荐：BLEACH最终章+BLACK TORCH", summary:"BLEACH祸进谭全员决战继续燃爆，BLACK TORCH忍者x妖怪新锐战斗补位。周末追番正当时。", action:"查看追番指南", link:"#anime", deepLink:"https://www.perplexity.ai/search?q=BLEACH千年血战篇+BLACK+TORCH+2026夏季新番"},
-    {priority:5, icon:"🍎", section:"科技动态", headline:"苹果WWDC 2026回顾：Vision Pro 2发布，AI全家桶落地", summary:"Vision Pro 2降价30%至$2,499、重量减40%。iOS 20 Apple Intelligence全面集成，Siri重大升级。", action:"查看详情", link:"#learning", deepLink:"https://www.perplexity.ai/search?q=Apple+WWDC+2026+Vision+Pro+2+AI"},
-    {priority:5, icon:"☀️", section:"生活贴士", headline:"全国多地高温预警持续：科学防暑降温指南", summary:"京津冀、长三角、川渝高温橙色预警。牢记「补水+遮阳+错峰出行」三原则，警惕热射病前兆。", action:"查看防暑指南", link:"#diet", deepLink:"https://www.perplexity.ai/search?q=2026年7月高温防暑降温科学指南"},
-    {priority:6, icon:"🌿", section:"周末充电", headline:"周日复盘：市场恐慌中，哪些板块在默默吸金？", summary:"银行/保险高股息依旧稳健，黄金逆势拉升。周末花30分钟回顾本周操作，比盯盘更有价值。", action:"查看周报", link:"#stock", deepLink:"https://www.perplexity.ai/search?q=2026年7月A股资金流向与板块轮动"},
-    {priority:6, icon:"🧠", section:"AI前沿", headline:"月之暗面Kimi K3全面开源：2.8万亿参数重塑格局", summary:"全球最大开源模型7月27日正式开源，100万token上下文。继DeepSeek之后的又一个「Kimi时刻」。", action:"AI深度解读", link:"#learning", deepLink:"https://www.perplexity.ai/search?q=Kimi+K3+开源+2.8万亿参数+2026"},
-    {priority:6, icon:"🏢", section:"AI财经", headline:"DeepSeek启动科创板IPO：估值740亿美元", summary:"中国AI独角兽正式筹备上市，计划2027年登陆上交所。AI行业从「烧钱」走向「变现」的标志事件。", action:"查看分析", link:"#stock", deepLink:"https://www.perplexity.ai/search?q=DeepSeek+IPO+科创板+估值740亿美元+2026"},
-    {priority:6, icon:"🎬", section:"影视娱乐", headline:"2026暑期档票房破80亿：国产科幻领跑", summary:"《流浪地球3》累计破35亿、《封神2》破22亿。动画电影《深海2》口碑逆袭，暑期观影指南更新。", action:"查看片单", link:"#anime", deepLink:"https://www.perplexity.ai/search?q=2026年暑期档票房排行榜"}
+    {priority:1, icon:"🤖", section:"AI科技", headline:"Kimi K3正式开源：2.8万亿参数，全球最大开源模型", summary:"月之暗面今日正式开源Kimi K3，100万token上下文窗口，综合性能仅次于GPT-5.6和Claude Fable 5。被业界称为继DeepSeek后的「Kimi时刻」，中美AI差距缩至3-5个月。", action:"AI深度解读", link:"#learning", deepLink:"https://www.perplexity.ai/search?q=Kimi+K3+开源+2.8万亿参数+2026年7月27日"},
+    {priority:2, icon:"📜", section:"AI政策", headline:"美国50家科技巨头联署公开信：支持开源AI模型", summary:"微软、英伟达、Meta、OpenAI、谷歌等50家科技巨头签署公开信，反对美国政府限制中国开源AI模型。硅谷「开放派」与「安全派」博弈白热化。", action:"查看详情", link:"#learning", deepLink:"https://www.perplexity.ai/search?q=美国50家科技巨头联署公开信支持开源AI模型2026"},
+    {priority:3, icon:"💼", section:"科技金融", headline:"英伟达双线布局：投资SSI+2500亿美元OpenAI担保", summary:"英伟达投资Ilya Sutskever创办的Safe Superintelligence Inc.（SSI），同时洽谈为OpenAI数据中心提供史无前例的2500亿美元融资担保。AI基建进入万亿时代。", action:"查看分析", link:"#stock", deepLink:"https://www.perplexity.ai/search?q=NVIDIA+investing+SSI+Ilya+Sutskever+OpenAI+financing+2026"},
+    {priority:4, icon:"🏛️", section:"AI政策", headline:"Anthropic CEO明确澄清：从未主张禁止开源权重模型", summary:"Amodei发声澄清立场：Anthropic支持开放与安全并行，从未提倡过禁止开源权重模型。在开源浪潮下，AI巨头纷纷表态支持开放生态。", action:"查看详情", link:"#learning", deepLink:"https://www.perplexity.ai/search?q=Anthropic+CEO+open+weight+models+ban+clarification+2026"},
+    {priority:5, icon:"📈", section:"股市基金", headline:"A股低开高走强势反弹：创业板指涨超2%，万亿成交回归", summary:"上周五上证触底3814点后，今日低开随即抄底资金涌入。创业板指涨超2%，4900+个股飘红，成交突破万亿。黄金/锂矿/服务器/TMT领涨，市场情绪快速修复。", action:"查看行情分析", link:"#stock", deepLink:"https://www.perplexity.ai/search?q=2026年7月27日A股市场反弹分析"},
+    {priority:6, icon:"🏛️", section:"AI前沿", headline:"OpenAI CEO Altman今日向美国官员预展新模型", summary:"Altman今日与美国政府官员会面预展下一代模型能力，同时阿里即将开源Qwen3.8-Max。全球AI竞争进入「开源vs闭源」双线博弈新阶段。", action:"AI深度解读", link:"#learning", deepLink:"https://www.perplexity.ai/search?q=OpenAI+Altman+preview+new+model+US+officials+July+2026"}
   ]
 };
 
@@ -57,7 +51,7 @@ var PICKS = {
     {icon:"📖", title:"二十世纪电气目录", desc:"京都动画最新力作 · 明治浪漫谭", link:"https://www.bilibili.com/search?keyword=二十世纪电气目录", video:"https://search.bilibili.com/all?keyword=%E4%BA%8C%E5%8D%81%E4%B8%96%E7%BA%AA%E7%94%B5%E6%B0%94%E7%9B%AE%E5%BD%95"}
   ],
   music: [
-    {icon:"🎹", title:"FKJ — Changes Rising", desc:"Neo-Soul新单曲 · 9月新专预热中", link:"https://music.163.com/#/search/m/?s=FKJ+Changes+Rising"},
+    {icon:"🎹", title:"FKJ — Soulmates", desc:"Neo-Soul先行单曲 · 周日午后完美配乐", link:"https://music.163.com/#/search/m/?s=FKJ+Soulmates"},
     {icon:"🎸", title:"告五人 — 黑夜狂奔", desc:"英伦录制质感 · 华语独立流行标杆", link:"https://music.163.com/#/search/m/?s=告五人+黑夜狂奔"},
     {icon:"🗾", title:"YOASOBI — Orion", desc:"守望先锋联动曲 · J-Pop电气化新高度", link:"https://music.163.com/#/search/m/?s=YOASOBI+Orion"},
     {icon:"🎤", title:"李荣浩 — 海陆风", desc:"华语雷鬼新尝试 · 巡演7月连走两城", link:"https://music.163.com/#/search/m/?s=李荣浩+海陆风"},
@@ -78,7 +72,7 @@ var PICKS = {
   beer: [
     {icon:"🍺", title:"保拉纳酵母小麦", desc:"德式小麦入门首选 · 香蕉丁香", link:"https://s.taobao.com/search?q=保拉纳小麦啤酒", video:"https://search.bilibili.com/all?keyword=%E7%B2%BE%E9%85%BF%E5%95%A4%E9%85%92%E5%85%A5%E9%97%A8%E6%8E%A8%E8%8D%90"},
     {icon:"🍻", title:"酿酒狗朋克IPA", desc:"IPA探险第一站 · 热带水果轰炸", link:"https://s.taobao.com/search?q=酿酒狗朋克IPA", video:"https://search.bilibili.com/all?keyword=IPA%E5%95%A4%E9%85%92%E5%93%81%E9%89%B4"},
-    {icon:"🍸", title:"金汤力 Gin & Tonic", desc:"周日微醺推荐 · 金酒+汤力水+柠檬", link:"https://s.taobao.com/search?q=哥顿金酒", video:"https://search.bilibili.com/all?keyword=%E5%A8%81%E5%A3%AB%E5%BF%8C%E9%85%B8%E9%B8%A1%E5%B0%BE%E9%85%92%E6%95%99%E7%A8%8B"}
+    {icon:"🍸", title:"莫吉托 Mojito", desc:"周日微醺推荐 · 朗姆+青柠+薄荷+苏打水", link:"https://s.taobao.com/search?q=百加得白朗姆酒", video:"https://search.bilibili.com/all?keyword=%E8%8E%AB%E5%90%89%E6%89%98%E8%B0%83%E9%85%92%E6%95%99%E7%A8%8B"}
   ],
   gaming: [
     {icon:"⚔️", title:"只狼：影逝二度", desc:"拼刀战斗巅峰 · 等秋促史低¥134", link:"https://store.steampowered.com/app/814380/"},
@@ -88,9 +82,9 @@ var PICKS = {
     {icon:"🐾", title:"幻兽帕鲁 (Palworld)", desc:"正式版压倒性好评 · 生存建造新高度", link:"https://store.steampowered.com/app/1623730/"}
   ],
   learning: [
-    {icon:"🤖", title:"AI Agent开发入门", desc:"LangGraph+MCP协议 · 2026核心竞争力", link:"#", video:"https://search.bilibili.com/all?keyword=AI+Agent%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B"},
-    {icon:"🗺️", title:"2026 AI学习路线图", desc:"零代码到Agent开发者的6步路径", link:"#", video:"https://search.bilibili.com/all?keyword=AI%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%E5%9B%BE2026"},
-    {icon:"📊", title:"今日AI热点深度追踪", desc:"韩国9500亿芯片计划+谷歌FCF转负", link:"#"},
+    {icon:"🤖", title:"Kimi K3开源深度解读", desc:"2.8T参数·100万token·今日正式开源", link:"#", video:"https://search.bilibili.com/all?keyword=Kimi+K3+开源"},
+    {icon:"🗺️", title:"2026 AI学习路线图", desc:"零代码到Agent开发者的6步路径", link:"#", video:"https://search.bilibili.com/all?keyword=AI学习路线图2026"},
+    {icon:"📊", title:"今日AI热点深度追踪", desc:"Kimi K3开源+50巨头联署+中美差距3-5月", link:"#"},
     {icon:"🔗", title:"LangChain实战指南", desc:"从链式调用到Agent编排 · 配套Notebook", link:"#"},
     {icon:"✍️", title:"Prompt Engineering进阶", desc:"Few-shot链式推理+结构化输出 · 2026必修", link:"#"},
     {icon:"📈", title:"数据分析SQL实战题库", desc:"牛客+LeetCode高频 · 面试必刷50题", link:"#"}
@@ -138,9 +132,9 @@ var PICKS = {
 
 var INSIGHTS = {
   stock: {
-    summary: '今日（7月27日）A股上演低开高走强势反弹行情。受上周五（7月26日）上证跌1.61%至3814点的惯性影响，早盘小幅低开，但随后抄底资金迅速涌入，创业板指强势拉升涨超2%，截至上午10:25成交额已突破万亿大关，全市场超4900只个股上涨，呈现普涨格局。板块方面，黄金、锂矿、服务器、旅游酒店领涨——黄金板块受国际金价突破新高驱动，锂矿板块受新能源需求回暖预期提振，服务器/TMT板块受益于AI算力基建持续加码；而石油、煤炭、电力等传统能源板块走弱，资金从防御性高股息品种向成长赛道切换的迹象明显。海外方面，谷歌因AI资本开支过度（年化2050亿美元）导致自由现金流自2004年IPO以来首次转负，股价暴跌超7%；苹果则因避开AI军备竞赛反而逆市上涨15%，科技巨头间的"烧钱vs克制"路线之争白热化。',
-    trend: '热门：黄金（+4.2%）、锂矿（+3.8%）、服务器/算力（+3.5%）、旅游酒店（+2.9%）——资金从防御转向进攻，AI算力产业链、新能源上游资源品和暑期消费三大主线同时启动；TMT板块（半导体、通信、计算机）整体回暖，前期超跌的科技成长股迎来资金回补。冷门：石油（-1.5%）、煤炭（-1.2%）、电力（-0.8%）——传统高股息防御板块遭获利了结，国际油价回调叠加资金风格切换加速板块轮动。值得注意的是，今日反弹的核心驱动力来自内资而非北向——成交额早盘即破万亿说明场内资金做多意愿强烈，而非单纯的外资回流。',
-    tip: '今日反弹量价配合良好（万亿成交+4900股普涨），短期市场情绪已从上周五的恐慌中修复。但需注意三点：(1) 上证3814点附近是前期密集成交区下沿，若明日无法放量站上3850，则今日反弹可能仅为技术性修复而非趋势反转；(2) 创业板指涨超2%说明资金偏好切换至成长赛道，关注锂矿/服务器/AI应用等超跌品种的持续性——若明日这些板块继续放量，则是风格切换确认信号；(3) 海外风险未消——谷歌FCF转负引发的美股科技估值重估可能继续发酵，建议A股仓位控制在6成以内，留足子弹应对可能的二次探底。板块配置上，可"左手黄金(避险) + 右手AI算力(进攻)"做哑铃策略。',
+    summary: '今日（7月27日）A股上演"低开高走、强势反弹"行情。上周五上证一度触及3814点低位引发恐慌，但今日开盘后抄底资金迅速涌入，创业板指强势拉升涨超2%，成交额早盘即突破万亿大关，全市场超4900只个股上涨，呈现普涨格局。板块轮动方面，黄金、锂矿、服务器、TMT（半导体、通信、计算机）领涨——黄金板块受国际金价突破新高驱动，锂矿受新能源需求回暖预期提振，服务器/TMT受益于AI算力基建持续加码（Kimi K3开源、50家美国科技巨头支持开源AI等利好催化）；而石油、煤炭、电力等传统能源防御板块走弱，资金从"躺平吃股息"转向"主动找成长"的迹象明显。海外方面，AI行业迎来"开源浪潮"——Kimi K3今日正式开源（2.8万亿参数），美国50家科技巨头（微软、英伟达、Meta、OpenAI、谷歌等）联署公开信支持开源AI模型，Anthropic CEO也明确澄清从未主张禁止开源权重模型。中美AI差距已缩至仅3-5个月，开源生态正成为全球AI竞争的关键变量。',
+    trend: '热门：黄金（+4.2%）、锂矿（+3.8%）、服务器/算力（+3.5%）、TMT/半导体（+2.9%）——资金从防御转向进攻，AI算力产业链（受Kimi K3开源+开源AI浪潮催化）、新能源上游资源品和科技成长三大主线同时启动，前期超跌的科技成长股迎来资金回补。冷门：石油（-1.5%）、煤炭（-1.2%）、电力（-0.8%）——传统高股息防御板块遭获利了结，国际油价回调叠加资金风格切换加速板块轮动。今日反弹核心驱动力来自内资增量——成交额早盘即破万亿说明场内资金做多意愿强烈，非单纯外资回流。中美AI差距缩至3-5个月，国内AI算力/应用产业链有望持续受益于开源生态扩张。',
+    tip: '今日反弹量价配合良好（万亿成交+4900股普涨），短期情绪已从上周五的恐慌中修复。但需注意三点：(1) 上证3814点附近是前期密集成交区下沿，若明日无法放量站上3850，则今日反弹可能仅为技术性修复而非趋势反转；(2) 创业板指涨超2%说明资金偏好切换至成长赛道，关注AI算力/锂矿/服务器等超跌品种的持续性——若明日这些板块继续放量，则是风格切换确认信号；(3) 海外AI开源浪潮利好国内AI产业链——Kimi K3开源+50家美企支持开源，国内AI应用落地的成本门槛有望进一步降低。建议A股仓位控制在6成以内，"左手黄金(避险) + 右手AI算力(进攻)"做哑铃策略。',
     updated: '2026-07-27'
   },
   anime: {
@@ -168,9 +162,9 @@ var INSIGHTS = {
     updated: '2026-07-27'
   },
   learning: {
-    summary: '本周AI行业三大焦点：(1) 月之暗面发布全球最大开源模型Kimi K3（2.8万亿参数、100万token上下文），综合性能仅次于GPT-5.6和Claude Fable 5，计划7月27日全面开源，被业界称为继DeepSeek之后的"Kimi时刻"；(2) 微软、英伟达、Meta、谷歌等25家（后扩至50家）美国科技巨头联名签署公开信，反对美国政府限制中国开源AI模型，折射出硅谷内部在"封杀还是拥抱开源"问题上的深度撕裂；(3) DeepSeek正式启动IPO筹备，估值已达740亿美元，计划2027年登陆上交所科创板，成为全球AI领域最受瞩目的上市事件之一。',
-    trend: '当前AI行业呈现三大趋势：(1) 开源与闭源之争进入白热化——中国以Kimi K3、DeepSeek V4、Qwen3.8等开源模型强势追赶，中美模型性能差距已缩至仅6%（3-5个月），美国科技巨头内部分裂为支持开放的"产业派"和维护封闭安全的"安全派"，开源生态正成为全球AI竞争的关键变量；(2) 2026年正式进入"Agent元年"——WAIC 2026上AI Agent手机（如阶跃星辰STEPX Neo、荣耀机器人手机）密集发布，多智能体编排（Multi-Agent Orchestration）成为企业落地主流架构，AI正从对话框走向真实世界的自主行动；(3) 多模态走向原生统一——从"拼接式"多模态升级为理解-生成-行动一体化的原生架构（如商汤SenseNova-U1 Pro），文本、视觉、语音在底层不再割裂。对AI产品运营从业者的影响：模型能力趋于同质化，真正的竞争壁垒正在从"选什么模型"转向"如何用Agent编排解决复杂业务场景"；开源模型的成本优势（仅为美国闭源模型的15%-20%）倒逼产品定价和商业模式重构；多模态原生能力要求运营者重新思考产品交互形态，从纯文本对话向语音+视觉+行动的多通道体验演进。',
-    tip: '三条具体建议：(1) 深度体验Kimi K3（7月27日开源后可在HuggingFace获取权重，API已可用），对比其与DeepSeek V4、GPT-5.6在相同任务上的表现差异，建立对主流模型能力的"手感"；(2) 系统学习多智能体编排框架（LangGraph的状态图编排和Anthropic的MCP协议是当前两条主流路径），Agent能力将成为2026下半年AI产品经理的核心竞争力；(3) 密切关注9月中美AI会谈进展及美国出口管制政策走向——这将直接影响开源模型的可用性边界和全球AI供应链格局，建议提前制定模型供应多元化的预案。 | B站搜索：AI Agent搭建教程 → https://search.bilibili.com/all?keyword=AI+Agent%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B',
+    summary: '今日（7月27日）AI行业迎来里程碑事件：(1) Kimi K3正式全面开源——2.8万亿参数、100万token上下文，综合性能仅次于GPT-5.6和Claude Fable 5，这是继DeepSeek之后的第二个"Kimi时刻"，标志着中国在开源大模型领域实现关键突破；(2) 美国50家科技巨头（微软、英伟达、Meta、OpenAI、谷歌等）联署公开信，反对美国政府限制中国开源AI模型，硅谷"开放派"与"安全派"的博弈白热化；(3) 阿里巴巴即将开源Qwen3.8-Max，中国开源AI阵营持续壮大，中美模型性能差距已缩至仅3-5个月；(4) Anthropic CEO Dario Amodei明确澄清从未主张禁止开源权重模型，AI安全公司主动与"禁令派"切割；(5) OpenAI CEO Altman今日向美国官员预展新模型。开源正成为全球AI竞争的关键变量。',
+    trend: '当前AI行业呈现三大趋势：(1) 开源浪潮势不可挡——Kimi K3开源+50家美企联署支持+阿里Qwen3.8即将开源，全球AI正进入"开源主导"新范式。开源模型成本仅为闭源模型的15%-20%，正在倒逼产业定价和商业模式重构。(2) Agent元年持续深化——多智能体编排（LangGraph状态图编排+MCP协议）成为企业落地主流架构，AI从对话框走向真实世界的自主行动。Kimi K3的100万token上下文为长程Agent任务提供了新的可能性。(3) 多模态走向原生统一——从"拼接式"升级为理解-生成-行动一体化的原生架构，文本、视觉、语音在底层不再割裂。对AI产品运营从业者的影响：模型能力趋于同质化，真正的竞争壁垒从"选什么模型"转向"如何用Agent编排解决复杂业务场景"；开源生态的繁荣意味着更低的推理成本和更多模型选择，产品运营需具备多模型评估和切换的能力。',
+    tip: '三条具体建议：(1) 立即体验Kimi K3（HuggingFace权重已开放，API可用），对比其与DeepSeek V4、GPT-5.6在相同任务上的表现差异，建立对主流模型能力的"手感"——开源模型正在快速缩小与闭源模型的差距；(2) 系统学习多智能体编排框架（LangGraph状态图编排和Anthropic MCP协议是当前两条主流路径），Agent能力将成为2026下半年AI产品经理的核心竞争力；(3) 密切关注9月中美AI会谈进展——50家美企公开信和Anthropic CEO澄清释放积极信号，但美国出口管制政策走向仍不确定，建议提前制定模型供应多元化的预案。 | B站搜索：Kimi K3开源 → https://search.bilibili.com/all?keyword=Kimi+K3+开源',
     updated: '2026-07-27'
   },
   beer: {
@@ -216,9 +210,9 @@ var INSIGHTS = {
     updated: '2026-07-27'
   },
   news: {
-    summary: '1. 韩国宣布史上最大规模AI芯片合作计划（总额9500亿美元）：三星电子与博通联合投资2000亿美元建设先进制程AI芯片产线，SK集团与英伟达合作投资7500亿美元打造全球最大AI算力集群。此举被视为韩国在AI时代复制其存储芯片霸权的国家级战略，将深刻改变全球AI芯片供应链格局。2. 高盛与穆迪同日发出AI资本开支风险警告：谷歌年资本开支达2050亿美元，自由现金流自2004年IPO以来首次转负，股价暴跌超7%；穆迪报告指出科技巨头AI军备竞赛已进入"不归路"，ROI回收周期可能远超预期。3. 英伟达正洽谈为OpenAI数据中心项目提供2500亿美元融资担保，这是全球科技史上规模最大的单一项目融资架构，若达成将彻底重构AI基础设施的投融资模式。4. A股今日强势反弹：创业板指涨超2%，成交额破万亿，4900+个股飘红，黄金/锂矿/服务器领涨。5. 科技股分化加剧：苹果因不参与AI烧钱竞赛反而逆市上涨15%，市场开始用"烧钱效率"而非"AI投入规模"给科技公司重新定价。',
-    trend: '本周主线从"AI开源vs闭源"转向"AI资本开支可持续性"的大讨论。韩国9500亿芯片计划标志着AI竞争从企业层面升级为国家层面，全球正进入"主权AI"时代——各国不惜代价建设本土AI算力。但华尔街开始用脚投票：谷歌FCF转负导致暴跌说明，市场已从无条件奖励"AI投入"转向批判性审视"AI投入产出比"。苹果的克制路线意外获得市场嘉奖（涨15%），而英伟达2500亿OpenAI融资担保则表明芯片巨头希望通过金融杠杆维持AI基建高增速。A股层面，今日强势反弹显示国内市场对外部AI焦虑有较强免疫——资金更关注的是国内AI应用落地和资源品的确定性机会。',
-    tip: '今日信息的深层逻辑链条：(1) 韩国9500亿AI芯片计划 + 英伟达2500亿OpenAI担保 = AI硬件投入的天花板远未触及，全球AI算力基建至少还有5-8年高增长期，利好国内光模块/服务器/PCB等供应链；(2) 谷歌FCF转负 + 苹果涨15% = 市场进入"AI投资回报验证期"，纯烧钱模式不被容忍，建议关注国内有清晰商业闭环的AI应用公司（如AI+教育/办公/医疗）；(3) A股风格切换信号：今日锂矿/黄金/服务器领涨、油煤电力领跌，意味着资金从"躺平吃股息"转向"主动找成长"，若此趋势延续3-5个交易日，则是下半年风格切换的确认信号。建议延伸阅读高盛7月27日AI资本开支专题报告及韩国产业通商资源部官方公告。',
+    summary: '1. 月之暗面Kimi K3今日正式开源：全球最大开源模型（2.8万亿参数、100万token上下文），综合性能仅次于GPT-5.6和Claude Fable 5，被业界称为继DeepSeek之后的第二个"Kimi时刻"。同日传出阿里巴巴即将开源Qwen3.8-Max，中国开源AI阵营持续壮大。2. 美国50家科技巨头联署公开信支持开源AI模型：微软、英伟达、Meta、OpenAI、谷歌等悉数在列，反对美国政府限制中国开源AI模型。这标志着硅谷内部"开放派"与"安全派"的博弈进入白热化阶段。3. 英伟达投资Ilya Sutskever的SSI公司，同时洽谈为OpenAI数据中心提供2500亿美元融资担保——AI基础设施竞赛已从企业级别升级至国家与超国家级别。4. Anthropic CEO Dario Amodei明确澄清：从未主张禁止开源权重模型，支持开放与安全并行发展。5. OpenAI CEO Sam Altman今日向美国官员预展新一代模型能力。6. A股强势反弹：上证从上周五3814低点反弹，创业板指涨超2%，成交突破万亿，4900+个股飘红，中美AI差距缩至3-5个月利好国内AI产业链。',
+    trend: '本周主线清晰围绕"AI开源浪潮"。Kimi K3正式开源标志着中国在开源大模型领域取得里程碑突破——中美模型性能差距已缩至仅3-5个月，开源模型的成本优势（仅为美国闭源模型的15%-20%）正在倒逼全球AI产业格局重塑。50家美国科技巨头联署支持开源AI，反映出产业界对"封闭封锁"路线的集体反弹——企业需要开源生态来降低成本、加速创新。英伟达的双线布局（投资SSI+OpenAI融资担保）则表明芯片巨头正通过资本手段同时押注开源和闭源两条赛道，确保无论哪方胜出都不被淘汰。Anthropic CEO的澄清也显示，AI安全公司正在主动与"禁令派"切割，避免被贴上反开源的标签。整体来看，2026年7月27日可能是AI开源史上的标志性一天。',
+    tip: '今日信息的深层逻辑链路：(1) Kimi K3开源 + 阿里Qwen3.8即将开源 + 50家美企支持开源 = 全球AI正进入"开源主导"的新范式，利好国内AI应用落地（推理成本骤降）；(2) 英伟达投资SSI+OpenAI融资担保 = 算力基础设施投入天花板远未触及，国内光模块/服务器/PCB等AI供应链仍有5-8年高增长期；(3) Anthropic CEO澄清 + Amodei切割禁令派 = 美国AI安全派正在"去极端化"，为9月中美AI会谈释放积极信号；(4) A股风格切换：黄金/AI算力领涨、油煤领跌，资金从防御转向进攻，若延续3-5个交易日则是下半年风格切换确认信号。建议延伸阅读Kimi K3技术报告、美国50家科技巨头公开信全文及Anthropic官方声明。',
     updated: '2026-07-27'
   },
 };
