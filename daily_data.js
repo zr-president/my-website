@@ -127,6 +127,7 @@ var PICKS = {
     {icon:"🧠", title:"奥本海默", desc:"诺兰烧脑巨制·原子弹之父传记", link:"https://search.bilibili.com/all?keyword=奥本海默", video:"https://search.bilibili.com/all?keyword=奥本海默"}
   ],
   movie: [
+    {icon:"🕷️", title:"蜘蛛侠：崭新之日 🔥", desc:"7.29中国全球首映·预售破9000万·成家班武指", link:"https://search.bilibili.com/all?keyword=蜘蛛侠崭新之日", video:"https://search.bilibili.com/all?keyword=蜘蛛侠崭新之日"},
     {icon:"🦸", title:"复仇者联盟：秘密战争", desc:"漫威第六阶段收官·超英史诗", link:"https://search.bilibili.com/all?keyword=复仇者联盟", video:"https://search.bilibili.com/all?keyword=复仇者联盟"},
     {icon:"🔍", title:"利刃出鞘3", desc:"丹尼尔·克雷格回归·悬疑推理", link:"https://search.bilibili.com/all?keyword=利刃出鞘3", video:"https://search.bilibili.com/all?keyword=利刃出鞘3"},
     {icon:"🦖", title:"哥斯拉×金刚：新帝国", desc:"怪兽宇宙新作·巨兽对决", link:"https://search.bilibili.com/all?keyword=哥斯拉金刚", video:"https://search.bilibili.com/all?keyword=哥斯拉金刚"},
