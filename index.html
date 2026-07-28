@@ -1583,15 +1583,14 @@ function checkUpdateStatus(){
 // Auto-check on load (runs after daily_data.js loads)
 setTimeout(function(){ checkUpdateStatus(); }, 1500);
 
-// Manual refresh — opens GitHub Actions to trigger real update
+// Manual refresh
 function manualRefresh(){
   var isUpdated = checkUpdateStatus();
   if(isUpdated){
-    document.getElementById('dailyMsg').textContent = '✅ 今日已更新 · 点击按钮可强制刷新';
+    document.getElementById('dailyMsg').textContent = '✅ 今日已更新('+(typeof DAILY_DATA!=='undefined'?DAILY_DATA.update_date:'')+')';
   } else {
-    document.getElementById('dailyMsg').textContent = '⏳ 跳转至GitHub Actions触发更新...';
-    // Open GitHub Actions workflow trigger page
-    window.open('https://github.com/zr-president/my-website/actions/workflows/quick-update.yml', '_blank');
+    var msg='今日尚未AI更新。\\n\\n推荐：打开Claude Code说\\\"更新网站\\\"（AI搜索最新资讯+刷新所有内容）\\n备选：GitHub Actions基础更新（仅更新日期版本号）';
+    if(confirm(msg)){ window.open('https://github.com/zr-president/my-website/actions/workflows/quick-update.yml','_blank'); }
   }
 }
 
