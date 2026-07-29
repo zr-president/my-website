@@ -40,11 +40,11 @@ var DAILY_BRIEFING = {
   date: "2026-07-29",
   highlights: [
     {priority:1, icon:"📉", section:"AI芯片", headline:"AI芯片股崩盘：费城半导体-4.49%，AMD-8%，SK海力士-15%", summary:"全球AI芯片股遭遇血洗，AMD跌8.15%、SK海力士暴跌15%、闪迪腰斩跌14%，费城半导体指数重挫4.49%。市场从AI信仰转向AI盈利验证，硬件股泡沫担忧加剧。", action:"深度分析", link:"#stock", deepLink:"https://www.perplexity.ai/search?q=AI+chip+crash+AMD+SK+Hynix+Philadelphia+semiconductor+July+2026"},
-    {priority:2, icon:"🍎", section:"科技巨头", headline:"苹果市值首破5万亿美元超越英伟达重夺全球第一", summary:"苹果凭借不烧钱AI策略成为市场避险资产，市值首破5万亿美元大关，超越英伟达重夺全球市值第一。传统经济股和软件股狂欢，AI硬件股血流成河，美股分化加剧。", action:"查看详情", link:"#stock", deepLink:"https://www.perplexity.ai/search?q=Apple+market+cap+5+trillion+surpass+NVIDIA+July+2026"},
-    {priority:3, icon:"🇰🇷", section:"全球市场", headline:"韩股KOSPI暴跌10.8%触发年内第8次熔断", summary:"韩国KOSPI指数暴跌10.8%触发熔断，为年内第8次。中国自研DUV光刻机消息冲击全球芯片供应链格局，SK海力士、三星电子等韩国芯片巨头首当其冲。", action:"查看分析", link:"#stock", deepLink:"https://www.perplexity.ai/search?q=KOSPI+crash+10.8%+circuit+breaker+China+DUV+lithography+July+2026"},
+    {priority:2, icon:"🍎", section:"科技巨头", headline:"苹果市值首破5万亿美元超越英伟达重夺全球第一", summary:"苹果凭借不烧钱AI策略成为市场避险资产，市值首破5万亿美元大关，超越英伟达重夺全球市值第一。传统经济股和软件股狂欢，AI硬件股血流成河，美股分化加剧。", action:"查看详情", link:"#learning", deepLink:"https://www.perplexity.ai/search?q=Apple+market+cap+5+trillion+surpass+NVIDIA+July+2026"},
+    {priority:3, icon:"🇰🇷", section:"全球市场", headline:"韩股KOSPI暴跌10.8%触发年内第8次熔断", summary:"韩国KOSPI指数暴跌10.8%触发熔断，为年内第8次。中国自研DUV光刻机消息冲击全球芯片供应链格局，SK海力士、三星电子等韩国芯片巨头首当其冲。", action:"查看分析", link:"#car", deepLink:"https://www.perplexity.ai/search?q=KOSPI+crash+10.8%+circuit+breaker+China+DUV+lithography+July+2026"},
     {priority:4, icon:"🔬", section:"科技突破", headline:"中国自研DUV光刻机突破，全球芯片格局面临重塑", summary:"中国在深紫外（DUV）光刻机领域取得自主研发突破，直接冲击ASML垄断地位和全球半导体供应链格局。韩国、台湾芯片产业面临重大不确定性，ASML股价承压。", action:"深度解读", link:"#learning", deepLink:"https://www.perplexity.ai/search?q=China+DUV+lithography+machine+breakthrough+semiconductor+July+2026"},
     {priority:5, icon:"🕷️", section:"影视娱乐", headline:"蜘蛛侠：崭新之日今日中国全球首映！预售破9000万", summary:"索尼漫威联合出品，成家班武术指导，青春版彼得帕克。今日中国全球首映，预售票房突破9000万人民币。暑期档最强超英大片，口碑热度双高。", action:"查看详情", link:"#movie", deepLink:"https://search.bilibili.com/all?keyword=蜘蛛侠崭新之日"},
-    {priority:6, icon:"🏦", section:"宏观政策", headline:"美联储利率决议本周公布，全球屏息以待", summary:"美联储本周将公布7月利率决议，市场普遍预期维持不变但关注降息信号。叠加AI芯片股崩盘、韩股熔断、A股创业板-7.4%，全球金融市场进入高度警戒状态。", action:"查看分析", link:"#stock", deepLink:"https://www.perplexity.ai/search?q=Federal+Reserve+rate+decision+July+2026"}
+    {priority:6, icon:"🏦", section:"宏观政策", headline:"美联储利率决议本周公布，全球屏息以待", summary:"美联储本周将公布7月利率决议，市场普遍预期维持不变但关注降息信号。叠加AI芯片股崩盘、韩股熔断、A股创业板-7.4%，全球金融市场进入高度警戒状态。", action:"查看分析", link:"#learning", deepLink:"https://www.perplexity.ai/search?q=Federal+Reserve+rate+decision+July+2026"}
   ]
 };
 
