@@ -1495,21 +1495,31 @@ function showView(viewName, categoryKey){
     if(typeof DETAIL!=='undefined' && DETAIL[categoryKey]){
       detailHtml += '<div style=\"margin-top:16px\">'+DETAIL[categoryKey]+'</div>';
     }
-    // Career lock/unlock
+    // Career lock/unlock — only locks interview content, not analysis
     if(categoryKey==='career'){
       if(!sessionStorage.getItem('career_unlocked')){
-        var lockHtml='<div class=\"card\" style=\"padding:20px;text-align:center\">';
-        lockHtml+='<h3>🔒 面试内容已锁定</h3>';
-        lockHtml+='<p style=\"font-size:12px;color:var(--text2);margin:8px 0\">输入密码解锁面试攻略和投递策略</p>';
-        lockHtml+='<div style=\"display:flex;gap:8px;justify-content:center\">';
-        lockHtml+='<input type=\"password\" id=\"careerPwd\" placeholder=\"输入密码\" style=\"padding:8px;border:1px solid var(--border);border-radius:6px;font-size:13px;width:150px;text-align:center\">';
-        lockHtml+='<button onclick=\"unlockCareer()\" style=\"padding:8px 16px;background:var(--accent);color:#fff;border:none;border-radius:6px;cursor:pointer\">解锁</button>';
-        lockHtml+='</div></div>';
-        detailHtml = lockHtml;
+        // Show INSIGHTS+PICKS+reasoning above, lock only DETAIL below
+        var lockedMsg='<div class=\"card\" style=\"padding:16px;text-align:center;margin-top:16px\">';
+        lockedMsg+='<h4>🔒 面试准备 & 投递策略已锁定</h4>';
+        lockedMsg+='<p style=\"font-size:11px;color:var(--text3)\">输入密码解锁查看完整攻略</p>';
+        lockedMsg+='<div style=\"display:flex;gap:6px;justify-content:center;margin-top:8px\">';
+        lockedMsg+='<input type=\"password\" id=\"careerPwd\" placeholder=\"输入密码\" style=\"padding:6px;border:1px solid var(--border);border-radius:6px;font-size:12px;width:130px;text-align:center\">';
+        lockedMsg+='<button onclick=\"unlockCareer()\" style=\"padding:6px 14px;background:var(--accent);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:12px\">解锁</button>';
+        lockedMsg+='</div></div>';
+        // Show locked message instead of full DETAIL
+        detailHtml = lockedMsg;
       } else {
-        detailHtml += '<div style=\"text-align:right;margin-bottom:8px\"><button onclick=\"lockCareer()\" style=\"padding:3px 10px;border:1px solid var(--border);border-radius:10px;background:var(--bg);cursor:pointer;font-size:10px;color:var(--text2)\">🔒 重新锁定</button></div>';
+        // Show full DETAIL + lock button
+        if(typeof DETAIL!=='undefined' && DETAIL[categoryKey]){
+          detailHtml += '<div style=\"text-align:right;margin-bottom:4px\"><button onclick=\"lockCareer()\" style=\"padding:3px 10px;border:1px solid var(--border);border-radius:10px;background:var(--bg);cursor:pointer;font-size:10px;color:var(--text2)\">🔒 重新锁定</button></div>';
+          detailHtml += '<div style=\"margin-top:4px\">'+DETAIL[categoryKey]+'</div>';
+        }
+        document.getElementById('sectionDetailContent').innerHTML = detailHtml;
+        return; // Skip the normal DETAIL rendering below
       }
     }
+
+    // Full guide content from DETAIL (non-career or unlocked career)
     document.getElementById('sectionDetailContent').innerHTML = detailHtml;
 
     secView.classList.add('active');
