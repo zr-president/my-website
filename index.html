@@ -505,7 +505,9 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeDetail(
 document.querySelectorAll('.nav-section a').forEach(function(a){
   a.addEventListener('click',function(e){
     var href = a.getAttribute('href');
-    if(!href || !href.startsWith('#')) return; // allow external links (search.html etc)
+    if(!href || !href.startsWith('#')) return;
+    // Home/dashboard → go to homepage
+    if(href==='#home'||href==='#dashboard'){e.preventDefault();if(typeof navigateTo==='function') navigateTo('home');return;}
     e.preventDefault();
     var sid = href.replace('#','');
     if(typeof navigateTo === 'function') navigateTo('section-detail', sid);
