@@ -1340,6 +1340,21 @@ function showView(viewName, categoryKey){
     if(typeof INSIGHTS!=='undefined' && INSIGHTS[categoryKey]){
       var ins = INSIGHTS[categoryKey];
       detailHtml += '<div class=\"callout info\" style=\"margin-bottom:16px\"><strong>📊 今日分析（'+ins.updated+'更新）</strong><br>'+ins.summary+'<br><span style=\"font-size:12px;color:var(--text2)\">'+ins.trend+'</span><br><strong style=\"color:var(--accent)\">'+ins.tip+'</strong></div>';
+      // Layered reasoning
+      if(ins.reasoning){
+        var steps=ins.reasoning.split('\n\n');
+        detailHtml += '<div class=\"card\" style=\"padding:14px 16px;margin-bottom:16px\"><strong style=\"font-size:14px\">📖 事件因果分析（小白友好）</strong>';
+        steps.forEach(function(step){
+          if(step.trim()){
+            var lines=step.split('\n');
+            var title=lines[0].trim();
+            var body=lines.slice(1).join('<br>');
+            var color=title.indexOf('🔍')>=0?'var(--blue)':title.indexOf('🤔')>=0?'var(--orange)':title.indexOf('📊')>=0?'var(--green)':title.indexOf('💡')>=0?'var(--accent)':'var(--text)';
+            detailHtml += '<div style=\"margin-top:10px;padding:10px;background:var(--bg);border-radius:6px;border-left:3px solid '+color+'\"><strong>'+title+'</strong><div style=\"font-size:12px;color:var(--text2);margin-top:4px;line-height:2\">'+body+'</div></div>';
+          }
+        });
+        detailHtml += '</div>';
+      }
     }
     // Picks
     if(typeof PICKS!=='undefined' && PICKS[categoryKey]){
