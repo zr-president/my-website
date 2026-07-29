@@ -1,4 +1,4 @@
-var SITE_VERSION = "1.1.4";
+var SITE_VERSION = "1.1.5";
 
 var DAILY_DATA = {
   "update_time": "2026-07-29T08:57:00+08:00",
@@ -258,7 +258,7 @@ var OPTIMIZATION_LOG = {
   date: "2026-07-29",
   total_suggestions: 15,
   total_implemented: 10,
-  streak_days: 4,
+  streak_days: 5,
   suggestions: [
     {id:1, cat:"功能增强", title:"音乐播放器页码按钮优化", desc:"当前翻页按钮偶有失效，需改用更可靠的交互方式", priority:"P1", status:"待实施"},
     {id:2, cat:"内容补充", title:"知识库搜索集成到板块查询框", desc:"让主站板块内的AI查询框也能检索知识库数据", priority:"P1", status:"待实施"},
@@ -279,7 +279,7 @@ var OPTIMIZATION_LOG = {
 };
 
 var WEBSITE_GUIDE = {
-  updated: "2026-07-28",
+  updated: "2026-07-29",
   summary: "欢迎来到钟锐的个人数字空间！这是一个持续进化的智能信息中枢，每天8:57自动更新所有内容。",
   features: [
     {icon:"🏠", title:"首页仪表盘", desc:"一屏总览所有板块精华。分类卡片快速导航、实时股市/天气/新闻一目了然。"},
