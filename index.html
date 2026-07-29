@@ -1163,7 +1163,7 @@ var CATEGORIES = {
 };
 
 // Key sections to show on homepage (everything else hidden)
-var HOME_SECTIONS = ['dashboard','career','music-player','daily-quiz','guide','optimization'];
+var HOME_SECTIONS = ['dashboard','music-player','daily-quiz','guide','optimization'];
 var quizShuffled = [];
 var quizShowingAll = false;
 
@@ -1394,6 +1394,16 @@ function showView(viewName, categoryKey){
         if(hasLink) detailHtml += '<a href=\"'+p.link+'\" target=\"_blank\" class=\"pick-arrow\" style=\"text-decoration:none\">→</a>';
         detailHtml += '</div>';
       });
+    }
+    // Original section HTML (resume workbench, tracker, etc.)
+    if(secEl){
+      var clone=secEl.cloneNode(true);
+      clone.classList.remove('home-hidden');
+      clone.style.display='';
+      // Remove section header (already shown in detail header)
+      var hdr=clone.querySelector('.section-header');
+      if(hdr) hdr.remove();
+      detailHtml += '<div style=\"margin-top:16px\">'+clone.innerHTML+'</div>';
     }
     // Full guide content from DETAIL
     if(typeof DETAIL!=='undefined' && DETAIL[categoryKey]){
