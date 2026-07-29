@@ -1495,16 +1495,20 @@ function showView(viewName, categoryKey){
     if(typeof DETAIL!=='undefined' && DETAIL[categoryKey]){
       detailHtml += '<div style=\"margin-top:16px\">'+DETAIL[categoryKey]+'</div>';
     }
-    // Lock career interview content with password
-    if(categoryKey==='career' && !sessionStorage.getItem('career_unlocked')){
-      var lockHtml='<div class=\"card\" style=\"padding:20px;text-align:center\">';
-      lockHtml+='<h3>🔒 面试内容已锁定</h3>';
-      lockHtml+='<p style=\"font-size:12px;color:var(--text2);margin:8px 0\">输入密码解锁面试攻略和投递策略</p>';
-      lockHtml+='<div style=\"display:flex;gap:8px;justify-content:center\">';
-      lockHtml+='<input type=\"password\" id=\"careerPwd\" placeholder=\"输入密码\" style=\"padding:8px;border:1px solid var(--border);border-radius:6px;font-size:13px;width:150px;text-align:center\">';
-      lockHtml+='<button onclick=\"unlockCareer()\" style=\"padding:8px 16px;background:var(--accent);color:#fff;border:none;border-radius:6px;cursor:pointer\">解锁</button>';
-      lockHtml+='</div></div>';
-      detailHtml = lockHtml;
+    // Career lock/unlock
+    if(categoryKey==='career'){
+      if(!sessionStorage.getItem('career_unlocked')){
+        var lockHtml='<div class=\"card\" style=\"padding:20px;text-align:center\">';
+        lockHtml+='<h3>🔒 面试内容已锁定</h3>';
+        lockHtml+='<p style=\"font-size:12px;color:var(--text2);margin:8px 0\">输入密码解锁面试攻略和投递策略</p>';
+        lockHtml+='<div style=\"display:flex;gap:8px;justify-content:center\">';
+        lockHtml+='<input type=\"password\" id=\"careerPwd\" placeholder=\"输入密码\" style=\"padding:8px;border:1px solid var(--border);border-radius:6px;font-size:13px;width:150px;text-align:center\">';
+        lockHtml+='<button onclick=\"unlockCareer()\" style=\"padding:8px 16px;background:var(--accent);color:#fff;border:none;border-radius:6px;cursor:pointer\">解锁</button>';
+        lockHtml+='</div></div>';
+        detailHtml = lockHtml;
+      } else {
+        detailHtml += '<div style=\"text-align:right;margin-bottom:8px\"><button onclick=\"lockCareer()\" style=\"padding:3px 10px;border:1px solid var(--border);border-radius:10px;background:var(--bg);cursor:pointer;font-size:10px;color:var(--text2)\">🔒 重新锁定</button></div>';
+      }
     }
     document.getElementById('sectionDetailContent').innerHTML = detailHtml;
 
@@ -1654,6 +1658,10 @@ function unlockCareer(){
     sessionStorage.setItem('career_unlocked','1');
     showView('section-detail','career');
   } else { alert('❌ 密码错误'); }
+}
+function lockCareer(){
+  sessionStorage.removeItem('career_unlocked');
+  showView('section-detail','career');
 }
 // Enter key support for password input (delegated)
 document.addEventListener('keydown',function(e){
