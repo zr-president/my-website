@@ -225,7 +225,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div id="breadcrumb" class="breadcrumb" style="display:none"></div>
 <div id="dashboardView" class="view-container active">
 <div id="dailyBanner" style="background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:12px 18px;border-radius:var(--radius);margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;font-size:13px;flex-wrap:wrap;gap:8px;cursor:pointer" onclick="rotateBanner()" title="点击切换">
-<span id="dailyMsg">🔄 每日内容已就绪</span>
+<span id="dailyMsg" style="transition:opacity .3s">🔄 每日内容已就绪</span>
 <span id="dailyQuote" style="font-size:11px;opacity:.85;flex:1;min-width:200px;text-align:center"></span>
 <div style="display:flex;align-items:center;gap:4px" id="bannerDots"></div>
 <div style="display:flex;gap:6px">
@@ -958,7 +958,9 @@ function rotateBanner(manual){
   if(bannerMessages.length===0) buildBannerMessages();
   if(manual) bannerIndex=(bannerIndex+1)%bannerMessages.length;
   var msg = bannerMessages[bannerIndex];
-  document.getElementById('dailyMsg').textContent=msg.icon+' '+msg.text;
+  var el=document.getElementById('dailyMsg');
+  el.style.opacity='0';
+  setTimeout(function(){ el.textContent=msg.icon+' '+msg.text; el.style.opacity='1'; },200);
   var dots='';
   for(var i=0;i<bannerMessages.length;i++) dots+='<span style="display:inline-block;width:6px;height:6px;border-radius:50%;margin:0 2px;background:'+(i===bannerIndex?'#fff':'rgba(255,255,255,.4)')+'"></span>';
   document.getElementById('bannerDots').innerHTML=dots;
