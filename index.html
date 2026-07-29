@@ -302,8 +302,8 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <h3 style="margin-bottom:10px">📋 简历工作台 <span style="font-size:10px;color:var(--text3);font-weight:400">编辑后自动保存到本地</span></h3>
 <div style="display:flex;gap:4px;margin-bottom:10px;flex-wrap:wrap" id="resumeTabs">
 <button onclick="switchResumeTab('basic')" class="resume-tab active" style="padding:5px 12px;border:1px solid var(--accent);background:var(--accent);color:#fff;border-radius:14px;cursor:pointer;font-size:11px">基本信息</button>
-<button onclick="exportResume()" style="margin-left:auto;padding:5px 12px;border:1px solid var(--accent);border-radius:14px;background:var(--accent);color:#fff;cursor:pointer;font-size:11px;font-weight:500">📥 导出JSON</button>
-<button onclick="importResume()" style="padding:5px 12px;border:1px solid var(--accent);border-radius:14px;background:var(--accent);color:#fff;cursor:pointer;font-size:11px;font-weight:500">📤 导入JSON</button>
+<button onclick="exportPDF()" style="margin-left:auto;padding:5px 12px;border:1px solid var(--accent);border-radius:14px;background:var(--accent);color:#fff;cursor:pointer;font-size:11px;font-weight:500">📄 导出PDF</button>
+<button onclick="importResume()" style="padding:5px 12px;border:1px solid var(--accent);border-radius:14px;background:var(--accent);color:#fff;cursor:pointer;font-size:11px;font-weight:500">📤 导入备份</button>
 <button onclick="switchResumeTab('skills')" class="resume-tab" style="padding:5px 12px;border:1px solid var(--border);background:var(--bg);color:var(--text2);border-radius:14px;cursor:pointer;font-size:11px">技能</button>
 <button onclick="switchResumeTab('projects')" class="resume-tab" style="padding:5px 12px;border:1px solid var(--border);background:var(--bg);color:var(--text2);border-radius:14px;cursor:pointer;font-size:11px">项目</button>
 <button onclick="switchResumeTab('exp')" class="resume-tab" style="padding:5px 12px;border:1px solid var(--border);background:var(--bg);color:var(--text2);border-radius:14px;cursor:pointer;font-size:11px">经历</button>
@@ -815,11 +815,19 @@ function saveResumeField(){
   if(editor){ resume[currentResumeTab] = editor.value; saveResume(resume); }
 }
 switchResumeTab('basic');
-function exportResume(){
+function exportPDF(){
   var resume=loadResume();
-  var json=JSON.stringify(resume,null,2);
-  if(navigator.clipboard){ navigator.clipboard.writeText(json).then(function(){ alert('✅ 简历JSON已复制到剪贴板，可粘贴保存'); }); }
-  else { prompt('复制以下JSON保存：',json); }
+  var w=window.open('','_blank','width=800,height=600');
+  w.document.write('<!DOCTYPE html><html><head><meta charset=\"UTF-8\"><title>钟锐·个人简历</title>');
+  w.document.write('<style>body{font-family:\"PingFang SC\",\"Microsoft YaHei\",sans-serif;max-width:700px;margin:40px auto;line-height:2;color:#1a1a2e}h1{font-size:24px;border-bottom:2px solid #4f46e5;padding-bottom:8px}h2{font-size:16px;color:#4f46e5;margin-top:24px}p{white-space:pre-line;font-size:13px}</style></head><body>');
+  w.document.write('<h1>钟锐 · 个人简历</h1>');
+  w.document.write('<h2>基本信息</h2><p>'+resume.basic+'</p>');
+  w.document.write('<h2>技能</h2><p>'+resume.skills+'</p>');
+  w.document.write('<h2>项目经验</h2><p>'+resume.projects+'</p>');
+  w.document.write('<h2>工作经历</h2><p>'+resume.exp+'</p>');
+  w.document.write('</body></html>');
+  w.document.close();
+  setTimeout(function(){ w.print(); },500);
 }
 function importResume(){
   var json=prompt('粘贴简历JSON数据（之前导出的）：');
