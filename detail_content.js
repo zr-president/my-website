@@ -642,22 +642,75 @@ DETAIL.learning = '<h2>🎓 AI学习中心 · 从零科普</h2><p class="detail-
 
 
 // ===== 其余所有板块 =====
-DETAIL.career = '<h2>💼 求职中心 · 完整简历 & 攻略</h2><p class="detail-subtitle">电子简历 · 投递策略 · 面试题库</p>'+
-'<h3>📋 钟锐 · 个人简历</h3>'+
-'<div class="highlight-box"><p><strong>钟锐 | 26岁 | 广州（可广深）| AI产品运营/用户增长 | 3年+经验 | 随时到岗</strong></p></div>'+
-'<h4>💡 核心能力</h4><ul><li><strong>AI工具链实操：</strong>Prompt Engineering+Agent搭建（Coze→Dify→LangChain）。独立搭建个人AI数字中枢网站。</li><li><strong>数据驱动增长：</strong>AARRR+数据分析+A/B测试。Excel/SQL。</li><li><strong>内容运营：</strong>B站UP主，CF刀战技术标杆。全链路内容运营经验。</li></ul>'+
-'<h3>🔗 招聘平台</h3>'+
-'<div class="resource-card"><div class="rc-icon">💼</div><div class="rc-info"><div class="rc-name">BOSS直聘</div><div class="rc-desc">AI/互联网岗位最集中</div></div><a href="https://www.zhipin.com" target="_blank" class="rc-link">打开 →</a></div>'+
-'<div class="resource-card"><div class="rc-icon">🎯</div><div class="rc-info"><div class="rc-name">猎聘</div><div class="rc-desc">中高端岗位更多</div></div><a href="https://www.liepin.com" target="_blank" class="rc-link">打开 →</a></div>'+
-'<div class="resource-card"><div class="rc-icon">🔗</div><div class="rc-info"><div class="rc-name">脉脉</div><div class="rc-desc">内推+了解公司</div></div><a href="https://maimai.cn" target="_blank" class="rc-link">打开 →</a></div>'+
-'<h3>💬 打招呼模板</h3>'+
-'<div class="callout tip"><strong>AI产品运营：</strong>"Hi，看到贵司在招AI产品运营。最近我用Dify+Claude搭建了个人Agent网站（16个功能板块），对AI+运营的结合有真实体感。方便聊5分钟吗？"</div>'+
-'<div class="callout info"><strong>用户增长：</strong>"您好，关注贵司产品线有段时间了。有3年用户增长经验，搭建全链路增长体系。附上AI项目网站。期待交流。"</div>'+
-'<h3>🎤 高频面试题</h3>'+
-'<p><strong>Q1: AI产品运营vs传统运营？</strong>工具（Agent/AIGC）+能力（Prompt+Agent搭建）+迭代速度，三维度对比+案例。</p>'+
-'<p><strong>Q2: 从0到1搭增长体系？</strong>AARRR拆解→每环节可落地策略+指标。</p>'+
-'<p><strong>Q3: 用过哪些Agent框架？</strong>完整case——本网站搭建过程就是最佳案例。</p>'+
-'<div class="highlight-box"><p>🏆 黄金投递：周二-周四 09:30-11:00 | ❌ 避免：周五下午+周末</p></div>';
+DETAIL.career = '<h2>💼 求职中心 · 面试准备 & 投递策略</h2><p class="detail-subtitle">真实简历 · 面试10题 · 公司分级 · 薪资谈判</p>'+
+'<div class="callout tip"><strong>🎯 核心定位：</strong>AI驱动的增长运营 — 不是纯投放，不是纯分析，是用AI工具做增长。700万月流水、60%环比增长、30+BI报表、400+网点。</div>'+
+
+'<h3>🎤 面试自我介绍（1分30秒版本）</h3>'+
+'<div class="highlight-box"><p>面试官好，我叫钟锐，26岁，base广州，面试增长运营/策略运营方向。我用三个关键词概括自己：</p>'+
+'<p><strong>第一，跨界增长。</strong>2.5年平安产险总部经验+1年互联网车服增长负责人，横跨金融和互联网。在平安我主导了"平安好车主"400+网点增长体系搭建，从0到1建BI报表体系（30+张），这段经历给了我扎实的经营分析功底。</p>'+
+'<p><strong>第二，AI驱动。</strong>我可能是增长运营里最会用AI的人。独立用Claude Code+RPA搭建了增长中台——自动清洗10万+条数据、实时监控预算消耗、AI归因分析渠道ROI。在我的主导下，车服项目实现60%环比增长、月流水突破700万。这套系统目前覆盖15个项目，招商银行复购率因此提升22%。</p>'+
+'<p><strong>第三，落地闭环。</strong>我做增长不是只做报表——策略规划→渠道执行→数据复盘全流程自己跑。亲手管过月均百万级投放预算，知道投放后台怎么操作、素材怎么改、人群包怎么调。这就是我跟纯分析/纯投放岗的最大区别：能想、能做、能复盘。</p>'+
+'<p>总的来说，我把自己定位为<strong>AI原生增长运营</strong>——用AI工具把增长效率做到以前3-5人团队才能做的事。以上是我的自我介绍。</p></div>'+
+
+'<h3>📋 高频面试题 TOP 10</h3>'+
+
+'<h4>Q1: 你互联网经验只有1年，怎么跟纯互联网背景的候选人竞争？</h4>'+
+'<div class="callout tip"><p><strong>不辩解，亮差异化。</strong>"我的竞争力不在年资，在复合背景和能力密度。平安2.5年给了我两个硬功夫：①经营分析能力——不是只看DAU/留存，而是能从P&L角度理解增长对业务的价值；②复杂组织推动力——400+网点、跨6个部门协调，这些在纯互联网公司很难练到。再加上我用AI工具大幅缩短了经验差距——别人3个人做的事我一个人+AI完成。所以不是1年vs3年，是金融经营视角+互联网执行+AI工具效率的三重叠加。"</p></div>'+
+
+'<h4>Q2: 为什么从金融跳互联网？</h4>'+
+'<div class="callout tip"><p>"金融增长偏防守——用户已经有了、做的是激活和留存。互联网做的是增量——从0到1获客、从1到100增长，更有创造空间。本质上我享受的是‘从无到有做起来’的过程。平安给了我分析硬功夫，现在我把这套方法论用在更快的赛道上。另外，金融的合规和风控训练让我在增长中天然有ROI意识——不是乱花钱砸量，是每一分钱算清楚。"</p></div>'+
+
+'<h4>Q3: 中间有半年gap，这段时间在做什么？</h4>'+
+'<div class="callout tip"><p>"三个原因：①上一份工作有竞业协议限制，需要过渡期；②利用这段时间系统学习AI工具链——从Prompt Engineering到Agent搭建，这套网站就是在此期间完成的，现在这已成为我最核心的生产力；③想清楚下一步方向——不是海投，是精准锁定AI+增长这个交叉点。这半年不是躺平，是蓄力。"</p></div>'+
+
+'<h4>Q4: ⭐ 详细说说你的AI增长系统？</h4>'+
+'<div class="highlight-box"><p><strong>这是核心展示题，务必讲清楚三层架构：</strong></p>'+
+'<p><strong>第一层 数据层（采集+清洗）：</strong>Python脚本+RPA自动从多平台抓取原始数据——渠道投放报表、用户行为埋点、交易流水、客服工单。AI自动做数据清洗：去重、补缺、异常检测。日处理数据量10万+条，原来人工处理需要4小时，现在15分钟。</p>'+
+'<p><strong>第二层 监控层（实时预警）：</strong>搭建了实时BI看板（30+张报表），关键指标设置阈值——预算消耗异常、渠道ROI骤降、用户转化断崖，自动推送钉钉/企微告警。不是事后看报表，是事前拦住问题。</p>'+
+'<p><strong>第三层 分析层（AI归因+策略建议）：</strong>接入Claude API做智能归因——不是简单看‘哪个渠道转化好’，而是交叉分析‘什么用户在什么渠道看到什么素材在什么时间转化’。AI自动生成策略建议：这个渠道该加预算还是该换素材，依据是什么。目前这套系统覆盖15个项目，最直接的结果：项目整体环比增长60%，招商银行复购率+22%。</p></div>'+
+
+'<h4>Q5: 你Python到什么水平？能独立写代码吗？</h4>'+
+'<div class="callout info"><p>"会用但不精通，诚实说。Pandas数据处理、Matplotlib可视化这些基础的我可以自己写。复杂的需求——比如多线程爬虫、机器学习模型——我会用AI辅助（Claude Code/GitHub Copilot），但我知道该让AI写什么、怎么检查AI的输出对不对。增长运营的核心竞争力不是代码能力，是知道该分析什么、怎么拆解问题。代码只是工具，问题定义才是能力。"</p></div>'+
+
+'<h4>Q6: 一个新产品DAU一直不涨，你怎么诊断？</h4>'+
+'<div class="callout tip"><p><strong>三层漏斗逐层拆解，不跳步：</strong></p>'+
+'<p><strong>第一层 获客端：</strong>渠道量级够不够？CPA是否在目标范围内？哪个渠道的CAC最低？如果量不够——是预算问题还是出价/定向问题？</p>'+
+'<p><strong>第二层 转化端：</strong>下载到注册、注册到激活、激活到首日使用——每一步的转化率是多少？跟行业benchmark对比差在哪一步？用漏斗分析+用户分群（新老/渠道/机型）定位具体卡点。A/B测试优化落地页或新手引导。</p>'+
+'<p><strong>第三层 留存端：</strong>次留、7留、30留分别多少？对比竞品处于什么水平？如果获客和转化都OK但留存差——问题在产品价值传递。做用户回访看‘为什么不留’，结合行为数据看哪个功能是留存魔法数字。</p>'+
+'<p><strong>输出：</strong>一份诊断报告——问题在哪一层、根因是什么、建议优先级排序+预估影响量级。不是扔数据，是给结论。</p></div>'+
+
+'<h4>Q7: 你有投放经验吗？跟增长岗什么关系？</h4>'+
+'<div class="callout info"><p>"投放是增长的子集。增长要管的是从获客到留存的全链路——投放只是获客环节的一个手段,还有内容获客、裂变、SEO、BD等多个手段。我个人亲手跑过月均百万级的投放预算，巨量引擎、腾讯广告、百度营销这三个主流后台都操作过。了解出价策略、人群包搭建、素材A/B测试的实操细节。有投放一线体感的好处是：跟投放团队沟通时不会被忽悠，看数据时知道哪些是正常波动、哪些是真的问题。我的核心价值在策略层——定预算分配、定渠道组合、定转化路径，然后用AI工具提效执行和复盘。"</p></div>'+
+
+'<h4>Q8: 你期望薪资20-25K，这个数字怎么来的？</h4>'+
+'<div class="callout tip"><p>"三个维度：①市场数据——深圳3-5年增长运营中位线18-22K，AI方向有20-30%溢价（数据来源：BOSS直聘/Maimai/猎聘）；②复合背景稀缺性——金融经营分析+互联网增长执行+AI工具实操，这三者叠加的人在市场上不多；③业绩验证——700万月流水、60%增长不是预期，是已完成。20-25K是我当前阶段合理定价——不是根据‘我要多少’，是根据‘我值多少’。"</p></div>'+
+
+'<h4>Q9: 你的职业规划是什么？</h4>'+
+'<div class="callout info"><p>"分三个阶段：<strong>短期（1-2年）</strong>——成为AI驱动增长的专家，在具体业务线证明这套方法论可复制，积累3-5个成功case；<strong>中期（2-4年）</strong>——带团队负责一个方向的增长，从个人贡献者到策略负责人，培养能独立作战的增长运营；<strong>长期（4年+）</strong>——成为增长负责人/增长VP，建立整套AI驱动的增长体系，赋能多条业务线。路径清晰但不设限——如果公司方向让我看到更大的创造空间，我会all in。"</p></div>'+
+
+'<h4>Q10: ⭐ 你有什么想问我们的？</h4>'+
+'<div class="highlight-box"><p><strong>推荐三个问题，按面试轮次选择：</strong></p>'+
+'<p><strong>①问业务leader（推荐首选）：</strong>"团队目前增长最大的痛点是什么？过去半年尝试过什么解法？效果如何？"——既展示你关注实际问题，又能快速判断这个岗位的挑战和资源。</p>'+
+'<p><strong>②问HR/交叉面：</strong>"团队目前AI工具的使用程度如何？公司对AI提效有明确的鼓励和投入吗？"——展示你的AI差异化，同时试探公司文化。</p>'+
+'<p><strong>③问创始人/总监（终面用）：</strong>"如果入职前三个月我做到了X，您觉得算合格吗？"——反向管理预期，展示结果导向思维。避免问"公司前景如何""团队氛围怎样"这种只能得到官话的问题。</p></div>'+
+
+'<h3>🏢 目标公司 & 投递策略</h3>'+
+'<table class="data-table"><tr><th>梯队</th><th>定位</th><th>目标公司</th><th>薪资范围</th><th>策略</th></tr>'+
+'<tr style="background:var(--accent-light)"><td><strong>🥇 第一梯队</strong></td><td>AI驱动增长</td><td>字节跳动、腾讯、美团、小红书、快手、AI创业公司</td><td>18-30K</td><td>核心发力区。强调AI+增长复合能力，投增长运营/策略运营/AI产品运营方向。优先内推，每周3-5家精准投递</td></tr>'+
+'<tr><td><strong>🥈 第二梯队</strong></td><td>增长数据分析</td><td>微众银行、乐信、SHEIN、Temu、滴滴</td><td>16-24K</td><td>金融+互联网交叉背景有优势。突出经营分析+增长策略双重能力，投增长数据分析/商业分析方向</td></tr>'+
+'<tr><td><strong>🥉 第三梯队</strong></td><td>策略经营分析</td><td>比亚迪、小鹏汽车、顺丰</td><td>15-22K</td><td>实体+数字化交叉领域。突出平安经营分析功底+AI提效能力，投策略运营/经营分析方向。实体企业AI人才稀缺，议价空间大</td></tr>'+
+'</table>'+
+
+'<h3>💰 薪资底线 & 谈判策略</h3>'+
+'<div class="callout warn"><p><strong>深圳底线 ≥18K | 目标区间 22-25K | AI方向冲刺 28K+ | 年薪预期 25-40万</strong></p>'+
+'<p>谈判要点：①先让对方出价，不要先亮底牌；②薪资结构问清楚——基本工资/绩效/年终/股票分别多少；③谈总包不谈月薪——年薪=月薪×(12+年终月数)+股票/期权；④手上至少保留2个offer做谈判筹码。</p></div>'+
+
+'<h3>🔗 招聘平台 & 资源</h3>'+
+'<div class="resource-card"><div class="rc-icon">💼</div><div class="rc-info"><div class="rc-name">BOSS直聘</div><div class="rc-desc">AI/互联网岗位最集中，活跃度最高</div></div><a href="https://www.zhipin.com" target="_blank" class="rc-link">打开 →</a></div>'+
+'<div class="resource-card"><div class="rc-icon">🎯</div><div class="rc-info"><div class="rc-name">猎聘</div><div class="rc-desc">中高端岗位更多，猎头主动联系概率高</div></div><a href="https://www.liepin.com" target="_blank" class="rc-link">打开 →</a></div>'+
+'<div class="resource-card"><div class="rc-icon">🔗</div><div class="rc-info"><div class="rc-name">脉脉</div><div class="rc-desc">内推+了解公司真实情况+薪资查询</div></div><a href="https://maimai.cn" target="_blank" class="rc-link">打开 →</a></div>'+
+
+'<div class="callout info"><strong>📌 面试准备TIPS：</strong>每轮面试前30分钟浏览本文——过一遍自我介绍（录音自己听一遍修正）、扫一眼高频题Q4/Q6/Q10（这三题决定面试天花板）、根据对方公司调整目标梯队定位。每次面试结束立刻记复盘笔记，迭代回答话术。</div>';
 
 DETAIL.about = '<h2>🧬 个人介绍</h2><p class="detail-subtitle">AI产品运营·用户增长·持续进化</p>'+
 '<h3>我是谁</h3><p>钟锐，26岁，广州，锁定广东大湾区。职业方向：<strong>AI产品运营/用户增长运营</strong>。</p>'+
