@@ -300,6 +300,8 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <h3 style="margin-bottom:10px">📋 简历工作台 <span style="font-size:10px;color:var(--text3);font-weight:400">编辑后自动保存到本地</span></h3>
 <div style="display:flex;gap:4px;margin-bottom:10px;flex-wrap:wrap" id="resumeTabs">
 <button onclick="switchResumeTab('basic')" class="resume-tab active" style="padding:5px 12px;border:1px solid var(--accent);background:var(--accent);color:#fff;border-radius:14px;cursor:pointer;font-size:11px">基本信息</button>
+<button onclick="exportResume()" style="margin-left:auto;padding:4px 10px;border:1px solid var(--border);border-radius:14px;background:var(--bg);cursor:pointer;font-size:10px;color:var(--text2)">📥 导出</button>
+<button onclick="importResume()" style="padding:4px 10px;border:1px solid var(--border);border-radius:14px;background:var(--bg);cursor:pointer;font-size:10px;color:var(--text2)">📤 导入</button>
 <button onclick="switchResumeTab('skills')" class="resume-tab" style="padding:5px 12px;border:1px solid var(--border);background:var(--bg);color:var(--text2);border-radius:14px;cursor:pointer;font-size:11px">技能</button>
 <button onclick="switchResumeTab('projects')" class="resume-tab" style="padding:5px 12px;border:1px solid var(--border);background:var(--bg);color:var(--text2);border-radius:14px;cursor:pointer;font-size:11px">项目</button>
 <button onclick="switchResumeTab('exp')" class="resume-tab" style="padding:5px 12px;border:1px solid var(--border);background:var(--bg);color:var(--text2);border-radius:14px;cursor:pointer;font-size:11px">经历</button>
@@ -809,6 +811,24 @@ function saveResumeField(){
   var resume = loadResume();
   var editor = document.getElementById('resumeEditor');
   if(editor){ resume[currentResumeTab] = editor.value; saveResume(resume); }
+}
+switchResumeTab('basic');
+function exportResume(){
+  var resume=loadResume();
+  var json=JSON.stringify(resume,null,2);
+  if(navigator.clipboard){ navigator.clipboard.writeText(json).then(function(){ alert('✅ 简历JSON已复制到剪贴板，可粘贴保存'); }); }
+  else { prompt('复制以下JSON保存：',json); }
+}
+function importResume(){
+  var json=prompt('粘贴简历JSON数据（之前导出的）：');
+  if(!json) return;
+  try{
+    var data=JSON.parse(json);
+    if(data.basic&&data.skills&&data.projects){
+      saveResume(data); switchResumeTab('basic');
+      alert('✅ 简历导入成功！');
+    } else { alert('❌ JSON格式不正确，缺少必要字段'); }
+  }catch(e){ alert('❌ JSON解析失败：'+e.message); }
 }
 switchResumeTab('basic');
 
@@ -1417,9 +1437,25 @@ function doSectionQuery(){
   // Show searching
   resultBox.innerHTML = '<div style="margin-top:8px;padding:10px;background:var(--bg);border-radius:6px;font-size:12px;color:var(--text2)">🔍 正在搜索站内数据...<br><span style="font-size:10px">检索范围：PICKS推荐 + INSIGHTS分析 + DETAIL完整指南</span></div>';
 
-  // Search local data (PICKS + INSIGHTS + DETAIL + knowledge base)
+  // Search local data
   var results = [];
   var qLower = q.toLowerCase();
+
+  // Search knowledge base if loaded (deferred async)
+  if(typeof KNOWLEDGE_INDEX!=='undefined' && KNOWLEDGE_INDEX.length>0){
+    var scored=[];
+    KNOWLEDGE_INDEX.forEach(function(entry){
+      var kw=entry.keyword.toLowerCase(), info=entry.info.toLowerCase(), score=0;
+      if(kw===qLower) score=100;
+      else if(qLower.indexOf(kw)>=0) score=80;
+      else if(kw.indexOf(qLower)>=0) score=70;
+      else if(info.indexOf(qLower)>=0) score=60;
+      else if(qLower.length>=3){ var m=0; for(var i=0;i<qLower.length;i++){ if(kw.indexOf(qLower[i])>=0||info.indexOf(qLower[i])>=0) m++; } if(m>=Math.max(2,qLower.length*0.6)) score=m*3; }
+      if(score>0) scored.push({score:score, source:'📚 知识库('+entry.section+')', text:entry.info, link:null});
+    });
+    scored.sort(function(a,b){return b.score-a.score;});
+    scored.slice(0,10).forEach(function(s){ results.push(s); });
+  }
 
   // Search PICKS
   if(typeof PICKS!=='undefined' && PICKS[sectionId]){
@@ -1647,5 +1683,6 @@ function manualRefresh(){
 
 <script src="detail_content.js"></script>
 <script src="daily_data.js?v=1.1.4"></script>
+<script defer src="knowledge_index.js"></script>
 </body>
 </html>

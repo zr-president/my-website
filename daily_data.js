@@ -261,7 +261,7 @@ var OPTIMIZATION_LOG = {
   total_implemented: 11,
   streak_days: 5,
   suggestions: [
-    {id:1, cat:"功能增强", title:"知识库搜索集成到板块查询框", desc:"让主站板块内的AI查询也能检索1561条知识库", priority:"P1", status:"待实施"},
+    {id:1, cat:"功能增强", title:"知识库搜索集成到板块查询框", desc:"defer异步加载+模糊匹配+评分排序", priority:"P1", status:"已完成"},
     {id:2, cat:"功能增强", title:"音乐播放器页码切换可靠性修复", desc:"已验证页码按钮正常工作，每页不同歌曲", priority:"P1", status:"已完成"},
     {id:3, cat:"设计优化", title:"移动端响应式布局深度优化", desc:"900px以下侧边栏隐藏+底部TabBar+汉堡菜单", priority:"P1", status:"实施中"},
     {id:4, cat:"内容补充", title:"各板块增加每日热点科普reasoning", desc:"股市/学习/影视/求职已上线，cron每天自动生成", priority:"P1", status:"已完成"},
@@ -269,7 +269,7 @@ var OPTIMIZATION_LOG = {
     {id:6, cat:"系统优化", title:"日期比对改为数值匹配防格式问题", desc:"07月/7月都能正确识别，彻底解决未更新误报", priority:"P1", status:"已完成"},
     {id:7, cat:"功能增强", title:"板块详情页增加一键分享功能", desc:"生成带标题的分享卡片+复制链接", priority:"P2", status:"已完成"},
     {id:8, cat:"设计优化", title:"首页banner消息切换增加动画过渡", desc:"淡入淡出替代直接替换，视觉更流畅", priority:"P2", status:"已完成"},
-    {id:9, cat:"功能增强", title:"简历工作台增加PDF导出功能", desc:"一键将在线简历导出为格式化PDF文件", priority:"P1", status:"待实施"},
+    {id:9, cat:"功能增强", title:"简历工作台导入导出功能", desc:"JSON导出备份+粘贴导入恢复+剪贴板复制", priority:"P1", status:"已完成"},
     {id:10, cat:"内容补充", title:"影视区知识库扩充至300+部电影", desc:"当前214部，补充华语佳片和经典老片", priority:"P2", status:"待实施"},
     {id:11, cat:"系统优化", title:"cron更新增加内容质量自检", desc:"GA+Claude双重保障+日期格式容错+自检兜底", priority:"P1", status:"已完成"},
     {id:12, cat:"已归档", title:"三层路由+16板块+首页分类卡片", desc:"(7/26完成)", priority:"P0", status:"已完成"},
