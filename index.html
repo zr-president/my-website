@@ -133,8 +133,10 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 .pick-card .pick-title{font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pick-card .pick-desc{font-size:10px;color:var(--text3)}
 .pick-card .pick-arrow{font-size:14px;color:var(--accent);flex-shrink:0}
-.briefing-item{transition:all .2s}
-.briefing-item:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.briefing-item{transition:all .35s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
+.briefing-item::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--accent),transparent);opacity:0;transition:opacity .35s}
+.briefing-item:hover{transform:translateY(-3px) scale(1.01);box-shadow:0 8px 30px rgba(0,0,0,.12),0 0 0 1px var(--accent)}
+.briefing-item:hover::before{opacity:.06}
 
 /* Insight callout */
 .insight-box{background:linear-gradient(135deg,var(--accent-light),var(--bg2));border-left:3px solid var(--accent);border-radius:8px;padding:10px 14px;margin-bottom:7px;font-size:12px;line-height:1.8}
@@ -166,8 +168,10 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 #homeCategoryGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:16px}
 @media(max-width:1100px){#homeCategoryGrid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:700px){#homeCategoryGrid{grid-template-columns:1fr}}
-.cat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;cursor:pointer;transition:.2s;position:relative;display:flex;flex-direction:column;gap:8px}
-.cat-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg);border-color:var(--accent)}
+.cat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;cursor:pointer;transition:all .35s cubic-bezier(.4,0,.2,1);position:relative;display:flex;flex-direction:column;gap:8px;overflow:hidden}
+.cat-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--accent),transparent 60%);opacity:0;transition:opacity .35s}
+.cat-card:hover{transform:translateY(-3px) scale(1.01);box-shadow:0 8px 30px rgba(0,0,0,.12),0 0 0 1px var(--accent)}
+.cat-card:hover::before{opacity:.05}
 .cat-card .cat-header{display:flex;align-items:center;gap:10px}
 .cat-card .cat-icon{font-size:28px;flex-shrink:0}
 .cat-card .cat-name{font-size:15px;font-weight:700}
@@ -303,7 +307,8 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div style="display:flex;gap:4px;margin-bottom:10px;flex-wrap:wrap" id="resumeTabs">
 <button onclick="switchResumeTab('basic')" class="resume-tab active" style="padding:5px 12px;border:1px solid var(--accent);background:var(--accent);color:#fff;border-radius:14px;cursor:pointer;font-size:11px">基本信息</button>
 <button onclick="exportPDF()" style="margin-left:auto;padding:5px 12px;border:1px solid var(--accent);border-radius:14px;background:var(--accent);color:#fff;cursor:pointer;font-size:11px;font-weight:500">📄 导出PDF</button>
-<button onclick="importResume()" style="padding:5px 12px;border:1px solid var(--accent);border-radius:14px;background:var(--accent);color:#fff;cursor:pointer;font-size:11px;font-weight:500">📤 导入备份</button>
+<button onclick="document.getElementById('resumeFileInput').click()" style="padding:5px 12px;border:1px solid var(--accent);border-radius:14px;background:var(--accent);color:#fff;cursor:pointer;font-size:11px;font-weight:500">📤 导入PDF</button>
+<input type="file" id="resumeFileInput" accept=".pdf,.json,.txt" onchange="importResumeFile(this)" style="display:none">
 <button onclick="switchResumeTab('skills')" class="resume-tab" style="padding:5px 12px;border:1px solid var(--border);background:var(--bg);color:var(--text2);border-radius:14px;cursor:pointer;font-size:11px">技能</button>
 <button onclick="switchResumeTab('projects')" class="resume-tab" style="padding:5px 12px;border:1px solid var(--border);background:var(--bg);color:var(--text2);border-radius:14px;cursor:pointer;font-size:11px">项目</button>
 <button onclick="switchResumeTab('exp')" class="resume-tab" style="padding:5px 12px;border:1px solid var(--border);background:var(--bg);color:var(--text2);border-radius:14px;cursor:pointer;font-size:11px">经历</button>
@@ -829,16 +834,78 @@ function exportPDF(){
   w.document.close();
   setTimeout(function(){ w.print(); },500);
 }
+function importResumeFile(input){
+  var file=input.files[0];
+  if(!file) return;
+  var ext=file.name.split('.').pop().toLowerCase();
+  if(ext==='json'){
+    var reader=new FileReader();
+    reader.onload=function(e){
+      try{
+        var data=JSON.parse(e.target.result);
+        if(data.basic){ saveResume(data); switchResumeTab('basic'); alert('✅ JSON导入成功！'); }
+        else alert('❌ JSON格式不正确');
+      }catch(err){ alert('❌ 解析失败：'+err.message); }
+    };
+    reader.readAsText(file);
+  } else if(ext==='pdf'){
+    // Load PDF.js from CDN + extract text
+    var script=document.createElement('script');
+    script.src='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+    script.onload=function(){
+      pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+      var reader=new FileReader();
+      reader.onload=function(e){
+        pdfjsLib.getDocument({data:e.target.result}).promise.then(function(pdf){
+          var texts=[],pages=Math.min(pdf.numPages,5);
+          var loadPage=function(n){
+            if(n>pages){
+              parseResumeText(texts.join('\n'));
+              return;
+            }
+            pdf.getPage(n).then(function(page){
+              page.getTextContent().then(function(content){
+                texts.push(content.items.map(function(i){return i.str}).join(' '));
+                loadPage(n+1);
+              });
+            });
+          };
+          loadPage(1);
+        });
+      };
+      reader.readAsArrayBuffer(file);
+    };
+    document.head.appendChild(script);
+  } else {
+    // TXT or other text files
+    var reader=new FileReader();
+    reader.onload=function(e){ parseResumeText(e.target.result); };
+    reader.readAsText(file);
+  }
+}
+
+function parseResumeText(text){
+  var lines=text.split('\n').filter(function(l){return l.trim()});
+  var parsed={basic:'',skills:'',projects:'',exp:''};
+  var section='basic';
+  lines.forEach(function(line){
+    var t=line.trim();
+    if(t.indexOf('技能')>=0||t.indexOf('Skill')>=0){ section='skills'; return; }
+    if(t.indexOf('项目')>=0||t.indexOf('Project')>=0){ section='projects'; return; }
+    if(t.indexOf('经历')>=0||t.indexOf('Experience')>=0||t.indexOf('工作')>=0){ section='exp'; return; }
+    parsed[section]+=t+'\n';
+  });
+  if(parsed.basic.trim()||parsed.skills.trim()){
+    saveResume(parsed); switchResumeTab('basic');
+    alert('✅ PDF导入成功！已提取基本信息/技能/项目/经历，请检查并手动调整。');
+  } else { alert('⚠️ 未能从PDF中识别简历内容，请尝试粘贴文本或使用JSON导入。'); }
+}
+
 function importResume(){
-  var json=prompt('粘贴简历JSON数据（之前导出的）：');
+  var json=prompt('粘贴简历JSON数据：');
   if(!json) return;
-  try{
-    var data=JSON.parse(json);
-    if(data.basic&&data.skills&&data.projects){
-      saveResume(data); switchResumeTab('basic');
-      alert('✅ 简历导入成功！');
-    } else { alert('❌ JSON格式不正确，缺少必要字段'); }
-  }catch(e){ alert('❌ JSON解析失败：'+e.message); }
+  try{ var data=JSON.parse(json); if(data.basic){ saveResume(data); switchResumeTab('basic'); alert('✅ 导入成功！'); } }
+  catch(e){ alert('❌ 解析失败：'+e.message); }
 }
 switchResumeTab('basic');
 
