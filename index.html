@@ -133,6 +133,8 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 .pick-card .pick-title{font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pick-card .pick-desc{font-size:10px;color:var(--text3)}
 .pick-card .pick-arrow{font-size:14px;color:var(--accent);flex-shrink:0}
+.briefing-item{transition:all .2s}
+.briefing-item:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
 
 /* Insight callout */
 .insight-box{background:linear-gradient(135deg,var(--accent-light),var(--bg2));border-left:3px solid var(--accent);border-radius:8px;padding:10px 14px;margin-bottom:7px;font-size:12px;line-height:1.8}
@@ -300,8 +302,8 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <h3 style="margin-bottom:10px">📋 简历工作台 <span style="font-size:10px;color:var(--text3);font-weight:400">编辑后自动保存到本地</span></h3>
 <div style="display:flex;gap:4px;margin-bottom:10px;flex-wrap:wrap" id="resumeTabs">
 <button onclick="switchResumeTab('basic')" class="resume-tab active" style="padding:5px 12px;border:1px solid var(--accent);background:var(--accent);color:#fff;border-radius:14px;cursor:pointer;font-size:11px">基本信息</button>
-<button onclick="exportResume()" style="margin-left:auto;padding:4px 10px;border:1px solid var(--border);border-radius:14px;background:var(--bg);cursor:pointer;font-size:10px;color:var(--text2)">📥 导出</button>
-<button onclick="importResume()" style="padding:4px 10px;border:1px solid var(--border);border-radius:14px;background:var(--bg);cursor:pointer;font-size:10px;color:var(--text2)">📤 导入</button>
+<button onclick="exportResume()" style="margin-left:auto;padding:5px 12px;border:1px solid var(--accent);border-radius:14px;background:var(--accent);color:#fff;cursor:pointer;font-size:11px;font-weight:500">📥 导出JSON</button>
+<button onclick="importResume()" style="padding:5px 12px;border:1px solid var(--accent);border-radius:14px;background:var(--accent);color:#fff;cursor:pointer;font-size:11px;font-weight:500">📤 导入JSON</button>
 <button onclick="switchResumeTab('skills')" class="resume-tab" style="padding:5px 12px;border:1px solid var(--border);background:var(--bg);color:var(--text2);border-radius:14px;cursor:pointer;font-size:11px">技能</button>
 <button onclick="switchResumeTab('projects')" class="resume-tab" style="padding:5px 12px;border:1px solid var(--border);background:var(--bg);color:var(--text2);border-radius:14px;cursor:pointer;font-size:11px">项目</button>
 <button onclick="switchResumeTab('exp')" class="resume-tab" style="padding:5px 12px;border:1px solid var(--border);background:var(--bg);color:var(--text2);border-radius:14px;cursor:pointer;font-size:11px">经历</button>
@@ -1314,6 +1316,9 @@ function showView(viewName, categoryKey){
     }
     dashView.classList.add('active');
     bc.style.display = 'none';
+    if(typeof renderTodos==='function') renderTodos();
+    if(typeof renderTracker==='function') renderTracker();
+    if(typeof renderInterviews==='function') renderInterviews();
     window.location.hash = 'home';
     var ht = document.querySelector('.mobile-tabbar a[data-nav=\"home\"]');
     if(ht) ht.classList.add('active');
