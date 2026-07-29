@@ -1497,7 +1497,14 @@ function showView(viewName, categoryKey){
     }
     // Lock career interview content with password
     if(categoryKey==='career' && !sessionStorage.getItem('career_unlocked')){
-      detailHtml = '<div class=\"card\" style=\"padding:20px;text-align:center\"><h3>🔒 面试内容已锁定</h3><p style=\"font-size:12px;color:var(--text2);margin:8px 0\">输入密码解锁面试攻略和投递策略</p><div style=\"display:flex;gap:8px;justify-content:center\"><input type=\"password\" id=\"careerPwd\" placeholder=\"输入密码\" style=\"padding:8px;border:1px solid var(--border);border-radius:6px;font-size:13px;width:150px;text-align:center\" onkeydown=\"if(event.key===\\'Enter\\')unlockCareer()\"><button onclick=\"unlockCareer()\" style=\"padding:8px 16px;background:var(--accent);color:#fff;border:none;border-radius:6px;cursor:pointer\">解锁</button></div></div>';
+      var lockHtml='<div class=\"card\" style=\"padding:20px;text-align:center\">';
+      lockHtml+='<h3>🔒 面试内容已锁定</h3>';
+      lockHtml+='<p style=\"font-size:12px;color:var(--text2);margin:8px 0\">输入密码解锁面试攻略和投递策略</p>';
+      lockHtml+='<div style=\"display:flex;gap:8px;justify-content:center\">';
+      lockHtml+='<input type=\"password\" id=\"careerPwd\" placeholder=\"输入密码\" style=\"padding:8px;border:1px solid var(--border);border-radius:6px;font-size:13px;width:150px;text-align:center\">';
+      lockHtml+='<button onclick=\"unlockCareer()\" style=\"padding:8px 16px;background:var(--accent);color:#fff;border:none;border-radius:6px;cursor:pointer\">解锁</button>';
+      lockHtml+='</div></div>';
+      detailHtml = lockHtml;
     }
     document.getElementById('sectionDetailContent').innerHTML = detailHtml;
 
@@ -1648,6 +1655,10 @@ function unlockCareer(){
     showView('section-detail','career');
   } else { alert('❌ 密码错误'); }
 }
+// Enter key support for password input (delegated)
+document.addEventListener('keydown',function(e){
+  if(e.key==='Enter' && e.target.id==='careerPwd') unlockCareer();
+});
 function goBackFromSection(){
   var hash = window.location.hash.replace('#','');
   // Find which category this section belongs to
