@@ -1201,7 +1201,7 @@ DETAIL.travel = '<h2>✈️ 旅游区 · 本周出行推荐</h2><p class="detail
 
 DETAIL.news = '<h2>📰 新闻资讯</h2><p class="detail-subtitle">7月26日更新 · 建立你的高效信息获取系统 · 让信息主动服务于你</p>'+
 
-'<h3>🔥 今日要闻 <span style="font-size:11px;color:var(--text3);font-weight:normal">（每日8:57自动更新）</span></h3>'+
+'<h3>🔥 今日要闻 <span style="font-size:11px;color:var(--text3);font-weight:normal">（每日9:35自动更新）</span></h3>'+
 
 '<h4>🤖 本周AI重磅</h4>'+
 '<ul>'+
@@ -1218,7 +1218,7 @@ DETAIL.news = '<h2>📰 新闻资讯</h2><p class="detail-subtitle">7月26日更
 '<li>高盛/花旗/渣打均给予A股超配评级，外资普遍看好下半年中国市场表现。</li>'+
 '</ul>'+
 
-'<div class="callout info"><strong>📌 说明：</strong>以上要闻每日8:57由自动化脚本抓取更新。下方为常驻的资讯消费体系，帮你建立长期高效的信息获取习惯而不依赖手动刷新。</div>'+
+'<div class="callout info"><strong>📌 说明：</strong>以上要闻每日9:35由自动化脚本抓取更新。下方为常驻的资讯消费体系，帮你建立长期高效的信息获取习惯而不依赖手动刷新。</div>'+
 
 '<h3>⭐ 信息源分级体系</h3>'+
 '<p>信息不是越多越好——分级管理才能用最少时间获取最高质量的内容。以下分级基于<strong>信息密度 × 更新频率 × 与你领域的相关性</strong>综合评定，而非按知名度排序。</p>'+
