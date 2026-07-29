@@ -506,6 +506,8 @@ document.querySelectorAll('.nav-section a').forEach(function(a){
   a.addEventListener('click',function(e){
     var href = a.getAttribute('href');
     if(!href || !href.startsWith('#')) return;
+    // Home/dashboard → go to homepage
+    if(href==='#home'||href==='#dashboard'){e.preventDefault();if(typeof navigateTo==='function') navigateTo('home');return;}
     e.preventDefault();
     var sid = href.replace('#','');
     if(typeof navigateTo === 'function') navigateTo('section-detail', sid);
@@ -702,48 +704,6 @@ function clearDoneTodos(){
   var todos = loadTodos().filter(function(t){return !t.done;});
   saveTodos(todos);
   renderTodos();
-  renderTodosTo('detailTodoList');
-}
-// Detail view helpers (synced with homepage)
-function renderTodosTo(containerId){
-  var el = document.getElementById(containerId);
-  if(!el) return;
-  var todos = loadTodos();
-  var html = '';
-  todos.forEach(function(t, i){
-    var priColor = PRIORITY_COLORS[t.pri||'P3'] || 'var(--text3)';
-    var doneStyle = t.done?'text-decoration:line-through;color:var(--text3);opacity:.6':'';
-    html += '<div style=\"display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px;'+doneStyle+'\">';
-    html += '<input type=\"checkbox\" '+(t.done?'checked':'')+' onchange=\"toggleTodo('+i+');renderTodosTo(\\'detailTodoList\\');\" style=\"width:16px;height:16px;accent-color:var(--accent);cursor:pointer;flex-shrink:0\">';
-    html += '<span style=\"font-size:9px;font-weight:700;color:'+priColor+';min-width:20px;text-align:center\">'+(t.pri||'')+'</span>';
-    html += '<span style=\"flex:1;min-width:0\">'+escHtml(t.text)+'</span>';
-    if(t.deadline) html += '<span style=\"font-size:9px;color:var(--accent);background:var(--accent-light);padding:1px 5px;border-radius:6px;white-space:nowrap\">⏰ '+t.deadline+'</span>';
-    html += '<select onchange=\"setTodoCat('+i+',this.value);renderTodosTo(\\'detailTodoList\\');\" style=\"font-size:10px;padding:2px 4px;border:1px solid var(--border);border-radius:4px;background:var(--bg);color:var(--text2);max-width:80px\">';
-    TODO_CATS.forEach(function(c){ html += '<option '+(t.cat===c?'selected':'')+'>'+c+'</option>'; });
-    html += '</select>';
-    html += '<button onclick=\"deleteTodo('+i+');renderTodosTo(\\'detailTodoList\\');\" style=\"background:none;border:none;cursor:pointer;color:var(--red);font-size:14px;padding:2px 4px\">✕</button>';
-    html += '</div>';
-  });
-  html += '<p style="font-size:11px;color:var(--text3);margin-top:8px">✅ '+todos.filter(function(t){return t.done;}).length+'/'+todos.length+' 已完成</p>';
-  el.innerHTML = html;
-}
-function detailAddTodo(){
-  var input = document.getElementById('detailTodoInput');
-  var text = input.value.trim();
-  if(!text) return;
-  var todos = loadTodos();
-  todos.push({
-    text: text,
-    cat: document.getElementById('detailTodoCat').value,
-    pri: document.getElementById('detailTodoPri').value,
-    deadline: document.getElementById('detailTodoDeadline').value.trim(),
-    done: false
-  });
-  saveTodos(todos);
-  renderTodos();
-  renderTodosTo('detailTodoList');
-  input.value = '';
-  document.getElementById('detailTodoDeadline').value = '';
 }
 
 function autoGenerateSchedule(){
@@ -1490,45 +1450,6 @@ function showView(viewName, categoryKey){
     }
     document.getElementById('sectionDetailTitle').textContent = title || categoryKey;
     document.getElementById('sectionDetailSub').textContent = '全屏详情 · 点击←返回';
-
-    // Special: Dashboard = full todo view synced with homepage
-    if(categoryKey==='dashboard'){
-      var d = new Date();
-      var days = ['日','一','二','三','四','五','六'];
-      var dateStr = d.getFullYear()+'年'+(d.getMonth()+1)+'月'+d.getDate()+'日 · 星期'+days[d.getDay()];
-      var todoHtml = '<div style=\"padding:0\">';
-      todoHtml += '<p style=\"font-size:12px;color:var(--text3);margin-bottom:12px\">'+dateStr+' · 与首页实时同步</p>';
-      todoHtml += '<div style=\"display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap\">';
-      todoHtml += '<input type=\"text\" id=\"detailTodoInput\" placeholder=\"输入新待办...\" style=\"flex:1;padding:8px 12px;border:1px solid var(--border);border-radius:6px;font-size:13px;font-family:inherit;background:var(--bg);color:var(--text)\">';
-      todoHtml += '<select id=\"detailTodoCat\" style=\"padding:8px;border:1px solid var(--border);border-radius:6px;font-size:12px;background:var(--bg);color:var(--text)\">'+TODO_CATS.map(function(c){return '<option>'+c+'</option>';}).join('')+'</select>';
-      todoHtml += '<select id=\"detailTodoPri\" style=\"padding:8px;border:1px solid var(--border);border-radius:6px;font-size:12px;background:var(--bg);color:var(--text)\"><option>P0</option><option selected>P1</option><option>P2</option><option>P3</option></select>';
-      todoHtml += '<input type=\"text\" id=\"detailTodoDeadline\" placeholder=\"截止\" style=\"width:80px;padding:8px;border:1px solid var(--border);border-radius:6px;font-size:12px;background:var(--bg);color:var(--text)\">';
-      todoHtml += '<button onclick=\"detailAddTodo()\" style=\"padding:8px 16px;background:var(--accent);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:12px;font-weight:500\">＋ 新增</button>';
-      todoHtml += '<button onclick=\"sortTodosByPriority()\" style=\"padding:8px 14px;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:12px;color:var(--text2)\">📊 排序</button>';
-      todoHtml += '<button onclick=\"clearDoneTodos()\" style=\"padding:8px 14px;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:12px;color:var(--text2)\">🗑️ 清已完成</button>';
-      todoHtml += '</div>';
-      todoHtml += '<div id=\"detailTodoList\" style=\"max-height:500px;overflow-y:auto\"></div>';
-      todoHtml += '</div>';
-      document.getElementById('sectionDetailContent').innerHTML = todoHtml;
-      // Render todos into detail view
-      setTimeout(function(){ renderTodosTo('detailTodoList'); }, 50);
-      document.getElementById('sectionView').classList.add('active');
-      document.getElementById('dashboardView').classList.remove('active');
-      document.getElementById('categoryView').classList.remove('active');
-      document.getElementById('breadcrumb').style.display='block';
-      var bcEl=document.getElementById('breadcrumb');
-bcEl.innerHTML='';
-var a=document.createElement('a');
-a.textContent='🏠 首页';
-a.onclick=function(){navigateTo('home');};
-a.style.cursor='pointer';
-a.style.color='var(--accent)';
-bcEl.appendChild(a);
-bcEl.appendChild(document.createTextNode(' › 📋 每日待办'));
-      window.location.hash = 'dashboard';
-      window.scrollTo({top:0,behavior:'smooth'});
-      return;
-    }
 
     // Build section detail content
     var detailHtml = '';
