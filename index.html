@@ -46,8 +46,10 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 .sidebar-header h1{font-size:18px;font-weight:700;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .sidebar-header p{font-size:11px;color:var(--text3)}
 .nav-section-title{font-size:10px;font-weight:600;color:var(--text3);padding:6px 16px;text-transform:uppercase}
-.nav-section a{display:flex;align-items:center;gap:8px;padding:7px 16px;font-size:12px;color:var(--text2);text-decoration:none;border-left:3px solid transparent;transition:.12s;border-radius:0 4px 4px 0}
-.nav-section a:hover,.nav-section a.active{color:var(--accent);background:var(--accent-light);border-left-color:var(--accent)}
+.nav-section a{display:flex;align-items:center;gap:8px;padding:7px 16px;font-size:12px;color:var(--text2);text-decoration:none;border-left:3px solid transparent;transition:all .3s cubic-bezier(.4,0,.2,1);border-radius:0 4px 4px 0;position:relative;overflow:hidden}
+.nav-section a::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--accent),transparent);opacity:0;transition:opacity .3s}
+.nav-section a:hover,.nav-section a.active{color:var(--accent);border-left-color:var(--accent)}
+.nav-section a:hover::before,.nav-section a.active::before{opacity:.08}
 .sidebar-footer{padding:10px 16px;border-top:1px solid var(--border);margin-top:auto;display:flex;gap:8px;align-items:center}
 .theme-toggle{width:34px;height:34px;border-radius:50%;border:1px solid var(--border);background:var(--card);cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;color:var(--text)}
 .search-box{flex:1}.search-box input{width:100%;padding:6px 10px;border:1px solid var(--border);border-radius:6px;font-size:11px;font-family:inherit;background:var(--bg);color:var(--text);outline:none}
@@ -287,7 +289,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 
 <section id="career" class="section" data-search="求职 简历 面试 工作"><div class="section-header"><h2>💼 求职中心</h2><p>招聘平台直达 · 完整简历</p></div>
 <div id="picks-career" class="picks-container"></div>
-<div class="info-grid"><div class="info-item"><div class="num">BOSS直聘</div><div class="label">主要渠道</div></div><div class="info-item"><div class="num">猎聘</div><div class="label">次要渠道</div></div><div class="info-item"><div class="num">09:30-11:00</div><div class="label">黄金窗口</div></div><div class="info-item"><div class="num">20家/天</div><div class="label">投递目标</div></div></div>
+<div class="info-grid"><div class="info-item"><div class="num">09:30-11:00</div><div class="label">黄金投递窗口</div></div><div class="info-item"><div class="num">周二-周四</div><div class="label">最佳投递日</div></div><div class="info-item"><div class="num">20家/天</div><div class="label">投递目标</div></div><div class="info-item"><div class="num">87.7%↑</div><div class="label">AI岗位需求增长</div></div></div>
 <div class="card" style="padding:14px 16px">
 <h3 style="margin-bottom:8px">📊 投递追踪表 <span style="font-size:11px;color:var(--text3);font-weight:400" id="trackerStats"></span></h3>
 <div style="display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap">
@@ -307,8 +309,9 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div style="display:flex;gap:4px;margin-bottom:10px;flex-wrap:wrap" id="resumeTabs">
 <button onclick="switchResumeTab('basic')" class="resume-tab active" style="padding:5px 12px;border:1px solid var(--accent);background:var(--accent);color:#fff;border-radius:14px;cursor:pointer;font-size:11px">基本信息</button>
 <button onclick="exportPDF()" style="margin-left:auto;padding:5px 12px;border:1px solid var(--accent);border-radius:14px;background:var(--accent);color:#fff;cursor:pointer;font-size:11px;font-weight:500">📄 导出PDF</button>
-<button onclick="document.getElementById('resumeFileInput').click()" style="padding:5px 12px;border:1px solid var(--accent);border-radius:14px;background:var(--accent);color:#fff;cursor:pointer;font-size:11px;font-weight:500">📤 导入PDF</button>
-<input type="file" id="resumeFileInput" accept=".pdf,.json,.txt" onchange="importResumeFile(this)" style="display:none">
+<button onclick="document.getElementById('resumeFileInput').click()" style="padding:5px 12px;border:1px solid var(--accent);border-radius:14px;background:var(--accent);color:#fff;cursor:pointer;font-size:11px;font-weight:500">📤 导入文件</button>
+<button onclick="importResume()" style="padding:5px 12px;border:1px solid var(--accent);border-radius:14px;background:var(--accent);color:#fff;cursor:pointer;font-size:11px;font-weight:500">📋 粘贴文本</button>
+<input type="file" id="resumeFileInput" accept=".json,.txt,.pdf" onchange="importResumeFile(this)" style="display:none">
 <button onclick="switchResumeTab('skills')" class="resume-tab" style="padding:5px 12px;border:1px solid var(--border);background:var(--bg);color:var(--text2);border-radius:14px;cursor:pointer;font-size:11px">技能</button>
 <button onclick="switchResumeTab('projects')" class="resume-tab" style="padding:5px 12px;border:1px solid var(--border);background:var(--bg);color:var(--text2);border-radius:14px;cursor:pointer;font-size:11px">项目</button>
 <button onclick="switchResumeTab('exp')" class="resume-tab" style="padding:5px 12px;border:1px solid var(--border);background:var(--bg);color:var(--text2);border-radius:14px;cursor:pointer;font-size:11px">经历</button>
@@ -902,10 +905,28 @@ function parseResumeText(text){
 }
 
 function importResume(){
-  var json=prompt('粘贴简历JSON数据：');
-  if(!json) return;
-  try{ var data=JSON.parse(json); if(data.basic){ saveResume(data); switchResumeTab('basic'); alert('✅ 导入成功！'); } }
-  catch(e){ alert('❌ 解析失败：'+e.message); }
+  var text=prompt('粘贴简历内容：\n\n可以直接粘贴JSON备份数据自动恢复\n或粘贴纯文本（会用===分隔四个部分）\n\n格式示例：\n钟锐|26岁|广州\n===\nPrompt Engineering|Agent搭建\n===\n个人AI数字中枢网站\n===\nAI产品运营(2024-2026)');
+  if(!text) return;
+  // Try JSON first
+  try{ var data=JSON.parse(text); if(data.basic){ saveResume(data); switchResumeTab('basic'); alert('✅ JSON导入成功！'); return; } }
+  catch(e){}
+  // Try === delimited text
+  var parts=text.split('===');
+  if(parts.length>=3){
+    var resume=loadResume();
+    resume.basic=parts[0].trim();
+    resume.skills=parts[1].trim();
+    resume.projects=parts[2].trim();
+    if(parts.length>=4) resume.exp=parts[3].trim();
+    saveResume(resume); switchResumeTab('basic');
+    alert('✅ 文本导入成功！请检查各Tab内容。');
+    return;
+  }
+  // Single block → put in basic
+  var resume=loadResume();
+  resume.basic=text;
+  saveResume(resume); switchResumeTab('basic');
+  alert('✅ 已导入到基本信息栏，请手动分配其他内容。');
 }
 switchResumeTab('basic');
 
