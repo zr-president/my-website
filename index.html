@@ -414,7 +414,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div id="categoryView" class="view-container"><div id="categoryContent" class="dashboard-grid"></div></div>
 
 <div id="sectionView" class="view-container">
-<div class="section-detail-header"><button class="back-btn" onclick="goBackFromSection()">←</button><div><h2 id="sectionDetailTitle"></h2><p id="sectionDetailSub"></p></div></div>
+<div class="section-detail-header"><button class="back-btn" onclick="goBackFromSection()">←</button><div style="flex:1"><h2 id="sectionDetailTitle"></h2><p id="sectionDetailSub"></p></div><button onclick="shareSection()" style="padding:4px 10px;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:11px;color:var(--text2)" title="复制链接">🔗 分享</button></div>
 <div id="sectionDetailContent"></div>
 <div class="card" style="margin-top:14px;padding:12px 14px" id="sectionQueryBox">
 <div style="font-size:11px;color:var(--text3);margin-bottom:6px">🤖 AI智能查询 · 输入名称获取整合分析+推荐建议</div>
@@ -1494,6 +1494,12 @@ function setCurrentSection(sectionId){
   }
 }
 
+function shareSection(){
+  var url=window.location.href.split('#')[0]+'#'+currentSectionId;
+  if(navigator.clipboard){ navigator.clipboard.writeText(url).then(function(){
+    alert('✅ 链接已复制：'+url);
+  }); } else { prompt('复制此链接分享：',url); }
+}
 function goBackFromSection(){
   var hash = window.location.hash.replace('#','');
   // Find which category this section belongs to
