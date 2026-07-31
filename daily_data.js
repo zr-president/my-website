@@ -1,10 +1,10 @@
-var SITE_VERSION = "1.1.6";
+var SITE_VERSION = "1.1.7";
 
 var DAILY_DATA = {
   "update_time": "2026-07-30T09:35:00+08:00",
   "update_date": "2026年7月30日",
 
-  "market_summary": "纳指六连跌创2024年来最长连跌 | 道指暴跌1100点 | 30年美债破5.2% | 原油暴涨6% | 美联储3票支持加息(2016年来首次)",
+  "market_summary": "美股深夜大反攻！纳指+2.78% | 费城半导体+8.19% | 微软+15.51% | 存储芯片全线暴涨 | A股存储午后探底回升",
 
   "news_headlines": [
     {"title": "全球芯片股三天蒸发1.5万亿美元：费城半导体五连跌，英伟达市值缩水2500亿", "url": "https://wallstreetcn.com/", "source": "华尔街见闻", "category": "财经"},
