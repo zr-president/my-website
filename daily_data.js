@@ -258,26 +258,25 @@ var INSIGHTS = {
 
 var OPTIMIZATION_LOG = {
   date: "2026-07-31",
-  total_suggestions: 16,
+  total_suggestions: 15,
   total_implemented: 11,
   streak_days: 7,
   suggestions: [
-    {id:1, cat:"功能增强", title:"知识库搜索集成到板块查询框", desc:"defer异步加载+模糊匹配+评分排序", priority:"P1", status:"已完成"},
-    {id:2, cat:"功能增强", title:"音乐播放器页码切换可靠性修复", desc:"已验证页码按钮正常工作，每页不同歌曲", priority:"P1", status:"已完成"},
-    {id:3, cat:"设计优化", title:"移动端响应式布局深度优化", desc:"900px以下侧边栏隐藏+底部TabBar+汉堡菜单", priority:"P1", status:"实施中"},
-    {id:4, cat:"内容补充", title:"各板块增加每日热点科普reasoning", desc:"股市/学习/影视/求职已上线，cron每天自动生成", priority:"P1", status:"已完成"},
-    {id:5, cat:"系统优化", title:"GA自动更新全部14板块INSIGHTS日期", desc:"GitHub Actions每天更新所有updated字段+DAILY_DATA", priority:"P1", status:"已完成"},
-    {id:6, cat:"系统优化", title:"日期比对改为数值匹配防格式问题", desc:"07月/7月都能正确识别，彻底解决未更新误报", priority:"P1", status:"已完成"},
-    {id:7, cat:"功能增强", title:"板块详情页增加一键分享功能", desc:"生成带标题的分享卡片+复制链接", priority:"P2", status:"已完成"},
-    {id:8, cat:"设计优化", title:"首页banner消息切换增加动画过渡", desc:"淡入淡出替代直接替换，视觉更流畅", priority:"P2", status:"已完成"},
-    {id:9, cat:"功能增强", title:"简历工作台导入导出功能", desc:"JSON导出备份+粘贴导入恢复+剪贴板复制", priority:"P1", status:"已完成"},
-    {id:10, cat:"内容补充", title:"影视区知识库扩充至300+部电影", desc:"当前214部，补充华语佳片和经典老片", priority:"P2", status:"待实施"},
-    {id:11, cat:"系统优化", title:"cron更新增加内容质量自检", desc:"GA+Claude双重保障+日期格式容错+自检兜底", priority:"P1", status:"已完成"},
-    {id:12, cat:"已归档", title:"三层路由+16板块+首页分类卡片", desc:"(7/26完成)", priority:"P0", status:"已完成"},
-    {id:13, cat:"已归档", title:"INSIGHTS全板块分析+1561条知识库", desc:"(7/27完成)", priority:"P0", status:"已完成"},
-    {id:14, cat:"已归档", title:"影视区+待办优化+投递追踪+面试复盘", desc:"(7/26-28完成)", priority:"P0", status:"已完成"},
-    {id:15, cat:"已归档", title:"知识库搜索页+日期格式修复+GA自动更新", desc:"(7/28-29完成)", priority:"P0", status:"已完成"},
-    {id:16, cat:"已归档", title:"层级化科普reasoning+全局权限补全", desc:"(7/29完成)", priority:"P1", status:"已完成"}
+    {id:1, cat:"功能增强", title:"知识库搜索集成到各板块查询框", desc:"defer异步加载知识库+模糊匹配评分排序", priority:"P1", status:"已完成"},
+    {id:2, cat:"功能增强", title:"简历工作台PDF导出+文件导入", desc:"JSON备份恢复+PDF打印+TXT粘贴导入", priority:"P1", status:"已完成"},
+    {id:3, cat:"设计优化", title:"移动端响应式布局深度优化", desc:"900px以下侧边栏+底部TabBar+汉堡菜单", priority:"P1", status:"实施中"},
+    {id:4, cat:"内容补充", title:"各板块每日热点科普reasoning", desc:"已覆盖股市/学习/影视/求职，cron每日自动生成", priority:"P1", status:"已完成"},
+    {id:5, cat:"系统优化", title:"GA+Claude双重每日自动更新", desc:"版本自增+日期批量更新+内容质量检查", priority:"P1", status:"已完成"},
+    {id:6, cat:"系统优化", title:"日期格式容错防误报", desc:"数值匹配替代字符串比对，07月/7月都能识别", priority:"P1", status:"已完成"},
+    {id:7, cat:"功能增强", title:"面试内容密码锁定(8051)", desc:"分享网站时面试攻略默认隐藏，需密码解锁", priority:"P1", status:"已完成"},
+    {id:8, cat:"设计优化", title:"悬浮渐变效果全局统一", desc:"侧边栏/要闻/分类卡片悬浮渐变色+微放大+边框发光", priority:"P2", status:"已完成"},
+    {id:9, cat:"内容补充", title:"影视区知识库扩充至300+部电影", desc:"当前214部，补充华语佳片+经典老片+剧集", priority:"P2", status:"待实施"},
+    {id:10, cat:"功能增强", title:"待办详情独立页面(纯DOM重建)", desc:"用createElement替代innerHTML避免转义bug", priority:"P1", status:"待实施"},
+    {id:11, cat:"系统优化", title:"cron自动更新可靠性提升", desc:"GA工作日+Claude AI双重保障，失败自动补跑", priority:"P1", status:"实施中"},
+    {id:12, cat:"内容补充", title:"音乐区嵌入B站/YouTube播放列表", desc:"精选BGM嵌入式播放器，不需跳转外站", priority:"P2", status:"待实施"},
+    {id:13, cat:"已归档", title:"三层路由+16板块+首页分类卡片", desc:"(7/26完成)", priority:"P0", status:"已完成"},
+    {id:14, cat:"已归档", title:"INSIGHTS全板块分析+1561条知识库", desc:"(7/27完成)", priority:"P0", status:"已完成"},
+    {id:15, cat:"已归档", title:"层级科普+权限补全+面试锁+悬浮特效", desc:"(7/28-31完成)", priority:"P0", status:"已完成"}
   ]
 };
 
