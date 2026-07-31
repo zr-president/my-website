@@ -259,7 +259,7 @@ var INSIGHTS = {
 var OPTIMIZATION_LOG = {
   date: "2026-07-31",
   total_suggestions: 15,
-  total_implemented: 14,
+  total_implemented: 15,
   streak_days: 7,
   suggestions: [
     {id:1, cat:"功能增强", title:"知识库搜索集成到各板块查询框", desc:"defer异步加载知识库+模糊匹配评分排序", priority:"P1", status:"已完成"},
@@ -271,7 +271,7 @@ var OPTIMIZATION_LOG = {
     {id:7, cat:"功能增强", title:"面试内容密码锁定(8051)", desc:"分享网站时面试攻略默认隐藏，需密码解锁", priority:"P1", status:"已完成"},
     {id:8, cat:"设计优化", title:"悬浮渐变效果全局统一", desc:"侧边栏/要闻/分类卡片悬浮渐变色+微放大+边框发光", priority:"P2", status:"已完成"},
     {id:9, cat:"内容补充", title:"影视区知识库扩充至300+部电影", desc:"知识库已更新至1573部(含新增31部华语经典+热播剧集)", priority:"P2", status:"已完成"},
-    {id:10, cat:"功能增强", title:"待办详情独立页面(纯DOM重建)", desc:"用createElement替代innerHTML避免转义bug", priority:"P1", status:"待实施"},
+    {id:10, cat:"功能增强", title:"待办详情独立页面(纯DOM重建)", desc:"用createElement+addEventListener替代innerHTML避免转义bug", priority:"P1", status:"已完成"},
     {id:11, cat:"系统优化", title:"cron自动更新可靠性提升", desc:"GA工作日+Claude双重保障+自检补跑+日期格式容错", priority:"P1", status:"已完成"},
     {id:12, cat:"内容补充", title:"音乐区嵌入B站/YouTube播放列表", desc:"精选BGM嵌入式播放器，不需跳转外站", priority:"P2", status:"待实施"},
     {id:13, cat:"已归档", title:"三层路由+16板块+首页分类卡片", desc:"(7/26完成)", priority:"P0", status:"已完成"},

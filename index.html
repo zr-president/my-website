@@ -507,7 +507,8 @@ document.querySelectorAll('.nav-section a').forEach(function(a){
     var href = a.getAttribute('href');
     if(!href || !href.startsWith('#')) return;
     // Home/dashboard → go to homepage
-    if(href==='#home'||href==='#dashboard'){e.preventDefault();if(typeof navigateTo==='function') navigateTo('home');return;}
+    if(href==='#home'){e.preventDefault();if(typeof navigateTo==='function') navigateTo('home');return;}
+    if(href==='#dashboard'){e.preventDefault();if(typeof navigateTo==='function') navigateTo('section-detail','dashboard');return;}
     e.preventDefault();
     var sid = href.replace('#','');
     if(typeof navigateTo === 'function') navigateTo('section-detail', sid);
@@ -704,6 +705,91 @@ function clearDoneTodos(){
   var todos = loadTodos().filter(function(t){return !t.done;});
   saveTodos(todos);
   renderTodos();
+}
+
+// ===== Todo Detail View (pure DOM, no innerHTML) =====
+function buildTodoDetailView(){
+  var el=document.getElementById('sectionDetailContent');
+  el.innerHTML='';
+  // Date header
+  var d=new Date();var days=['日','一','二','三','四','五','六'];
+  var hdr=document.createElement('p');
+  hdr.style.cssText='font-size:12px;color:var(--text3);margin-bottom:12px';
+  hdr.textContent=d.getFullYear()+'年'+(d.getMonth()+1)+'月'+d.getDate()+'日 · 星期'+days[d.getDay()]+' · 与首页实时同步';
+  el.appendChild(hdr);
+  // Toolbar
+  var tb=document.createElement('div');
+  tb.style.cssText='display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap';
+  var inp=document.createElement('input');inp.placeholder='输入新待办...';inp.id='dtInput';inp.style.cssText='flex:1;padding:8px;border:1px solid var(--border);border-radius:6px;font-size:13px;font-family:inherit;background:var(--bg);color:var(--text)';
+  var selCat=document.createElement('select');selCat.id='dtCat';selCat.style.cssText='padding:8px;border:1px solid var(--border);border-radius:6px;font-size:12px;background:var(--bg);color:var(--text)';
+  TODO_CATS.forEach(function(c){var o=document.createElement('option');o.textContent=c;selCat.appendChild(o);});
+  var selPri=document.createElement('select');selPri.id='dtPri';selPri.style.cssText='padding:8px;border:1px solid var(--border);border-radius:6px;font-size:12px;background:var(--bg);color:var(--text)';
+  ['P0','P1','P2','P3'].forEach(function(p,i){var o=document.createElement('option');o.textContent=p;if(i===1)o.selected=true;selPri.appendChild(o);});
+  var dl=document.createElement('input');dl.id='dtDL';dl.placeholder='截止';dl.style.cssText='width:80px;padding:8px;border:1px solid var(--border);border-radius:6px;font-size:12px;background:var(--bg);color:var(--text)';
+  var addBtn=document.createElement('button');addBtn.textContent='＋ 新增';addBtn.style.cssText='padding:8px 16px;background:var(--accent);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:12px;font-weight:500';
+  addBtn.onclick=function(){dtAddTodo();};
+  var sortBtn=document.createElement('button');sortBtn.textContent='📊 排序';sortBtn.style.cssText='padding:8px 14px;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:12px;color:var(--text2)';
+  sortBtn.onclick=function(){sortTodosByPriority();dtRender();};
+  var clrBtn=document.createElement('button');clrBtn.textContent='🗑️ 清已完成';clrBtn.style.cssText='padding:8px 14px;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:12px;color:var(--text2)';
+  clrBtn.onclick=function(){var t=loadTodos().filter(function(x){return !x.done});saveTodos(t);dtRender();renderTodos();};
+  tb.appendChild(inp);tb.appendChild(selCat);tb.appendChild(selPri);tb.appendChild(dl);tb.appendChild(addBtn);tb.appendChild(sortBtn);tb.appendChild(clrBtn);
+  el.appendChild(tb);
+  // List container
+  var list=document.createElement('div');list.id='dtList';list.style.cssText='max-height:500px;overflow-y:auto';
+  el.appendChild(list);
+  dtRender();
+  // View setup
+  document.getElementById('sectionView').classList.add('active');
+  document.getElementById('dashboardView').classList.remove('active');
+  document.getElementById('categoryView').classList.remove('active');
+  var bc=document.getElementById('breadcrumb');bc.style.display='block';
+  bc.innerHTML='';var a=document.createElement('a');a.textContent='🏠 首页';a.style.cssText='color:var(--accent);cursor:pointer';a.onclick=function(){navigateTo('home');};bc.appendChild(a);bc.appendChild(document.createTextNode(' › 📋 每日待办'));
+  window.location.hash='dashboard';window.scrollTo(0,0);
+}
+
+function dtAddTodo(){
+  var inp=document.getElementById('dtInput');var t=inp.value.trim();if(!t)return;
+  var todos=loadTodos();
+  todos.push({text:t,cat:document.getElementById('dtCat').value,pri:document.getElementById('dtPri').value,deadline:document.getElementById('dtDL').value.trim(),done:false});
+  saveTodos(todos);renderTodos();dtRender();
+  inp.value='';document.getElementById('dtDL').value='';
+}
+
+function dtRender(){
+  var el=document.getElementById('dtList');if(!el)return;el.innerHTML='';
+  var todos=loadTodos();
+  todos.forEach(function(t,i){
+    var row=document.createElement('div');
+    row.style.cssText='display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px;'+(t.done?'text-decoration:line-through;color:var(--text3);opacity:.6':'');
+    // Checkbox
+    var cb=document.createElement('input');cb.type='checkbox';cb.checked=t.done;cb.style.cssText='width:16px;height:16px;accent-color:var(--accent);cursor:pointer;flex-shrink:0';
+    cb.onchange=function(){toggleTodo(i);dtRender();renderTodos();};
+    row.appendChild(cb);
+    // Priority badge
+    var pc=PRIORITY_COLORS[t.pri||'P3']||'var(--text3)';
+    var pb=document.createElement('span');pb.textContent=t.pri||'';pb.style.cssText='font-size:9px;font-weight:700;color:'+pc+';min-width:20px;text-align:center';
+    row.appendChild(pb);
+    // Text
+    var tx=document.createElement('span');tx.textContent=t.text;tx.style.cssText='flex:1;min-width:0';
+    row.appendChild(tx);
+    // Deadline
+    if(t.deadline){var dd=document.createElement('span');dd.textContent='⏰ '+t.deadline;dd.style.cssText='font-size:9px;color:var(--accent);background:var(--accent-light);padding:1px 5px;border-radius:6px;white-space:nowrap';row.appendChild(dd);}
+    // Category select
+    var sc=document.createElement('select');sc.style.cssText='font-size:10px;padding:2px 4px;border:1px solid var(--border);border-radius:4px;background:var(--bg);color:var(--text2);max-width:80px';
+    TODO_CATS.forEach(function(c){var o=document.createElement('option');o.textContent=c;if(t.cat===c)o.selected=true;sc.appendChild(o);});
+    sc.onchange=function(){setTodoCat(i,this.value);dtRender();renderTodos();};
+    row.appendChild(sc);
+    // Delete
+    var del=document.createElement('button');del.textContent='✕';del.style.cssText='background:none;border:none;cursor:pointer;color:var(--red);font-size:14px;padding:2px 4px';
+    del.onclick=function(){deleteTodo(i);dtRender();renderTodos();};
+    row.appendChild(del);
+    el.appendChild(row);
+  });
+  // Stats
+  var st=document.createElement('p');
+  st.style.cssText='font-size:11px;color:var(--text3);margin-top:8px';
+  st.textContent='✅ '+todos.filter(function(t){return t.done}).length+'/'+todos.length+' 已完成';
+  el.appendChild(st);
 }
 
 function autoGenerateSchedule(){
@@ -1450,6 +1536,12 @@ function showView(viewName, categoryKey){
     }
     document.getElementById('sectionDetailTitle').textContent = title || categoryKey;
     document.getElementById('sectionDetailSub').textContent = '全屏详情 · 点击←返回';
+
+    // Special: Dashboard = todo detail view (pure DOM, no innerHTML escaping)
+    if(categoryKey==='dashboard'){
+      buildTodoDetailView();
+      return;
+    }
 
     // Build section detail content
     var detailHtml = '';
