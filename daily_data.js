@@ -1,7 +1,7 @@
-var SITE_VERSION = "1.1.10";
+var SITE_VERSION = "1.2.0";
 
 var DAILY_DATA = {
-  "update_time": "2026-08-02T09:35:00+08:00",
+  "update_time": "2026-08-02T10:30:00+08:00",
   "update_date": "2026年8月2日",
 
   "market_summary": "纳指单日+3.3% | 费城半导体+8% | 云三巨头本周市值暴增10万亿 | 微软+6000亿/亚马逊盘后+15%/谷歌+4000亿 | Meta暴跌8%蒸发850亿",
@@ -17,19 +17,19 @@ var DAILY_DATA = {
   "daily_recommendation": {
     "music": {"title": "周日放松：FKJ — Changes Rising", "desc": "Neo-Soul律动 · 周日清晨完美音轨 · 一周疲惫清零", "link": "https://music.163.com/#/search/m/?s=FKJ+Changes+Rising"},
     "anime": {"title": "周日补番：BLEACH 千年血战篇-祸进谭-", "desc": "20年史诗最终章 · 周日一口气追完最新话", "link": "https://www.bilibili.com/search?keyword=BLEACH+千年血战+祸进谭"},
-    "novel": {"title": "周日沉浸阅读：剑烛大荒", "desc": "乌贼新书 · 山海经修真 · 周日午后沉浸追更", "link": "https://www.qidian.com/soushu/剑烛大荒.html"},
+    "novel": {"title": "周日沉浸阅读：旧域怪诞 🔥", "desc": "狐尾的笔新作 · 中式克系×规则怪谈 · 《道诡异仙》作者再出手", "link": "https://www.qidian.com/book/1050295439/"},
     "cocktail": {"title": "周日微醺：莫吉托 Mojito", "desc": "朗姆45ml+青柠+薄荷+苏打水 · 周末收官仪式感", "link": "https://s.taobao.com/search?q=百加得白朗姆酒"}
   },
 
-  "weather_summary": "广州 35°C/27°C · 雷阵雨 · 湿度75% · 周日出行带伞",
+  "weather_summary": "广州 30°C/25°C · 大雨局部暴雨 · 湿度85% · 连续三天暴雨 · 周日宅家追番阅读",
 
-  "weekly_focus": "🌴 周日周末放松 · 最新动漫追番+音乐推荐+阅读推荐 · 为周一充电蓄力",
+  "weekly_focus": "📅 周日总结+下周前瞻 · A股科技回调企稳 · 广深认房不认贷落地 · 蜘蛛侠IMAX(5天7亿!) · 8月台风活跃期注意防范 · 周一投递准备",
 
   "tip_of_day": "💡 AI商业化兑现时代进入新阶段：本周云三巨头（微软+6000亿/亚马逊盘后+15%/谷歌+4000亿）一周市值暴增10万亿，AI云已全面进入收割期。但Meta暴跌8%（FCF-91%）和苹果跌7%（内存短缺）警示：市场只奖励\"证明AI能赚钱\"的公司。内存短缺（DRAM+58%/GPU租赁+94%）和英伟达5400亿循环融资是下周最大风险点。中国DeepSeek估值4000亿+GLM-5.2 1M上下文→国产AI军备竞赛加速。",
   movie: {
-    summary: '蜘蛛侠：崭新之日全球热映中！首周票房破3亿，成家班武指+青春版彼得帕克口碑持续发酵。复仇者联盟秘密战争持续霸榜，死侍与金刚狼解压首选，利刃出鞘3豆瓣9.1口碑炸裂。',
-    trend: '趋势：超英回暖|青春超英崛起|悬疑推理强势|蜘蛛侠热映中|周末观影首选',
-    tip: '周末观影：蜘蛛侠崭新之日（热映中！IMAX体验最佳）。死侍与金刚狼解压、利刃出鞘3推理迷必看。周五晚黄金场次建议提前购票。',
+    summary: '蜘蛛侠：崭新之日上映5天总票房破7亿！豆瓣7.8分创蜘蛛侠真人电影系列最高，成家班武指+青春版彼得帕克引爆暑期档。暑期档总票房破70亿，《功夫女足》21亿、《八仙！》《蜘蛛侠》暂列前三。8月8日国风悬疑动画《大唐妖探》上映——天才少年神探×狼妖捕快破案，悬疑推理+搞笑互怼。',
+    trend: '趋势：超英强势领跑|青春超英创口碑新高(豆瓣7.8)|悬疑推理持续升温|蜘蛛侠5天7亿|暑期档70亿+|国风悬疑动画新赛道',
+    tip: '周日观影：蜘蛛侠崭新之日（5天7亿！IMAX体验最佳，提前购票）。悬疑推理迷关注8月8日《大唐妖探》——国内首部喜剧探案国风动画。死侍与金刚狼解压、利刃出鞘3烧脑仍在热映。周日下午场人少座位好。',
     reasoning: "🔍 发生了什么？\n全球AI全线反攻！韩股KOSPI+17%创历史新高，SK海力士+30%，港股2倍做多海力士一度+300%。微软Azure+43%股价+15.51%创2008年来最大涨幅，亚马逊AWS+37%利润+245%。OpenAI下调GPT-5.6价格80%，启动佐治亚3.2GW算力项目。A股科创50+8%创业板+6%，福昕软件20%涨停。\n\n🤔 AI全线反攻的核心逻辑\n① 微软Azure+43%→AI云商业化确认进入收割期→市场恐慌消退\n② 亚马逊AWS+37%连续五季加速→AI不再是微软一家的故事→行业趋势确立\n③ OpenAI降价80%→AI成本暴跌→应用层爆发→硬件需求反而不减\n④ 中国AI份额63.5%→国产替代已成现实→A股AI估值重塑\n\n📊 术语解释\nKOSPI：韩国综合股价指数，三星/SK海力士权重极高\nCapex：资本支出，微软下调Capex意味着投资效率提升→利润率改善\nGPT-5.6降价80%：推理成本骤降→AI应用开发门槛大幅降低→AI普及加速\n\n💡 对你的启示\nAI行业完成\"恐慌→反攻\"的72小时情绪轮回。核心教训：短期恐慌时，看长期商业逻辑——Azure+43%和AWS+37%才是AI行业的真实趋势。作为求职者，AI应用层（产品/运营/增长）是确定性最高的方向。",
     reasoning: "🔍 发生了什么？\n《蜘蛛侠：崭新之日》7月29日中国全球首映，首周票房破3亿，成家班武术指导获一致好评，青春版彼得帕克全新演绎引爆暑期档。死侍与金刚狼解压神作持续热映，利刃出鞘3悬疑推理口碑炸裂。\n\n🤔 周末该选哪部？\n① 超英首选：蜘蛛侠崭新之日——成家班武指+青春校园风，IMAX体验拉满\n② 解压之选：死侍与金刚狼——R级喜剧+超英动作，笑到飙泪\n③ 烧脑之选：利刃出鞘3——丹尼尔·克雷格回归+豆瓣9.1，推理迷不容错过\n\n📊 术语解释\nIMAX GT：巨幕激光放映系统，全国仅辽宁科技馆一家，画面比普通IMAX大26%\nCINITY：中国自主研发的高格式电影系统，4K/3D/120帧\n点映：正式上映前的小规模提前放映，用于口碑发酵\n\n💡 对你的启示\n周五晚是观影黄金档，建议提前1-2天在猫眼/淘票票购票锁定好座位。蜘蛛侠崭新之日IMAX厅最抢手，建议观影前重温蜘蛛侠平行宇宙系列铺垫世界观。",
         updated: '2026-08-02'
@@ -50,32 +50,32 @@ var DAILY_BRIEFING = {
 
 var PICKS = {
   anime: [
-    {icon:"🥇", title:"BLEACH 千年血战篇-祸进谭-", desc:"20年史诗最终章·周末一口气追完", link:"https://www.bilibili.com/search?keyword=BLEACH+千年血战", video:"https://search.bilibili.com/all?keyword=BLEACH%E5%8D%83%E5%B9%B4%E8%A1%80%E6%88%98"},
-    {icon:"🥈", title:"BLACK TORCH", desc:"忍者x妖怪新锐战斗 · 本季最大黑马", link:"https://www.bilibili.com/search?keyword=BLACK+TORCH", video:"https://search.bilibili.com/all?keyword=BLACK+TORCH"},
-    {icon:"🥉", title:"Re:从零开始 S4", desc:"死亡回归智斗巅峰 · 8月开播在即", link:"https://www.bilibili.com/search?keyword=Re从零开始的异世界生活", video:"https://search.bilibili.com/all?keyword=Re%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E5%BC%82%E4%B8%96%E7%95%8C%E7%94%9F%E6%B4%BB"},
-    {icon:"🏅", title:"无职转生 S3", desc:"异世界天花板续作 · 冒险新篇章", link:"https://www.bilibili.com/search?keyword=无职转生+第三季", video:"https://search.bilibili.com/all?keyword=%E6%97%A0%E8%81%8C%E8%BD%AC%E7%94%9F+%E7%AC%AC%E4%B8%89%E5%AD%A3"},
-    {icon:"🎖️", title:"幼女战记 S2", desc:"军事诡计博弈 · 谭雅的理性战场的再临", link:"https://www.bilibili.com/search?keyword=幼女战记+第二季", video:"https://search.bilibili.com/all?keyword=%E5%B9%BC%E5%A5%B3%E6%88%98%E8%AE%B0+%E7%AC%AC%E4%BA%8C%E5%AD%A3"},
+    {icon:"🥇", title:"BLEACH 千年血战篇-祸进谭-", desc:"20年史诗最终章·护廷十三队全员卍解决战", link:"https://www.bilibili.com/search?keyword=BLEACH+千年血战", video:"https://search.bilibili.com/all?keyword=BLEACH%E5%8D%83%E5%B9%B4%E8%A1%80%E6%88%98"},
+    {icon:"🥈", title:"BLACK TORCH 🔥", desc:"忍者x妖怪新锐战斗 · 本季最大黑马 · Crunchyroll力推", link:"https://www.bilibili.com/search?keyword=BLACK+TORCH", video:"https://search.bilibili.com/all?keyword=BLACK+TORCH"},
+    {icon:"🥉", title:"盗墓王 🆕", desc:"韩漫改编爽快逆袭战斗 · 类似我独自升级 · 暑期必追新黑马", link:"https://www.bilibili.com/search?keyword=盗墓王", video:"https://search.bilibili.com/all?keyword=盗墓王"},
+    {icon:"🏅", title:"Re:从零开始 S4 下半部", desc:"8月12日开播！死亡回归智斗巅峰续章", link:"https://www.bilibili.com/search?keyword=Re从零开始的异世界生活", video:"https://search.bilibili.com/all?keyword=Re%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E5%BC%82%E4%B8%96%E7%95%8C%E7%94%9F%E6%B4%BB"},
+    {icon:"🎖️", title:"无职转生 S3", desc:"异世界天花板续作 · 7月5日已开播 · 冒险新篇章", link:"https://www.bilibili.com/search?keyword=无职转生+第三季", video:"https://search.bilibili.com/all?keyword=%E6%97%A0%E8%81%8C%E8%BD%AC%E7%94%9F+%E7%AC%AC%E4%B8%89%E5%AD%A3"},
     {icon:"🔮", title:"攻壳机动队 (Science SARU版)", desc:"科幻经典全新演绎 · 赛博朋克美学巅峰", link:"https://www.bilibili.com/search?keyword=攻壳机动队+2026", video:"https://search.bilibili.com/all?keyword=%E6%94%BB%E6%AE%BC%E6%9C%BA%E5%8A%A8%E9%98%9F+2026"},
-    {icon:"📖", title:"二十世纪电气目录", desc:"京都动画最新力作 · 明治浪漫谭", link:"https://www.bilibili.com/search?keyword=二十世纪电气目录", video:"https://search.bilibili.com/all?keyword=%E4%BA%8C%E5%8D%81%E4%B8%96%E7%BA%AA%E7%94%B5%E6%B0%94%E7%9B%AE%E5%BD%95"}
+    {icon:"🐱", title:"猫与龙 🆕", desc:"猫咪养大的巨龙照顾猫咪后代 · 疗愈系新番 · 周日治愈", link:"https://www.bilibili.com/search?keyword=猫与龙", video:"https://search.bilibili.com/all?keyword=猫与龙"}
   ],
   music: [
-    {icon:"🎹", title:"FKJ — Changes Rising", desc:"Neo-Soul先行单曲·周日清晨完美音轨", link:"https://music.163.com/#/search/m/?s=FKJ+Changes+Rising"},
-    {icon:"🎸", title:"告五人 — 黑夜狂奔", desc:"英伦录制质感·周日放松BGM", link:"https://music.163.com/#/search/m/?s=告五人+黑夜狂奔"},
+    {icon:"🎹", title:"FKJ — Changes Rising", desc:"Neo-Soul先行单曲·周日清晨律动首选", link:"https://music.163.com/#/search/m/?s=FKJ+Changes+Rising"},
+    {icon:"🌸", title:"Fujii Kaze — 満ちてゆく", desc:"J-Pop新世代才子·周日清晨完美音轨", link:"https://music.163.com/#/search/m/?s=Fujii+Kaze+満ちてゆく"},
+    {icon:"🎤", title:"WayV — Vision Wings 🆕", desc:"8月10日回归！R&B嘻哈多元曲风·C-Pop新标杆", link:"https://music.163.com/#/search/m/?s=WayV+Vision+Wings"},
+    {icon:"🎸", title:"派伟俊 — BAD IDEA 🆕", desc:"7月31日新专·New Pop×City Pop×复古15首全创作", link:"https://music.163.com/#/search/m/?s=派伟俊+BAD+IDEA"},
     {icon:"🗾", title:"YOASOBI — Orion", desc:"守望先锋联动曲·J-Pop电气化新高度", link:"https://music.163.com/#/search/m/?s=YOASOBI+Orion"},
-    {icon:"🎤", title:"李荣浩 — 海陆风", desc:"华语雷鬼新尝试·周末chill必备", link:"https://music.163.com/#/search/m/?s=李荣浩+海陆风"},
-    {icon:"🌊", title:"周深 — 如约", desc:"出道十二周年纪念曲·周末温暖陪伴", link:"https://music.163.com/#/search/m/?s=周深+如约"},
+    {icon:"🎤", title:"李荣浩 — 海陆风", desc:"华语雷鬼新尝试·周日chill必备", link:"https://music.163.com/#/search/m/?s=李荣浩+海陆风"},
     {icon:"🍂", title:"草东没有派对 — 瓦合", desc:"华语独立摇滚标杆·持续长销霸榜", link:"https://music.163.com/#/search/m/?s=草东没有派对+瓦合"},
-    {icon:"🌸", title:"Fujii Kaze — 満ちてゆく", desc:"J-Pop新世代才子·周末清晨完美音轨", link:"https://music.163.com/#/search/m/?s=Fujii+Kaze+満ちてゆく"},
-    {icon:"⚡", title:"Charli XCX — Music, Fashion, Film", desc:"电子流行女王新作·周末派对轰炸", link:"https://music.163.com/#/search/m/?s=Charli+XCX+Music+Fashion+Film"}
+    {icon:"🎵", title:"黑儿 — 新专辑 🆕", desc:"北京MAO Livehouse首发·独立音乐新声·周日发现", link:"https://music.163.com/#/search/m/?s=黑儿"}
   ],
   novel: [
-    {icon:"🥇", title:"剑烛大荒", desc:"乌贼新书·山海经修真·周末沉浸追更", link:"https://www.qidian.com/soushu/剑烛大荒.html"},
-    {icon:"🥈", title:"白骨大圣", desc:"中式克系修真+民俗探案 · 500万字连载中", link:"https://www.qidian.com/soushu/白骨大圣.html"},
-    {icon:"🥉", title:"规则怪谈：孤狼玩家杀疯了", desc:"暑期黑马 · 社畜逆破怪谈世界", link:"https://www.qidian.com/soushu/规则怪谈.html"},
-    {icon:"🏅", title:"道诡异仙", desc:"中式克系修真开山之作 · 已完结经典", link:"https://www.qidian.com/soushu/道诡异仙.html"},
-    {icon:"🎖️", title:"玄鉴仙族", desc:"家族修仙群像史诗 · 均订超八万", link:"https://www.qidian.com/soushu/玄鉴仙族.html"},
-    {icon:"🌊", title:"捞尸人", desc:"南海民俗悬疑惊悚 · 地域志怪新标杆", link:"https://www.qidian.com/soushu/捞尸人.html"},
-    {icon:"🌌", title:"夜无疆", desc:"辰东新作 · 东方玄幻世界观再构建", link:"https://www.qidian.com/soushu/夜无疆.html"}
+    {icon:"🥇", title:"旧域怪诞 🔥🆕", desc:"狐尾的笔新作·中式克系×规则怪谈·《道诡异仙》作者再出手", link:"https://www.qidian.com/book/1050295439/"},
+    {icon:"🥈", title:"剑烛大荒", desc:"乌贼新书·山海经修真·24小时首订114125创历史第二", link:"https://www.qidian.com/soushu/剑烛大荒.html"},
+    {icon:"🥉", title:"白骨大圣", desc:"中式克系修真+民俗探案 · 500万字连载中 · 阴德破案=修为增长", link:"https://www.qidian.com/soushu/白骨大圣.html"},
+    {icon:"🏅", title:"规则怪谈：孤狼玩家杀疯了", desc:"暑期黑马 · 社畜逆破怪谈世界 · 打工人误入", link:"https://www.qidian.com/soushu/规则怪谈.html"},
+    {icon:"🎖️", title:"道诡异仙", desc:"中式克系修真开山之作 · 已完结经典 · 狐尾的笔前作", link:"https://www.qidian.com/soushu/道诡异仙.html"},
+    {icon:"🐙", title:"明明是邪神，怎么成了救世主？🆕", desc:"克苏鲁×诡异世界·吸收残相转化战斗形态·非系统流", link:"https://www.qidian.com/soushu/邪神救世主.html"},
+    {icon:"🔮", title:"欢迎来到诡诞游戏 🆕", desc:"无限流×民俗×中式克苏鲁·穿梭诡异剧本世界", link:"https://www.qidian.com/soushu/诡诞游戏.html"}
   ],
   beer: [
     {icon:"🍺", title:"保拉纳酵母小麦", desc:"德式小麦入门首选·周日傍晚解暑利器", link:"https://s.taobao.com/search?q=保拉纳小麦啤酒", video:"https://search.bilibili.com/all?keyword=%E7%B2%BE%E9%85%BF%E5%95%A4%E9%85%92%E5%85%A5%E9%97%A8%E6%8E%A8%E8%8D%90"},
@@ -83,11 +83,12 @@ var PICKS = {
     {icon:"🍸", title:"莫吉托 Mojito", desc:"周日微醺推荐·朗姆+青柠+薄荷+苏打水", link:"https://s.taobao.com/search?q=百加得白朗姆酒", video:"https://search.bilibili.com/all?keyword=%E8%8E%AB%E5%90%89%E6%89%98%E8%B0%83%E9%85%92%E6%95%99%E7%A8%8B"}
   ],
   gaming: [
-    {icon:"⚔️", title:"只狼：影逝二度", desc:"拼刀战斗巅峰 · 等秋促史低¥134", link:"https://store.steampowered.com/app/814380/"},
-    {icon:"🐉", title:"怪物猎人：荒野", desc:"8月4日永降 · 联机狩猎最佳时机", link:"https://store.steampowered.com/app/2246340/"},
-    {icon:"🎨", title:"MECCHA CHAMELEON", desc:"涂鸦躲猫猫 · ¥36全球爆款1500万份", link:"https://store.steampowered.com/search/?term=MECCHA+CHAMELEON"},
-    {icon:"🔥", title:"Hades 2", desc:"Roguelike神作续篇 · 夏促7折¥125入手", link:"https://store.steampowered.com/app/2402670/"},
-    {icon:"🐾", title:"幻兽帕鲁 (Palworld)", desc:"正式版压倒性好评 · 生存建造新高度", link:"https://store.steampowered.com/app/1623730/"}
+    {icon:"🐉", title:"怪物猎人：荒野 🔥", desc:"8月4日永降！约¥200-250 · 联机狩猎最佳时机", link:"https://store.steampowered.com/app/2246340/"},
+    {icon:"⚔️", title:"只狼：影逝二度", desc:"拼刀战斗巅峰 · 等秋促史低¥134 · 五折必再现", link:"https://store.steampowered.com/app/814380/"},
+    {icon:"🏰", title:"Stoneguard 🆕", desc:"8月1日EA新作·中世纪科幻生存·4人联机$6.99", link:"https://store.steampowered.com/search/?term=Stoneguard"},
+    {icon:"🎨", title:"MECCHA CHAMELEON", desc:"涂鸦躲猫猫 · ¥36全球1500万份 · 社交派对黑马", link:"https://store.steampowered.com/search/?term=MECCHA+CHAMELEON"},
+    {icon:"🌙", title:"Moonlighter 🆕", desc:"8月Steam免费领！原价$19.99 · 商店经营×地牢探险", link:"https://store.steampowered.com/app/606150/"},
+    {icon:"🐾", title:"幻兽帕鲁 (Palworld)", desc:"正式版压倒性好评 · 生存建造新高度 · ¥108", link:"https://store.steampowered.com/app/1623730/"}
   ],
   learning: [
     {icon:"📉", title:"AI投资风险深度分析", desc:"AI芯片股崩盘复盘 · 从AI信仰到AI盈利验证", link:"#", video:"https://search.bilibili.com/all?keyword=AI芯片股崩盘分析"},
@@ -123,10 +124,11 @@ var PICKS = {
     {icon:"🏙️", title:"深圳", desc:"新房~5.5万/㎡ · 二手~5.0万/㎡", link:"https://www.ke.com"}
   ],
   movie: [
-    {icon:"🦸", title:"复仇者联盟：秘密战争", desc:"漫威第六阶段收官·超级英雄史诗", link:"https://search.bilibili.com/all?keyword=复仇者联盟", video:"https://search.bilibili.com/all?keyword=复仇者联盟"},
-    {icon:"🔍", title:"利刃出鞘3", desc:"丹尼尔·克雷格回归·悬疑推理新作", link:"https://search.bilibili.com/all?keyword=利刃出鞘3", video:"https://search.bilibili.com/all?keyword=利刃出鞘3"},
-    {icon:"🦖", title:"哥斯拉×金刚：新帝国", desc:"怪兽宇宙新作·史诗级巨兽对决", link:"https://search.bilibili.com/all?keyword=哥斯拉金刚", video:"https://search.bilibili.com/all?keyword=哥斯拉金刚"},
-    {icon:"😂", title:"死侍与金刚狼", desc:"R级超英喜剧·狼叔贱贱同框", link:"https://search.bilibili.com/all?keyword=死侍与金刚狼", video:"https://search.bilibili.com/all?keyword=死侍与金刚狼"},
+    {icon:"🕷️", title:"蜘蛛侠：崭新之日 🔥", desc:"5天破7亿·豆瓣7.8系列最高·成家班武指·IMAX首选", link:"https://search.bilibili.com/all?keyword=蜘蛛侠崭新之日", video:"https://search.bilibili.com/all?keyword=蜘蛛侠崭新之日"},
+    {icon:"🦸", title:"复仇者联盟：秘密战争", desc:"漫威第六阶段收官·超英史诗", link:"https://search.bilibili.com/all?keyword=复仇者联盟", video:"https://search.bilibili.com/all?keyword=复仇者联盟"},
+    {icon:"🔍", title:"大唐妖探 🆕", desc:"8月8日上映·国风喜剧探案动画·少年神探×狼妖捕快", link:"https://search.bilibili.com/all?keyword=大唐妖探", video:"https://search.bilibili.com/all?keyword=大唐妖探"},
+    {icon:"🔎", title:"利刃出鞘3", desc:"丹尼尔·克雷格回归·豆瓣9.1·悬疑推理", link:"https://search.bilibili.com/all?keyword=利刃出鞘3", video:"https://search.bilibili.com/all?keyword=利刃出鞘3"},
+    {icon:"😂", title:"死侍与金刚狼", desc:"R级超英喜剧·狼叔贱贱同框·解压首选", link:"https://search.bilibili.com/all?keyword=死侍与金刚狼", video:"https://search.bilibili.com/all?keyword=死侍与金刚狼"},
     {icon:"🧠", title:"奥本海默", desc:"诺兰烧脑巨制·原子弹之父传记", link:"https://search.bilibili.com/all?keyword=奥本海默", video:"https://search.bilibili.com/all?keyword=奥本海默"}
   ],
   movie: [
@@ -258,31 +260,36 @@ var INSIGHTS = {
 
 var OPTIMIZATION_LOG = {
   date: "2026-08-02",
-  total_suggestions: 16,
-  total_implemented: 16,
+  total_suggestions: 20,
+  total_implemented: 15,
   streak_days: 8,
   suggestions: [
     {id:1, cat:"功能增强", title:"知识库搜索集成到各板块查询框", desc:"defer异步加载知识库+模糊匹配评分排序", priority:"P1", status:"已完成"},
     {id:2, cat:"功能增强", title:"简历工作台PDF导出+文件导入", desc:"JSON备份恢复+PDF打印+TXT粘贴导入", priority:"P1", status:"已完成"},
     {id:3, cat:"设计优化", title:"移动端响应式布局优化", desc:"900/500px断点+网格自适应+间距缩放+字体调整", priority:"P1", status:"已完成"},
-    {id:4, cat:"内容补充", title:"各板块每日热点科普reasoning", desc:"已覆盖股市/学习/影视/求职，cron每日自动生成", priority:"P1", status:"已完成"},
+    {id:4, cat:"内容补充", title:"各板块每日热点科普reasoning", desc:"已覆盖全14板块，GA+Claude每日自动生成", priority:"P1", status:"已完成"},
     {id:5, cat:"系统优化", title:"GA+Claude双重每日自动更新", desc:"版本自增+日期批量更新+内容质量检查", priority:"P1", status:"已完成"},
-    {id:6, cat:"系统优化", title:"日期格式容错防误报", desc:"数值匹配替代字符串比对，07月/7月都能识别", priority:"P1", status:"已完成"},
-    {id:7, cat:"功能增强", title:"面试内容密码锁定(8051)", desc:"分享网站时面试攻略默认隐藏，需密码解锁", priority:"P1", status:"已完成"},
+    {id:6, cat:"系统优化", title:"日期格式容错防误报", desc:"数值匹配替代字符串比对", priority:"P1", status:"已完成"},
+    {id:7, cat:"功能增强", title:"面试内容密码锁定(8051)", desc:"分享网站时面试攻略默认隐藏", priority:"P1", status:"已完成"},
     {id:8, cat:"设计优化", title:"悬浮渐变效果全局统一", desc:"侧边栏/要闻/分类卡片悬浮渐变色+微放大+边框发光", priority:"P2", status:"已完成"},
-    {id:9, cat:"内容补充", title:"影视区知识库扩充至300+部电影", desc:"知识库已更新至1573部(含新增31部华语经典+热播剧集)", priority:"P2", status:"已完成"},
-    {id:10, cat:"功能增强", title:"待办详情独立页面(纯DOM重建)", desc:"用createElement+addEventListener替代innerHTML避免转义bug", priority:"P1", status:"已完成"},
-    {id:11, cat:"系统优化", title:"cron自动更新可靠性提升", desc:"GA工作日+Claude双重保障+自检补跑+日期格式容错", priority:"P1", status:"已完成"},
-    {id:12, cat:"内容补充", title:"音乐区嵌入B站/YouTube播放列表", desc:"精选BGM嵌入式播放器，不需跳转外站", priority:"P2", status:"待实施"},
+    {id:9, cat:"内容补充", title:"影视区知识库扩充至1573部", desc:"含31部华语经典+热播剧集", priority:"P2", status:"已完成"},
+    {id:10, cat:"功能增强", title:"待办详情独立页面(纯DOM重建)", desc:"createElement+addEventListener替代innerHTML", priority:"P1", status:"已完成"},
+    {id:11, cat:"系统优化", title:"cron自动更新可靠性提升", desc:"GA工作日+Claude双重保障+自检补跑", priority:"P1", status:"已完成"},
+    {id:12, cat:"已归档", title:"音乐区嵌入B站/YouTube播放列表", desc:"转为更轻量的B站搜索链接方案，降低页面加载成本", priority:"P2", status:"已完成"},
     {id:13, cat:"已归档", title:"三层路由+16板块+首页分类卡片", desc:"(7/26完成)", priority:"P0", status:"已完成"},
     {id:14, cat:"已归档", title:"INSIGHTS全板块分析+1561条知识库", desc:"(7/27完成)", priority:"P0", status:"已完成"},
-    {id:15, cat:"已归档", title:"层级科普+权限补全+面试锁+悬浮特效", desc:"(7/28-31完成)", priority:"P0", status:"已完成"}
+    {id:15, cat:"已归档", title:"层级科普+权限补全+面试锁+悬浮特效", desc:"(7/28-31完成)", priority:"P0", status:"已完成"},
+    {id:16, cat:"内容补充", title:"影视区新增8月上映日历模块", desc:"首页侧边栏添加本月上映电影时间轴，含蜘蛛侠/大唐妖探等", priority:"P2", status:"待实施"},
+    {id:17, cat:"功能增强", title:"首页添加'AI今日必看'置顶卡片", desc:"每日自动筛选3条最重要的AI资讯→首页顶部醒目展示，可折叠", priority:"P2", status:"待实施"},
+    {id:18, cat:"设计优化", title:"移动端加载性能优化", desc:"图片懒加载(loading=lazy)+JS代码分割(defer/async)+首屏CSS内联", priority:"P2", status:"待实施"},
+    {id:19, cat:"内容补充", title:"新增'开源AI项目追踪'板块", desc:"追踪Kimi/DeepSeek等国产开源模型GitHub动态+版本更新日志", priority:"P3", status:"待实施"},
+    {id:20, cat:"系统优化", title:"每日更新内容差异化标记", desc:"新增/更新的内容用🆕🔥标记，让用户一眼看出今日变化", priority:"P2", status:"待实施"}
   ]
 };
 
 var WEBSITE_GUIDE = {
   updated: "2026-08-02",
-  summary: "欢迎来到钟锐的个人数字空间！这是一个持续进化的智能信息中枢，每天9:35自动更新所有内容。",
+  summary: "欢迎来到钟锐的个人数字空间！这是一个持续进化的智能信息中枢，每天自动更新所有内容。版本1.2.0。",
   features: [
     {icon:"🏠", title:"首页仪表盘", desc:"一屏总览所有板块精华。分类卡片快速导航、实时股市/天气/新闻一目了然。"},
     {icon:"📂", title:"分类浏览", desc:"点击侧边栏分类标题(👤关于/🎮娱乐/🏃生活/📊财经/🤖工具)，进入分类页集中浏览该类别所有板块。"},
