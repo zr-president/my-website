@@ -265,7 +265,26 @@ DETAIL.anime = '<h2>🎬 动漫区 · 完整观看指南</h2><p class="detail-su
 	'<input type="text" placeholder="粘贴网易云/QQ音乐/Spotify歌单链接..." style="width:100%;padding:10px;border:1px solid var(--border);border-radius:6px;font-size:12px;margin-top:8px;font-family:inherit">'+
 
 '<h3>🎤 小白练歌技巧（KTV/全民K歌）</h3>'+
-'<div class="highlight-box"><p><strong>三步提升唱歌水平：</strong><br><br>'+'<strong>第一步：选对歌</strong>——新手选音域窄、节奏简单的歌。推荐：陈奕迅《十年》、李荣浩《年少有为》、毛不易《消愁》。避开周杰伦快歌和高音歌。<br><br>'+'<strong>第二步：练气息</strong>——每天5分钟腹式呼吸练习：吸气时肚子鼓起，呼气时发"S"声延长至20秒以上。唱歌时用腹式呼吸支撑，嗓子不累。<br><br>'+'<strong>第三步：找共鸣</strong>——说话和唱歌的区别在共鸣。哼鸣练习(Humming)：闭上嘴发"嗯"声，感受鼻腔震动。每天洗澡时哼歌是最好的练习。<br><br>'+'<strong>App推荐：</strong>全民K歌（评分+音准线反馈）| 唱吧（专业模式可看音准）| Smule（全球对唱社区）</p></div>';
+'<div class="highlight-box"><p><strong>三步提升唱歌水平：</strong><br><br>'+'<strong>第一步：选对歌</strong>——新手选音域窄、节奏简单的歌。推荐：陈奕迅《十年》、李荣浩《年少有为》、毛不易《消愁》。避开周杰伦快歌和高音歌。<br><br>'+'<strong>第二步：练气息</strong>——每天5分钟腹式呼吸练习：吸气时肚子鼓起，呼气时发"S"声延长至20秒以上。唱歌时用腹式呼吸支撑，嗓子不累。<br><br>'+'<strong>第三步：找共鸣</strong>——说话和唱歌的区别在共鸣。哼鸣练习(Humming)：闭上嘴发"嗯"声，感受鼻腔震动。每天洗澡时哼歌是最好的练习。<br><br>'+'<strong>App推荐：</strong>全民K歌（评分+音准线反馈）| 唱吧（专业模式可看音准）| Smule（全球对唱社区）</p></div>'+
+
+'<h3>📅 30天练歌计划（每天15分钟）</h3>'+
+'<table class="data-table"><tr><th>周</th><th>每日任务</th><th>重点</th></tr>'+
+'<tr style="background:var(--accent-light)"><td><strong>第1周</strong></td><td>① 腹式呼吸5分钟（吸气4秒→憋气4秒→呼气8秒）<br>② 哼鸣练习3分钟（do-re-mi-fa-sol上下行）<br>③ 选一首歌跟唱7分钟</td><td>气息基础+音准感知</td></tr>'+
+'<tr><td><strong>第2周</strong></td><td>① 气息延长练习（发S声→目标30秒）<br>② 音阶练习（钢琴App跟弹 do-re-mi）<br>③ 主攻一首歌反复练</td><td>气息控制+音域拓展</td></tr>'+
+'<tr style="background:var(--accent-light)"><td><strong>第3周</strong></td><td>① 跳音练习（短促跳跃的ha/ha/ha）<br>② 咬字练习（绕口令+歌词清晰度）<br>③ 录音回听→对比原唱找差距</td><td>节奏感+咬字清晰</td></tr>'+
+'<tr><td><strong>第4周</strong></td><td>① 完整演唱一首歌3遍（不开原唱）<br>② 录音→自评（音准/节奏/情感）<br>③ 尝试全民K歌发布第一首作品</td><td>完整演绎+建立自信</td></tr>'+
+'</table>'+
+
+'<h4>🎯 新手必练5首歌（难度排序）</h4>'+
+'<table class="data-table"><tr><th>歌曲</th><th>难度</th><th>音域</th><th>练习要点</th></tr>'+
+'<tr><td>毛不易《消愁》</td><td>⭐</td><td>G3-D#5</td><td>节奏慢、旋律简单，练气息和咬字</td></tr>'+
+'<tr><td>李荣浩《年少有为》</td><td>⭐</td><td>D3-A4</td><td>中低音区为主，练音准</td></tr>'+
+'<tr><td>陈奕迅《十年》</td><td>⭐⭐</td><td>E3-G4</td><td>情感表达+气息支撑</td></tr>'+
+'<tr><td>林俊杰《修炼爱情》</td><td>⭐⭐</td><td>D3-B4</td><td>真假声转换练习</td></tr>'+
+'<tr><td>周杰伦《晴天》</td><td>⭐⭐⭐</td><td>A2-A4</td><td>快节奏+说唱段落，练节奏感</td></tr>'+
+'</table>'+
+
+'<div class="callout tip"><strong>🎤 每日练习小贴士：</strong><br>① 最佳练习时间：洗澡时（蒸汽打开声道）+ 通勤路上（听原唱磨耳朵）<br>② 录音回听是最快的进步方式——你听到的自己唱歌和别人听到的不一样<br>③ 不要追求高音，先追求音准和节奏稳定。KTV评分"SS"不如唱得舒服自然</div>';
 
 
 // ===== 小说区 =====
