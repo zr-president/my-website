@@ -262,7 +262,10 @@ DETAIL.anime = '<h2>🎬 动漫区 · 完整观看指南</h2><p class="detail-su
 	'<div class="callout tip"><strong>💡 新歌追踪技巧：</strong>每周五全球统一上架新音乐——Apple Music "New Music Daily" + Spotify "New Music Friday" + 网易云"新歌推荐"三端同步，周五早8点扫一遍，好歌不会漏。</div>'+
 
 	'<div class="callout info">📌 把你的歌单链接粘贴到下方，获取更精准的BPM分析、情绪曲线和艺人推荐。</div>'+
-	'<input type="text" placeholder="粘贴网易云/QQ音乐/Spotify歌单链接..." style="width:100%;padding:10px;border:1px solid var(--border);border-radius:6px;font-size:12px;margin-top:8px;font-family:inherit">';
+	'<input type="text" placeholder="粘贴网易云/QQ音乐/Spotify歌单链接..." style="width:100%;padding:10px;border:1px solid var(--border);border-radius:6px;font-size:12px;margin-top:8px;font-family:inherit">'+
+
+'<h3>🎤 小白练歌技巧（KTV/全民K歌）</h3>'+
+'<div class="highlight-box"><p><strong>三步提升唱歌水平：</strong><br><br>'+'<strong>第一步：选对歌</strong>——新手选音域窄、节奏简单的歌。推荐：陈奕迅《十年》、李荣浩《年少有为》、毛不易《消愁》。避开周杰伦快歌和高音歌。<br><br>'+'<strong>第二步：练气息</strong>——每天5分钟腹式呼吸练习：吸气时肚子鼓起，呼气时发"S"声延长至20秒以上。唱歌时用腹式呼吸支撑，嗓子不累。<br><br>'+'<strong>第三步：找共鸣</strong>——说话和唱歌的区别在共鸣。哼鸣练习(Humming)：闭上嘴发"嗯"声，感受鼻腔震动。每天洗澡时哼歌是最好的练习。<br><br>'+'<strong>App推荐：</strong>全民K歌（评分+音准线反馈）| 唱吧（专业模式可看音准）| Smule（全球对唱社区）</p></div>';
 
 
 // ===== 小说区 =====
@@ -747,6 +750,33 @@ DETAIL.diet = '<h2>🍽️ 饮食助手</h2><p class="detail-subtitle">肾结石
 '<tr><td>18:30</td><td>清蒸鱼/牛肉120g+红薯+蔬菜沙拉</td><td>500</td><td>35g</td></tr>'+
 '<tr><td>21:00</td><td>温低脂牛奶200ml</td><td>150</td><td>8g</td></tr></table>'+
 '<h3>🔧 工具</h3><ul><li><a href="https://www.boohee.com" target="_blank">薄荷健康</a></li><li><a href="https://www.myfitnesspal.com" target="_blank">MyFitnessPal</a></li><li><a href="https://www.xiachufang.com" target="_blank">下厨房</a></li></ul>';
+
+DETAIL["life-tips"] = '<h2>📋 生活助手 · 实用办事指南</h2><p class="detail-subtitle">医保·护照·通行证·驾驶证·社保——让你少跑冤枉路</p>'+
+'<h3>🏥 离职后医保怎么续？</h3>'+
+'<div class="highlight-box"><p><strong>核心规则：</strong>职工医保停缴后3个月内续缴居民医保，无需重新计算等待期。超3个月则需重新参保并等待6个月。<br><br><strong>三种续缴方式：</strong><br>① 以灵活就业身份续缴职工医保（缴费基数可选择，月缴300-800元）→ 待遇不变<br>② 转城乡居民医保（年缴380元）→ 报销比例降低但成本最低<br>③ 新单位入职后自动接续→ 无需个人操作<br><br><strong>办理渠道：</strong>粤省事小程序/穗好办App/各区社保中心。线上办理3个工作日内审核。</p></div>'+
+'<h3>🛂 护照办理指南</h3>'+
+'<table class="data-table"><tr><th>事项</th><th>详情</th></tr>'+
+'<tr><td>办理条件</td><td>年满16周岁中国公民，全国通办（无需回户籍地）</td></tr>'+
+'<tr><td>所需材料</td><td>身份证原件+符合标准的证件照片（可现场拍）</td></tr>'+
+'<tr><td>办理地点</td><td>广州市公安局出入境管理局及各区出入境受理点</td></tr>'+
+'<tr><td>办理时间</td><td>首次申领/换发约15个工作日；加急7个工作日（需提供紧急事由证明）</td></tr>'+
+'<tr><td>费用</td><td>普通护照首次申领120元/本；加注20元/次</td></tr>'+
+'<tr><td>预约方式</td><td>微信搜"广州公安出入境"小程序→预约→按时前往</td></tr>'+
+'</table>'+
+'<h3>🇭🇰 港澳通行证办理</h3>'+
+'<div class="highlight-box"><p><strong>签注类型：</strong><br>• G签（个人旅游签注）：可自由行，广州户籍可直接办理<br>• L签（团队旅游签注）：需跟团出入境，已逐步取消<br><br><strong>办理流程：</strong>① "广州公安出入境"小程序预约→② 带身份证到出入境大厅→③ 自助机填表拍照→④ 窗口提交→⑤ 7个工作日取证（可邮寄）<br><br><strong>费用：</strong>往来港澳通行证60元/证 + 签注15元/次。团队签注(L签)已全面取消，全国恢复个人旅游签注(G签)办理。</p></div>'+
+'<h3>🚗 驾驶证换证指南</h3>'+
+'<table class="data-table"><tr><th>类型</th><th>条件</th><th>办理方式</th></tr>'+
+'<tr><td>期满换证</td><td>到期前90天内+体检合格</td><td>交管12123App在线办→邮寄到家</td></tr>'+
+'<tr><td>异地转入</td><td>持有效驾驶证+身份证</td><td>广州市车管所→当场换发</td></tr>'+
+'<tr><td>遗失补办</td><td>身份证即可</td><td>交管12123App在线申请</td></tr>'+
+'</table>'+
+'<h3>💼 社保转移（跨省/跨市）</h3>'+
+'<div class="callout tip"><strong>三步完成社保转移：</strong><br>① 在原参保地社保局开具《参保缴费凭证》→ ② 在新参保地社保局提交转移申请→ ③ 两地社保机构对接转移（约45个工作日）<br><br>现在广东已实现省内社保自动合并，跨省需手动申请。支付宝搜"社保转移"→人脸识别→在线提交→全程网办。</div>'+
+'<h3>📱 常用办事平台</h3>'+
+'<div class="resource-card"><div class="rc-icon">🏛️</div><div class="rc-info"><div class="rc-name">粤省事</div><div class="rc-desc">广东政务服务小程序，社保/医保/出入境/驾照一站式</div></div><a href="#" target="_blank" class="rc-link">微信搜→</a></div>'+
+'<div class="resource-card"><div class="rc-icon">📱</div><div class="rc-info"><div class="rc-name">穗好办App</div><div class="rc-desc">广州城市服务App，医保查询/居住证/公积金</div></div><a href="#" target="_blank" class="rc-link">下载→</a></div>'+
+'<div class="resource-card"><div class="rc-icon">🚗</div><div class="rc-info"><div class="rc-name">交管12123</div><div class="rc-desc">驾驶证/行驶证/违章查询/年检预约</div></div><a href="#" target="_blank" class="rc-link">下载→</a></div>';
 
 DETAIL.beer = '<section>'+
 '<h2>🍺 精酿啤酒知识体系</h2>'+

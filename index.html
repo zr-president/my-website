@@ -224,7 +224,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div style="padding:4px 16px 0"><div style="font-size:9px;color:var(--text3);margin-bottom:4px">🎨 主题色</div><div class="theme-colors"><span class="theme-dot indigo active" onclick="setColorTheme('indigo')" title="靛蓝"></span><span class="theme-dot ocean" onclick="setColorTheme('ocean')" title="深海蓝"></span><span class="theme-dot emerald" onclick="setColorTheme('emerald')" title="墨绿金"></span><span class="theme-dot rose" onclick="setColorTheme('rose')" title="玫瑰金"></span><span class="theme-dot amber" onclick="setColorTheme('amber')" title="琥珀暖"></span><span class="theme-dot slate" onclick="setColorTheme('slate')" title="石墨灰"></span></div></div>
 <div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','about')">👤 关于</div><a href="#dashboard">📋 每日待办</a><a href="#about">🏠 个人介绍</a><a href="#career">💼 求职中心</a></div>
 <div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','fun')">🎮 娱乐</div><a href="#gaming">🎯 游戏区</a><a href="#music">🎵 音乐区</a><a href="#novel">📖 小说区</a><a href="#anime">🎬 动漫区</a><a href="#movie">🎥 影视区</a></div>
-<div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','life')">🏃 生活</div><a href="#fashion">👔 穿搭推荐</a><a href="#fitness">💪 健身方案</a><a href="#diet">🍽️ 饮食助手</a><a href="#beer">🍺 精酿与调酒</a></div>
+<div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','life')">🏃 生活</div><a href="#fashion">👔 穿搭推荐</a><a href="#fitness">💪 健身方案</a><a href="#diet">🍽️ 饮食助手</a><a href="#beer">🍺 精酿与调酒</a><a href="#life-tips">📋 生活助手</a></div>
 <div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','finance')">📊 财经·学习</div><a href="#stock">📈 股市基金</a><a href="#car">🚗 购车推荐</a><a href="#house">🏠 购房租房</a><a href="#learning">🎓 学习区</a><a href="#travel">✈️ 旅游区</a><a href="#news">📰 新闻资讯</a></div>
 <div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','tools')">🤖 工具</div><a href="#guide">📖 使用指南</a><a href="#ai-assistant">💬 AI助手</a><a href="#optimization">🔧 优化日记</a><a href="search.html" target="_blank">📚 知识库搜索</a></div>
 </nav>
@@ -367,6 +367,10 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div id="picks-diet" class="picks-container"></div>
 <div class="card clickable" onclick="openDetail('diet')"><h3>🥗 查看完整饮食方案</h3><p>疾病饮食红线、一日六餐精准食谱（含营养素计算）、饮水追踪。</p></div></section>
 
+<section id="life-tips" class="section" data-search="医保 护照 港澳通行证 社保 驾驶证 生活 行政 办事 指南"><div class="section-header"><h2>📋 生活助手</h2><p>医保续缴 · 护照办理 · 港澳通行证 · 社保转移 · 生活实用指南</p></div>
+<div id="picks-life-tips" class="picks-container"></div>
+<div class="card clickable" onclick="openDetail('life-tips')"><h3>📝 查看完整生活办事指南</h3><p>离职后医保怎么续？护照港澳通行证怎么办？社保怎么转移？实用科普全覆盖。</p></div></section>
+
 <section id="beer" class="section" data-search="精酿 啤酒 调酒 鸡尾酒"><div class="section-header"><h2>🍺 精酿与调酒</h2><p>今日推荐 · 点击查看完整指南</p></div>
 <div id="picks-beer" class="picks-container"></div>
 <div class="card clickable" onclick="openDetail('beer')"><h3>🍻 查看精酿品鉴指南</h3><p>啤酒四大原料+风格树+3档酒单+8款鸡尾酒配方+家庭Bar搭建。</p></div></section>
@@ -431,8 +435,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div class="card" style="margin-top:14px;padding:12px 14px" id="sectionQueryBox">
 <div style="font-size:11px;color:var(--text3);margin-bottom:6px">🤖 AI智能查询 · 输入名称获取整合分析+推荐建议</div>
 <div style="display:flex;gap:6px">
-<input type="text" id="sectionQueryInput" placeholder="输入关键词查询..." style="flex:1;padding:8px 10px;border:1px solid var(--border);border-radius:6px;font-size:12px;font-family:inherit;background:var(--bg);color:var(--text);outline:none" onkeydown="if(event.key==='Enter')doSectionQuery()">
-<button onclick="doSectionQuery()" style="padding:8px 14px;background:var(--accent);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:12px;white-space:nowrap">🔍 查询</button>
+<div style="display:flex;gap:4px;align-items:center"><input type="text" id="sectionQueryInput" placeholder="输入关键词查询..." style="flex:1;padding:8px 10px;border:1px solid var(--border);border-radius:6px;font-size:12px;font-family:inherit;background:var(--bg);color:var(--text);outline:none" onkeydown="if(event.key==='Enter')doSectionQuery()"><button onclick="startVoiceInput()" style="padding:8px 10px;background:var(--bg);border:1px solid var(--border);border-radius:6px;cursor:pointer;font-size:14px" title="语音输入">🎤</button></div>
 </div>
 <div id="queryResultBox"></div>
 </div>
@@ -1325,7 +1328,7 @@ function renderSectionPicks(sectionId){
 }
 
 function renderAllPicks(){
-  var sections = ['guide','anime','movie','music','novel','beer','gaming','learning','fashion','fitness','diet','career','car','house','stock','news','tools-collection','optimization'];
+  var sections = ['guide','anime','movie','music','novel','beer','life-tips','gaming','learning','fashion','fitness','diet','career','car','house','stock','news','tools-collection','optimization'];
   sections.forEach(function(s){ renderSectionPicks(s); });
 }
 
@@ -1333,7 +1336,7 @@ function renderAllPicks(){
 var CATEGORIES = {
   about:    {icon:'👤', name:'关于·求职', subs:'个人介绍 | 求职中心 | 每日待办', sections:['dashboard','about','career']},
   fun:      {icon:'🎮', name:'娱乐空间', subs:'游戏|音乐|小说|动漫|影视', sections:['gaming','music','novel','anime','movie']},
-  life:     {icon:'🏃', name:'生活方式', subs:'穿搭 | 健身 | 饮食 | 精酿与调酒', sections:['fashion','fitness','diet','beer']},
+  life:     {icon:'🏃', name:'生活方式', subs:'穿搭|健身|饮食|精酿|生活助手', sections:['fashion','fitness','diet','beer','life-tips']},
   finance:  {icon:'📊', name:'财经·学习', subs:'股市 | 购车 | 购房 | 学习 | 旅游 | 新闻', sections:['stock','car','house','learning','travel','news']},
   tools:    {icon:'🤖', name:'工具·AI', subs:'使用指南 | 工具收藏夹 | AI助手 | 优化日记', sections:['guide','tools-collection','ai-assistant','optimization']}
 };
@@ -1631,6 +1634,22 @@ var QUERY_PROMPTS = {
   fitness: '分析训练动作/方法《{q}》的正确姿势、训练效果、注意事项',
   fashion: '分析穿搭风格/单品《{q}》的搭配技巧、适合体型、购买建议'
 };
+
+var voiceRecognition=null;
+function startVoiceInput(){
+  var btn=event.target;
+  if(!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)){
+    alert('您的浏览器不支持语音输入。请使用Chrome或Edge浏览器。');return;
+  }
+  if(!voiceRecognition){
+    var SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+    voiceRecognition=new SR();voiceRecognition.lang='zh-CN';voiceRecognition.continuous=false;voiceRecognition.interimResults=false;
+    voiceRecognition.onresult=function(e){document.getElementById('sectionQueryInput').value=e.results[0][0].transcript;doSectionQuery();};
+    voiceRecognition.onerror=function(){btn.textContent='🎤';};
+    voiceRecognition.onend=function(){btn.textContent='🎤';};
+  }
+  btn.textContent='🔴';voiceRecognition.start();
+}
 
 function doSectionQuery(){
   var input = document.getElementById('sectionQueryInput');
