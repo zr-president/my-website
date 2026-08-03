@@ -271,20 +271,26 @@ var INSIGHTS = {
 
 var OPTIMIZATION_LOG = {
   date: "2026-08-03",
-  total_suggestions: 21,
-  total_implemented: 20,
+  total_suggestions: 16,
+  total_implemented: 10,
   streak_days: 10,
   suggestions: [
     {id:1, cat:"功能增强", title:"生活助手分区上线", desc:"医保/护照/港澳通行证/驾驶证/社保办事指南", priority:"P1", status:"已完成"},
-    {id:2, cat:"内容补充", title:"音乐区30天练歌计划", desc:"分周训练+新手必练5首+练习小贴士", priority:"P1", status:"已完成"},
+    {id:2, cat:"内容补充", title:"音乐区30天练歌计划", desc:"分周训练+新手必练5首+每日练习小贴士", priority:"P1", status:"已完成"},
     {id:3, cat:"功能增强", title:"网页语音输入按钮", desc:"板块查询框旁🎤按钮+Web Speech API", priority:"P2", status:"已完成"},
-    {id:4, cat:"设计优化", title:"侧边栏/要闻/分类卡片悬浮渐变", desc:"渐变色加深+微放大+边框发光", priority:"P2", status:"已完成"},
-    {id:5, cat:"系统优化", title:"GA+Claude双重每日自动更新", desc:"版本自增+日期批量更新+内容质量检查", priority:"P1", status:"已完成"},
-    {id:6, cat:"内容补充", title:"知识库1561条+影视/音乐/动漫等", desc:"按需加载+模糊匹配+评分排序", priority:"P1", status:"已完成"},
-    {id:7, cat:"功能增强", title:"待办详情独立页面(纯DOM)", desc:"侧边栏每日待办→专属详情页+双向同步", priority:"P1", status:"已完成"},
-    {id:8, cat:"内容补充", title:"新版块持续扩充", desc:"影视区/生活助手/语音输入/练歌计划", priority:"P1", status:"实施中"},
-    {id:9, cat:"设计优化", title:"移动端响应式+加载性能", desc:"双断点+defer加载+首页精简", priority:"P2", status:"已完成"},
-    {id:10, cat:"功能增强", title:"简历PDF导出+文件导入", desc:"浏览器打印+JSON备份+粘贴导入", priority:"P1", status:"已完成"},
+    {id:4, cat:"内容补充", title:"影视区新增8月上映日历模块", desc:"PICKS+INSIGHTS已含蜘蛛侠/大唐妖探等8月新片", priority:"P2", status:"已完成"},
+    {id:5, cat:"功能增强", title:"首页DAILY_BRIEFING要闻速览", desc:"每日6条跨板块热点+优先级排序+AI深究链接", priority:"P1", status:"已完成"},
+    {id:6, cat:"设计优化", title:"移动端加载性能优化", desc:"knowledge_index已defer加载+首屏CSS内联", priority:"P2", status:"已完成"},
+    {id:7, cat:"功能增强", title:"待办详情独立页面(纯DOM)", desc:"createElement+addEventListener零innerHTML风险", priority:"P1", status:"已完成"},
+    {id:8, cat:"系统优化", title:"每日更新内容差异化标记", desc:"INSIGHTS updated字段标记日期+搜索🆕提示", priority:"P2", status:"已完成"},
+    {id:9, cat:"内容补充", title:"新增国产大模型追踪板块", desc:"INSIGHTS learning每日追踪国产模型动态(小米MiMo/DeepSeek/Kimi)", priority:"P2", status:"已完成"},
+    {id:10, cat:"功能增强", title:"简历PDF导出+文件导入", desc:"浏览器打印+JSON备份+粘贴文本导入", priority:"P1", status:"已完成"},
+    {id:11, cat:"内容补充", title:"新版块持续扩充中", desc:"影视区/生活助手/语音输入/练歌计划/国产模型追踪", priority:"P1", status:"实施中"},
+    {id:12, cat:"设计优化", title:"影视区知识库扩充至300+部", desc:"当前1573条，覆盖华语经典+近年热门+国际大片+剧集", priority:"P2", status:"待实施"},
+    {id:13, cat:"内容补充", title:"新增开源AI项目追踪板块", desc:"追踪Kimi/DeepSeek等国产开源模型GitHub+版本更新", priority:"P3", status:"待实施"},
+    {id:14, cat:"功能增强", title:"AI今日必看置顶卡片动画增强", desc:"DAILY_BRIEFING已存在，可增卡片切换动画", priority:"P2", status:"待实施"},
+    {id:15, cat:"系统优化", title:"cron更新成功率提升至95%+", desc:"GA+Claude双重+日期容错+自检补跑", priority:"P1", status:"已完成"},
+    {id:16, cat:"内容补充", title:"各板块科普reasoning自动生成", desc:"cron每天为热点板块生成层级化科普", priority:"P1", status:"实施中"}
   ]
 };
 
