@@ -144,6 +144,14 @@ var PICKS = {
     {icon:"🇭🇰", title:"港澳通行证", desc:"个人旅游签注(G签)+团队签注(L签)区别", link:"#"},
     {icon:"🚗", title:"驾驶证换证", desc:"期满换证/异地转入/体检网点查询", link:"#"}
   ],
+  "ai-track": [
+    {icon:"🇨🇳", title:"DeepSeek V4-Flash公测", desc:"284B参数·国产前沿·API公测中", link:"https://github.com/deepseek-ai/DeepSeek-V4"},
+    {icon:"🇨🇳", title:"Kimi K3全面开源", desc:"2.8万亿参数·全球最大开源模型", link:"https://github.com/moonshotai/Kimi"},
+    {icon:"🇨🇳", title:"小米MiMo-V2.5", desc:"10.5万亿Token·全球调用量第一", link:"https://github.com/XiaoMi/MiMo"},
+    {icon:"🌍", title:"OpenAI Astra", desc:"攻克十大数学难题·全球用户破10亿", link:"https://openai.com"},
+    {icon:"🇨🇳", title:"智谱GLM-5.2", desc:"1M无损上下文·Agent能力增强", link:"https://github.com/THUDM/GLM-5"},
+    {icon:"🌍", title:"GPT-5.6系列", desc:"Sol/Terra/Luna三档·价格下调80%", link:"https://openai.com"}
+  ],
   "tools-collection": [
     {icon:"🤖", title:"Claude", desc:"最强推理+超长上下文 · 免费/Pro $20", link:"https://claude.ai"},
     {icon:"💬", title:"ChatGPT", desc:"生态最完善+多模态 · 免费/Plus $20", link:"https://chat.openai.com"},
@@ -260,6 +268,12 @@ var INSIGHTS = {
     trend: "趋势：超英回暖|青春超英崛起|悬疑推理强势|蜘蛛侠首周破3亿|周末IMAX一票难求",
     tip: "周一工作日观影：晚上下班看场电影放松——蜘蛛侠崭新之日（累计9亿，IMAX仍有排片）。8月8日《大唐妖探》上映倒计时，提前猫眼/淘票票预约首日场。",
     updated: "2026-08-03"
+  },
+  "ai-track": {
+    summary: '本周国产模型：小米MiMo-V2.5以10.5万亿Token登顶全球调用量第一，DeepSeek V4-Flash公测284B参数表现优异，Kimi K3全面开源。国际：OpenAI Astra攻克十大悬而未决的数学难题，GPT-5.6系列降价80%。模型竞争从单轮问答转向长程Agent和Coding能力。',
+    trend: '国内趋势：大模型从追赶转向领跑(全球Top5霸榜)→开源策略加速生态建设→DeepSeek估值4000亿/Kimi估值350亿→人才争夺白热化。国际趋势：OpenAI降价抢市场→Anthropic融资650亿→Meta开源Muse Spark→模型价格战+能力军备竞赛并行。',
+    tip: '追踪建议：关注GitHub Star趋势(DeepSeek/Kimi/GLM)+HuggingFace下载量+OpenRouter调用量三大指标。国产模型招聘信息已在求职中心更新。',
+    updated: '2026-08-03'
   },
   news: {
     summary: '1. 国产大模型霸榜全球前五：小米MiMo-V2.5以10.5万亿Token居首，MiniMax H3视频编辑全球第一，中国AI从跟随→领跑。2. OpenAI Astra攻克十道悬而未决十年的数学难题，全球用户破10亿里程碑。3. A股科创50大跌3.73%沪指跌0.59%，超3700个股上涨呈分化；富瀚微一字20%涨停（预增1072%-1420%）。4. 韩国KOSDAQ触发熔断，三星/SK海力士跌超8%；国际油价暴跌7.3%，黄金飙至4076美元创历史新高。5. "十五五"算力网新增直接投资4万亿元，证监会主席吴清宣布深化双向合作政策。6. 周一求职招聘日：黄金投递窗口9:00-11:00开启，国产AI岗位溢价持续扩大。',

@@ -770,6 +770,40 @@ DETAIL.diet = '<h2>🍽️ 饮食助手</h2><p class="detail-subtitle">肾结石
 '<tr><td>21:00</td><td>温低脂牛奶200ml</td><td>150</td><td>8g</td></tr></table>'+
 '<h3>🔧 工具</h3><ul><li><a href="https://www.boohee.com" target="_blank">薄荷健康</a></li><li><a href="https://www.myfitnesspal.com" target="_blank">MyFitnessPal</a></li><li><a href="https://www.xiachufang.com" target="_blank">下厨房</a></li></ul>';
 
+DETAIL["ai-track"] = '<h2>🤖 AI动态追踪 · 国内外大模型全景</h2><p class="detail-subtitle">国内/国际大模型版本对比·融资动态·技术突破·招聘信息</p>'+
+'<h3>🇨🇳 国产大模型（按调用量排序）</h3>'+
+'<table class="data-table"><tr><th>模型</th><th>公司</th><th>参数</th><th>亮点</th><th>GitHub</th></tr>'+
+'<tr style="background:var(--accent-light)"><td><strong>MiMo-V2.5</strong></td><td>小米</td><td>未公布</td><td>10.5万亿Token·全球调用量第一·多模态生成</td><td><a href="https://github.com/XiaoMi/MiMo" target="_blank">GitHub →</a></td></tr>'+
+'<tr style="background:var(--accent-light)"><td><strong>DeepSeek V4-Flash</strong></td><td>深度求索</td><td>284B</td><td>API公测·估值4000亿·腾讯/宁德投资</td><td><a href="https://github.com/deepseek-ai/DeepSeek-V4" target="_blank">GitHub →</a></td></tr>'+
+'<tr style="background:var(--accent-light)"><td><strong>Kimi K3</strong></td><td>月之暗面</td><td>2.8万亿</td><td>全球最大开源模型·F轮35亿美元·估值350亿</td><td><a href="https://github.com/moonshotai/Kimi" target="_blank">GitHub →</a></td></tr>'+
+'<tr><td><strong>GLM-5.2</strong></td><td>智谱AI</td><td>未公布</td><td>1M无损上下文·Agent能力增强·配售314亿港元</td><td><a href="https://github.com/THUDM/GLM-5" target="_blank">GitHub →</a></td></tr>'+
+'<tr><td><strong>Qwen3.8-Max</strong></td><td>阿里</td><td>2.4万亿</td><td>即将开源·MoE架构·通义千问生态</td><td><a href="https://github.com/QwenLM/Qwen3" target="_blank">GitHub →</a></td></tr>'+
+'<tr><td><strong>MiniMax H3</strong></td><td>MiniMax</td><td>未公布</td><td>开源多模态生成·视频编辑全球第一</td><td><a href="https://github.com/MiniMax-ai" target="_blank">GitHub →</a></td></tr>'+
+'<tr><td><strong>Seedance 2.5</strong></td><td>字节跳动</td><td>未公布</td><td>视频创作·单次生成30秒·抖音生态</td><td>—</td></tr>'+
+'</table>'+
+
+'<h3>🌍 国际大模型</h3>'+
+'<table class="data-table"><tr><th>模型</th><th>公司</th><th>亮点</th><th>API价格/百万token</th></tr>'+
+'<tr style="background:var(--accent-light)"><td><strong>GPT-5.6 Sol</strong></td><td>OpenAI</td><td>Coding Agent Index 80·长程任务+电脑使用·Astra攻克数学难题</td><td>5/30美元</td></tr>'+
+'<tr style="background:var(--accent-light)"><td><strong>Claude系列</strong></td><td>Anthropic</td><td>run-rate 470亿美元·H轮融资650亿·采购AMD 2GW GPU</td><td>—</td></tr>'+
+'<tr><td><strong>Grok 4.5</strong></td><td>xAI</td><td>Coding Agent逼近GPT-5.5·成本低60-80%</td><td>2/6美元</td></tr>'+
+'<tr><td><strong>Muse Spark 1.1</strong></td><td>Meta</td><td>开源多模态推理·1M上下文·Llama生态</td><td>1.25/4.25美元</td></tr>'+
+'<tr><td><strong>Gemini 2.5 Pro</strong></td><td>Google</td><td>1M上下文·搜索整合·TPU v6训练</td><td>—</td></tr>'+
+'</table>'+
+
+'<h3>📊 关键指标对比</h3>'+
+'<table class="data-table"><tr><th>指标</th><th>中国</th><th>美国</th></tr>'+
+'<tr><td>全球模型调用份额</td><td style="color:var(--green);font-weight:600">63.5%</td><td>35.5%</td></tr>'+
+'<tr><td>开源模型数量(Top20)</td><td style="color:var(--green);font-weight:600">14个</td><td>6个</td></tr>'+
+'<tr><td>头部模型估值</td><td>DeepSeek 4000亿+Kimi 3500亿</td><td>OpenAI ~万亿+Anthropic ~7000亿</td></tr>'+
+'<tr><td>API价格优势</td><td style="color:var(--green);font-weight:600">美国闭源模型的15-20%</td><td>基准</td></tr>'+
+'</table>'+
+
+'<h3>💼 AI行业招聘动态</h3>'+
+'<div class="highlight-box"><p><strong>国内AI四强招聘：</strong><br>• 深度求索(DeepSeek)：扩招算法/工程/产品，base北京/杭州，薪资对标字节<br>• 月之暗面(Kimi)：F轮后加速招聘，base北京，AI产品运营15-25K<br>• 智谱AI(GLM)：配售314亿港元后扩招，base北京/上海，Agent方向急招<br>• 小米AI：MiMo团队扩编，base北京，多模态+语音方向<br><br><strong>国际AI招聘：</strong><br>• OpenAI：ChatGPT Work企业端团队扩招·旧金山/伦敦<br>• Anthropic：H轮后招聘规模翻倍·AI Safety岗位急招</p></div>'+
+
+'<div class="callout tip"><strong>🤖 追踪建议：</strong>Star GitHub仓库(DeepSeek/Kimi/GLM/Qwen)→关注HuggingFace下载量→订阅机器之心/量子位早报→关注OpenRouter调用量周榜。学习区每日更新AI科普，求职中心有AI岗位招聘信息。</div>';
+
 DETAIL["life-tips"] = '<h2>📋 生活助手 · 实用办事指南</h2><p class="detail-subtitle">医保·护照·通行证·驾驶证·社保——让你少跑冤枉路</p>'+
 '<h3>🏥 离职后医保怎么续？</h3>'+
 '<div class="highlight-box"><p><strong>核心规则：</strong>职工医保停缴后3个月内续缴居民医保，无需重新计算等待期。超3个月则需重新参保并等待6个月。<br><br><strong>三种续缴方式：</strong><br>① 以灵活就业身份续缴职工医保（缴费基数可选择，月缴300-800元）→ 待遇不变<br>② 转城乡居民医保（年缴380元）→ 报销比例降低但成本最低<br>③ 新单位入职后自动接续→ 无需个人操作<br><br><strong>办理渠道：</strong>粤省事小程序/穗好办App/各区社保中心。线上办理3个工作日内审核。</p></div>'+

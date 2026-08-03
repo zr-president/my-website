@@ -225,7 +225,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','about')">👤 关于</div><a href="#dashboard">📋 每日待办</a><a href="#about">🏠 个人介绍</a><a href="#career">💼 求职中心</a></div>
 <div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','fun')">🎮 娱乐</div><a href="#gaming">🎯 游戏区</a><a href="#music">🎵 音乐区</a><a href="#novel">📖 小说区</a><a href="#anime">🎬 动漫区</a><a href="#movie">🎥 影视区</a></div>
 <div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','life')">🏃 生活</div><a href="#fashion">👔 穿搭推荐</a><a href="#fitness">💪 健身方案</a><a href="#diet">🍽️ 饮食助手</a><a href="#beer">🍺 精酿与调酒</a><a href="#life-tips">📋 生活助手</a></div>
-<div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','finance')">📊 财经·学习</div><a href="#stock">📈 股市基金</a><a href="#car">🚗 购车推荐</a><a href="#house">🏠 购房租房</a><a href="#learning">🎓 学习区</a><a href="#travel">✈️ 旅游区</a><a href="#news">📰 新闻资讯</a></div>
+<div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','finance')">📊 财经·学习</div><a href="#stock">📈 股市基金</a><a href="#car">🚗 购车推荐</a><a href="#house">🏠 购房租房</a><a href="#learning">🎓 学习区</a><a href="#travel">✈️ 旅游区</a><a href="#ai-track">🤖 AI动态追踪</a><a href="#news">📰 新闻资讯</a></div>
 <div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','tools')">🤖 工具</div><a href="#guide">📖 使用指南</a><a href="#ai-assistant">💬 AI助手</a><a href="#optimization">🔧 优化日记</a><a href="search.html" target="_blank">📚 知识库搜索</a></div>
 </nav>
 
@@ -391,6 +391,10 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <section id="travel" class="section" data-search="旅游 旅行 出行 避暑 度假 机票 酒店 云南 贵州 新疆"><div class="section-header"><h2>✈️ 旅游区</h2><p>本周出行推荐 · 实时天气 · 消费预估</p></div>
 <div class="card" style="padding:12px 16px" id="travelWeather"><div class="info-item"><div class="num">--°C</div><div class="label">加载天气中...</div></div></div>
 <div class="card clickable" onclick="openDetail('travel')"><h3>🌴 查看本周出行方案</h3><p>基于7月天气数据，国内3条避暑路线+国际2个推荐目的地，含全程预算和行程安排。</p></div></section>
+
+<section id="ai-track" class="section" data-search="AI 模型 大模型 开源 GPT Claude Kimi DeepSeek 追踪 动态"><div class="section-header"><h2>🤖 AI动态追踪</h2><p>国内/国际大模型最新动态 · 版本更新 · 融资进展</p></div>
+<div id="picks-ai-track" class="picks-container"></div>
+<div class="card clickable" onclick="openDetail('ai-track')"><h3>📊 查看完整AI模型追踪</h3><p>国内外大模型版本对比+融资动态+技术突破+招聘信息一站式追踪。</p></div></section>
 
 <section id="news" class="section" data-search="新闻 资讯 财经 国际"><div class="section-header"><h2>📰 新闻资讯</h2><p>今日要闻 · 每日阅读方案</p></div>
 <div id="picks-news" class="picks-container"></div>
@@ -1328,7 +1332,7 @@ function renderSectionPicks(sectionId){
 }
 
 function renderAllPicks(){
-  var sections = ['guide','anime','movie','music','novel','beer','life-tips','gaming','learning','fashion','fitness','diet','career','car','house','stock','news','tools-collection','optimization'];
+  var sections = ['guide','anime','movie','music','novel','beer','life-tips','gaming','ai-track','learning','fashion','fitness','diet','career','car','house','stock','news','tools-collection','optimization'];
   sections.forEach(function(s){ renderSectionPicks(s); });
 }
 
@@ -1337,7 +1341,7 @@ var CATEGORIES = {
   about:    {icon:'👤', name:'关于·求职', subs:'个人介绍 | 求职中心 | 每日待办', sections:['dashboard','about','career']},
   fun:      {icon:'🎮', name:'娱乐空间', subs:'游戏|音乐|小说|动漫|影视', sections:['gaming','music','novel','anime','movie']},
   life:     {icon:'🏃', name:'生活方式', subs:'穿搭|健身|饮食|精酿|生活助手', sections:['fashion','fitness','diet','beer','life-tips']},
-  finance:  {icon:'📊', name:'财经·学习', subs:'股市 | 购车 | 购房 | 学习 | 旅游 | 新闻', sections:['stock','car','house','learning','travel','news']},
+  finance:  {icon:'📊', name:'财经·学习', subs:'股市 | 购车 | 购房 | 学习 | AI追踪 | 旅游 | 新闻', sections:['stock','car','house','learning','ai-track','travel','news']},
   tools:    {icon:'🤖', name:'工具·AI', subs:'使用指南 | 工具收藏夹 | AI助手 | 优化日记', sections:['guide','tools-collection','ai-assistant','optimization']}
 };
 
@@ -1632,7 +1636,8 @@ var QUERY_PROMPTS = {
   house: '分析城市/区域《{q}》的房价走势、政策环境、购房租房建议',
   diet: '分析食材/食谱《{q}》的营养价值、健康功效、适合人群和食用建议',
   fitness: '分析训练动作/方法《{q}》的正确姿势、训练效果、注意事项',
-  fashion: '分析穿搭风格/单品《{q}》的搭配技巧、适合体型、购买建议'
+  fashion: '分析穿搭风格/单品《{q}》的搭配技巧、适合体型、购买建议',
+  "ai-track": '分析AI模型《{q}》的技术架构、性能对比、开源策略和最新动态'
 };
 
 var voiceRecognition=null;
