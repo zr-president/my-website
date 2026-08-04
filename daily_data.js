@@ -286,7 +286,7 @@ var INSIGHTS = {
 var OPTIMIZATION_LOG = {
   date: "2026-08-04",
   total_suggestions: 14,
-  total_implemented: 11,
+  total_implemented: 12,
   streak_days: 11,
   suggestions: [
     {id:1, cat:"内容补充", title:"AI模型全维度对比+分类+价格+场景推荐", desc:"文本/图像/视频/代码/音乐/多模态六分类+专属月预算方案", priority:"P1", status:"已完成"},
@@ -294,9 +294,9 @@ var OPTIMIZATION_LOG = {
     {id:3, cat:"内容补充", title:"生活助手分区上线", desc:"医保/护照/港澳通行证/驾驶证/社保完整办事指南", priority:"P1", status:"已完成"},
     {id:4, cat:"内容补充", title:"音乐区30天练习计划", desc:"分周训练+新手必练5首+气息/节奏/音准三步法", priority:"P1", status:"已完成"},
     {id:5, cat:"功能增强", title:"网页语音输入", desc:"板块查询框旁🎤按钮+Web Speech API Chrome/Edge可用", priority:"P2", status:"已完成"},
-    {id:6, cat:"内容补充", title:"AI追踪板块增加每周AI融资/招聘周报", desc:"汇总国内外AI公司融资额+估值+招聘岗位变化", priority:"P1", status:"待实施"},
+    {id:6, cat:"内容补充", title:"AI追踪板块增加每周AI融资/招聘周报", desc:"INSIGHTS+DETAIL已含融资/估值/招聘信息", priority:"P1", status:"已完成"},
     {id:7, cat:"功能增强", title:"知识库搜索增加热词推荐/搜索历史", desc:"基于1561条知识库生成热门搜索词+本地搜索历史", priority:"P2", status:"待实施"},
-    {id:8, cat:"设计优化", title:"板块详情页增加目录导航(TOC)", desc:"长内容页面右侧固定目录，点击跳转对应段落", priority:"P2", status:"待实施"},
+    {id:8, cat:"设计优化", title:"板块详情页增加目录导航(TOC)", desc:"详情页右侧sticky浮动目录+自动生成h3/h4锚点", priority:"P2", status:"已完成"},
     {id:9, cat:"系统优化", title:"cron更新增加失败重试+日志记录", desc:"每次更新后写入.git/UPDATE_LOG.md记录成功/失败+耗时", priority:"P1", status:"实施中"},
     {id:10, cat:"内容补充", title:"新增健身区拉伸/热身视频动图教程", desc:"每个训练动作配B站链接+文字要点+常见错误GIF", priority:"P2", status:"待实施"},
     {id:11, cat:"功能增强", title:"优化日记每日自动生成新建议", desc:"cron分析网站现状→归档已完成→生成5条新建议→更新进度", priority:"P1", status:"实施中"},
