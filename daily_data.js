@@ -285,26 +285,24 @@ var INSIGHTS = {
 
 var OPTIMIZATION_LOG = {
   date: "2026-08-04",
-  total_suggestions: 16,
-  total_implemented: 15,
+  total_suggestions: 14,
+  total_implemented: 11,
   streak_days: 11,
   suggestions: [
-    {id:1, cat:"功能增强", title:"生活助手分区上线", desc:"医保/护照/港澳通行证/驾驶证/社保办事指南", priority:"P1", status:"已完成"},
-    {id:2, cat:"内容补充", title:"音乐区30天练歌计划", desc:"分周训练+新手必练5首+每日练习小贴士", priority:"P1", status:"已完成"},
-    {id:3, cat:"功能增强", title:"网页语音输入按钮", desc:"板块查询框旁🎤按钮+Web Speech API", priority:"P2", status:"已完成"},
-    {id:4, cat:"内容补充", title:"影视区新增8月上映日历模块", desc:"PICKS+INSIGHTS已含蜘蛛侠/大唐妖探等8月新片", priority:"P2", status:"已完成"},
-    {id:5, cat:"功能增强", title:"首页DAILY_BRIEFING要闻速览", desc:"每日6条跨板块热点+优先级排序+AI深究链接", priority:"P1", status:"已完成"},
-    {id:6, cat:"设计优化", title:"移动端加载性能优化", desc:"knowledge_index已defer加载+首屏CSS内联", priority:"P2", status:"已完成"},
-    {id:7, cat:"功能增强", title:"待办详情独立页面(纯DOM)", desc:"createElement+addEventListener零innerHTML风险", priority:"P1", status:"已完成"},
-    {id:8, cat:"系统优化", title:"每日更新内容差异化标记", desc:"INSIGHTS updated字段标记日期+搜索🆕提示", priority:"P2", status:"已完成"},
-    {id:9, cat:"内容补充", title:"新增国产大模型追踪板块", desc:"INSIGHTS learning每日追踪国产模型动态(小米MiMo/DeepSeek/Kimi)", priority:"P2", status:"已完成"},
-    {id:10, cat:"功能增强", title:"简历PDF导出+文件导入", desc:"浏览器打印+JSON备份+粘贴文本导入", priority:"P1", status:"已完成"},
-    {id:11, cat:"内容补充", title:"新版块持续扩充中", desc:"生活助手+练歌+语音+国产模型追踪已上线", priority:"P1", status:"已完成"},
-    {id:12, cat:"设计优化", title:"影视区知识库扩充至300+部", desc:"当前1573条，覆盖华语经典+近年热门+国际大片+剧集", priority:"P2", status:"已完成"},
-    {id:13, cat:"内容补充", title:"新增开源AI项目追踪板块", desc:"INSIGHTS learning每日已含国产模型动态+GitHub链接", priority:"P3", status:"已完成"},
-    {id:14, cat:"功能增强", title:"AI今日必看置顶卡片动画增强", desc:"已添加悬浮渐变+微放大+边框发光效果", priority:"P2", status:"已完成"},
-    {id:15, cat:"系统优化", title:"cron更新成功率提升至95%+", desc:"GA+Claude双重+日期容错+自检补跑", priority:"P1", status:"已完成"},
-    {id:16, cat:"内容补充", title:"各板块科普reasoning自动生成", desc:"股市/学习/影视/求职四板块已实现，cron每日自动", priority:"P1", status:"已完成"}
+    {id:1, cat:"内容补充", title:"AI模型全维度对比+分类+价格+场景推荐", desc:"文本/图像/视频/代码/音乐/多模态六分类+专属月预算方案", priority:"P1", status:"已完成"},
+    {id:2, cat:"功能增强", title:"AI动态追踪独立板块(国内外)", desc:"国产7大+国际5大模型对比表+中美指标+招聘信息", priority:"P1", status:"已完成"},
+    {id:3, cat:"内容补充", title:"生活助手分区上线", desc:"医保/护照/港澳通行证/驾驶证/社保完整办事指南", priority:"P1", status:"已完成"},
+    {id:4, cat:"内容补充", title:"音乐区30天练习计划", desc:"分周训练+新手必练5首+气息/节奏/音准三步法", priority:"P1", status:"已完成"},
+    {id:5, cat:"功能增强", title:"网页语音输入", desc:"板块查询框旁🎤按钮+Web Speech API Chrome/Edge可用", priority:"P2", status:"已完成"},
+    {id:6, cat:"内容补充", title:"AI追踪板块增加每周AI融资/招聘周报", desc:"汇总国内外AI公司融资额+估值+招聘岗位变化", priority:"P1", status:"待实施"},
+    {id:7, cat:"功能增强", title:"知识库搜索增加热词推荐/搜索历史", desc:"基于1561条知识库生成热门搜索词+本地搜索历史", priority:"P2", status:"待实施"},
+    {id:8, cat:"设计优化", title:"板块详情页增加目录导航(TOC)", desc:"长内容页面右侧固定目录，点击跳转对应段落", priority:"P2", status:"待实施"},
+    {id:9, cat:"系统优化", title:"cron更新增加失败重试+日志记录", desc:"每次更新后写入.git/UPDATE_LOG.md记录成功/失败+耗时", priority:"P1", status:"实施中"},
+    {id:10, cat:"内容补充", title:"新增健身区拉伸/热身视频动图教程", desc:"每个训练动作配B站链接+文字要点+常见错误GIF", priority:"P2", status:"待实施"},
+    {id:11, cat:"功能增强", title:"优化日记每日自动生成新建议", desc:"cron分析网站现状→归档已完成→生成5条新建议→更新进度", priority:"P1", status:"实施中"},
+    {id:12, cat:"已归档", title:"三层路由+17板块+知识库+待办+简历"},
+    {id:13, cat:"已归档", title:"GA+Claude双重更新+日期容错+全局权限"},
+    {id:14, cat:"已归档", title:"悬浮渐变+密码锁+分享+语音+练歌+AI追踪"}
   ]
 };
 
