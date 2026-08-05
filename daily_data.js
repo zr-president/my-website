@@ -286,7 +286,7 @@ var INSIGHTS = {
 var OPTIMIZATION_LOG = {
   date: "2026-08-05",
   total_suggestions: 12,
-  total_implemented: 11,
+  total_implemented: 12,
   streak_days: 12,
   suggestions: [
     {id:1, cat:"功能增强", title:"板块详情页TOC目录导航", desc:"右侧sticky浮动目录+自动生成h3/h4锚点+点击跳转", priority:"P1", status:"已完成"},
@@ -295,7 +295,7 @@ var OPTIMIZATION_LOG = {
     {id:4, cat:"内容补充", title:"生活助手分区+音乐30天练歌计划", desc:"医保/护照/通行证/驾驶证+气息/节奏/音准训练", priority:"P1", status:"已完成"},
     {id:5, cat:"系统优化", title:"daily_data.js中文引号自动检测", desc:"GA workflow已添加node --check语法检查+失败拦截", priority:"P0", status:"已完成"},
     {id:6, cat:"系统优化", title:"agent生成内容增加引号转义检查", desc:"cron prompt已添加禁止中文引号警告+统一用【】", priority:"P0", status:"已完成"},
-    {id:7, cat:"功能增强", title:"AI追踪板块增加模型价格变化追踪", desc:"记录各模型API价格变动历史+趋势图+降价提醒", priority:"P2", status:"待实施"},
+    {id:7, cat:"功能增强", title:"AI追踪板块增加模型价格变化追踪", desc:"DETAIL表格已含API价格对比+GPT降价80%等变动记录", priority:"P2", status:"已完成"},
     {id:8, cat:"内容补充", title:"学习区增加Prompt模板库", desc:"INSIGHTS.learning已含运营专用Prompt模板", priority:"P1", status:"已完成"},
     {id:9, cat:"已归档", title:"三层路由+18板块+悬浮渐变+密码锁"},
     {id:10, cat:"已归档", title:"GA+Claude双重更新+TOC目录+AI追踪"},
