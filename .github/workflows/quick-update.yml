@@ -50,6 +50,8 @@ jobs:
         run: |
           git config user.name "Auto Update Bot"
           git config user.email "bot@auto-update.local"
+          # Syntax check before commit
+          node --check daily_data.js || (echo "SYNTAX ERROR - aborting" && exit 1)
           git add daily_data.js
           git commit -m "v$(grep SITE_VERSION daily_data.js | head -1 | grep -oP '\d+\.\d+\.\d+') 快速自动更新 $(TZ='Asia/Shanghai' date '+%Y-%m-%d')" || echo "No changes"
           git push

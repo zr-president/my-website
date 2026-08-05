@@ -284,25 +284,23 @@ var INSIGHTS = {
 };
 
 var OPTIMIZATION_LOG = {
-  date: "2026-08-04",
-  total_suggestions: 14,
-  total_implemented: 14,
+  date: "2026-08-05",
+  total_suggestions: 12,
+  total_implemented: 11,
   streak_days: 12,
   suggestions: [
-    {id:1, cat:"内容补充", title:"AI模型全维度对比+分类+价格+场景推荐", desc:"文本/图像/视频/代码/音乐/多模态六分类+专属月预算方案", priority:"P1", status:"已完成"},
-    {id:2, cat:"功能增强", title:"AI动态追踪独立板块(国内外)", desc:"国产7大+国际5大模型对比表+中美指标+招聘信息", priority:"P1", status:"已完成"},
-    {id:3, cat:"内容补充", title:"生活助手分区上线", desc:"医保/护照/港澳通行证/驾驶证/社保完整办事指南", priority:"P1", status:"已完成"},
-    {id:4, cat:"内容补充", title:"音乐区30天练习计划", desc:"分周训练+新手必练5首+气息/节奏/音准三步法", priority:"P1", status:"已完成"},
-    {id:5, cat:"功能增强", title:"网页语音输入", desc:"板块查询框旁🎤按钮+Web Speech API Chrome/Edge可用", priority:"P2", status:"已完成"},
-    {id:6, cat:"内容补充", title:"AI追踪板块增加每周AI融资/招聘周报", desc:"INSIGHTS+DETAIL已含融资/估值/招聘信息", priority:"P1", status:"已完成"},
-    {id:7, cat:"功能增强", title:"知识库搜索增加热词推荐/搜索历史", desc:"搜索框已加热门词提示+知识库模糊匹配", priority:"P2", status:"已完成"},
-    {id:8, cat:"设计优化", title:"板块详情页增加目录导航(TOC)", desc:"详情页右侧sticky浮动目录+自动生成h3/h4锚点", priority:"P2", status:"已完成"},
-    {id:9, cat:"系统优化", title:"cron更新增加失败重试+日志记录", desc:"每次更新后写入.git/UPDATE_LOG.md记录成功/失败+耗时", priority:"P1", status:"实施中"},
-    {id:10, cat:"内容补充", title:"新增健身区拉伸/热身视频动图教程", desc:"INSIGHTS.tip已有闫帅奇家庭健身B站链接", priority:"P2", status:"已完成"},
-    {id:11, cat:"功能增强", title:"优化日记每日自动生成新建议", desc:"cron分析网站现状→归档已完成→生成5条新建议→更新进度", priority:"P1", status:"实施中"},
-    {id:12, cat:"已归档", title:"三层路由+17板块+知识库+待办+简历"},
-    {id:13, cat:"已归档", title:"GA+Claude双重更新+日期容错+全局权限"},
-    {id:14, cat:"已归档", title:"悬浮渐变+密码锁+分享+语音+练歌+AI追踪"}
+    {id:1, cat:"功能增强", title:"板块详情页TOC目录导航", desc:"右侧sticky浮动目录+自动生成h3/h4锚点+点击跳转", priority:"P1", status:"已完成"},
+    {id:2, cat:"内容补充", title:"AI模型全维度对比(分类/价格/场景)", desc:"六分类+7国产+5国际+专属月预算方案", priority:"P1", status:"已完成"},
+    {id:3, cat:"内容补充", title:"AI追踪板块独立上线", desc:"国内外模型动态+融资招聘+中美指标对比", priority:"P1", status:"已完成"},
+    {id:4, cat:"内容补充", title:"生活助手分区+音乐30天练歌计划", desc:"医保/护照/通行证/驾驶证+气息/节奏/音准训练", priority:"P1", status:"已完成"},
+    {id:5, cat:"系统优化", title:"daily_data.js中文引号自动检测", desc:"GA workflow已添加node --check语法检查+失败拦截", priority:"P0", status:"已完成"},
+    {id:6, cat:"系统优化", title:"agent生成内容增加引号转义检查", desc:"cron prompt已添加禁止中文引号警告+统一用【】", priority:"P0", status:"已完成"},
+    {id:7, cat:"功能增强", title:"AI追踪板块增加模型价格变化追踪", desc:"记录各模型API价格变动历史+趋势图+降价提醒", priority:"P2", status:"待实施"},
+    {id:8, cat:"内容补充", title:"学习区增加Prompt模板库", desc:"INSIGHTS.learning已含运营专用Prompt模板", priority:"P1", status:"已完成"},
+    {id:9, cat:"已归档", title:"三层路由+18板块+悬浮渐变+密码锁"},
+    {id:10, cat:"已归档", title:"GA+Claude双重更新+TOC目录+AI追踪"},
+    {id:11, cat:"已归档", title:"待办详情页+分享+语音输入+简历导入导出"},
+    {id:12, cat:"已归档", title:"知识库1561条+全板块科普reasoning"}
   ]
 };
 
