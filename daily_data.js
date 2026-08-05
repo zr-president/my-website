@@ -297,10 +297,10 @@ var OPTIMIZATION_LOG = {
     {id:6, cat:"系统优化", title:"agent生成内容增加引号转义检查", desc:"cron prompt已添加禁止中文引号警告+统一用【】", priority:"P0", status:"已完成"},
     {id:7, cat:"功能增强", title:"AI追踪板块增加模型价格变化追踪", desc:"DETAIL表格已含API价格对比+GPT降价80%等变动记录", priority:"P2", status:"已完成"},
     {id:8, cat:"内容补充", title:"学习区增加Prompt模板库", desc:"INSIGHTS.learning已含运营专用Prompt模板", priority:"P1", status:"已完成"},
-    {id:9, cat:"已归档", title:"三层路由+18板块+悬浮渐变+密码锁"},
-    {id:10, cat:"已归档", title:"GA+Claude双重更新+TOC目录+AI追踪"},
-    {id:11, cat:"已归档", title:"待办详情页+分享+语音输入+简历导入导出"},
-    {id:12, cat:"已归档", title:"知识库1561条+全板块科普reasoning"}
+    {id:9, cat:"已归档", title:"三层路由+18板块+悬浮渐变+密码锁", desc:"7/26-31完成", priority:"P0", status:"已完成"},
+    {id:10, cat:"已归档", title:"GA+Claude双重更新+TOC+AI追踪", desc:"8/1-4完成", priority:"P0", status:"已完成"},
+    {id:11, cat:"已归档", title:"待办详情+分享+语音+简历+练歌", desc:"7/29-8/3完成", priority:"P0", status:"已完成"},
+    {id:12, cat:"已归档", title:"知识库1561条+全板块科普reasoning", desc:"7/27-8/4完成", priority:"P0", status:"已完成"}
   ]
 };
 
