@@ -285,22 +285,26 @@ var INSIGHTS = {
 
 var OPTIMIZATION_LOG = {
   date: "2026-08-05",
-  total_suggestions: 12,
-  total_implemented: 12,
+  total_suggestions: 16,
+  total_implemented: 11,
   streak_days: 12,
   suggestions: [
-    {id:1, cat:"功能增强", title:"板块详情页TOC目录导航", desc:"右侧sticky浮动目录+自动生成h3/h4锚点+点击跳转", priority:"P1", status:"已完成"},
-    {id:2, cat:"内容补充", title:"AI模型全维度对比(分类/价格/场景)", desc:"六分类+7国产+5国际+专属月预算方案", priority:"P1", status:"已完成"},
-    {id:3, cat:"内容补充", title:"AI追踪板块独立上线", desc:"国内外模型动态+融资招聘+中美指标对比", priority:"P1", status:"已完成"},
-    {id:4, cat:"内容补充", title:"生活助手分区+音乐30天练歌计划", desc:"医保/护照/通行证/驾驶证+气息/节奏/音准训练", priority:"P1", status:"已完成"},
-    {id:5, cat:"系统优化", title:"daily_data.js中文引号自动检测", desc:"GA workflow已添加node --check语法检查+失败拦截", priority:"P0", status:"已完成"},
-    {id:6, cat:"系统优化", title:"agent生成内容增加引号转义检查", desc:"cron prompt已添加禁止中文引号警告+统一用【】", priority:"P0", status:"已完成"},
-    {id:7, cat:"功能增强", title:"AI追踪板块增加模型价格变化追踪", desc:"DETAIL表格已含API价格对比+GPT降价80%等变动记录", priority:"P2", status:"已完成"},
-    {id:8, cat:"内容补充", title:"学习区增加Prompt模板库", desc:"INSIGHTS.learning已含运营专用Prompt模板", priority:"P1", status:"已完成"},
-    {id:9, cat:"已归档", title:"三层路由+18板块+悬浮渐变+密码锁", desc:"7/26-31完成", priority:"P0", status:"已完成"},
-    {id:10, cat:"已归档", title:"GA+Claude双重更新+TOC+AI追踪", desc:"8/1-4完成", priority:"P0", status:"已完成"},
-    {id:11, cat:"已归档", title:"待办详情+分享+语音+简历+练歌", desc:"7/29-8/3完成", priority:"P0", status:"已完成"},
-    {id:12, cat:"已归档", title:"知识库1561条+全板块科普reasoning", desc:"7/27-8/4完成", priority:"P0", status:"已完成"}
+    {id:1, cat:"功能增强", title:"AI查询框增加历史搜索记录", desc:"localStorage存储最近10条查询+下拉快捷选择", priority:"P2", status:"待实施"},
+    {id:2, cat:"内容补充", title:"各板块增加热门标签快速筛选", desc:"首页分类卡片显示本周最热3个标签+点击筛选相关板块", priority:"P2", status:"待实施"},
+    {id:3, cat:"设计优化", title:"黑暗模式下增加深蓝/墨绿配色微调", desc:"当前暗色accent色与其他主题对比度不足", priority:"P2", status:"待实施"},
+    {id:4, cat:"系统优化", title:"cron更新后自动验证关键板块内容", desc:"检查DAILY_BRIEFING/INSIGHTS/PICKS非空+日期正确", priority:"P1", status:"待实施"},
+    {id:5, cat:"功能增强", title:"AI追踪板块周报自动生成", desc:"每周一自动汇总上周AI融资/模型发布/价格变动", priority:"P1", status:"待实施"},
+    {id:6, cat:"功能增强", title:"板块详情页TOC目录导航", desc:"右侧sticky浮动目录+自动生成h3/h4锚点+点击跳转", priority:"P1", status:"已完成"},
+    {id:7, cat:"内容补充", title:"AI模型全维度对比+AI追踪板块", desc:"六分类+7国产+5国际+价格场景+招聘信息", priority:"P1", status:"已完成"},
+    {id:8, cat:"内容补充", title:"生活助手分区+30天练歌计划", desc:"医保/护照/通行证+气息/节奏/音准训练", priority:"P1", status:"已完成"},
+    {id:9, cat:"系统优化", title:"daily_data.js防崩机制(语法检查+引号)", desc:"GA workflow添加node --check+失败拦截+cron禁止中文引号", priority:"P0", status:"已完成"},
+    {id:10, cat:"功能增强", title:"网页语音输入+简历导入导出+面试锁", desc:"Web Speech API+JSON/PDF/粘贴+密码8051", priority:"P1", status:"已完成"},
+    {id:11, cat:"已归档", title:"三层路由+18板块+悬浮渐变+密码锁", desc:"7/26-31完成", priority:"P0", status:"已完成"},
+    {id:12, cat:"已归档", title:"GA+Claude双重更新+TOC+AI追踪", desc:"8/1-4完成", priority:"P0", status:"已完成"},
+    {id:13, cat:"已归档", title:"待办详情+分享+语音+简历+练歌", desc:"7/29-8/3完成", priority:"P0", status:"已完成"},
+    {id:14, cat:"已归档", title:"知识库1561条+全板块科普reasoning", desc:"7/27-8/4完成", priority:"P0", status:"已完成"},
+    {id:15, cat:"已归档", title:"防崩机制+优化日记12/12", desc:"8/5完成", priority:"P0", status:"已完成"},
+    {id:16, cat:"已归档", title:"TOC目录+AI价格+Prompt模板", desc:"8/5完成", priority:"P0", status:"已完成"}
   ]
 };
 
