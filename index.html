@@ -407,6 +407,14 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <section id="music-player" class="section" data-search="音乐 播放 听歌 在线"><div class="section-header"><h2>🎧 在线音乐</h2><p>每日推荐 · 多平台播放</p></div>
 <div id="musicPlayerContent" class="card" style="padding:14px 16px"><p style="font-size:12px;color:var(--text3)">🎵 加载播放列表...</p></div></section>
 
+<section id="daily-vocab" class="section" data-search="每日一词 术语 词汇 专业 学习 技能"><div class="section-header"><h2>📚 每日一词</h2><p>首页展示3个 · 共<span id="vocabTotalCount">0</span>个 · AI/金融/科技/数据全覆盖</p></div>
+<div id="vocabPreview" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px;margin-bottom:8px"></div>
+<div style="display:flex;gap:8px;margin-bottom:4px">
+<button onclick="refreshVocab()" style="padding:5px 12px;border:1px solid var(--border);border-radius:14px;background:var(--bg);cursor:pointer;font-size:11px;color:var(--text2)">🔄 换一批</button>
+<button onclick="showAllVocab()" style="padding:5px 12px;background:var(--accent);color:#fff;border:none;border-radius:14px;cursor:pointer;font-size:11px">📋 查看全部10个</button>
+</div>
+<div id="vocabFullView" style="display:none;margin-top:8px"></div></section>
+
 <section id="daily-quiz" class="section" data-search="每日一练 练习 题目 面试 SQL 题库"><div class="section-header"><h2>📝 每日一练</h2><p>首页展示3道 · 共<span id="quizTotalCount">0</span>题</p></div>
 <div id="quizPreview" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px;margin-bottom:8px"></div>
 <div style="display:flex;gap:8px;margin-bottom:4px">
@@ -1347,7 +1355,65 @@ var CATEGORIES = {
 };
 
 // Key sections to show on homepage (everything else hidden)
-var HOME_SECTIONS = ['dashboard','music-player','daily-quiz','guide','optimization'];
+var HOME_SECTIONS = ['dashboard','music-player','daily-vocab','daily-quiz','guide','optimization'];
+var vocabShuffled = [];
+var vocabShowingAll = false;
+
+function renderVocabCards(words, containerId, limit){
+  var el = document.getElementById(containerId);
+  if(!el) return;
+  var h = '';
+  var list = words.slice(0, limit || words.length);
+  var catColors = {'AI':'#7c3aed','金融':'#d97706','科技':'#0284c7','数据':'#059669','产品':'#e11d48'};
+  list.forEach(function(v, i){
+    var catColor = catColors[v.category] || 'var(--accent)';
+    var vid = 'vocab_detail_'+Date.now()+'_'+i;
+    h += '<div class=\"card\" style=\"padding:12px 14px;border-left:3px solid '+catColor+'\">';
+    h += '<div style=\"display:flex;justify-content:space-between;align-items:center;margin-bottom:4px\">';
+    h += '<span style=\"font-weight:700;font-size:14px\">'+v.emoji+' '+v.word+'</span>';
+    h += '<span class=\"tag\" style=\"background:'+catColor+';color:#fff;font-size:9px\">'+v.category+'</span>';
+    h += '</div>';
+    h += '<div style=\"font-size:12px;color:var(--text2);line-height:1.7;margin-bottom:5px\"><b>定义：</b>'+v.definition+'</div>';
+    h += '<div id=\"'+vid+'\" style=\"display:none;font-size:11px;color:var(--text2);line-height:1.7;padding:8px;background:var(--bg2);border-radius:6px;margin-bottom:5px\">';
+    h += '<div style=\"margin-bottom:4px\"><b>📖 实例：</b>'+v.example+'</div>';
+    h += '<div><b>💡 为什么重要：</b>'+v.why_matters+'</div>';
+    h += '</div>';
+    h += '<button onclick=\"var e=document.getElementById(\''+vid+'\');e.style.display=e.style.display===\'none\'?\'block\':\'none\';this.textContent=e.style.display===\'none\'?\'🔽 展开实例+重要性\':\'🔼 收起\'\" style=\"padding:4px 10px;background:var(--bg);border:1px solid var(--border);border-radius:6px;cursor:pointer;font-size:10px;color:var(--text2);margin-top:2px\">🔽 展开实例+重要性</button>';
+    h += '</div>';
+  });
+  el.innerHTML = h;
+}
+
+function renderVocab(){
+  if(typeof DAILY_VOCAB==='undefined'||!DAILY_VOCAB.words){ return; }
+  vocabShuffled = DAILY_VOCAB.words.slice().sort(function(){return Math.random()-0.5;});
+  document.getElementById('vocabTotalCount').textContent = vocabShuffled.length;
+  renderVocabCards(vocabShuffled, 'vocabPreview', 3);
+  vocabShowingAll = false;
+  document.getElementById('vocabFullView').style.display = 'none';
+}
+
+function refreshVocab(){
+  if(vocabShuffled.length===0) return;
+  vocabShuffled = vocabShuffled.slice().sort(function(){return Math.random()-0.5;});
+  renderVocabCards(vocabShuffled, 'vocabPreview', 3);
+  if(vocabShowingAll){
+    renderVocabCards(vocabShuffled, 'vocabFullView', 10);
+  }
+}
+
+function showAllVocab(){
+  if(vocabShuffled.length===0) return;
+  vocabShowingAll = !vocabShowingAll;
+  var fv = document.getElementById('vocabFullView');
+  if(vocabShowingAll){
+    renderVocabCards(vocabShuffled, 'vocabFullView', 10);
+    fv.style.display = 'block';
+    fv.scrollIntoView({behavior:'smooth'});
+  } else {
+    fv.style.display = 'none';
+  }
+}
 var quizShuffled = [];
 var quizShowingAll = false;
 
@@ -1833,7 +1899,7 @@ window.addEventListener('hashchange', function(){
 function onDataReady(){
   var tasks = [
     function(){ var e=document.getElementById('siteVersion'); if(e) e.textContent = (typeof SITE_VERSION!=='undefined'?SITE_VERSION:''); },
-    renderAllPicks, renderBriefing, renderQuiz, renderMusicPlayer, checkUpdateStatus
+    renderAllPicks, renderBriefing, renderVocab, renderQuiz, renderMusicPlayer, checkUpdateStatus
   ];
   tasks.forEach(function(fn){
     try { if(typeof fn==='function') fn(); } catch(e){ console.error('Init error:', e.message); }

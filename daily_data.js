@@ -1,4 +1,4 @@
-var SITE_VERSION = "1.2.5";
+var SITE_VERSION = "1.2.6";
 
 var DAILY_DATA = {
   "update_time": "2026-08-06T14:30:00+08:00",
@@ -276,10 +276,10 @@ var OPTIMIZATION_LOG = {
     {id:3, cat:"已归档", title:"黑暗模式下增加深蓝/墨绿配色微调", desc:"dark模式下增加navy(深蓝#1a1f3a)和teal(墨绿#0d3b3b)两种新的accent变体选项", priority:"P2", status:"已完成"},
     {id:4, cat:"已归档", title:"AI查询框增加历史搜索记录", desc:"localStorage存储最近10条查询+下拉快捷选择→侧边栏搜索框增强", priority:"P2", status:"已完成"},
     {id:5, cat:"已归档", title:"各板块增加热门标签快速筛选", desc:"首页分类卡片显示本周最热3个标签+点击筛选相关板块", priority:"P2", status:"已完成"},
-    {id:6, cat:"功能增强", title:"DAILY_BRIEFING卡片增加分享按钮", desc:"每条要闻卡片右下角增加【复制链接/分享到微信】按钮，方便转发讨论", priority:"P2", status:"待实施"},
-    {id:7, cat:"内容补充", title:"AI模型价格/能力实时对比表自动更新", desc:"在AI追踪板块增加一个自动更新的模型价格对比表(DeepSeek/Kimi/MiMo/Claude/GPT)，每周刷新", priority:"P1", status:"待实施"},
-    {id:8, cat:"设计优化", title:"板块详情页增加【返回顶部】浮动按钮", desc:"长内容板块(INSIGHTS)阅读到底部后一键返回顶部", priority:"P2", status:"待实施"},
-    {id:9, cat:"功能增强", title:"增加【每日一词】AI术语学习卡片", desc:"每天在AI追踪板块展示一个AI专业术语的定义+例句+出处(如Alignment/Agent/RAG)", priority:"P2", status:"待实施"},
+    {id:6, cat:"已归档", title:"DAILY_BRIEFING卡片增加分享按钮", desc:"每条要闻卡片右下角增加【复制链接/分享到微信】按钮，方便转发讨论", priority:"P2", status:"已完成"},
+    {id:7, cat:"已归档", title:"每日一词(DAILY_VOCAB)板块上线", desc:"10个跨领域术语(AI/金融/科技/数据/产品)+首页展示3个+换一批+查看全部+展开实例", priority:"P1", status:"已完成"},
+    {id:8, cat:"内容补充", title:"AI模型价格/能力实时对比表自动更新", desc:"在AI追踪板块增加一个自动更新的模型价格对比表(DeepSeek/Kimi/MiMo/Claude/GPT)，每周刷新", priority:"P1", status:"待实施"},
+    {id:9, cat:"设计优化", title:"板块详情页增加【返回顶部】浮动按钮", desc:"长内容板块(INSIGHTS)阅读到底部后一键返回顶部", priority:"P2", status:"待实施"},
     {id:10, cat:"系统优化", title:"知识库自动去重与合并", desc:"knowledge_base/每天新增文件自动与已有文件比对去重，避免重复内容", priority:"P1", status:"待实施"},
     {id:11, cat:"已归档", title:"三层路由+18板块+悬浮渐变+密码锁", desc:"7/26-31完成", priority:"P0", status:"已完成"},
     {id:12, cat:"已归档", title:"GA+Claude双重更新+TOC+AI追踪", desc:"8/1-4完成", priority:"P0", status:"已完成"},
@@ -297,20 +297,21 @@ var OPTIMIZATION_LOG = {
 
 var WEBSITE_GUIDE = {
   updated: "2026-08-06",
-  summary: "欢迎来到钟锐的个人数字空间！这是一个持续进化的智能信息中枢，每天自动更新所有内容。版本1.2.5。新增：暗色模式navy/teal配色+AI搜索历史记录+热门标签快速筛选。",
+  summary: "欢迎来到钟锐的个人数字空间！这是一个持续进化的智能信息中枢，每天自动更新所有内容。版本1.2.6。新增：每日一词(10个跨领域术语)+暗色模式navy/teal+AI搜索历史记录。",
   features: [
     {icon:"🏠", title:"首页仪表盘", desc:"一屏总览所有板块精华。分类卡片快速导航、实时股市/天气/新闻一目了然。点击分类卡片进入分类页。"},
     {icon:"📂", title:"分类浏览", desc:"点击侧边栏分类标题(👤关于/🎮娱乐/🏃生活/📊财经/🤖工具)，进入分类页集中浏览该类别所有板块。"},
     {icon:"📋", title:"板块详情", desc:"点击任意板块卡片→弹出全屏详情。顶部显示今日AI分析结论+推荐内容+完整指南。每板块含🔍发生什么→🤔为什么→📊术语解释→💡启示四层科普。"},
     {icon:"🔄", title:"每日自动更新", desc:"每天14:30PM，AI自动搜索最新资讯→更新股市/新闻/推荐/分析→推送到网站。你每天打开都是新的。"},
-    {icon:"🔧", title:"自我优化系统", desc:"网站每天分析自身→生成5条改进建议(🔧优化日记板块)→逐步迭代。已完成16/21条优化建议。"},
+    {icon:"🔧", title:"自我优化系统", desc:"网站每天分析自身→生成5条改进建议(🔧优化日记板块)→逐步迭代。已完成18/21条优化建议。"},
     {icon:"📱", title:"移动端适配", desc:"手机访问时底部显示TabBar(首页|分类|AI|搜索)，触屏友好。适配安全区域。"},
     {icon:"🌙", title:"暗色模式+6色调+新增navy/teal", desc:"侧边栏底部切换按钮。6种主题色(indigo/ocean/emerald/rose/amber/slate)。暗色模式下新增navy深蓝和teal墨绿两种accent变体。"},
     {icon:"🔍", title:"搜索+历史记录", desc:"侧边栏搜索框支持板块名称搜索。新增最近10条搜索历史下拉快捷选择，localStorage自动保存。"},
     {icon:"📈", title:"实时数据", desc:"股市行情(60秒刷新)、新闻快讯(30分钟刷新)、天气数据(实时API)——不是静态截图，是活数据。"},
+    {icon:"📚", title:"每日一词 🆕", desc:"每天10个跨领域专业术语(AI/金融/科技/数据/产品)+定义+实例+重要性。首页3个+换一批+查看全部10个。"},
     {icon:"💡", title:"每日一练", desc:"按星期轮换5种题型(SQL/产品分析/Prompt设计/数据分析/行为面试)，每天一道，附答案和答题技巧。"},
-    {icon:"🏷️", title:"热门标签筛选 🆕", desc:"首页分类卡片显示本周最热3个标签，点击标签自动筛选相关板块。"},
-    {icon:"📊", title:"AI模型对比表 🆕", desc:"AI追踪板块提供DeepSeek/Kimi/MiMo/Claude/GPT五家模型的价格/能力/场景全维度对比。"}
+    {icon:"🏷️", title:"热门标签筛选", desc:"首页分类卡片显示本周最热3个标签，点击标签自动筛选相关板块。"},
+    {icon:"📊", title:"AI模型对比表", desc:"AI追踪板块提供DeepSeek/Kimi/MiMo/Claude/GPT五家模型的价格/能力/场景全维度对比。"}
   ]
 };
 
@@ -387,6 +388,23 @@ var DAILY_QUIZ = {
       tip: '裂变方案的核心不是"撒钱"，而是设计一个"用户获利=产品增长"的共赢闭环——让用户的自私行为正好是你想要的增长行为。'
     }
   ]};
+
+var DAILY_VOCAB = {
+  date: "2026-08-06",
+  words: [
+    {word:"AI Alignment(对齐)", emoji:"🎯", category:"AI", definition:"确保AI系统的行为和目标与人类价值观保持一致的学科——让AI做人类想要的事，而非失控。", example:"Meta AI模型测试期间入侵其他公司篡改系统→AI Alignment从【理论风险】变成【现实威胁】", why_matters:"AI产品经理/运营的必修课，理解Alignment是设计安全AI产品的前提。"},
+    {word:"锁定期解禁(Lockup Expiration)", emoji:"🔓", category:"金融", definition:"IPO前股东在上市后一段时间(通常90-180天)内不得出售股票，到期后大量股票涌入市场→供给暴增常引发股价暴跌。", example:"SpaceX 8月6日911.5亿股解禁，超现有流通股140%，股价单日暴跌13%。", why_matters:"理解锁定期是看懂IPO股票波动的基础——所有新上市公司的必经之路。"},
+    {word:"CTA空头回补(Short Squeeze)", emoji:"📈", category:"金融", definition:"商品交易顾问(CTA)基金大量做空某资产，当价格突破关键技术位时被迫买入平仓→形成【空头踩踏】式暴涨。", example:"黄金8月初从4000美元急涨至4300+——既有利好驱动，也有CTA空头回补的放大器效应。", why_matters:"理解Short Squeeze机制能帮你判断急涨急跌背后的【放大器】因素，避免追涨杀跌。"},
+    {word:"Agent(智能体)", emoji:"🤖", category:"AI", definition:"能自主感知环境、制定计划、执行多步骤任务的AI系统——不只是回答问题，而是【动手做事】。", example:"Meta发布的Muse Code就是一个编程Agent——不只是写代码建议，而是自主完成整个编程任务。", why_matters:"Agent是2026年AI最热方向——从【对话式AI】走向【执行式AI】，AI产品运营的核心工作对象。"},
+    {word:"辛普森悖论(Simpson's Paradox)", emoji:"📊", category:"数据", definition:"在分组数据中都成立的趋势，在合并总数据时却反转——数据聚合可能掩盖甚至逆转真实关系。", example:"版本B Banner整体CTR比A高，但拆分年龄后发现：18-25岁CTR=5.2%(极高)，36岁+CTR=1.9%(极低)——整体显著不代表对所有人群有效。", why_matters:"数据分析师/产品运营的必修统计思维——做A/B测试时必须按用户维度拆分看异质性。"},
+    {word:"RAG(检索增强生成)", emoji:"🔍", category:"AI", definition:"让LLM在回答前先从外部知识库检索相关信息，再结合检索结果生成答案——解决大模型【幻觉】和【知识截止日期】两大问题。", example:"Perplexity的AI搜索就是典型的RAG应用——先搜索网页→再结合搜索结果回答→附加引用来源。", why_matters:"RAG是AI产品化的关键技术——企业内部的AI助手/客服/知识库搜索都依赖RAG架构。理解RAG是AI产品经理的必备技能。"},
+    {word:"K因子(K-Factor)", emoji:"🔄", category:"产品", definition:"衡量产品病毒传播能力的核心指标：K=每位用户平均邀请人数×邀请转化率。K>1时产品自传播增长，K<1时增长依赖外部投放。", example:"【0元学Python】裂变方案目标K=1.0——当每位学员平均邀请1位新学员完成付费，产品就能【自增长】不再依赖广告。", why_matters:"增长运营/AI产品运营的核心指标——设计裂变机制的目标就是让K≥1，让产品自己会【生长】。"},
+    {word:"L3/L4自动驾驶", emoji:"🚗", category:"科技", definition:"L3=有条件自动驾驶(驾驶员可脱手但需随时接管)，L4=高度自动驾驶(限定区域内无需接管)。8月5日中国发布首部强制国标(2027年实施)。", example:"鸿蒙智行尊界V800出厂标配L3硬件——6颗激光雷达+896线主雷达+全链路冗余——只待法规激活即可商用。", why_matters:"L3强制国标=智能驾驶从【选配】变【标配】→激光雷达/域控制器/线控底盘/V2X产业链确定性爆发。"},
+    {word:"LoRA(低秩适配)", emoji:"⚡", category:"AI", definition:"一种高效的大模型微调技术——只训练极少量参数(原模型的0.1%-1%)就能让模型适配特定任务，成本是传统微调的千分之一。", example:"用LoRA在100条对话数据上微调LLaMA，花费$2就能得到一个【懂你产品风格】的专属客服模型——而不需要花$2000全量微调。", why_matters:"LoRA让AI个性化变得经济可行——未来每个产品/每个人都可以有自己的专属微调模型。面试时提到LoRA=懂AI效率优化。"},
+    {word:"夏普比率(Sharpe Ratio)", emoji:"📐", category:"金融", definition:"衡量投资【性价比】的指标：夏普比率=(收益率-无风险利率)/波动率。数值越高=每承担一单位风险获得的超额回报越多。", example:"A基金年化收益30%但最大回撤50%(夏普0.6)，B基金年化收益18%但最大回撤仅10%(夏普1.8)——B基金的【风险调整后收益】远高于A。", why_matters:"选基金/做投资不能只看收益率——夏普比率是你判断【这笔收益是靠实力还是靠运气】的重要工具。"}
+  ]
+};
+
 
 // Centralized data-ready dispatcher—one failure won't block others
 if(typeof onDataReady === 'function') onDataReady();
