@@ -1,8 +1,8 @@
-var SITE_VERSION = "1.2.3";
+var SITE_VERSION = "1.2.4";
 
 var DAILY_DATA = {
-  "update_time": "2026-08-05T09:35:00+08:00",
-  "update_date": "2026年8月5日",
+  "update_time": "2026-08-06T09:35:00+08:00",
+  "update_date": "2026年8月6日",
 
   "market_summary": "英伟达CPO量产官宣Spectrum-X出货 | GPT-5.6 Luna降价80%引爆AI应用涨停潮 | 北美云厂资本开支全面上调 | 光通信暴力反弹中际旭创+8.64% | 美股七巨头+3.6%英伟达重返5万亿",
 
@@ -36,7 +36,7 @@ var DAILY_DATA = {
 };
 
 var DAILY_BRIEFING = {
-  date: "2026-08-05",
+  date: "2026-08-06",
   highlights: [
     {priority:1, icon:"💡", section:"CPO量产", headline:"英伟达官宣CPO量产：Spectrum-X交换机出货，光通信产业链集体暴涨", summary:"英伟达正式宣布CPO（共封装光学）技术量产，Spectrum-X交换机开始出货。CPO将光模块与交换芯片封装在一起，功耗降低50%+带宽提升8倍，标志光通信进入新纪元。光通信板块暴力反弹：中际旭创+8.64%、天孚通信+11.22%、新易盛+9.73%。这是AI算力基础设施的里程碑事件。", action:"深度分析", link:"#stock", deepLink:"https://www.perplexity.ai/search?q=NVIDIA+CPO+Spectrum-X+optical+communication+August+2026"},
     {priority:2, icon:"🤖", section:"AI应用爆发", headline:"GPT-5.6 Luna降价80%引爆AI应用涨停潮，汉仪股份20CM传智教育7连板", summary:"OpenAI宣布GPT-5.6 Luna价格下调80%，API调用成本断崖式下降。A股AI应用板块集体涨停：汉仪股份20CM涨停，传智教育7连板。模型降价→应用成本骤降→AI应用普及加速，这是AI从\"烧钱基建\"进入\"应用爆发\"阶段的标志性信号。", action:"深度解读", link:"#learning", deepLink:"https://www.perplexity.ai/search?q=GPT-5.6+Luna+price+cut+80%25+AI+application+stocks+August+2026"},
@@ -267,7 +267,7 @@ var INSIGHTS = {
     summary: "今日焦点：蜘蛛侠崭新之日首周票房破3亿！成家班武指+青春版彼得帕克暑期档最强超英。复仇者联盟秘密战争持续霸榜，死侍与金刚狼解压首选，利刃出鞘3豆瓣9.1口碑炸裂。",
     trend: "趋势：超英回暖|青春超英崛起|悬疑推理强势|蜘蛛侠首周破3亿|周末IMAX一票难求",
     tip: "周一工作日观影：晚上下班看场电影放松——蜘蛛侠崭新之日（累计9亿，IMAX仍有排片）。8月8日《大唐妖探》上映倒计时，提前猫眼/淘票票预约首日场。",
-    updated: "2026-08-05"
+    updated: "2026-08-06"
   },
   "ai-track": {
     summary: '今日（8月4日）AI行业三件大事：英伟达CPO量产官宣Spectrum-X出货标志光通信新纪元；GPT-5.6 Luna降价80%API调用成本断崖下降引爆AI应用涨停潮；北美云厂资本开支全面超预期上调。国产模型方面：小米MiMo-V2.5全球调用量第一，DeepSeek V4-Flash公测，Kimi K3全面开源，智谱GLM-5.2 1M上下文。模型竞争从单轮问答转向长程Agent+Coding+多模态。',
@@ -287,7 +287,7 @@ var OPTIMIZATION_LOG = {
   date: "2026-08-05",
   total_suggestions: 16,
   total_implemented: 11,
-  streak_days: 12,
+  streak_days: 13,
   suggestions: [
     {id:1, cat:"功能增强", title:"AI查询框增加历史搜索记录", desc:"localStorage存储最近10条查询+下拉快捷选择", priority:"P2", status:"待实施"},
     {id:2, cat:"内容补充", title:"各板块增加热门标签快速筛选", desc:"首页分类卡片显示本周最热3个标签+点击筛选相关板块", priority:"P2", status:"待实施"},
@@ -309,7 +309,7 @@ var OPTIMIZATION_LOG = {
 };
 
 var WEBSITE_GUIDE = {
-  updated: "2026-08-05",
+  updated: "2026-08-06",
   summary: "欢迎来到钟锐的个人数字空间！这是一个持续进化的智能信息中枢，每天自动更新所有内容。版本1.2.2。",
   features: [
     {icon:"🏠", title:"首页仪表盘", desc:"一屏总览所有板块精华。分类卡片快速导航、实时股市/天气/新闻一目了然。"},
