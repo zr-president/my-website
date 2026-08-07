@@ -420,7 +420,7 @@ var AI_MODEL_COMPARISON = {
     // ===== DeepSeek 系列 =====
     {name:"DeepSeek V4-Flash", emoji:"⚡", provider:"DeepSeek", series:"V4轻量高频版", tier:"性价比之王",
      input_price:"¥1.00($0.14)", output_price:"¥2.00($0.28)", cost_per_task:"$0.03",
-     intelligence:78, speed:95,性价比:98,
+     intelligence:78, speed:95,性价比:98, 综合:88,
      context:"1M", params:"284B(MoE/13B激活)",
      strengths:"速度极快(40s完成GPT需107s的任务)·全球Token消耗量第一·缓存命中仅¥0.02/1M·支持2500并发·Agent基准碾压同级",
      weaknesses:"长上下文(>128K)性能下降·多步复杂Agent任务退化·不支持图片输入·知识截止至2025",
@@ -430,7 +430,7 @@ var AI_MODEL_COMPARISON = {
     },
     {name:"DeepSeek V4-Pro", emoji:"🎯", provider:"DeepSeek", series:"V4旗舰深度版", tier:"旗舰推理(预览中)",
      input_price:"¥3.00($0.44)", output_price:"¥6.00($0.87)", cost_per_task:"预计$0.08-0.15",
-     intelligence:85, speed:72,性价比:88,
+     intelligence:85, speed:72,性价比:88, 综合:84,
      context:"1M", params:"1.6T(MoE/49B激活)",
      strengths:"复杂推理深度远超Flash·长上下文性能稳定·多步Agent链式任务·深度代码分析",
      weaknesses:"目前仅预览版(正式版待发)·并发仅500·速度比Flash慢·预览版Agent基准反而低于Flash正式版",
@@ -442,7 +442,7 @@ var AI_MODEL_COMPARISON = {
     // ===== OpenAI 系列 =====
     {name:"GPT-5.6 Luna", emoji:"🌙", provider:"OpenAI", series:"免费默认·轻量高效", tier:"免费/入门",
      input_price:"$0.20", output_price:"$1.20", cost_per_task:"≈$0.15",
-     intelligence:82, speed:88,性价比:85,
+     intelligence:82, speed:88,性价比:85, 综合:84,
      context:"256K", params:"未公开(推测~400B)",
      strengths:"错误率比GPT-5.5降62%·免费用户无限文字聊天·Think按钮开启深度推理·速度快",
      weaknesses:"复杂推理不如Sol·多模态受限(免费用户)·文件上传限制·API不公开给免费用户",
@@ -452,7 +452,7 @@ var AI_MODEL_COMPARISON = {
     },
     {name:"GPT-5.6 Sol", emoji:"☀️", provider:"OpenAI", series:"付费旗舰·深度推理", tier:"旗舰",
      input_price:"$5.00", output_price:"$30.00", cost_per_task:"$1.86",
-     intelligence:92, speed:70,性价比:58,
+     intelligence:92, speed:70,性价比:58, 综合:77,
      context:"256K", params:"未公开(推测~2T+)",
      strengths:"68%更少事实错误·五级推理滑块·Fast模式(2.5倍速@2倍价)·金融/医疗/法律精度极高·GPU内核自优化降本20%",
      weaknesses:"昂贵(比Luna贵25倍输入)·速度慢(非Fast模式)·需Plus/Pro订阅($20/$200月)",
@@ -464,7 +464,7 @@ var AI_MODEL_COMPARISON = {
     // ===== Anthropic Claude 系列 =====
     {name:"Claude Sonnet 4.6", emoji:"🎵", provider:"Anthropic", series:"中端·平衡之选", tier:"中端",
      input_price:"$3.00", output_price:"$15.00", cost_per_task:"≈$0.50",
-     intelligence:85, speed:78,性价比:82,
+     intelligence:85, speed:78,性价比:82, 综合:83,
      context:"200K", params:"未公开",
      strengths:"代码能力出色·推理平衡·上下文200K·性价比在Anthropic系最高·Agent工具使用流畅",
      weaknesses:"复杂推理不如Opus·创意写作不如Fable·基准跑分不突出",
@@ -474,7 +474,7 @@ var AI_MODEL_COMPARISON = {
     },
     {name:"Claude Opus 5", emoji:"👑", provider:"Anthropic", series:"旗舰·深度推理", tier:"顶级旗舰",
      input_price:"$5.00", output_price:"$25.00", cost_per_task:"≈$1.50",
-     intelligence:94, speed:55,性价比:55,
+     intelligence:94, speed:55,性价比:55, 综合:74,
      context:"200K", params:"未公开",
      strengths:"推理深度业界顶尖·数学/逻辑/代码最强之一·长文档精准理解·安全对齐最佳",
      weaknesses:"最贵模型之一·速度慢·不适合高频调用·创意性任务不如Fable",
@@ -484,7 +484,7 @@ var AI_MODEL_COMPARISON = {
     },
     {name:"Claude Fable 5", emoji:"✨", provider:"Anthropic", series:"创意·写作旗舰", tier:"顶级旗舰",
      input_price:"$10.00", output_price:"$50.00", cost_per_task:"$3.15",
-     intelligence:92, speed:52,性价比:42,
+     intelligence:92, speed:52,性价比:42, 综合:68,
      context:"200K", params:"未公开",
      strengths:"创意写作业界最强·叙事质量极高·角色扮演/对话生成一流·长篇连贯性卓越",
      weaknesses:"所有模型中最贵(每任务$3.15)·速度慢·数学推理不如Opus·性价比极低对比DeepSeek",
@@ -496,7 +496,7 @@ var AI_MODEL_COMPARISON = {
     // ===== Kimi 系列 =====
     {name:"Kimi K3", emoji:"🔥", provider:"Moonshot(月之暗面)", series:"国产开源·全能旗舰", tier:"旗舰",
      input_price:"$3.00", output_price:"$15.00", cost_per_task:"$0.86",
-     intelligence:87, speed:75,性价比:80,
+     intelligence:87, speed:75,性价比:80, 综合:83,
      context:"256K", params:"未公开(推测~1T+)",
      strengths:"国产最强全能模型·中文能力顶尖·开源生态活跃·256K长上下文·价格适中",
      weaknesses:"英文能力不如Claude/GPT·生态不如OpenAI·速度中等",
@@ -508,7 +508,7 @@ var AI_MODEL_COMPARISON = {
     // ===== Grok 系列 =====
     {name:"Grok 4.6", emoji:"🚀", provider:"xAI(马斯克)", series:"月更迭代·实时信息", tier:"旗舰",
      input_price:"$2.00", output_price:"$6.00", cost_per_task:"≈$0.40",
-     intelligence:84, speed:82,性价比:86,
+     intelligence:84, speed:82,性价比:86, 综合:84,
      context:"500K", params:"1.5T",
      strengths:"500K最长上下文·实时X平台信息接入·月更迭代速度快·价格极具竞争力($2/$6)·4.7(2.1T参数)数周后来",
      weaknesses:"推理深度不如Claude/GPT旗舰·生态最小·企业功能少·基准跑分不公开",
@@ -517,10 +517,22 @@ var AI_MODEL_COMPARISON = {
      free_tier:"✅ 有限免费(x.com/grok)"
     },
 
+
+    // ===== 通义千问 Qwen 系列 =====
+    {name:"Qwen3.8-Max", emoji:"🐬", provider:"阿里云(通义千问)", series:"3.8旗舰·MoE·视觉原生", tier:"旗舰(8月3日新发)",
+     input_price:"$2.00(¥12)", output_price:"$6.00(¥36)", cost_per_task:"≈$0.35",
+     intelligence:88, speed:72,性价比:86, 综合:85,
+     context:"1M", params:"2.4T(MoE/95B激活)",
+     strengths:"Arena综合全球第5·PaperBench 93.0创纪录·Vision Arena全球第2·OSWorld终端操作86.1主流第一·1M超长上下文·自主编程16天从零构建项目",
+     weaknesses:"SWE-bench Pro仅67.7(落后Fable 5的80.0)·真实软件工程修改稳定性不足·代码能力弱于GLM 5.2·交付需拆细才能执行到位",
+     best_for:"科研编程(PaperBench)·多模态理解·长文档分析(200页PDF)·国产Agent替代·法律/金融/医疗专业办公·自主Agent长周期任务",
+     price_note:"🆕 8月3日发布·$2/$6国际定价(仅Opus5的24%)·夜间(22-8点)5折·Token Plan ¥150/月起·新用户送1亿Tokens·预计8月10日开源",
+     free_tier:"✅ 有限免费(chat.qwen.ai)·新用户1亿Tokens"
+    },
     // ===== Google Gemini 系列 =====
     {name:"Gemini 3.6 Flash", emoji:"💎", provider:"Google", series:"轻量高速·多模态", tier:"入门/中端",
      input_price:"$0.30", output_price:"$2.50", cost_per_task:"≈$0.20",
-     intelligence:80, speed:90,性价比:88,
+     intelligence:80, speed:90,性价比:88, 综合:84,
      context:"128K", params:"未公开",
      strengths:"多模态原生支持(图/音/视频)·速度极快·Google生态整合·价格低·全球CDN加速",
      weaknesses:"推理深度不足·代码能力弱于Claude/GPT·Agent工具链不成熟·中文弱于国产模型",
@@ -533,20 +545,23 @@ var AI_MODEL_COMPARISON = {
     intelligence: "基于Artificial Analysis Intelligence Index+Agent基准+代码能力综合评估·满分100·90+:顶级推理·80-89:旗舰水平·70-79:优秀中端·<70:入门/轻量",
    性价比: "综合考虑每美元可获得的智能水平+速度+上下文长度+生态完善度·满分100·90+:极致性价比·80-89:高性价比·70-79:合理·<70:品牌溢价/专业溢价",
    speed: "基于实际API响应速度(TTFT+生成速度)·满分100·90+:极快(<1s首Token)·80-89:快·70-79:中等·<70:慢(深度推理模型常态)",
+    综合: "智能50%+性价比35%+速度15%加权·满分100·90+:全能王者·80-89:综合优秀·70-79:偏科型·<70:特定场景专用",
    updated: "2026-08-07·基于Artificial Analysis+OpenRouter+官方文档"
   },
   key_takeaways: [
     "💰 性价比之王: DeepSeek V4-Flash(98分·$0.03/任务=Claude Fable 5的1/105)·但即将涨价",
     "🧠 推理最强: Claude Opus 5(94分)≈GPT-5.6 Sol(92分)·但前者$1.50/任务vs后者$1.86",
-    "📈 涨价趋势: DeepSeek预告大幅涨价+中国AI集体提价→AI低价时代正在终结·趁涨价前锁定预算",
-    "🆕 最新调价: GPT-5.6 Luna 7/30降价80%(免费默认)·Grok 4.6升级不涨价·Kimi K3发布时涨3-4倍",
-    "🎯 推荐策略: 日常用DeepSeek V4-Flash(免费)+专业任务用Claude Sonnet 4.6($20/月)+深度研究用GPT-5.6 Sol"
+    "🏆 综合最强: DeepSeek V4-Flash综合88分!高性价比+极速拉满·日常首选·Qwen3.8-Max新生力量85分",
+    "🇨🇳 国产新格局: Qwen3.8-Max(综合85)≈Kimi K3(综合83)·千问多模态优势+Kimi中文深度·双雄竞争",
+    "📈 涨价趋势: DeepSeek预告大幅涨价+中国AI集体提价→低价时代终结·趁涨价前锁定预算",
+    "🎯 推荐策略: 日常用DeepSeek V4-Flash(免费)+国产专业用Qwen3.8-Max(多模态￥12/36)+深度研究用GPT-5.6 Sol"
   ],
   price_adjustments: [
     {model:"GPT-5.6 Luna", date:"2026-07-30", change:"输入↓80%($1.00→$0.20) 输出↓80%($6.00→$1.20)", reason:"应对DeepSeek/Kimi竞争·提升免费用户体验·GPT-5.6 GPU自优化降本20%", impact:"免费用户默认升级·API成本大幅下降·对DeepSeek的性价比优势缩小但未消除"},
     {model:"DeepSeek全系", date:"2026-08-06预告", change:"预计大幅上涨(具体幅度待公布)", reason:"V4-Flash单日80亿Token致容量告急·从烧钱换规模转向价值定价·创始人:'继续降价不会带来更多需求'", impact:"中国AI低价时代终结·开发者需重新评估成本·但涨价后仍将是全球最便宜旗舰模型"},
     {model:"Kimi K3", date:"2026年7月", change:"输入涨3倍+输出涨4倍(vs K2.5)", reason:"K3模型能力大幅提升·从价格战转向品质竞争·中国AI行业集体提价趋势", impact:"仍保持国产旗舰性价比最优·中文任务首选地位未变"},
-    {model:"Grok 4.6", date:"2026-08-07", change:"不涨价(同Grok 4.5价格)", reason:"Post-training升级·参数量不变·xAI以价格竞争力争取市场份额", impact:"$2/$6的旗舰模型定价极具竞争力·500K上下文+月更速度是差异化优势"}
+    {model:"Grok 4.6", date:"2026-08-07", change:"不涨价(同Grok 4.5价格)", reason:"Post-training升级·参数量不变·xAI以价格竞争力争取市场份额", impact:"$2/$6的旗舰模型定价极具竞争力·500K上下文+月更速度是差异化优势"},
+    {model:"Qwen3.8-Max", date:"2026-08-03", change:"🆕 全新发布 $2/$6(国际) ¥12/¥36(国内)", reason:"阿里新一代旗舰·2.4T参数·Arena综合第5·PaperBench 93.0创纪录·千问从追赶者变为第一梯队", impact:"国产模型格局从DeepSeek/Kimi双雄→三足鼎立·多模态视觉成差异化武器·预计8月10日开源·夜间5折+新用户送1亿Tokens"}
   ]
 };
 
