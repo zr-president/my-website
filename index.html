@@ -1697,6 +1697,18 @@ function showView(viewName, categoryKey){
     }
 
     document.getElementById('sectionDetailContent').innerHTML = detailHtml;
+    // Special: ai-track section — inject model comparison table (rendered by renderModelComparison)
+    if(categoryKey==='ai-track'){
+      var mcEl = document.getElementById('model-compare-section');
+      if(mcEl){
+        var sdContent = document.getElementById('sectionDetailContent');
+        var wrapper = document.createElement('div');
+        wrapper.innerHTML = mcEl.innerHTML;
+        // Remove id attributes from cloned elements to avoid duplicates
+        wrapper.querySelectorAll('[id]').forEach(function(el){ el.removeAttribute('id'); });
+        sdContent.appendChild(wrapper);
+      }
+    }
     // Auto-generate TOC from h3/h4 headings
     setTimeout(function(){
       var toc=document.getElementById('sectionTOC');
