@@ -269,8 +269,8 @@ var INSIGHTS = {
 
 var OPTIMIZATION_LOG = {
   date: "2026-08-07",
-  total_suggestions: 26,
-  total_implemented: 21,
+  total_suggestions: 27,
+  total_implemented: 24,
   streak_days: 16,
   suggestions: [
     {id:1, cat:"已归档", title:"AI追踪板块周报自动生成", desc:"每周一自动汇总上周AI融资/模型发布/价格变动→已集成至INSIGHTS.ai-track周度总结", priority:"P1", status:"已完成"},
@@ -281,8 +281,8 @@ var OPTIMIZATION_LOG = {
     {id:6, cat:"已归档", title:"DAILY_BRIEFING卡片增加分享按钮", desc:"每条要闻卡片右下角增加【复制链接/分享到微信】按钮，方便转发讨论", priority:"P2", status:"已完成"},
     {id:7, cat:"已归档", title:"每日一词(DAILY_VOCAB)板块上线", desc:"10个跨领域术语(AI/金融/科技/数据/产品)+首页展示3个+换一批+查看全部+展开实例", priority:"P1", status:"已完成"},
     {id:8, cat:"已归档", title:"AI模型价格/能力实时对比表(百分制评分) 🆕", desc:"12款主流模型+同系列区分(Flash/Pro/Luna/Sol)+智能/性价比/速度百分制评分+最新调价标注+AI_MODEL_COMPARISON数据对象+index.html渲染表", priority:"P1", status:"已完成"},
-    {id:9, cat:"设计优化", title:"板块详情页增加【返回顶部】浮动按钮", desc:"长内容板块(INSIGHTS)阅读到底部后一键返回顶部", priority:"P2", status:"待实施"},
-    {id:10, cat:"系统优化", title:"知识库自动去重与合并", desc:"knowledge_base/每天新增文件自动与已有文件比对去重，避免重复内容", priority:"P1", status:"待实施"},
+    {id:9, cat:"已归档", title:"板块详情页增加【返回顶部】浮动按钮", desc:"长内容板块(INSIGHTS)阅读到底部后一键返回顶部→index.html L479已实现fabTop浮动按钮+scrollY>600触发", priority:"P2", status:"已完成"},
+    {id:10, cat:"已归档", title:"知识库自动去重与合并", desc:"knowledge_base/每天新增文件自动与已有文件比对去重→scripts/dedup_kb.py实现跨日段落级去重(合并6处冗余)", priority:"P1", status:"已完成"},
     {id:11, cat:"已归档", title:"三层路由+18板块+悬浮渐变+密码锁", desc:"7/26-31完成", priority:"P0", status:"已完成"},
     {id:12, cat:"已归档", title:"GA+Claude双重更新+TOC+AI追踪", desc:"8/1-4完成", priority:"P0", status:"已完成"},
     {id:13, cat:"已归档", title:"待办详情+分享+语音+简历+练歌", desc:"7/29-8/3完成", priority:"P0", status:"已完成"},
@@ -298,7 +298,8 @@ var OPTIMIZATION_LOG = {
     {id:23, cat:"已归档", title:"PICKS动画/音乐/小说/游戏/电影/学习/AI追踪全面更新8/7版", desc:"8/7: Stray Kids发售+去你的岛首映+大唐妖探明日上映+Grok 4.6发布+SpaceX Terafab", priority:"P0", status:"已完成"},
     {id:24, cat:"已归档", title:"INSIGHTS 17处日期+stock/ai-track/movie/news内容更新", desc:"8/7 stock reasoning重写(立秋+量价背离+DeepSeek涨价+英伟达HBM降配)", priority:"P0", status:"已完成"},
     {id:25, cat:"已归档", title:"DAILY_VOCAB全新10词(8/7版):HBM/量价背离/价值定价/Terafab等", desc:"覆盖科技(AI/HBM/Terafab/Post-training)+金融(量价背离/负FCF/战配/超额认购)+产品(价值定价/BE美学)", priority:"P0", status:"已完成"},
-    {id:26, cat:"设计优化", title:"板块详情页增加【返回顶部】浮动按钮 🆕", desc:"长内容板块(INSIGHTS)阅读到底部后一键返回顶部——已多次建议，优先级提升", priority:"P1", status:"待实施"}
+    {id:26, cat:"已归档", title:"板块详情页返回顶部浮动按钮 🆕", desc:"确认FAB已存在(index.html L479)且在section-detail视图正常工作——标记为已完成", priority:"P1", status:"已完成"},
+    {id:27, cat:"设计优化", title:"AI对比表综合评分增加权益权重选项 🆕", desc:"当前综合=50%智能+35%性价比+15%速度·可考虑增加【生态/多模态/开源】等维度让评分更全面", priority:"P2", status:"待实施"}
   ]
 };
 
