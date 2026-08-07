@@ -552,3 +552,4 @@ var AI_MODEL_COMPARISON = {
 
 
 // Centralized data-ready
+if(typeof onDataReady === 'function') onDataReady();
