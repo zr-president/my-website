@@ -394,6 +394,28 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 
 <section id="ai-track" class="section" data-search="AI 模型 大模型 开源 GPT Claude Kimi DeepSeek 追踪 动态"><div class="section-header"><h2>🤖 AI动态追踪</h2><p>国内/国际大模型最新动态 · 版本更新 · 融资进展</p></div>
 <div id="picks-ai-track" class="picks-container"></div>
+<div id="model-compare-section" style="margin:12px 0">
+  <div class="card" style="overflow-x:auto">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+      <h3 style="margin:0;font-size:15px">📊 AI模型全维度对比表</h3>
+      <span style="font-size:11px;color:var(--text3)" id="modelCompareDate"></span>
+    </div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px" id="modelCompareBadges"></div>
+    <div id="modelCompareTable" style="font-size:12px"></div>
+    <div style="margin-top:12px;padding:10px 12px;background:var(--bg2);border-radius:8px">
+      <div style="font-size:12px;font-weight:600;margin-bottom:6px">🔔 近期调价动态</div>
+      <div id="modelPriceAdjustments" style="font-size:11px;color:var(--text2)"></div>
+    </div>
+    <div style="margin-top:8px;padding:10px 12px;background:var(--bg2);border-radius:8px">
+      <div style="font-size:12px;font-weight:600;margin-bottom:6px">💡 关键结论</div>
+      <div id="modelKeyTakeaways" style="font-size:11px;color:var(--text2)"></div>
+    </div>
+    <div style="margin-top:8px;font-size:10px;color:var(--text3);text-align:right">
+      评分标准: 智能分·性价比·速度均为百分制 | <span id="modelScoringDetail" style="cursor:pointer;text-decoration:underline" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">展开评分说明</span>
+      <div id="scoringDetailBox" style="display:none;text-align:left;margin-top:6px;padding:8px;background:var(--bg3);border-radius:6px"></div>
+    </div>
+  </div>
+</div>
 <div class="card clickable" onclick="openDetail('ai-track')"><h3>📊 查看完整AI模型追踪</h3><p>国内外大模型版本对比+融资动态+技术突破+招聘信息一站式追踪。</p></div></section>
 
 <section id="news" class="section" data-search="新闻 资讯 财经 国际"><div class="section-header"><h2>📰 新闻资讯</h2><p>今日要闻 · 每日阅读方案</p></div>
@@ -1894,12 +1916,115 @@ window.addEventListener('hashchange', function(){
   }
 });
 
+// ===== AI Model Comparison Table Renderer =====
+var MODEL_SCORE_COLORS = {
+  intelligence: {high:'#059669', mid:'#d97706', low:'#94a3b8'},
+ 性价比: {high:'#7c3aed', mid:'#0284c7', low:'#94a3b8'},
+  speed: {high:'#d97706', mid:'#059669', low:'#94a3b8'}
+};
+
+function getScoreColor(score, type){
+  var c = MODEL_SCORE_COLORS[type] || MODEL_SCORE_COLORS.intelligence;
+  if(score >= 90) return c.high;
+  if(score >= 75) return c.mid;
+  return c.low;
+}
+
+function renderModelComparison(){
+  var data = typeof AI_MODEL_COMPARISON !== 'undefined' ? AI_MODEL_COMPARISON : null;
+  if(!data || !data.models) return;
+
+  // Update date
+  var dateEl = document.getElementById('modelCompareDate');
+  if(dateEl) dateEl.textContent = '更新: ' + (data.updated || '');
+
+  // Render badges
+  var badgesEl = document.getElementById('modelCompareBadges');
+  if(badgesEl){
+    var providers = [];
+    data.models.forEach(function(m){
+      if(providers.indexOf(m.provider) === -1) providers.push(m.provider);
+    });
+    badgesEl.innerHTML = providers.map(function(p){
+      return '<span style="background:var(--bg2);padding:2px 8px;border-radius:12px;font-size:11px;color:var(--text2)">' + p + '</span>';
+    }).join('');
+  }
+
+  // Render table
+  var tableEl = document.getElementById('modelCompareTable');
+  if(tableEl){
+    var tableHTML = '<table style="width:100%;border-collapse:collapse;min-width:900px">';
+    // Header
+    tableHTML += '<thead><tr style="border-bottom:2px solid var(--border);text-align:left;font-size:11px;color:var(--text2)">';
+    tableHTML += '<th style="padding:6px 4px;white-space:nowrap">模型</th>';
+    tableHTML += '<th style="padding:6px 4px;text-align:center">系列版本</th>';
+    tableHTML += '<th style="padding:6px 4px;text-align:center">输入/输出<br>(每百万Token)</th>';
+    tableHTML += '<th style="padding:6px 4px;text-align:center">智能分<br>(百分制)</th>';
+    tableHTML += '<th style="padding:6px 4px;text-align:center">性价比<br>(百分制)</th>';
+    tableHTML += '<th style="padding:6px 4px;text-align:center">速度<br>(百分制)</th>';
+    tableHTML += '<th style="padding:6px 4px;text-align:center">上下文</th>';
+    tableHTML += '<th style="padding:6px 4px;text-align:left">调价标注</th>';
+    tableHTML += '<th style="padding:6px 4px;text-align:left">最适合场景</th>';
+    tableHTML += '</tr></thead><tbody>';
+
+    data.models.forEach(function(m, i){
+      var rowBg = i % 2 === 0 ? 'transparent' : 'var(--bg2)';
+      var intColor = getScoreColor(m.intelligence, 'intelligence');
+      var prColor = getScoreColor(m.性价比, '性价比');
+      var spColor = getScoreColor(m.speed, 'speed');
+
+      tableHTML += '<tr style="background:' + rowBg + ';border-bottom:1px solid var(--border)">';
+      tableHTML += '<td style="padding:8px 4px;white-space:nowrap"><strong>' + (m.emoji||'') + ' ' + m.name + '</strong><br><span style="font-size:10px;color:var(--text3)">' + m.provider + ' · ' + (m.tier||'') + '</span></td>';
+      tableHTML += '<td style="padding:8px 4px;text-align:center;font-size:10px;color:var(--text2)">' + (m.series||'') + '</td>';
+      tableHTML += '<td style="padding:8px 4px;text-align:center;font-size:11px"><span style="color:var(--text2)">入:</span> ' + m.input_price + '<br><span style="color:var(--text2)">出:</span> ' + m.output_price + '</td>';
+      tableHTML += '<td style="padding:8px 4px;text-align:center"><span style="font-weight:700;font-size:16px;color:' + intColor + '">' + m.intelligence + '</span></td>';
+      tableHTML += '<td style="padding:8px 4px;text-align:center"><span style="font-weight:700;font-size:16px;color:' + prColor + '">' + m.性价比 + '</span></td>';
+      tableHTML += '<td style="padding:8px 4px;text-align:center"><span style="font-weight:700;font-size:16px;color:' + spColor + '">' + m.speed + '</span></td>';
+      tableHTML += '<td style="padding:8px 4px;text-align:center;font-size:10px">' + (m.context||'') + '</td>';
+      tableHTML += '<td style="padding:8px 4px;font-size:10px;max-width:180px">' + (m.price_note||'') + '</td>';
+      tableHTML += '<td style="padding:8px 4px;font-size:10px;max-width:150px">' + (m.best_for||'').split('·').map(function(s){ return '<div style="margin:1px 0">' + s.trim() + '</div>'; }).join('') + '</td>';
+      tableHTML += '</tr>';
+    });
+
+    tableHTML += '</tbody></table>';
+    tableEl.innerHTML = tableHTML;
+  }
+
+  // Render price adjustments
+  var adjEl = document.getElementById('modelPriceAdjustments');
+  if(adjEl && data.price_adjustments){
+    adjEl.innerHTML = data.price_adjustments.map(function(a){
+      var badgeColor = a.change.indexOf('↓') !== -1 ? '#059669' : (a.change.indexOf('涨') !== -1 || a.change.indexOf('上调') !== -1 ? '#e11d48' : '#d97706');
+      return '<div style="margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid var(--border)">' +
+        '<span style="background:' + badgeColor + ';color:#fff;padding:1px 6px;border-radius:3px;font-size:10px;margin-right:6px">' + a.date + '</span>' +
+        '<strong>' + a.model + '</strong>: ' + a.change + '<br>' +
+        '<span style="color:var(--text2)">原因: ' + a.reason + '</span><br>' +
+        '<span style="color:var(--text2)">影响: ' + a.impact + '</span>' +
+        '</div>';
+    }).join('');
+  }
+
+  // Render key takeaways
+  var ktEl = document.getElementById('modelKeyTakeaways');
+  if(ktEl && data.key_takeaways){
+    ktEl.innerHTML = data.key_takeaways.map(function(t){ return '<div style="margin:3px 0">' + t + '</div>'; }).join('');
+  }
+
+  // Render scoring detail
+  var sdEl = document.getElementById('scoringDetailBox');
+  if(sdEl && data.scoring_guide){
+    sdEl.innerHTML = '<div style="margin:3px 0"><strong>智能分:</strong> ' + (data.scoring_guide.intelligence||'') + '</div>' +
+      '<div style="margin:3px 0"><strong>性价比:</strong> ' + (data.scoring_guide.性价比||'') + '</div>' +
+      '<div style="margin:3px 0"><strong>速度:</strong> ' + (data.scoring_guide.speed||'') + '</div>';
+  }
+}
+
 // ===== Centralized Data-Ready Dispatcher =====
 // Called by daily_data.js after all data loads. Each renderer is isolated.
 function onDataReady(){
   var tasks = [
     function(){ var e=document.getElementById('siteVersion'); if(e) e.textContent = (typeof SITE_VERSION!=='undefined'?SITE_VERSION:''); },
-    renderAllPicks, renderBriefing, renderVocab, renderQuiz, renderMusicPlayer, checkUpdateStatus
+    renderAllPicks, renderBriefing, renderVocab, renderQuiz, renderMusicPlayer, renderModelComparison, checkUpdateStatus
   ];
   tasks.forEach(function(fn){
     try { if(typeof fn==='function') fn(); } catch(e){ console.error('Init error:', e.message); }

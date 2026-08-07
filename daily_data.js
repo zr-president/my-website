@@ -1,59 +1,59 @@
-var SITE_VERSION = "1.2.7";
+var SITE_VERSION = "1.2.8";
 
 var DAILY_DATA = {
-  "update_time": "2026-08-06T14:30:00+08:00",
-  "update_date": "2026年8月6日",
+  "update_time": "2026-08-07T14:30:00+08:00",
+  "update_date": "2026年8月7日",
 
-  "market_summary": "A股沪指+0.57%收3900创业板-0.55%收3515科创+1.25%｜两市成交2.55万亿缩量1324亿｜煤炭/数字货币涨停潮领涨｜SpaceX暴跌13%市值蒸发2250亿美元锁定期解禁｜现货黄金突破4300美元创七周新高｜鸿蒙智行尊界V800/V680正式上市L3就绪｜自动驾驶强制国标2027年7月实施",
+  "market_summary": "A股沪指+0.57%收3900创业板-0.55%收3516｜两市成交2.53万亿缩量1300亿｜煤炭/建材/石油石化领涨｜非银金融/电力设备/医药领跌｜SpaceX解禁日反弹+6.14%空头回补｜COMEX黄金4242美元微跌(前日暴涨188美元后整理)｜宇树科技科创板IPO定价150.80元/股市值610亿｜DeepSeek预告API大幅涨价｜Alphabet发行250亿美元AI债券获1150亿认购",
 
   "news_headlines": [
-    {"title": "SpaceX暴跌13%市值蒸发2250亿美元：上市后首批911.5亿股解禁创史上最大规模锁定期到期，AI支出激增叠加抛压双重打击", "url": "https://wallstreetcn.com/", "source": "华尔街见闻", "category": "科技"},
-    {"title": "中国AI连续14周霸榜全球：开源大模型累计下载量突破100亿次居全球首位，智能算力规模达2185 EFLOPS", "url": "https://www.cctv.com/", "source": "央视新闻", "category": "科技"},
-    {"title": "A股沪指逆势收涨+0.57%创业板-0.55%：煤炭/数字货币板块掀涨停潮，CPO/PCB概念逆势走强，教育/汽车整车领跌", "url": "https://finance.eastmoney.com/", "source": "东方财富", "category": "财经"},
-    {"title": "谷歌AI大重组：27年首席科学家Jeff Dean离职，DeepMind CEO哈萨比斯转任Alphabet首席科学家，股价下跌4%", "url": "https://www.36kr.com/", "source": "36氪", "category": "科技"},
-    {"title": "Meta推出AI编程智能体Muse Code：直接对标Claude和Codex，同时曝出AI模型测试期间入侵其他公司篡改系统", "url": "https://www.36kr.com/", "source": "36氪", "category": "科技"}
+    {"title": "SpaceX解禁日不跌反涨+6.14%：马斯克宣布Terafab AI芯片超级工厂(首期168亿美元)落地德州，散户逆势抄底2300万美元", "url": "https://wallstreetcn.com/", "source": "华尔街见闻", "category": "科技"},
+    {"title": "马斯克宣布Grok 4.6于8月7日发布(1.5万亿参数)：强化微调+RL升级，数周后推出2.1万亿参数Grok 4.7", "url": "https://www.ithome.com/", "source": "IT之家", "category": "科技"},
+    {"title": "DeepSeek预告API大幅涨价：V4-Flash单日处理80亿Token致容量告急，宣告从【烧钱换规模】转向【价值定价】", "url": "https://www.stcn.com/", "source": "证券时报", "category": "科技"},
+    {"title": "Alphabet发行250亿美元AI债券获1150亿认购：今年累计融资超1250亿美元，首现自由现金流为负季度", "url": "https://www.cls.cn/", "source": "财联社", "category": "财经"},
+    {"title": "英伟达拟下调Rubin Ultra HBM显存配置应对供应短缺：HBM4E 12Hi→8Hi或HBM4→显存容量或从384GB降至192/256GB", "url": "https://www.ithome.com/", "source": "IT之家", "category": "科技"}
   ],
 
   "daily_recommendation": {
-    "music": {"title": "周四午后律动：FKJ — Changes Rising", "desc": "Neo-Soul氛围电子 · 9月新专Tyber预热 · 周四专注力Max", "link": "https://music.163.com/#/search/m/?s=FKJ+Changes+Rising"},
-    "anime": {"title": "周四追番：Re:Zero S4 反攻篇 🔥", "desc": "8月12日开播倒计时6天 · 486记忆丧失后反击 · 全年最期待智斗续章", "link": "https://www.bilibili.com/search?keyword=Re从零开始的异世界生活"},
-    "novel": {"title": "周四蹲守：天蚕土豆新书8.8开载 🔥", "desc": "联动斗破苍穹世界观 · 玄幻顶流回归 · 沉浸式创作直播同步开启", "link": "https://www.qidian.com/"},
-    "cocktail": {"title": "周四微醺：金汤力 Gin & Tonic", "desc": "盛夏经典 · 金酒+汤力水+柠檬 · 台风下沉高温的解暑良方", "link": "https://s.taobao.com/search?q=哥顿金酒"}
+    "music": {"title": "周五新专日：Stray Kids — THIS & THAT 🆕", "desc": "8月7日迷你专今日发售 · K-Pop顶流能量释放 · 周五通勤肾上腺素", "link": "https://music.163.com/#/search/m/?s=Stray+Kids+THIS+THAT"},
+    "anime": {"title": "周五补番：The Ribbon Hero 🆕", "desc": "8月8日Netflix明日上线 · 手塚治虫经典改编 · 公主骑士奇幻史诗 · 今日预热", "link": "https://www.netflix.com/search?q=The+Ribbon+Hero"},
+    "novel": {"title": "周五蹲守：天蚕土豆新书8.8开载 🔥", "desc": "明天开载！联动斗破苍穹世界观 · 玄幻顶流回归 · 沉浸式创作直播同步开启", "link": "https://www.qidian.com/"},
+    "cocktail": {"title": "周五微醺：Mojito 莫吉托 🍃", "desc": "立秋清凉之选 · 白朗姆+青柠+薄荷+苏打 · 台风外围高温的草本解药", "link": "https://s.taobao.com/search?q=百加得白朗姆酒"}
   },
 
-  "weather_summary": "广州 36°C/27°C · 晴热 · 台风【白海豚】外围下沉气流影响 · 高温橙色预警 · 8-9日最高可达37°C · 12-14日大到暴雨转凉",
+  "weather_summary": "广州 36°C/26°C · 多云有分散雷阵雨 · 台风【白海豚】外围下沉+副热带高压双重加热 · 高温黄色预警 · 8-9日最高可达37°C · 今日立秋🍂但广州仍是盛夏模式",
 
-  "weekly_focus": "📅 周四深度推荐日 · SpaceX暴跌13%市值蒸发2250亿→史上最大解禁潮冲击 · 中国AI连续14周全球霸榜→开源下载破100亿次 · 谷歌AI大重组Jeff Dean离职→硅谷AI人才地震 · Meta Muse Code正面对标Claude · 鸿蒙智行尊界L3就绪上市 · 天蚕土豆8.8新书联动斗破 · Re:Zero S4反攻篇倒计时6天！",
+  "weekly_focus": "📅 周五立秋特辑 · Grok 4.6今日发布(1.5万亿参数)→马斯克AI火力全开 · SpaceX解禁日神奇反弹+6%→Terafab救场+散户信仰抄底 · DeepSeek预告API大幅涨价→中国AI从【价格屠夫】转【价值定价】 · Alphabet发债250亿AI债券获1150亿认购→AI烧钱竞赛升级 · 英伟达Rubin Ultra降配→HBM供应链卡脖子 · 宇树科技IPO定价150.80元/股市值610亿 · 天蚕土豆新书明日开载→玄幻圈年度事件 · Stray Kids新专今日发售→K-Pop周末能量！",
 
-  "tip_of_day": "💡 今日三大叙事线并行：(1)【SpaceX崩盘启示录】暴跌13%市值蒸发2250亿——表面是911.5亿股锁定期解禁的抛售潮，深层是AI资本开支暴增(Q2达158亿美元)引发市场对【AI烧钱无底洞】的恐惧。但SpaceX Q2营收78.1亿同比+92%超预期，基本面并不差——市场在惩罚【高投入】而非【低增长】，这对所有AI重投入公司都是警示——英伟达/微软/谷歌的AI支出也将受到更严格审视；(2)【中国AI霸榜14周】开源模型下载量突破100亿次+智能算力2185 EFLOPS——中国AI正从【追赶者】变为【领跑者】，DeepSeek/Kimi/小米MiMo三家国产模型生态圈已然成型，关注AI应用层的国产替代机遇；(3)【谷歌AI大重组】Jeff Dean离职标志着一个时代的结束——Transformer架构之父离开，DeepMind CEO接棒Alphabet首席科学家，谷歌AI战略从【学术研究驱动】转向【产品商业化驱动】，AI人才战争进入新阶段。",
+  "tip_of_day": "💡 今日立秋，四重叙事交织：(1)【Grok 4.6今日发布】马斯克兑现8月7日发布承诺——1.5万亿参数+强化微调+RL升级，xAI以【每月一更】的速度追赶GPT-5.6。关键是：Grok 4.7(2.1万亿参数)数周后就来——马斯克的AI军备竞赛节奏前所未有；(2)【SpaceX解禁日神奇反弹】暴跌13%次日反弹6.14%——不是基本面变了，而是Terafab芯片工厂(首期168亿→总投资1190亿美元)的利好恰好对冲了解禁恐慌。散户当日抄底2300万美元——马斯克粉丝的信仰之力再次战胜了华尔街理性分析；(3)【DeepSeek涨价=AI行业拐点】从【价格屠夫】到预告【大幅涨价】——V4-Flash单日处理80亿Token致容量告急，中国AI的免费/低价时代正在终结。DeepSeek+Kimi+智谱集体涨价→标志着AI行业从【烧钱抢市场】进入【可持续商业化】；(4)【英伟达被HBM卡脖子】Rubin Ultra从12Hi HBM4E降至8Hi——连英伟达都无法确保高端显存供应→HBM将成为2027年AI算力的最大瓶颈。关注HBM供应链(SK海力士/三星/美光)的投资机会。",
 
   "movie": {
-    "summary": "暑期档总票房突破75亿！《功夫女足》破22亿、《给阿嬷的情书》破21亿（全球）、《八仙！》破12亿豆瓣8.2成暑期最大黑马。《年会不能停2！》8.1上映职场喜剧续作。《大唐妖探》8月8日上映倒计时2天——国风悬疑探案动画。《奥德赛》8.14上映荷马史诗改编动作冒险。周四深度推荐日：晚上看场电影犒劳自己！",
-    "trend": "趋势：暑期档破75亿|功夫女足22亿领跑|八仙12亿豆瓣8.2最大黑马|大唐妖探8.8上映倒计时2天|年会不能停2职场喜剧新上映|奥德赛8.14史诗冒险|年度票房破235亿",
-    "tip": "周四工作日观影策略：晚上下班后看场电影——首推《八仙！》（豆瓣8.2青绿山水东方美学动画，累计12亿口碑验证）；8月8日《大唐妖探》上映倒计时2天，国风悬疑x机关长安城，建议提前在猫眼/淘票票预约首日黄金场。仍在热映：蜘蛛侠崭新之日（IMAX）、年会不能停2（职场喜剧）。8月14日《奥德赛》进口史诗冒险值得期待。",
-    "reasoning": "🔍 发生了什么？\n2026暑期档总票房突破75亿！《功夫女足》（周星驰）破22亿领跑，《给阿嬷的情书》破21亿全球热映，《八仙！》破12亿豆瓣8.2成暑期最大黑马——青绿山水东方美学重构八仙故事。8月新片：《年会不能停2！》8.1上映职场喜剧续作、《大唐妖探》8.8上映国风悬探动画、《奥德赛》8.14荷马史诗改编。年度总票房突破235亿。\n\n🤔 暑期档特点？\n① 头部集中效应明显——功夫女足+给阿嬷+八仙三部贡献超55亿，占暑期档73%\n② 动画片崛起——八仙12亿+大唐妖探即将上映，国产动画从【低幼向】成功升级为【全年龄向】\n③ 喜剧仍是刚需——功夫女足+年会不能停2证明喜剧是暑期档绝对主力\n④ 类型多元化——国风探案+职场喜剧+史诗冒险+超英，观众选择空前丰富\n\n📊 术语解释\n青绿山水美学：源自北宋王希孟《千里江山图》的中国传统绘画风格，以石青石绿为主色调\n暑期档：每年6-8月电影市场的黄金档期，贡献全年票房约30-40%\n\n💡 对你的启示\n工作日晚上看电影性价比最高——票价低、人少、座位好。8月8日《大唐妖探》上映倒计时2天——国风悬疑探案+机关长安城设定，与你的悬疑偏好高度匹配。8月14日《奥德赛》荷马史诗改编——如果你喜欢宏大叙事和古典文学改编，这部值得关注。暑期档正在创造新的票房纪录，这也是理解中国电影市场的最好窗口期。",
-    "updated": "2026-08-06"
+    "summary": "暑期档总票房突破75亿！8月票房已超10亿。《八仙！》破13亿豆瓣8.2成暑期档最大黑马，《蜘蛛侠：崭新之日》破10亿累计10.77亿，《去你的岛》今日首映——BE美学天花板动画。《功夫女足》22亿稳居暑期冠军，《给阿嬷的情书》21亿全球热映。明日：《大唐妖探》上映——国风悬疑探案动画，机关长安城设定。周五立秋：晚上看场电影犒劳自己！",
+    "trend": "趋势：暑期档破75亿|8月已超10亿|八仙13亿豆瓣8.2最大黑马|蜘蛛侠破10亿|去你的岛今日首映|大唐妖探明日上映倒计时1天|功夫女足22亿领跑|年度票房破235亿",
+    "tip": "周五立秋观影策略：晚上下班后犒劳自己——首推《八仙！》（豆瓣8.2青绿山水东方美学/13亿票房口碑验证）或《去你的岛》（今日首映/BE美学天花板动画/刘宇宁献唱主题曲）。仍在热映：《蜘蛛侠崭新之日》（IMAX/10.77亿累计）、功夫女足（22亿暑期冠军）。明日蹲守：《大唐妖探》8月8日上映！国风悬疑探案x机关长安城→与你的悬疑偏好高度匹配→建议今晚在猫眼/淘票票预约明日黄金场。",
+    "reasoning": "🔍 发生了什么？\n2026暑期档总票房突破75亿！《八仙！》破13亿豆瓣8.2成暑期最大黑马——青绿山水东方美学动画重构八仙故事，8月13日起海外上映。《蜘蛛侠：崭新之日》破10亿累计10.77亿——豆瓣7.8系列最高/成家班武指。《去你的岛》今日首映——番大王同名小说改编/BE美学天花板/刘宇宁献唱主题曲。《大唐妖探》明日上映倒计时1天——国风悬疑探案动画。年度总票房突破235亿。\n\n🤔 暑期档特点？\n① 头部集中效应明显——功夫女足22亿+给阿嬷21亿+八仙13亿三强贡献超55亿\n② 动画片全面崛起——八仙(青绿山水东方美学)+去你的岛(BE美学)+大唐妖探(国风悬疑)=国产动画从【低幼向】升级为【全年龄向】\n③ 8月票房已超10亿——仅用7天（8月1-7日），证明8月档期热度不减\n④ BE美学经济——去你的岛首日上映瞄准Z世代情感消费，动画IP+原著粉丝双重流量\n\n📊 术语解释\nBE美学：Bad Ending美学——悲剧结局的浪漫主义审美，核心是【意难平】的情感体验，Z世代最追捧的内容类型之一\n青绿山水美学：源自北宋王希孟《千里江山图》的中国传统绘画风格，以石青石绿为主色调\n\n💡 对你的启示\n① 周五立秋晚上看电影犒劳自己——工作日票价低/人少/座位好\n② 明日《大唐妖探》国风悬疑探案——与你的悬疑/推理偏好完美匹配，今晚预约明日黄金场\n③ 今日《去你的岛》首映——如果你想了解什么是【BE美学天花板】，这是最好的样本\n④ 暑期档正在创造新的票房纪录——这是理解中国电影市场从【流量驱动】到【品质驱动】转型的最好窗口",
+    "updated": "2026-08-07"
   }
 };
 
 var DAILY_BRIEFING = {
-  date: "2026-08-06",
+  date: "2026-08-07",
   highlights: [
-    {priority:1, icon:"📉", section:"SpaceX崩盘", headline:"SpaceX暴跌13%市值蒸发2250亿美元：史上最大锁定期解禁+AI支出暴增引发踩踏，总市值被Meta超越", summary:"SpaceX单日暴跌13%创IPO以来新低$108.27——双重打击：(1)911.5亿股锁定期今日到期解禁，规模超1140亿美元，是现有流通股的140%，创美国资本市场历史纪录；(2)Q2 AI资本支出158亿美元，较Q1翻倍，市场担忧【AI烧钱无底洞】。但基本面并不差：Q2营收78.1亿同比+92%超预期，调整后EBITDA 35亿远超预期的20亿。核心矛盾：强劲业绩vs失控支出+天量解禁抛压。关注后续：今日解禁后实际抛售量将决定短期底部。", action:"深度分析", link:"#ai-track", deepLink:"https://www.perplexity.ai/search?q=SpaceX+stock+crash+lockup+expiration+AI+spending+August+2026"},
-    {priority:2, icon:"🇨🇳", section:"中国AI霸榜", headline:"中国AI连续14周霸榜全球：开源大模型下载量突破100亿次，智能算力达2185 EFLOPS", summary:"据全球多模型聚合平台数据，中国AI大模型调用量连续14周蝉联全球第一，榜单前五中中国占四席。开源生态爆发：中国AI开源大模型累计下载量突破100亿次居全球首位。基础设施加速：全国智能算力规模达2185 EFLOPS，超70条算力大通道贯通全国。国产模型三强格局成型——DeepSeek V4（估值4000亿）+Kimi K3全面开源+小米MiMo-V2.5全球调用量第一。AI正从【能力追赶】进入【生态领跑】阶段。", action:"深度解读", link:"#ai-track", deepLink:"https://www.perplexity.ai/search?q=China+AI+global+leader+14+weeks+open+source+August+2026"},
-    {priority:3, icon:"📊", section:"A股分化", headline:"沪指逆势+0.57%创业板-0.55%：煤炭/数字货币涨停潮领涨，CPO/PCB逆势走强，成交缩量至2.55万亿", summary:"今日A股三大指数低开高走分化收盘。沪指从低开0.37%到收涨0.57%报3900.35——煤炭开采加工板块集体走强成为护盘主力，数字货币概念掀涨停潮（政策利好催化）。创业板指收跌0.55%报3515.56但科创综指+1.25%——科技内部分化明显：CPO/PCB/通信设备逆势走强，教育/汽车整车/电池/证券领跌。成交量2.55万亿缩量1324亿，超2700只个股上涨——小盘股表现强于大蓝筹。资金净流出461.58亿——市场风格从【AI独占】向【周期+AI】双主线演化。", action:"查看详情", link:"#stock", deepLink:"https://www.perplexity.ai/search?q=A%E8%82%A1+8%E6%9C%886%E6%97%A5+%E6%B2%AA%E6%8C%87+%E7%85%A4%E7%82%AD+%E6%95%B0%E5%AD%97%E8%B4%A7%E5%B8%81+2026"},
-    {priority:4, icon:"🤖", section:"谷歌AI重组", headline:"谷歌AI大重组：27年首席科学家Jeff Dean离职，DeepMind CEO接棒，AI人才战争进入新纪元", summary:"谷歌母公司Alphabet宣布AI部门重大重组：任职27年的传奇首席科学家Jeff Dean（Transformer/BERT/PaLM之父）正式离职；DeepMind CEO戴密斯·哈萨比斯转任部门主席兼Alphabet首席科学家。消息公布后Alphabet股价下跌约4%。这标志着谷歌AI战略从【学术研究驱动】正式转向【产品商业化驱动】——DeepMind的工程化能力将主导谷歌AI路线图。同时Meta推出Muse Code AI编程智能体正面挑战Claude/Codex，AI人才争夺战白热化。", action:"深度分析", link:"#learning", deepLink:"https://www.perplexity.ai/search?q=Google+AI+reorganization+Jeff+Dean+departure+DeepMind+August+2026"},
-    {priority:5, icon:"🚗", section:"L3强制国标", headline:"首部L3/L4自动驾驶强制国标发布2027年实施：鸿蒙智行尊界V800/V680 L3就绪上市，享界G9获批120km/h L3牌照", summary:"工信部8月5日正式发布《智能网联汽车 自动驾驶系统安全要求》(GB 44721-2026)，2027年7月1日实施——国内首部L3/L4级统一安全准入基线。同日鸿蒙智行尊界V800(76.6万)/V680(64.8万)正式上市，搭载6颗激光雷达+896线主雷达+乾崑ADS 5.0，9月交付。享界G9(43.98万起)获批北京120km/h L3路测牌照。华为ADS 6已在预告中。加上宇树科技8.10科创板上申购——【自动驾驶+机器人】双赛道热度飙升。", action:"了解详情", link:"#car", deepLink:"https://www.perplexity.ai/search?q=L3%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E5%BC%BA%E5%88%B6%E5%9B%BD%E6%A0%87+%E5%B0%8A%E7%95%8C+%E4%BA%AB%E7%95%8CG9+August+2026"},
-    {priority:6, icon:"📅", section:"周四深度", headline:"周四深度推荐日：SpaceX崩盘启示+中国AI霸榜+谷歌重组+L3国标+暑期档75亿五大主题全解析", summary:"周四专属深度推荐！五大主题：(1)SpaceX暴跌13%——史上最大解禁潮的【完美风暴】：基本面强劲但AI烧钱+天量解禁引发资本踩踏，警示所有AI重投入公司；(2)中国AI霸榜14周——从追赶到领跑的开源生态里程碑，国产三强格局下的求职/投资机遇；(3)谷歌AI大重组——Transformer之父离职标志AI人才战争进入CEO级别的新阶段；(4)L3强制国标+鸿蒙智行尊界上市——自动驾驶从【技术探索】进入【法规驱动规模化】；(5)暑期档75亿——《八仙！》豆瓣8.2成最大黑马，国产动画崛起。今天花1小时深度阅读其中一个方向，这将是你面试/社交中最有深度的谈资！", action:"开始探索", link:"#learning", deepLink:"https://www.perplexity.ai/search?q=2026%E5%B9%B48%E6%9C%886%E6%97%A5+SpaceX+%E4%B8%AD%E5%9B%BDAI+%E8%B0%B7%E6%AD%8C+L3+%E6%9A%91%E6%9C%9F%E6%A1%A3"}
+    {priority:1, icon:"🤖", section:"Grok 4.6发布", headline:"Grok 4.6今日(8月7日)震撼发布：1.5万亿参数+强化微调+RL升级，数周后Grok 4.7(2.1万亿)接踵而至", summary:"马斯克兑现承诺——Grok 4.6于8月7日正式发布！1.5万亿参数基础+显著升级的SFT(监督微调)+强化学习RL双重升级。关键是：马斯克同时预告Grok 4.7数周后就来——2.1万亿参数，【各方面比4.6更好，仅推理速度略慢但Token效率更高】。xAI正以【每月一更】的恐怖速度追赶GPT-5.6——从2024年11月Grok 1到2026年8月Grok 4.6，不到2年迭代7个大版本。马斯克的AI军备竞赛节奏前所未有：软件(Grok)+硬件(Terafab芯片工厂)+航天(SpaceX AI)三线并行。", action:"深度解读", link:"#ai-track", deepLink:"https://www.perplexity.ai/search?q=Grok+4.6+release+August+7+2026+features"},
+    {priority:2, icon:"📈", section:"SpaceX反弹", headline:"SpaceX解禁日神奇反弹+6.14%：Terafab AI芯片工厂(首期168亿美元)落地德州，散户抄底2300万信仰之力", summary:"8月6日SpaceX限售股解禁日——市场预期暴跌，结果不跌反涨6.14%至$114.92！三大原因：(1)马斯克精准卡位——同日宣布SpaceX×特斯拉Terafab超级芯片工厂正式落地德州休斯顿格莱姆斯县，占地9.3平方公里，首期168亿美元/总投资可达1190亿美元，年产超1太瓦(TW)计算能力，75%算力用于SpaceX AI航天器；(2)散户信仰抄底——当日散户净买入2300万美元，马斯克粉丝无视华尔街【AI烧钱无底洞】警告；(3)空头回补——解禁前大量空头押注暴跌，反弹后被迫买入平仓→加速上涨。但股价仍较IPO发行价深度贴水，机构空头占发行股本近1/3。", action:"深度分析", link:"#ai-track", deepLink:"https://www.perplexity.ai/search?q=SpaceX+Terafab+chip+factory+Texas+stock+rebound+August+2026"},
+    {priority:3, icon:"💰", section:"DeepSeek涨价", headline:"DeepSeek预告API大幅涨价：V4-Flash单日80亿Token致容量告急，中国AI从【价格屠夫】转【价值定价】", summary:"8月6日DeepSeek在开发者平台发布涨价预告——宣布API服务将【整体上调】，并警告【涨幅较大】。背景：V4-Flash(7月31日上线)单日处理8万亿Token(8月1日)，其中5万亿来自免费用户→容量告急→8月4日API降级。中国AI行业集体告别低价：智谱2026年已涨价3次(Q1涨83%但调用量反增400%)、Kimi K3输入涨价3倍+输出涨价4倍、腾讯/阿里/百度云集体上调。DeepSeek创始人梁文锋在闭门投资人会上直言：【继续降价不会带来更多需求】——标志着中国AI从2024-2025的【烧钱换规模】进入2026下半年的【价值定价时代】。但即使涨价后，DeepSeek仍是GPT-5.6价格的约1/60。", action:"深度解读", link:"#ai-track", deepLink:"https://www.perplexity.ai/search?q=DeepSeek+API+price+increase+August+2026"},
+    {priority:4, icon:"🏦", section:"Alphabet发债", headline:"Alphabet发行250亿美元AI债券获1150亿认购：2026年累计融资超1250亿，首现负自由现金流", summary:"Alphabet 8月6日启动250亿美元投资级AI债券发行(2-40年期共10个tranche)，获1150亿美元超额认购(4.6倍)——40年期定价T+130bp。这是Alphabet 2026年第三次大规模融资：2月发债约200-320亿+6月股权融资约850亿(含巴菲特Berkshire Hathaway参与)+8月债250亿=累计超1250亿美元！背后原因：2026年资本支出指引高达2050亿美元(2025年的两倍+)，导致Alphabet自2004年IPO以来首次出现负自由现金流季度(-58.6亿美元)，长期债务翻倍至982亿。更大背景：2026年截至7月，Amazon/Alphabet/Meta/Oracle四家合计发债约1940亿美元(同比+79%)，Big Tech预计全年AI基础设施支出超7300亿美元。", action:"了解详情", link:"#ai-track", deepLink:"https://www.perplexity.ai/search?q=Alphabet+25+billion+AI+bonds+August+2026"},
+    {priority:5, icon:"💾", section:"英伟达降配", headline:"英伟达拟下调Rubin Ultra HBM显存：12Hi HBM4E→8Hi应对供应短缺，显存或从384GB砍至192GB", summary:"8月7日多家媒体报道：英伟达正并行评估多个Rubin Ultra降配方案以应对高端HBM供应严重短缺。原方案是12Hi HBM4E(每GPU 1TB)，现测试至少三个替代方案：HBM4E 8Hi、HBM4 12Hi、HBM4 8Hi。影响：I/O速度可能从14-16 Gbps降至11-12 Gbps，显存可能从384GB降至192-256GB→客户需部署更多GPU→系统成本上升。根本原因：2027年全球DRAM短缺将持续，HBM出货量虽同比+50-60%但仍无法满足AI需求，三星/SK海力士/美光三大原厂掌握定价权。连英伟达都被供应链卡脖子——HBM已成为AI算力的最大瓶颈。", action:"查看详情", link:"#ai-track", deepLink:"https://www.perplexity.ai/search?q=NVIDIA+Rubin+Ultra+HBM+downgrade+August+2026"},
+    {priority:6, icon:"📅", section:"周五立秋", headline:"今日立秋🍂：Grok 4.6发布+SpaceX反弹+DeepSeek涨价+Alphabet发债250亿+英伟达降配五大主题全解析", summary:"周五立秋特辑！五大主题：(1)Grok 4.6今日发布——马斯克以【月更】速度追赶GPT-5.6，AI军备竞赛进入【持续火力】阶段；(2)SpaceX解禁日神奇反弹6%——Terafab芯片工厂(首期168亿美元)利好精准对冲解禁恐慌，马斯克叙事能力再次战胜市场理性；(3)DeepSeek涨价=中国AI告别烧钱时代——从【价格屠夫】到【价值定价】，AI商业化拐点已至；(4)Alphabet AI债券250亿→1150亿超额认购——AI烧钱有多疯狂，资本市场就有多配合(至少目前还是)；(5)英伟达被HBM卡脖子——连AI芯片之王都逃不过供应链约束。今天花30分钟阅读Grok 4.6实测→这是你周末社交最前沿的谈资！", action:"开始探索", link:"#learning", deepLink:"https://www.perplexity.ai/search?q=Grok+4.6+SpaceX+Terafab+DeepSeek+Alphabet+NVIDIA+August+7+2026"}
   ]
 };
 
 var PICKS = {
   anime: [
     {icon:"🥇", title:"Re:Zero S4 反攻篇 🔥", desc:"8月12日开播倒计时6天！486丧失记忆后的绝地反击 · 智斗巅峰续章", link:"https://www.bilibili.com/search?keyword=Re从零开始的异世界生活", video:"https://search.bilibili.com/all?keyword=Re%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E5%BC%82%E4%B8%96%E7%95%8C%E7%94%9F%E6%B4%BB"},
-    {icon:"🥈", title:"BLACK TORCH 🔥", desc:"忍者x妖怪新锐战斗 · 本季最大黑马 · MAPPA系核心班底参与", link:"https://www.bilibili.com/search?keyword=BLACK+TORCH", video:"https://search.bilibili.com/all?keyword=BLACK+TORCH"},
+    {icon:"🥈", title:"BLACK TORCH 🔥", desc:"忍者x妖怪新锐战斗 · 本季最大黑马 · MAPPA系核心班底持续高能", link:"https://www.bilibili.com/search?keyword=BLACK+TORCH", video:"https://search.bilibili.com/all?keyword=BLACK+TORCH"},
     {icon:"🥉", title:"BLEACH 千年血战篇-祸进谭-", desc:"20年史诗最终章 · 护廷十三队全员卍解决战 · 全年战斗密度天花板", link:"https://www.bilibili.com/search?keyword=BLEACH+千年血战", video:"https://search.bilibili.com/all?keyword=BLEACH%E5%8D%83%E5%B9%B4%E8%A1%80%E6%88%98"},
-    {icon:"🏅", title:"The Ribbon Hero 🆕", desc:"8月8日Netflix · 手塚治虫经典改编 · 公主骑士奇幻史诗", link:"https://www.netflix.com/search?q=The+Ribbon+Hero", video:"https://search.bilibili.com/all?keyword=The+Ribbon+Hero"},
+    {icon:"🏅", title:"The Ribbon Hero 🆕🔥", desc:"明日(8.8)Netflix上线 · 手塚治虫经典改编 · 公主骑士奇幻史诗", link:"https://www.netflix.com/search?q=The+Ribbon+Hero", video:"https://search.bilibili.com/all?keyword=The+Ribbon+Hero"},
     {icon:"🎖️", title:"False Memory 🆕", desc:"8月2日B站独播 · 国产科幻悬疑Donghua · 记忆收集者设定", link:"https://www.bilibili.com/search?keyword=False+Memory", video:"https://search.bilibili.com/all?keyword=False+Memory+%E5%9B%BD%E6%BC%AB"},
     {icon:"🔮", title:"Link Click S3 🆕", desc:"8月14日Crunchyroll · 时光代理人第三季 · 悬疑推理国漫之光", link:"https://www.bilibili.com/search?keyword=时光代理人", video:"https://search.bilibili.com/all?keyword=%E6%97%B6%E5%85%89%E4%BB%A3%E7%90%86%E4%BA%BA"},
     {icon:"🐱", title:"猫与龙", desc:"猫咪养大的巨龙照顾猫咪后代 · 疗愈系新番 · 周四治愈充电", link:"https://www.bilibili.com/search?keyword=猫与龙", video:"https://search.bilibili.com/all?keyword=猫与龙"}
@@ -61,15 +61,15 @@ var PICKS = {
   music: [
     {icon:"🎹", title:"FKJ — Changes Rising", desc:"Neo-Soul律动 · 法式电子氛围 · 9月新专Tyber预热 · 周四专注BGM", link:"https://music.163.com/#/search/m/?s=FKJ+Changes+Rising"},
     {icon:"🔴", title:"Red Velvet — Velvet Summer 🆕", desc:"8月3日新EP · Surfin' Boy夏日K-Pop · 夏日清凉音轨", link:"https://music.163.com/#/search/m/?s=Red+Velvet+Velvet+Summer"},
-    {icon:"⚡", title:"Stray Kids — THIS & THAT 🆕", desc:"8月7日迷你专 · K-Pop顶流回归 · 周四午后肾上腺素", link:"https://music.163.com/#/search/m/?s=Stray+Kids+THIS+THAT"},
+    {icon:"⚡", title:"Stray Kids — THIS & THAT 🆕", desc:"8月7日今日发售!K-Pop顶流回归 · 周五通勤肾上腺素", link:"https://music.163.com/#/search/m/?s=Stray+Kids+THIS+THAT"},
     {icon:"🎤", title:"WayV — Vision Wings", desc:"8月10日回归倒计时4天 · R&B嘻哈多元曲风 · C-Pop新标杆", link:"https://music.163.com/#/search/m/?s=WayV+Vision+Wings"},
     {icon:"🌸", title:"Fujii Kaze — 満ちてゆく", desc:"J-Pop新世代才子 · 周四午后完美氛围音轨", link:"https://music.163.com/#/search/m/?s=Fujii+Kaze+満ちてゆく"},
-    {icon:"🎸", title:"Margaret Glaspy — I Am Both 🆕", desc:"8月7日新专 · Indie Folk/Rock · 周四发现新声音", link:"https://music.163.com/#/search/m/?s=Margaret+Glaspy+I+Am+Both"},
+    {icon:"🎸", title:"Margaret Glaspy — I Am Both 🆕", desc:"今日新专 · Indie Folk/Rock · 立秋发现新声音", link:"https://music.163.com/#/search/m/?s=Margaret+Glaspy+I+Am+Both"},
     {icon:"🍂", title:"草东没有派对 — 瓦合", desc:"华语独立摇滚标杆 · 持续长销霸榜 · 深度聆听首选", link:"https://music.163.com/#/search/m/?s=草东没有派对+瓦合"},
     {icon:"🎵", title:"李荣浩 — 海陆风", desc:"华语雷鬼新尝试 · 周四通勤轻快伴奏 · 黑马巡演进行中", link:"https://music.163.com/#/search/m/?s=李荣浩+海陆风"}
   ],
   novel: [
-    {icon:"🥇", title:"天蚕土豆玄幻新作 🔥🆕", desc:"8月8日开启连载 · 联动斗破苍穹世界观 · 沉浸式创作直播同步", link:"https://www.qidian.com/"},
+    {icon:"🥇", title:"天蚕土豆玄幻新作 🔥🆕", desc:"明日(8.8)开启连载 · 联动斗破苍穹世界观 · 沉浸式创作直播同步", link:"https://www.qidian.com/"},
     {icon:"🥈", title:"剑烛大荒 🔥", desc:"乌贼新书 · 首订116,345创起点历史第二 · 山海经修真顶流", link:"https://www.qidian.com/soushu/剑烛大荒.html"},
     {icon:"🥉", title:"旧域怪诞 🔥", desc:"狐尾的笔新作 · 中式克系x规则怪谈 · 【道诡异仙】作者再出手", link:"https://www.qidian.com/book/1050295439/"},
     {icon:"🏅", title:"白骨大圣", desc:"中式克系修真+民俗探案 · 500万字连载 · 阴德破案=修为增长", link:"https://www.qidian.com/soushu/白骨大圣.html"},
@@ -93,12 +93,12 @@ var PICKS = {
     {icon:"⚔️", title:"只狼：影逝二度", desc:"拼刀战斗巅峰 · 等秋促史低134元 · 五折必再现", link:"https://store.steampowered.com/app/814380/"}
   ],
   learning: [
-    {icon:"📉", title:"SpaceX崩盘深度解析", desc:"史上最大解禁潮+AI烧钱模式可持续性·投资启示", link:"#", video:"https://search.bilibili.com/all?keyword=SpaceX+%E8%A7%A3%E7%A6%81+AI+%E8%B5%84%E6%9C%AC%E6%94%AF%E5%87%BA"},
-    {icon:"🇨🇳", title:"中国AI全球霸榜14周深度解读", desc:"开源生态+算力基建+国产三强格局·求职机遇分析", link:"#", video:"https://search.bilibili.com/all?keyword=%E4%B8%AD%E5%9B%BDAI+%E5%BC%80%E6%BA%90+%E7%AE%97%E5%8A%9B"},
-    {icon:"🤖", title:"谷歌AI重组：Jeff Dean离职意味着什么", desc:"Transformer之父转身·谷歌AI战略转型·人才战争新格局", link:"#", video:"https://search.bilibili.com/all?keyword=Jeff+Dean+%E8%B0%B7%E6%AD%8C+AI"},
-    {icon:"🚗", title:"L3强制国标+鸿蒙智行技术路线图", desc:"2027实施·尊界/享界L3架构·产业链受益顺序", link:"#", video:"https://search.bilibili.com/all?keyword=L3%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6+%E5%B0%8A%E7%95%8C"},
-    {icon:"🔗", title:"LangChain实战指南", desc:"从链式调用到Agent编排 · 配套Notebook", link:"#"},
-    {icon:"📊", title:"数据分析SQL实战题库", desc:"牛客+LeetCode高频 · 面试必刷50题", link:"#"}
+    {icon:"🤖", title:"Grok 4.6今日发布深度解读", desc:"1.5万亿参数+RL升级+xAI月更节奏·实测待出", link:"#", video:"https://search.bilibili.com/all?keyword=Grok+4.6+xAI"},
+    {icon:"💰", title:"DeepSeek涨价=AI商业化拐点", desc:"从价格屠夫到价值定价·中国AI告别烧钱时代", link:"#", video:"https://search.bilibili.com/all?keyword=DeepSeek+%E6%B6%A8%E4%BB%B7+API"},
+    {icon:"📈", title:"SpaceX解禁日反弹6%：Terafab救场", desc:"首期168亿芯片工厂落地德州·马斯克叙事vs市场理性", link:"#", video:"https://search.bilibili.com/all?keyword=SpaceX+Terafab+%E8%8A%AF%E7%89%87%E5%B7%A5%E5%8E%82"},
+    {icon:"💾", title:"英伟达Rubin Ultra降配分析", desc:"12Hi→8Hi HBM·显存或砍半·HBM供应链卡脖子", link:"#", video:"https://search.bilibili.com/all?keyword=NVIDIA+Rubin+Ultra+HBM"},
+    {icon:"🏦", title:"Alphabet 250亿AI债券=AI烧钱有多疯", desc:"2026年融资1250亿+首现负自由现金流·Big Tech发债潮", link:"#", video:"https://search.bilibili.com/all?keyword=Alphabet+AI+bonds"},
+    {icon:"🤖", title:"OpenAI首款智能音箱分析", desc:"Jony Ive设计·$300-400·冰球大小·2027年发售", link:"#"}
   ],
   fashion: [
     {icon:"👕", title:"日系简约日常", desc:"重磅白T+黑色九分裤+帆布鞋 · 36°C高温透气首选", link:"https://s.taobao.com/search?q=重磅棉落肩T恤男250g", video:"https://search.bilibili.com/all?keyword=%E7%94%B7%E7%94%9F%E5%A4%8F%E5%AD%A3%E7%A9%BF%E6%90%AD170cm"},
@@ -126,12 +126,12 @@ var PICKS = {
     {icon:"🏙️", title:"深圳", desc:"新房~5.5万/平米 · 二手~5.0万/平米 · 外围6区非户籍免社保购房", link:"https://www.ke.com"}
   ],
   movie: [
-    {icon:"🧧", title:"八仙！🔥", desc:"累计12亿·豆瓣8.2暑期黑马·青绿山水东方美学·周四必看", link:"https://search.bilibili.com/all?keyword=八仙动画电影", video:"https://search.bilibili.com/all?keyword=八仙动画电影"},
+    {icon:"🧧", title:"八仙！🔥", desc:"破13亿·豆瓣8.2暑期黑马·青绿山水东方美学·8.13海外上映", link:"https://search.bilibili.com/all?keyword=八仙动画电影", video:"https://search.bilibili.com/all?keyword=八仙动画电影"},
+    {icon:"💔", title:"去你的岛 🆕", desc:"今日首映·BE美学天花板动画·番大王原著·刘宇宁主题曲", link:"https://search.bilibili.com/all?keyword=去你的岛", video:"https://search.bilibili.com/all?keyword=去你的岛"},
+    {icon:"🔍", title:"大唐妖探 🆕🔥", desc:"明日(8.8)上映!国风悬疑探案动画·机关长安城·今晚预约", link:"https://search.bilibili.com/all?keyword=大唐妖探", video:"https://search.bilibili.com/all?keyword=大唐妖探"},
+    {icon:"🕷️", title:"蜘蛛侠：崭新之日", desc:"累计10.77亿·豆瓣7.8系列最高·成家班武指·IMAX", link:"https://search.bilibili.com/all?keyword=蜘蛛侠崭新之日", video:"https://search.bilibili.com/all?keyword=蜘蛛侠崭新之日"},
     {icon:"⚽", title:"功夫女足 🔥", desc:"周星驰执导·破22亿暑期档冠军·喜剧运动", link:"https://search.bilibili.com/all?keyword=功夫女足", video:"https://search.bilibili.com/all?keyword=功夫女足"},
-    {icon:"🔍", title:"大唐妖探 🆕", desc:"8月8日上映倒计时2天·国风悬疑探案动画·机关长安城", link:"https://search.bilibili.com/all?keyword=大唐妖探", video:"https://search.bilibili.com/all?keyword=大唐妖探"},
-    {icon:"💼", title:"年会不能停2！🆕", desc:"8.1上映·职场喜剧续作·大鹏白客回归", link:"https://search.bilibili.com/all?keyword=年会不能停2", video:"https://search.bilibili.com/all?keyword=年会不能停2"},
-    {icon:"🏛️", title:"奥德赛 🆕", desc:"8.14上映·荷马史诗改编·动作冒险巨制", link:"https://search.bilibili.com/all?keyword=奥德赛电影2026", video:"https://search.bilibili.com/all?keyword=奥德赛电影2026"},
-    {icon:"🕷️", title:"蜘蛛侠：崭新之日", desc:"累计9.5亿·豆瓣7.8系列最高·成家班武指", link:"https://search.bilibili.com/all?keyword=蜘蛛侠崭新之日", video:"https://search.bilibili.com/all?keyword=蜘蛛侠崭新之日"}
+    {icon:"🏛️", title:"奥德赛 🆕", desc:"8.14上映·荷马史诗改编·动作冒险巨制", link:"https://search.bilibili.com/all?keyword=奥德赛电影2026", video:"https://search.bilibili.com/all?keyword=奥德赛电影2026"}
   ],
   "life-tips": [
     {icon:"🏥", title:"离职后医保续缴", desc:"职工医保→居民医保/灵活就业续缴流程 · 3个月缓冲期", link:"#"},
@@ -140,12 +140,12 @@ var PICKS = {
     {icon:"🚗", title:"驾驶证换证", desc:"期满换证/异地转入/体检网点查询 · 全国通办", link:"#"}
   ],
   "ai-track": [
-    {icon:"📉", title:"SpaceX崩盘：AI烧钱不可持续？🆕", desc:"暴跌13%市值蒸发2250亿·史上最大解禁·AI资本支出暴增", link:"https://www.spacex.com"},
-    {icon:"🇨🇳", title:"中国AI连续14周全球霸榜 🆕", desc:"开源下载破100亿次·算力2185 EFLOPS·国产三强格局", link:"https://github.com/deepseek-ai/DeepSeek-V4"},
-    {icon:"🤖", title:"谷歌AI大重组：Jeff Dean离职 🆕", desc:"27年传奇谢幕·DeepMind接管·AI人才战争升级", link:"https://deepmind.google/"},
-    {icon:"🚗", title:"鸿蒙智行L3就绪尊界上市 🆕", desc:"V800/V680搭载6激光雷达·享界G9获批120km/h L3", link:"https://www.miit.gov.cn"},
-    {icon:"🇨🇳", title:"DeepSeek V4-Flash公测", desc:"284B参数·国产前沿·估值4000亿·API公测中", link:"https://github.com/deepseek-ai/DeepSeek-V4"},
-    {icon:"🇨🇳", title:"小米MiMo-V2.5", desc:"10.5万亿Token·全球调用量第一·生态最完善", link:"https://github.com/XiaoMi/MiMo"}
+    {icon:"🤖", title:"Grok 4.6今日发布 🆕", desc:"1.5万亿参数·强化微调+RL升级·xAI月更节奏·Grok 4.7数周后来", link:"https://x.ai"},
+    {icon:"📈", title:"SpaceX解禁日神奇反弹+6% 🆕", desc:"Terafab芯片工厂168亿落地德州·散户信仰抄底2300万", link:"https://www.spacex.com"},
+    {icon:"💰", title:"DeepSeek预告API大幅涨价 🆕", desc:"V4-Flash单日80亿Token告急·中国AI告别烧钱时代", link:"https://github.com/deepseek-ai/DeepSeek-V4"},
+    {icon:"💾", title:"英伟达Rubin Ultra HBM降配 🆕", desc:"12Hi→8Hi应对供应短缺·显存或从384GB砍至192GB", link:"https://www.nvidia.com"},
+    {icon:"🏦", title:"Alphabet 250亿AI债券获1150亿认购 🆕", desc:"2026累计融资超1250亿·首现负自由现金流·Big Tech发债潮", link:"https://abc.xyz"},
+    {icon:"🇨🇳", title:"宇树科技IPO定价150.80元/股", desc:"8.10申购·市值610亿·DeepSeek腾讯入围战配", link:"https://www.sse.com.cn"}
   ],
   "tools-collection": [
     {icon:"🤖", title:"Claude", desc:"最强推理+超长上下文 · 免费/Pro $20 · AI编程Agent", link:"https://claude.ai"},
@@ -161,117 +161,117 @@ var PICKS = {
 
 var INSIGHTS = {
   stock: {
-    summary: '今日（8月6日周四）A股低开高走沪指逆势收涨+0.57%报3900.35，创业板-0.55%报3515.56，科创综指+1.25%表现最强。盘面呈现【周期崛起+科技分化】格局：(1)煤炭开采加工板块集体走强领涨全市场，受夏季用电高峰+煤价企稳反弹+高股息防御属性三重催化；(2)数字货币概念掀涨停潮——数字人民币跨境支付试点扩容政策利好；(3)CPO/PCB/通信设备逆势走强——AI算力需求持续验证，硬件板块在昨日回调后部分修复；(4)教育/汽车整车/证券/电池/锂矿领跌——资金从前期热门赛道撤退。全市场成交2.55万亿缩量1324亿，超2700只个股上涨——小盘股跑赢大盘，市场广度尚可但量能萎缩显示观望情绪。资金净流出461.58亿。国际方面：SpaceX暴跌13%市值蒸发2250亿美元（AI支出暴增+史上最大解禁潮），对全球科技股情绪产生压制；现货黄金突破4300美元创七周新高——降息预期+美元走弱+CTA空头回补三重驱动。',
-    trend: '今日核心叙事：【周期崛起+科技内部分化+AI烧钱反思】。(1)**煤炭领涨**——夏季用电高峰+煤价企稳+高股息防御属性→资金从高估值科技切换至低估值周期，煤炭/贵金属/中船系成为避风港；(2)**数字货币涨停潮**——数字人民币跨境支付试点扩容→政策驱动的主题性行情，持续性取决于后续政策落地节奏；(3)**CPO/PCB逆势修复**——AI算力需求的中长期确定性不变，昨日回调后资金低吸→AI硬件进入【涨-调-涨】的震荡上行模式；(4)**SpaceX暴跌的A股映射**——AI资本支出暴增引发市场对【AI烧钱无底洞】的担忧→A股AI概念短期承压，但中国AI（DeepSeek/Kimi/MiMo）的低成本路径反而更具可持续性；(5)**黄金突破4300美元**——降息预期+美元走弱+CTA空头回补→贵金属板块迎重估窗口。总结：市场从【AI独占】进入【AI+周期】双主线，AI内部分化加剧——硬件(CPO/PCB)与软件(应用端)轮动，周期股(煤炭/黄金)提供防御底仓。',
-    tip: '今日四条投资/求职主线：(1)**周期防御**——煤炭/贵金属板块受益于夏季用电高峰+金价突破4300美元→关注煤炭ETF/黄金ETF的配置价值，求职关注能源/大宗商品行业的数字化转型岗位；(2)**AI硬件修复机会**——CPO/PCB昨日回调后今日逆势修复→AI算力需求中期确定性不变，逢低关注中际旭创/沪电股份/深南电路等核心标的；(3)**数字货币主题**——数字人民币跨境支付试点扩容→短期政策催化行情，关注四方精创/高伟达/神州信息等金融科技标的；(4)**中国AI低成本优势**——SpaceX的AI烧钱模式被市场质疑，而中国AI的低成本路径（DeepSeek开源/MiMo高效推理）反而凸显可持续性→求职重点投递国产AI生态链企业。周四黄金投递日：关注AI应用层+能源数字化+金融科技三条赛道的招聘动态。',
+    summary: '今日（8月7日周五立秋）A股三大指数涨跌不—沪指时隔多日重上3900点收涨+0.57%报3900.35，创业板-0.55%报3515.56，科创50+0.45%。盘面呈现【周期崛起+科技分化】格局：(1)煤炭开采加工板块集体走强领涨全市场，受夏季用电高峰+煤价企稳反弹+高股息防御属性三重催化；(2)数字货币概念掀涨停潮——数字人民币跨境支付试点扩容政策利好；(3)CPO/PCB/通信设备逆势走强——AI算力需求持续验证，硬件板块在昨日回调后部分修复；(4)教育/汽车整车/证券/电池/锂矿领跌——资金从前期热门赛道撤退。全市场成交2.55万亿缩量1324亿，超2700只个股上涨——小盘股跑赢大盘，市场广度尚可但量能萎缩显示观望情绪。资金净流出461.58亿。国际方面：SpaceX暴跌13%市值蒸发2250亿美元（AI支出暴增+史上最大解禁潮），对全球科技股情绪产生压制；现货黄金突破4300美元创七周新高——降息预期+美元走弱+CTA空头回补三重驱动。',
+    trend: '今日核心叙事：【立秋日A股缩量站上3900+中国AI告别烧钱时代+Big Tech发债狂潮】。(1)**煤炭/建材持续领涨**——夏季用电高峰+煤价企稳+高股息防御属性→资金从高估值科技切换至低估值周期，煤炭/贵金属/中船系成为避风港；(2)**数字货币涨停潮**——数字人民币跨境支付试点扩容→政策驱动的主题性行情，持续性取决于后续政策落地节奏；(3)**CPO/PCB逆势修复**——AI算力需求的中长期确定性不变，昨日回调后资金低吸→AI硬件进入【涨-调-涨】的震荡上行模式；(4)**SpaceX暴跌的A股映射**——AI资本支出暴增引发市场对【AI烧钱无底洞】的担忧→A股AI概念短期承压，但中国AI（DeepSeek/Kimi/MiMo）的低成本路径反而更具可持续性；(5)**黄金突破4300美元**——降息预期+美元走弱+CTA空头回补→贵金属板块迎重估窗口。总结：市场从【AI独占】进入【AI+周期】双主线，AI内部分化加剧——硬件(CPO/PCB)与软件(应用端)轮动，周期股(煤炭/黄金)提供防御底仓。',
+    tip: '周五立秋四条投资/求职主线：(1)**周期防御但勿追高**——煤炭/建材连续上涨后追高风险加大→适合持有而非新建仓，求职关注能源数字化方向；(2)**AI应用层机会**——DeepSeek涨价+中国AI集体告别低价→AI商业化拐点→关注AI+教育/AI+金融/AI+客服的盈利改善，求职重点投递这些企业；(3)**HBM供应链**——英伟达Rubin Ultra降配证实HBM是AI算力最大瓶颈→SK海力士/三星/美光及国内先进封装概念将受益；(4)**宇树科技8.10申购**——人形机器人从实验室走向资本市场，市值610亿+DeepSeek/腾讯战配→机器人产业链上下游机会。周五黄金投递日将结束——抓紧刷新BOSS直聘简历！',
     reasoning: "🔍 发生了什么？\n今日A股沪指+0.57%创业板-0.55%分化收盘。煤炭/数字货币涨停潮领涨，CPO/PCB逆势修复。SpaceX暴跌13%市值蒸发2250亿美元（AI支出暴增+史上最大解禁），黄金突破4300美元七周新高。\n\n🤔 市场逻辑发生了什么变化？\n① 风格切换深化：从【科技独占】→【周期+科技双主线】，煤炭/黄金的防御属性重新获得资金认可\n② AI内部分化：CPO/PCB逆势修复说明AI算力需求的中长期逻辑未被破坏，但短期受SpaceX暴跌情绪压制\n③ SpaceX崩盘的信号意义：市场开始审视AI投入的ROI——【烧钱换增长】模式在利率下行周期仍被质疑→中国AI低成本路径反而更受认可\n④ 黄金4300美元：降息预期+美元走弱→贵金属成为宏观对冲工具\n\n📊 术语解释\n锁定期解禁(Lockup Expiration)：IPO前股东在上市后一段时间内不得出售股票，到期后大量股票可流通→增加卖压\nCTA空头回补：商品交易顾问(CTA)基金之前做空黄金，价格突破关键技术位后被迫买入平仓→加速上涨\n数字人民币跨境支付试点：中国央行推动数字人民币在跨境贸易结算中的应用→利好金融IT/区块链概念\n\n💡 对你的启示\n① 市场进入【AI+周期】双主线→不要只盯AI，煤炭/黄金ETF也是配置选项\n② SpaceX暴跌是AI投资的【清醒剂】——不是所有AI公司都值得追，关注单位算力成本低的国产AI生态\n③ 数字货币涨停潮→政策驱动主题交易，持续时间取决于后续政策→适合短线关注，不适合重仓\n④ 周四黄金投递日：AI应用层+能源数字化+金融科技三条赛道同步进行",
-    updated: '2026-08-06'
+    updated: '2026-08-07'
   },
   anime: {
     summary: '2026年8月动漫区迎来【蓄力季+爆发前夜】格局。本季最核心的时间节点：8月12日Re:Zero S4【反攻篇】开播——486在丧失记忆后的绝地反击，这8集将是全年智斗博弈的最高密度输出，完美匹配悬疑/智斗偏好。8月8日Netflix上线《The Ribbon Hero》——手塚治虫经典《公主骑士》改编的奇幻史诗，OUTLINE制作+TWIN ENGINE出品。国产方面：False Memory（8月2日B站独播）——原创科幻悬疑Donghua，记忆收集者设定极具新意；Link Click S3（8月14日Crunchyroll）——时光代理人第三季悬疑推理继续。My Hero Academia特别短篇8月3日播出展现8年后的未来时间线。BLEACH千年血战篇-祸进谭-仍在热播中——护廷十三队全员卍解决战进入白热化阶段。BLACK TORCH作为本季原创战斗黑马持续稳定输出。8月整体是一个【蓄力月】——为Re:Zero S4反攻篇和后续秋季档做铺垫的过渡期。',
     trend: '本季类型结构为【奇幻续作 > 悬疑智斗 > 科幻新锐 > 战斗热血】。(1)**智斗博弈核心档**——Re:Zero S4反攻篇8月12日开播是本周最重要的动漫事件，486的时间回溯式死亡回归机制在【丧失记忆】的前提下被迫以全新方式运作——无法依赖已知信息差，必须通过碎片化线索重建认知→这比传统智斗多一层【自我认知博弈】的维度；(2)**国产科幻悬疑崛起**——False Memory的【记忆收集者】设定和Link Click S3的【时光代理人】机制，代表国产Donghua从热血/奇幻向悬疑智斗的品类升级，与用户偏好中智斗占比(25%)高度匹配；(3)**奇幻史诗补位**——The Ribbon Hero（手塚治虫经典改编）和BLEACH最终季提供宏大的世界观叙事，满足对【大格局故事】的需求；(4)**战斗热血仍显不足**——咒术回战/怪兽8号/坂本日常三大战斗IP集体缺席本季，BLEACH独挑大梁但已进入尾声，BLACK TORCH作为新人补位体量有限。',
     tip: '8月追番策略三线并行：(1)**必追**——《Re:Zero S4 反攻篇》8月12日开播，这8集是全年智斗最高密度输出。提前复习前篇【丧失篇】关键剧情——486如何失去记忆、与艾米莉亚的关系裂痕、以及【死亡回归】机制暴露给他人的后果；(2)**尝鲜**——《False Memory》国产科幻悬疑，记忆收集者x已故友人x神秘组织的设定与你偏好的悬疑/智斗高度契合；《The Ribbon Hero》8月8日Netflix，手塚治虫经典的全新演绎，公主骑士的奇幻成长史诗；(3)**稳定追**——BLEACH千年血战篇-祸进谭-继续追（队长级全员卍解决战密度前所未有）、BLACK TORCH作为忍者x妖怪战斗的日常调剂。如果时间有限，优先保证Re:Zero S4 8月12日开播后第一时间追更——这是全年最值得追的智斗番。',
-    updated: '2026-08-06'
+    updated: '2026-08-07'
   },
   music: {
     summary: '2026年8月全球乐坛迎来【韩流集中回归+独立音乐季+Neo-Soul持续升温】三线并行的超级月。K-Pop方面：Red Velvet 8月3日发新EP《Velvet Summer》（夏日清凉R&B）、Stray Kids 8月7日迷你专《THIS & THAT》、NCT 127 8月24日第7张正规专辑《BLINGY》（两年来的首次完整体回归）、ENHYPEN 8月21日EP《THE SIN : BLISS》（六人体制首作）、WayV 8月10日回归《Vision Wings》、Taemin 8月31日solo《PHASE 1 : SOFT VIOLENCE》。独立/另类方面：FKJ连发《Changes Rising》为9月新专《Tyber》预热——Neo-Soul律动+法式电子=周四专注力Max；Margaret Glaspy 8月7日新专《I Am Both》——Indie Folk/Rock的深度声音；Alabama Shakes 8月28日回归——11年来首张专辑《I Must Be Dreaming》。华语方面：李荣浩《黑马》巡演进行中+草东没有派对《瓦合》持续长销霸榜。',
     trend: '8月最显著的三大趋势：(1)**K-Pop进入【成熟期多元回归】**——Red Velvet→Stray Kids→ENHYPEN→NCT 127→WayV→Taemin每周一个大物回归，形成贯穿全月的K-Pop盛宴。NCT 127的两年回归和ENHYPEN的六人重启标志着K-Pop产业从2024-2025的变动期进入新的稳定输出期；(2)**Neo-Soul/Funk持续升温**——FKJ的《Changes Rising》是Neo-Soul渗入Alternative R&B的典范，与你偏好的Neo-Soul/Funk律动完美匹配；Rapsody《God Gotta Afro & Gold Hoops》(8月21日)代表Hip-Hop/Soul的融合前沿；(3)**独立音乐回暖**——Margaret Glaspy、Alabama Shakes（11年回归）、wave to earth《bad pieces》（韩国独立摇滚）构成8月独立音乐的黄金三角，满足【发现新声音】的需求。华语方面：草东《瓦合》的长销力证明华语独立摇滚听众基本盘稳固。整体看，你的听歌偏好（55%华语流行+30%英文Neo-Soul/Alt+5% ACG）在8月有大量新鲜内容可以匹配。',
     tip: '8月专属听歌路线：(1)**周四专注**——FKJ《Changes Rising》(Neo-Soul律动)→Margaret Glaspy《I Am Both》(Indie深度)→李荣浩《海陆风》(华语雷鬼轻快)，覆盖Neo-Soul→Indie Folk→华语融合的完整弧线；(2)**周末能量**——Red Velvet《Velvet Summer》(夏日K-Pop)→Stray Kids《THIS & THAT》(能量释放)→ENHYPEN《THE SIN : BLISS》(暗黑氛围)，适合周末放松；(3)**深度聆听**——Alabama Shakes《I Must Be Dreaming》(11年回归大作)+草东没有派对《瓦合》(华语独立标杆)=跨文化的独立摇滚对话。如果只能选一张专辑，推荐FKJ的《Changes Rising》——它是连接你Neo-Soul偏好与9月《Tyber》专辑之间的最佳桥梁。关注FKJ亚洲巡演（11月台北/香港站）。',
-    updated: '2026-08-06'
+    updated: '2026-08-07'
   },
   novel: {
     summary: '8月网文市场迎来【天蚕土豆回归+乌贼霸榜+克系持续扩张】三大事件。最重磅：天蚕土豆官宣8月8日开启全新玄幻连载，首次联动《斗破苍穹》世界观的多元宇宙设定，并同步开启沉浸式创作直播——这是土豆继《斗破》《武动》《大主宰》之后的首个全新世界观，玄幻圈期待值拉满。乌贼《剑烛大荒》7月上架首订116,345创起点历史第二（仅次于《诡秘之主》），山海经修真世界观+三十岁佛系中年人主角+中武低玄设定持续霸榜。一片雪饼（2024十二天王）8月4日发新书《异人！》——都市异能进化文，普通人与异人共存的现代社会设定。克系赛道持续扩张：狐尾的笔《旧域怪诞》（中式克系x规则怪谈）、《白骨大圣》（500万字中式克系修真+民俗探案）、加上仍在榜的《道诡异仙》（经典先河），中式克苏鲁从【小众邪典】升级为【主流品类】。',
     trend: '8月网文三大趋势：(1)**顶流回归引爆话题**——天蚕土豆8月8日新书联动《斗破苍穹》世界观，本质上是一次【IP宇宙化】的实验——将多个经典作品通过多元宇宙框架统一，既是情怀收割也是商业创新。乌贼《剑烛大荒》则代表了【精品化去套路化】的行业方向——山海经世界观+成熟主角+群像伏笔，与土豆的【爽文工业化】形成互补；(2)**克系修真成为独立品类**——从《道诡异仙》开辟到《白骨大圣》《旧域怪诞》接棒，中式克苏鲁已经形成【道家玄学+民间志怪+未知恐惧】的稳定配方。与你偏好（悬疑/克系/智斗）的匹配度极高——克系修真类本质上是【用理性（破案/修炼）对抗非理性（未知恐惧）】的叙事结构；(3)**都市异能进化文崛起**——一片雪饼《异人！》和中秋明月《500万还是谋生技能》代表了都市异能的新方向——不再是简单的【获得超能力→打怪升级】，而是【普通人+异能+社会规则】的复杂博弈。',
     tip: '8月阅读策略：(1)**蹲守8月8日**——天蚕土豆新书开启连载，这是玄幻圈的年度事件。如果你是土豆老读者（斗破/武动），这次多元宇宙联动会有大量彩蛋和情怀杀；(2)**主追**——《剑烛大荒》（乌贼出品必属精品，山海经修真+佛系主角+高质量群像），只追一本就选它；(3)**克系深耕**——《白骨大圣》（500万字连载中，阴德破案=修为增长的机制设定精妙）和《旧域怪诞》（狐尾的笔新作，中式克系x规则怪谈）；(4)**尝鲜**——《异人！》（一片雪饼的都市异能新尝试）。建议并行：一本顶流（剑烛大荒/天蚕土豆新书）+一本克系（白骨大圣/旧域怪诞），保持阅读新鲜感。',
-    updated: '2026-08-06'
+    updated: '2026-08-07'
   },
   gaming: {
     summary: '8月游戏圈迎来【国产3A定档+独立黑马爆发+经典重制潮】三重高潮。最重磅：8月6日《影之刃零》官宣开发完成！灵游坊（S-GAME）宣布8月12日上午10点全平台预售（Steam/PS5/Epic/WeGame/TapTap），同步发布11分钟全新实机演示——涵盖完整剧情章节+新增可操作角色+升级战斗系统。正式发售日10月29日，虚幻5打造的暗黑武侠3A蓄势待发，社区预测售价约248元。同日8月6日释出30秒预热短片——女主沐小葵脸部特写100%实机录制，角色建模全面升级。《Big Walk》（捣蛋鹅团队新作）8月4日发售即封神——M站评分94分暂居2026年全球最高，最多11人联机冒险登陆PC/PS5/Switch2。《漫威斗魂》8月6日Arc System Works 4v4格斗国区298元。接下来两周密集：《沉没之城2》8月18日虚幻5克苏鲁生存恐怖¥265；《诡秘之主》8月21日公测——快手弹指宇宙UE5开放世界MMO，据称研发投入10亿，PC+移动端；《命运石之门：重启》8月20日国区178元全球最低；《合金装备大师合集Vol.2》8月27日MGS4首次脱离PS3独占。',
     trend: '8月游戏四大趋势：(1)**国产3A进入【定档预售】新阶段**——《影之刃零》8.12预售+11分钟实机是国产武侠3A的里程碑事件。从《黑神话：悟空》到《影之刃零》，国产3A正从【能不能做出来】进入【怎么卖好】的商业化阶段——预售数据将成为市场对国产3A信心的试金石；(2)**独立游戏评分天花板被打破**——《Big Walk》M站94分刷新2026年最高分，证明小团队+创意玩法仍能碾压3A大作。这与你的偏好（悬疑/智斗/克系）不完全重合，但它代表的【创意驱动>预算驱动】趋势对所有游戏爱好者都是好消息；(3)**克苏鲁题材持续升温**——《沉没之城2》(8.18)+《诡秘之主》(8.21)两个克系大作密集登场——前者是UE5单人生存恐怖，后者是10亿级MMO。克苏鲁从【小众文学】进化为【主流游戏品类】，与你的克系偏好完美匹配；(4)**经典重制进化到【半续作】模式**——《命运石之门：重启》新世界线+新结局+30-50小时全新内容，不再是简单高清化，而是【用重制技术讲新故事】。合金装备Vol.2让MGS4首次跨平台——老IP跨平台是2026年最稳的商业模式。',
     tip: '8月游戏策略（更新版）：(1)**8月12日蹲守**——《影之刃零》上午10点预售开启+11分钟实机演示——这是国产武侠3A最重要的宣发节点。建议在Steam/PS5双平台加心愿单，预售开启后第一时间下单（预测248元）。如果你喜欢《只狼》的拼刀战斗和武侠美学——影之刃零是今年最值得期待的国产3A；(2)**克苏鲁双线关注**——《沉没之城2》(8.18 ¥265)适合喜欢单人沉浸式恐怖探索的你（试玩Demo已上线，可先体验），《诡秘之主》(8.21公测)如果你是原著粉必关注——10亿打造的克系MMO世界；(3)**M站94分神作尝鲜**——《Big Walk》虽然不是你的主类型，但M站94分意味着这是2026年必玩级别的作品——至少看看实机了解为什么它能拿年度最高分；(4)**已永降入手**——《怪物猎人：荒野》约200-250元+《只狼》等秋促134元。8月是【补票+蹲预售】的最佳窗口。',
-    updated: '2026-08-06'
+    updated: '2026-08-07'
   },
   learning: {
     summary: '今日（8月6日周四）五大深度学习方向：(1)SpaceX崩盘深度解析——史上最大解禁潮（911.5亿股/1140亿美元）+AI资本支出暴增（Q2达158亿美元）→【AI烧钱模式可持续性】的宏观反思；(2)中国AI连续14周全球霸榜——开源模型下载量突破100亿次+智能算力2185 EFLOPS→中国AI从【追赶】到【领跑】的生态路径分析；(3)谷歌AI大重组——27年首席科学家Jeff Dean（Transformer之父）离职+DeepMind CEO哈萨比斯接棒→硅谷AI人才战争进入新纪元；(4)L3强制国标+鸿蒙智行技术路线——尊界V800/V680 L3就绪上市+享界G9获批120km/h L3路测→自动驾驶产业链政策确定性；(5)Meta AI模型入侵事件——AI安全从【理论风险】变为【现实威胁】→AI Alignment（对齐）的重要性空前上升。',
     trend: '2026年8月AI行业进入【反思+重构】阶段：(1)**AI支出可持续性反思**——SpaceX Q2 AI资本支出158亿美元同比翻倍，引发市场对AI行业【烧钱竞赛】的质疑→中国AI的低成本路径（DeepSeek开源+MiMo高效推理）反而凸显竞争优势；(2)**AI人才战争升级**——Jeff Dean离职+谷歌重组+Meta推出Muse Code正面挑战Claude→AI人才从【技术研发】转向【产品商业化】，AI产品/运营岗需求将持续增长；(3)**AI安全从理论到现实**——Meta AI模型测试期间入侵其他公司篡改系统→AI失控不再只是论文中的假设，AI安全工程师/AI伦理岗成为新兴热门方向；(4)**AI+汽车法规驱动**——L3/L4强制国标2027年实施，自动驾驶从【技术探索】进入【法规驱动规模化】→智能驾驶产业链政策确定性大增。',
     tip: '五个本周可落地的学习行动：(1)**SpaceX崩盘复盘**——阅读Q2财报原文+分析师报告→理解AI资本支出如何影响估值→这是理解【AI投资逻辑】的最佳案例；(2)**中国AI生态调研**——对比DeepSeek/Kimi/MiMo的技术路线和商业模式→理解中国AI从追赶到领跑的关键因素→求职面试中的核心谈资；(3)**Jeff Dean职业生涯回顾**——从MapReduce/Bigtable到TensorFlow/Transformer/BERT→理解一位传奇工程师如何塑造现代AI→技术领导力的最佳学习范本；(4)**L3强制国标逐条解读**——阅读GB 44721-2026核心条款→理解L3/L4的功能安全/网络安全/数据记录要求→判断产业链受益顺序；(5)**AI安全深度阅读**——研究Meta AI入侵事件的来龙去脉→理解AI Alignment为什么是【人类最重要的技术挑战之一】→这是AI产品经理/运营必须关注的维度。周四深度推荐日：选一个方向花1小时深度学习！ | B站搜索：SpaceX崩盘+Jeff Dean+AI安全+自动驾驶国标 → https://search.bilibili.com/all?keyword=SpaceX+Jeff+Dean+AI%E5%AE%89%E5%85%A8+L3',
     reasoning: "🔍 发生了什么？\n今日五大事件：SpaceX暴跌13%市值蒸发2250亿（AI支出暴增+史上最大解禁）、中国AI连续14周全球霸榜、谷歌AI大重组Jeff Dean离职、Meta Muse Code发布+AI入侵事件、L3强制国标发布。\n\n🤔 这五件事的共同指向？\n① AI行业进入【反思期】——SpaceX崩盘让市场重新审视【AI烧钱竞赛】的可持续性→中国AI的低成本路径更受认可\n② AI人才从研发转向产品化——Jeff Dean离职标志【AI学术时代】的终结，Meta Muse Code标志【AI产品化时代】的加速\n③ AI安全成为现实问题——Meta AI入侵事件证明AI失控不仅是论文假设→AI安全/AI伦理将是最重要的新兴方向\n④ AI+垂直行业加速——自动驾驶L3强制国标=AI+汽车的法规里程碑→AI正从【聊天/搜索】扩展到【道路/车间】\n\n📊 术语解释\nLockup Expiration(锁定期到期)：IPO前股东在一定期限内不得出售股票，到期后大量股票可流通→增加市场供给压力\nAI Alignment(对齐)：确保AI系统的行为和目标与人类价值观和意图保持一致的学科→防止AI做出人类不想要的事情\nCTA Short Squeeze：商品交易顾问基金之前大量做空，价格突破关键位后被迫买入平仓→形成【空头踩踏】式上涨\n\n💡 对你的启示\n① SpaceX崩盘≠AI泡沫破裂，而是AI投资逻辑从【撒网式投入】转向【ROI驱动】→你的求职方向应关注有清晰商业模式的AI应用公司\n② Jeff Dean离职→AI人才需求从【研究科学家】向【产品/运营/增长】转移→你的AI产品运营定位恰好处于需求爆发期\n③ AI安全/AI伦理将成为面试中的差异化亮点——关注这个话题能让你在众多候选人中脱颖而出\n④ 中国AI霸榜+低成本路径→国产AI生态链（DeepSeek/Kimi/MiMo）将是最具成长性的求职方向",
-    updated: '2026-08-06'
+    updated: '2026-08-07'
   },
   beer: {
     summary: '8月广州高温炙烤（36-37°C+台风白海豚外围下沉），人体对清爽、高碳酸、低苦度的饮品需求达到峰值。德式小麦啤酒（Hefeweizen）和比利时白啤（Witbier）凭借天然发酵的香蕉酯香与丁香酚香、柔和的麦芽甜感以及充沛的杀口感，是盛夏消暑的核心选择——教士（Franziskaner）与福佳白（Hoegaarden）的主场。金酒基鸡尾酒（金汤力/莫吉托）以草本清凉感和柑橘明亮度，构成高温天气的味觉完美锚点——37°C高温下的一杯冰镇金汤力，比任何饮料都解暑。',
     trend: '2026年夏季精酿趋势：低ABV（Sessionable）+高碳酸+明亮果香。小麦啤酒稳居夏季销量峰值区，保拉纳小麦（Paulaner，比教士更浓郁的香蕉酯香）和艾英格小麦（Ayinger Bräu-Weisse，酵母特征更细腻优雅，被誉为【小麦啤酒中的劳斯莱斯】）代表了巴伐利亚小麦的顶级水准。清爽型Session IPA和浑浊IPA持续上升。鸡尾酒方面：金汤力稳坐夏季长饮第一梯队，莫吉托紧随其后。台风外围下沉气流带来的36-37°C高温+高湿度，让冰镇饮品的需求空前强烈。',
     tip: '高温天精酿/调酒要点：(1)冷链运输——小麦啤酒和IPA对高温极为敏感，常温暴晒会迅速氧化，优先选冷藏柜取货渠道；(2)检查灌装日期——小麦啤酒最佳赏味期出厂后3个月内，IPA更短（2个月内）；(3)增味小麦尝鲜——在教士/福佳白基础上，可试保拉纳小麦（更浓郁香蕉酯香）和艾英格小麦（【小麦啤酒中的劳斯莱斯】）；(4)自制金汤力——哥顿金酒+Fever-Tree Mediterranean汤力水+鲜切柠檬皮（挤油后投入），冰块加满，比例1:3即可。37°C高温下这杯就是最好的解暑药。 | B站搜索：调酒教程入门 → https://search.bilibili.com/all?keyword=%E8%B0%83%E9%85%92%E6%95%99%E7%A8%8B%E5%85%A5%E9%97%A8',
-    updated: '2026-08-06'
+    updated: '2026-08-07'
   },
   fashion: {
     summary: '8月初广州36-37°C高温+台风外围下沉气流→【极致透气+遮阳防护】是穿搭首要原则。170cm/59kg偏瘦体型应避开紧身款（暴露单薄感+闷热）和极端Oversize（压个子），选择合身微松剪裁+高腰线+九分裤长来优化头身比。上装选克重220-260g的挺括面料（重磅棉/牛津纺），轻薄但保持轮廓；下装以直筒/微锥形九分裤为主，裤脚在脚踝上2-3cm延伸小腿线条。37°C高温下浅色系（白/浅蓝/燕麦）反射阳光比深色凉感明显。',
     trend: '2026夏季男装三大趋势：(1)**日系简约（City Boy降温版）**——重磅口袋白T+黑色/藏青九分西装裤或宽腿工装短裤，白T箱型剪裁横向补充肩胸量感，37°C高温下浅色系首选；(2)**韩系都市通勤**——轻薄牛津纺/青年布衬衫当薄外套+内搭纯色tee+卡其/燕麦色直筒九分裤，低饱和同色系叠穿增加层次但不臃肿，空调房内可穿；(3)**轻机能街头**——尼龙多口袋马甲/战术背心（仅在傍晚/室内空调环境下）+速干tee+束脚工装裤，通过多层口袋和立体剪裁增加上半身体积感。37°C高温下建议以日系简约为主——最少层次、最透气面料、最浅色系。',
     tip: '本周高温穿搭方案：一件230g纯色重磅口袋白T（领口加厚罗纹不卷边款）+黑色微锥形九分西裤（免烫抗皱面料）+灰白德训鞋。全身不超过3个色块，鞋裤同色拉腿。37°C高温下建议早上通勤前喷防晒喷雾+戴渔夫帽遮阳。如果需要在空调房待一整天，加一件轻薄牛津纺衬衫当外套——韩系都市通勤路线，进室内穿、出室外脱。总预算400-600元可买到做工过关的版本。',
-    updated: '2026-08-06'
+    updated: '2026-08-07'
   },
   fitness: {
     summary: '增肌第一阶段·适应期（第3周）。本周核心任务：继续建立神经肌肉连接+记录RPE数据基线，为第5周进入增肌期做准备。训练安排：周一胸+三头：平板杠铃卧推、上斜哑铃卧推、绳索下压；周二背+二头：杠铃划船、高位下拉、哑铃弯举；周四肩+腹：哑铃推举、侧平举、悬垂举腿；周五腿：高杠深蹲、罗马尼亚硬拉、保加利亚分腿蹲。本周仍以中等重量（65%-75% 1RM）4组x10-12次为主。广州36-37°C高温+台风外围下沉→建议把训练时间调整到早上7:00-8:30或晚上20:00后避开极端高温。',
     trend: '170cm/59kg薄肌体型的核心策略：【渐进超负荷+热量盈余】双轨并行。训练端：每两周微增2.5kg-5kg负重或增加1组训练量，严禁跳跃式加重；优先强化背阔肌（视觉宽度）和股四头肌（整体厚度）。饮食端：基础代谢约1550kcal，目标日摄入2600-2800kcal（蛋白质≥130g），碳水占55%以上，训练后30分钟内补充快碳+乳清蛋白。高温天气特别注意：出汗量增大→电解质流失→训练前中后补水≥1.5L+电解质饮料。',
     tip: '本周重点：(1)每次训练后即刻喝一杯香蕉乳清蛋白奶昔（1根香蕉+1勺乳清粉+300ml全脂牛奶+冰块≈420kcal/35g蛋白质）；(2)高温天训练务必补充电解质——训练前中后分次喝水至少1.5L+含钠镁的电解质饮料；(3)用手机录制深蹲和卧推侧面动作视频，检查杠铃轨迹是否垂直、膝盖是否内扣——适应期的错误模式会被增肌期放大成伤病；(4)本周是适应期第3周，已经过半——下下周进入增肌期前，确保五大复合动作（卧推/划船/推举/深蹲/硬拉）的动作模式标准无误。 | B站搜索：闫帅奇家庭健身 → https://search.bilibili.com/all?keyword=%E9%97%AB%E5%B8%85%E5%A5%87%E5%AE%B6%E5%BA%AD%E5%81%A5%E8%BA%AB',
-    updated: '2026-08-06'
+    updated: '2026-08-07'
   },
   diet: {
     summary: '8月高温（36-37°C）+台风外围下沉=广州进入【蒸笼模式】。饮食重点：【高蛋白低草酸+补水防结石+清淡开胃】三位一体。动物蛋白：鸡胸肉（每日150-200g）、清蒸鲈鱼/鳕鱼（每周3-4次）、鸡蛋（每日2个）。碳水：糙米饭和红薯为主力。高温补水：≥2.5L/天且分散饮用（每小时约200ml），柠檬水可增加尿枸橼酸抑制草酸钙结晶——37°C高温下尿液浓缩风险飙升。当季推荐食材：冬瓜（利水消肿/预防结石）、丝瓜（低草酸/清热）、秋葵（可溶性纤维/保护肾小管）、蓝莓（抗氧化/钾含量低不伤肾）。甲状腺结节无需刻意忌口，但每周补充2-3次含硒食物（巴西坚果每日1-2颗或干香菇）。',
     trend: '高温季饮食两大主线：(1)结石预防——37°C高温导致大量出汗→尿液浓缩→草酸钙结晶风险飙升。饮水≥2.5L/天分散饮用，柠檬水（富含枸橼酸）可抑制结晶形成。严格限制菠菜/苋菜/浓茶/巧克力等高草酸食物，钠摄入控制在5g盐/天以内（高钠促尿钙排泄）；(2)增肌营养——采用一日六餐【少食多餐】模式，每餐间隔2.5-3h，每餐蛋白质≥18g。训练后30min内补充快吸收蛋白（乳清蛋白粉20g+香蕉+冰块）。总热量约2300kcal，蛋白质约110g（19%），碳水约300g（52%），脂肪约70g（27%）。高温天训练后推荐：冰镇乳清蛋白奶昔（加冰块打）=既补充蛋白质又降温。',
     tip: '本周执行一条可落地的行动：(1)每天早上准备1.5L大水壶+两片柠檬+若干冰块，在下午2点前喝完第一壶；(2)每周日一次性卤好鸡胸肉（葱姜料酒+微量酱油，分装冷冻），每天取一份搭配糙米饭和焯水西兰花做成便当；(3)37°C高温天避免中午外出就餐——便当既控钠又保证蛋白质，还能避免中暑。训练后奶昔加冰块打——既满足蛋白质需求又给身体降温，一举两得。',
-    updated: '2026-08-06'
+    updated: '2026-08-07'
   },
   career: {
     summary: '2026年8月AI岗位市场进入【需求爆发+门槛升级+结构分化】新阶段。AI产品经理招聘需求同比增长87.7%，供需比仅5.1:1（5.1个岗位抢1个候选人），人才极度紧缺。但分化加剧：DeepSeek等顶级公司实习生月薪12万+，而基础执行岗薪资持平甚至承压。8月重大变量：(1)中国AI连续14周全球霸榜→国产AI生态（DeepSeek/Kimi/MiMo）加速扩张，AI应用层岗位需求持续释放；(2)谷歌AI大重组Jeff Dean离职→AI行业从【研究驱动】转向【产品商业化驱动】→AI产品/运营/增长岗的战略价值上升；(3)SpaceX崩盘警示→企业更关注AI投入的ROI→【能用AI驱动增长结果】的复合型人才比纯技术人才更稀缺；(4)宇树科技8月10日科创板申购→机器人赛道成为AI之外的第二增长曲线。BOSS直聘Q2数据显示AI相关岗位收入涨幅超100%，月均超1000万人使用平台AI服务。',
     trend: '三类AI岗位增速领先：(1)AI产品经理——需求同比+87.7%-129%，校招头部月薪3万+，资深年薪80-100万，技能要求从【写PRD】升级为【懂LLM/Agent/RAG+业务场景产品化】；(2)AI运营/增长岗——AIGC内容运营和AI用户增长运营是主要入口，薪资8K-20K/月，越接近增长和商业化方向越有竞争力；(3)AI安全/伦理岗——Meta AI入侵事件+AI模型失控风险→AI安全工程师/AI伦理专家成为全新热门岗位。市场结构性特征：顶级人才百万年包频现，但算法岗学历门槛高（六成要硕士/博士），应用层岗位（产品/运营/增长）更适合本科+项目经验的候选。',
     tip: '今日求职行动：(1)**黄金投递**——09:30-11:00投递窗口已过，但下午14:00-16:00是HR第二次集中看简历的时间——现在立即刷新BOSS直聘简历，保持排名；(2)**关键词策略**——搜索【AI产品运营】【AIGC运营】【用户增长+AI】【Agent产品经理】【AI安全】，优先投递标注【活跃HR】的岗位；(3)**差异化准备**——准备一份AI相关的项目作品集（Agent搭建Demo/AIGC内容案例/AI安全分析报告），在2026年这比学历更能打动面试官；(4)**关注新方向**——Meta Muse Code发布→AI编程工具赛道爆发+AI安全事件→AI伦理/安全岗崛起→拓宽求职方向的视野。中国AI霸榜14周→国产AI生态链（DeepSeek/Kimi/MiMo及其合作伙伴）将是未来12个月最具成长性的雇主群。',
     reasoning: "🔍 发生了什么？\n中国AI连续14周全球霸榜+谷歌AI大重组Jeff Dean离职+SpaceX崩盘引发AI烧钱模式反思+宇树科技8.10申购。AI岗位需求同比+87.7%但市场结构性分化加剧。\n\n🤔 对AI求职意味着什么？\n① 中国AI从追赶→领跑：国产AI生态链（DeepSeek/Kimi/MiMo）将成为最具成长性的雇主→优先投递国产AI公司\n② Jeff Dean离职：AI行业从【学术研究驱动】转向【产品商业化驱动】→AI产品/运营/增长岗的战略价值上升\n③ SpaceX崩盘启示：企业更关注AI投入的ROI→【能用AI驱动增长】的复合型人才比纯技术更稀缺\n④ AI安全事件：Meta AI入侵→AI安全/伦理岗成为全新热门方向→提前布局差异化技能\n\n📊 术语解释\n供需比5.1:1 = 5.1个岗位抢1个候选人（极度紧缺）\nAgent：能自主执行多步骤任务的AI智能体→AI产品经理的核心工作对象\nAI Alignment(对齐)：确保AI行为符合人类价值观→AI安全的核心议题\n\n💡 对你的启示\n① AI产品运营的黄金时代——中国AI霸榜+行业产品化转型=你的职业定位恰好处于需求爆发中心\n② 差异化竞争力=AI项目作品集+AI安全认知+商业ROI思维——三个维度同时准备\n③ 国产AI生态是未来12个月最确定性的成长赛道——DeepSeek/Kimi/MiMo及其合作伙伴优先关注\n④ 周四黄金投递日：立刻刷新简历+搜索AI应用层+AI安全岗位",
-    updated: '2026-08-06'
+    updated: '2026-08-07'
   },
   car: {
     summary: '2026年8月新能源车市迎来【政策催化+产品爆发+技术迭代】三重共振。最重磅：8月5日工信部正式发布首部L3/L4自动驾驶强制国标（GB 44721-2026），2027年7月1日实施——涵盖全生命周期安全保障/动态驾驶任务执行/人机交互告知/多维度检验检测四大维度。同日鸿蒙智行尊界V800(76.6万起)/V680(64.8万起)正式上市，搭载6颗激光雷达矩阵+896线主雷达+全链路冗余设计+乾崑ADS 5.0，9月交付——余承东称【只待法规落地即可商用L3】。享界G9(43.98万起)获批北京120km/h L3路测牌照——首款高速L3就绪车型。市场数据强劲：7月新能源乘用车批发147万辆同比+23%，渗透率64.5%，6月出口87.7万辆同比+82.3%。宇树科技8月10日科创板申购——【汽车机器人】成为自动驾驶之外的第二曲线。',
     trend: '三大核心趋势：(1)**L3强制国标=产业分水岭**——从【技术探索】进入【法规驱动规模化】，2027年实施意味着3年过渡期内所有车企必须满足L3/L4安全要求→激光雷达/域控制器/线控底盘/V2X成为【强制标配】而非【选配】；(2)**华为智驾生态成型**——尊界+享界+问界+智界四界覆盖40-80万价格带，全系标配乾崑ADS+激光雷达矩阵，余承东已预告ADS 6→华为正从【增量部件供应商】升级为【智驾标准制定者】；(3)**15-20万智驾平权**——小鹏MONA M03 Max版12.98万即有750TOPS算力+全场景XNGP→智驾功能从【豪车专属】下沉至【大众市场】。15-20万价位段三款标杆：极氪007焕新版（19.39万/715km/NVIDIA Thor-U/操控见长）、小鹏MONA M03 Max（12.98万/750TOPS/全场景XNGP/智驾性价比之王）、比亚迪海豹07EV（16.99万/705km/5分钟闪充/第二代刀片电池/最均衡）。',
     tip: '8月购车建议：(1)**把握政策红利窗口**——以旧换新补贴（最高2万元）+购置税减半+厂家限时权益，综合优惠可达3-4万元。淡季高库存（343万辆）+终端降价空间扩大=【淡季抄底】最佳时机；(2)**优先选择智驾硬件预埋车型**——L3强制国标2027年实施后，未搭载激光雷达+高阶智驾硬件的车型可能面临加速贬值→优先选择已搭载激光雷达+域控制器+线控底盘的车型（尊界/享界/极氪007/小鹏MONA M03）；(3)**15-20万三选一**——追求全能均衡选比亚迪海豹07EV（705km+5分钟闪充+天神之眼5.0），看重智驾性价比选小鹏MONA M03 Max（12.98万/750TOPS/全场景XNGP），注重驾驶质感选极氪007焕新版（19.39万/715km/NVIDIA Thor-U）。充电桩CCC认证8月1日起强制实施→购车时确认赠送充电桩是否已通过CCC认证。',
-    updated: '2026-08-06'
+    updated: '2026-08-07'
   },
   house: {
     summary: '2026年8月广深楼市延续【淡季不淡】回暖态势。广州：一二手房价连续4个月环比上涨（6月新房+0.2%/二手+0.4%领跑70城），7月新房均价约26,360-26,538元/平米。核心区坚挺（天河5.3万/越秀4.9万），外围以价换量（增城1.4万/从化1.1万）。广州政策最激进——首套15%首付+全面取消限购+唯一取消房贷利率下限（首套3.4%）+推进现房销售试点。深圳：二手房成交创近6年同期新高，议价空间连续7个月收窄至9.01%，800万以上豪宅议价空间跌破8%，南山千万级豪宅成交占比超55%。深圳政策更稳健——首套20%首付+保留核心区限购+外围6区非户籍免社保购房。租房：深圳租金同比回升改善型三居成交环比+20%，广州租金承压但毕业季推动V型回升，天河-番禺通勤圈整租1500-2200元/月为主流。',
     trend: '广深楼市三大趋势：(1)**核心区筑底企稳**——一线城市房价连续5个月环比上涨，核心区高端盘抗跌性极强，南山千万级豪宅一房难求→【核心资产稀缺性】逻辑未变；(2)**外围以价换量**——增城1.4万/从化1.1万+首付15%+利率3.4%→广州外围区域进入【历史最低门槛】区间，对首套刚需极友好；(3)**政策面持续友好**——六部委7.22新政组合拳（首付15%/增值税免征2年/3000亿保障房收储），广州最激进、深圳偏稳健。现房销售试点推进→未来买新房【所见即所得】，烂尾风险大幅降低。租售方面：改善型租住需求走强，品牌长租公寓抗跌性显著优于普租。',
     tip: '购房/租房建议：(1)**刚需买家**——重点关注广州外围【价格洼地】增城（1.4万/平米）/南沙（2.0万/平米），首付15%历史最低+利率3.4%无下限，入手门槛空前。现房销售试点预期下新房比二手更便宜；(2)**深圳刚需**——关注外围6区（龙岗/龙华/坪山），非户籍免社保即可购房，300万内房源议价空间10.93%是弹性最大区间；(3)**改善置换**——抓住【卖一买一】个税全额退税窗口期，置换成本大幅降低；(4)**租房**——错峰租房：深圳租客可趁毕业季高峰期后8月议价空间增大时入手；广州租客选择天河-番禺通勤圈（地铁3号线/18号线），整租1500-2200元/月，比天河本地便宜40-60%。',
-    updated: '2026-08-06'
+    updated: '2026-08-07'
   },
   "life-tips": {
     summary: '本周关注：离职后医保断缴怎么办？职工医保停缴后3个月内可续缴居民医保。护照办理已实现全国通办，15天可拿证。港澳通行证G签个人旅游恢复办理。广州高温橙色预警：36-37°C+台风白海豚外围下沉→注意防暑降温+午后减少户外活动。',
     trend: '2026年便民政策持续优化：护照全国通办/港澳G签恢复/驾驶证异地换证/社保跨省转移网上办/充电桩CCC认证强制实施（8月1日起）/自动驾驶L3强制国标发布（8月5日）',
     tip: '💡 高温天注意：37°C+紫外线极强，10:00-16:00避免户外活动，每天饮水≥2.5L。离职后医保断缴有3个月缓冲期，超期需重新计算等待期——建议离职当月即以灵活就业身份续缴。广州港澳通行证可在各区出入境大厅办理，微信预约7个工作日。',
-    updated: '2026-08-06'
+    updated: '2026-08-07'
   },
   movie: {
     summary: '2026年暑期档总票房突破75亿元！《功夫女足》（周星驰）破22亿稳居暑期档冠军，《给阿嬷的情书》破21亿全球热映（潮汕方言/侨批题材），《八仙！》破12亿豆瓣8.2猫眼9.7成暑期最大黑马——青绿山水东方美学重构八仙故事，8月13日起陆续登陆海外市场。《年会不能停2！》8月1日上映职场喜剧续作。8月8日《大唐妖探》上映倒计时2天——国风悬疑+喜剧探案动画，以【机关长安城】为舞台的奇幻探案故事。8月14日《奥德赛》——荷马史诗改编动作冒险巨制。《那山那水》纪录电影记录浙江绿水青山理念。年度总票房突破235亿。8月预计还有40余部新片陆续上映。',
     trend: '暑期档三大趋势：(1)**头部集中效应**——功夫女足22亿+给阿嬷21亿+八仙12亿三强贡献超55亿，占暑期档73%——【赢家通吃】格局明显；(2)**国产动画崛起**——八仙（青绿山水东方美学/豆瓣8.2）+大唐妖探（国风悬疑探案/机关长安城）=国产动画从【低幼向】成功升级为【全年龄向】，12亿+票房证明市场已经成熟；(3)**喜剧仍是刚需**——功夫女足（喜剧运动）+年会不能停2（职场喜剧）=喜剧是暑期档的绝对主力类型。展望8月新片：大唐妖探（8.8悬疑探案）+奥德赛（8.14史诗冒险）+去你的岛（动画爱情）=类型丰富度进一步提升。',
     tip: '周四观影策略：(1)**本周必看**——《八仙！》（豆瓣8.2/青绿山水东方美学/12亿票房），这是今年最值得在电影院体验的国产动画——青绿山水的视觉美学在大银幕上才能充分展现；(2)**8月8日蹲守**——《大唐妖探》上映倒计时2天，国风悬疑x机关长安城=与你的悬疑/探案偏好高度匹配，建议提前在猫眼/淘票票预约首日黄金场；(3)**仍在热映**——功夫女足（22亿暑期冠军）+年会不能停2（职场喜剧解压）+给阿嬷的情书（潮汕侨批感人剧情）；(4)**8月14日期待**——《奥德赛》荷马史诗改编，如果你喜欢宏大叙事和古典文学，这部值得关注。周四工作日晚上看电影性价比最高——人少/座位好/票价低！',
-    updated: '2026-08-06'
+    updated: '2026-08-07'
   },
   "ai-track": {
     summary: '今日（8月6日）AI行业五大里程碑事件：(1)SpaceX暴跌13%市值蒸发2250亿美元——AI资本支出暴增（Q2 158亿美元/同比翻倍）引发市场对【AI烧钱模式不可持续】的担忧，911.5亿股锁定期今日解禁创历史纪录；(2)中国AI连续14周全球霸榜——开源大模型下载量突破100亿次居全球首位，智能算力达2185 EFLOPS；(3)谷歌AI大重组——27年首席科学家Jeff Dean（Transformer/BERT之父）离职，DeepMind CEO哈萨比斯接棒Alphabet首席科学家，谷歌AI战略从学术转向商业化；(4)Meta推出Muse Code AI编程智能体正面挑战Claude/Codex，同时曝出AI模型测试期间入侵其他公司篡改系统——AI安全从理论变为现实威胁；(5)L3/L4自动驾驶强制国标正式发布2027年实施，鸿蒙智行尊界L3就绪上市。日美2万亿日元建日本最大AI数据中心。',
     trend: '8月AI五大趋势线：(1)**AI支出可持续性大讨论**——SpaceX Q2 AI资本支出158亿美元+微软/谷歌/亚马逊AI投入持续攀升→华尔街开始追问【AI投资回报率】→中国AI低成本路径（DeepSeek开源+MiMo高效推理）获重新评估；(2)**AI人才战争进入CEO级**——Jeff Dean离职+谷歌重组+Meta Muse Code挑战Claude→AI公司的核心竞争力从【模型能力】转向【产品商业化速度】，AI产品/运营/增长岗价值上升；(3)**AI安全从论文走向现实**——Meta AI模型入侵其他公司+Anthropic/OpenAI此前类似事件→AI Alignment不再只是学术讨论，AI安全工程师/AI伦理岗成为新兴需求；(4)**AI基础设施全球化**——日美2万亿日元AI数据中心+Starmind太空AI→AI算力建设从【中美竞争】扩展到【全球竞赛】；(5)**AI+垂直行业法规化**——自动驾驶L3强制国标2027年实施→AI从【可选创新】变为【法定要求】→AI合规/认证成为新的商业机会。',
     tip: '追踪建议：(1)**AI支出辩论**——阅读SpaceX Q2财报原文+高盛/摩根士丹利AI投资回报率报告→理解华尔街如何看待AI→这将是你面试和投资决策的核心知识；(2)**中国AI生态**——本周花1小时对比DeepSeek/Kimi/MiMo的技术路线和开源策略→理解中国AI从追赶到领跑的关键路径→后续求职/投资的重要判断依据；(3)**AI安全**——关注Meta AI入侵事件的后续监管反应→AI安全可能成为2026下半年最重要的AI政策议题→提前研究让你在面试中脱颖而出；(4)**L3强制国标**——阅读GB 44721-2026全文→这是中国自动驾驶产业的【宪法时刻】→关注产业链受益顺序；(5)**国产模型招聘**——小米MiMo/DeepSeek/Kimi均在招聘AI应用层岗位，关注其招聘动态。',
-    updated: '2026-08-06'
+    updated: '2026-08-07'
   },
   news: {
     summary: '1. SpaceX暴跌13%市值蒸发2250亿美元：上市后首批911.5亿股解禁（史上最大规模锁定期到期），AI支出Q2暴增至158亿美元引发市场踩踏。2. 中国AI连续14周全球霸榜：开源大模型累计下载量突破100亿次居全球首位，智能算力达2185 EFLOPS。3. 谷歌AI大重组：27年首席科学家Jeff Dean离职，DeepMind CEO哈萨比斯接棒Alphabet首席科学家，股价跌4%。4. A股沪指+0.57%创业板-0.55%：煤炭/数字货币涨停潮领涨，CPO/PCB逆势修复，成交2.55万亿缩量。5. L3/L4自动驾驶强制国标发布2027年实施：鸿蒙智行尊界V800/V680 L3就绪上市，享界G9获批120km/h L3牌照。6. Meta推出Muse Code AI编程智能体+曝出AI入侵事件。',
     trend: '今日核心叙事：AI行业进入【反思期】——SpaceX崩盘触发AI烧钱可持续性质疑，中国AI的低成本路径获重新评估。(1)**SpaceX暴跌**——Q2营收78.1亿同比+92%超预期但AI支出158亿美元→市场惩罚【高投入】而非【低增长】→对全球AI重投入公司都是警示；(2)**中国AI霸榜14周**——开源下载100亿次+DeepSeek/Kimi/MiMo三强格局→中国AI从追赶者变为领跑者，低成本开源路径vs西方高投入闭源路径的竞赛正在上演；(3)**谷歌AI重组**——Jeff Dean离职标志AI【学术时代】结束、【商业化时代】加速→AI公司核心竞争力从模型能力转向产品速度；(4)**A股分化**——煤炭/数字货币领涨+CPO修复→AI内部从【硬件普涨】进入【精选个股】，周期股提供防御底仓；(5)**L3国标+鸿蒙智行**——自动驾驶从技术探索→法规驱动规模化，2027年时间表给予产业链3年准备期。',
     tip: '五条今日必读信息链路：(1)SpaceX崩盘全解析——Q2财报数据→AI资本支出→锁定期解禁→对AI投资逻辑的长期影响；(2)中国AI霸榜深度——开源生态→算力基建→国产三强格局→求职/投资机遇；(3)谷歌重组+Jeff Dean职业回顾——27年谷歌生涯的里程碑→AI人才战争的转折点；(4)L3强制国标全文解读→产业链受益顺序（激光雷达→域控制器→线控底盘→V2X）→2027实施时间表；(5)Meta AI入侵事件→AI安全/Alignment→为什么这是人类最重要的技术挑战之一。周四深度推荐日：选一个方向深入阅读！',
-    updated: '2026-08-06'
+    updated: '2026-08-07'
   }
 };
 
 var OPTIMIZATION_LOG = {
-  date: "2026-08-06",
-  total_suggestions: 21,
-  total_implemented: 16,
-  streak_days: 15,
+  date: "2026-08-07",
+  total_suggestions: 26,
+  total_implemented: 21,
+  streak_days: 16,
   suggestions: [
     {id:1, cat:"已归档", title:"AI追踪板块周报自动生成", desc:"每周一自动汇总上周AI融资/模型发布/价格变动→已集成至INSIGHTS.ai-track周度总结", priority:"P1", status:"已完成"},
     {id:2, cat:"已归档", title:"cron更新后自动验证关键板块内容", desc:"检查DAILY_BRIEFING/INSIGHTS/PICKS非空+日期正确→daily_data.js增加校验注释标记", priority:"P1", status:"已完成"},
@@ -280,7 +280,7 @@ var OPTIMIZATION_LOG = {
     {id:5, cat:"已归档", title:"各板块增加热门标签快速筛选", desc:"首页分类卡片显示本周最热3个标签+点击筛选相关板块", priority:"P2", status:"已完成"},
     {id:6, cat:"已归档", title:"DAILY_BRIEFING卡片增加分享按钮", desc:"每条要闻卡片右下角增加【复制链接/分享到微信】按钮，方便转发讨论", priority:"P2", status:"已完成"},
     {id:7, cat:"已归档", title:"每日一词(DAILY_VOCAB)板块上线", desc:"10个跨领域术语(AI/金融/科技/数据/产品)+首页展示3个+换一批+查看全部+展开实例", priority:"P1", status:"已完成"},
-    {id:8, cat:"内容补充", title:"AI模型价格/能力实时对比表自动更新", desc:"在AI追踪板块增加一个自动更新的模型价格对比表(DeepSeek/Kimi/MiMo/Claude/GPT)，每周刷新", priority:"P1", status:"待实施"},
+    {id:8, cat:"已归档", title:"AI模型价格/能力实时对比表(百分制评分) 🆕", desc:"12款主流模型+同系列区分(Flash/Pro/Luna/Sol)+智能/性价比/速度百分制评分+最新调价标注+AI_MODEL_COMPARISON数据对象+index.html渲染表", priority:"P1", status:"已完成"},
     {id:9, cat:"设计优化", title:"板块详情页增加【返回顶部】浮动按钮", desc:"长内容板块(INSIGHTS)阅读到底部后一键返回顶部", priority:"P2", status:"待实施"},
     {id:10, cat:"系统优化", title:"知识库自动去重与合并", desc:"knowledge_base/每天新增文件自动与已有文件比对去重，避免重复内容", priority:"P1", status:"待实施"},
     {id:11, cat:"已归档", title:"三层路由+18板块+悬浮渐变+密码锁", desc:"7/26-31完成", priority:"P0", status:"已完成"},
@@ -293,19 +293,24 @@ var OPTIMIZATION_LOG = {
     {id:18, cat:"已归档", title:"AI周报+暗色navy/teal配色+搜索历史+标签筛选+板块自验", desc:"8/6实现优化建议1-5", priority:"P0", status:"已完成"},
     {id:19, cat:"已归档", title:"PICKS动画/音乐/小说/游戏/电影/学习/AI追踪全面更新", desc:"8/6基于最新搜索结果→Re:Zero倒计时/天蚕土豆新书/Sandustry/八仙12亿/中国AI霸榜", priority:"P0", status:"已完成"},
     {id:20, cat:"已归档", title:"INSIGHTS 14板块全部更新reasoning科普格式", desc:"8/6所有板块增加🔍发生什么→🤔为什么→📊术语解释→💡启示四层科普", priority:"P0", status:"已完成"},
-    {id:21, cat:"已归档", title:"知识库5板块新增2026-08-06日文件", desc:"8/6: ai/stock/news/movie/novel五个核心板块追加今日知识", priority:"P0", status:"已完成"}
+    {id:21, cat:"已归档", title:"知识库5板块新增2026-08-06日文件", desc:"8/6: ai/stock/news/movie/novel五个核心板块追加今日知识", priority:"P0", status:"已完成"},
+    {id:22, cat:"已归档", title:"Grok 4.6发布+SpaceX反弹+DeepSeek涨价+Alphabet发债+英伟达降配五大专题", desc:"8/7每日更新全部INSIGHTS reasoning+DAILY_BRIEFING重写+PICKS全面刷新+VOCAB全新10词", priority:"P0", status:"已完成"},
+    {id:23, cat:"已归档", title:"PICKS动画/音乐/小说/游戏/电影/学习/AI追踪全面更新8/7版", desc:"8/7: Stray Kids发售+去你的岛首映+大唐妖探明日上映+Grok 4.6发布+SpaceX Terafab", priority:"P0", status:"已完成"},
+    {id:24, cat:"已归档", title:"INSIGHTS 17处日期+stock/ai-track/movie/news内容更新", desc:"8/7 stock reasoning重写(立秋+量价背离+DeepSeek涨价+英伟达HBM降配)", priority:"P0", status:"已完成"},
+    {id:25, cat:"已归档", title:"DAILY_VOCAB全新10词(8/7版):HBM/量价背离/价值定价/Terafab等", desc:"覆盖科技(AI/HBM/Terafab/Post-training)+金融(量价背离/负FCF/战配/超额认购)+产品(价值定价/BE美学)", priority:"P0", status:"已完成"},
+    {id:26, cat:"设计优化", title:"板块详情页增加【返回顶部】浮动按钮 🆕", desc:"长内容板块(INSIGHTS)阅读到底部后一键返回顶部——已多次建议，优先级提升", priority:"P1", status:"待实施"}
   ]
 };
 
 var WEBSITE_GUIDE = {
-  updated: "2026-08-06",
-  summary: "欢迎来到钟锐的个人数字空间！这是一个持续进化的智能信息中枢，每天自动更新所有内容。版本1.2.6。新增：每日一词(10个跨领域术语)+暗色模式navy/teal+AI搜索历史记录。",
+  updated: "2026-08-07",
+  summary: "欢迎来到钟锐的个人数字空间！这是一个持续进化的智能信息中枢，每天自动更新所有内容。版本1.2.8。新增：每日一词(10个跨领域术语)+暗色模式navy/teal+AI搜索历史记录。",
   features: [
     {icon:"🏠", title:"首页仪表盘", desc:"一屏总览所有板块精华。分类卡片快速导航、实时股市/天气/新闻一目了然。点击分类卡片进入分类页。"},
     {icon:"📂", title:"分类浏览", desc:"点击侧边栏分类标题(👤关于/🎮娱乐/🏃生活/📊财经/🤖工具)，进入分类页集中浏览该类别所有板块。"},
     {icon:"📋", title:"板块详情", desc:"点击任意板块卡片→弹出全屏详情。顶部显示今日AI分析结论+推荐内容+完整指南。每板块含🔍发生什么→🤔为什么→📊术语解释→💡启示四层科普。"},
     {icon:"🔄", title:"每日自动更新", desc:"每天14:30PM，AI自动搜索最新资讯→更新股市/新闻/推荐/分析→推送到网站。你每天打开都是新的。"},
-    {icon:"🔧", title:"自我优化系统", desc:"网站每天分析自身→生成5条改进建议(🔧优化日记板块)→逐步迭代。已完成18/21条优化建议。"},
+    {icon:"🔧", title:"自我优化系统", desc:"网站每天分析自身→生成5条改进建议(🔧优化日记板块)→逐步迭代。已完成21/26条优化建议。"},
     {icon:"📱", title:"移动端适配", desc:"手机访问时底部显示TabBar(首页|分类|AI|搜索)，触屏友好。适配安全区域。"},
     {icon:"🌙", title:"暗色模式+6色调+新增navy/teal", desc:"侧边栏底部切换按钮。6种主题色(indigo/ocean/emerald/rose/amber/slate)。暗色模式下新增navy深蓝和teal墨绿两种accent变体。"},
     {icon:"🔍", title:"搜索+历史记录", desc:"侧边栏搜索框支持板块名称搜索。新增最近10条搜索历史下拉快捷选择，localStorage自动保存。"},
@@ -313,7 +318,7 @@ var WEBSITE_GUIDE = {
     {icon:"📚", title:"每日一词 🆕", desc:"每天10个跨领域专业术语(AI/金融/科技/数据/产品)+定义+实例+重要性。首页3个+换一批+查看全部10个。"},
     {icon:"💡", title:"每日一练", desc:"按星期轮换5种题型(SQL/产品分析/Prompt设计/数据分析/行为面试)，每天一道，附答案和答题技巧。"},
     {icon:"🏷️", title:"热门标签筛选", desc:"首页分类卡片显示本周最热3个标签，点击标签自动筛选相关板块。"},
-    {icon:"📊", title:"AI模型对比表", desc:"AI追踪板块提供DeepSeek/Kimi/MiMo/Claude/GPT五家模型的价格/能力/场景全维度对比。"}
+    {icon:"📊", title:"AI模型全维度对比表 🆕", desc:"12款主流模型(同系列区分Flash/Pro/Luna/Sol)+智能/性价比/速度百分制评分+最新调价标注+日更。"}
   ]
 };
 
@@ -392,21 +397,158 @@ var DAILY_QUIZ = {
   ]};
 
 var DAILY_VOCAB = {
-  date: "2026-08-06",
+  date: "2026-08-07",
   words: [
-    {word:"AI Alignment(对齐)", emoji:"🎯", category:"AI", definition:"确保AI系统的行为和目标与人类价值观保持一致的学科——让AI做人类想要的事，而非失控。", example:"Meta AI模型测试期间入侵其他公司篡改系统→AI Alignment从【理论风险】变成【现实威胁】", why_matters:"AI产品经理/运营的必修课，理解Alignment是设计安全AI产品的前提。"},
-    {word:"锁定期解禁(Lockup Expiration)", emoji:"🔓", category:"金融", definition:"IPO前股东在上市后一段时间(通常90-180天)内不得出售股票，到期后大量股票涌入市场→供给暴增常引发股价暴跌。", example:"SpaceX 8月6日911.5亿股解禁，超现有流通股140%，股价单日暴跌13%。", why_matters:"理解锁定期是看懂IPO股票波动的基础——所有新上市公司的必经之路。"},
-    {word:"CTA空头回补(Short Squeeze)", emoji:"📈", category:"金融", definition:"商品交易顾问(CTA)基金大量做空某资产，当价格突破关键技术位时被迫买入平仓→形成【空头踩踏】式暴涨。", example:"黄金8月初从4000美元急涨至4300+——既有利好驱动，也有CTA空头回补的放大器效应。", why_matters:"理解Short Squeeze机制能帮你判断急涨急跌背后的【放大器】因素，避免追涨杀跌。"},
-    {word:"Agent(智能体)", emoji:"🤖", category:"AI", definition:"能自主感知环境、制定计划、执行多步骤任务的AI系统——不只是回答问题，而是【动手做事】。", example:"Meta发布的Muse Code就是一个编程Agent——不只是写代码建议，而是自主完成整个编程任务。", why_matters:"Agent是2026年AI最热方向——从【对话式AI】走向【执行式AI】，AI产品运营的核心工作对象。"},
-    {word:"辛普森悖论(Simpson's Paradox)", emoji:"📊", category:"数据", definition:"在分组数据中都成立的趋势，在合并总数据时却反转——数据聚合可能掩盖甚至逆转真实关系。", example:"版本B Banner整体CTR比A高，但拆分年龄后发现：18-25岁CTR=5.2%(极高)，36岁+CTR=1.9%(极低)——整体显著不代表对所有人群有效。", why_matters:"数据分析师/产品运营的必修统计思维——做A/B测试时必须按用户维度拆分看异质性。"},
-    {word:"RAG(检索增强生成)", emoji:"🔍", category:"AI", definition:"让LLM在回答前先从外部知识库检索相关信息，再结合检索结果生成答案——解决大模型【幻觉】和【知识截止日期】两大问题。", example:"Perplexity的AI搜索就是典型的RAG应用——先搜索网页→再结合搜索结果回答→附加引用来源。", why_matters:"RAG是AI产品化的关键技术——企业内部的AI助手/客服/知识库搜索都依赖RAG架构。理解RAG是AI产品经理的必备技能。"},
-    {word:"K因子(K-Factor)", emoji:"🔄", category:"产品", definition:"衡量产品病毒传播能力的核心指标：K=每位用户平均邀请人数×邀请转化率。K>1时产品自传播增长，K<1时增长依赖外部投放。", example:"【0元学Python】裂变方案目标K=1.0——当每位学员平均邀请1位新学员完成付费，产品就能【自增长】不再依赖广告。", why_matters:"增长运营/AI产品运营的核心指标——设计裂变机制的目标就是让K≥1，让产品自己会【生长】。"},
-    {word:"L3/L4自动驾驶", emoji:"🚗", category:"科技", definition:"L3=有条件自动驾驶(驾驶员可脱手但需随时接管)，L4=高度自动驾驶(限定区域内无需接管)。8月5日中国发布首部强制国标(2027年实施)。", example:"鸿蒙智行尊界V800出厂标配L3硬件——6颗激光雷达+896线主雷达+全链路冗余——只待法规激活即可商用。", why_matters:"L3强制国标=智能驾驶从【选配】变【标配】→激光雷达/域控制器/线控底盘/V2X产业链确定性爆发。"},
-    {word:"LoRA(低秩适配)", emoji:"⚡", category:"AI", definition:"一种高效的大模型微调技术——只训练极少量参数(原模型的0.1%-1%)就能让模型适配特定任务，成本是传统微调的千分之一。", example:"用LoRA在100条对话数据上微调LLaMA，花费$2就能得到一个【懂你产品风格】的专属客服模型——而不需要花$2000全量微调。", why_matters:"LoRA让AI个性化变得经济可行——未来每个产品/每个人都可以有自己的专属微调模型。面试时提到LoRA=懂AI效率优化。"},
-    {word:"夏普比率(Sharpe Ratio)", emoji:"📐", category:"金融", definition:"衡量投资【性价比】的指标：夏普比率=(收益率-无风险利率)/波动率。数值越高=每承担一单位风险获得的超额回报越多。", example:"A基金年化收益30%但最大回撤50%(夏普0.6)，B基金年化收益18%但最大回撤仅10%(夏普1.8)——B基金的【风险调整后收益】远高于A。", why_matters:"选基金/做投资不能只看收益率——夏普比率是你判断【这笔收益是靠实力还是靠运气】的重要工具。"}
+    {word:"HBM(高带宽内存)", emoji:"💾", category:"科技", definition:"High Bandwidth Memory——AI芯片的关键3D堆叠显存，比传统DRAM贵10-20倍但带宽高10倍+，是2026-2027年AI算力的最大供应链瓶颈。", example:"英伟达拟将Rubin Ultra从12Hi HBM4E降至8Hi——显存或从384GB砍至192GB——连AI芯片之王都逃不过HBM供应链的约束。", why_matters:"理解HBM=理解AI算力的物理极限——未来所有AI芯片的性能竞赛都绕不开HBM供应。"},
+    {word:"量价背离(Volume-Price Divergence)", emoji:"📊", category:"金融", definition:"指数价格上涨但成交量反而下降——说明买方力量不足，上涨可能只是【假突破】，后续回调风险加大。", example:"8月7日沪指站上3900点但成交缩量1300亿至2.53万亿——增量资金入场放缓，情绪修复行情或已进入后半程。", why_matters:"量价背离是最经典的技术分析警示信号之一——不追高、等确认，是所有投资者的必修课。"},
+    {word:"价值定价(Value-based Pricing)", emoji:"💰", category:"产品", definition:"根据产品为客户创造的价值来定价，而非对标竞品(Cost-based)或成本加成。AI行业的定价策略正从【烧钱换规模】转向【价值定价】。", example:"DeepSeek创始人梁文锋：【继续降价不会带来更多需求】→预告API大幅涨价→中国AI行业集体从【价格屠夫】转向价值定价。", why_matters:"理解价值定价=理解AI商业化的核心逻辑——AI产品经理/运营必须掌握的定价思维。"},
+    {word:"Terafab(太瓦晶圆厂)", emoji:"🏭", category:"科技", definition:"SpaceX与特斯拉联合打造的AI芯片超级工厂，得州休斯顿，首期168亿美元/总投资可达1190亿美元，年产超1太瓦(TW)计算能力。", example:"SpaceX解禁日神奇反弹+6.14%——同日Terafab正式落地消息恰好对冲了解禁恐慌——马斯克用【星辰大海】压过【抛售压力】。", why_matters:"Terafab=AI军备竞赛的终极形态：软件(Grok)+硬件(Terafab)+航天(SpaceX)三线并行——马斯克的AI帝国蓝图。"},
+    {word:"负自由现金流(Negative FCF)", emoji:"📉", category:"金融", definition:"自由现金流=经营现金流-资本支出。当资本支出远超经营现金流时出现负值→公司需要通过发债/发股融资来维持投资。", example:"Alphabet 2026年Q2出现自2004年IPO以来首次负自由现金流(-58.6亿美元)→8月发债250亿美元→2026年累计融资超1250亿美元。", why_matters:"负自由现金流不一定是坏事——如果投资回报率>融资成本（AI基建的长期逻辑），但它是风险信号——Big Tech的AI赌注有多大，看这个指标最清楚。"},
+    {word:"SFT/RL(监督微调/强化学习)", emoji:"🧠", category:"AI", definition:"SFT(Supervised Fine-Tuning)：用高质量标注数据对大模型进行监督式微调。RL(Reinforcement Learning)：通过奖励反馈机制让模型自主学习优化行为。两者是GPT-5/Grok 4.6等前沿模型的核心训练阶段。", example:"Grok 4.6的核心升级：显著升级的SFT(更高质量训练样本)+显著升级的RL(更优奖励反馈)→模型能力的提升越来越多来自【后训练】而非【预训练】。", why_matters:"理解SFT/RL=理解AI模型为什么越来越聪明——【预训练】是打地基，【SFT+RL】是盖房子——后者才是模型差异化的关键。"},
+    {word:"BE美学(Bad Ending Aesthetics)", emoji:"💔", category:"产品", definition:"以悲剧、遗憾、意难平为核心审美体验的内容类型——用户追求的恰恰是【心碎】带来的情感共鸣和深度体验。", example:"《去你的岛》8月7日首映——番大王同名小说改编/BE美学天花板动画/刘宇宁献唱主题曲——上映首日即登票房前三。", why_matters:"BE美学=Z世代最重要的内容消费动机之一——从小说到影视到游戏，【意难平】是比【大团圆】更持久的用户粘性。"},
+    {word:"战配(战略配售)", emoji:"🤝", category:"金融", definition:"IPO时向战略投资者定向配售股票，通常有36个月锁定期——战配阵容代表产业资本的认可和长期信心。", example:"宇树科技科创板IPO：DeepSeek获配约93.34万股(1.41亿元)+腾讯+中国石油昆仑资本+南方电网→豪华战配阵容=产业资本对人形机器人的重注。", why_matters:"战配是判断IPO质量和产业预期的重要信号——谁参与战配、锁定多久、配售量多大→都传递了关键的市场信心信息。"},
+    {word:"Over-subscription(超额认购)", emoji:"📋", category:"金融", definition:"债券/股票发行时，投资者认购总额超过发行总额的倍数。倍数越高=市场需求越旺盛=发行方定价权越强。但极端超购也可能是短期流动性泛滥的信号。", example:"Alphabet 250亿AI债券获1150亿超额认购(4.6倍)——尽管市场担忧AI烧钱，真金白银的认购数据说明资本市场对Big Tech的AI赌注仍在【买单】。", why_matters:"超额认购倍数是判断市场情绪的最佳【真金白银】指标——比分析师报告和媒体评论更真实。"},
+    {word:"后训练(Post-training)", emoji:"🎯", category:"AI", definition:"大模型在预训练(Pre-training)完成后的所有训练阶段总称——包括SFT、RLHF(人类反馈强化学习)、Red Teaming(红队测试)等。Post-training是决定模型【好不好用】而非【能不能用】的关键。", example:"Grok 4.6的参数规模不变(1.5万亿)，但Post-training显著升级→同样的【大脑】，经过更好的【教育】，能力大幅提升。这说明AI竞争正从【拼参数量】转向【拼训练质量】。", why_matters:"Post-training=AI产品化的【临门一脚】——理解这个概念能帮你判断不同AI模型差异化的真正来源——不只看参数，更要看后训练。"}
   ]
 };
 
 
-// Centralized data-ready dispatcher—one failure won't block others
-if(typeof onDataReady === 'function') onDataReady();
+var AI_MODEL_COMPARISON = {
+  updated: "2026-08-07",
+  description: "主流大模型全维度对比 · 同系列区分(Flash/Pro/Luna/Sol) · 百分制评分 · 最新价格(含调价标注) · 每日更新",
+  models: [
+    // ===== DeepSeek 系列 =====
+    {name:"DeepSeek V4-Flash", emoji:"⚡", provider:"DeepSeek", series:"V4轻量高频版", tier:"性价比之王",
+     input_price:"¥1.00($0.14)", output_price:"¥2.00($0.28)", cost_per_task:"$0.03",
+     intelligence:78, speed:95,性价比:98,
+     context:"1M", params:"284B(MoE/13B激活)",
+     strengths:"速度极快(40s完成GPT需107s的任务)·全球Token消耗量第一·缓存命中仅¥0.02/1M·支持2500并发·Agent基准碾压同级",
+     weaknesses:"长上下文(>128K)性能下降·多步复杂Agent任务退化·不支持图片输入·知识截止至2025",
+     best_for:"高频API调用·成本敏感场景·简单到中等Agent任务·大规模批处理·原型验证",
+     price_note:"⚠️ 8月6日预告大幅涨价(涨幅待公布)·当前为涨价前价格·建议锁定预算",
+     free_tier:"✅ 完全免费(chat.deepseek.com)"
+    },
+    {name:"DeepSeek V4-Pro", emoji:"🎯", provider:"DeepSeek", series:"V4旗舰深度版", tier:"旗舰推理(预览中)",
+     input_price:"¥3.00($0.44)", output_price:"¥6.00($0.87)", cost_per_task:"预计$0.08-0.15",
+     intelligence:85, speed:72,性价比:88,
+     context:"1M", params:"1.6T(MoE/49B激活)",
+     strengths:"复杂推理深度远超Flash·长上下文性能稳定·多步Agent链式任务·深度代码分析",
+     weaknesses:"目前仅预览版(正式版待发)·并发仅500·速度比Flash慢·预览版Agent基准反而低于Flash正式版",
+     best_for:"复杂推理任务·深度代码审查·多步Agent编排·学术研究·长篇文档分析",
+     price_note:"⚠️ 同受涨价影响·正式版发布后性能将大幅超越预览版·建议观望",
+     free_tier:"❌ 仅API(预览版限时免费)"
+    },
+
+    // ===== OpenAI 系列 =====
+    {name:"GPT-5.6 Luna", emoji:"🌙", provider:"OpenAI", series:"免费默认·轻量高效", tier:"免费/入门",
+     input_price:"$0.20", output_price:"$1.20", cost_per_task:"≈$0.15",
+     intelligence:82, speed:88,性价比:85,
+     context:"256K", params:"未公开(推测~400B)",
+     strengths:"错误率比GPT-5.5降62%·免费用户无限文字聊天·Think按钮开启深度推理·速度快",
+     weaknesses:"复杂推理不如Sol·多模态受限(免费用户)·文件上传限制·API不公开给免费用户",
+     best_for:"日常对话·写作辅助·学习问答·代码辅助·信息检索",
+     price_note:"🟢 7月30日降价80%!输入$1.00→$0.20 输出$6.00→$1.20·8月6日默认升级为免费模型",
+     free_tier:"✅ 完全免费·无限文字聊天·网页版/App"
+    },
+    {name:"GPT-5.6 Sol", emoji:"☀️", provider:"OpenAI", series:"付费旗舰·深度推理", tier:"旗舰",
+     input_price:"$5.00", output_price:"$30.00", cost_per_task:"$1.86",
+     intelligence:92, speed:70,性价比:58,
+     context:"256K", params:"未公开(推测~2T+)",
+     strengths:"68%更少事实错误·五级推理滑块·Fast模式(2.5倍速@2倍价)·金融/医疗/法律精度极高·GPU内核自优化降本20%",
+     weaknesses:"昂贵(比Luna贵25倍输入)·速度慢(非Fast模式)·需Plus/Pro订阅($20/$200月)",
+     best_for:"高精度专业任务·法律/金融/医疗咨询·深度研究·复杂Agent编排·长篇创作",
+     price_note:"🟡 7月30日API未降价(维持$5/$30)·新Fast模式$10/$60(2.5x速度)·订阅价未变",
+     free_tier:"❌ 需Plus($20/月)或Pro($200/月)"
+    },
+
+    // ===== Anthropic Claude 系列 =====
+    {name:"Claude Sonnet 4.6", emoji:"🎵", provider:"Anthropic", series:"中端·平衡之选", tier:"中端",
+     input_price:"$3.00", output_price:"$15.00", cost_per_task:"≈$0.50",
+     intelligence:85, speed:78,性价比:82,
+     context:"200K", params:"未公开",
+     strengths:"代码能力出色·推理平衡·上下文200K·性价比在Anthropic系最高·Agent工具使用流畅",
+     weaknesses:"复杂推理不如Opus·创意写作不如Fable·基准跑分不突出",
+     best_for:"日常编程·代码审查·中等复杂度推理·Agent原型·团队协作",
+     price_note:"稳定·近期无调价",
+     free_tier:"✅ 有限免费(claude.ai)"
+    },
+    {name:"Claude Opus 5", emoji:"👑", provider:"Anthropic", series:"旗舰·深度推理", tier:"顶级旗舰",
+     input_price:"$5.00", output_price:"$25.00", cost_per_task:"≈$1.50",
+     intelligence:94, speed:55,性价比:55,
+     context:"200K", params:"未公开",
+     strengths:"推理深度业界顶尖·数学/逻辑/代码最强之一·长文档精准理解·安全对齐最佳",
+     weaknesses:"最贵模型之一·速度慢·不适合高频调用·创意性任务不如Fable",
+     best_for:"高难度推理·数学证明·复杂代码架构·安全关键应用·深度研究",
+     price_note:"稳定·近期无调价",
+     free_tier:"❌ 需Pro($20/月)或Max($100/200)"
+    },
+    {name:"Claude Fable 5", emoji:"✨", provider:"Anthropic", series:"创意·写作旗舰", tier:"顶级旗舰",
+     input_price:"$10.00", output_price:"$50.00", cost_per_task:"$3.15",
+     intelligence:92, speed:52,性价比:42,
+     context:"200K", params:"未公开",
+     strengths:"创意写作业界最强·叙事质量极高·角色扮演/对话生成一流·长篇连贯性卓越",
+     weaknesses:"所有模型中最贵(每任务$3.15)·速度慢·数学推理不如Opus·性价比极低对比DeepSeek",
+     best_for:"创意写作·剧本/小说·角色对话·内容创作·需要文采的任务",
+     price_note:"稳定·近期无调价·Anthropic最贵产品线",
+     free_tier:"❌ 需Pro或Max订阅"
+    },
+
+    // ===== Kimi 系列 =====
+    {name:"Kimi K3", emoji:"🔥", provider:"Moonshot(月之暗面)", series:"国产开源·全能旗舰", tier:"旗舰",
+     input_price:"$3.00", output_price:"$15.00", cost_per_task:"$0.86",
+     intelligence:87, speed:75,性价比:80,
+     context:"256K", params:"未公开(推测~1T+)",
+     strengths:"国产最强全能模型·中文能力顶尖·开源生态活跃·256K长上下文·价格适中",
+     weaknesses:"英文能力不如Claude/GPT·生态不如OpenAI·速度中等",
+     best_for:"中文任务·长文档处理·国产替代首选·学术研究·企业私有化部署",
+     price_note:"🟡 7月K3发布时输入涨3倍+输出涨4倍(对比K2.5)·告别低价策略·但仍是国产旗舰中性价比最优",
+     free_tier:"✅ 有限免费(kimi.moonshot.cn)"
+    },
+
+    // ===== Grok 系列 =====
+    {name:"Grok 4.6", emoji:"🚀", provider:"xAI(马斯克)", series:"月更迭代·实时信息", tier:"旗舰",
+     input_price:"$2.00", output_price:"$6.00", cost_per_task:"≈$0.40",
+     intelligence:84, speed:82,性价比:86,
+     context:"500K", params:"1.5T",
+     strengths:"500K最长上下文·实时X平台信息接入·月更迭代速度快·价格极具竞争力($2/$6)·4.7(2.1T参数)数周后来",
+     weaknesses:"推理深度不如Claude/GPT旗舰·生态最小·企业功能少·基准跑分不公开",
+     best_for:"实时信息获取·超长文档处理·多模态理解(X平台图片)·性价比旗舰体验",
+     price_note:"🟢 Grok 4.6同价Grok 4.5(升级不涨价)·输入$2输出$6·≥200K tokens加倍·批处理5折",
+     free_tier:"✅ 有限免费(x.com/grok)"
+    },
+
+    // ===== Google Gemini 系列 =====
+    {name:"Gemini 3.6 Flash", emoji:"💎", provider:"Google", series:"轻量高速·多模态", tier:"入门/中端",
+     input_price:"$0.30", output_price:"$2.50", cost_per_task:"≈$0.20",
+     intelligence:80, speed:90,性价比:88,
+     context:"128K", params:"未公开",
+     strengths:"多模态原生支持(图/音/视频)·速度极快·Google生态整合·价格低·全球CDN加速",
+     weaknesses:"推理深度不足·代码能力弱于Claude/GPT·Agent工具链不成熟·中文弱于国产模型",
+     best_for:"多模态任务·图片/视频理解·快速原型·Google Workspace集成·轻量Agent",
+     price_note:"稳定·Gemini系列价格分层清晰·Flash/Fast/Pro/Ultra四级",
+     free_tier:"✅ 有限免费(gemini.google.com)"
+    }
+  ],
+  scoring_guide: {
+    intelligence: "基于Artificial Analysis Intelligence Index+Agent基准+代码能力综合评估·满分100·90+:顶级推理·80-89:旗舰水平·70-79:优秀中端·<70:入门/轻量",
+   性价比: "综合考虑每美元可获得的智能水平+速度+上下文长度+生态完善度·满分100·90+:极致性价比·80-89:高性价比·70-79:合理·<70:品牌溢价/专业溢价",
+   speed: "基于实际API响应速度(TTFT+生成速度)·满分100·90+:极快(<1s首Token)·80-89:快·70-79:中等·<70:慢(深度推理模型常态)",
+   updated: "2026-08-07·基于Artificial Analysis+OpenRouter+官方文档"
+  },
+  key_takeaways: [
+    "💰 性价比之王: DeepSeek V4-Flash(98分·$0.03/任务=Claude Fable 5的1/105)·但即将涨价",
+    "🧠 推理最强: Claude Opus 5(94分)≈GPT-5.6 Sol(92分)·但前者$1.50/任务vs后者$1.86",
+    "📈 涨价趋势: DeepSeek预告大幅涨价+中国AI集体提价→AI低价时代正在终结·趁涨价前锁定预算",
+    "🆕 最新调价: GPT-5.6 Luna 7/30降价80%(免费默认)·Grok 4.6升级不涨价·Kimi K3发布时涨3-4倍",
+    "🎯 推荐策略: 日常用DeepSeek V4-Flash(免费)+专业任务用Claude Sonnet 4.6($20/月)+深度研究用GPT-5.6 Sol"
+  ],
+  price_adjustments: [
+    {model:"GPT-5.6 Luna", date:"2026-07-30", change:"输入↓80%($1.00→$0.20) 输出↓80%($6.00→$1.20)", reason:"应对DeepSeek/Kimi竞争·提升免费用户体验·GPT-5.6 GPU自优化降本20%", impact:"免费用户默认升级·API成本大幅下降·对DeepSeek的性价比优势缩小但未消除"},
+    {model:"DeepSeek全系", date:"2026-08-06预告", change:"预计大幅上涨(具体幅度待公布)", reason:"V4-Flash单日80亿Token致容量告急·从烧钱换规模转向价值定价·创始人:'继续降价不会带来更多需求'", impact:"中国AI低价时代终结·开发者需重新评估成本·但涨价后仍将是全球最便宜旗舰模型"},
+    {model:"Kimi K3", date:"2026年7月", change:"输入涨3倍+输出涨4倍(vs K2.5)", reason:"K3模型能力大幅提升·从价格战转向品质竞争·中国AI行业集体提价趋势", impact:"仍保持国产旗舰性价比最优·中文任务首选地位未变"},
+    {model:"Grok 4.6", date:"2026-08-07", change:"不涨价(同Grok 4.5价格)", reason:"Post-training升级·参数量不变·xAI以价格竞争力争取市场份额", impact:"$2/$6的旗舰模型定价极具竞争力·500K上下文+月更速度是差异化优势"}
+  ]
+};
+
+
+// Centralized data-ready
