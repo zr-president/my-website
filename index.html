@@ -253,7 +253,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 
 <!-- 0. 每日待办汇总 -->
 <section id="dashboard" class="section" data-search="每日待办 行程 打卡 日程">
-<div class="section-header"><h2>📋 每日待办汇总</h2><p id="dashboardDate"></p></div>
+<div class="section-header"><h2>📋 每日待办汇总</h2><p id="dashboardDate"></p><span id="pushStatus" style="display:none;font-size:11px;padding:2px 10px;border-radius:12px;background:rgba(5,150,105,.2);color:#059669;margin-left:8px" title="微信推送已配置">📱 推送已开启</span></div>
 <div class="card" style="padding:16px">
 <div style="display:flex;gap:12px;margin-bottom:12px;flex-wrap:wrap">
 <button class="btn btn-primary" onclick="addTodoItem()">＋ 新增待办</button>
@@ -1092,6 +1092,11 @@ renderInterviews();
   var days = ['日','一','二','三','四','五','六'];
   document.getElementById('dashboardDate').textContent = '今天 ' + d.getFullYear()+'年'+(d.getMonth()+1)+'月'+d.getDate()+'日 · 星期'+days[d.getDay()];
   renderTodos();
+  // Show push status if Life OS is configured
+  if(typeof PERSONAL_CONFIG !== 'undefined' && PERSONAL_CONFIG && PERSONAL_CONFIG.profile){
+    var ps = document.getElementById('pushStatus');
+    if(ps){ ps.style.display = 'inline-block'; }
+  }
 })();
 
 function escHtml(t){var d=document.createElement('div');d.textContent=t;return d.innerHTML;}
@@ -2173,7 +2178,8 @@ function manualRefresh(){
 </script>
 
 <script src="detail_content.js"></script>
-<script src="daily_data.js?v=1.2.9"></script>
+<script src="personal_config.js"></script>
+<script src="daily_data.js?v=1.2.10"></script>
 <script defer src="knowledge_index.js"></script>
 </body>
 </html>

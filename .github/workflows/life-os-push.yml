@@ -1,0 +1,64 @@
+name: Life OS Push
+
+on:
+  schedule:
+    # Beijing 08:03 (UTC 0:03) — Morning Briefing
+    - cron: '3 0 * * *'
+    # Beijing 12:03 (UTC 4:03) — Midday Check-in
+    - cron: '3 4 * * *'
+    # Beijing 18:03 (UTC 10:03) — Evening Entertainment
+    - cron: '3 10 * * *'
+    # Beijing 22:03 (UTC 14:03) — Night Review
+    - cron: '3 14 * * *'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Push mode'
+        required: true
+        type: choice
+        options:
+          - morning
+          - midday
+          - evening
+          - night
+          - test
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Determine push mode
+        id: mode
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "mode=${{ inputs.mode }}" >> $GITHUB_OUTPUT
+          else
+            HOUR=$(date +%H)
+            case $HOUR in
+              00|01) MODE="morning" ;;
+              04|05) MODE="midday" ;;
+              10|11) MODE="evening" ;;
+              14|15) MODE="night" ;;
+              *)     MODE="morning" ;;  # fallback
+            esac
+            echo "mode=$MODE" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Run push script
+        env:
+          PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
+        run: |
+          python scripts/life_os_push.py --mode ${{ steps.mode.outputs.mode }}
