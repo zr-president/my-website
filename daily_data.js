@@ -273,7 +273,7 @@ var INSIGHTS_TODAY_UPDATED = ['stock','ai-track','movie','learning','career','ne
 var OPTIMIZATION_LOG = {
   date: "2026-08-10",
   total_suggestions: 33,
-  total_implemented: 26,
+  total_implemented: 31,
   streak_days: 20,
   suggestions: [
     {id:1, cat:"已归档", title:"AI追踪板块周报自动生成", desc:"每周一自动汇总上周AI融资/模型发布/价格变动→已集成至INSIGHTS.ai-track周度总结", priority:"P1", status:"已完成"},
@@ -304,11 +304,11 @@ var OPTIMIZATION_LOG = {
     {id:26, cat:"已归档", title:"板块详情页返回顶部浮动按钮确认", desc:"确认FAB已存在(index.html L479)且在section-detail视图正常工作——标记为已完成", priority:"P1", status:"已完成"},
     {id:27, cat:"设计优化", title:"AI对比表综合评分增加权益权重选项", desc:"当前综合=50%智能+35%性价比+15%速度·可考虑增加【生态/多模态/开源】等维度让评分更全面", priority:"P2", status:"待实施"},
     {id:28, cat:"数据优化", title:"Qwen3.8开源状态跟踪与数据更新", desc:"8/10千问预计开源Max+27B→需更新AI_MODEL_COMPARISON中开源状态/价格/benchmark数据·开源后价格可能调整", priority:"P1", status:"待实施"},
-    {id:29, cat:"稳定性", title:"INSIGHTS编辑增加git备份安全机制 🆕", desc:"今日INSIGHTS批量更新时脚本替换错误导致文件从568行降至13行(全损)→通过git checkout恢复。建议：每次编辑daily_data.js前自动git stash→编辑后自动语法校验→失败则回滚。或改为JSON格式用标准解析器编辑", priority:"P0", status:"待实施"},
-    {id:30, cat:"内容优化", title:"网站版本号统一管理 🆕", desc:"当前版本号散落在daily_data.js(1.2.9)、WEBSITE_GUIDE(1.2.8未同步)、index.html三处→应统一为单一变量或至少每次更新时三处同步", priority:"P1", status:"待实施"},
-    {id:31, cat:"内容优化", title:"8/10知识库文件补充(ai/stock/movie/novel) 🆕", desc:"今天新增了4个核心板块的knowledge_base文件→但部分昨日板块(如gaming/learning/career)也应补充→按【新增当日+补昨日遗漏】原则每日维护知识库目录", priority:"P1", status:"待实施"},
-    {id:32, cat:"功能优化", title:"AI模型对比表增加【安全/对齐】评分维度 🆕", desc:"呼应OpenAI Astra暂停事件→AI安全成为产业刚需→在对比表中增加【安全评级】(开源透明度/安全围栏/红队测试公开度)→让评分体系从3维扩展至4维", priority:"P2", status:"待实施"},
-    {id:33, cat:"体验优化", title:"INSIGHTS板块增加【今日更新摘要】快速定位 🆕", desc:"INSIGHTS共17个板块→每日更新6-8个→用户不知道哪些是新的。建议：在INSIGHTS首页顶部增加【今日更新: stock·ai-track·movie·learning·career·news】标签行→点击跳转对应板块", priority:"P2", status:"待实施"},
+    {id:29, cat:"稳定性", title:"INSIGHTS编辑增加git备份安全机制", desc:"创建scripts/safe_edit.py——编辑前自动git stash备份→编辑后node语法校验→失败自动git checkout回滚→成功自动git stash drop。支持--no-git和--no-validate参数", priority:"P0", status:"已完成"},
+    {id:30, cat:"内容优化", title:"网站版本号统一管理", desc:"修复三处版本号不一致：daily_data.js(SITE_VERSION=1.2.9✅)+index.html缓存破坏符(daily_data.js?v=1.2.4→1.2.9)+WEBSITE_GUIDE(1.2.8→1.2.9)", priority:"P1", status:"已完成"},
+    {id:31, cat:"内容优化", title:"8/10知识库文件补充", desc:"新增4个知识库文件：novel(天蚕土豆开载/乌贼霸榜/克系扩张)+gaming(影之刃零倒计时/Big Walk94分/发售日历)+learning(Astra安全/中国开源/SpaceX财报/宇树招股书)+career(宇树IPO/AI安全岗/周一投递策略)", priority:"P1", status:"已完成"},
+    {id:32, cat:"功能优化", title:"AI模型对比表增加【安全/对齐】评分维度", desc:"11款模型全部增加安全评分(Claude Opus 92分安全标杆→Grok 4.6仅62分)。评分标准：开源透明度+安全围栏+红队测试+对齐投入。table渲染新增安全列+scoring_guide补充安全说明+MODEL_SCORE_COLORS新增安全色彩(<70红色预警)", priority:"P2", status:"已完成"},
+    {id:33, cat:"体验优化", title:"INSIGHTS板块增加【今日更新摘要】快速定位", desc:"daily_data.js新增INSIGHTS_TODAY_UPDATED变量声明今日更新板块。section-detail视图顶部增加📌今日更新标签行——当前板块高亮+点击标签跳转对应板块详情", priority:"P2", status:"已完成"},
   ]
 };
 
