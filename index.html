@@ -1641,6 +1641,20 @@ function showView(viewName, categoryKey){
 
     // Build section detail content
     var detailHtml = '';
+
+    // Today's update summary tags (#33)
+    if(typeof INSIGHTS_TODAY_UPDATED!=='undefined' && INSIGHTS_TODAY_UPDATED.length>0){
+      var tagColors = {'stock':'#d97706','ai-track':'#7c3aed','movie':'#e11d48','learning':'#059669','career':'#0284c7','news':'#d97706','gaming':'#7c3aed','novel':'#e11d48','music':'#d97706','anime':'#7c3aed'};
+      detailHtml += '<div style="margin-bottom:10px;font-size:10px;color:var(--text3)">📌 今日更新: ';
+      INSIGHTS_TODAY_UPDATED.forEach(function(sid, i){
+        var tc = tagColors[sid] || 'var(--accent)';
+        var isActive = sid === categoryKey;
+        detailHtml += '<span onclick="event.stopPropagation();showView(\'section-detail\',\''+sid+'\')" style="display:inline-block;margin:2px 3px;padding:2px 8px;border-radius:12px;font-size:10px;cursor:pointer;'+(isActive?'background:'+tc+';color:#fff;font-weight:700':'background:var(--bg2);color:var(--text2)')+'">'+(isActive?'● ':'')+sid+'</span>';
+        if(i < INSIGHTS_TODAY_UPDATED.length-1) detailHtml += '';
+      });
+      detailHtml += '</div>';
+    }
+
     // Insight callout (full)
     if(typeof INSIGHTS!=='undefined' && INSIGHTS[categoryKey]){
       var ins = INSIGHTS[categoryKey];
@@ -1933,7 +1947,8 @@ var MODEL_SCORE_COLORS = {
   intelligence: {high:'#059669', mid:'#d97706', low:'#94a3b8'},
  性价比: {high:'#7c3aed', mid:'#0284c7', low:'#94a3b8'},
   speed: {high:'#d97706', mid:'#059669', low:'#94a3b8'},
-  综合: {high:'#059669', mid:'#d97706', low:'#94a3b8'}
+  综合: {high:'#059669', mid:'#d97706', low:'#94a3b8'},
+  安全: {high:'#059669', mid:'#d97706', low:'#e11d48'}
 };
 
 function getScoreColor(score, type){
@@ -1975,6 +1990,7 @@ function renderModelComparison(){
     tableHTML += '<th style="padding:6px 4px;text-align:center">智能分<br>(百分制)</th>';
     tableHTML += '<th style="padding:6px 4px;text-align:center">性价比<br>(百分制)</th>';
     tableHTML += '<th style="padding:6px 4px;text-align:center">速度<br>(百分制)</th>';
+    tableHTML += '<th style="padding:6px 4px;text-align:center">安全<br>(百分制)</th>';
     tableHTML += '<th style="padding:6px 4px;text-align:center">综合<br>(加权)</th>';
     tableHTML += '<th style="padding:6px 4px;text-align:center">上下文</th>';
     tableHTML += '<th style="padding:6px 4px;text-align:left">调价标注</th>';
@@ -1986,6 +2002,7 @@ function renderModelComparison(){
       var intColor = getScoreColor(m.intelligence, 'intelligence');
       var prColor = getScoreColor(m.性价比, '性价比');
       var spColor = getScoreColor(m.speed, 'speed');
+      var saColor = getScoreColor(m.安全, '安全');
       var ovColor = getScoreColor(m.综合, '综合');
 
       tableHTML += '<tr style="background:' + rowBg + ';border-bottom:1px solid var(--border)">';
@@ -1995,6 +2012,7 @@ function renderModelComparison(){
       tableHTML += '<td style="padding:8px 4px;text-align:center"><span style="font-weight:700;font-size:16px;color:' + intColor + '">' + m.intelligence + '</span></td>';
       tableHTML += '<td style="padding:8px 4px;text-align:center"><span style="font-weight:700;font-size:16px;color:' + prColor + '">' + m.性价比 + '</span></td>';
       tableHTML += '<td style="padding:8px 4px;text-align:center"><span style="font-weight:700;font-size:16px;color:' + spColor + '">' + m.speed + '</span></td>';
+      tableHTML += '<td style="padding:8px 4px;text-align:center"><span style="font-weight:700;font-size:16px;color:' + saColor + '">' + (m.安全||'--') + '</span></td>';
       tableHTML += '<td style="padding:8px 4px;text-align:center"><span style="font-weight:700;font-size:18px;color:' + ovColor + '">' + (m.综合||'--') + '</span></td>';
       tableHTML += '<td style="padding:8px 4px;text-align:center;font-size:10px">' + (m.context||'') + '</td>';
       tableHTML += '<td style="padding:8px 4px;font-size:10px;max-width:180px">' + (m.price_note||'') + '</td>';
@@ -2032,6 +2050,7 @@ function renderModelComparison(){
     sdEl.innerHTML = '<div style="margin:3px 0"><strong>智能分:</strong> ' + (data.scoring_guide.intelligence||'') + '</div>' +
       '<div style="margin:3px 0"><strong>性价比:</strong> ' + (data.scoring_guide.性价比||'') + '</div>' +
       '<div style="margin:3px 0"><strong>速度:</strong> ' + (data.scoring_guide.speed||'') + '</div>' +
+      '<div style="margin:3px 0"><strong>安全:</strong> ' + (data.scoring_guide.安全||'') + '</div>' +
       '<div style="margin:3px 0"><strong>综合(加权):</strong> ' + (data.scoring_guide.综合||'') + '</div>';
   }
 }
@@ -2154,7 +2173,7 @@ function manualRefresh(){
 </script>
 
 <script src="detail_content.js"></script>
-<script src="daily_data.js?v=1.2.4"></script>
+<script src="daily_data.js?v=1.2.9"></script>
 <script defer src="knowledge_index.js"></script>
 </body>
 </html>

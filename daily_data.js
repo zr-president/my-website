@@ -264,7 +264,11 @@ var INSIGHTS = {
     tip: '五条今日必读：(1)OpenAI Astra暂停事件——理解AI安全为什么是【人类最重要的技术挑战之一】——阅读OpenAI官方声明+全球AI安全社区反应；(2)中国开源AI登顶——经济日报头版报道→理解中国AI从追赶到领跑的关键因素→判断未来求职/投资方向的核心依据；(3)SpaceX财报+AI烧钱辩论——Q2 184亿资本支出vs年化260亿GPU出租收入→AI投资ROI分析框架→未来所有AI公司都要回答；(4)英伟达暴涨vs AMD暴跌——GPU竞争格局→理解训练vs推理/数据中心vs边缘三个维度；(5)宇树科技IPO——人形机器人第一股→理解机器人产业链→判断是否参与打新（一签7.54万）。',
     updated: '2026-08-10'
   }
+
 };
+
+// Today's updated INSIGHTS sections (for optimization #33)
+var INSIGHTS_TODAY_UPDATED = ['stock','ai-track','movie','learning','career','news'];
 
 var OPTIMIZATION_LOG = {
   date: "2026-08-10",
@@ -425,7 +429,7 @@ var AI_MODEL_COMPARISON = {
     // ===== DeepSeek 系列 =====
     {name:"DeepSeek V4-Flash", emoji:"⚡", provider:"DeepSeek", series:"V4轻量高频版", tier:"性价比之王",
      input_price:"¥1.00($0.14)", output_price:"¥2.00($0.28)", cost_per_task:"$0.03",
-     intelligence:78, speed:95,性价比:98, 综合:88,
+     intelligence:78, speed:95,性价比:98, 安全:85, 综合:88,
      context:"1M", params:"284B(MoE/13B激活)",
      strengths:"速度极快(40s完成GPT需107s的任务)·全球Token消耗量第一·缓存命中仅¥0.02/1M·支持2500并发·Agent基准碾压同级",
      weaknesses:"长上下文(>128K)性能下降·多步复杂Agent任务退化·不支持图片输入·知识截止至2025",
@@ -435,7 +439,7 @@ var AI_MODEL_COMPARISON = {
     },
     {name:"DeepSeek V4-Pro", emoji:"🎯", provider:"DeepSeek", series:"V4旗舰深度版", tier:"旗舰推理(预览中)",
      input_price:"¥3.00($0.44)", output_price:"¥6.00($0.87)", cost_per_task:"预计$0.08-0.15",
-     intelligence:85, speed:72,性价比:88, 综合:84,
+     intelligence:85, speed:72,性价比:88, 安全:82, 综合:84,
      context:"1M", params:"1.6T(MoE/49B激活)",
      strengths:"复杂推理深度远超Flash·长上下文性能稳定·多步Agent链式任务·深度代码分析",
      weaknesses:"目前仅预览版(正式版待发)·并发仅500·速度比Flash慢·预览版Agent基准反而低于Flash正式版",
@@ -447,7 +451,7 @@ var AI_MODEL_COMPARISON = {
     // ===== OpenAI 系列 =====
     {name:"GPT-5.6 Luna", emoji:"🌙", provider:"OpenAI", series:"免费默认·轻量高效", tier:"免费/入门",
      input_price:"$0.20", output_price:"$1.20", cost_per_task:"≈$0.15",
-     intelligence:82, speed:88,性价比:85, 综合:84,
+     intelligence:82, speed:88,性价比:85, 安全:78, 综合:84,
      context:"256K", params:"未公开(推测~400B)",
      strengths:"错误率比GPT-5.5降62%·免费用户无限文字聊天·Think按钮开启深度推理·速度快",
      weaknesses:"复杂推理不如Sol·多模态受限(免费用户)·文件上传限制·API不公开给免费用户",
@@ -457,7 +461,7 @@ var AI_MODEL_COMPARISON = {
     },
     {name:"GPT-5.6 Sol", emoji:"☀️", provider:"OpenAI", series:"付费旗舰·深度推理", tier:"旗舰",
      input_price:"$5.00", output_price:"$30.00", cost_per_task:"$1.86",
-     intelligence:92, speed:70,性价比:58, 综合:77,
+     intelligence:92, speed:70,性价比:58, 安全:74, 综合:77,
      context:"256K", params:"未公开(推测~2T+)",
      strengths:"68%更少事实错误·五级推理滑块·Fast模式(2.5倍速@2倍价)·金融/医疗/法律精度极高·GPU内核自优化降本20%",
      weaknesses:"昂贵(比Luna贵25倍输入)·速度慢(非Fast模式)·需Plus/Pro订阅($20/$200月)",
@@ -469,7 +473,7 @@ var AI_MODEL_COMPARISON = {
     // ===== Anthropic Claude 系列 =====
     {name:"Claude Sonnet 4.6", emoji:"🎵", provider:"Anthropic", series:"中端·平衡之选", tier:"中端",
      input_price:"$3.00", output_price:"$15.00", cost_per_task:"≈$0.50",
-     intelligence:85, speed:78,性价比:82, 综合:83,
+     intelligence:85, speed:78,性价比:82, 安全:88, 综合:83,
      context:"200K", params:"未公开",
      strengths:"代码能力出色·推理平衡·上下文200K·性价比在Anthropic系最高·Agent工具使用流畅",
      weaknesses:"复杂推理不如Opus·创意写作不如Fable·基准跑分不突出",
@@ -479,7 +483,7 @@ var AI_MODEL_COMPARISON = {
     },
     {name:"Claude Opus 5", emoji:"👑", provider:"Anthropic", series:"旗舰·深度推理", tier:"顶级旗舰",
      input_price:"$5.00", output_price:"$25.00", cost_per_task:"≈$1.50",
-     intelligence:94, speed:55,性价比:55, 综合:74,
+     intelligence:94, speed:55,性价比:55, 安全:92, 综合:74,
      context:"200K", params:"未公开",
      strengths:"推理深度业界顶尖·数学/逻辑/代码最强之一·长文档精准理解·安全对齐最佳",
      weaknesses:"最贵模型之一·速度慢·不适合高频调用·创意性任务不如Fable",
@@ -489,7 +493,7 @@ var AI_MODEL_COMPARISON = {
     },
     {name:"Claude Fable 5", emoji:"✨", provider:"Anthropic", series:"创意·写作旗舰", tier:"顶级旗舰",
      input_price:"$10.00", output_price:"$50.00", cost_per_task:"$3.15",
-     intelligence:92, speed:52,性价比:42, 综合:68,
+     intelligence:92, speed:52,性价比:42, 安全:85, 综合:68,
      context:"200K", params:"未公开",
      strengths:"创意写作业界最强·叙事质量极高·角色扮演/对话生成一流·长篇连贯性卓越",
      weaknesses:"所有模型中最贵(每任务$3.15)·速度慢·数学推理不如Opus·性价比极低对比DeepSeek",
@@ -501,7 +505,7 @@ var AI_MODEL_COMPARISON = {
     // ===== Kimi 系列 =====
     {name:"Kimi K3", emoji:"🔥", provider:"Moonshot(月之暗面)", series:"国产开源·全能旗舰", tier:"旗舰",
      input_price:"$3.00", output_price:"$15.00", cost_per_task:"$0.86",
-     intelligence:87, speed:75,性价比:80, 综合:83,
+     intelligence:87, speed:75,性价比:80, 安全:76, 综合:83,
      context:"256K", params:"未公开(推测~1T+)",
      strengths:"国产最强全能模型·中文能力顶尖·开源生态活跃·256K长上下文·价格适中",
      weaknesses:"英文能力不如Claude/GPT·生态不如OpenAI·速度中等",
@@ -513,7 +517,7 @@ var AI_MODEL_COMPARISON = {
     // ===== Grok 系列 =====
     {name:"Grok 4.6", emoji:"🚀", provider:"xAI(马斯克)", series:"月更迭代·实时信息", tier:"旗舰",
      input_price:"$2.00", output_price:"$6.00", cost_per_task:"≈$0.40",
-     intelligence:84, speed:82,性价比:86, 综合:84,
+     intelligence:84, speed:82,性价比:86, 安全:62, 综合:84,
      context:"500K", params:"1.5T",
      strengths:"500K最长上下文·实时X平台信息接入·月更迭代速度快·价格极具竞争力($2/$6)·4.7(2.1T参数)数周后来",
      weaknesses:"推理深度不如Claude/GPT旗舰·生态最小·企业功能少·基准跑分不公开",
@@ -526,7 +530,7 @@ var AI_MODEL_COMPARISON = {
     // ===== 通义千问 Qwen 系列 =====
     {name:"Qwen3.8-Max", emoji:"🐬", provider:"阿里云(通义千问)", series:"3.8旗舰·MoE·视觉原生", tier:"旗舰(8/10已开源)",
      input_price:"$2.00(¥12)", output_price:"$6.00(¥36)", cost_per_task:"≈$0.35",
-     intelligence:88, speed:72,性价比:86, 综合:85,
+     intelligence:88, speed:72,性价比:86, 安全:84, 综合:85,
      context:"1M", params:"2.4T(MoE/95B激活)",
      strengths:"Arena综合全球第5·PaperBench 93.0创纪录·Vision Arena全球第2·OSWorld终端操作86.1主流第一·1M超长上下文·自主编程16天从零构建项目",
      weaknesses:"SWE-bench Pro仅67.7(落后Fable 5的80.0)·真实软件工程修改稳定性不足·代码能力弱于GLM 5.2·交付需拆细才能执行到位",
@@ -537,7 +541,7 @@ var AI_MODEL_COMPARISON = {
     // ===== Google Gemini 系列 =====
     {name:"Gemini 3.6 Flash", emoji:"💎", provider:"Google", series:"轻量高速·多模态", tier:"入门/中端",
      input_price:"$0.30", output_price:"$2.50", cost_per_task:"≈$0.20",
-     intelligence:80, speed:90,性价比:88, 综合:84,
+     intelligence:80, speed:90,性价比:88, 安全:75, 综合:84,
      context:"128K", params:"未公开",
      strengths:"多模态原生支持(图/音/视频)·速度极快·Google生态整合·价格低·全球CDN加速",
      weaknesses:"推理深度不足·代码能力弱于Claude/GPT·Agent工具链不成熟·中文弱于国产模型",
@@ -551,6 +555,7 @@ var AI_MODEL_COMPARISON = {
    性价比: "综合考虑每美元可获得的智能水平+速度+上下文长度+生态完善度·满分100·90+:极致性价比·80-89:高性价比·70-79:合理·<70:品牌溢价/专业溢价",
    speed: "基于实际API响应速度(TTFT+生成速度)·满分100·90+:极快(<1s首Token)·80-89:快·70-79:中等·<70:慢(深度推理模型常态)",
     综合: "智能50%+性价比35%+速度15%加权·满分100·90+:全能王者·80-89:综合优秀·70-79:偏科型·<70:特定场景专用",
+    安全: "开源透明度+安全围栏+红队测试+对齐投入·满分100·≥85绿(安全标杆:Claude/DeepSeek开源/Qwen开源)·70-84琥珀(有安全措施但透明度不足)·<70灰(安全投入不足:xAI)",
    updated: "2026-08-10·基于Artificial Analysis+OpenRouter+官方文档+Arena最新榜单"
   },
   key_takeaways: [
