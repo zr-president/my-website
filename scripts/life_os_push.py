@@ -13,7 +13,7 @@ Usage:
   python scripts/life_os_push.py --mode morning --dry-run  # preview only
 """
 
-import sys, os, re, json, argparse, subprocess, textwrap, io
+import sys, os, re, json, argparse, subprocess, textwrap, io, requests
 from datetime import datetime
 
 # Fix Unicode output on Windows
