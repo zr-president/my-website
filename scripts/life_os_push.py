@@ -227,236 +227,220 @@ def _pick(items, key, fallback=""):
 
 
 def build_morning(data, config):
-    """Build 08:00 morning briefing."""
+    """Build 08:00 morning briefing — concise mobile-friendly version."""
     daily = data.get("DAILY_DATA", {})
-    briefing = data.get("DAILY_BRIEFING", {})
     insights = data.get("INSIGHTS", {})
     vocab = data.get("DAILY_VOCAB", {})
     profile = config.get("profile", {})
-    watchlist = config.get("watchlist", {})
+    today = datetime.now().strftime("%m/%d")
+    weekday = ["周一","周二","周三","周四","周五","周六","周日"][datetime.now().weekday()]
 
-    today = datetime.now().strftime("%Y年%m月%d日")
-    weekday = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"][datetime.now().weekday()]
+    # Extract weather (first ~30 chars)
+    weather = _safe_get(daily, "weather_summary", default="")
+    weather_short = weather[:60] if weather else ""
 
     lines = [
-        f"## ☀️ 早上好，{_safe_get(profile, 'name', default='钟锐')}！",
-        f"**{today} {weekday}**  |  {_safe_get(profile, 'city', default='广州')} · {_safe_get(daily, 'weather_summary', default='天气数据待更新')}",
+        f"☀️ 早！{today} {weekday} | {_safe_get(profile, 'city', default='广州')} {weather_short}",
         "",
     ]
 
-    # --- Stock Brief ---
+    # Stock — single line key data
     market = _safe_get(daily, "market_summary", default="")
     if market:
-        lines.append("### 📈 股市速览")
-        lines.append(market)
+        # Extract just the first sentence (before first |)
+        mkt_short = market.split("｜")[0][:80] if "｜" in market else market[:80]
+        lines.append(f"📈 **股市**")
+        lines.append(f"{mkt_short}")
+        # Add insight trend if available
+        stock_insight = _safe_get(insights, "stock", default={})
+        stock_trend = _safe_get(stock_insight, "trend", default="")
+        if stock_trend:
+            lines.append(f"{stock_trend[:100]}")
         lines.append("")
 
-    # --- Top News ---
+    # AI News — 2 top headlines only, one line each
     headlines = _safe_get(daily, "news_headlines", default=[])
     if headlines and len(headlines) > 0:
-        lines.append("### 📰 今日要闻")
+        lines.append("🤖 **AI快讯**")
         for h in headlines[:3]:
             if isinstance(h, dict):
-                lines.append(f"- **{_pick(h, 'title')}** ({_pick(h, 'source')})")
+                title = _pick(h, 'title')
+                # Truncate title to one line (~60 chars)
+                title_short = title[:65] + "…" if len(title) > 65 else title
+                lines.append(f"· {title_short}")
         lines.append("")
 
-    # --- Job Progress ---
+    # Job — compact
     job_cfg = config.get("job", {})
     if job_cfg:
-        lines.append("### 💼 求职追踪")
-        lines.append(f"- 本周目标：投递 **{_safe_get(job_cfg, 'weekly_target', default='15')}** 份")
-        lines.append(f"- 目标岗位：{' / '.join(_safe_get(profile, 'target_roles', default=['AI产品运营']))}")
-        lines.append(f"- 投递窗口：上午 9:30-11:00 是黄金时间")
+        lines.append(f"💼 **求职** | 周目标{_safe_get(job_cfg, 'weekly_target', default='15')}份 | 黄金窗口9:30-11:00")
         lines.append("")
 
-    # --- Daily Vocab ---
+    # Daily Vocab — one-liner
     words = _safe_get(vocab, "words", default=[])
     if words and len(words) > 0:
         w = words[0] if isinstance(words[0], dict) else {}
-        lines.append("### 💡 每日一词")
-        lines.append(f"**{_pick(w, 'word')}** {_pick(w, 'emoji')} — {_pick(w, 'definition')}")
-        lines.append(f"> {_pick(w, 'why_matters')}")
+        lines.append(f"💡 **{_pick(w, 'word')}** {_pick(w, 'emoji')}：{_pick(w, 'definition')[:80]}")
         lines.append("")
 
-    # --- Tip of the Day ---
-    tip = _safe_get(daily, "tip_of_day", default="")
-    if tip:
-        # Truncate long tips
-        if len(tip) > 200:
-            tip = tip[:200] + "..."
-        lines.append("### 💭 今日箴言")
-        lines.append(f"> {tip}")
-        lines.append("")
-
-    lines.append("---")
-    lines.append(f"📱 [打开个人网站](https://zr-president.github.io/my-website/) | ⏰ 下次推送：12:00 午间更新")
+    lines.append("─" * 20)
+    lines.append("📱 zr-president.github.io/my-website | ⏰12:00午间")
 
     return "\n".join(lines)
 
 
 def build_midday(data, config):
-    """Build 12:00 midday check-in."""
+    """Build 12:00 midday check-in — concise mobile-friendly version."""
     daily = data.get("DAILY_DATA", {})
     insights = data.get("INSIGHTS", {})
     profile = config.get("profile", {})
     dietary = _safe_get(profile, "dietary", default=[])
+    today = datetime.now().strftime("%m/%d")
+    weekday = ["周一","周二","周三","周四","周五","周六","周日"][datetime.now().weekday()]
 
     lines = [
-        "## 🔄 午间更新 · 中场休息",
+        f"🔄 午间 | {today} {weekday}",
         "",
     ]
 
-    # --- AI Track ---
+    # AI — trend only, short
     ai_insight = _safe_get(insights, "ai-track", default={})
     if ai_insight:
-        lines.append("### 🤖 AI 行业快讯")
-        lines.append(_safe_get(ai_insight, "summary", default=""))
         trend = _safe_get(ai_insight, "trend", default="")
         if trend:
-            lines.append(f"📊 趋势：{trend}")
-        lines.append("")
+            lines.append(f"🤖 **AI**")
+            lines.append(f"{trend[:150]}")
+            lines.append("")
 
-    # --- Diet Reminder ---
+    # Diet — compact
     if dietary:
-        lines.append("### 🍽️ 饮食提醒")
         notes = "、".join(dietary) if isinstance(dietary, list) else str(dietary)
-        lines.append(f"⚠️ 注意：{notes}")
-        lines.append("- 🥗 午餐推荐：高蛋白 + 多蔬菜 + 适量碳水")
-        lines.append("- 💧 下午目标：再喝 1L 水（全天目标 2.5L）")
-        lines.append("- 🚶 饭后走动 10 分钟，别久坐")
+        lines.append(f"🍽️ **饮食** | ⚠️{notes}")
+        lines.append("🥗 高蛋白+蔬菜 | 💧 下午再喝1L水 | 🚶 饭后走动10分钟")
         lines.append("")
 
-    # --- Stock midday snapshot ---
+    # Stock — one line
     market = _safe_get(daily, "market_summary", default="")
     if market:
-        lines.append("### 📈 午间大盘")
-        lines.append(f"{market[:150]}...")
+        mkt_short = market.split("｜")[0][:80] if "｜" in market else market[:80]
+        lines.append(f"📈 **大盘** | {mkt_short}")
         lines.append("")
 
-    lines.append("---")
-    lines.append(f"📱 [打开个人网站](https://zr-president.github.io/my-website/) | ⏰ 下次推送：18:00 晚间推荐")
+    lines.append("─" * 20)
+    lines.append("📱 zr-president.github.io/my-website | ⏰18:00晚间")
 
     return "\n".join(lines)
 
 
 def build_evening(data, config):
-    """Build 18:00 evening entertainment picks."""
+    """Build 18:00 evening picks — concise mobile-friendly version."""
     daily = data.get("DAILY_DATA", {})
     picks = data.get("PICKS", {})
     insights = data.get("INSIGHTS", {})
-    prefs = config.get("preferences", {})
     profile = config.get("profile", {})
+    today = datetime.now().strftime("%m/%d")
+    weekday = ["周一","周二","周三","周四","周五","周六","周日"][datetime.now().weekday()]
 
     lines = [
-        "## 🌅 晚间推荐 · 放松时刻",
+        f"🌅 晚间 | {today} {weekday}",
         "",
     ]
 
-    # --- Fitness ---
+    # Fitness — one-liner
     fitness = _safe_get(insights, "fitness", default={})
     if fitness:
-        lines.append("### 🏋️ 健身提醒")
-        lines.append(_safe_get(fitness, "tip", default="今日记得完成训练！"))
-        lines.append(f"📌 第{_safe_get(profile, 'fitness_week', default='?')}周 · 目标：{_safe_get(profile, 'fitness_goal', default='增肌')}")
+        tip_short = _safe_get(fitness, "tip", default="")[:80]
+        lines.append(f"🏋️ **健身** | 第{_safe_get(profile, 'fitness_week', default='?')}周·{_safe_get(profile, 'fitness_goal', default='增肌')}")
+        if tip_short:
+            lines.append(f"{tip_short}")
         lines.append("")
 
-    # --- Anime/Movie/Novel picks ---
-    lines.append("### 🎬 今日推荐")
+    # Picks — one line each
+    lines.append("🎬 **推荐**")
 
     anime_picks = _safe_get(picks, "anime", default=[])
     if anime_picks and len(anime_picks) > 0:
         a = anime_picks[0] if isinstance(anime_picks[0], dict) else {}
-        lines.append(f"- 📺 动漫：**{_pick(a, 'title')}** — {_pick(a, 'desc')}")
+        lines.append(f"📺 {_pick(a, 'title')} — {_pick(a, 'desc')[:60]}")
 
     movie = _safe_get(insights, "movie", default={})
     if movie:
-        lines.append(f"- 🎥 电影：{_safe_get(movie, 'summary', default='')[:150]}")
-
-    novel_picks = _safe_get(picks, "novel", default=[])
-    if novel_picks and len(novel_picks) > 0:
-        n = novel_picks[0] if isinstance(novel_picks[0], dict) else {}
-        lines.append(f"- 📖 小说：**{_pick(n, 'title')}** — {_pick(n, 'desc')}")
+        movie_short = _safe_get(movie, "summary", default="")[:80]
+        if movie_short:
+            lines.append(f"🎥 {movie_short}")
 
     music_rec = _safe_get(daily, "daily_recommendation", "music", default={})
     if isinstance(music_rec, dict):
-        lines.append(f"- 🎵 音乐：**{_pick(music_rec, 'title')}** — {_pick(music_rec, 'desc')}")
+        lines.append(f"🎵 {_pick(music_rec, 'title')} — {_pick(music_rec, 'desc')[:60]}")
 
     lines.append("")
 
-    # --- Learning ---
+    # Learning — one-liner
     learning = _safe_get(insights, "learning", default={})
     if learning:
-        lines.append("### 📚 学习提醒")
-        lines.append(_safe_get(learning, "tip", default="今日学习目标别忘记！"))
-        lines.append("")
+        learn_tip = _safe_get(learning, "tip", default="")[:100]
+        if learn_tip:
+            lines.append(f"📚 **学习** | {learn_tip}")
+            lines.append("")
 
-    lines.append("---")
-    lines.append(f"📱 [打开个人网站](https://zr-president.github.io/my-website/) | ⏰ 下次推送：22:00 今日复盘")
+    lines.append("─" * 20)
+    lines.append("📱 zr-president.github.io/my-website | ⏰22:00复盘")
 
     return "\n".join(lines)
 
 
 def build_night(data, config):
-    """Build 22:00 night review."""
+    """Build 22:00 night review — concise mobile-friendly version."""
     daily = data.get("DAILY_DATA", {})
     insights = data.get("INSIGHTS", {})
-    vocab = data.get("DAILY_VOCAB", {})
     today_updated = data.get("INSIGHTS_TODAY_UPDATED", [])
     profile = config.get("profile", {})
+    today = datetime.now().strftime("%m/%d")
+    weekday = ["周一","周二","周三","周四","周五","周六","周日"][datetime.now().weekday()]
 
     lines = [
-        "## 🌙 今日复盘 · 晚安",
+        f"🌙 晚安 | {today} {weekday}",
         "",
     ]
 
-    # --- Today's Highlights ---
+    # Today's summary — weekly_focus first 150 chars
     weekly = _safe_get(daily, "weekly_focus", default="")
     if weekly:
-        lines.append("### 📊 本周要点")
-        lines.append(f"> {weekly[:200]}")
+        lines.append(f"📊 **今日要点**")
+        lines.append(f"{weekly[:150]}")
         lines.append("")
 
-    # --- INSIGHTS Updated Today ---
+    # INSIGHTS updated
     if today_updated and len(today_updated) > 0:
-        lines.append(f"### 📖 今日分析更新（{len(today_updated)}个板块）")
-        for key in today_updated[:5]:
-            section = _safe_get(insights, key, default={})
-            if section:
-                summary = _safe_get(section, "summary", default="")
-                if summary:
-                    lines.append(f"- **{key}**：{summary[:120]}")
+        lines.append(f"📖 **今日更新** | {', '.join(today_updated[:7])}")
         lines.append("")
 
-    # --- Career ---
+    # Career — one-liner
     career = _safe_get(insights, "career", default={})
     if career:
-        lines.append("### 💼 求职洞察")
-        lines.append(_safe_get(career, "summary", default=""))
-        tip = _safe_get(career, "tip", default="")
-        if tip:
-            lines.append(f"💡 {tip}")
-        lines.append("")
+        career_tip = _safe_get(career, "tip", default="")
+        if career_tip:
+            lines.append(f"💼 **求职** | {career_tip[:120]}")
+            lines.append("")
 
-    # --- Reflection Prompt ---
-    lines.append("### 📝 今日反思")
-    lines.append("- 今天完成了什么？有什么收获？")
-    lines.append("- 求职投递进度如何？明天计划做什么？")
-    lines.append("- 健身完成了吗？饮食注意了吗？")
+    # Reflection
+    lines.append("📝 **反思**")
+    lines.append("今天投递进度？健身完成了吗？明天影之刃零预售闹钟？")
     lines.append("")
 
-    # --- Tomorrow Preview ---
-    lines.append("### 🔮 明日预告")
-    news_insight = _safe_get(insights, "news", default={})
-    if news_insight:
-        lines.append(f"- {_safe_get(news_insight, 'trend', default='持续关注AI行业动态')}")
-    stock_insight = _safe_get(insights, "stock", default={})
-    if stock_insight:
-        lines.append(f"- {_safe_get(stock_insight, 'tip', default='关注明日大盘走势')[:150]}")
+    # Tomorrow
+    lines.append("🔮 **明天**")
+    stock_tip = _safe_get(insights, "stock", "tip", default="")
+    if stock_tip:
+        lines.append(f"· {stock_tip[:120]}")
+    news_trend = _safe_get(insights, "news", "trend", default="")
+    if news_trend:
+        lines.append(f"· {news_trend[:120]}")
     lines.append("")
 
-    lines.append("---")
-    lines.append(f"🌙 晚安，{_safe_get(profile, 'name', default='钟锐')}。明天见！")
-    lines.append(f"📱 [打开个人网站](https://zr-president.github.io/my-website/)")
+    lines.append("─" * 20)
+    lines.append(f"🌙 晚安{_safe_get(profile, 'name', default='钟锐')}，明天见")
+    lines.append("📱 zr-president.github.io/my-website")
 
     return "\n".join(lines)
 
