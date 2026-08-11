@@ -565,6 +565,10 @@ def main():
         print("[ERROR] PushPlus token not provided. Use --token or set PUSHPLUS_TOKEN env var.", file=sys.stderr)
         sys.exit(1)
 
+    # Mask token for logging
+    masked = token[:8] + "***" + token[-4:] if len(token) > 12 else "***"
+    print(f"[INFO] Using token: {masked}", file=sys.stderr)
+    print(f"[INFO] Content length: {len(content)} chars", file=sys.stderr)
     print(f"[INFO] Sending {args.mode} briefing via PushPlus...", file=sys.stderr)
     success, msg = send_pushplus(token, title, content, args.topic)
 
@@ -572,6 +576,8 @@ def main():
         print(f"[OK] Push sent successfully: {msg}", file=sys.stderr)
     else:
         print(f"[FAIL] Push failed: {msg}", file=sys.stderr)
+        # Print first 200 chars of content for debugging
+        print(f"[DEBUG] Content preview: {content[:200]}", file=sys.stderr)
         sys.exit(1)
 
 
