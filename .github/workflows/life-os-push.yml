@@ -67,11 +67,14 @@ jobs:
           echo "Python version: $(python --version)"
           echo "Node version: $(node --version)"
           echo "Working directory: $(pwd)"
-          echo "Files: $(ls -la daily_data.js personal_config.js scripts/life_os_push.py 2>&1)"
-          echo "Token set: ${{ secrets.PUSHPLUS_TOKEN != '' }}"
+          echo "Files: $(ls daily_data.js personal_config.js scripts/life_os_push.py 2>&1)"
+          TOKEN_LEN=$(printf '%s' "${{ secrets.PUSHPLUS_TOKEN }}" | wc -c)
+          echo "Token length: $TOKEN_LEN"
+          if [ "$TOKEN_LEN" -lt 5 ]; then
+            echo "::error::PUSHPLUS_TOKEN secret is empty or too short (length=$TOKEN_LEN)"
+            exit 1
+          fi
 
       - name: Run push script
-        env:
-          PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
         run: |
-          python scripts/life_os_push.py --mode ${{ steps.mode.outputs.mode }}
+          python scripts/life_os_push.py --mode ${{ steps.mode.outputs.mode }} --token '${{ secrets.PUSHPLUS_TOKEN }}'
