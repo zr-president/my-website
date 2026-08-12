@@ -272,7 +272,7 @@ var INSIGHTS_TODAY_UPDATED = ['stock','ai-track','movie','learning','career','ne
 
 var OPTIMIZATION_LOG = {
   date: "2026-08-12",
-  total_suggestions: 33,
+  total_suggestions: 38,
   total_implemented: 31,
   streak_days: 22,
   suggestions: [
@@ -309,6 +309,11 @@ var OPTIMIZATION_LOG = {
     {id:31, cat:"内容优化", title:"8/10知识库文件补充", desc:"新增4个知识库文件：novel(天蚕土豆开载/乌贼霸榜/克系扩张)+gaming(影之刃零倒计时/Big Walk94分/发售日历)+learning(Astra安全/中国开源/SpaceX财报/宇树招股书)+career(宇树IPO/AI安全岗/周一投递策略)", priority:"P1", status:"已完成"},
     {id:32, cat:"功能优化", title:"AI模型对比表增加【安全/对齐】评分维度", desc:"11款模型全部增加安全评分(Claude Opus 92分安全标杆→Grok 4.6仅62分)。评分标准：开源透明度+安全围栏+红队测试+对齐投入。table渲染新增安全列+scoring_guide补充安全说明+MODEL_SCORE_COLORS新增安全色彩(<70红色预警)", priority:"P2", status:"已完成"},
     {id:33, cat:"体验优化", title:"INSIGHTS板块增加【今日更新摘要】快速定位", desc:"daily_data.js新增INSIGHTS_TODAY_UPDATED变量声明今日更新板块。section-detail视图顶部增加📌今日更新标签行——当前板块高亮+点击标签跳转对应板块详情", priority:"P2", status:"已完成"},
+    {id:34, cat:"内容优化", title:"PushPlus推送增加【今日重磅】头条标识", desc:"每日4次推送中，将当日最重要的1条资讯加🌟前缀突出显示——如影之刃零预售/龙餐馆首映/CoreWeave财报等重磅事件。提升推送信息层级可读性", priority:"P2", status:"待实施"},
+    {id:35, cat:"功能优化", title:"INSIGHTS板块增加【今日热搜标签】快速定位行", desc:"每个INSIGHTS板块顶部summary后增加3-5个可点击的热搜标签(如#AI算力 #影之刃零 #龙餐馆)——点击跳转到对应DAILY_BRIEFING条目。提升板块间导航效率", priority:"P2", status:"待实施"},
+    {id:36, cat:"工具优化", title:"daily_data.js每日编辑流程标准化为可复用脚本", desc:"当前每日更新依赖Python行内替换——虽有safe_edit.py但仅做备份校验。建议：创建scripts/daily_update.py模板——预设所有字段的替换位置→只需填入当日新值即可一键执行→减少人为出错概率", priority:"P1", status:"待实施"},
+    {id:37, cat:"体验优化", title:"PICKS游戏板块增加【倒计时/预售/发售日】时间标签", desc:"游戏条目右侧显示【今日预售🔥】【倒计时X天】【已发售✅】等时间状态标签——用户一眼看到哪些游戏正处于关键时间节点。影之刃零/诡秘之主/沉没之城2等均可受益", priority:"P2", status:"待实施"},
+    {id:38, cat:"体验优化", title:"首页Dashboard增加【今日必看】置顶聚合卡片", desc:"在首页最顶部增加1个金色边框的聚合卡片——自动选取当日INSIGHTS_TODAY_UPDATED中最重要板块的核心结论(2-3行)+emoji。让首页一打开就有【今日最重要的事】而不是零散板块。类似Google Discover的Top Story", priority:"P2", status:"待实施"},
   ]
 };
 
