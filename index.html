@@ -241,6 +241,19 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <button onclick="event.stopPropagation();checkUpdateStatus()" id="updateCheckBtn" style="background:rgba(255,255,255,.2);color:#fff;border:none;padding:5px 10px;border-radius:6px;cursor:pointer;font-size:11px;font-weight:500;white-space:nowrap" title="检查更新状态">🔍</button>
 </div></div>
 
+	<!-- #38: 今日必看置顶聚合卡片 -->
+	<div id="featuredCard" style="background:linear-gradient(135deg,#fef3c7,#fef9c3);border:1px solid #f59e0b;border-radius:12px;padding:12px 16px;margin-bottom:16px;display:none;cursor:pointer;transition:transform .15s,box-shadow .15s" onmouseover="this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 12px rgba(245,158,11,.25)'" onmouseout="this.style.transform='';this.style.boxShadow=''" onclick="openFeaturedCard()">
+	<div style="display:flex;align-items:center;gap:10px">
+	<span style="font-size:22px;flex-shrink:0">📌</span>
+	<div style="flex:1;min-width:0">
+	<div style="font-size:10px;color:#d97706;font-weight:700;text-transform:uppercase;letter-spacing:1px">今日必看 · TOP STORY</div>
+	<div id="featuredHeadline" style="font-size:14px;font-weight:700;color:#1c1917;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis"></div>
+	<div id="featuredSummary" style="font-size:11px;color:#78716c;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></div>
+	</div>
+	<span style="font-size:16px;color:#d97706;flex-shrink:0">→</span>
+	</div>
+	</div>
+
 <!-- Daily Briefing (safe: event delegation, no inline onclick) -->
 <div id="dailyBriefing" style="margin-bottom:16px;display:none">
 <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
@@ -1356,6 +1369,13 @@ function renderSectionPicks(sectionId){
       h+='<'+tag+' '+(hasLink?'href="'+p.link+'" target="_blank" ':'')+'class="pick-card">';
       h+='<span class="pick-icon">'+p.icon+'</span>';
       h+='<span class="pick-info"><div class="pick-title">'+p.title+'</div><div class="pick-desc">'+p.desc+'</div>';
+      // #37: Time-sensitive badge for gaming/movie picks
+      var titleLower=(p.title||'').toLowerCase(), descLower=(p.desc||'').toLowerCase();
+      if(titleLower.indexOf('今日')>=0||descLower.indexOf('今日')>=0||titleLower.indexOf('预售')>=0||descLower.indexOf('开播')>=0){
+        h+='<span style="display:inline-block;margin-top:2px;padding:1px 6px;border-radius:8px;font-size:9px;font-weight:700;background:#fee2e2;color:#dc2626">🔥 今日</span>';
+      } else if(titleLower.indexOf('明日')>=0||descLower.indexOf('明天')>=0||descLower.indexOf('倒计时')>=0){
+        h+='<span style="display:inline-block;margin-top:2px;padding:1px 6px;border-radius:8px;font-size:9px;font-weight:700;background:#fef3c7;color:#d97706">⏰ 即将</span>';
+      }
       if(p.video) h+='<a href=\"'+p.video+'\" target=\"_blank\" onclick=\"event.stopPropagation()\" style=\"display:inline-block;margin-top:3px;font-size:10px;color:#fb7299;text-decoration:none\">📺 B站视频 →</a>';
       h+='</span>';
       if(hasLink) h+='<span class="pick-arrow">→</span>';
@@ -1664,6 +1684,21 @@ function showView(viewName, categoryKey){
     if(typeof INSIGHTS!=='undefined' && INSIGHTS[categoryKey]){
       var ins = INSIGHTS[categoryKey];
       detailHtml += '<div class=\"callout info\" style=\"margin-bottom:16px\"><strong>📊 今日分析（'+ins.updated+'更新）</strong><br>'+ins.summary+'<br><span style=\"font-size:12px;color:var(--text2)\">'+ins.trend+'</span><br><strong style=\"color:var(--accent)\">'+ins.tip+'</strong></div>';
+      // #35: Hot tags extracted from trend text (**keyword**)
+      var trendText = ins.trend || '';
+      var hotTagMatches = trendText.match(/\*\*(.+?)\*\*/g);
+      if(hotTagMatches && hotTagMatches.length > 0){
+        detailHtml += '<div style=\"margin-top:6px;font-size:10px;color:var(--text3)\">🔥 今日热搜: ';
+        var seenKw = {};
+        hotTagMatches.forEach(function(tm){
+          var kw = tm.replace(/\*\*/g, '');
+          if(!seenKw[kw]){
+            seenKw[kw] = true;
+            detailHtml += '<span style=\"display:inline-block;margin:2px 3px;padding:2px 8px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;cursor:pointer;font-size:10px;color:var(--text2)\" onclick=\"event.stopPropagation();window.open(\'https://www.bing.com/search?q='+encodeURIComponent(kw)+'\',\'_blank\')\" title=\"搜索: '+kw+'\">🔍 '+kw+'</span>';
+          }
+        });
+        detailHtml += '</div>';
+      }
       // Layered reasoning
       if(ins.reasoning){
         var steps=ins.reasoning.split('\n\n');
@@ -1686,7 +1721,14 @@ function showView(viewName, categoryKey){
         var hasLink = p.link && p.link!=='#';
         detailHtml += '<div class=\"pick-card\">';
         detailHtml += '<span class=\"pick-icon\">'+p.icon+'</span>';
-        detailHtml += '<span class=\"pick-info\"><div class=\"pick-title\">'+p.title+'</div><div class=\"pick-desc\">'+p.desc+'</div></span>';
+        detailHtml += '<span class="pick-info"><div class="pick-title">'+p.title+'</div><div class="pick-desc">'+p.desc+'</div>';
+        var tl=(p.title||'').toLowerCase(),dd=(p.desc||'').toLowerCase();
+        if(tl.indexOf('今日')>=0||dd.indexOf('今日')>=0||tl.indexOf('预售')>=0||dd.indexOf('开播')>=0){
+          detailHtml += '<span style="display:inline-block;margin-top:2px;padding:1px 6px;border-radius:8px;font-size:9px;font-weight:700;background:#fee2e2;color:#dc2626">🔥 今日</span>';
+        } else if(tl.indexOf('明日')>=0||dd.indexOf('明天')>=0||dd.indexOf('倒计时')>=0){
+          detailHtml += '<span style="display:inline-block;margin-top:2px;padding:1px 6px;border-radius:8px;font-size:9px;font-weight:700;background:#fef3c7;color:#d97706">⏰ 即将</span>';
+        }
+        detailHtml += '</span>';
         if(p.video) detailHtml += '<a href=\"'+p.video+'\" target=\"_blank\" style=\"font-size:10px;color:#fb7299;text-decoration:none\">📺 B站 →</a>';
         if(hasLink) detailHtml += '<a href=\"'+p.link+'\" target=\"_blank\" class=\"pick-arrow\" style=\"text-decoration:none\">→</a>';
         detailHtml += '</div>';
@@ -2110,6 +2152,36 @@ function renderBriefing(){
   });
   content.innerHTML = h;
   container.style.display = 'block';
+  // #38: Populate featured card from top briefing
+  populateFeaturedCard();
+}
+
+// #38: Populate the 今日必看 featured card
+function populateFeaturedCard(){
+  var card = document.getElementById('featuredCard');
+  if(!card || typeof DAILY_BRIEFING==='undefined') return;
+  var top = DAILY_BRIEFING.highlights.slice().sort(function(a,b){return a.priority-b.priority;})[0];
+  if(!top) return;
+  var hl = document.getElementById('featuredHeadline');
+  var sm = document.getElementById('featuredSummary');
+  if(hl) hl.textContent = top.icon + ' ' + top.headline;
+  if(sm) sm.textContent = top.summary;
+  card.setAttribute('data-link', top.link || '');
+  card.setAttribute('data-deep', top.deepLink || '');
+  card.style.display = 'block';
+}
+
+// #38: Navigate from featured card
+function openFeaturedCard(){
+  var card = document.getElementById('featuredCard');
+  if(!card) return;
+  var deepLink = card.getAttribute('data-deep');
+  if(deepLink){
+    window.open(deepLink, '_blank');
+  } else {
+    var link = card.getAttribute('data-link');
+    if(link && typeof navigateTo === 'function') navigateTo('section-detail', link.replace('#',''));
+  }
 }
 
 // Event delegation for briefing clicks (no inline onclick!)

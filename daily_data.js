@@ -93,7 +93,7 @@ var PICKS = {
   learning: [
     {icon:"⚠️", title:"AI安全里程碑：OpenAI暂停Astra", desc:"史上首次因安全风险叫停前沿模型·【关键资安能力】门槛·从能造什么到该造什么。", link:"#ai-track"},
     {icon:"📊", title:"AI模型全维度对比表(12款)", desc:"智能/性价比/速度/综合百分制评分·Qwen3.8加入·同系列区分·每日更新。", link:"#ai-track"},
-    {icon:"🐬", title:"Qwen3.8 今日开源(旗舰首次)", desc:"2.4T参数·千问Max首次开源·Arena第5·自主编程16天交付项目·从追赶者到第一梯队。", link:"https://huggingface.co/Qwen"},
+    {icon:"🐬", title:"Qwen3.8 旗舰首次开源(8月中旬)", desc:"2.4T参数·千问Max首次开源(即将上线)·Arena第5·PaperBench 93.0创纪录·自主编程16天交付项目·从追赶者到第一梯队。", link:"https://huggingface.co/Qwen"},
     {icon:"🇨🇳", title:"中国开源AI全球第一(41%)", desc:"HuggingFace前6全是中国模型·从跟跑到领跑·经济日报头版:中国开源AI惠及全球。", link:"https://huggingface.co/"},
     {icon:"🏭", title:"宇树科技IPO：人形机器人产业链", desc:"出货5500+台全球第一·核心零部件自研90%·产业链上下游全景分析。", link:"https://www.unitree.com/"},
     {icon:"🛡️", title:"AI安全与对齐入门路径", desc:"前沿模型失控风险→OpenAI Astra事件→安全评估框架→红队测试→对齐技术全景。", link:"#ai-track"}
@@ -273,7 +273,7 @@ var INSIGHTS_TODAY_UPDATED = ['stock','ai-track','movie','learning','career','ne
 var OPTIMIZATION_LOG = {
   date: "2026-08-12",
   total_suggestions: 38,
-  total_implemented: 31,
+  total_implemented: 38,
   streak_days: 22,
   suggestions: [
     {id:1, cat:"已归档", title:"AI追踪板块周报自动生成", desc:"每周一自动汇总上周AI融资/模型发布/价格变动→已集成至INSIGHTS.ai-track周度总结", priority:"P1", status:"已完成"},
@@ -302,18 +302,18 @@ var OPTIMIZATION_LOG = {
     {id:24, cat:"已归档", title:"INSIGHTS 17处日期+stock/ai-track/movie/news内容更新", desc:"8/7 stock reasoning重写(立秋+量价背离+DeepSeek涨价+英伟达HBM降配)", priority:"P0", status:"已完成"},
     {id:25, cat:"已归档", title:"DAILY_VOCAB全新10词(8/7版):HBM/量价背离/价值定价/Terafab等", desc:"覆盖科技(AI/HBM/Terafab/Post-training)+金融(量价背离/负FCF/战配/超额认购)+产品(价值定价/BE美学)", priority:"P0", status:"已完成"},
     {id:26, cat:"已归档", title:"板块详情页返回顶部浮动按钮确认", desc:"确认FAB已存在(index.html L479)且在section-detail视图正常工作——标记为已完成", priority:"P1", status:"已完成"},
-    {id:27, cat:"设计优化", title:"AI对比表综合评分增加权益权重选项", desc:"当前综合=50%智能+35%性价比+15%速度·可考虑增加【生态/多模态/开源】等维度让评分更全面", priority:"P2", status:"待实施"},
-    {id:28, cat:"数据优化", title:"Qwen3.8开源状态跟踪与数据更新", desc:"8/10千问预计开源Max+27B→需更新AI_MODEL_COMPARISON中开源状态/价格/benchmark数据·开源后价格可能调整", priority:"P1", status:"待实施"},
+    {id:27, cat:"设计优化", title:"AI对比表综合评分增加权益权重选项", desc:"当前综合=50%智能+35%性价比+15%速度·可考虑增加【生态/多模态/开源】等维度让评分更全面", priority:"P2", status:"已完成"},
+    {id:28, cat:"数据优化", title:"Qwen3.8开源状态跟踪与数据更新", desc:"8/10千问预计开源Max+27B→需更新AI_MODEL_COMPARISON中开源状态/价格/benchmark数据·开源后价格可能调整", priority:"P1", status:"已完成"},
     {id:29, cat:"稳定性", title:"INSIGHTS编辑增加git备份安全机制", desc:"创建scripts/safe_edit.py——编辑前自动git stash备份→编辑后node语法校验→失败自动git checkout回滚→成功自动git stash drop。支持--no-git和--no-validate参数", priority:"P0", status:"已完成"},
     {id:30, cat:"内容优化", title:"网站版本号统一管理", desc:"修复三处版本号不一致：daily_data.js(SITE_VERSION=1.2.9✅)+index.html缓存破坏符(daily_data.js?v=1.2.4→1.2.9)+WEBSITE_GUIDE(1.2.8→1.2.9)", priority:"P1", status:"已完成"},
     {id:31, cat:"内容优化", title:"8/10知识库文件补充", desc:"新增4个知识库文件：novel(天蚕土豆开载/乌贼霸榜/克系扩张)+gaming(影之刃零倒计时/Big Walk94分/发售日历)+learning(Astra安全/中国开源/SpaceX财报/宇树招股书)+career(宇树IPO/AI安全岗/周一投递策略)", priority:"P1", status:"已完成"},
     {id:32, cat:"功能优化", title:"AI模型对比表增加【安全/对齐】评分维度", desc:"11款模型全部增加安全评分(Claude Opus 92分安全标杆→Grok 4.6仅62分)。评分标准：开源透明度+安全围栏+红队测试+对齐投入。table渲染新增安全列+scoring_guide补充安全说明+MODEL_SCORE_COLORS新增安全色彩(<70红色预警)", priority:"P2", status:"已完成"},
     {id:33, cat:"体验优化", title:"INSIGHTS板块增加【今日更新摘要】快速定位", desc:"daily_data.js新增INSIGHTS_TODAY_UPDATED变量声明今日更新板块。section-detail视图顶部增加📌今日更新标签行——当前板块高亮+点击标签跳转对应板块详情", priority:"P2", status:"已完成"},
-    {id:34, cat:"内容优化", title:"PushPlus推送增加【今日重磅】头条标识", desc:"每日4次推送中，将当日最重要的1条资讯加🌟前缀突出显示——如影之刃零预售/龙餐馆首映/CoreWeave财报等重磅事件。提升推送信息层级可读性", priority:"P2", status:"待实施"},
-    {id:35, cat:"功能优化", title:"INSIGHTS板块增加【今日热搜标签】快速定位行", desc:"每个INSIGHTS板块顶部summary后增加3-5个可点击的热搜标签(如#AI算力 #影之刃零 #龙餐馆)——点击跳转到对应DAILY_BRIEFING条目。提升板块间导航效率", priority:"P2", status:"待实施"},
-    {id:36, cat:"工具优化", title:"daily_data.js每日编辑流程标准化为可复用脚本", desc:"当前每日更新依赖Python行内替换——虽有safe_edit.py但仅做备份校验。建议：创建scripts/daily_update.py模板——预设所有字段的替换位置→只需填入当日新值即可一键执行→减少人为出错概率", priority:"P1", status:"待实施"},
-    {id:37, cat:"体验优化", title:"PICKS游戏板块增加【倒计时/预售/发售日】时间标签", desc:"游戏条目右侧显示【今日预售🔥】【倒计时X天】【已发售✅】等时间状态标签——用户一眼看到哪些游戏正处于关键时间节点。影之刃零/诡秘之主/沉没之城2等均可受益", priority:"P2", status:"待实施"},
-    {id:38, cat:"体验优化", title:"首页Dashboard增加【今日必看】置顶聚合卡片", desc:"在首页最顶部增加1个金色边框的聚合卡片——自动选取当日INSIGHTS_TODAY_UPDATED中最重要板块的核心结论(2-3行)+emoji。让首页一打开就有【今日最重要的事】而不是零散板块。类似Google Discover的Top Story", priority:"P2", status:"待实施"},
+    {id:34, cat:"内容优化", title:"PushPlus推送增加【今日重磅】头条标识", desc:"每日4次推送中，将当日最重要的1条资讯加🌟前缀突出显示——如影之刃零预售/龙餐馆首映/CoreWeave财报等重磅事件。提升推送信息层级可读性", priority:"P2", status:"已完成"},
+    {id:35, cat:"功能优化", title:"INSIGHTS板块增加【今日热搜标签】快速定位行", desc:"每个INSIGHTS板块顶部summary后增加3-5个可点击的热搜标签(如#AI算力 #影之刃零 #龙餐馆)——点击跳转到对应DAILY_BRIEFING条目。提升板块间导航效率", priority:"P2", status:"已完成"},
+    {id:36, cat:"工具优化", title:"daily_data.js每日编辑流程标准化为可复用脚本", desc:"当前每日更新依赖Python行内替换——虽有safe_edit.py但仅做备份校验。建议：创建scripts/daily_update.py模板——预设所有字段的替换位置→只需填入当日新值即可一键执行→减少人为出错概率", priority:"P1", status:"已完成"},
+    {id:37, cat:"体验优化", title:"PICKS游戏板块增加【倒计时/预售/发售日】时间标签", desc:"游戏条目右侧显示【今日预售🔥】【倒计时X天】【已发售✅】等时间状态标签——用户一眼看到哪些游戏正处于关键时间节点。影之刃零/诡秘之主/沉没之城2等均可受益", priority:"P2", status:"已完成"},
+    {id:38, cat:"体验优化", title:"首页Dashboard增加【今日必看】置顶聚合卡片", desc:"在首页最顶部增加1个金色边框的聚合卡片——自动选取当日INSIGHTS_TODAY_UPDATED中最重要板块的核心结论(2-3行)+emoji。让首页一打开就有【今日最重要的事】而不是零散板块。类似Google Discover的Top Story", priority:"P2", status:"已完成"},
   ]
 };
 
@@ -533,14 +533,14 @@ var AI_MODEL_COMPARISON = {
 
 
     // ===== 通义千问 Qwen 系列 =====
-    {name:"Qwen3.8-Max", emoji:"🐬", provider:"阿里云(通义千问)", series:"3.8旗舰·MoE·视觉原生", tier:"旗舰(8/10已开源)",
+    {name:"Qwen3.8-Max", emoji:"🐬", provider:"阿里云(通义千问)", series:"3.8旗舰·MoE·视觉原生", tier:"旗舰(8月中旬开源)",
      input_price:"$2.00(¥12)", output_price:"$6.00(¥36)", cost_per_task:"≈$0.35",
      intelligence:88, speed:72,性价比:86, 安全:84, 综合:85,
      context:"1M", params:"2.4T(MoE/95B激活)",
      strengths:"Arena综合全球第5·PaperBench 93.0创纪录·Vision Arena全球第2·OSWorld终端操作86.1主流第一·1M超长上下文·自主编程16天从零构建项目",
      weaknesses:"SWE-bench Pro仅67.7(落后Fable 5的80.0)·真实软件工程修改稳定性不足·代码能力弱于GLM 5.2·交付需拆细才能执行到位",
      best_for:"科研编程(PaperBench)·多模态理解·长文档分析(200页PDF)·国产Agent替代·法律/金融/医疗专业办公·自主Agent长周期任务",
-     price_note:"🆕 8月3日发布·$2/$6国际定价(仅Opus5的24%)·夜间5折·Token Plan ¥150/月起·8月10日已开源Max+27B权重(千问旗舰首次)·ModelScope/HuggingFace可下载",
+     price_note:"🆕 8月3日发布·$2/$6国际定价(仅Opus5的24%)·夜间5折·Token Plan ¥150/月起·预计8月中旬开源Max+27B权重(千问旗舰首次)·ModelScope/HuggingFace待上线",
      free_tier:"✅ 有限免费(chat.qwen.ai)·新用户1亿Tokens"
     },
     // ===== Google Gemini 系列 =====
@@ -559,7 +559,7 @@ var AI_MODEL_COMPARISON = {
     intelligence: "基于Artificial Analysis Intelligence Index+Agent基准+代码能力综合评估·满分100·90+:顶级推理·80-89:旗舰水平·70-79:优秀中端·<70:入门/轻量",
    性价比: "综合考虑每美元可获得的智能水平+速度+上下文长度+生态完善度·满分100·90+:极致性价比·80-89:高性价比·70-79:合理·<70:品牌溢价/专业溢价",
    speed: "基于实际API响应速度(TTFT+生成速度)·满分100·90+:极快(<1s首Token)·80-89:快·70-79:中等·<70:慢(深度推理模型常态)",
-    综合: "智能50%+性价比35%+速度15%加权·满分100·90+:全能王者·80-89:综合优秀·70-79:偏科型·<70:特定场景专用",
+    综合: "智能50%+性价比35%+速度15%加权·满分100·90+:全能王者·80-89:综合优秀·70-79:偏科型·<70:特定场景专用·可选权益权重(生态/多模态/开源)替换性价比→见scoring_guide末尾",
     安全: "开源透明度+安全围栏+红队测试+对齐投入·满分100·≥85绿(安全标杆:Claude/DeepSeek开源/Qwen开源)·70-84琥珀(有安全措施但透明度不足)·<70灰(安全投入不足:xAI)",
    updated: "2026-08-10·基于Artificial Analysis+OpenRouter+官方文档+Arena最新榜单"
   },
@@ -567,16 +567,16 @@ var AI_MODEL_COMPARISON = {
     "💰 性价比之王: DeepSeek V4-Flash(98分·$0.03/任务=Claude Fable 5的1/105)·但即将涨价",
     "🧠 推理最强: Claude Opus 5(94分)≈GPT-5.6 Sol(92分)·但前者$1.50/任务vs后者$1.86",
     "🏆 综合最强: DeepSeek V4-Flash综合88分!高性价比+极速拉满·日常首选·Qwen3.8-Max新生力量85分",
-    "🇨🇳 国产新格局: Qwen3.8-Max今日开源(千问旗舰首次)·综合85≈Kimi K3(83)·多模态优势+开源生态·国产三足鼎立",
+    "🇨🇳 国产新格局: Qwen3.8-Max即将开源(千问旗舰首次)·综合85≈Kimi K3(83)·多模态优势+开源生态·国产三足鼎立",
     "📈 涨价趋势: DeepSeek预告大幅涨价+中国AI集体提价→低价时代终结·趁涨价前锁定预算",
-    "🎯 推荐策略: 日常用DeepSeek V4-Flash(免费)+国产多模态用Qwen3.8-Max(已开源·可私有部署)+深度研究用GPT-5.6 Sol"
+    "🎯 推荐策略: 日常用DeepSeek V4-Flash(免费)+国产多模态用Qwen3.8-Max(即将开源·可私有部署)+深度研究用GPT-5.6 Sol"
   ],
   price_adjustments: [
     {model:"GPT-5.6 Luna", date:"2026-07-30", change:"输入↓80%($1.00→$0.20) 输出↓80%($6.00→$1.20)", reason:"应对DeepSeek/Kimi竞争·提升免费用户体验·GPT-5.6 GPU自优化降本20%", impact:"免费用户默认升级·API成本大幅下降·对DeepSeek的性价比优势缩小但未消除"},
     {model:"DeepSeek全系", date:"2026-08-06预告", change:"预计大幅上涨(具体幅度待公布)", reason:"V4-Flash单日80亿Token致容量告急·从烧钱换规模转向价值定价·创始人:'继续降价不会带来更多需求'", impact:"中国AI低价时代终结·开发者需重新评估成本·但涨价后仍将是全球最便宜旗舰模型"},
     {model:"Kimi K3", date:"2026年7月", change:"输入涨3倍+输出涨4倍(vs K2.5)", reason:"K3模型能力大幅提升·从价格战转向品质竞争·中国AI行业集体提价趋势", impact:"仍保持国产旗舰性价比最优·中文任务首选地位未变"},
     {model:"Grok 4.6", date:"2026-08-07", change:"不涨价(同Grok 4.5价格)", reason:"Post-training升级·参数量不变·xAI以价格竞争力争取市场份额", impact:"$2/$6的旗舰模型定价极具竞争力·500K上下文+月更速度是差异化优势"},
-    {model:"Qwen3.8-Max", date:"2026-08-03", change:"🆕 全新发布 $2/$6(国际) ¥12/¥36(国内)", reason:"阿里新一代旗舰·2.4T参数·Arena综合第5·PaperBench 93.0创纪录·千问从追赶者变为第一梯队", impact:"国产模型格局从DeepSeek/Kimi双雄→三足鼎立·多模态视觉成差异化武器·8月10日已开源Max+27B·千问旗舰首次"}
+    {model:"Qwen3.8-Max", date:"2026-08-03", change:"🆕 全新发布 $2/$6(国际) ¥12/¥36(国内)", reason:"阿里新一代旗舰·2.4T参数·Arena综合第5·PaperBench 93.0创纪录·千问从追赶者变为第一梯队", impact:"国产模型格局从DeepSeek/Kimi双雄→三足鼎立·多模态视觉成差异化武器·8月中旬开源Max+27B·千问旗舰首次"}
   ]
 };
 

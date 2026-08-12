@@ -258,16 +258,16 @@ def build_morning(data, config):
             lines.append(f"{stock_trend[:100]}")
         lines.append("")
 
-    # AI News — 2 top headlines only, one line each
+    # AI News — top headlines, first one gets 🌟
     headlines = _safe_get(daily, "news_headlines", default=[])
     if headlines and len(headlines) > 0:
         lines.append("🤖 **AI快讯**")
-        for h in headlines[:3]:
+        for i, h in enumerate(headlines[:3]):
             if isinstance(h, dict):
                 title = _pick(h, 'title')
-                # Truncate title to one line (~60 chars)
                 title_short = title[:65] + "…" if len(title) > 65 else title
-                lines.append(f"· {title_short}")
+                prefix = "🌟 " if i == 0 else "· "
+                lines.append(f"{prefix}{title_short}")
         lines.append("")
 
     # Job — compact
