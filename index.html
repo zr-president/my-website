@@ -1526,7 +1526,8 @@ var CATEGORIES = {
 };
 
 // Key sections to show on homepage (everything else hidden)
-var HOME_SECTIONS = ['dashboard','learning','music-player','daily-vocab','daily-quiz','guide','optimization'];
+// learning 不在首页展示——点进学习区才显示完整内容（今日新知等），首页只保留小白课堂卡片
+var HOME_SECTIONS = ['dashboard','music-player','daily-vocab','daily-quiz','guide','optimization'];
 var vocabShuffled = [];
 var vocabShowingAll = false;
 
@@ -1898,8 +1899,26 @@ function showView(viewName, categoryKey){
     }
 
     document.getElementById('sectionDetailContent').innerHTML = detailHtml;
-    // 学习区 AI 学院全屏详情折叠
-    if(categoryKey==='learning') applyLearningFold('sectionDetailContent');
+    // 学习区全屏详情：今日新知 + 今日学习分析 + 小白课堂置顶（点进学习区的重点内容）
+    if(categoryKey==='learning'){
+      var sdL = document.getElementById('sectionDetailContent');
+      var prependHtml = '';
+      // 今日新知（复用首页容器内容）
+      var tkEl = document.getElementById('todayKnowledge');
+      if(tkEl && tkEl.innerHTML){ prependHtml += '<div style="margin-bottom:8px">'+tkEl.innerHTML+'</div>'; }
+      // 今日学习分析
+      if(typeof INSIGHTS!=='undefined' && INSIGHTS.learning){
+        var li = INSIGHTS.learning;
+        if(li.verdict) prependHtml += '<div style="background:linear-gradient(135deg,#fef3c7,#fef9c3);border:1px solid #f59e0b;border-radius:10px;padding:12px 16px;margin-bottom:8px;font-size:12px;line-height:1.9;color:#1c1917">'+li.verdict+'</div>';
+        if(li.summary) prependHtml += '<div class="card" style="padding:12px 14px;margin-bottom:8px"><strong style="font-size:13px">📖 今日可学</strong> <span style="font-size:10px;color:var(--text3)">(更新于'+li.updated+')</span><br><span style="font-size:12px;color:var(--text2);line-height:1.9">'+li.summary+'</span></div>';
+      }
+      // 小白课堂预览
+      var lmEl = document.getElementById('learnPathMini');
+      if(lmEl && lmEl.innerHTML){ prependHtml += '<div style="margin-bottom:8px">'+lmEl.innerHTML+'</div>'; }
+      if(prependHtml){ sdL.insertAdjacentHTML('afterbegin', prependHtml); }
+      // AI 学院课程折叠
+      applyLearningFold('sectionDetailContent');
+    }
     // Special: ai-track section — inject model comparison table (rendered by renderModelComparison)
     if(categoryKey==='ai-track'){
       var mcEl = document.getElementById('model-compare-section');
@@ -2738,7 +2757,7 @@ function manualRefresh(){
 
 <script src="detail_content.js"></script>
 <script src="personal_config.js"></script>
-<script src="daily_data.js?v=1.4.2"></script>
+<script src="daily_data.js?v=1.4.3"></script>
 <script defer src="knowledge_index.js"></script>
 </body>
 </html>
