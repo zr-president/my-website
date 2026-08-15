@@ -309,6 +309,32 @@ class DailyUpdater:
         else:
             print("  ✓ 未发现过期日期标记")
 
+    def check_stale_phrases(self):
+        """时效词扫描：检查 daily_data.js 中残留的过期时效表述（今日预售/今日开播等）"""
+        print("\n── 时效词检查 ──")
+        import re as _re
+        stale_phrases = [
+            "今日预售", "今日开播", "今日10:00", "今晚开播", "今晚看",
+            "今日上映", "今日发售", "今日正式", "明日上映",
+            "周三观影", "周四观影", "今晚必看", "本周必看",
+        ]
+        hits = []
+        for phrase in stale_phrases:
+            for m in _re.finditer(re.escape(phrase), self.content):
+                # 跳过优化日记中的历史描述（id:37 等）
+                line_start = self.content.rfind("\n", 0, m.start())
+                line = self.content[line_start:m.start()+30]
+                if "status:\"已完成\"" in line or "desc:" in line[:50]:
+                    continue
+                hits.append(phrase)
+        if hits:
+            unique = sorted(set(hits))
+            print(f"  ⚠ 检测到可能过期的时效词: {unique}")
+            print(f"  → 请检查对应内容是否已更新（如影之刃零已预售、Re:Zero已开播则改'追番中'）")
+            self.errors.append(f"daily_data.js 存在过期时效词: {unique}")
+        else:
+            print("  ✓ 未发现过期时效词")
+
     def run(self, commit=False):
         print(f"\n{'='*60}")
         print(f"Daily Update — {self.cfg['date_cn']}")
@@ -318,6 +344,7 @@ class DailyUpdater:
         self.update_core_fields()
         self.update_toolchain_radar()
         self.check_static_freshness()
+        self.check_stale_phrases()
 
         self.save()
         self.validate()

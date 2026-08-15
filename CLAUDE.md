@@ -50,10 +50,20 @@ daily_data.js 加载
 说「X月X号更新」即可，Claude 会：
 1. 搜索当日最新资讯
 2. 更新 DAILY_BRIEFING / DAILY_VOCAB / PICKS / INSIGHTS（含 reasoning）
-3. 更新 stock / ai-track / movie / learning / career / news 等核心板块
+3. **必须更新全部 17 个板块的 INSIGHTS 内容（summary/trend/tip/verdict）**：
+   stock / ai-track / movie / news / gaming / career / anime / music / novel / learning / beer / fashion / fitness / diet / car / house / life-tips
+   —— 娱乐板块（anime/gaming/movie/music/novel）也必须有当日更新（即使没有大事件，也要把内容刷新为「当前状态」，如「已开播/追番中/预售已开启」）
 4. 新增 knowledge_base 文件
 5. 更新 OPTIMIZATION_LOG（日期 + 新增 3-5 条优化建议 + streak_days+1）
 6. 提交并推送到 GitHub
+
+### 时效词检查（每次更新必做）
+**禁止在内容里保留过期时效词**。更新完成后全文检查以下词，出现即必须改写：
+- 「今日预售 / 今日开播 / 今日10:00 / 今晚开播 / 今日上映 / 今日发售」→ 事件已发生则改「已开启 / 已开播 / 追番中 / 预售中」
+- 「周三/周四观影策略」等带星期几的建议 → 更新为当天或周末策略
+- 「8月X日」明确日期 → 核对是否已过去，过去则改写为当前状态
+- 每个板块 INSIGHTS 的 updated 日期必须与当日一致，内容不得残留旧日期数据
+- 每日更新模板检查点：DAILY_DATA.movie 与 INSIGHTS.movie 必须同步更新，不能只改一个
 
 ### 实施优化建议
 说「按照今天的优化建议去优化」或「根据优化建议更新网站」
