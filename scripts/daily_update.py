@@ -87,13 +87,16 @@ CONFIG = {
     ],
 
     # INSIGHTS updates — only sections that changed
+    # 每个板块可带 verdict 字段（结论先行，小白友好）：
+    #   verdict = 2-4句大白话：①发生了什么本质变化 ②意味着什么/会带来什么结果 ③该不该动/行动建议 ④下周/明日关注信号
+    #   示例：'🎯 今日结论：大盘指数小涨但多数股票在跌=权重撑指数，别被指数骗了；真正的钱在AI硬件主线；小白别追涨停，等回调分批买入。'
     "insights_updates": {
-        "stock":       {"summary": "...", "trend": "...", "tip": "..."},
-        "ai-track":    {"summary": "...", "trend": "...", "tip": "..."},
+        "stock":       {"summary": "...", "trend": "...", "tip": "...", "verdict": "..."},
+        "ai-track":    {"summary": "...", "trend": "...", "tip": "...", "verdict": "..."},
         "movie":       {"summary": "...", "trend": "...", "tip": "..."},
-        "news":        {"summary": "...", "trend": "...", "tip": "..."},
+        "news":        {"summary": "...", "trend": "...", "tip": "...", "verdict": "..."},
         "anime":       {"summary": "...", "trend": "...", "tip": "..."},
-        "career":      {"summary": "...", "trend": "...", "tip": "..."},
+        "career":      {"summary": "...", "trend": "...", "tip": "...", "verdict": "..."},
         "learning":    {"summary": "...", "trend": "...", "tip": "..."},
     },
 

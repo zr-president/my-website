@@ -538,6 +538,10 @@ function openDetail(id){
   if(typeof INSIGHTS!=='undefined' && INSIGHTS[id] && INSIGHTS[id].summary){
     var ins=INSIGHTS[id];
     var insightHtml='<div class="callout info" style="margin-bottom:16px">';
+    // 结论先行：verdict 高亮置顶（如果有）
+    if(ins.verdict){
+      insightHtml+='<div style="background:linear-gradient(135deg,#fef3c7,#fef9c3);border:1px solid #f59e0b;border-radius:10px;padding:10px 14px;margin-bottom:10px;font-size:12px;line-height:1.9;color:#1c1917">'+ins.verdict+'</div>';
+    }
     insightHtml+='<strong>📊 今日分析'+(ins.updated?'（'+ins.updated+'更新）':'')+'：</strong><br>';
     insightHtml+=ins.summary+'<br>';
     if(ins.trend) insightHtml+='<span style="font-size:12px;color:var(--text2)">'+ins.trend+'</span><br>';
@@ -1354,16 +1358,23 @@ function renderSectionPicks(sectionId){
 
   // Show compact insight callout (1-line summary only on homepage, full in detail)
   var insight = (typeof INSIGHTS!=='undefined' && INSIGHTS[sectionId]) ? INSIGHTS[sectionId] : null;
-  if(insight && insight.summary){
-    // Show only first ~80 chars of summary as headline
-    var shortSummary = insight.summary;
-    if(shortSummary.length > 100) shortSummary = shortSummary.substring(0, 100).replace(/[，,。.!！？?;；、]$/,'')+'...';
-    h+='<div class="insight-box" style="padding:8px 12px;font-size:11px;cursor:pointer" onclick="event.stopPropagation();openDetail(\''+sectionId+'\')" title="点击查看完整分析">';
-    h+='<span style="color:var(--accent);font-weight:600">📊</span> '+shortSummary;
-    if(insight.tip) h+=' <span style="color:var(--accent);font-weight:600">| 💡 '+insight.tip.substring(0,60)+(insight.tip.length>60?'...':'')+'</span>';
-    h+='</div>';
+  if(insight && (insight.summary || insight.verdict)){
+    // 结论先行：有 verdict 时优先展示结论（金色高亮），否则回退 summary
+    if(insight.verdict){
+      var verdictShort = insight.verdict.substring(0, 90);
+      h+='<div class="insight-box" style="padding:8px 12px;font-size:11px;cursor:pointer;background:linear-gradient(135deg,#fef3c7,#fef9c3);border-left:3px solid #f59e0b" onclick="event.stopPropagation();openDetail(\''+sectionId+'\')" title="点击查看完整结论">';
+      h+='<span style="color:#d97706;font-weight:700">🎯 结论</span> '+verdictShort+'...';
+      if(insight.tip) h+=' <span style="color:var(--accent);font-weight:600">| 💡 '+insight.tip.substring(0,60)+(insight.tip.length>60?'...':'')+'</span>';
+      h+='</div>';
+    } else {
+      var shortSummary = insight.summary;
+      if(shortSummary.length > 100) shortSummary = shortSummary.substring(0, 100).replace(/[，,。.!！?？;；、]$/,'')+'...';
+      h+='<div class="insight-box" style="padding:8px 12px;font-size:11px;cursor:pointer" onclick="event.stopPropagation();openDetail(\''+sectionId+'\')" title="点击查看完整分析">';
+      h+='<span style="color:var(--accent);font-weight:600">📊</span> '+shortSummary;
+      if(insight.tip) h+=' <span style="color:var(--accent);font-weight:600">| 💡 '+insight.tip.substring(0,60)+(insight.tip.length>60?'...':'')+'</span>';
+      h+='</div>';
+    }
   }
-
   // Show picks
   var picks = (typeof PICKS!=='undefined' && PICKS[sectionId]) ? PICKS[sectionId] : null;
   if(picks && picks.length>0){
@@ -1687,6 +1698,10 @@ function showView(viewName, categoryKey){
     // Insight callout (full)
     if(typeof INSIGHTS!=='undefined' && INSIGHTS[categoryKey]){
       var ins = INSIGHTS[categoryKey];
+      // 结论先行：verdict 高亮置顶（如果有）
+      if(ins.verdict){
+        detailHtml += '<div style=\"background:linear-gradient(135deg,#fef3c7,#fef9c3);border:1px solid #f59e0b;border-radius:10px;padding:12px 16px;margin-bottom:14px;font-size:12px;line-height:1.9;color:#1c1917\">'+ins.verdict+'</div>';
+      }
       detailHtml += '<div class=\"callout info\" style=\"margin-bottom:16px\"><strong>📊 今日分析（'+ins.updated+'更新）</strong><br>'+ins.summary+'<br><span style=\"font-size:12px;color:var(--text2)\">'+ins.trend+'</span><br><strong style=\"color:var(--accent)\">'+ins.tip+'</strong></div>';
       // #35: Hot tags extracted from trend text (**keyword**)
       var trendText = ins.trend || '';
@@ -2304,7 +2319,7 @@ function manualRefresh(){
 
 <script src="detail_content.js"></script>
 <script src="personal_config.js"></script>
-<script src="daily_data.js?v=1.2.15"></script>
+<script src="daily_data.js?v=1.2.16"></script>
 <script defer src="knowledge_index.js"></script>
 </body>
 </html>

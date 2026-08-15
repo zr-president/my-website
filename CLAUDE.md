@@ -91,6 +91,8 @@ GitHub：https://github.com/zr-president/my-website
 3. **ai-track 板块双视角**：除行业宏观外，至少 1 条是【贴近用户工具链/求职/投资】的落地解读——参考 TOOLCHAIN_RADAR 联动
 4. **禁止只改标题不改正文**：更新 news_headlines / market_summary 时，同步检查 INSIGHTS.news / INSIGHTS.stock 正文，旧日期数据必须一并刷新或明确标注日期
 5. **每个板块至少含一个可行动建议**：tip 字段必须是【今天/本周能做什么】，不能只描述现象
+6. **结论先行（verdict 字段）**：stock / news / ai-track / career 四个板块必须带 verdict 字段——用 2-4 句大白话回答：①发生了什么本质变化 ②意味着什么、会带来什么结果 ③该不该动、行动建议 ④关注信号。禁止只罗列涨跌数字——小白用户要的是「结果和结论」，不是「数据」
+7. **数据一致性**：板块内所有数字（点位/涨幅/日期）必须来自同一交易日，禁止拼接不同日期的数据（曾发生 stock.summary 同时出现两个沪指点位的错误）
 
 ## 已知待办
 
