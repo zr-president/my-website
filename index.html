@@ -385,9 +385,16 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 </div>
 </section>
 
-<section id="learning" class="section" data-search="AI 大模型 GPT Claude Agent 智能体 模型对比"><div class="section-header"><h2>🎓 学习区</h2><p>今日推荐 · AI完全科普中心</p></div>
+<section id="learning" class="section" data-search="学习 AI 大模型 GPT Claude Agent 智能体 模型对比 SQL 面试 知识 科普"><div class="section-header"><h2>🎓 学习区 · 全站知识中枢</h2><p>今日新知 · AI学院 · 数据分析 · 面试冲刺 · 小白课堂</p></div>
+<div id="todayKnowledge" style="margin-bottom:8px"></div>
 <div id="picks-learning" class="picks-container"></div>
-<div class="card clickable" onclick="openDetail('learning')"><h3>📝 查看完整AI科普中心</h3><p>10课完整体系：LLM→Prompt→路线图→工具清单→Agent搭建。</p></div></section>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px;margin:8px 0">
+<div class="card clickable" onclick="openDetail('learning')"><h3>🤖 AI学院</h3><p>LLM原理 · Prompt · Agent搭建 · 工具全景</p></div>
+<div class="card clickable" onclick="navigateTo('section-detail','learn-path')"><h3>📚 小白课堂</h3><p>每日10条跨板块科普 · 历史累积可复习</p></div>
+<div class="card clickable" onclick="openDetail('learning-data')"><h3>📈 数据分析实训</h3><p>SQL · A/B测试 · 增长模型 · 30天路线</p></div>
+<div class="card clickable" onclick="openDetail('learning-interview')"><h3>🎯 面试冲刺</h3><p>STAR法则 · Top10题 · 薪资谈判</p></div>
+</div>
+<div class="card clickable" onclick="openDetail('learning')"><h3>📝 查看完整AI科普中心</h3><p>14课完整体系：LLM→Prompt→路线图→工具→Agent→数据分析→面试。</p></div></section>
 
 <section id="gaming" class="section" data-search="游戏 Steam B站UP主 CF"><div class="section-header"><h2>🎯 游戏区</h2><p>今日推荐 · Steam促销日历</p></div>
 <div id="picks-gaming" class="picks-container"></div>
@@ -2249,7 +2256,7 @@ function renderModelComparison(){
 function onDataReady(){
   var tasks = [
     function(){ var e=document.getElementById('siteVersion'); if(e) e.textContent = (typeof SITE_VERSION!=='undefined'?SITE_VERSION:''); },
-    renderAllPicks, renderBriefing, renderVocab, renderQuiz, renderMusicPlayer, renderModelComparison, renderToolchainRadar, renderDailyDecisions, renderLearnPath, renderAgentStacks, checkUpdateStatus
+    renderAllPicks, renderBriefing, renderVocab, renderQuiz, renderMusicPlayer, renderModelComparison, renderToolchainRadar, renderDailyDecisions, renderLearnPath, renderTodayKnowledge, renderAgentStacks, checkUpdateStatus
   ];
   tasks.forEach(function(fn){
     try { if(typeof fn==='function') fn(); } catch(e){ console.error('Init error:', e.message); }
@@ -2401,6 +2408,49 @@ function renderLearnPathSection(){
     h += '</div>';
   });
   return h;
+}
+// ===== 今日新知（学习区顶部）— 自动汇总全站新知识 =====
+function renderTodayKnowledge(){
+  var el = document.getElementById('todayKnowledge');
+  if(!el) return;
+  var h = '<div class="highlight-box" style="margin-bottom:8px"><strong style="font-size:13px">📌 今日新知 · 全站新知识速览</strong><span style="font-size:10px;color:var(--text3);margin-left:6px">自动汇总各板块今日更新 + 小白课堂</span></div>';
+  var items = [];
+  // 1. 从各板块 INSIGHTS 提取（优先 verdict，其次 summary）
+  var order = ['stock','ai-track','career','news','learning','anime','movie','gaming','music','novel','car','house','diet','fitness','fashion'];
+  if(typeof INSIGHTS!=='undefined'){
+    order.forEach(function(k){
+      var ins = INSIGHTS[k];
+      if(!ins) return;
+      var text = ins.verdict ? ins.verdict.replace(/^🎯[^：]*：/,'').substring(0,60) : (ins.summary||'').substring(0,60);
+      if(!text) return;
+      items.push({icon:'📊', tag:k, text:text, link:k});
+    });
+  }
+  // 2. 小白课堂前2条
+  if(typeof LEARN_PATHS!=='undefined' && LEARN_PATHS.items){
+    LEARN_PATHS.items.slice(0,2).forEach(function(it){
+      items.push({icon:it.emoji||'📚', tag:it.section, text:(it.title||'').substring(0,40), link:'learn-path'});
+    });
+  }
+  // 3. 今日决策单前2条
+  if(typeof DAILY_DECISIONS!=='undefined' && DAILY_DECISIONS.items){
+    DAILY_DECISIONS.items.slice(0,2).forEach(function(it){
+      items.push({icon:it.icon||'✅', tag:'行动', text:(it.action||'').substring(0,40), link:'dashboard'});
+    });
+  }
+  if(items.length===0){ el.style.display='none'; return; }
+  items = items.slice(0,8);
+  h += '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:6px">';
+  items.forEach(function(it){
+    var link = it.link==='dashboard' ? 'onclick="showView(\'home\')"' : "onclick=\"navigateTo('section-detail','"+it.link+"')\"";
+    h += '<div class="pick-card" style="cursor:pointer;'+link+'">';
+    h += '<span class="pick-icon">'+it.icon+'</span>';
+    h += '<span class="pick-info"><div class="pick-title" style="white-space:normal">'+it.text+'</div><div class="pick-desc">来源：'+it.tag+'</div></span>';
+    h += '<span class="pick-arrow">→</span></div>';
+  });
+  h += '</div>';
+  el.innerHTML = h;
+  el.style.display = 'block';
 }
 // ===== Agent × 大模型 组合评分渲染 =====
 function renderAgentStacks(){
@@ -2598,7 +2648,7 @@ function manualRefresh(){
 
 <script src="detail_content.js"></script>
 <script src="personal_config.js"></script>
-<script src="daily_data.js?v=1.3.3"></script>
+<script src="daily_data.js?v=1.4.0"></script>
 <script defer src="knowledge_index.js"></script>
 </body>
 </html>

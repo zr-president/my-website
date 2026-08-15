@@ -1,4 +1,4 @@
-var SITE_VERSION = "1.3.3";
+var SITE_VERSION = "1.4.0";
 
 var DAILY_DATA = {
   "update_time": "2026-08-15T12:30:00+08:00",
@@ -450,8 +450,8 @@ var AGENT_STACKS = {
 
 var OPTIMIZATION_LOG = {
   date: "2026-08-15",
-  total_suggestions: 51,
-  total_implemented: 47,
+  total_suggestions: 55,
+  total_implemented: 51,
   streak_days: 26,
   suggestions: [
     {id:1, cat:"已归档", title:"AI追踪板块周报自动生成", desc:"每周一自动汇总上周AI融资/模型发布/价格变动→已集成至INSIGHTS.ai-track周度总结", priority:"P1", status:"已完成"},
@@ -505,12 +505,16 @@ var OPTIMIZATION_LOG = {
     {id:49, cat:"功能优化", title:"Agent×大模型组合评分(AGENT_STACKS)", desc:"新增9种常用组合评分（Claude Code/Codex/Harness/Cursor × DeepSeek/Qwen/Claude/GPT/Kimi）：编程/性价比/中文/生态/速度五维+综合分+月成本+优缺点+适配场景+结论建议。ai-track板块新增组合推荐表（点击展开详情）。首日数据：日常主力=Claude Code+DeepSeek V4-Flash，涨价后切Qwen3.8-Max", priority:"P1", status:"已完成"},
     {id:50, cat:"功能优化", title:"板块价值权重系统+新闻噪音过滤", desc:"personal_config.js新增section_weights（0-5星，按钟锐信息价值偏好：工具链/股市/求职=5星，娱乐=1-2星）+news_filters（关注词/屏蔽词）。首页分类卡片按权重排序+高价值分类🔥标注+低价值降透明度+⭐标记，新闻RSS/推送双重过滤。信息价值最大化：3秒看到今天最重要的事", priority:"P1", status:"已完成"},
     {id:51, cat:"功能优化", title:"小白课堂分区化+Agent×模型组合表修复显示", desc:"✅ 8/15按用户反馈重构：①小白课堂首页改回3条+换一批，新增【课堂分区】入口（按板块分组：股市/AI/生活/职场+历史archive累积，可随时复习）；②修复ai-track详情页缺失Agent×模型组合评分表（全屏详情+弹窗详情均注入agentStacksSection）", priority:"P1", status:"已完成"},
+    {id:52, cat:"内容优化", title:"学习区升级为全站知识中枢", desc:"✅ 8/15实施：学习区首页新增【今日新知】自动汇总（各板块INSIGHTS+小白课堂+决策单），AI基础科普移入AI学院子区，新增数据分析实训/面试冲刺独立入口，模型对比表改为动态引用AI动态追踪（删除过期的Claude Opus 4.8/GPT-4o旧数据）", priority:"P1", status:"已完成"},
+    {id:53, cat:"内容优化", title:"购车区重建为选车决策系统", desc:"✅ 8/15实施：新增参数概念科普课（续航/电池/智驾/充电/保值率）+结合钟锐现状的购车时机判断（26岁/存款30万/失业换工作→结论：暂不买，Q4冲量季再入手）+降价车型关注（特斯拉Model Y等）+15万内推荐", priority:"P1", status:"已完成"},
+    {id:54, cat:"内容优化", title:"穿搭区新增底层逻辑四课+购房区时机判断", desc:"✅ 8/15实施：穿搭区新增比例课（170cm显高）/色彩课（冷暖皮）/场合课（面试约会日常）/季节课（广州8月高温）；购房区新增概念科普（首付/月供/税费）+时机判断（存款30万不够广州首付→先租房观望）+租房策略", priority:"P1", status:"已完成"},
+    {id:55, cat:"稳定性", title:"全站时效检查机制（静态内容防过期）", desc:"✅ 8/15实施：daily_update.py新增check_static_freshness()扫描detail_content.js过期日期标记（旅游/小说连载/模型表等），CLAUDE.md固化规则9-11：全站时效/学习区动态引用/生活板块三层结构", priority:"P2", status:"已完成"},
   ]
 };
 
 var WEBSITE_GUIDE = {
   updated: "2026-08-15",
-  summary: "欢迎来到钟锐的个人数字空间！这是一个持续进化的智能信息中枢，每天自动更新所有内容。版本1.3.3。新增：📚小白课堂分区（首页3条+换一批+课堂分区按板块复习历史，历史自动累积无重复）+🤖Agent×模型组合评分表。每天打开都是新的，每天都有提升。",
+  summary: "欢迎来到钟锐的个人数字空间！这是一个持续进化的智能信息中枢，每天自动更新所有内容。版本1.4.0。新增：🎓学习区升级全站知识中枢（今日新知自动汇总+AI学院+数据分析+面试冲刺）+购车/购房/穿搭三层结构（科普+建议+时机判断）+全站时效检查。每天打开都是新的，每天都有提升。",
   features: [
     {icon:"🏠", title:"首页仪表盘", desc:"一屏总览所有板块精华。分类卡片快速导航、实时股市/天气/新闻一目了然。点击分类卡片进入分类页。"},
     {icon:"📂", title:"分类浏览", desc:"点击侧边栏分类标题(👤关于/🎮娱乐/🏃生活/📊财经/🤖工具)，进入分类页集中浏览该类别所有板块。"},

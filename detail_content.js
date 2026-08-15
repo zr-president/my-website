@@ -7,6 +7,39 @@ DETAIL.fashion = '<h2>👔 穿搭推荐 · 分层购买指南</h2><p class="deta
 '<div class="highlight-box"><p><strong>核心策略：</strong>上身微宽松增加横向视觉 → 下身直筒保持利落 → 打造倒三角比例。<br>'+
 '<strong>绝对避免：</strong>全身oversized（170cm撑不起来）、过于紧身（暴露瘦弱）、大印花logo（视觉重心下移）、裤脚堆积鞋面（显腿短）。<br>'+
 '<strong>配色公式：</strong>基础70%（白/黑/灰/藏蓝/卡其）+ 点缀25%（雾霾蓝/军绿/酒红/姜黄）+ 强调5%（克莱因蓝作帽子/袜子/包）</p></div>'+
+'<h3>🎓 穿搭底层逻辑课（先懂原理再买衣服）</h3>'+
+'<h4>📐 第一课：比例课——170cm怎么穿显高显腿长</h4>'+
+'<div class="highlight-box"><p>'+
+'<strong>核心目标：</strong>提高【腰线位置】+【腿部视觉占比】= 视觉上170cm变175cm+。<br>'+
+'① <strong>腰线上移：</strong>上衣塞进裤子（或选短款），腰线提高5cm，腿占比立刻变大。<br>'+
+'② <strong>裤长九分：</strong>裤脚在脚踝上2-3cm，露出脚踝=腿的延长线（比堆在鞋面显高明显）。<br>'+
+'③ <strong>上下同色：</strong>鞋子和裤子同色（黑鞋黑裤/白鞋白裤），视觉延伸腿部。<br>'+
+'④ <strong>避免横切：</strong>腰带/下摆/亮色袜子会造成【横向切割】，把腿截短。<br>'+
+'⑤ <strong>领口选V：</strong>V领/开扣露出锁骨拉长颈部线条，圆领高领显脖子短。</p></div>'+
+'<h4>🎨 第二课：色彩课——皮肤肤色×配色</h4>'+
+'<div class="highlight-box"><p>'+
+'<strong>判断冷暖皮（手腕血管法）：</strong>血管偏蓝紫=冷皮，偏绿=暖皮，难分辨=中性皮。<br>'+
+'<strong>冷皮适合：</strong>宝蓝/藏蓝/酒红/黑/灰/粉——显得气色好。<br>'+
+'<strong>暖皮适合：</strong>卡其/棕/军绿/姜黄/米白——显得健康。<br>'+
+'<strong>万能安全色（不挑皮）：</strong>白/黑/灰/藏蓝——衣柜基础款全买这四个色，怎么搭都不出错。<br>'+
+'<strong>配色公式（已掌握）：</strong>基础70%+点缀25%+强调5%——先保证全身不超过3个色块。</p></div>'+
+'<h4>🏢 第三课：场合课——面试/约会/日常三场景切换</h4>'+
+'<div class="highlight-box"><p>'+
+'<strong>面试（求职中重点）：</strong>浅蓝牛津纺衬衫+卡其直筒裤+德训鞋——专业但不死板，AI公司面试加分（科技感+整洁感）。<br>'+
+'<strong>约会/社交：</strong>重磅白T+黑色九分裤+银色项链——干净利落的少年感，是170cm男生的安全牌。<br>'+
+'<strong>日常休闲：</strong>卫衣+束脚裤+帆布鞋——舒适为主，但保持颜色协调（别红配绿）。<br><br>'+
+'<strong>面试加分细节：</strong>头发清爽（碎盖+纹理烫）· 指甲干净 · 鞋子无污渍——HR对细节的关注远超想象。</p></div>'+
+'<h4>☀️ 第四课：季节课——广州8月高温怎么穿</h4>'+
+'<div class="highlight-box"><p>'+
+'<strong>8月广州（35-37°C）：</strong>主打【透气+防晒+浅色】。<br>'+
+'① 面料优先级：真丝>亚麻>纯棉>混纺——重磅棉虽然挺括但太热，高温天选轻薄亚麻/天丝。<br>'+
+'② 颜色：白/浅蓝/燕麦/浅灰——浅色反射阳光，体感凉2-3°C。<br>'+
+'③ 单品：重磅白T（选220g轻薄款）+ 浅色九分裤 + 帆布鞋/德训鞋（透气）。<br>'+
+'④ 防晒：渔夫帽/棒球帽+防晒喷雾——广州紫外线强，晒黑显脏。<br>'+
+'⑤ 通勤：早上出门戴帽+下午备一件薄衬衫（空调房穿）。</p></div>'+
+'<div class="callout tip"><strong>📌 学习路径：</strong>先掌握【比例课】（立刻显高）→ 再学【色彩课】（提升质感）→ 场景课应对求职 → 季节课适应广州天气。四课掌握后，你就不再是"买衣服"而是"搭体系"。</div>'+
+'<h3>📐 体型分析 & 穿搭总纲</h3>'+
+
 
 '<h3>👕 Look 1：日系简约日常——干净少年感</h3>'+
 '<p style="margin-bottom:10px"><strong>搭配公式：</strong>重磅白T恤（落肩微宽松）+ 黑色直筒九分裤 + 白色帆布鞋 + 银色古巴链</p>'+
@@ -404,31 +437,36 @@ DETAIL.stock = '<h2>📈 股市基金 · 从零开始</h2><p class="detail-subti
 '<div class="highlight-box"><p><span class="step-num">1</span><strong>今天：</strong>下载同花顺，注册模拟交易（自带100万虚拟资金）<br><span class="step-num">2</span><strong>今天：</strong>微信关注"猫笔刀"+"东方财富投教中心"<br><span class="step-num">3</span><strong>本周：</strong>开真实证券账户（华泰涨乐财富通或东方财富，线上5分钟）<br><span class="step-num">4</span><strong>本月：</strong>开始定投<strong>沪深300ETF（510300）</strong>，每月固定日投固定金额（1000元/月起）<br><span class="step-num">5</span><strong>本月：</strong>读完《彼得·林奇的成功投资》</p></div>'+
 '<div class="callout warn"><strong>⚠️ 三条铁律：</strong>①不用亏不起的钱炒股。②新手前6个月只做ETF定投。③以上内容仅供学习参考，不构成投资建议。</div>';
 
-// ===== 学习区 - AI科普（保留之前的完整内容） =====
-DETAIL.learning = '<h2>🎓 AI学习中心 · 从零科普</h2><p class="detail-subtitle">理解大模型、AI Agent、主流工具</p>'+
+// ===== 学习区 - AI学院（AI基础科普，保留之前的完整内容） =====
+DETAIL.learning = '<h2>🎓 AI学院 · 从零到Agent开发者</h2><p class="detail-subtitle">AI基础科普 · LLM原理 · Prompt · Agent搭建 · 工具全景</p>'+
+'<div class="callout info"><strong>📚 本学院课程导航：</strong><br>🧠 第一课 LLM基础 → 🤖 第二课 模型对比(实时) → 🤖 第三课 Agent vs Chatbot → 🛠️ 第四课 工具对比 → 🧩 第五课 Agent框架 → 📌 第六课 RAG/MCP → ✍️ 第七课 Prompt速成 → 🗺️ 第八课 学习路线图 → 🧰 第九课 工具全景 → 🔧 第十课 Agent实操 → 📈 第十一课 数据分析(SQL/A-B) → 📈 第十二课 用户增长 → 🤖 第十三课 AI产品运营进阶 → 🎤 第十四课 面试准备<br><br>👉 数据分析和面试冲刺也可从学习区首页卡片直达。</div>'+
 '<h3>🧠 第一课：什么是大语言模型（LLM）？</h3>'+
 '<p>大语言模型本质上是一个<strong>"超级预测下一个词"的神经网络</strong>。它阅读了互联网上几乎所有的文本，学会了人类语言的模式。你输入一句话，它预测最合理的下一段回复。</p>'+
 '<p><strong>通俗类比：</strong>LLM就像一个读了世界上所有书的人——你问什么都能答，但它没有"真正理解"，只是在做概率计算。</p>'+
 '<div class="highlight-box"><p><strong>核心概念：</strong><br>· <strong>Token：</strong>LLM处理的最小单位。约1汉字=1.5token<br>· <strong>上下文窗口：</strong>模型一次能"看到"多少文本。Claude 200K≈一本中等小说<br>· <strong>推理：</strong>模型的逻辑思考能力——Claude Opus和GPT-5最强<br>· <strong>幻觉：</strong>模型"一本正经胡说八道"——所有LLM都有</p></div>'+
-
-'<h3>📊 第二课：主流大模型全面对比</h3>'+
-'<table class="data-table"><tr><th>模型</th><th>厂商</th><th>上下文</th><th>核心优势</th><th>适合场景</th><th>价格</th></tr>'+
-'<tr style="background:var(--accent-light)"><td><strong>Claude Opus 4.8</strong></td><td>Anthropic</td><td>200K</td><td>最强推理+超长上下文+代码+写作</td><td>复杂分析、Agent开发</td><td>$15/M token</td></tr>'+
-'<tr><td><strong>Claude Sonnet 5</strong></td><td>Anthropic</td><td>200K</td><td>性价比之王，推理接近Opus</td><td>日常问答、Agent</td><td>$3/M token</td></tr>'+
-'<tr><td><strong>Claude Haiku 4.5</strong></td><td>Anthropic</td><td>200K</td><td>最快+最低成本</td><td>实时、分类、摘要</td><td>$0.8/M token</td></tr>'+
-'<tr><td><strong>GPT-4o</strong></td><td>OpenAI</td><td>128K</td><td>多模态原生+生态最完善</td><td>多模态、ChatGPT生态</td><td>$2.5-10/M</td></tr>'+
-'<tr><td><strong>GPT-5</strong></td><td>OpenAI</td><td>256K</td><td>推理大幅提升+Agent原生</td><td>复杂Agent、企业级</td><td>待公布</td></tr>'+
-'<tr><td><strong>Gemini 2.5 Pro</strong></td><td>Google</td><td>1M+</td><td>超长上下文+搜索整合</td><td>超长文档、Google生态</td><td>$1.25-5/M</td></tr>'+
-'<tr><td><strong>DeepSeek-V3</strong></td><td>深度求索</td><td>128K</td><td>国产最强+开源+成本极低+中文最优</td><td>中文、本地部署</td><td>¥0.5-2/M</td></tr>'+
-'<tr><td><strong>Qwen3（通义千问）</strong></td><td>阿里云</td><td>128K</td><td>国产开源标杆+阿里生态</td><td>企业应用、电商</td><td>¥1-4/M</td></tr>'+
+'<h3>🧠 第一课补充：LLM 为什么会出现幻觉？</h3>'+
+'<div class="highlight-box"><p><strong>幻觉的根源：</strong>LLM 是在【生成最合理的文本】，不是在【查询事实】。它没有"知识库"概念——所有知识都编码在参数里。当它不确定时，它会编造一个"听起来合理"的答案而不是承认不知道。<br><br><strong>应对方法：</strong>①重要信息交叉验证（搜索确认）②要求给出来源③用RAG让模型查证后再答④把模型当"聪明但不靠谱的顾问"，不当"数据库"。<br><br><strong>面试加分点：</strong>能在面试中主动说出"我知道AI会有幻觉，所以我的产品方案里设计了RAG+人工复核环节"——这是AI产品运营的专业表现。</p></div>'+
+'<h3>📊 第二课：主流大模型全面对比（实时数据）</h3>'+
+'<div class="callout info"><strong>🔄 模型数据已接入实时更新</strong><br>本课的模型对比、价格、评分已改为直接引用 <strong>AI动态追踪</strong> 板块的最新数据（每天更新）。<br><br>👉 点击下方按钮查看今日最新模型对比表与 Agent×模型组合推荐：<br><br><a href="javascript:void(0)" onclick="navigateTo(\'section-detail\',\'ai-track\');return false;" style="display:inline-block;padding:8px 16px;background:var(--accent);color:#fff;border-radius:8px;text-decoration:none;font-size:12px">🤖 查看最新模型对比表 →</a></div>'+
+'<div class="highlight-box"><p><strong>💡 学习建议：</strong>模型迭代极快（每月都有新品），不建议死记硬背具体型号参数。要掌握的是<strong>选模型的思维方式</strong>：<br>① <strong>看任务定档位</strong>——日常高频用轻量模型（快+便宜），复杂推理用旗舰模型<br>② <strong>看价格看趋势</strong>——关注调价动态（如8/17 DeepSeek涨价），成本敏感任务及时切换<br>③ <strong>看生态看组合</strong>——Agent×模型组合比单一模型更重要（Claude Code + DeepSeek = 性价比主力）<br>④ <strong>定期更新认知</strong>——每周看一次 AI动态追踪 板块，保持对模型格局的实时认知</p></div>'+
+'<div class="callout tip"><strong>📌 记住：</strong>2026年8月模型格局的关键变化——DeepSeek 8/17涨价4.5倍、Qwen3.8-Max下周开源、Harness公测。具体数据每天在AI动态追踪板块更新。</div>'+
+'<h4>🔬 模型能力五维评分框架（自我评估工具）</h4>'+
+'<table class="data-table"><tr><th>维度</th><th>含义</th><th>高分标准</th></tr>'+
+'<tr><td><strong>🧠 智能</strong></td><td>推理/理解/代码能力</td><td>90+ = 顶级推理（Claude Opus级）</td></tr>'+
+'<tr><td><strong>⚡ 速度</strong></td><td>响应延迟</td><td>90+ = <1s首Token（轻量模型）</td></tr>'+
+'<tr><td><strong>💰 性价比</strong></td><td>每美元获得的智能</td><td>90+ = 极致性价比（DeepSeek级）</td></tr>'+
+'<tr><td><strong>🛡️ 安全</strong></td><td>对齐/透明度/围栏</td><td>85+ = 安全标杆（Claude/开源系）</td></tr>'+
+'<tr><td><strong>🌐 生态</strong></td><td>工具链/社区/集成</td><td>90+ = 完整生态（OpenAI/Claude）</td></tr>'+
 '</table>'+
-'<div class="callout tip"><strong>💡 怎么选？</strong>复杂Agent→Claude Opus | 性价比→Sonnet/DeepSeek | 多模态→GPT-4o/Gemini | 中文→DeepSeek/Qwen | 超长文档→Gemini/Claude</div>'+
-
+'<div class="callout warn"><strong>⚠️ 常见误区：</strong>不要只比【参数量】——2.4T参数的Qwen3.8-Max和284B的DeepSeek V4-Flash在不同任务各有胜负。参数大≠更好用，要结合任务+价格+生态综合判断。</div>'+
+'<h3>📊 第二课补充：Agent×模型组合选择（2026.8）</h3>'+
+'<div class="highlight-box"><p><strong>当下最优组合（2026年8月，结合你的使用场景）：</strong><br>① <strong>日常主力：</strong>Claude Code + DeepSeek V4-Flash（性价比最高·涨价前锁定）<br>② <strong>涨价后主力：</strong>Claude Code + Qwen3.8-Max（下周开源·可免费本地部署）<br>③ <strong>重活专用：</strong>Claude Code + Sonnet 4.6（代码质量优先）<br>④ <strong>免费备胎：</strong>Codex + GPT-5.6 Luna（不花钱也能干活）<br><br>👉 完整9种组合评分（编程/性价比/中文/生态/速度五维）见 <strong>AI动态追踪</strong> 板块</p></div>'+
+'<h3>🧠 模型知识补充：MoE架构与推理成本</h3>'+
+'<div class="highlight-box"><p><strong>MoE（混合专家）：</strong>总参数巨大但每次只激活一小部分——Qwen3.8总参数2.4T但每次只激活950亿（约4%）→ 推理成本远低于同规模稠密模型。<br><br><strong>为什么重要：</strong>2026年主流旗舰（DeepSeek/Qwen/Kimi）全部采用MoE——这是【超大模型+低成本推理】的关键技术，也是国产模型性价比优势的底层原因。<br><br><strong>推理成本：</strong>每百万Token输出价格——DeepSeek V4-Flash ¥2（涨价前）vs GPT-5.6 Sol $30（约¥210）——差100倍。理解成本结构=理解模型定价逻辑。</p></div>'+
 '<h3>🤖 第三课：AI Agent vs Chatbot</h3>'+
 '<p><strong>Chatbot = LLM + 对话界面。</strong>你问一句它答一句。没有记忆、没有工具。</p>'+
 '<p><strong>AI Agent = LLM + 工具调用 + 记忆 + 自主规划 + 行动。</strong>你给目标，它自己拆解→执行→检查→修正→完成。</p>'+
 '<div class="highlight-box"><p><strong>类比：</strong>Chatbot是"实习生等你下指令"，Agent是"助理自己把事情办了"。你现在用的Claude Code就是一个Agent——它能自主读文件、写代码、执行命令。</p></div>'+
-
 '<h3>🛠️ 第四课：Claude Code vs ChatGPT vs Cursor</h3>'+
 '<table class="data-table"><tr><th>工具</th><th>模式</th><th>核心能力</th><th>最适合</th><th>价格</th></tr>'+
 '<tr style="background:var(--accent-light)"><td><strong>Claude Code</strong></td><td>Agent</td><td>自主读代码库、写多文件、执行命令、迭代修复</td><td>专业开发者</td><td>$20/月起</td></tr>'+
@@ -436,7 +474,7 @@ DETAIL.learning = '<h2>🎓 AI学习中心 · 从零科普</h2><p class="detail-
 '<tr><td><strong>Cursor</strong></td><td>Agent</td><td>AI增强代码编辑器，多文件编辑</td><td>专业开发者</td><td>$20/$60月</td></tr>'+
 '<tr><td><strong>GitHub Copilot</strong></td><td>辅助</td><td>行级代码补全</td><td>所有开发者</td><td>$10/月</td></tr>'+
 '</table>'+
-
+'<div class="callout tip"><strong>💡 2026.8 更新：</strong>DeepSeek Harness（对标Claude Cowork）已公测——开源可本地部署，插件生态起步。Claude Code生态最成熟，DeepSeek性价比最高。选择原则：任务复杂度决定工具，成本敏感度决定模型。</div>'+
 '<h3>🧩 第五课：Agent框架对比</h3>'+
 '<table class="data-table"><tr><th>框架</th><th>门槛</th><th>适合谁</th><th>特点</th><th>价格</th></tr>'+
 '<tr><td><strong>Coze（扣子）</strong></td><td>⭐零代码</td><td>非技术人员、运营</td><td>拖拽式+800+插件+一键发微信</td><td>免费</td></tr>'+
@@ -444,20 +482,12 @@ DETAIL.learning = '<h2>🎓 AI学习中心 · 从零科普</h2><p class="detail-
 '<tr><td><strong>LangChain</strong></td><td>⭐⭐⭐⭐写代码</td><td>专业开发者</td><td>工业级框架，最灵活</td><td>开源免费</td></tr>'+
 '<tr><td><strong>CrewAI</strong></td><td>⭐⭐⭐写Python</td><td>创业者、开发者</td><td>多Agent协作</td><td>开源免费</td></tr>'+
 '</table>'+
-
+'<div class="callout tip"><strong>💡 2026.8 更新：</strong>Harness（DeepSeek）正以【一切皆插件】理念入场——对非技术用户最友好，值得关注。你的路径：Coze(1天出成果)→Dify(简历加分)→LangChain(职业护城河)→Harness(前沿探索)。</div>'+
 '<h3>📌 第六课：RAG / MCP / Function Calling</h3>'+
 '<p><strong>RAG：</strong>让LLM能查外部知识库再回答。上传文档→AI先搜再答→不瞎编。<br><strong>MCP：</strong>Agent与外部工具的"USB接口"标准协议。<br><strong>Function Calling：</strong>模型识别"需要调什么工具"→生成结构化调用请求。</p>'+
-
-'<h3>📚 推荐书单 & 每日学习时间表</h3>'+
-'<ol><li>《从0到1搭建AI智能体》—廖显东，2026</li><li>《增长黑客》—Sean Ellis</li><li>《硅谷增长黑客实战笔记》—曲卉</li></ol>'+
-'<div class="highlight-box"><p>☀️ 8:30 机器之心+量子位+HN（10min）→ 10:00 深度文章（30min）→ 🌙 21:00 Product Hunt（15min）→ 📅 周末 GitHub+深度博客</p></div>'+
-
-// ===== 第七~十课：增量内容 =====
-
 '<h3>✍️ 第七课：Prompt Engineering 速成（实用技巧）</h3>'+
 '<p>Prompt是AI时代的"编程语言"——写得好，AI是你的超级助手；写得差，AI只会胡言乱语。以下5个核心技巧，每一个都能立刻提升你的AI使用效率。</p>'+
 '<div class="highlight-box"><p><strong>核心技巧速记：</strong><br><span class="step-num">1</span><strong>角色设定：</strong>开头给AI一个身份——"你是一个资深AI产品运营专家，擅长用户增长和数据分析"<br><span class="step-num">2</span><strong>分步指令：</strong>把复杂任务拆成清晰步骤——"第一步…第二步…第三步…"<br><span class="step-num">3</span><strong>提供示例（Few-shot）：</strong>给1-3个范例让AI模仿——"参考以下格式…"<br><span class="step-num">4</span><strong>设定输出格式：</strong>明确想要的格式——"用表格输出"、"输出JSON"、"每条不超过50字"<br><span class="step-num">5</span><strong>思维链（Chain of Thought）：</strong>加一句"让我们一步一步思考"——推理类任务准确率提升30-50%</p></div>'+
-
 '<h4>📊 差Prompt vs 好Prompt 对比</h4>'+
 '<table class="data-table"><tr><th>场景</th><th>❌ 差Prompt</th><th>✅ 好Prompt</th><th>提升点</th></tr>'+
 '<tr><td>用户分析</td><td>"分析一下我们的用户"</td><td>"你是一个用户增长分析师。这是一份过去30天的用户行为数据（附CSV），请：①识别3个最显著的留存下降节点 ②每个节点给出可能原因 ③输出为表格，包含【节点/数据/原因/建议方案】四列"</td><td>角色+数据上下文+分步+表格格式</td></tr>'+
@@ -465,12 +495,10 @@ DETAIL.learning = '<h2>🎓 AI学习中心 · 从零科普</h2><p class="detail-
 '<tr><td>文案写作</td><td>"写一个产品介绍"</td><td>"参考以下三个优秀案例的风格（附案例），为我们的AI客服产品写一段200字的产品介绍。目标受众：中小企业主。语气：专业但不生硬。包含：一个痛点场景+一个核心卖点+一个数据背书。"</td><td>Few-shot+受众+结构框定</td></tr>'+
 '<tr><td>数据分析</td><td>"这个数据说明了什么？"</td><td>"这是一份A/B测试结果（附数据）。让我们一步一步思考：先检查样本量是否足够，再判断置信度是否达到95%，最后分析实验组vs对照组的差异是否显著。输出结论时标注置信度。"</td><td>CoT+分步推理+输出要求</td></tr>'+
 '</table>'+
-
 '<h4>🎯 AI产品运营专用Prompt模板（3个场景）</h4>'+
 '<div class="callout tip"><strong>场景1：用户反馈分类与分析</strong><br>Prompt：你是一个AI产品运营专家。以下是最近一周的500条用户反馈（附数据）。请按以下维度分类：①Bug报告 ②功能需求 ③体验吐槽 ④正面好评。每类输出Top3高频关键词，并给出本周最应优先处理的3个问题及理由。输出为Markdown表格。</div>'+
 '<div class="callout info"><strong>场景2：竞品功能矩阵对比</strong><br>Prompt：你是一个竞品分析专家。请对比产品A（我们）和产品B、C在以下维度的功能差异：注册流程、新手引导、核心功能体验、付费转化点、召回机制。每个维度标注我们的优势/劣势/机会。最后输出一个功能优先级排序建议（P0/P1/P2）。</div>'+
 '<div class="callout warn"><strong>场景3：A/B测试方案设计</strong><br>Prompt：你是一个增长实验设计师。我们的产品注册转化率当前为12%，目标是提升到18%。请设计3个A/B测试方案，每个方案包含：实验假设、变量改动、样本量估算、预期效果、实验周期。输出为结构化方案，标注每个方案的预期ROI（高/中/低）和实施难度。</div>'+
-
 '<h3>🗺️ 第八课：2026 AI学习路线图——从零到Agent开发者</h3>'+
 '<p>这是一条经过验证的学习路径，适合<strong>非技术背景的运营/产品同学</strong>。每一步都有明确的里程碑，不需要一次学完，按节奏推进即可。</p>'+
 '<div class="highlight-box"><p>'+
@@ -481,7 +509,6 @@ DETAIL.learning = '<h2>🎓 AI学习中心 · 从零科普</h2><p class="detail-
 '<span class="step-num">5</span><strong>学Python基础 ｜ 预计2-4周</strong><br>里程碑：能独立写简单的数据处理脚本（读取CSV、做统计、画图表）。推荐资源：Python官方教程（免费）或"夜曲编程"App（中文，手机就能学）。<strong>不需要成为程序员——学会调API、处理数据就够了。</strong><br><br>'+
 '<span class="step-num">6</span><strong>LangChain/CrewAI开发 ｜ 预计4-8周</strong><br>里程碑：独立开发一个Multi-Agent协作应用。推荐项目：做一个"自动竞品监控Agent"——定时抓取竞品动态→AI分析变化→推送到企业微信。学完这一步，你已经具备AI产品运营的完整技术视野。</p></div>'+
 '<div class="callout tip"><strong>💡 学习节奏建议：</strong>前3步可以并行推进（1周内完成），第4步需要专注投入，第5-6步是长期积累。整个路线图建议用时3-6个月，每天投入1-2小时。关键不是速度，而是每个阶段的"能做出东西来"。</div>'+
-
 '<h3>🧰 第九课：AI工具全景清单（20+工具）</h3>'+
 '<p>按用途分类，标注免费/付费/价格，帮助你根据实际场景选对工具。</p>'+
 '<table class="data-table"><tr><th>分类</th><th>工具</th><th>免费/付费</th><th>价格参考</th><th>一句话推荐</th></tr>'+
@@ -508,18 +535,15 @@ DETAIL.learning = '<h2>🎓 AI学习中心 · 从零科普</h2><p class="detail-
 '<tr><td>Glarity</td><td>免费+付费</td><td>免费/Pro $10/月</td><td>网页/视频/PDF一键总结，信息获取加速器</td></tr>'+
 '</table>'+
 '<div class="callout info"><strong>💡 运营人工具组合建议：</strong>日常对话→Claude/ChatGPT | 写文案→Notion AI+Gamma | 做图→Canva AI | 搜信息→Perplexity | 分析数据→Julius AI | 浏览器提效→Monica。月总成本：免费方案可用50%以上的工具，进阶月费约$50-80。</div>'+
-
 '<h3>🔧 第十课：入门Agent搭建（实操指南）</h3>'+
 '<p>Agent不是黑科技——用对工具，零代码也能搭。以下是两个主流平台的具体步骤。</p>'+
-
 '<h4>🐳 方案A：用Dify搭一个RAG知识库Agent（5步）</h4>'+
 '<div class="highlight-box"><p>'+
 '<span class="step-num">1</span><strong>注册并创建应用：</strong>访问 dify.ai 注册（免费版够用），点击"创建应用"→选择"聊天助手"→给Agent起名，比如"运营知识库助手"。<br>'+
 '<span class="step-num">2</span><strong>上传知识库：</strong>左侧菜单进入"知识库"→新建知识库→上传文件（支持PDF/Word/Excel/网页URL）。建议第一批上传：活动SOP文档、常见问题FAQ、产品功能说明。Dify会自动分段和向量化。<br>'+
 '<span class="step-num">3</span><strong>配置LLM节点：</strong>在工作流中拖入LLM节点→选择模型（推荐Claude Sonnet或DeepSeek，性价比高）→编写系统提示词："你是一个产品运营助手，请根据知识库内容准确回答问题，不知道就说不知道。"<br>'+
-'<span class="step-num">4</span><strong>添加知识检索节点：</span>拖入"知识检索"节点→关联步骤2的知识库→设置检索策略（推荐"混合检索"——关键词+语义双路召回，准确率最高）。<br>'+
+'<span class="step-num">4</span><strong>添加知识检索节点：</strong>拖入"知识检索"节点→关联步骤2的知识库→设置检索策略（推荐"混合检索"——关键词+语义双路召回，准确率最高）。<br>'+
 '<span class="step-num">5</span><strong>发布并测试：</strong>点击右上角"发布"→获得一个可分享的URL→先用10个实际运营问题测试回答质量→根据测试结果调整检索参数和提示词→嵌入企业微信/飞书/网页。</p></div>'+
-
 '<h4>🤖 方案B：用Coze搭一个微信机器人（5步）</h4>'+
 '<div class="highlight-box"><p>'+
 '<span class="step-num">1</span><strong>注册并创建Bot：</strong>访问 coze.cn（国内版，绑定微信更方便）→点击"创建Bot"→填写Bot名称和简介。Coze的界面全中文，零门槛。<br>'+
@@ -527,7 +551,6 @@ DETAIL.learning = '<h2>🎓 AI学习中心 · 从零科普</h2><p class="detail-
 '<span class="step-num">3</span><strong>添加插件：</strong>Coze内置800+插件——推荐添加：必应搜索（实时信息）、飞书文档（读内部文档）、Code Interpreter（数据计算）。插件就是Agent的手和脚。<br>'+
 '<span class="step-num">4</span><strong>绑定微信公众号：</strong>点击"发布"→选择"微信订阅号/服务号"→扫码授权绑定→设置自动回复规则（关键词触发/默认回复）。绑定后用户在公众号发消息就由Bot接管。<br>'+
 '<span class="step-num">5</span><strong>测试→调优→上线：</strong>先发到自己的测试群跑3天→收集bad case→优化Prompt和插件配置→正式发布。持续看后台的对话日志，每周迭代一次。</p></div>'+
-
 '<h4>⚖️ Dify vs Coze 对比</h4>'+
 '<table class="data-table"><tr><th>维度</th><th>Dify</th><th>Coze</th></tr>'+
 '<tr><td><strong>适用场景</strong></td><td>企业内部知识库问答、RAG应用、需要私有化部署的严肃场景</td><td>微信/飞书机器人、营销互动Bot、快速验证想法的轻量场景</td></tr>'+
@@ -536,38 +559,28 @@ DETAIL.learning = '<h2>🎓 AI学习中心 · 从零科普</h2><p class="detail-
 '<tr><td><strong>最大优势</strong></td><td>开源可私有部署，知识库检索精准，适合企业级应用</td><td>插件生态丰富（800+），一键发布多平台（微信/飞书/抖音），零成本</td></tr>'+
 '<tr><td><strong>推荐人群</strong></td><td>有技术认知、想做简历加分项目的运营</td><td>完全零基础、想快速做出可展示成果的运营</td></tr>'+
 '</table>'+
-'<div class="callout tip"><strong>🚀 新手建议：</strong>先用Coze（零成本+零代码+快速出成果）→ 做出第一个Agent后，再用Dify深入学习（简历含金量更高）。两个都做过，面试时就是"有Agent实操经验"而不是"了解过Agent概念"——这是质的区别。</div>';
-
-// ===== 第十一课：数据分析实战（SQL+Excel+A/B测试） =====
+'<div class="callout tip"><strong>🚀 新手建议：</strong>先用Coze（零成本+零代码+快速出成果）→ 做出第一个Agent后，再用Dify深入学习（简历含金量更高）。两个都做过，面试时就是"有Agent实操经验"而不是"了解过Agent概念"——这是质的区别。</div>'+
 '<h3>📊 第十一课：数据分析实战（SQL+Excel+A/B测试）</h3>'+
 '<p>数据分析是AI产品运营的核心竞争力。本课覆盖三个最重要的分析工具：SQL查数据、Excel透视表快速分析、A/B测试验证决策。</p>'+
-
 '<h4>🔍 SQL速成——运营必备的7个关键字</h4>'+
 '<p><strong>SELECT + FROM + WHERE：</strong>最基础的查询组合。从用户表中找出特定渠道注册的用户ID和日期。</p>'+
 '<p><strong>JOIN（INNER/LEFT）：</strong>连接多张表。LEFT JOIN最常用——保留左表全部记录，常用于计算留存率。</p>'+
 '<p><strong>GROUP BY + HAVING：</strong>聚合统计。"GROUP BY channel"按渠道分组，"HAVING COUNT(*) > 100"筛掉样本量过小的分组。</p>'+
 '<p><strong>窗口函数：</strong>排名类问题利器。"ROW_NUMBER() OVER (PARTITION BY category ORDER BY sales DESC)"按品类分组后按销售额排名。</p>'+
 '<div class="highlight-box"><p><strong>运营常用SQL场景：</strong>①次日/7日/30日留存率 ②各渠道用户LTV对比 ③商品销售额排名 ④漏斗转化率 ⑤用户分层（按活跃度/消费金额分段）。每个场景建议保存为模板。</p></div>'+
-
 '<h4>📋 Excel透视表——5步出洞察</h4>'+
 '<p><span class="step-num">1</span>选中数据区域 → 插入 → 数据透视表<br><span class="step-num">2</span>行标签放"渠道"、列标签放"月份"、值放"用户数"<br><span class="step-num">3</span>右键值字段 → 值字段设置 → 选择"计数"或"求和"<br><span class="step-num">4</span>添加筛选器：按用户类型筛选新老用户<br><span class="step-num">5</span>插入数据透视图 → 选择折线图或柱状图</p>'+
 '<p><strong>常用计算：</strong>求和（GMV/营收）、计数（用户数/订单数）、百分比（转化率/占比）、同比环比（增长率）。</p>'+
-
 '<h4>🧪 A/B测试——运营的科学方法</h4>'+
 '<p><strong>核心概念：</strong>p值——假设实验组和对照组无差异，观察到当前数据的概率。p<0.05说明结果不太可能是随机波动。置信区间——真实效果的范围，如"5%±2%"。</p>'+
 '<p><strong>样本量估算：</strong>最小样本量 ≈ 16 × (标准差/期望检测的最小差异)²。标准差10、检测2%差异约需400样本。</p>'+
 '<p><strong>四大陷阱：</strong>Peeking（别每天偷看结果）| 新奇效应（用户因新鲜感短暂活跃）| 辛普森悖论（总体涨但细分跌）| 多重检验（用Bonferroni修正p值阈值）。</p>'+
-
 '<h4>🗓️ 30天学习路线</h4>'+
 '<div class="highlight-box"><p><strong>第1周：SQL基础——</strong>SELECT/WHERE/JOIN/GROUP BY，每天2道练习<br><strong>第2周：Excel进阶——</strong>透视表+VLOOKUP+图表，做2个分析报告<br><strong>第3周：A/B测试——</strong>p值+样本量计算+模拟分析<br><strong>第4周：综合实战——</strong>选真实问题，SQL取数→Excel分析→A/B方案→分析报告</p></div>'+
-
 '<h4>📚 推荐资源</h4>'+
 '<ul><li><strong>书：</strong>《SQL必知必会》《精益数据分析》《Trustworthy Online Controlled Experiments》</li><li><strong>课：</strong>B站SQL教程、Coursera Google Data Analytics</li></ul>'+
-
-// ===== 第十二课：用户增长体系（AARRR+RFM+增长实验） =====
 '<h3>📈 第十二课：用户增长体系（AARRR+RFM+增长实验）</h3>'+
 '<p>用户增长是运营的最终KPI。本课覆盖增长领域三大核心模型。</p>'+
-
 '<h4>🏴‍☠️ AARRR海盗模型</h4>'+
 '<table class="data-table"><tr><th>阶段</th><th>定义</th><th>关键指标</th><th>运营策略</th></tr>'+
 '<tr><td><strong>Acquisition 获客</strong></td><td>用户从哪来</td><td>CAC、渠道占比</td><td>渠道ROI评估、ASO/SEO、社交裂变</td></tr>'+
@@ -576,14 +589,12 @@ DETAIL.learning = '<h2>🎓 AI学习中心 · 从零科普</h2><p class="detail-
 '<tr><td><strong>Revenue 变现</strong></td><td>用户付费</td><td>LTV、ARPU、付费率</td><td>会员体系、限时优惠、定价实验</td></tr>'+
 '<tr><td><strong>Referral 传播</strong></td><td>用户推荐</td><td>K因子、邀请转化率</td><td>邀请奖励、拼团、社交裂变</td></tr>'+
 '</table>'+
-
 '<h4>📐 关键指标公式</h4>'+
 '<div class="highlight-box"><p>'+
 '<strong>CAC =</strong> 投放总费用 ÷ 新用户数<br>'+
 '<strong>LTV =</strong> ARPU × 平均生命周期。例：ARPU=$20/月×16个月=$320<br>'+
 '<strong>LTV/CAC ≥ 3</strong> 为健康，<1为严重亏损<br>'+
 '<strong>K因子 =</strong> 每人邀请数 × 邀请转化率。K>1=指数级增长</p></div>'+
-
 '<h4>🎯 RFM用户分层模型</h4>'+
 '<p>RFM是用户运营最实用的分层工具。</p>'+
 '<table class="data-table"><tr><th>维度</th><th>含义</th><th>评分标准</th></tr>'+
@@ -592,22 +603,17 @@ DETAIL.learning = '<h2>🎓 AI学习中心 · 从零科普</h2><p class="detail-
 '<tr><td><strong>M（Monetary）</strong></td><td>消费总金额（AI产品可改用Token消耗量）</td><td>月消费500元+=高</td></tr>'+
 '</table>'+
 '<p><strong>5类用户运营策略：</strong>①重要价值→VIP服务+专属权益 ②重要发展→提升频次+阶梯优惠 ③重要保持→流失预警+大额券挽回 ④一般价值→向上销售 ⑤流失用户→低成本召回，3次无效则放弃。</p>'+
-
 '<h4>🧪 ICE增长实验排序法</h4>'+
 '<p><strong>ICE三要素：</strong>Impact影响力(1-10)、Confidence信心(1-10)、Ease容易度(1-10)，总分=I×C×E，按分排序实验优先级。</p>'+
 '<p><strong>四步闭环：</strong>假设→实验→测量→结论。失败的实验不是浪费——每次验证"什么不行"都让下一次更接近"什么行"。</p>'+
-
-// ===== 第十三课：AI产品运营进阶（Prompt+Agent+RAG） =====
 '<h3>🤖 第十三课：AI产品运营进阶（Prompt+Agent+RAG）</h3>'+
 '<p>AI产品运营与传统运营的最大区别在于"与AI深度协作的能力"。本课覆盖四大核心技能。</p>'+
-
 '<h4>✍️ Prompt Engineering进阶</h4>'+
 '<div class="highlight-box"><p>'+
 '<strong>① Chain of Thought：</strong>Prompt末尾加"让我们一步一步思考"——GSM8K推理测试中，CoT将准确率从17.7%提升到58.3%。<br>'+
 '<strong>② Few-shot：</strong>给2-3个示例让AI模仿。选例要覆盖边界情况。<br>'+
 '<strong>③ 结构化输出：</strong>要求"输出JSON"或"Markdown表格"，便于程序处理。<br>'+
 '<strong>④ 角色设定：</strong>开头定义角色——角色越具体，回复质量越高。</p></div>'+
-
 '<h4>🏗️ Agent搭建三级路径</h4>'+
 '<table class="data-table"><tr><th>级别</th><th>平台</th><th>门槛</th><th>适合谁</th></tr>'+
 '<tr><td><strong>Level 1</strong></td><td>Coze（扣子）</td><td>⭐ 零代码</td><td>完全不懂技术的运营</td></tr>'+
@@ -615,11 +621,9 @@ DETAIL.learning = '<h2>🎓 AI学习中心 · 从零科普</h2><p class="detail-
 '<tr><td><strong>Level 3</strong></td><td>LangChain/CrewAI</td><td>⭐⭐⭐⭐ Python</td><td>有开发能力的运营/PM</td></tr>'+
 '</table>'+
 '<p><strong>建议路径：</strong>Coze（1天出成果）→ Dify（简历加分项）→ LangChain（职业护城河）。</p>'+
-
 '<h4>📚 RAG知识库5步搭建</h4>'+
 '<p><span class="step-num">1</span>准备文档（FAQ/SOP/产品说明）<br><span class="step-num">2</span>分段切割（每块500-1000字符，保留重叠）<br><span class="step-num">3</span>向量化（文本→向量，语义相近距离更近）<br><span class="step-num">4</span>存入向量数据库（Milvus/Pinecone/ChromaDB）<br><span class="step-num">5</span>检索+生成（用户提问→向量化→检索Top K→送LLM生成答案）</p>'+
 '<p><strong>进阶：</strong>Re-ranking二次排序 + Hybrid Search（关键词+语义双路召回）。</p>'+
-
 '<h4>📏 AI产品评估四维模型</h4>'+
 '<table class="data-table"><tr><th>维度</th><th>评估要点</th></tr>'+
 '<tr><td><strong>模型能力</strong></td><td>推理/上下文/多模态/响应速度/API稳定性</td></tr>'+
@@ -627,18 +631,14 @@ DETAIL.learning = '<h2>🎓 AI学习中心 · 从零科普</h2><p class="detail-
 '<tr><td><strong>数据飞轮</strong></td><td>用户数据收集/模型微调/个性化推荐——用得越多越好？</td></tr>'+
 '<tr><td><strong>商业壁垒</strong></td><td>独家数据/品牌/生态锁定/用户切换成本</td></tr>'+
 '</table>'+
-
-// ===== 第十四课：面试准备指南（STAR+高频题+薪资谈判） =====
 '<h3>🎤 第十四课：面试准备指南（STAR+高频题+薪资谈判）</h3>'+
 '<p>面试是"可准备的表演"，而非"即兴发挥"。本课覆盖面试三大核心环节。</p>'+
-
 '<h4>⭐ STAR法则——最重要的结构化表达框架</h4>'+
 '<div class="highlight-box"><p>'+
 '<strong>S（情境）：</strong>什么公司/产品/阶段/角色——1-2句话<br>'+
 '<strong>T（任务）：</strong>目标必须可量化（提升X%、减少Y天）<br>'+
 '<strong>A（行动）：</strong>你做了什么——占60%篇幅，用"我做了A→B→C"结构<br>'+
 '<strong>R（结果）：</strong>必须有数据。"留存率从28%→37%"远好于"效果不错"</p></div>'+
-
 '<h4>📋 Top 10高频面试题框架</h4>'+
 '<table class="data-table"><tr><th>#</th><th>问题</th><th>答题框架</th></tr>'+
 '<tr><td>1</td><td>AI vs 传统运营的区别？</td><td>工具+能力+迭代速度三维对比+案例</td></tr>'+
@@ -652,18 +652,75 @@ DETAIL.learning = '<h2>🎓 AI学习中心 · 从零科普</h2><p class="detail-
 '<tr><td>9</td><td>职业规划？</td><td>短期深耕→中期带团队→长期专家</td></tr>'+
 '<tr><td>10</td><td>你有什么要问的？</td><td>团队瓶颈/AI应用程度/前3个月期望</td></tr>'+
 '</table>'+
-
 '<h4>🚀 AI项目经验展示</h4>'+
 '<div class="highlight-box"><p>'+
 '<strong>话术：</strong>"虽然没有正式AI工作经验，但我在过去几个月系统自学了AI运营的核心技能，并做了X个实践项目（如本网站），包括Dify搭建Agent、Coze微信机器人、Prompt模板库。我用项目证明能力，而不是用履历。"<br>'+
 '<strong>作品集：</strong>①本网站——16板块AI数字中枢 ②Dify运营知识库Agent ③Prompt模板库 ④1-2份数据分析报告。整理成Notion页面，面试时直接分享屏幕。</p></div>'+
-
 '<h4>💰 薪资谈判四步法</h4>'+
 '<p><span class="step-num">1</span><strong>查数据：</strong>BOSS直聘/脉脉/看准网/OfferShow四个平台查薪资区间<br><span class="step-num">2</span><strong>报价话术：</strong>给范围不给点——"期望XX-XX之间"；让对方先出价——"贵司对这个岗位的预算是什么范围？"<br><span class="step-num">3</span><strong>三大筹码：</strong>另有offer+独特技能组合(AI+运营+数据)+降低招聘成本<br><span class="step-num">4</span><strong>禁忌：</strong>第一轮就问薪资 | 不说区间只说数字 | 用生活压力要价 | 接受offer后再谈价</p>'+
 '<div class="callout tip"><strong>💡 面试前2周清单：</strong>每天1道面试题→整理3个STAR案例→完善作品集→模拟面试2次→研究目标公司。面试不是考试——是你展示"我已经准备好了"的机会。</div>';
 
+// ===== 学习区 - 数据分析实训（独立入口） =====
+DETAIL["learning-data"] = '<h2>📈 数据分析实训 · SQL→Excel→A/B测试</h2><p class="detail-subtitle">AI产品运营核心竞争力 · 30天路线</p>'+
+'<div class="callout info"><strong>📚 为什么数据能力是运营的命根子：</strong>面试官问"你如何证明你的运营决策有效？"——答案就是数据。AI产品运营岗尤其看重：能自己取数（SQL）、能快速分析（Excel）、能科学验证（A/B测试）。</div>'+
+'<h3>🔍 SQL速成——运营必备的7个关键字</h3>'+
+'<p><strong>SELECT + FROM + WHERE：</strong>最基础的查询组合。从用户表中找出特定渠道注册的用户ID和日期。</p>'+
+'<p><strong>JOIN（INNER/LEFT）：</strong>连接多张表。LEFT JOIN最常用——保留左表全部记录，常用于计算留存率。</p>'+
+'<p><strong>GROUP BY + HAVING：</strong>聚合统计。"GROUP BY channel"按渠道分组，"HAVING COUNT(*) > 100"筛掉样本量过小的分组。</p>'+
+'<p><strong>窗口函数：</strong>排名类问题利器。"ROW_NUMBER() OVER (PARTITION BY category ORDER BY sales DESC)"按品类分组后按销售额排名。</p>'+
+'<div class="highlight-box"><p><strong>运营常用SQL场景：</strong>①次日/7日/30日留存率 ②各渠道用户LTV对比 ③商品销售额排名 ④漏斗转化率 ⑤用户分层（按活跃度/消费金额分段）。每个场景建议保存为模板。</p></div>'+
+'<h4>🎯 面试必考SQL题（留存率）</h4>'+
+'<p>问题：统计每个渠道的次日留存率。<br>答案思路：<br><strong>WITH first_activity AS (SELECT user_id, channel, MIN(active_date) AS first_date FROM user_active GROUP BY user_id, channel),<br>day2 AS (SELECT DISTINCT a.user_id, a.channel FROM user_active a JOIN first_activity f ON a.user_id=f.user_id WHERE DATEDIFF(a.active_date, f.first_date)=1)<br>SELECT f.channel, COUNT(DISTINCT f.user_id) AS new_users, COUNT(DISTINCT d.user_id) AS day2_users,<br>ROUND(COUNT(DISTINCT d.user_id)/COUNT(DISTINCT f.user_id),4) AS day2_retention<br>FROM first_activity f LEFT JOIN day2 d ON f.user_id=d.user_id GROUP BY f.channel;</strong><br>关键点：用MIN()取首日、DATEDIFF判断次日、LEFT JOIN保留未回访用户。</p>'+
+'<h3>📋 Excel透视表——5步出洞察</h3>'+
+'<p><span class="step-num">1</span>选中数据区域 → 插入 → 数据透视表<br><span class="step-num">2</span>行标签放"渠道"、列标签放"月份"、值放"用户数"<br><span class="step-num">3</span>右键值字段 → 值字段设置 → 选择"计数"或"求和"<br><span class="step-num">4</span>添加筛选器：按用户类型筛选新老用户<br><span class="step-num">5</span>插入数据透视图 → 选择折线图或柱状图</p>'+
+'<h3>🧪 A/B测试——运营的科学方法</h3>'+
+'<p><strong>核心概念：</strong>p值——假设实验组和对照组无差异，观察到当前数据的概率。p<0.05说明结果不太可能是随机波动。置信区间——真实效果的范围，如"5%±2%"。</p>'+
+'<p><strong>样本量估算：</strong>最小样本量 ≈ 16 × (标准差/期望检测的最小差异)²。标准差10、检测2%差异约需400样本。</p>'+
+'<p><strong>四大陷阱：</strong>Peeking（别每天偷看结果）| 新奇效应（用户因新鲜感短暂活跃）| 辛普森悖论（总体涨但细分跌）| 多重检验（用Bonferroni修正p值阈值）。</p>'+
+'<h3>📈 增长模型：AARRR + RFM + ICE</h3>'+
+'<p><strong>AARRR：</strong>获客(CAC)→激活(激活率)→留存(次日/7日/30日)→变现(LTV/ARPU)→传播(K因子)。LTV/CAC≥3健康。</p>'+
+'<p><strong>RFM分层：</strong>R最近消费/F频率/M金额——5类用户差异化运营：重要价值→VIP；重要发展→提频；重要保持→挽留；一般价值→向上销售；流失→低成本召回。</p>'+
+'<p><strong>ICE排序：</strong>Impact×Confidence×Ease（各1-10分）——按分排实验优先级。</p>'+
+'<h3>🗓️ 30天学习路线</h3>'+
+'<div class="highlight-box"><p><strong>第1周：SQL基础——</strong>SELECT/WHERE/JOIN/GROUP BY，每天2道练习<br><strong>第2周：Excel进阶——</strong>透视表+VLOOKUP+图表，做2个分析报告<br><strong>第3周：A/B测试——</strong>p值+样本量计算+模拟分析<br><strong>第4周：综合实战——</strong>选真实问题，SQL取数→Excel分析→A/B方案→分析报告</p></div>'+
+'<div class="callout tip"><strong>📌 求职联动：</strong>做完30天路线，你的简历上就能写"熟练SQL取数/透视表/A-B测试设计"——这是AI产品运营岗的硬通货。配合网站【每日一练】板块每天刷1道题效果更好。</div>';
 
-// ===== 其余所有板块 =====
+// ===== 学习区 - 面试冲刺（独立入口） =====
+DETAIL["learning-interview"] = '<h2>🎯 面试冲刺 · AI产品运营岗</h2><p class="detail-subtitle">STAR法则 · Top10题 · 作品集 · 薪资谈判</p>'+
+'<div class="callout info"><strong>📚 面试是"可准备的表演"，不是"即兴发挥"。</strong>以下框架+模板，全部消化后你有80%的把握应对AI产品运营/增长运营岗面试。</div>'+
+'<h3>⭐ STAR法则——最重要的结构化表达框架</h3>'+
+'<div class="highlight-box"><p>'+
+'<strong>S（情境）：</strong>什么公司/产品/阶段/角色——1-2句话<br>'+
+'<strong>T（任务）：</strong>目标必须可量化（提升X%、减少Y天）<br>'+
+'<strong>A（行动）：</strong>你做了什么——占60%篇幅，用"我做了A→B→C"结构<br>'+
+'<strong>R（结果）：</strong>必须有数据。"留存率从28%→37%"远好于"效果不错"</p></div>'+
+'<h3>📋 Top 10高频面试题框架</h3>'+
+'<table class="data-table"><tr><th>#</th><th>问题</th><th>答题框架</th></tr>'+
+'<tr><td>1</td><td>AI vs 传统运营的区别？</td><td>工具+能力+迭代速度三维对比+案例</td></tr>'+
+'<tr><td>2</td><td>如何搭建增长体系？</td><td>AARRR每环拆解→指标→策略→排序</td></tr>'+
+'<tr><td>3</td><td>用过哪些Agent框架？</td><td>Coze→Dify→LangChain三级描述，选Dify重点讲</td></tr>'+
+'<tr><td>4</td><td>如何评估AI产品？</td><td>四维模型+当场举例分析</td></tr>'+
+'<tr><td>5</td><td>数据发现问题的例子？</td><td>STAR+具体数字（参考每日一练）</td></tr>'+
+'<tr><td>6</td><td>如何设计A/B测试？</td><td>假设→样本量→分流→周期→检验→结论</td></tr>'+
+'<tr><td>7</td><td>看好的AI方向？</td><td>选1个细分深入讲+数据支撑</td></tr>'+
+'<tr><td>8</td><td>如何处理团队分歧？</td><td>1对1理解→转化目标→创造性方案</td></tr>'+
+'<tr><td>9</td><td>职业规划？</td><td>短期深耕→中期带团队→长期专家</td></tr>'+
+'<tr><td>10</td><td>你有什么要问的？</td><td>团队瓶颈/AI应用程度/前3个月期望</td></tr>'+
+'</table>'+
+'<h3>🤖 2026.8 AI产品运营面试加分话题</h3>'+
+'<div class="highlight-box"><p>'+
+'<strong>① AI安全治理：</strong>OpenAI暂停Astra（全球首例因安全叫停）→面试展示认知深度："我关注到AI安全从学术走向产业，我理解关键资安能力评估标准，会把它纳入产品风险评估。"<br>'+
+'<strong>② 中国开源AI崛起：</strong>HuggingFace前6全是中国模型→"我熟悉DeepSeek/Qwen/Kimi的开源生态，理解开源作为后发者武器的战略价值。"<br>'+
+'<strong>③ AI基础设施投资：</strong>CoreWeave Q2营收+112%→"我理解AI云服务商业模型和GPU租赁经济学。"<br>'+
+'<strong>④ Agent工具链：</strong>Harness/Claude Cowork发布→"我实际使用Claude Code+DeepSeek组合，理解Agent×模型搭配的性价比决策。"</p></div>'+
+'<h3>🚀 AI项目经验展示（转行话术）</h3>'+
+'<div class="highlight-box"><p>'+
+'<strong>话术：</strong>"虽然没有正式AI工作经验，但我在过去几个月系统自学了AI运营的核心技能，并做了X个实践项目（如本网站），包括Dify搭建Agent、Coze微信机器人、Prompt模板库。我用项目证明能力，而不是用履历。"<br>'+
+'<strong>作品集：</strong>①本网站——16板块AI数字中枢（面试时直接演示） ②Dify运营知识库Agent ③Prompt模板库 ④1-2份数据分析报告。</p></div>'+
+'<h3>💰 薪资谈判四步法</h3>'+
+'<p><span class="step-num">1</span><strong>查数据：</strong>BOSS直聘/脉脉/看准网/OfferShow四个平台查薪资区间<br><span class="step-num">2</span><strong>报价话术：</strong>给范围不给点——"期望XX-XX之间"；让对方先出价——"贵司对这个岗位的预算是什么范围？"<br><span class="step-num">3</span><strong>三大筹码：</strong>另有offer+独特技能组合(AI+运营+数据)+降低招聘成本<br><span class="step-num">4</span><strong>禁忌：</strong>第一轮就问薪资 | 不说区间只说数字 | 用生活压力要价 | 接受offer后再谈价</p>'+
+'<div class="callout tip"><strong>💡 面试前2周清单：</strong>每天1道面试题→整理3个STAR案例→完善作品集→模拟面试2次→研究目标公司。面试不是考试——是你展示"我已经准备好了"的机会。</div>';
+
 DETAIL.career = '<h2>💼 求职中心 · 面试准备 & 投递策略</h2><p class="detail-subtitle">真实简历 · 面试10题 · 公司分级 · 薪资谈判</p>'+
 '<div class="callout tip"><strong>🎯 核心定位：</strong>AI驱动的增长运营 — 不是纯投放，不是纯分析，是用AI工具做增长。700万月流水、60%环比增长、30+BI报表、400+网点。</div>'+
 
@@ -1118,26 +1175,60 @@ DETAIL.movie = '<h2>🎥 影视区 · 完整推荐</h2><p class="detail-subtitle
 '<h3>🎮 推荐</h3><table class="data-table"><tr><th>游戏</th><th>史低</th><th>理由</th></tr><tr><td>只狼</td><td>¥134</td><td>拼刀巅峰</td></tr><tr><td>MH荒野</td><td>¥146</td><td>联机狩猎</td></tr><tr><td>龙珠ZERO</td><td>¥298</td><td>龙珠粉必入</td></tr></table>'+
 '<h3>📅 促销</h3><p>🍂秋季11月|🎃万圣节10月|🎄<strong>冬季12月（年度最大折扣！）</strong></p>';
 
-DETAIL.car = '<h2>🚗 购车推荐</h2><p class="detail-subtitle">选车·对比·试驾</p>'+
+DETAIL.car = '<h2>🚗 购车决策系统 · 从参数到时机</h2><p class="detail-subtitle">参数科普 · 车型对比 · 当下是否该买车</p>'+
+'<div class="callout danger" style="font-size:13px"><strong>🕐 当下购车时机判断（2026.8 · 结合你的现状）</strong><br>你的情况：26岁 · 存款30万 · 暂无购车计划 · 刚失业准备换工作（广州/深圳未定）。<br><br><strong>结论：现在不建议买车，建议等2-3个月。</strong><br>① <strong>工作未定先别买</strong>——广州vs深圳的用车需求不同（通勤距离/车牌政策/停车成本差异大），先确定城市和通勤再选车；<br>② <strong>存款30万别全砸车上</strong>——按20%购车原则，你的预算应在6-15万区间（首付或全款），30万存款要留作求职过渡期生活保障+首付储备；<br>③ <strong>年底前有好时机</strong>——Q4是车企冲量季（10-12月），叠加以旧换新补贴窗口+新车密集上市，价格会比现在更友好；<br>④ <strong>关注降价中的经典车型</strong>——特斯拉Model Y近两年累计降价明显（2024年已降多轮，2026年仍有调整空间），理想/小鹏/极氪也在以价换量，年底入手更划算。<br><br><strong>行动建议：</strong>现在开始做功课（看下面参数科普）→ 确定工作城市后试驾 → 10-12月择机入手。</div>'+
+'<h3>🔧 参数概念科普课（小白必读）</h3>'+
+'<div class="highlight-box"><p>'+
+'<strong>① 续航怎么读：</strong>标称续航×0.7≈真实续航（高速/空调/低温都打折）。CLTC标准偏乐观，实际使用打7折是常态。<br>'+
+'<strong>② 电池怎么选：</strong>磷酸铁锂（便宜耐用·南方首选·安全性好）vs 三元锂（能量密度高·北方低温好·成本高）。刀片电池=比亚迪的磷酸铁锂技术。<br>'+
+'<strong>③ 智驾等级：</strong>L2=辅助（车道保持+自适应巡航，日常够用）· L3=有条件自动驾驶（2027年国标强制，法规刚落地）· L4=高度自动驾驶（还没到量产）。别为用不上的L3多花5万。<br>'+
+'<strong>④ 充电怎么算：</strong>家充7kW一晚上充满（前提：有固定车位+物业同意）· 快充桩100kW半小时到80% · 没家充条件慎买纯电（通勤充电是日常麻烦）。<br>'+
+'<strong>⑤ 保值率：</strong>电车3年保值率普遍50-60% vs 油车60-70% · 前3年贬值最快 · 冷门品牌/车型跌得更狠。</p></div>'+
+'<h3>📊 15-20万主流电车对比（2026.8）</h3>'+
+'<table class="data-table"><tr><th>车型</th><th>价格</th><th>续航</th><th>亮点</th><th>适合谁</th></tr>'+
+'<tr style="background:var(--accent-light)"><td><strong>比亚迪海豹07EV</strong></td><td>16.99万</td><td>705km</td><td>最均衡·5分钟闪充·第二代刀片电池</td><td>全能之选·售后最放心</td></tr>'+
+'<tr><td><strong>小鹏MONA M03 Max</strong></td><td>12.98万</td><td>600km</td><td>750TOPS算力·全场景XNGP</td><td>智驾性价比之王</td></tr>'+
+'<tr><td><strong>极氪007焕新版</strong></td><td>19.39万</td><td>715km</td><td>900V架构·NVIDIA Thor-U·操控见长</td><td>驾驶质感党</td></tr>'+
+'</table>'+
+'<div class="callout tip"><strong>💡 结合你的情况：</strong>若年底入手，15万以内优先看<strong>小鹏MONA M03</strong>（智驾强+价格低，适合刚工作的第一台车）；若追求稳妥选<strong>海豹07EV</strong>。不着急，等Q4冲量季再比价。</div>'+
+'<h3>📉 关注：降价中的经典车型（以价换量窗口）</h3>'+
+'<div class="highlight-box"><p>'+
+'<strong>特斯拉Model Y：</strong>2024年国产后多轮降价，2026年仍处调整周期——若出新款（传闻焕新版），老款会进一步降价清库。<br>'+
+'<strong>理想L6/L7：</strong>竞争加剧+增程市场内卷，终端优惠持续扩大。<br>'+
+'<strong>小鹏/极氪/零跑：</strong>以价换量，部分车型终端优惠2-5万。<br><br>'+
+'<strong>💡 怎么盯降价：</strong>①懂车帝/汽车之家看终端成交价（非指导价）②关注季度末（3/6/9/12月）清库 ③新车上市前1个月旧款必降 ④以旧换新补贴（最高2万）+购置税政策叠加。</p></div>'+
+'<h3>🔑 试驾必测清单</h3><p>底盘滤震 | 隔音 | 车机流畅度 | 后排空间 | 刹车线性度——<strong>一定要亲自试驾</strong>，参数再好也要开起来舒服。</p>'+
 '<div class="resource-card"><div class="rc-icon">🚘</div><div class="rc-info"><div class="rc-name">懂车帝</div><div class="rc-desc">评测视频最强</div></div><a href="https://www.dongchedi.com" target="_blank" class="rc-link">打开 →</a></div>'+
 '<div class="resource-card"><div class="rc-icon">🏠</div><div class="rc-info"><div class="rc-name">汽车之家</div><div class="rc-desc">车型库最全</div></div><a href="https://www.autohome.com.cn" target="_blank" class="rc-link">打开 →</a></div>'+
 '<div class="resource-card"><div class="rc-icon">⚡</div><div class="rc-info"><div class="rc-name">新出行</div><div class="rc-desc">新能源垂直平台</div></div><a href="https://www.xchuxing.com" target="_blank" class="rc-link">打开 →</a></div>'+
-'<h3>🚘 15-20万推荐</h3>'+
-'<table class="data-table"><tr><th>车型</th><th>价格</th><th>续航</th><th>亮点</th></tr>'+
-'<tr style="background:var(--accent-light)"><td><strong>极氪007焕新版⭐</strong></td><td>19.39万</td><td>715km</td><td>900V+空悬+激光雷达</td></tr>'+
-'<tr><td>小鹏MONA M03</td><td>14.99万</td><td>600km</td><td>15万内智驾最强</td></tr>'+
-'<tr><td>比亚迪海豹07EV</td><td>16.99万</td><td>705km</td><td>售后最放心</td></tr></table>'+
-'<h3>🔑 试驾必测</h3><p>底盘滤震|隔音|车机流畅度|后排空间——<strong>一定要亲自试驾。</strong></p>';
+'<div class="callout warn"><strong>📌 现阶段总结：</strong>先找工作确定城市 → 10-12月Q4冲量季择机 → 预算控制在15万内（留存款保障）→ 优先智驾/稳妥车型。车是消费品不是资产，别让它成为求职期的负担。</div>';
 
-DETAIL.house = '<h2>🏠 购房租房</h2><p class="detail-subtitle">广深楼市·房价·租房</p>'+
+DETAIL.house = '<h2>🏠 购房租房 · 从概念到时机的决策指南</h2><p class="detail-subtitle">广深楼市 · 概念科普 · 当下该不该买</p>'+
+'<div class="callout danger" style="font-size:13px"><strong>🕐 当下购房时机判断（2026.8 · 结合你的现状）</strong><br>你的情况：26岁 · 存款30万 · 刚失业换工作 · 广州/深圳未定 · 暂无购房计划。<br><br><strong>结论：现在完全不建议买房，建议先租房+观望。</strong><br>① <strong>工作城市未定是最大障碍</strong>——广州vs深圳购房资格/首付/月供完全不同，先定城市再说；<br>② <strong>30万存款不够广州首付</strong>——广州新房均价约2.6-3.2万/平，80平约210-260万，15%首付也要31-39万——你的存款刚够首付，但月供+装修+税费会把生活压垮；<br>③ <strong>失业期现金流最重要</strong>——求职过渡期每月开销+租房（1500-3000元）+社保自缴，先保住3-6个月生活储备；<br>④ <strong>政策窗口仍在</strong>——广州首套15%首付+利率3.4%历史低位，但你不是刚需，等1-2年积累更从容；<br>⑤ <strong>房价趋势：</strong>广州连续4个月环比微涨但整体平稳，深圳议价空间仍大——都不是买房急迫期。<br><br><strong>行动建议：</strong>确定城市后先租房（广州天河-番禺通勤圈1500-2200元/月）→ 工作稳定1-2年 → 再考虑首套。现在把精力放求职，存款是底气不是负担。</div>'+
+'<h3>🔧 买房概念科普课（小白必读）</h3>'+
+'<div class="highlight-box"><p>'+
+'<strong>① 首付/利率：</strong>首付=房价×比例（广州首套15%历史最低）· 利率=贷款成本（广州首套3.4%）——这两个决定你上车的门槛。<br>'+
+'<strong>② 月供怎么算：</strong>贷款100万30年利率3.4%≈月供4400元。银行要求月供≤月收入50%（实际建议40%以内）。<br>'+
+'<strong>③ 等额本息vs等额本金：</strong>本息=每月还款相同（前期利息多）· 本金=前期还款多后期少（总利息少约20%）。<br>'+
+'<strong>④ 税费：</strong>契税（首套1-1.5%）+个税（满2年免）+中介费（1-3%）+装修≈总价10-15%额外成本。<br>'+
+'<strong>⑤ 期房vs现房：</strong>期房便宜但烂尾风险（广州正推现房销售试点）· 现房贵但所见即所得。</p></div>'+
+'<h3>📊 广深速览（2026.8）</h3>'+
+'<table class="data-table"><tr><th>城市</th><th>新房均价</th><th>二手均价</th><th>首付</th><th>利率</th><th>月租参考</th></tr>'+
+'<tr><td><strong>深圳</strong></td><td>~5.5万</td><td>~5.0万</td><td>首套20%</td><td>~3.5%</td><td>2500-5000</td></tr>'+
+'<tr><td><strong>广州</strong></td><td>~2.6-3.2万</td><td>~2.8万</td><td>首套15%（历史最低）</td><td>3.4%（无下限）</td><td>1500-3000</td></tr>'+
+'</table>'+
+'<div class="callout tip"><strong>💡 如果未来在广深买房，怎么选：</strong>广州门槛更低（首付15%+利率3.4%无下限）适合第一套；深圳核心区抗跌但门槛高。刚工作1-2年建议先广州外围（增城1.4万/从化1.1万）或租房，别硬上杠杆。</div>'+
+'<h3>🔑 租房实用策略（现阶段重点）</h3>'+
+'<ul>'+
+'<li><strong>广州：</strong>天河→番禺大石/厦滘（1500-2200）| 黄埔→萝岗（1500-2500）——地铁3号线/18号线通勤圈性价比高</li>'+
+'<li><strong>深圳：</strong>南山→宝安西乡（2500-4000）| 福田→龙华民治（2500-3500）——先看工作地点再选</li>'+
+'<li><strong>铁律：</strong>通勤≤45分钟 | 租金≤月收入30% | 避开毕业季（6-7月）高峰</li>'+
+'</ul>'+
 '<div class="resource-card"><div class="rc-icon">🏘️</div><div class="rc-info"><div class="rc-name">贝壳找房</div><div class="rc-desc">真实房源最多</div></div><a href="https://www.ke.com" target="_blank" class="rc-link">打开 →</a></div>'+
 '<div class="resource-card"><div class="rc-icon">📉</div><div class="rc-info"><div class="rc-name">国家统计局70城房价</div><div class="rc-desc">每月15日发布</div></div><a href="https://www.stats.gov.cn" target="_blank" class="rc-link">打开 →</a></div>'+
-'<h3>📊 广深速览</h3>'+
-'<table class="data-table"><tr><th>城市</th><th>新房</th><th>二手</th><th>月租</th></tr><tr><td>深圳</td><td>~5.5万</td><td>~5.0万</td><td>2500-5000</td></tr><tr><td>广州</td><td>~3.2万</td><td>~2.8万</td><td>1500-3000</td></tr></table>'+
-'<h3>🔑 租房</h3><ul><li><strong>广州：</strong>天河→番禺大石/厦滘（1500-2200）|黄埔→萝岗（1500-2500）</li><li><strong>深圳：</strong>南山→宝安西乡（2500-4000）|福田→龙华民治（2500-3500）</li><li><strong>铁律：</strong>通勤≤45分钟|租金≤月收入30%|避开6-8月</li></ul>';
+'<div class="callout warn"><strong>📌 现阶段总结：</strong>先租房（广州/深圳看工作定）→ 求职稳定1-2年 → 攒够首付+预留装修 → 再看时机。买房是5年计划不是1年计划——你现在最重要的资产是工作，不是房子。</div>';
 
-// ===== 旅游区 =====
-DETAIL.travel = '<h2>✈️ 旅游区 · 本周出行推荐</h2><p class="detail-subtitle">2026年7月底出发 · 基于实时天气的最佳出行方案</p>'+
+DETAIL.travel = '<h2>✈️ 旅游区 · 本周出行推荐</h2><p class="detail-subtitle">2026年8月中 · 暑期尾巴避暑方案 · 国庆前瞻</p>'+
 
 // ===== 深圳东西涌徒步穿越完整攻略（广州天河出发）=====
 '<div class="callout warn" style="font-size:13px"><strong>🏆 本周首选：深圳东西涌海岸线徒步穿越</strong><br>被《中国国家地理》评为"中国最美八大海岸线"——悬崖礁石碧海沙滩，7.5公里的山海之路。</div>'+
@@ -1209,7 +1300,7 @@ DETAIL.travel = '<h2>✈️ 旅游区 · 本周出行推荐</h2><p class="detail
 '<h3>🇨🇳 备选方案：如果不想徒步</h3>'+
 '<p>直接导航到<strong>西涌4号沙滩</strong>→沙滩游泳晒太阳→乘接驳巴士上<strong>深圳天文台栈道</strong>看海景（¥12/人）→下沙滩吃海鲜→完全不累的一日游。</p>'+
 
-'<div class="callout info"><strong>🌤️ 当前季节分析：</strong>7月底全国高温，避暑是核心需求。高纬度（新疆/东北）、高海拔（云南/贵州/西藏）是首选。暑期旺季——机票酒店需提前预订，7月中旬-8月中旬价格最高。</div>'+
+'<div class="callout info"><strong>🌤️ 当前季节分析（8月中）：</strong>全国高温持续但已过峰值，暑期进入尾巴——机票酒店价格开始回落（8月下旬比8月上旬便宜20-30%），9月开学前是错峰出行窗口。避暑仍是核心需求（高纬度/高海拔），国庆（10月）热门线路已开始预热。若你换工作去深圳，周末短途游（东西涌/梧桐山）也很方便。</div>'+
 
 '<h3>🇨🇳 国内推荐一：贵州避暑环线（🏆 性价比之王）</h3>'+
 '<table class="data-table"><tr><th>天数</th><th>行程</th><th>亮点</th></tr>'+
@@ -1239,7 +1330,7 @@ DETAIL.travel = '<h2>✈️ 旅游区 · 本周出行推荐</h2><p class="detail
 '<div class="highlight-box"><p><strong>💰 7天预算（广州出发，人均）：</strong><br>✈️ 广州→乌鲁木齐往返：¥2000-2800（暑期较贵）<br>🏨 住宿6晚：¥200×6=¥1200<br>🚗 租车/拼车：¥800<br>🎫 门票：¥400<br>🍜 餐饮：¥100×7=¥700<br><strong>📊 合计：约¥5,100-5,900/人</strong></p></div>'+
 
 '<h3>🌍 国际推荐：日本北海道（🗾 花海+温泉+美食）</h3>'+
-'<p>7月底正值北海道薰衣草花期（富良野）。均温20-25℃，比广州低10℃以上。札幌→富良野→美瑛→小樽→登别温泉。</p>'+
+'<p><strong>北海道（8月更新）：</strong>薰衣草花期（7月中）已过，但9-10月迎来枫叶季+秋收季——富良野花田转入秋色、美瑛丘陵金黄、函馆夜景全年最佳。均温15-22℃比广州舒适。若现在出发，8月下旬仍可赶夏季尾巴（札幌→富良野→美瑛→小樽→登别温泉），且机票比7月便宜。</p>'+
 '<div class="highlight-box"><p><strong>💰 7天预算（广州出发，人均）：</strong><br>✈️ 广州→札幌往返：¥3000-4500（暑期旺季）<br>🏨 住宿6晚：¥400×6=¥2400<br>🚃 JR Pass 7日：¥1200<br>🎫 景点：¥500<br>🍣 餐饮：¥200×7=¥1400<br><strong>📊 合计：约¥8,500-9,900/人</strong><br>📌 需提前办签证（约7个工作日）</p></div>'+
 
 '<h3>🌍 国际推荐：泰国清迈+曼谷（💰 高性价比出境）</h3>'+

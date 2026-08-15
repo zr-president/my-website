@@ -277,6 +277,38 @@ class DailyUpdater:
             self.errors.append("TOOLCHAIN_RADAR block not found")
             print("  ✗ TOOLCHAIN_RADAR block not found")
 
+    def check_static_freshness(self):
+        """全站时效检查：扫描 detail_content.js 中的过期日期标记（第三批联动机制）"""
+        print("\n── 全站静态内容时效检查 ──")
+        import re as _re
+        detail_path = os.path.join(ROOT, "detail_content.js")
+        if not os.path.exists(detail_path):
+            print("  ⚠ detail_content.js 不存在")
+            return
+        with open(detail_path, 'r', encoding='utf-8') as f:
+            dc = f.read()
+        today = datetime.now()
+        # 扫描 "2026年X月" / "X月" / "7月底" 等相对日期标记
+        month_marks = _re.findall(r'(\d{1,2})月底|\b(\d{1,2})月\b', dc)
+        found_old = []
+        for m in month_marks:
+            mnum = int(m[0] or m[1])
+            if mnum < today.month - 1:  # 早于上月=可能过期
+                found_old.append(f"{mnum}月")
+        # 扫描明确的旧日期
+        year_marks = _re.findall(r'(\d{4})年(\d{1,2})月', dc)
+        for y, mo in year_marks:
+            ynum, mnum = int(y), int(mo)
+            if ynum < today.year or (ynum == today.year and mnum < today.month - 1):
+                found_old.append(f"{ynum}年{mnum}月")
+        if found_old:
+            unique = sorted(set(found_old))
+            print(f"  ⚠ 检测到可能过期的日期标记: {unique}")
+            print(f"  → 请在本次更新中同步刷新 detail_content.js 对应内容（旅游/小说连载/模型表等）")
+            self.errors.append(f"detail_content.js 存在过期日期标记: {unique}")
+        else:
+            print("  ✓ 未发现过期日期标记")
+
     def run(self, commit=False):
         print(f"\n{'='*60}")
         print(f"Daily Update — {self.cfg['date_cn']}")
@@ -285,6 +317,7 @@ class DailyUpdater:
         self.load()
         self.update_core_fields()
         self.update_toolchain_radar()
+        self.check_static_freshness()
 
         self.save()
         self.validate()
