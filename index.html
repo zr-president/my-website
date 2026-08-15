@@ -540,7 +540,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div id="sectionView" class="view-container">
 <div class="section-detail-header"><button class="back-btn" onclick="goBackFromSection()">←</button><div style="flex:1"><h2 id="sectionDetailTitle"></h2><p id="sectionDetailSub"></p></div><button onclick="shareSection()" style="padding:4px 10px;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:11px;color:var(--text2)" title="复制链接">🔗 分享</button></div>
 <div id="sectionDetailContent"></div>
-<div id="sectionTOC" style="position:sticky;top:80px;float:right;width:140px;margin-left:16px;padding:10px 12px;background:var(--card);border:1px solid var(--border);border-radius:8px;max-height:70vh;overflow-y:auto;display:none"></div>
+<div id="sectionTOC" style="position:sticky;top:80px;float:right;width:150px;margin-left:16px;padding:8px 10px;background:var(--card);border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow);max-height:70vh;overflow-y:auto;display:none;z-index:50"><div id="tocToggle" style="cursor:pointer;font-size:11px;font-weight:700;color:var(--accent);user-select:none">📑 目录 ▸ 展开</div><div id="tocList" style="display:none;margin-top:6px"></div></div>
 <div class="card" style="margin-top:14px;padding:12px 14px" id="sectionQueryBox">
 <div style="font-size:11px;color:var(--text3);margin-bottom:6px">🤖 AI智能查询 · 输入名称获取整合分析+推荐建议</div>
 <div style="display:flex;gap:6px">
@@ -1959,7 +1959,10 @@ function showView(viewName, categoryKey){
       var headings=document.querySelectorAll('#sectionDetailContent h3, #sectionDetailContent h4');
       if(headings.length===0){toc.style.display='none';return;}
       toc.style.display='block';
-      toc.innerHTML='<div style=\"font-size:11px;font-weight:700;margin-bottom:6px\">📑 目录</div>';
+      var tocList=document.getElementById('tocList');
+      var tocToggle=document.getElementById('tocToggle');
+      if(!tocList || !tocToggle){ return; }
+      tocList.innerHTML='';
       headings.forEach(function(h,i){
         var id='toc-'+i;h.id=id;
         var a=document.createElement('a');
@@ -1967,8 +1970,16 @@ function showView(viewName, categoryKey){
         a.href='#'+id;
         a.style.cssText='display:block;font-size:10px;color:var(--text3);text-decoration:none;padding:2px 0;padding-left:'+(h.tagName==='H4'?'12px':'0');
         a.onclick=function(e){e.preventDefault();h.scrollIntoView({behavior:'smooth',block:'start'});};
-        toc.appendChild(a);
+        tocList.appendChild(a);
       });
+      // 默认折叠：点击 📑 标签展开/收起
+      if(tocToggle){
+        tocToggle.onclick=function(){
+          var isOpen=tocList.style.display!=='none';
+          tocList.style.display=isOpen?'none':'block';
+          tocToggle.textContent=isOpen?'📑 目录 ▸ 展开':'📑 目录 ▾ 收起';
+        };
+      }
     },100);
 
     secView.classList.add('active');
@@ -2760,7 +2771,7 @@ function manualRefresh(){
 
 <script src="detail_content.js"></script>
 <script src="personal_config.js"></script>
-<script src="daily_data.js?v=1.4.7"></script>
+<script src="daily_data.js?v=1.4.8"></script>
 <script defer src="knowledge_index.js"></script>
 </body>
 </html>
