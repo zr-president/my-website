@@ -123,6 +123,20 @@ CONFIG = {
         ],
     },
 
+    # LEARN_PATHS 小白课堂 — 每日更新必填！
+    # 更新步骤（防止重复）：
+    #   1. 把 daily_data.js 中 LEARN_PATHS.items 的旧内容（10条）追加到 archive[旧updated日期]
+    #   2. items 换成今日新10条 {section, emoji, title, content, takeaway}
+    #   3. updated 改今日日期，current_day +1
+    #   4. archive 不存当天内容（当天只放 items），渲染时自动按日期+标题去重
+    "learn_paths": {
+        "updated": "2026-08-15",
+        "current_day": 1,
+        "items": [
+            # {section(股市/AI/购车/购房/饮食/求职/健身/理财...), emoji, title, content, takeaway}
+        ],
+    },
+
     # Total suggestion count after adding new ones
     "total_suggestions": 38,
 

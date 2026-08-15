@@ -2366,17 +2366,25 @@ function renderLearnPathSection(){
   Object.keys(groups).forEach(function(gName){
     var secList = groups[gName];
     var all = [];
-    // 历史累积
+    var seenTitles = {};
+    // 历史累积（排除当天日期——当天内容在 items 里，避免重复）
     if(lp.archive){
       Object.keys(lp.archive).sort().reverse().forEach(function(date){
+        if(date === lp.updated) return;  // 当天内容已在 items 展示，跳过 archive 中同一天
         (lp.archive[date]||[]).forEach(function(it){
-          if(secList.indexOf(it.section)>=0) all.push({date:date, it:it});
+          if(secList.indexOf(it.section)>=0 && !seenTitles[it.title]){
+            seenTitles[it.title] = true;
+            all.push({date:date, it:it});
+          }
         });
       });
     }
     // 当天
     (lp.items||[]).forEach(function(it){
-      if(secList.indexOf(it.section)>=0) all.push({date:lp.updated, it:it});
+      if(secList.indexOf(it.section)>=0 && !seenTitles[it.title]){
+        seenTitles[it.title] = true;
+        all.push({date:lp.updated, it:it});
+      }
     });
     if(all.length===0) return;
     h += '<div class="card" style="padding:14px 16px;margin-bottom:12px;border-left:3px solid '+(secColors[all[0].it.section]||'var(--accent)')+'">';
@@ -2590,7 +2598,7 @@ function manualRefresh(){
 
 <script src="detail_content.js"></script>
 <script src="personal_config.js"></script>
-<script src="daily_data.js?v=1.3.2"></script>
+<script src="daily_data.js?v=1.3.3"></script>
 <script defer src="knowledge_index.js"></script>
 </body>
 </html>
