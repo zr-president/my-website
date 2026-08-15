@@ -1,4 +1,4 @@
-var SITE_VERSION = "1.2.13";
+var SITE_VERSION = "1.2.14";
 
 var DAILY_DATA = {
   "update_time": "2026-08-15T12:30:00+08:00",
@@ -272,9 +272,9 @@ var INSIGHTS_TODAY_UPDATED = ['stock','ai-track','movie','news','gaming','career
 
 var OPTIMIZATION_LOG = {
   date: "2026-08-15",
-  total_suggestions: 38,
+  total_suggestions: 43,
   total_implemented: 38,
-  streak_days: 25,
+  streak_days: 26,
   suggestions: [
     {id:1, cat:"已归档", title:"AI追踪板块周报自动生成", desc:"每周一自动汇总上周AI融资/模型发布/价格变动→已集成至INSIGHTS.ai-track周度总结", priority:"P1", status:"已完成"},
     {id:2, cat:"已归档", title:"cron更新后自动验证关键板块内容", desc:"检查DAILY_BRIEFING/INSIGHTS/PICKS非空+日期正确→daily_data.js增加校验注释标记", priority:"P1", status:"已完成"},
@@ -314,12 +314,17 @@ var OPTIMIZATION_LOG = {
     {id:36, cat:"工具优化", title:"daily_data.js每日编辑流程标准化为可复用脚本", desc:"当前每日更新依赖Python行内替换——虽有safe_edit.py但仅做备份校验。建议：创建scripts/daily_update.py模板——预设所有字段的替换位置→只需填入当日新值即可一键执行→减少人为出错概率", priority:"P1", status:"已完成"},
     {id:37, cat:"体验优化", title:"PICKS游戏板块增加【倒计时/预售/发售日】时间标签", desc:"游戏条目右侧显示【今日预售🔥】【倒计时X天】【已发售✅】等时间状态标签——用户一眼看到哪些游戏正处于关键时间节点。影之刃零/诡秘之主/沉没之城2等均可受益", priority:"P2", status:"已完成"},
     {id:38, cat:"体验优化", title:"首页Dashboard增加【今日必看】置顶聚合卡片", desc:"在首页最顶部增加1个金色边框的聚合卡片——自动选取当日INSIGHTS_TODAY_UPDATED中最重要板块的核心结论(2-3行)+emoji。让首页一打开就有【今日最重要的事】而不是零散板块。类似Google Discover的Top Story", priority:"P2", status:"已完成"},
+    {id:39, cat:"性能优化", title:"头像图片压缩：avatar.jpg 4.92MB→压缩到300KB以内", desc:"当前 avatar.jpg 高达4.92MB，首屏加载极慢，移动端流量消耗巨大。建议用 tinypng/ffmpeg 压缩至 WebP/JPEG 300KB 以内（同尺寸 1280px 足够），预计首屏加载速度提升10倍+", priority:"P1", status:"待实施"},
+    {id:40, cat:"体验优化", title:"求职板块增加每日投递打卡自动提醒联动", desc:"个人配置每周目标15家，当前打卡靠手动。建议每日9:30在求职板块顶部显示【今日还差X家】实时进度条，联动TODO系统自动生成当日投递待办", priority:"P2", status:"待实施"},
+    {id:41, cat:"内容优化", title:"AI对比表增加开源权重/生态维度细则", desc:"#27已实现权益权重选项，但评分细则未写清【生态/多模态/开源】具体打分标准。建议在scoring_guide补充各维度0-100评分细则表+示例打分过程，让AI更新时可复现", priority:"P2", status:"待实施"},
+    {id:42, cat:"功能优化", title:"知识库搜索增加结果高亮+相关度排序优化", desc:"search.html当前按关键词命中打分，但无结果高亮。建议：搜索词在结果中加<mark>高亮，命中keyword加权高于info，增加按板块过滤下拉", priority:"P2", status:"待实施"},
+    {id:43, cat:"数据优化", title:"OPTIMIZATION_LOG归档机制：已完成建议自动折叠", desc:"当前38条已完成建议全部展示在历史记录中，列表越来越长。建议：已完成条目超过30条时自动折叠进【已归档】分区，仅保留近7天详情", priority:"P3", status:"待实施"},
   ]
 };
 
 var WEBSITE_GUIDE = {
   updated: "2026-08-15",
-  summary: "欢迎来到钟锐的个人数字空间！这是一个持续进化的智能信息中枢，每天自动更新所有内容。版本1.2.13。新增：每日一词(10个跨领域术语)+暗色模式navy/teal+AI搜索历史记录+今日必看置顶卡片。",
+  summary: "欢迎来到钟锐的个人数字空间！这是一个持续进化的智能信息中枢，每天自动更新所有内容。版本1.2.14。新增：今日优化建议#39-#43（头像压缩/求职打卡联动/AI评分细则/搜索高亮/日记归档）。",
   features: [
     {icon:"🏠", title:"首页仪表盘", desc:"一屏总览所有板块精华。分类卡片快速导航、实时股市/天气/新闻一目了然。点击分类卡片进入分类页。"},
     {icon:"📂", title:"分类浏览", desc:"点击侧边栏分类标题(👤关于/🎮娱乐/🏃生活/📊财经/🤖工具)，进入分类页集中浏览该类别所有板块。"},
