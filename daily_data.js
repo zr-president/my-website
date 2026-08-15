@@ -1,4 +1,4 @@
-var SITE_VERSION = "1.4.4";
+var SITE_VERSION = "1.4.5";
 
 var DAILY_DATA = {
   "update_time": "2026-08-15T12:30:00+08:00",
@@ -457,8 +457,8 @@ var AGENT_STACKS = {
 
 var OPTIMIZATION_LOG = {
   date: "2026-08-15",
-  total_suggestions: 58,
-  total_implemented: 54,
+  total_suggestions: 59,
+  total_implemented: 55,
   streak_days: 26,
   suggestions: [
     {id:1, cat:"已归档", title:"AI追踪板块周报自动生成", desc:"每周一自动汇总上周AI融资/模型发布/价格变动→已集成至INSIGHTS.ai-track周度总结", priority:"P1", status:"已完成"},
@@ -519,12 +519,13 @@ var OPTIMIZATION_LOG = {
     {id:56, cat:"安全性", title:"隐私保护修复：移除购车/购房区敏感信息", desc:"✅ 8/15按用户反馈：购车/购房区时机判断原含个人财务与就业状态等隐私（网站可能被分享）。已脱敏为通用表述（预算敏感型用户/非刚需），优化日记desc同步脱敏，CLAUDE.md新增规则12隐私保护（最高优先级）：禁止财务/就业/健康等隐私进入公开内容", priority:"P0", status:"已完成"},
     {id:57, cat:"体验优化", title:"学习区重构：今日新知置顶为重点+AI学院折叠", desc:"✅ 8/15按用户反馈：①今日新知/今日学习分析(verdict)/小白课堂预览置顶学习区，各板块新知识成为重点；②AI学院14课折叠式展开（点击课程标题展开/收起，首课默认展开），不再一次性展开21KB；③learning加入首页HOME_SECTIONS直接可见；④INSIGHTS.learning更新为8/15内容（原8/12旧数据）", priority:"P1", status:"已完成"},
     {id:58, cat:"内容优化", title:"工具链知识升级：Harness全家桶评分+对比科普+Qwen开源前瞻", desc:"✅ 8/15按用户反馈：①AGENT_STACKS补充Harness+V4-Flash组合（综合91分·缓存命中率高·官方全家桶）；②TOOLCHAIN_RADAR置顶科普Harness vs Claude Code/Codex区别+缓存命中省钱原理；③ai-track更新加入Harness发布头条；④决策单+小白课堂加入实测Harness/Qwen开源提醒", priority:"P1", status:"已完成"},
+    {id:59, cat:"内容优化", title:"AI动态追踪分区重构：Agent对比科普+模型数据更新+生活助手分离", desc:"✅ 8/15按用户反馈：①ai-track详情页重建——新增Harness vs Claude Code/Codex对比表（定位/开源/中文/缓存/生态/价格/结论）；②模型对比表更新为8/15最新（V4-Flash 1M上下文/V4-Pro/Qwen3.8-Max等，删除旧128K数据）；③Agent组合评分表内嵌到详情页；④发现并修复生活助手(医保/护照)内容误放在ai-track的问题，恢复为独立DETAIL[life-tips]", priority:"P1", status:"已完成"},
   ]
 };
 
 var WEBSITE_GUIDE = {
   updated: "2026-08-15",
-  summary: "欢迎来到钟锐的个人数字空间！这是一个持续进化的智能信息中枢，每天自动更新所有内容。版本1.4.4。新增：🔄工具链知识升级——Harness+V4-Flash全家桶组合评分(综合91)+Harness vs Claude Code/Codex科普+缓存命中省钱原理+Qwen3.8-Max开源前瞻提醒。每天打开都是新的，每天都有提升。",
+  summary: "欢迎来到钟锐的个人数字空间！这是一个持续进化的智能信息中枢，每天自动更新所有内容。版本1.4.5。新增：🤖AI动态追踪分区升级——Harness vs Claude Code/Codex对比表+测评结论+最新模型数据(V4-Flash/Pro/Qwen3.8-Max)+Agent组合评分内嵌+修复生活助手独立页面。每天打开都是新的，每天都有提升。",
   features: [
     {icon:"🏠", title:"首页仪表盘", desc:"一屏总览所有板块精华。分类卡片快速导航、实时股市/天气/新闻一目了然。点击分类卡片进入分类页。"},
     {icon:"📂", title:"分类浏览", desc:"点击侧边栏分类标题(👤关于/🎮娱乐/🏃生活/📊财经/🤖工具)，进入分类页集中浏览该类别所有板块。"},

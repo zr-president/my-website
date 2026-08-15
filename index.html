@@ -2600,6 +2600,9 @@ function renderAgentStacks(){
   h += '</div>';
   container.innerHTML = h;
   container.style.display = 'block';
+  // 同时填充 ai-track 详情页内的组合表容器（#58）
+  var inlineEl = document.getElementById('agent-stacks-inline');
+  if(inlineEl) inlineEl.innerHTML = h;
 }
 
 // Toolchain radar full detail view
@@ -2757,7 +2760,7 @@ function manualRefresh(){
 
 <script src="detail_content.js"></script>
 <script src="personal_config.js"></script>
-<script src="daily_data.js?v=1.4.4"></script>
+<script src="daily_data.js?v=1.4.5"></script>
 <script defer src="knowledge_index.js"></script>
 </body>
 </html>
