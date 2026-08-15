@@ -76,8 +76,19 @@ function doSearch(){
   } else {
     document.getElementById('stats').textContent = '找到 ' + scored.length + ' 条结果（共' + KB_TOTAL + '条）';
     var display = scored.slice(0, 30);
+    // #42: 关键词高亮
+    function highlight(text, kw){
+      var t = String(text);
+      var esc = t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      var k = String(kw).replace(/[.*+?^$|\[\]\\]/g, '\\$&');
+      if(!k || k.length < 2) return esc;
+      var re = new RegExp('(' + k + ')', 'gi');
+      return esc.replace(re, '<mark>$1</mark>');
+    }
     display.forEach(function(r){
-      html += '<div class="result"><span class="section-tag">' + r.section + '</span><strong>' + r.keyword + '</strong><span class="score">匹配度:' + r.score + '</span><div class="info">' + r.info + '</div></div>';
+      var hlKw = highlight(r.keyword, q);
+      var hlInfo = highlight(r.info, q);
+      html += '<div class="result"><span class="section-tag">' + r.section + '</span><strong>' + hlKw + '</strong><span class="score">匹配度:' + r.score + '</span><div class="info">' + hlInfo + '</div></div>';
     });
     if(scored.length > 30) html += '<p style="color:var(--text3);text-align:center">... 还有 ' + (scored.length - 30) + ' 条结果</p>';
   }

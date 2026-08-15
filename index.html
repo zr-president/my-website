@@ -254,26 +254,6 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 	</div>
 	</div>
 
-<!-- #47: 今日决策单 — 信息→行动 -->
-<div id="dailyDecisions" style="margin-bottom:16px;display:none">
-<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-<h2 style="font-size:15px">📌 今日决策单</h2>
-<span style="font-size:10px;color:var(--text3)" id="decisionDate"></span>
-<span style="margin-left:auto;font-size:10px;color:var(--text3)">每天3-5件值得做的事 · 做完一天就有价值</span>
-</div>
-<div id="decisionContent"></div>
-</div>
-
-<!-- #48: 小白课堂 — 每日一课 -->
-<div id="learnPathBox" style="margin-bottom:16px;display:none">
-<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-<h2 style="font-size:15px">📚 小白课堂 · 每日一课</h2>
-<span style="font-size:10px;color:var(--text3)" id="learnPathMeta"></span>
-<span style="margin-left:auto"><button onclick="nextLearnPath()" style="padding:3px 10px;border:1px solid var(--border);border-radius:10px;background:var(--bg);cursor:pointer;font-size:10px;color:var(--text2)">🔄 换一课</button></span>
-</div>
-<div id="learnPathContent"></div>
-</div>
-
 <!-- Daily Briefing (safe: event delegation, no inline onclick) -->
 <div id="dailyBriefing" style="margin-bottom:16px;display:none">
 <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
@@ -310,6 +290,28 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <!-- Daily Schedule Panel -->
 <div id="schedulePanel" style="display:none"></div>
 
+<!-- #47: 今日决策单 — 信息→行动 -->
+<div id="dailyDecisions" style="margin-bottom:16px;display:none">
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+<h2 style="font-size:15px">📌 今日决策单</h2>
+<span style="font-size:10px;color:var(--text3)" id="decisionDate"></span>
+<span style="margin-left:auto;font-size:10px;color:var(--text3)">每天3-5件值得做的事 · 做完一天就有价值</span>
+</div>
+<div id="decisionContent"></div>
+</div>
+
+<!-- #48: 小白课堂 — 每日10条跨板块科普（可展开） -->
+<div id="learnPathBox" style="margin-bottom:16px;display:none">
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;cursor:pointer" onclick="toggleLearnPath()">
+<h2 style="font-size:15px">📚 小白课堂</h2>
+<span style="font-size:10px;color:var(--text3)" id="learnPathMeta"></span>
+<span style="margin-left:auto;font-size:10px;color:var(--text3)" id="learnPathToggle">▼ 点击展开 · 每日10条跨板块科普</span>
+</div>
+<div id="learnPathContent" style="display:none"></div>
+</div>
+
+
+
 <section id="about" class="section" data-search="个人介绍 钟锐 AI产品运营 广州">
 <div class="section-header"><h2>🏠 个人介绍</h2><p>AI产品运营 · 用户增长 · 持续进化</p></div>
 <div class="card" style="display:flex;gap:18px;align-items:center;padding:22px;background:linear-gradient(135deg,var(--card),var(--accent-light))">
@@ -323,6 +325,20 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <section id="career" class="section" data-search="求职 简历 面试 工作"><div class="section-header"><h2>💼 求职中心</h2><p>招聘平台直达 · 完整简历</p></div>
 <div id="picks-career" class="picks-container"></div>
 <div class="info-grid"><div class="info-item"><div class="num">09:30-11:00</div><div class="label">黄金投递窗口</div></div><div class="info-item"><div class="num">周二-周四</div><div class="label">最佳投递日</div></div><div class="info-item"><div class="num">20家/天</div><div class="label">投递目标</div></div><div class="info-item"><div class="num">87.7%↑</div><div class="label">AI岗位需求增长</div></div></div>
+<!-- #40: 每日投递打卡进度条 -->
+<div class="card" style="padding:12px 16px;margin-bottom:8px">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+<strong style="font-size:12px">📮 今日投递进度</strong>
+<span style="font-size:11px;color:var(--text3)" id="trackProgressText">加载中...</span>
+</div>
+<div style="height:10px;background:var(--bg2);border-radius:5px;overflow:hidden">
+<div id="trackProgressBar" style="height:100%;width:0%;background:linear-gradient(90deg,#059669,#10b981);border-radius:5px;transition:width .4s"></div>
+</div>
+<div style="display:flex;justify-content:space-between;margin-top:4px;font-size:10px;color:var(--text3)">
+<span>本周目标 <span id="trackWeeklyTarget">15</span> 家</span>
+<span id="trackDailyHint">💡 上午9:30-11:00投递回复率最高</span>
+</div>
+</div>
 <div class="card" style="padding:14px 16px">
 <h3 style="margin-bottom:8px">📊 投递追踪表 <span style="font-size:11px;color:var(--text3);font-weight:400" id="trackerStats"></span></h3>
 <div style="display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap">
@@ -927,6 +943,40 @@ function renderTracker(){
   var interviews = data.filter(function(d){ return d.status==='面试中'||d.status==='Offer'; }).length;
   var offers = data.filter(function(d){ return d.status==='Offer'; }).length;
   document.getElementById('trackerStats').textContent = '总投递 '+total+' | 面试 '+interviews+' | Offer '+offers;
+  // #40: 每日投递进度条 — 计算本周投递数 vs 周目标
+  try{
+    var weeklyTarget = 15;
+    if(typeof PERSONAL_CONFIG!=='undefined' && PERSONAL_CONFIG.job && PERSONAL_CONFIG.job.weekly_target){
+      weeklyTarget = PERSONAL_CONFIG.job.weekly_target;
+    }
+    var elTarget = document.getElementById('trackWeeklyTarget');
+    if(elTarget) elTarget.textContent = weeklyTarget;
+    // 本周一日期
+    var now = new Date();
+    var day = now.getDay() || 7;
+    var monday = new Date(now.getFullYear(), now.getMonth(), now.getDate() - day + 1);
+    var weekStart = monday.getFullYear()+'-'+(monday.getMonth()+1)+'-'+monday.getDate();
+    // 本周投递数（记录日期 >= 本周一 且状态非已拒绝的都算投递动作）
+    var weekCount = data.filter(function(d){
+      if(!d.date) return false;
+      var dStr = String(d.date);
+      // 兼容 2026-8-15 和 2026-08-15 格式
+      var parts = dStr.split('-');
+      if(parts.length<3) return false;
+      var dY = parseInt(parts[0]), dM = parseInt(parts[1]), dD = parseInt(parts[2]);
+      var mP = weekStart.split('-');
+      var mY = parseInt(mP[0]), mM = parseInt(mP[1]), mD = parseInt(mP[2]);
+      var dT = new Date(dY, dM-1, dD), mT = new Date(mY, mM-1, mD);
+      return dT >= mT;
+    }).length;
+    var pct = Math.min(100, Math.round(weekCount/weeklyTarget*100));
+    var bar = document.getElementById('trackProgressBar');
+    if(bar) bar.style.width = pct+'%';
+    var txt = document.getElementById('trackProgressText');
+    if(txt) txt.textContent = '本周已投 '+weekCount+'/'+weeklyTarget+' 家 ('+pct+'%)'+(weekCount>=weeklyTarget?' 🎉 达标！':'');
+    var hint = document.getElementById('trackDailyHint');
+    if(hint && weekCount<weeklyTarget) hint.textContent = '💡 还差 '+(weeklyTarget-weekCount)+' 家达成周目标 · 黄金窗口9:30-11:00';
+  }catch(e){ console.error('track progress:', e.message); }
 }
 function addTrackerEntry(){
   var company = document.getElementById('trackCompany').value.trim();
@@ -1355,13 +1405,18 @@ function renderSectionPicks(sectionId){
         h+='<span class="pick-info"><div class="pick-title">'+s.title+' <span style="font-size:9px;padding:1px 5px;border-radius:8px;'+badge+'">'+s.priority+'</span> <span style="font-size:9px;padding:1px 5px;border-radius:8px;'+statusBadge+'">'+s.status+'</span></div><div class="pick-desc">['+s.cat+'] '+s.desc+'</div></span>';
         h+='</div>';
       });
-      // Archive toggle for completed items
+      // #43: 归档机制 — 已完成默认折叠，只展示摘要
       if(done.length>0){
-        h+='<div style="font-size:11px;color:var(--accent);cursor:pointer;padding:4px 0" onclick="var e=document.getElementById(\'optArchive\');e.style.display=e.style.display===\'none\'?\'block\':\'none\';this.textContent=e.style.display===\'none\'?\'📂 历史记录 ('+done.length+'条已完成) ▸\':\'📂 历史记录 ('+done.length+'条已完成) ▾\'">📂 历史记录 ('+done.length+'条已完成) ▸</div>';
+        var recentDone = done.slice(0, 8);  // 最近8条（数组按id倒序=最新在前）
+        var olderCount = done.length - recentDone.length;
+        h+='<div style="font-size:11px;color:var(--accent);cursor:pointer;padding:4px 0" onclick="var e=document.getElementById(\'optArchive\');e.style.display=e.style.display===\'none\'?\'block\':\'none\';this.textContent=e.style.display===\'none\'?\'📂 已归档 ('+done.length+'条) ▸\':\'📂 已归档 ('+done.length+'条) ▾\'">📂 已归档 ('+done.length+'条已完成 · 点击展开) ▸</div>';
         h+='<div id="optArchive" style="display:none;opacity:.7">';
-        done.forEach(function(s){
+        recentDone.forEach(function(s){
           h+='<div class="pick-card" style="cursor:default"><span class="pick-icon" style="font-size:14px">✅</span><span class="pick-info"><div class="pick-title" style="text-decoration:line-through">'+s.title+'</div><div class="pick-desc">['+s.cat+'] '+s.desc+'</div></span></div>';
         });
+        if(olderCount>0){
+          h+='<div style="font-size:10px;color:var(--text3);padding:6px 0;text-align:center">… 另有 '+olderCount+' 条更早记录已归档，查看 git 历史或 knowledge_base/changelog.md</div>';
+        }
         h+='</div>';
       }
     }
@@ -2226,32 +2281,47 @@ function renderDailyDecisions(){
   box.style.display = 'block';
 }
 
-// ===== 小白课堂渲染（每日一课）=====
-var learnPathIndex = 0;
+// ===== 小白课堂渲染（每日10条跨板块科普·可展开）=====
 function renderLearnPath(){
   var box = document.getElementById('learnPathBox');
   if(!box) return;
   if(typeof LEARN_PATHS==='undefined'){ box.style.display='none'; return; }
   var lp = LEARN_PATHS;
-  var keys = Object.keys(lp.paths||{});
-  if(keys.length===0){ box.style.display='none'; return; }
-  var key = keys[learnPathIndex % keys.length];
-  var path = lp.paths[key];
-  var lesson = path.lesson || {};
+  var items = lp.items || [];
+  if(items.length===0){ box.style.display='none'; return; }
   var metaEl = document.getElementById('learnPathMeta');
-  if(metaEl) metaEl.textContent = path.icon+' '+path.title+' · 第'+(lp.current_day||1)+'课';
+  if(metaEl) metaEl.textContent = '第'+(lp.current_day||1)+'天 · '+items.length+'条 · '+lp.updated;
   var content = document.getElementById('learnPathContent');
   if(!content) return;
-  var h = '<div class="card" style="border-left:3px solid var(--accent)">';
-  h += '<div style="font-size:13px;font-weight:700;margin-bottom:6px">'+lesson.emoji+' '+lesson.title+'</div>';
-  h += '<div style="font-size:12px;color:var(--text2);line-height:1.9;margin-bottom:8px">'+lesson.content+'</div>';
-  if(lesson.takeaway) h += '<div class="callout tip" style="margin:6px 0">📌 记住：'+lesson.takeaway+'</div>';
-  if(path.next) h += '<div style="font-size:10px;color:var(--text3);margin-top:4px">➡️ '+path.next+'</div>';
-  h += '</div>';
+  var secColors = {'股市':'#d97706','AI':'#7c3aed','购车':'#0284c7','购房':'#059669','饮食':'#ea580c','求职':'#2563eb','健身':'#059669','理财':'#d97706'};
+  var h = '';
+  items.forEach(function(it, i){
+    var sc = secColors[it.section] || 'var(--accent)';
+    h += '<div class="card" style="padding:12px 14px;border-left:3px solid '+sc+';cursor:pointer" onclick="var e=document.getElementById(\'lpDetail_'+i+'\');e.style.display=e.style.display===\'none\'?\'block\':\'none\';this.querySelector(\'.lpArrow\').textContent=e.style.display===\'none\'?\'▸\':\'▾\'">';
+    h += '<div style="display:flex;align-items:center;gap:8px">';
+    h += '<span style="font-size:16px">'+it.emoji+'</span>';
+    h += '<span style="flex:1;font-size:12px;font-weight:600">'+it.title+'</span>';
+    h += '<span style="background:'+sc+';color:#fff;padding:1px 8px;border-radius:10px;font-size:9px;font-weight:700">'+it.section+'</span>';
+    h += '<span class="lpArrow" style="color:var(--text3);font-size:12px">▸</span>';
+    h += '</div>';
+    h += '<div id="lpDetail_'+i+'" style="display:none;margin-top:8px">';
+    h += '<div style="font-size:12px;color:var(--text2);line-height:1.9">'+it.content+'</div>';
+    if(it.takeaway) h += '<div class="callout tip" style="margin:6px 0">📌 记住：'+it.takeaway+'</div>';
+    h += '</div></div>';
+  });
   content.innerHTML = h;
   box.style.display = 'block';
 }
-function nextLearnPath(){ learnPathIndex++; renderLearnPath(); }
+function toggleLearnPath(){
+  var content = document.getElementById('learnPathContent');
+  var toggle = document.getElementById('learnPathToggle');
+  if(!content) return;
+  var isOpen = content.style.display !== 'none';
+  content.style.display = isOpen ? 'none' : 'block';
+  if(toggle) toggle.textContent = isOpen ? '▼ 点击展开 · 每日10条跨板块科普' : '▲ 点击收起';
+}
+// 兼容旧调用
+function nextLearnPath(){}
 
 // ===== Agent × 大模型 组合评分渲染 =====
 function renderAgentStacks(){
@@ -2449,7 +2519,7 @@ function manualRefresh(){
 
 <script src="detail_content.js"></script>
 <script src="personal_config.js"></script>
-<script src="daily_data.js?v=1.3.0"></script>
+<script src="daily_data.js?v=1.3.1"></script>
 <script defer src="knowledge_index.js"></script>
 </body>
 </html>
