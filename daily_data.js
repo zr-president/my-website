@@ -521,7 +521,7 @@ var OPTIMIZATION_LOG = {
     {id:57, cat:"体验优化", title:"学习区重构：今日新知置顶为重点+AI学院折叠", desc:"✅ 8/15按用户反馈：①今日新知/今日学习分析(verdict)/小白课堂预览置顶学习区，各板块新知识成为重点；②AI学院14课折叠式展开（点击课程标题展开/收起，首课默认展开），不再一次性展开21KB；③learning加入首页HOME_SECTIONS直接可见；④INSIGHTS.learning更新为8/15内容（原8/12旧数据）", priority:"P1", status:"已完成"},
     {id:58, cat:"内容优化", title:"工具链知识升级：Harness全家桶评分+对比科普+Qwen开源前瞻", desc:"✅ 8/15按用户反馈：①AGENT_STACKS补充Harness+V4-Flash组合（综合91分·缓存命中率高·官方全家桶）；②TOOLCHAIN_RADAR置顶科普Harness vs Claude Code/Codex区别+缓存命中省钱原理；③ai-track更新加入Harness发布头条；④决策单+小白课堂加入实测Harness/Qwen开源提醒", priority:"P1", status:"已完成"},
     {id:59, cat:"内容优化", title:"AI动态追踪分区重构：Agent对比科普+模型数据更新+生活助手分离", desc:"✅ 8/15按用户反馈：①ai-track详情页重建——新增Harness vs Claude Code/Codex对比表（定位/开源/中文/缓存/生态/价格/结论）；②模型对比表更新为8/15最新（V4-Flash 1M上下文/V4-Pro/Qwen3.8-Max等，删除旧128K数据）；③Agent组合评分表内嵌到详情页；④发现并修复生活助手(医保/护照)内容误放在ai-track的问题，恢复为独立DETAIL[life-tips]", priority:"P1", status:"已完成"},
-    {id:60, cat:"内容优化", title:"全板块内容时效修复+每日更新全板块强制+时效词扫描", desc:"✅ 8/15按用户反馈：①动漫区从8/12开播日更新为8/15追番状态、游戏区影之刃零今日预售→预售已开启、影视/新闻/周焦点/每日推荐过期表述全部刷新；②CLAUDE.md每日更新清单明确17板块全量更新+时效词硬规则；③daily_update.py新增check_stale_phrases()扫描今日预售/今日开播等过期词，接入run()流程", priority:"P1", status:"已完成"},
+    {id:60, cat:"内容优化", title:"全板块内容时效修复+每日更新全板块强制+时效词扫描", desc:"✅ 8/15按用户反馈：①动漫区从8/12开播日更新为8/15追番状态、游戏区影之刃零从[当日预售]改为[预售已开启]、影视/新闻/周焦点/每日推荐过期表述全部刷新；②CLAUDE.md每日更新清单明确17板块全量更新+时效词硬规则；③daily_update.py新增check_stale_phrases()扫描[当日预售/当日开播]等过期词，接入run()流程", priority:"P1", status:"已完成"},
   ]
 };
 
