@@ -300,14 +300,17 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div id="decisionContent"></div>
 </div>
 
-<!-- #48: 小白课堂 — 每日10条跨板块科普（可展开） -->
+<!-- #48: 小白课堂 — 首页3条+换一批，点进分区看全部 -->
 <div id="learnPathBox" style="margin-bottom:16px;display:none">
-<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;cursor:pointer" onclick="toggleLearnPath()">
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
 <h2 style="font-size:15px">📚 小白课堂</h2>
 <span style="font-size:10px;color:var(--text3)" id="learnPathMeta"></span>
-<span style="margin-left:auto;font-size:10px;color:var(--text3)" id="learnPathToggle">▼ 点击展开 · 每日10条跨板块科普</span>
+<span style="margin-left:auto;display:flex;gap:6px;align-items:center">
+<button onclick="nextLearnPath()" style="padding:3px 10px;border:1px solid var(--border);border-radius:10px;background:var(--bg);cursor:pointer;font-size:10px;color:var(--text2)">🔄 换一批</button>
+<button onclick="navigateTo('section-detail','learn-path')" style="padding:3px 10px;border:1px solid var(--accent);border-radius:10px;background:var(--accent);color:#fff;cursor:pointer;font-size:10px;font-weight:500">📖 课堂分区 →</button>
+</span>
 </div>
-<div id="learnPathContent" style="display:none"></div>
+<div id="learnPathContent"></div>
 </div>
 
 
@@ -587,6 +590,17 @@ function openDetail(id){
     c=insightHtml+c;
   }
   document.getElementById('detailContent').innerHTML=c;
+  // ai-track 弹窗也注入 Agent×模型组合表（#49）
+  if(id==='ai-track'){
+    var asEl2 = document.getElementById('agentStacksSection');
+    if(asEl2 && asEl2.innerHTML){
+      var dcEl = document.getElementById('detailContent');
+      var wrap2 = document.createElement('div');
+      wrap2.innerHTML = asEl2.innerHTML;
+      wrap2.querySelectorAll('[id]').forEach(function(el){ el.removeAttribute('id'); });
+      dcEl.appendChild(wrap2);
+    }
+  }
   document.getElementById('detailOverlay').classList.add('active');
   document.body.style.overflow='hidden';
   document.getElementById('detailPanel').scrollTop=0;
@@ -1489,7 +1503,7 @@ var CATEGORIES = {
   fun:      {icon:'🎮', name:'娱乐空间', subs:'游戏|音乐|小说|动漫|影视', sections:['gaming','music','novel','anime','movie']},
   life:     {icon:'🏃', name:'生活方式', subs:'穿搭|健身|饮食|精酿|生活助手', sections:['fashion','fitness','diet','beer','life-tips']},
   finance:  {icon:'📊', name:'财经·学习', subs:'股市 | 购车 | 购房 | 学习 | AI追踪 | 工具链雷达 | 旅游 | 新闻', sections:['stock','car','house','learning','ai-track','toolchain-radar','travel','news']},
-  tools:    {icon:'🤖', name:'工具·AI', subs:'使用指南 | 工具收藏夹 | AI助手 | 优化日记', sections:['guide','tools-collection','ai-assistant','optimization']}
+  tools:    {icon:'🤖', name:'工具·AI', subs:'使用指南 | 工具收藏夹 | AI助手 | 小白课堂 | 优化日记', sections:['guide','tools-collection','ai-assistant','learn-path','optimization']}
 };
 
 // Key sections to show on homepage (everything else hidden)
@@ -1876,12 +1890,27 @@ function showView(viewName, categoryKey){
         wrapper.querySelectorAll('[id]').forEach(function(el){ el.removeAttribute('id'); });
         sdContent.appendChild(wrapper);
       }
+      // Agent×模型组合表（#49）— 同详情页注入
+      var asEl = document.getElementById('agentStacksSection');
+      if(asEl && asEl.innerHTML){
+        var sdContent2 = document.getElementById('sectionDetailContent');
+        var wrapper2 = document.createElement('div');
+        wrapper2.innerHTML = asEl.innerHTML;
+        wrapper2.querySelectorAll('[id]').forEach(function(el){ el.removeAttribute('id'); });
+        sdContent2.appendChild(wrapper2);
+      }
     }
     // Special: toolchain-radar — full detail view
     if(categoryKey==='toolchain-radar'){
       var radarHtml = renderToolchainRadarDetail();
       var sdContent2 = document.getElementById('sectionDetailContent');
       sdContent2.innerHTML += radarHtml;
+    }
+    // Special: learn-path — 小白课堂分区（按板块分组+历史累积）
+    if(categoryKey==='learn-path'){
+      var lpHtml = renderLearnPathSection();
+      var sdContent3 = document.getElementById('sectionDetailContent');
+      sdContent3.innerHTML += lpHtml;
     }
     // Auto-generate TOC from h3/h4 headings
     setTimeout(function(){
@@ -2281,7 +2310,8 @@ function renderDailyDecisions(){
   box.style.display = 'block';
 }
 
-// ===== 小白课堂渲染（每日10条跨板块科普·可展开）=====
+// ===== 小白课堂渲染（首页3条+换一批，课堂分区看全部）=====
+var learnPathPage = 0;
 function renderLearnPath(){
   var box = document.getElementById('learnPathBox');
   if(!box) return;
@@ -2290,39 +2320,80 @@ function renderLearnPath(){
   var items = lp.items || [];
   if(items.length===0){ box.style.display='none'; return; }
   var metaEl = document.getElementById('learnPathMeta');
-  if(metaEl) metaEl.textContent = '第'+(lp.current_day||1)+'天 · '+items.length+'条 · '+lp.updated;
+  if(metaEl) metaEl.textContent = '第'+(lp.current_day||1)+'天 · 共'+(lp.archive?Object.keys(lp.archive).length:0)+'天历史';
   var content = document.getElementById('learnPathContent');
   if(!content) return;
-  var secColors = {'股市':'#d97706','AI':'#7c3aed','购车':'#0284c7','购房':'#059669','饮食':'#ea580c','求职':'#2563eb','健身':'#059669','理财':'#d97706'};
+  var secColors = {'股市':'#d97706','AI':'#7c3aed','购车':'#0284c7','购房':'#059669','饮食':'#ea580c','求职':'#2563eb','健身':'#059669','理财':'#d97706','生活':'#059669','职场':'#2563eb'};
+  // 首页只显示3条（翻页）
+  var perPage = 3;
+  var totalPages = Math.max(1, Math.ceil(items.length/perPage));
+  var page = learnPathPage % totalPages;
+  var pageItems = items.slice(page*perPage, page*perPage+perPage);
   var h = '';
-  items.forEach(function(it, i){
+  pageItems.forEach(function(it, i){
     var sc = secColors[it.section] || 'var(--accent)';
-    h += '<div class="card" style="padding:12px 14px;border-left:3px solid '+sc+';cursor:pointer" onclick="var e=document.getElementById(\'lpDetail_'+i+'\');e.style.display=e.style.display===\'none\'?\'block\':\'none\';this.querySelector(\'.lpArrow\').textContent=e.style.display===\'none\'?\'▸\':\'▾\'">';
-    h += '<div style="display:flex;align-items:center;gap:8px">';
-    h += '<span style="font-size:16px">'+it.emoji+'</span>';
-    h += '<span style="flex:1;font-size:12px;font-weight:600">'+it.title+'</span>';
-    h += '<span style="background:'+sc+';color:#fff;padding:1px 8px;border-radius:10px;font-size:9px;font-weight:700">'+it.section+'</span>';
-    h += '<span class="lpArrow" style="color:var(--text3);font-size:12px">▸</span>';
-    h += '</div>';
-    h += '<div id="lpDetail_'+i+'" style="display:none;margin-top:8px">';
-    h += '<div style="font-size:12px;color:var(--text2);line-height:1.9">'+it.content+'</div>';
+    var uid = 'lp_home_'+page+'_'+i;
+    h += '<div class="pick-card" style="cursor:pointer" onclick="var e=document.getElementById(\''+uid+'\');e.style.display=e.style.display===\'none\'?\'block\':\'none\'">';
+    h += '<span class="pick-icon">'+it.emoji+'</span>';
+    h += '<span class="pick-info"><div class="pick-title" style="white-space:normal">'+it.title+' <span style="display:inline-block;margin-left:4px;padding:1px 7px;border-radius:10px;font-size:9px;font-weight:700;background:'+sc+';color:#fff">'+it.section+'</span></div>';
+    h += '<div class="pick-desc" style="margin-top:2px">'+String(it.content).substring(0,50)+'…</div>';
+    h += '</span><span class="pick-arrow">▸</span></div>';
+    h += '<div id="'+uid+'" style="display:none;padding:10px 14px;background:var(--bg2);border-radius:0 0 8px 8px;margin:-5px 0 5px;font-size:12px;line-height:1.9;color:var(--text2)">'+it.content;
     if(it.takeaway) h += '<div class="callout tip" style="margin:6px 0">📌 记住：'+it.takeaway+'</div>';
-    h += '</div></div>';
+    h += '</div>';
   });
+  if(items.length > perPage){
+    h += '<div style="text-align:center;font-size:10px;color:var(--text3);padding:2px 0">第 '+(page+1)+'/'+totalPages+' 页 · 共 '+items.length+' 条 · 点击🔄换一批查看更多</div>';
+  }
   content.innerHTML = h;
   box.style.display = 'block';
 }
-function toggleLearnPath(){
-  var content = document.getElementById('learnPathContent');
-  var toggle = document.getElementById('learnPathToggle');
-  if(!content) return;
-  var isOpen = content.style.display !== 'none';
-  content.style.display = isOpen ? 'none' : 'block';
-  if(toggle) toggle.textContent = isOpen ? '▼ 点击展开 · 每日10条跨板块科普' : '▲ 点击收起';
-}
-// 兼容旧调用
-function nextLearnPath(){}
+function nextLearnPath(){ learnPathPage++; renderLearnPath(); }
 
+// ===== 课堂分区视图（按板块分组 + 历史累积 + 可复习）=====
+function renderLearnPathSection(){
+  if(typeof LEARN_PATHS==='undefined') return '<p>暂无课堂内容</p>';
+  var lp = LEARN_PATHS;
+  var secColors = {'股市':'#d97706','AI':'#7c3aed','购车':'#0284c7','购房':'#059669','饮食':'#ea580c','求职':'#2563eb','健身':'#059669','理财':'#d97706','生活':'#059669','职场':'#2563eb'};
+  // 板块分组（把细分类归入大类：股市/理财→财经，购车/购房/饮食/健身→生活，求职→职场）
+  var groups = {
+    '📈 股市':['股市','理财'],
+    '🤖 AI':['AI'],
+    '🏠 生活':['购车','购房','饮食','健身'],
+    '💼 职场':['求职']
+  };
+  var h = '<div class="callout info" style="margin-bottom:12px"><strong>📚 小白课堂 · 分区学习</strong><br><span style="font-size:11px">每日10条更新 · 按板块分类 · 历史自动累积，随时回来复习。今天是第'+(lp.current_day||1)+'天</span></div>';
+  Object.keys(groups).forEach(function(gName){
+    var secList = groups[gName];
+    var all = [];
+    // 历史累积
+    if(lp.archive){
+      Object.keys(lp.archive).sort().reverse().forEach(function(date){
+        (lp.archive[date]||[]).forEach(function(it){
+          if(secList.indexOf(it.section)>=0) all.push({date:date, it:it});
+        });
+      });
+    }
+    // 当天
+    (lp.items||[]).forEach(function(it){
+      if(secList.indexOf(it.section)>=0) all.push({date:lp.updated, it:it});
+    });
+    if(all.length===0) return;
+    h += '<div class="card" style="padding:14px 16px;margin-bottom:12px;border-left:3px solid '+(secColors[all[0].it.section]||'var(--accent)')+'">';
+    h += '<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="font-size:16px">'+gName.split(' ')[0]+'</span><strong style="font-size:14px">'+gName+'</strong><span style="font-size:10px;color:var(--text3)">'+all.length+' 课</span></div>';
+    all.forEach(function(entry, i){
+      var it = entry.it;
+      var uid = 'lps_'+gName.replace(/[^\u4e00-\u9fa5A-Za-z]/g,'')+'_'+i;
+      h += '<div style="cursor:pointer;padding:7px 0;border-bottom:1px solid var(--border)" onclick="var e=document.getElementById(\''+uid+'\');e.style.display=e.style.display===\'none\'?\'block\':\'none\'">';
+      h += '<div style="display:flex;align-items:center;gap:8px"><span>'+it.emoji+'</span><span style="flex:1;font-size:12px;font-weight:600">'+it.title+'</span><span style="font-size:9px;color:var(--text3);white-space:nowrap">'+entry.date+'</span><span style="color:var(--text3);font-size:11px">▸</span></div>';
+      h += '<div id="'+uid+'" style="display:none;margin-top:6px;padding:8px;background:var(--bg2);border-radius:6px;font-size:12px;line-height:1.9;color:var(--text2)">'+it.content;
+      if(it.takeaway) h += '<div class="callout tip" style="margin:6px 0">📌 记住：'+it.takeaway+'</div>';
+      h += '</div></div>';
+    });
+    h += '</div>';
+  });
+  return h;
+}
 // ===== Agent × 大模型 组合评分渲染 =====
 function renderAgentStacks(){
   // 渲染到 ai-track 板块内（agent-stacks-section 容器，由 HTML 提供）
@@ -2519,7 +2590,7 @@ function manualRefresh(){
 
 <script src="detail_content.js"></script>
 <script src="personal_config.js"></script>
-<script src="daily_data.js?v=1.3.1"></script>
+<script src="daily_data.js?v=1.3.2"></script>
 <script defer src="knowledge_index.js"></script>
 </body>
 </html>
