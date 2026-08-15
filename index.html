@@ -385,16 +385,26 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 </div>
 </section>
 
-<section id="learning" class="section" data-search="学习 AI 大模型 GPT Claude Agent 智能体 模型对比 SQL 面试 知识 科普"><div class="section-header"><h2>🎓 学习区 · 全站知识中枢</h2><p>今日新知 · AI学院 · 数据分析 · 面试冲刺 · 小白课堂</p></div>
+<section id="learning" class="section" data-search="学习 AI 大模型 GPT Claude Agent 智能体 模型对比 SQL 面试 知识 科普"><div class="section-header"><h2>🎓 学习区 · 全站知识中枢</h2><p>今日新知优先 · 各板块新知识每日汇总 · 学院课程按需展开</p></div>
 <div id="todayKnowledge" style="margin-bottom:8px"></div>
-<div id="picks-learning" class="picks-container"></div>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px;margin:8px 0">
-<div class="card clickable" onclick="openDetail('learning')"><h3>🤖 AI学院</h3><p>LLM原理 · Prompt · Agent搭建 · 工具全景</p></div>
-<div class="card clickable" onclick="navigateTo('section-detail','learn-path')"><h3>📚 小白课堂</h3><p>每日10条跨板块科普 · 历史累积可复习</p></div>
-<div class="card clickable" onclick="openDetail('learning-data')"><h3>📈 数据分析实训</h3><p>SQL · A/B测试 · 增长模型 · 30天路线</p></div>
-<div class="card clickable" onclick="openDetail('learning-interview')"><h3>🎯 面试冲刺</h3><p>STAR法则 · Top10题 · 薪资谈判</p></div>
-</div>
-<div class="card clickable" onclick="openDetail('learning')"><h3>📝 查看完整AI科普中心</h3><p>14课完整体系：LLM→Prompt→路线图→工具→Agent→数据分析→面试。</p></div></section>
+<!-- 今日学习分析（verdict 优先） -->
+<div id="learningInsight"></div>
+<!-- 小白课堂预览 -->
+<div id="learnPathMini"></div>
+<!-- 学院课程（折叠式，避免展开费劲） -->
+<details class="card" style="padding:0;overflow:hidden;margin:6px 0">
+<summary style="padding:12px 16px;cursor:pointer;font-size:13px;font-weight:600">🤖 AI学院 <span style="font-size:10px;color:var(--text3);font-weight:400">LLM原理 · Prompt · Agent搭建 · 工具全景（点击展开）</span></summary>
+<div style="padding:0 16px 12px"><div id="picks-learning" class="picks-container"></div>
+<div class="card clickable" onclick="openDetail('learning')"><h3>📝 进入AI学院</h3><p>14课完整体系：LLM→Prompt→路线图→工具→Agent→数据分析→面试。</p></div></div>
+</details>
+<details class="card" style="padding:0;overflow:hidden;margin:6px 0">
+<summary style="padding:12px 16px;cursor:pointer;font-size:13px;font-weight:600">📈 数据分析实训 <span style="font-size:10px;color:var(--text3);font-weight:400">SQL · A/B测试 · 增长模型（点击展开）</span></summary>
+<div style="padding:0 16px 12px"><div class="card clickable" onclick="openDetail('learning-data')"><h3>📊 进入数据分析实训</h3><p>SQL速成 · 留存率面试题 · Excel透视表 · A/B测试 · 30天学习路线。</p></div></div>
+</details>
+<details class="card" style="padding:0;overflow:hidden;margin:6px 0">
+<summary style="padding:12px 16px;cursor:pointer;font-size:13px;font-weight:600">🎯 面试冲刺 <span style="font-size:10px;color:var(--text3);font-weight:400">STAR法则 · Top10题 · 薪资谈判（点击展开）</span></summary>
+<div style="padding:0 16px 12px"><div class="card clickable" onclick="openDetail('learning-interview')"><h3>🎤 进入面试冲刺</h3><p>STAR法则 · 高频面试题框架 · 2026.8新增AI话题 · 作品集话术 · 薪资谈判。</p></div></div>
+</details></section>
 
 <section id="gaming" class="section" data-search="游戏 Steam B站UP主 CF"><div class="section-header"><h2>🎯 游戏区</h2><p>今日推荐 · Steam促销日历</p></div>
 <div id="picks-gaming" class="picks-container"></div>
@@ -597,6 +607,8 @@ function openDetail(id){
     c=insightHtml+c;
   }
   document.getElementById('detailContent').innerHTML=c;
+  // 学习区 AI 学院详情折叠
+  if(id==='learning') applyLearningFold('detailContent');
   // ai-track 弹窗也注入 Agent×模型组合表（#49）
   if(id==='ai-track'){
     var asEl2 = document.getElementById('agentStacksSection');
@@ -1514,7 +1526,7 @@ var CATEGORIES = {
 };
 
 // Key sections to show on homepage (everything else hidden)
-var HOME_SECTIONS = ['dashboard','music-player','daily-vocab','daily-quiz','guide','optimization'];
+var HOME_SECTIONS = ['dashboard','learning','music-player','daily-vocab','daily-quiz','guide','optimization'];
 var vocabShuffled = [];
 var vocabShowingAll = false;
 
@@ -1886,6 +1898,8 @@ function showView(viewName, categoryKey){
     }
 
     document.getElementById('sectionDetailContent').innerHTML = detailHtml;
+    // 学习区 AI 学院全屏详情折叠
+    if(categoryKey==='learning') applyLearningFold('sectionDetailContent');
     // Special: ai-track section — inject model comparison table (rendered by renderModelComparison)
     if(categoryKey==='ai-track'){
       var mcEl = document.getElementById('model-compare-section');
@@ -2256,7 +2270,7 @@ function renderModelComparison(){
 function onDataReady(){
   var tasks = [
     function(){ var e=document.getElementById('siteVersion'); if(e) e.textContent = (typeof SITE_VERSION!=='undefined'?SITE_VERSION:''); },
-    renderAllPicks, renderBriefing, renderVocab, renderQuiz, renderMusicPlayer, renderModelComparison, renderToolchainRadar, renderDailyDecisions, renderLearnPath, renderTodayKnowledge, renderAgentStacks, checkUpdateStatus
+    renderAllPicks, renderBriefing, renderVocab, renderQuiz, renderMusicPlayer, renderModelComparison, renderToolchainRadar, renderDailyDecisions, renderLearnPath, renderTodayKnowledge, renderLearningInsight, renderLearnPathMini, renderAgentStacks, checkUpdateStatus
   ];
   tasks.forEach(function(fn){
     try { if(typeof fn==='function') fn(); } catch(e){ console.error('Init error:', e.message); }
@@ -2410,6 +2424,44 @@ function renderLearnPathSection(){
   return h;
 }
 // ===== 今日新知（学习区顶部）— 自动汇总全站新知识 =====
+function applyLearningFold(containerId){
+  var box = document.getElementById(containerId);
+  if(!box) return;
+  var heads = box.querySelectorAll('h3');
+  if(heads.length < 3) return;
+  heads.forEach(function(hd){
+    var node = hd.nextElementSibling;
+    if(!node || node.tagName === 'H3') return;
+    var siblings = [];
+    while(node && node.tagName !== 'H3'){
+      siblings.push(node);
+      node = node.nextElementSibling;
+    }
+    if(siblings.length === 0) return;
+    var wrap = document.createElement('div');
+    wrap.style.cssText = 'display:none;padding:0 4px';
+    siblings.forEach(function(s){ wrap.appendChild(s); });
+    hd.insertAdjacentElement('afterend', wrap);
+    hd.style.cssText = 'cursor:pointer;background:var(--bg2);border-radius:8px;padding:8px 12px;margin:10px 0 4px;font-size:14px';
+    var arrow = document.createElement('span');
+    arrow.textContent = ' ▸ 点击展开';
+    arrow.style.cssText = 'font-size:10px;color:var(--text3);font-weight:400';
+    hd.appendChild(arrow);
+    hd.onclick = function(){
+      var isHidden = wrap.style.display === 'none';
+      wrap.style.display = isHidden ? 'block' : 'none';
+      arrow.textContent = isHidden ? ' ▾ 点击收起' : ' ▸ 点击展开';
+    };
+  });
+  // 第一条默认展开
+  var fh = box.querySelector('h3');
+  if(fh && fh.nextElementSibling && fh.nextElementSibling.style){
+    fh.nextElementSibling.style.display = 'block';
+    var fa = fh.querySelector('span');
+    if(fa) fa.textContent = ' ▾ 点击收起';
+  }
+}
+
 function renderTodayKnowledge(){
   var el = document.getElementById('todayKnowledge');
   if(!el) return;
@@ -2448,6 +2500,44 @@ function renderTodayKnowledge(){
     h += '<span class="pick-info"><div class="pick-title" style="white-space:normal">'+it.text+'</div><div class="pick-desc">来源：'+it.tag+'</div></span>';
     h += '<span class="pick-arrow">→</span></div>';
   });
+  h += '</div>';
+  el.innerHTML = h;
+  el.style.display = 'block';
+}
+// ===== 学习区：今日学习分析（verdict 优先）+ 小白课堂预览 =====
+function renderLearningInsight(){
+  var el = document.getElementById('learningInsight');
+  if(!el) return;
+  if(typeof INSIGHTS==='undefined' || !INSIGHTS.learning){ el.style.display='none'; return; }
+  var ins = INSIGHTS.learning;
+  var h = '';
+  if(ins.verdict){
+    h += '<div style="background:linear-gradient(135deg,#fef3c7,#fef9c3);border:1px solid #f59e0b;border-radius:10px;padding:12px 16px;margin-bottom:8px;font-size:12px;line-height:1.9;color:#1c1917">'+ins.verdict+'</div>';
+  }
+  if(ins.summary){
+    h += '<div class="card" style="padding:12px 14px;margin-bottom:8px"><strong style="font-size:13px">📖 今日可学</strong> <span style="font-size:10px;color:var(--text3)">(更新于'+ins.updated+')</span><br><span style="font-size:12px;color:var(--text2);line-height:1.9">'+ins.summary+'</span></div>';
+  }
+  el.innerHTML = h;
+  el.style.display = 'block';
+}
+function renderLearnPathMini(){
+  var el = document.getElementById('learnPathMini');
+  if(!el) return;
+  if(typeof LEARN_PATHS==='undefined'){ el.style.display='none'; return; }
+  var lp = LEARN_PATHS;
+  var items = lp.items || [];
+  if(items.length===0){ el.style.display='none'; return; }
+  var h = '<div class="card" style="padding:12px 14px;margin-bottom:8px">';
+  h += '<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px"><strong style="font-size:13px">📚 小白课堂 · 今日科普</strong><span style="font-size:10px;color:var(--text3)">'+items.length+'条 · 点进课堂分区复习全部历史</span><span style="margin-left:auto"><button onclick="navigateTo(\'section-detail\',\'learn-path\')" style="padding:3px 10px;border:1px solid var(--accent);border-radius:10px;background:var(--accent);color:#fff;cursor:pointer;font-size:10px;font-weight:500">📖 课堂分区 →</button></span></div>';
+  items.slice(0,3).forEach(function(it, i){
+    var uid = 'lpm_'+i;
+    h += '<div style="cursor:pointer;padding:6px 0;border-bottom:1px solid var(--border)" onclick="var e=document.getElementById(\''+uid+'\');e.style.display=e.style.display===\'none\'?\'block\':\'none\'">';
+    h += '<span style="font-size:12px">'+it.emoji+' <strong>'+it.title+'</strong> <span style="font-size:9px;color:var(--text3)">['+it.section+']</span> <span style="color:var(--text3);font-size:10px">▸</span></span>';
+    h += '<div id="'+uid+'" style="display:none;margin-top:4px;padding:6px;background:var(--bg2);border-radius:6px;font-size:11px;color:var(--text2);line-height:1.8">'+it.content;
+    if(it.takeaway) h += '<div style="margin-top:4px;color:var(--green)">📌 '+it.takeaway+'</div>';
+    h += '</div></div>';
+  });
+  h += '<div style="text-align:center;padding-top:6px"><button onclick="nextLearnPath()" style="padding:3px 12px;border:1px solid var(--border);border-radius:10px;background:var(--bg);cursor:pointer;font-size:10px;color:var(--text2)">🔄 换一批</button></div>';
   h += '</div>';
   el.innerHTML = h;
   el.style.display = 'block';
@@ -2648,7 +2738,7 @@ function manualRefresh(){
 
 <script src="detail_content.js"></script>
 <script src="personal_config.js"></script>
-<script src="daily_data.js?v=1.4.1"></script>
+<script src="daily_data.js?v=1.4.2"></script>
 <script defer src="knowledge_index.js"></script>
 </body>
 </html>
