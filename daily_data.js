@@ -1,4 +1,4 @@
-var SITE_VERSION = "1.4.3";
+var SITE_VERSION = "1.4.4";
 
 var DAILY_DATA = {
   "update_time": "2026-08-15T12:30:00+08:00",
@@ -254,10 +254,10 @@ var INSIGHTS = {
     updated: '2026-08-15'
   },
   "ai-track": {
-    verdict: '🎯 今日结论：① AI 行业最确定的钱在【AI基础设施】——CoreWeave 营收+112% 验证需求不是泡沫；② 开源 AI 军备竞赛升级（英伟达 Nemotron 4 + 中国开源全球 41%）——开源正从技术路线变成产业战略；③ 对你的意义：AI 基础设施和开源生态是未来 12 个月招聘最热的两个方向（求职瞄准 AI 云服务/开源社区运营）；④ 今日重点动作：读 CoreWeave 财报理解 AI 云服务商业模型——这是 AI 产品/运营面试的高频话题。',
-    summary: '8月15日AI行业焦点：(1)阿里Qwen3.8-Max下周开源(+112%)盘后涨16%——AI云服务需求爆棚·在手合同1040亿美元·近期产能量已售罄→AI基础设施投资的确定性被业绩验证；(2)英伟达万亿参数Nemotron 4开源模型曝光+黄仁勋联手6巨头5000亿美元AI基建——从GPU硬件延伸到开源模型+基建融资平台；(3)扎克伯格8月10日发表长文《未来属于所有人》力挺开源AI——Meta超级智能实验室已启动·反对AI能力集中于少数机构；(4)中国人形机器人出货全球占比超97%——智元8400台第一·宇树5900台第二·大幅领先特斯拉；·Figure AI等美国公司；(5)字节跳动成立【AI数据与安全】一级部门——大模型竞争正从【算力+算法】走向【算力+算法+数据】三维；(6)上海具身智能机器人展8/12-14举行——四大主题展区·高盛预计2032年全球人形机器人出货50.2万台。',
-    trend: '8月AI五大趋势线：(1)**AI云服务需求爆棚被业绩验证**——CoreWeave Q2营收+112%在手合同1040亿→AI基础设施不是泡沫是实打实的千亿美元需求→国内算力产业链确定性受益；(2)**开源AI军备竞赛升级**——英伟达万亿参数Nemotron 4+扎克伯格《未来属于所有人》+中国开源AI全球41%→开源从技术路线变为产业战略→开源vs闭源的路线之争进入新阶段；(3)**AI基础设施融资创新**——黄仁勋联手6巨头5000亿美元第三方资本→AI基建从企业自有资金进入【资本市场平台化】阶段→类似房地产REITs的AI基础设施REITs可能出现；(4)**大模型竞争进入【算力+算法+数据】三维**——字节成立AI数据与安全部门→优质版权数据资产价值重估→数据将成为差异化竞争的关键；(5)**人形机器人从实验室进入量产**——中国出货全球97%·智元8400台第一→具身智能不再是概念是产品→机器人产业链成为AI之外的第二增长曲线。',
-    tip: '8/12追踪建议：(1)**CoreWeave财报深度阅读**——理解AI云服务商业模型→为什么GPU出租比自建数据中心更赚钱→国内对标公司研究（阿里云/华为云/腾讯云）→理解AI基础设施投资逻辑；(2)**开源AI路线之争研究**——对比英伟达Nemotron 4 vs Meta Llama vs中国开源三强(DeepSeek/Qwen/Kimi)→理解开源vs闭源各自的商业模式和护城河→AI产品经理面试核心话题；(3)**人形机器人产业链调研**——智元8400台vs宇树5900台vs特斯拉Optimus→核心零部件(电机/传感器/关节)+具身智能技术栈→AI机器人产品经理新方向；(4)**影之刃零预售数据跟踪**——国产3A从黑神话到影之刃零→预售数据=市场对国产3A信心的试金石→关注游戏产业与AI的交叉点（AI生成内容/AI NPC）；(5)**今日重点**——CoreWeave财报+英伟达Nemotron 4。AI基础设施需求爆棚被业绩验证+开源军备竞赛升级→这是理解AI产业链最关键的一天。',
+    verdict: '🎯 今日结论：① 头条是【DeepSeek Harness 公测】——Agent 框架新变量，你该实测 Harness vs Claude Code（全家桶缓存命中可能更省）；② 【Qwen3.8-Max 下周开源】= 千问旗舰首次开源，DeepSeek 涨价后的主力平替，盯 ModelScope/HuggingFace；③ AI 基础设施需求被 CoreWeave 财报验证（+112%），开源军备竞赛升级——这两个方向也是求职热点；④ 行动：本周装 Harness 实测 + 关注 Qwen 开源公告。',
+    summary: '8月15日AI行业焦点（含你关心的工具链动态）：(1)【DeepSeek Harness 公测】——对标 Claude Cowork 的 Agent 框架，核心理念【一切皆插件】，v0.1 开源支持本地部署，官方原生适配 DeepSeek 系模型；(2)【阿里Qwen3.8-Max下周开源】——2.4T参数旗舰首次开源，Arena综合第5·PaperBench 93.0创纪录，$2/$6定价，可私有部署；(3)DeepSeek V4 API 8/17涨价——高峰时段输出涨至27元/百万tokens（约4.5倍）；(4)CoreWeave Q2营收+112%在手合同1040亿——AI基础设施需求被业绩验证；(5)英伟达万亿参数Nemotron 4开源+黄仁勋联手6巨头5000亿美元AI基建；(6)中国人形机器人出货全球97%——智元8400台第一·宇树5900台第二。',
+    trend: '8月AI六大趋势线：(1)**Agent框架进入混战期**——Harness公测（DeepSeek）+Claude Cowork（Anthropic）+Codex（OpenAI）三足鼎立，Agent×模型组合成为新战场→选型看生态×适配×开源；(2)**开源旗舰军备竞赛**——Qwen3.8-Max下周开源+英伟达Nemotron 4+中国开源全球41%→开源从技术路线变为产业战略；(3)**AI云服务需求被验证**——CoreWeave Q2+112%在手合同1040亿→AI基础设施不是泡沫；(4)**AI基础设施融资创新**——黄仁勋6巨头5000亿美元第三方资本→AI基建进入资本市场平台化阶段；(5)**大模型竞争三维化**——字节成立AI数据与安全部门→算力+算法+数据；(6)**人形机器人量产**——中国出货全球97%→具身智能第二增长曲线。',
+    tip: '今日追踪建议（按优先级）：(1)**实测 Harness vs Claude Code**——同一个编程任务分别跑两套，对比完成质量+缓存命中率+成本（看工具链雷达科普）→数据决定你的主力工具；(2)**盯 Qwen3.8-Max 开源公告**——ModelScope/HuggingFace，开源后部署本地实例测试→DeepSeek涨价后的平替；(3)**读 DeepSeek 涨价公告**——理解高峰/非高峰定价→优化你的API调用时段；(4)**读 CoreWeave 财报解读**——AI云服务商业模型=面试高频话题；(5)**求职联动**——AI基础设施+开源生态是未来12个月招聘热点，简历往这靠。',
     updated: '2026-08-15'
   },
   news: {
@@ -277,42 +277,42 @@ var INSIGHTS_TODAY_UPDATED = ['stock','ai-track','movie','news','gaming','career
 // 每个条目回答 4 个问题：发生了什么 → 对我意味着什么 → 价格/性价比变化 → 我要不要行动
 var TOOLCHAIN_RADAR = {
   updated: "2026-08-15",
-  headline: "DeepSeek Harness 公测 + V4 API 涨价4.5倍——你的工具链需要重新算账",
+  headline: "DeepSeek Harness 公测 + Qwen3.8-Max 下周开源——你的工具链正在洗牌",
   items: [
     {
-      topic: "DeepSeek Harness 公测",
+      topic: "【科普】Harness vs Claude Code vs Codex 到底有什么区别",
       type: "新工具",
-      summary: "对标 Claude Cowork 的 Agent 框架，核心理念【一切皆插件】，v0.1 已开源支持本地部署",
-      impact: "你现在就在 Harness 里——这不是要不要试的问题，是该加深使用：workflow 多智能体并行 + goal 跨天长期目标",
-      action: "本周用 workflow 跑一次多智能体并行任务，体验编排能力"
+      summary: "三个 Agent 的核心差异：①Claude Code=Anthropic 出品·生态最成熟·代码工具链最全（终端/VS Code原生）·需配模型API；②Codex=OpenAI 出品·深度绑定 GPT 系·Agent 编排强但闭源；③Harness=DeepSeek 出品·刚公测·核心理念【一切皆插件】·v0.1 开源可本地部署·官方原生适配 DeepSeek 系模型",
+      impact: "对你的实际影响：Harness 最大优势是【全家桶】——和 DeepSeek V4-Flash/Pro 同厂适配，缓存命中率高（重复任务成本趋近0）+零跨厂商配置；Claude Code 优势是【生态】——插件/教程/社区最丰富。中文+隐私场景 Harness 更顺，英文技术/复杂架构 Claude Code 更强",
+      action: "装 Harness 实测一周：用你自己的任务（编程+学习+求职文档）分别跑 Claude Code 和 Harness，对比完成质量+缓存命中率+成本，数据说话"
+    },
+    {
+      topic: "【科普】Harness 的缓存命中为什么省钱？",
+      type: "新工具",
+      summary: "大模型 API 成本大头在重复计算——同一段代码/文档反复处理时，缓存命中=直接复用上次结果不重新计费。DeepSeek 官方对缓存命中收费极低（约¥0.02/1M tokens vs 未命中 ¥1-2/1M，相差50-100倍）。Harness 作为 DeepSeek 官方 Agent，对 KV 缓存的利用最充分——你的重复任务（读同一代码库/反复改同一文件）成本趋近于0",
+      impact: "这是 Harness+V4-Flash 组合性价比超过 Claude Code+同模型的关键：Claude Code 走第三方 API 配置，缓存策略不如官方 Harness 顺滑。高频重复任务的场景（日常开发迭代）差距尤其明显",
+      action: "对比实测：同一个文件反复修改10次，分别用两套组合，看 API 账单差异——缓存命中的省钱效果立刻可见"
     },
     {
       topic: "DeepSeek V4 API 涨价",
       type: "价格变化",
       summary: "8/17 生效：高峰时段输出价涨至 27元/百万tokens（约4.5倍），部分场景最高涨12倍",
-      impact: "若 Claude Code 底层用 DeepSeek API 跑高频任务，高峰时段成本翻4.5倍，必须重新评估",
+      impact: "若 Claude Code 底层用 DeepSeek API 跑高频任务，高峰时段成本翻4.5倍，必须重新评估；Harness 全家桶的缓存命中优势在涨价后更值钱",
       action: "高峰重活切 Qwen3.8-Max/Kimi K3，DeepSeek 只跑非高峰/低峰任务"
     },
     {
-      topic: "Qwen3.8-Max 下周开源",
+      topic: "【前瞻】Qwen3.8-Max 下周开源会带来什么",
       type: "替代方案",
-      summary: "2.4T 参数旗舰首次开源·$2/$6·可私有部署·综合85分",
-      impact: "涨价后国产旗舰里性价比最优的平替，开源可本地部署=数据不出域",
-      action: "开源后部署本地实例，作为 Claude Code 备选底座"
+      summary: "2.4T 参数旗舰首次开源（千问历史首次）·$2/$6 国际定价·Arena 综合第5·PaperBench 93.0 创纪录·可私有部署·1M 超长上下文",
+      impact: "①对你是涨价后的主力平替——开源后本地部署免费，数据不出域；②对整个行业：开源旗舰军备竞赛再升级，DeepSeek 涨价压力下开发者有了新选择；③对 Harness/Claude Code：可接 Qwen 的 Agent 底座更多元",
+      action: "关注下周开源公告（ModelScope/HuggingFace）→ 开源后先部署本地实例测试 → 对比 Qwen3.8-Max vs V4-Flash 在你任务上的表现"
     },
     {
       topic: "V4-Pro-0813 正式版",
       type: "模型更新",
       summary: "DeepSeek 同步开源 V4-Pro-0813，增强 Agent 能力，支持本地部署",
-      impact: "Agent 场景（Claude Code/Harness）能力增强，但价格同步调整",
+      impact: "Agent 场景（Harness/Claude Code）能力增强，Pro 定位深度推理、Flash 定位高频——组合使用",
       action: "对比 Pro 与 Flash 在代码/Agent 任务的性价比差异"
-    },
-    {
-      topic: "Claude Cowork vs Harness",
-      type: "生态观察",
-      summary: "Harness 官方对标 Claude Cowork，两者都是 Agent 框架+插件生态路线",
-      impact: "你用的 Claude Code + DeepSeek + Harness 横跨两大生态，选择面最广",
-      action: "留意两边插件生态差异，择优使用"
     }
   ]
 };
@@ -324,10 +324,10 @@ var DAILY_DECISIONS = {
   updated: "2026-08-15",
   items: [
     {icon:"💼", action:"上午9:30-11:00黄金窗口投3家AI产品运营岗", why:"周四投递回复率最高·AI岗位需求同比+87.7%", how:"BOSS直聘/猎聘/脉脉三端同步刷新简历+投递", priority:"P0"},
-    {icon:"🔧", action:"DeepSeek涨价前评估工具链成本", why:"8/17生效·高峰时段输出价涨至27元/百万tokens(约4.5倍)", how:"把高峰重活切到Qwen3.8-Max/Kimi K3·DeepSeek只跑非高峰任务", priority:"P0"},
+    {icon:"🔧", action:"实测 Harness vs Claude Code（同一任务对比）", why:"Harness+V4-Flash 全家桶缓存命中率高·综合91分可能优于 Claude Code 组合", how:"装 Harness→用同一个编程任务分别跑两套→对比完成质量+缓存命中+成本", priority:"P0"},
+    {icon:"🐬", action:"关注 Qwen3.8-Max 下周开源公告", why:"千问旗舰首次开源·开源后可免费本地部署·DeepSeek涨价后的主力平替", how:"盯 ModelScope/HuggingFace→开源后部署本地实例测试", priority:"P1"},
     {icon:"📈", action:"关注沪指能否站稳3927→突破4000", why:"缩量上涨持续性存疑·权重撑指数但多数股下跌", how:"不追涨停板·若看好AI硬件主线等回调分批买入·仓位≤3成", priority:"P1"},
-    {icon:"🏋️", action:"完成今日背+二头训练（第3周适应期）", why:"增肌适应期过半·动作模式标准化是关键", how:"引体向上→杠铃划船→哑铃弯举·训练后香蕉乳清奶昔", priority:"P1"},
-    {icon:"📚", action:"花30分钟精读CoreWeave财报解读", why:"AI云服务商业模型=AI产品/运营面试高频话题", how:"读网站学习区AI云服务专题→总结3个面试可讲的要点", priority:"P2"}
+    {icon:"🏋️", action:"完成今日背+二头训练（第3周适应期）", why:"增肌适应期过半·动作模式标准化是关键", how:"引体向上→杠铃划船→哑铃弯举·训练后香蕉乳清奶昔", priority:"P1"}
   ]
 };
 
@@ -342,14 +342,14 @@ var LEARN_PATHS = {
   current_day: 1,           // 当前学到第几天
   items: [
     {section:"股市", emoji:"🧠", title:"为什么指数涨了，我的股票却在跌？", content:"【指数≠个股】。沪指是几百只权重股按市值加权算出的平均数——茅台、银行、中石油涨，指数就红；但4000多只股票里可能有3000只在跌。看到【沪指+0.01%】别以为市场好，要看【涨跌家数】：2400涨3000跌=赚指数不赚钱，权重股撑面子，中小票在跌。", takeaway:"看大盘先看【涨跌家数】再看【指数】——指数红不一定赚钱。"},
-    {section:"股市", emoji:"📊", title:"缩量上涨意味着什么？", content:"成交额是市场的【参与度】。缩量上涨（指数涨但成交额大幅减少）=大家都在观望，只有少数资金拉权重股，没有新增资金进场。这种上涨【不牢靠】——随时可能回落。放量上涨才是真突破。今天两市缩量16%，说明市场还在犹豫。", takeaway:"放量涨=真突破，缩量涨=虚涨，追高风险大。"},
+    {section:"AI", emoji:"🛠️", title:"Agent 是什么？Claude Code / Codex / Harness 有什么区别？", content:"【Agent=能自己干活的AI助理】。你给目标，它自己拆解→调用工具→执行→检查→完成。三大 Agent：①Claude Code（Anthropic）——生态最成熟，代码工具链最全，配哪个模型都行；②Codex（OpenAI）——深度绑定 GPT，闭源；③Harness（DeepSeek）——刚公测，核心理念【一切皆插件】，开源可本地部署，官方原生适配 DeepSeek 模型。类比：三个都是「能干活的助理」，区别在谁的家底（生态）厚、和谁（模型）配合最默契。", takeaway:"Agent 选型看三点：生态成熟度×模型适配度×是否开源——Harness 是国产新玩家，全家桶适配是它的牌。"},
+    {section:"AI", emoji:"💾", title:"缓存命中是什么？为什么能省 50-100 倍成本？", content:"大模型算钱按【处理量】——同一段代码反复处理就要反复算钱。缓存命中=模型发现【这段之前算过】，直接复用上次结果，只收极低的缓存价（DeepSeek 缓存命中约¥0.02/1M vs 未命中¥1-2/1M，差50-100倍）。你的日常开发（反复改同一个文件/读同一代码库）就是典型的缓存友好场景。Harness 作为 DeepSeek 官方 Agent，对缓存利用最充分——这是它性价比超 Claude Code 组合的关键。", takeaway:"缓存命中=重复劳动不重复收费——高频开发场景，官方全家桶（Harness+DeepSeek）的缓存优势最值钱。"},
     {section:"AI", emoji:"🤖", title:"大模型到底是什么？10分钟建立底层认知", content:"大模型=读了整个互联网的超级预测器。它做的只有一件事：根据上文预测下一个字。你问【今天天气】，它不是在查数据库，而是在按概率生成最像正确答案的句子。为什么它【懂】？训练时看了海量文本学会了规律。为什么【胡说】？它在编造最合理的回答而非查证事实——这就是幻觉。", takeaway:"大模型=概率生成器不是知识库——重要信息要交叉验证。"},
     {section:"AI", emoji:"🌐", title:"开源vs闭源：AI未来的路线之争", content:"闭源（GPT/Claude）=私家菜馆：菜好吃但不给菜谱，想吃必须花钱。开源（DeepSeek/Qwen）=公开菜谱：可下载、研究、改进、自己部署。开源重要：①数据不出域（企业省钱安全）；②全球开发者一起改进；③防AI能力垄断。中国押注开源=后发者打破技术垄断的武器。", takeaway:"开源vs闭源不是技术优劣，是【生态路线】之争——面试必讲。"},
     {section:"购车", emoji:"🔋", title:"买电车先看这5个参数，别被销售忽悠", content:"①续航：标称×0.7≈真实续航（高速/空调打7折）；②充电功率：家桩7kW充8小时，快充100kW半小时到80%；③电池：磷酸铁锂便宜耐用vs三元锂能量密度高，南方选铁锂够用；④智驾：L2够日常，别为用不上的L3多花5万；⑤保值率：前3年贬值最快，电车3年保值率50-60%。", takeaway:"先定预算和场景再选车——参数是筛选工具不是理由。"},
     {section:"购房", emoji:"🏙️", title:"首付15%是什么概念？广州买房账本", content:"2026广州首套首付15%史上最低。增城1.4万/平×80平=112万，首付15%=16.8万，贷95万30年利率3.4%，月供约4200元。但别忘了：税费+中介+装修≈10万；月供≤收入40%；期房有烂尾风险。首付低≠买得起，要算【全周期成本】。", takeaway:"买房算三笔账：首付+月供+税费装修——月供才是长期承诺。"},
     {section:"饮食", emoji:"💧", title:"肾结石患者夏天怎么喝水？", content:"广州37°C+出汗多=尿液浓缩，草酸钙结晶风险飙升。正确喝法：①每天≥2.5L分次喝（每小时200ml）；②柠檬水最佳——柠檬酸抑制草酸钙结晶；③避开高草酸食物：菠菜/苋菜/浓茶/巧克力/花生；④少喝含糖饮料（果糖促尿酸）；⑤睡前喝一杯（夜间尿液最浓缩）。", takeaway:"结石预防=足量分散喝水+柠檬水+控草酸——喝水是最便宜的预防药。"},
     {section:"求职", emoji:"💼", title:"为什么周二到周四上午投简历回复率最高？", content:"HR工作节奏：周一处理上周积压+开会，周五准备周末+收尾。周二-周四上午9:30-11:00是HR集中处理简历的黄金窗口——此时投递的简历会出现在列表顶部，且HR心态放松愿意细看。周一投会被淹没，周五投会被压到下周一。", takeaway:"投递黄金窗口=周二至周四9:30-11:00——比多投5家更有效。"},
-    {section:"健身", emoji:"💪", title:"瘦子增肌最容易犯的3个错", content:"①只练不吃：不增热量摄入，练再多也不长肉——增肌期每天多吃300-500kcal；②天天练同一部位：肌肉在休息时生长，同一肌群需48小时恢复；③动作不标准急着加重：先用轻重量把动作做标准（深蹲/卧推/划船），再每两周加2.5-5kg。你170cm/59kg，先吃够+动作标准，比冲重量重要。", takeaway:"增肌=热量盈余+充足恢复+动作标准，缺一不可。"},
     {section:"理财", emoji:"💰", title:"定投是什么？为什么小白从沪深300开始？", content:"定投=固定时间固定金额买同一基金，不看涨跌。沪深300=中国最大的300家公司（茅台/宁德/招行等），代表中国经济整体。为什么适合小白：①分散风险（300家公司不押注单一股票）；②无需择时（涨也买跌也买，摊平成本）；③门槛低（10元起）。长期看，经济在增长，指数就会向上。", takeaway:"小白理财第一步：定投沪深300指数基金——简单、分散、长期有效。"}
   ],
   // 历史累积库：archive 只存【历史】日期（当天内容放 items，不进 archive）
@@ -404,14 +404,21 @@ var AGENT_STACKS = {
       cons:"贵·慢·Codex生态不如Claude Code成熟",
       best_for:"深度推理·专业文档·复杂Agent编排",
       verdict:"特定专业场景使用·日常性价比不如DeepSeek"},
-    {agent:"DeepSeek Harness", model:"DeepSeek V4-Pro", emoji:"🐋",
-      score:{编程:84, 性价比:82, 中文:95, 生态:70, 速度:75}, 综合:83,
+    {agent:"DeepSeek Harness", model:"DeepSeek V4-Flash", emoji:"🐋",
+      score:{编程:88, 性价比:96, 中文:95, 生态:72, 速度:93}, 综合:91,
+      monthly_cost:"¥0-30（涨价前）", monthly_cost_note:"涨价后预计¥60-120/月",
+      pros:"官方全家桶·原生适配零配置·缓存命中率最高（同厂KV缓存复用·重复任务成本趋近0）·中文最强·插件生态（一切皆插件）持续扩充·速度与Flash匹配",
+      cons:"生态比Claude Code年轻·插件数量少·复杂多步任务尚待打磨·8/17涨价后成本翻4.5倍",
+      best_for:"中文优先任务·日常编程+学习答疑·隐私敏感场景（本地部署）·想尝鲜国产Agent生态",
+      verdict:"⭐ 若你主要在中文环境+隐私敏感，Harness+V4-Flash 优于 Claude Code+V4-Flash——原生适配+缓存命中省下的钱可能抵消Claude Code的生态优势"},
+    {agent:"DeepSeek Harness", model:"DeepSeek V4-Pro", emoji:"🐳",
+      score:{编程:86, 性价比:84, 中文:95, 生态:72, 速度:78}, 综合:85,
       monthly_cost:"开源免费（本地部署）",
       monthly_cost_note:"V4-Pro-0813 开源可本地部署",
-      pros:"中文最强·开源可私有化·插件生态起步快（一切皆插件）·本地部署数据不出域",
-      cons:"生态年轻（对标Claude Cowork中）·插件数量少·复杂任务尚待打磨",
-      best_for:"中文优先任务·隐私敏感场景·本地部署·探索插件生态",
-      verdict:"值得持续关注·插件生态成熟后可能成为你的主力"},
+      pros:"中文最强·开源可私有化·插件生态起步快（一切皆插件）·本地部署数据不出域·同厂缓存命中高",
+      cons:"生态年轻（对标Claude Cowork中）·插件数量少·复杂任务尚待打磨·Pro速度慢于Flash",
+      best_for:"中文优先任务·隐私敏感场景·本地部署·深度推理+中文兼顾",
+      verdict:"值得持续关注·插件生态成熟后可能成为你的主力·重活（复杂推理）用Pro·日常用Flash"},
     {agent:"DeepSeek Harness", model:"Qwen3.8-Max", emoji:"🐬",
       score:{编程:86, 性价比:90, 中文:94, 生态:75, 速度:72}, 综合:86,
       monthly_cost:"$2/$6（即将开源免费部署）",
@@ -445,13 +452,13 @@ var AGENT_STACKS = {
       best_for:"中文长文档·学术研究·国产替代",
       verdict:"中文场景的好备选·综合不如Qwen即将开源的性价比"}
   ],
-  recommendation: "💡 结论：日常主力 = Claude Code + DeepSeek V4-Flash（涨价前锁定预算）；8/17涨价后 = Claude Code + Qwen3.8-Max（下周开源免费部署）或 Harness + Qwen3.8-Max；重活专用 = Claude Code + Sonnet 4.6 / Opus 5；免费备胎 = Codex + Luna。Harness 的插件生态值得持续关注，成熟后可作为中文+隐私场景主力。"
+  recommendation: "💡 结论（8/15更新）：日常主力对比——① Harness + V4-Flash（综合91）：官方全家桶，中文最强+缓存命中率高+零配置，若你主要在中文/隐私环境，它优于 Claude Code+V4-Flash（综合89）；② Claude Code + V4-Flash：生态更成熟、代码工具链更全，英文技术场景占优；③ 8/17涨价后：两套都切 Qwen3.8-Max（下周开源免费部署）；④ 重活专用 = Claude Code + Sonnet 4.6 / Opus 5；⑤ 免费备胎 = Codex + Luna。建议：装 Harness 实测一周，用你自己的任务对比两套组合的完成质量与缓存命中率，再决定主力。"
 };
 
 var OPTIMIZATION_LOG = {
   date: "2026-08-15",
-  total_suggestions: 57,
-  total_implemented: 53,
+  total_suggestions: 58,
+  total_implemented: 54,
   streak_days: 26,
   suggestions: [
     {id:1, cat:"已归档", title:"AI追踪板块周报自动生成", desc:"每周一自动汇总上周AI融资/模型发布/价格变动→已集成至INSIGHTS.ai-track周度总结", priority:"P1", status:"已完成"},
@@ -511,12 +518,13 @@ var OPTIMIZATION_LOG = {
     {id:55, cat:"稳定性", title:"全站时效检查机制（静态内容防过期）", desc:"✅ 8/15实施：daily_update.py新增check_static_freshness()扫描detail_content.js过期日期标记（旅游/小说连载/模型表等），CLAUDE.md固化规则9-11：全站时效/学习区动态引用/生活板块三层结构", priority:"P2", status:"已完成"},
     {id:56, cat:"安全性", title:"隐私保护修复：移除购车/购房区敏感信息", desc:"✅ 8/15按用户反馈：购车/购房区时机判断原含个人财务与就业状态等隐私（网站可能被分享）。已脱敏为通用表述（预算敏感型用户/非刚需），优化日记desc同步脱敏，CLAUDE.md新增规则12隐私保护（最高优先级）：禁止财务/就业/健康等隐私进入公开内容", priority:"P0", status:"已完成"},
     {id:57, cat:"体验优化", title:"学习区重构：今日新知置顶为重点+AI学院折叠", desc:"✅ 8/15按用户反馈：①今日新知/今日学习分析(verdict)/小白课堂预览置顶学习区，各板块新知识成为重点；②AI学院14课折叠式展开（点击课程标题展开/收起，首课默认展开），不再一次性展开21KB；③learning加入首页HOME_SECTIONS直接可见；④INSIGHTS.learning更新为8/15内容（原8/12旧数据）", priority:"P1", status:"已完成"},
+    {id:58, cat:"内容优化", title:"工具链知识升级：Harness全家桶评分+对比科普+Qwen开源前瞻", desc:"✅ 8/15按用户反馈：①AGENT_STACKS补充Harness+V4-Flash组合（综合91分·缓存命中率高·官方全家桶）；②TOOLCHAIN_RADAR置顶科普Harness vs Claude Code/Codex区别+缓存命中省钱原理；③ai-track更新加入Harness发布头条；④决策单+小白课堂加入实测Harness/Qwen开源提醒", priority:"P1", status:"已完成"},
   ]
 };
 
 var WEBSITE_GUIDE = {
   updated: "2026-08-15",
-  summary: "欢迎来到钟锐的个人数字空间！这是一个持续进化的智能信息中枢，每天自动更新所有内容。版本1.4.3。新增：🎓学习区重构——点进学习区可见今日新知+今日学习分析+小白课堂（重点），AI学院课程折叠式展开；首页保持简洁只留小白课堂卡片。每天打开都是新的，每天都有提升。",
+  summary: "欢迎来到钟锐的个人数字空间！这是一个持续进化的智能信息中枢，每天自动更新所有内容。版本1.4.4。新增：🔄工具链知识升级——Harness+V4-Flash全家桶组合评分(综合91)+Harness vs Claude Code/Codex科普+缓存命中省钱原理+Qwen3.8-Max开源前瞻提醒。每天打开都是新的，每天都有提升。",
   features: [
     {icon:"🏠", title:"首页仪表盘", desc:"一屏总览所有板块精华。分类卡片快速导航、实时股市/天气/新闻一目了然。点击分类卡片进入分类页。"},
     {icon:"📂", title:"分类浏览", desc:"点击侧边栏分类标题(👤关于/🎮娱乐/🏃生活/📊财经/🤖工具)，进入分类页集中浏览该类别所有板块。"},
