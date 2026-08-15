@@ -87,6 +87,6 @@ GitHub：https://github.com/zr-president/my-website
 - #28: Qwen3.8开源状态跟踪与数据更新（P1）
 
 ## 用户偏好
-- 工作目录：`C:\Users\ZR\Desktop\钟锐的个人网站\`
+- 工作目录：项目在桌面「钟锐的个人网站」文件夹，脚本均用相对路径定位（sync.bat 用 %~dp0，Python 用 __file__），两台机器通用
 - 名词解释偏好 B站搜索链接
 - INSIGHTS 每个板块包含四层科普：🔍发生了什么 → 🤔为什么 → 📊术语解释 → 💡启示

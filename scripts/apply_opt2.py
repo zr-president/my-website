@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Apply #35 and #38a to index.html — encoding-safe approach"""
-import sys, io
+import sys, io, os
 if sys.platform == 'win32':
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
-INDEX = r'C:\Users\ZR\Desktop\钟锐的个人网站\index.html'
+INDEX = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'index.html')
 
 with open(INDEX, 'r', encoding='utf-8') as f:
     lines = f.readlines()

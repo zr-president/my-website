@@ -1,5 +1,5 @@
 @echo off
-cd /d "C:\Users\ZR\Desktop\钟锐的个人网站"
+cd /d "%~dp0"
 echo 📤 正在同步网站到 GitHub...
 git add -A
 git commit -m "网站更新 %date% %time%"

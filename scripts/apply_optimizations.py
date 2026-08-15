@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Apply remaining optimizations #35, #38 to index.html"""
-import sys, io, re
+import sys, io, os, re, os
 if sys.platform == 'win32':
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
-ROOT = r'C:\Users\ZR\Desktop\钟锐的个人网站'
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 INDEX_PATH = ROOT + r'\index.html'
 
 with open(INDEX_PATH, 'r', encoding='utf-8') as f:

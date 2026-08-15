@@ -1,7 +1,7 @@
-import sys, io
+import sys, io, os
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
-filepath = r'C:\Users\ZR\Desktop\钟锐的个人网站\daily_data.js'
+filepath = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'daily_data.js')
 with open(filepath, 'r', encoding='utf-8') as f:
     lines = f.readlines()
 
