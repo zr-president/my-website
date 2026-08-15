@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Apply remaining optimizations #35, #38 to index.html"""
-import sys, io, os, re, os
+import sys, io, os, re
 if sys.platform == 'win32':
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 

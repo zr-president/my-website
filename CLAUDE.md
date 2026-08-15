@@ -73,6 +73,9 @@ git push
 GitHub：https://github.com/zr-president/my-website
 分支：master
 
+### 推送授权（用户已确认）
+用户已授权：**本项目所有修改的文件，只要自检（JS/Python/YAML 语法校验等）通过，均可直接 git commit + push，无需再逐次询问。** 自检失败时禁止推送，需修复后重验。
+
 ## 重要约束
 
 1. **禁止中文单引号 `' '`**——使用 `【】` 代替
@@ -83,8 +86,9 @@ GitHub：https://github.com/zr-president/my-website
 
 ## 已知待办
 
-- #27: AI对比表综合评分增加权益权重选项（P2）
-- #28: Qwen3.8开源状态跟踪与数据更新（P1）
+- #1-#38 均已实施完成（见 OPTIMIZATION_LOG，38/38 已完成）
+- 新增优化建议时从 #39 开始编号，并同步 total_suggestions
+- 常规待办：每日更新后同步版本号三处（daily_data.js SITE_VERSION / index.html 缓存符 / WEBSITE_GUIDE）
 
 ## 用户偏好
 - 工作目录：项目在桌面「钟锐的个人网站」文件夹，脚本均用相对路径定位（sync.bat 用 %~dp0，Python 用 __file__），两台机器通用

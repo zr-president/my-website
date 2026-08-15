@@ -31,7 +31,7 @@ jobs:
           sed -i "s/\"update_date\": \"[^\"]*\"/\"update_date\": \"$TODAY\"/" daily_data.js
           sed -i "s/\"update_time\": \"[^\"]*\"/\"update_time\": \"${ISO_DATE}T08:57:00+08:00\"/" daily_data.js
           # Update ALL INSIGHTS updated fields
-          sed -i \"s/updated: '[0-9-]*'/updated: '$ISO_DATE'/g\" daily_data.js
+          sed -i "s/updated: '[0-9-]*'/updated: '$ISO_DATE'/g" daily_data.js
 
           # Update OPTIMIZATION_LOG date
           sed -i "s/date: \"[^\"]*\"/date: \"$ISO_DATE\"/" daily_data.js
