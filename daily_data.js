@@ -1,4 +1,4 @@
-var SITE_VERSION = "1.2.16";
+var SITE_VERSION = "1.3.0";
 
 var DAILY_DATA = {
   "update_time": "2026-08-15T12:30:00+08:00",
@@ -317,10 +317,160 @@ var TOOLCHAIN_RADAR = {
   ]
 };
 
+// ===== 今日决策单（信息→行动）=====
+// 每日更新时必填：从所有板块提炼 3-5 条今天真正要做的决策/行动
+// 每条：做什么 → 为什么现在 → 怎么做
+var DAILY_DECISIONS = {
+  updated: "2026-08-15",
+  items: [
+    {icon:"💼", action:"上午9:30-11:00黄金窗口投3家AI产品运营岗", why:"周四投递回复率最高·AI岗位需求同比+87.7%", how:"BOSS直聘/猎聘/脉脉三端同步刷新简历+投递", priority:"P0"},
+    {icon:"🔧", action:"DeepSeek涨价前评估工具链成本", why:"8/17生效·高峰时段输出价涨至27元/百万tokens(约4.5倍)", how:"把高峰重活切到Qwen3.8-Max/Kimi K3·DeepSeek只跑非高峰任务", priority:"P0"},
+    {icon:"📈", action:"关注沪指能否站稳3927→突破4000", why:"缩量上涨持续性存疑·权重撑指数但多数股下跌", how:"不追涨停板·若看好AI硬件主线等回调分批买入·仓位≤3成", priority:"P1"},
+    {icon:"🏋️", action:"完成今日背+二头训练（第3周适应期）", why:"增肌适应期过半·动作模式标准化是关键", how:"引体向上→杠铃划船→哑铃弯举·训练后香蕉乳清奶昔", priority:"P1"},
+    {icon:"📚", action:"花30分钟精读CoreWeave财报解读", why:"AI云服务商业模型=AI产品/运营面试高频话题", how:"读网站学习区AI云服务专题→总结3个面试可讲的要点", priority:"P2"}
+  ]
+};
+
+// ===== 小白学习路径（面向小白的每日一课科普）=====
+// 每个板块分 3 级：L1入门(小白)→L2进阶→L3精通
+// 每日更新时更新 lesson（今日一课）——每天教一个小知识点，积累成体系
+var LEARN_PATHS = {
+  updated: "2026-08-15",
+  current_day: 1,           // 当前学到第几天（用于每日一课轮换）
+  paths: {
+    stock: {
+      icon: "📈",
+      title: "股市小白进阶",
+      lesson: {emoji:"🧠", title:"为什么指数涨了，我的股票却在跌？", content:"今天教你一个关键概念：【指数≠个股】。沪指是几百只权重股按市值加权算出来的平均数——茅台、银行、中石油这些大盘股涨，指数就红；但市场上4000多只股票里，可能有3000只在跌。所以看到【沪指+0.01%】别以为市场很好，要再看【涨跌家数】：2400涨3000跌=赚指数不赚钱，说明只有权重股在涨，散户手里的中小票普遍在跌。记住：指数是面子，涨跌家数是里子。", takeaway:"看大盘先看【涨跌家数】再看【指数】——指数红不一定赚钱，涨跌家数红才是真红。"},
+      next: "L2进阶：学会看成交量——缩量上涨意味着什么？"
+    },
+    car: {
+      icon: "🚗",
+      title: "购车小白入门",
+      lesson: {emoji:"🔋", title:"买电车先看这5个参数，别被销售忽悠", content:"①续航：标称续航×0.7≈真实续航（高速/开空调打7折）；②充电功率：家用桩7kW充满要8小时，快充桩100kW半小时到80%；③电池：磷酸铁锂(便宜耐用)vs三元锂(能量密度高)，南方选磷酸铁锂够用；④智驾：L2辅助(车道保持+自适应巡航)够日常，别为用不上的L3多花5万；⑤保值率：前3年贬值最快，电车3年保值率普遍50-60%。15-20万价位选：比亚迪海豹07EV(均衡)/小鹏MONA M03(智驾)/极氪007(操控)。", takeaway:"先定预算和用车场景（通勤/长途/家用），再选车型——参数是筛选工具，不是说服自己的理由。"},
+      next: "L2进阶：贷款/全款怎么选？金融方案对比"
+    },
+    learning: {
+      icon: "🎓",
+      title: "AI小白入门",
+      lesson: {emoji:"🤖", title:"大模型到底是什么？10分钟建立底层认知", content:"大模型=一个读了整个互联网的超级预测器。它做的事情只有一件：根据上文预测下一个字（Token）。你问【今天天气怎么样】，它不是在查数据库，而是在按概率生成最像正确答案的句子。为什么它看起来【懂】？因为训练时它看了海量文本，学会了文字之间的规律。为什么它会【胡说】？因为它是在【编造最合理的回答】，不是【查证事实】——这就是幻觉的来源。类比：一个博览群书但从不查证的学霸。", takeaway:"大模型=概率生成器，不是知识库——所以重要信息要交叉验证，这就是为什么AI工具要配合搜索使用。"},
+      next: "L2进阶：Token/上下文/参数是什么？拆解模型规格"
+    },
+    "ai-track": {
+      icon: "🤖",
+      title: "AI行业观察入门",
+      lesson: {emoji:"🌐", title:"开源vs闭源：一场决定AI未来的路线之争", content:"闭源模型（GPT/Claude）=私家菜馆：菜好吃但不给你菜谱，想用只能花钱来吃。开源模型（DeepSeek/Qwen）=公开菜谱：谁都能下载研究、改进、自己开分店。为什么开源重要？①成本：开源可私有部署，数据不出域，企业省钱又安全；②进步：全球开发者一起改进，进步速度超过单个公司；③垄断：防止AI能力集中在少数巨头手里。中国为什么押注开源？因为开源是后发者打破技术垄断的武器——HuggingFace前6名全是国产模型。", takeaway:"开源vs闭源不是技术优劣之争，是【生态路线】之争——面试聊AI必讲这个话题。"},
+      next: "L2进阶：AI产业链地图——从芯片到应用的钱都流向哪"
+    },
+    house: {
+      icon: "🏠",
+      title: "购房租房小白入门",
+      lesson: {emoji:"🏙️", title:"首付15%是什么概念？广州买房账本算给你看", content:"2026年广州首套首付降到15%——史上最低。算笔账：增城新房约1.4万/平米，买80平=112万，首付15%=16.8万，贷款95万，30年利率3.4%，月供约4200元。看起来门槛很低？但别忘了：①税费+中介+装修≈10万；②月供不能超过月收入40%（银行要求）；③期房有烂尾风险（广州正推现房销售试点）。结论：首付低≠买得起，要算【全周期成本】。如果月收入1万以下，先租房攒首付，广州天河-番禺通勤圈整租1500-2200元/月。", takeaway:"买房算三笔账：首付+月供+税费装修——首付只是入场券，月供才是长期承诺。"},
+      next: "L2进阶：等额本息vs等额本金——30年差多少钱？"
+    },
+    diet: {
+      icon: "🍽️",
+      title: "健康饮食小课堂",
+      lesson: {emoji:"💧", title:"肾结石患者夏天怎么喝水？比你想的讲究", content:"广州37°C高温+出汗多=尿液浓缩，草酸钙结晶风险飙升（你的结石类型）。正确喝水法：①每天≥2.5L，分次喝（每小时200ml），别等渴了才喝；②柠檬水最佳——柠檬酸能抑制草酸钙结晶（每天1-2片柠檬泡水）；③避开高草酸食物：菠菜/苋菜/浓茶/巧克力/花生；④少喝含糖饮料——果糖促进尿酸生成；⑤睡前喝一杯水（夜间尿液最浓缩）。训练时额外补水：前中后≥1.5L+电解质饮料。", takeaway:"结石预防=足量分散喝水+柠檬水+控草酸——喝水是成本最低的预防药。"},
+      next: "L2进阶：甲状腺结节饮食——硒的作用与补充"
+    }
+  }
+};
+
+// ===== Agent × 大模型 组合评分（为你量身推荐）=====
+// 评分维度：编程能力 / 性价比 / 中文能力 / 生态成熟度 / 速度，各100分制
+// 综合 = 编程40% + 性价比25% + 中文15% + 生态10% + 速度10%
+var AGENT_STACKS = {
+  updated: "2026-08-15",
+  description: "常用 Agent（Claude Code / Codex / DeepSeek Harness）+ 大模型的组合评分 · 针对钟锐的实际使用场景（日常编程+求职+AI学习）",
+  stacks: [
+    {agent:"Claude Code", model:"DeepSeek V4-Flash", emoji:"⚡",
+      score:{编程:86, 性价比:95, 中文:90, 生态:80, 速度:95}, 综合:89,
+      monthly_cost:"¥0-30（涨价前）", monthly_cost_note:"涨价后预计¥60-120/月",
+      pros:"速度极快·成本极低·中文流畅·Claude Code的Agent能力+DeepSeek的性价比=日常首选",
+      cons:"复杂多步任务偶尔退化·8/17涨价后成本翻4.5倍需重新评估·长上下文性能下降",
+      best_for:"日常编程·学习答疑·中文任务·高频低难度任务·预算敏感场景",
+      verdict:"当前最推荐·涨价前锁定预算，涨价后高峰时段切Qwen"},
+    {agent:"Claude Code", model:"Claude Sonnet 4.6", emoji:"🎵",
+      score:{编程:90, 性价比:70, 中文:80, 生态:92, 速度:80}, 综合:84,
+      monthly_cost:"$20/月订阅",
+      monthly_cost_note:"API $3/$15 另计",
+      pros:"官方原生配对·Agent工具使用最流畅·代码审查质量高·生态最成熟",
+      cons:"中文弱于国产模型·API成本是DeepSeek数倍·速度中等",
+      best_for:"复杂代码审查·架构设计·需要稳定输出的生产级任务",
+      verdict:"代码质量要求高时切换·日常高频用DeepSeek省钱"},
+    {agent:"Claude Code", model:"Claude Opus 5", emoji:"👑",
+      score:{编程:95, 性价比:45, 中文:75, 生态:95, 速度:60}, 综合:79,
+      monthly_cost:"$100/月 Max",
+      monthly_cost_note:"最贵组合之一",
+      pros:"推理深度业界顶尖·复杂架构/数学/算法最强·长文档精准理解",
+      cons:"贵·慢·不适合高频·中文一般",
+      best_for:"高难度算法·复杂架构设计·安全关键代码·深度研究",
+      verdict:"重活专用·低频使用·日常别用它烧钱"},
+    {agent:"Codex", model:"GPT-5.6 Luna", emoji:"🌙",
+      score:{编程:82, 性价比:88, 中文:85, 生态:85, 速度:88}, 综合:84,
+      monthly_cost:"免费（网页）/API $0.2+$1.2",
+      monthly_cost_note:"降价80%后很划算",
+      pros:"免费可用·降价后性价比高·OpenAI生态整合好",
+      cons:"Codex Agent能力弱于Claude Code·复杂任务需Sol·免费版限流",
+      best_for:"日常问答·原型验证·轻量代码任务·不花钱的方案",
+      verdict:"免费备胎·不花一分钱也能干活"},
+    {agent:"Codex", model:"GPT-5.6 Sol", emoji:"☀️",
+      score:{编程:90, 性价比:50, 中文:82, 生态:88, 速度:70}, 综合:80,
+      monthly_cost:"$20/月 Plus",
+      monthly_cost_note:"API $5/$30 较贵",
+      pros:"推理强·金融/法律/医疗精度高·五级推理可调",
+      cons:"贵·慢·Codex生态不如Claude Code成熟",
+      best_for:"深度推理·专业文档·复杂Agent编排",
+      verdict:"特定专业场景使用·日常性价比不如DeepSeek"},
+    {agent:"DeepSeek Harness", model:"DeepSeek V4-Pro", emoji:"🐋",
+      score:{编程:84, 性价比:82, 中文:95, 生态:70, 速度:75}, 综合:83,
+      monthly_cost:"开源免费（本地部署）",
+      monthly_cost_note:"V4-Pro-0813 开源可本地部署",
+      pros:"中文最强·开源可私有化·插件生态起步快（一切皆插件）·本地部署数据不出域",
+      cons:"生态年轻（对标Claude Cowork中）·插件数量少·复杂任务尚待打磨",
+      best_for:"中文优先任务·隐私敏感场景·本地部署·探索插件生态",
+      verdict:"值得持续关注·插件生态成熟后可能成为你的主力"},
+    {agent:"DeepSeek Harness", model:"Qwen3.8-Max", emoji:"🐬",
+      score:{编程:86, 性价比:90, 中文:94, 生态:75, 速度:72}, 综合:86,
+      monthly_cost:"$2/$6（即将开源免费部署）",
+      monthly_cost_note:"下周开源权重可私有部署",
+      pros:"2.4T参数旗舰·即将开源可部署·$2/$6性价比极高·1M超长上下文·PaperBench 93分",
+      cons:"尚未正式开源·真实软件工程稳定性待验证·Harness生态还需磨合",
+      best_for:"涨价后的最佳平替·长文档·多模态·私有化部署",
+      verdict:"下周开源后强烈推荐试用·DeepSeek涨价后的主力候选"},
+    {agent:"Cursor", model:"DeepSeek V4-Flash", emoji:"🖱️",
+      score:{编程:85, 性价比:90, 中文:88, 生态:85, 速度:92}, 综合:87,
+      monthly_cost:"$20/月订阅",
+      monthly_cost_note:"IDE集成体验最好",
+      pros:"IDE内编辑体验最好·多模型切换方便·适合边看边改",
+      cons:"订阅费固定·重度使用还是走API划算·Agent任务不如Claude Code",
+      best_for:"日常IDE内开发·多模型对比·不想离开编辑器的场景",
+      verdict:"如果你用VS Code多，Cursor+DeepSeek是顺手选择"},
+    {agent:"Claude Code", model:"Qwen3.8-Max", emoji:"🎯",
+      score:{编程:87, 性价比:88, 中文:92, 生态:75, 速度:70}, 综合:85,
+      monthly_cost:"$2/$6（开源后免费部署）",
+      monthly_cost_note:"跨生态组合",
+      pros:"Claude Code编排能力+Qwen性价比·开源后可私有部署·中文好",
+      cons:"非官方配对需配置·生态支持依赖社区·速度中等",
+      best_for:"DeepSeek涨价后的主力替代·中文+编程兼顾",
+      verdict:"涨价后最优解之一·值得配置"},
+    {agent:"Claude Code", model:"Kimi K3", emoji:"🔥",
+      score:{编程:83, 性价比:78, 中文:93, 生态:70, 速度:75}, 综合:82,
+      monthly_cost:"$3/$15",
+      monthly_cost_note:"K3发布时涨了3-4倍",
+      pros:"国产旗舰中文最强·长上下文256K·开源生态活跃",
+      cons:"英文弱·生态不如Claude/GPT·涨过价",
+      best_for:"中文长文档·学术研究·国产替代",
+      verdict:"中文场景的好备选·综合不如Qwen即将开源的性价比"}
+  ],
+  recommendation: "💡 结论：日常主力 = Claude Code + DeepSeek V4-Flash（涨价前锁定预算）；8/17涨价后 = Claude Code + Qwen3.8-Max（下周开源免费部署）或 Harness + Qwen3.8-Max；重活专用 = Claude Code + Sonnet 4.6 / Opus 5；免费备胎 = Codex + Luna。Harness 的插件生态值得持续关注，成熟后可作为中文+隐私场景主力。"
+};
+
 var OPTIMIZATION_LOG = {
   date: "2026-08-15",
-  total_suggestions: 46,
-  total_implemented: 39,
+  total_suggestions: 50,
+  total_implemented: 42,
   streak_days: 26,
   suggestions: [
     {id:1, cat:"已归档", title:"AI追踪板块周报自动生成", desc:"每周一自动汇总上周AI融资/模型发布/价格变动→已集成至INSIGHTS.ai-track周度总结", priority:"P1", status:"已完成"},
@@ -369,12 +519,16 @@ var OPTIMIZATION_LOG = {
     {id:44, cat:"数据优化", title:"修复stock/news板块8/12旧数据残留+固化内容质量标准", desc:"发现stock.summary同时出现沪指+0.01%收3927.18和+0.32%收3946.51两个矛盾点位（8/15只改了首句，正文残留8/12旧数据）。已修复+在CLAUDE.md新增内容质量标准（日期一致性/双视角/禁止只改标题）。后续每日更新强制遵守", priority:"P1", status:"已完成"},
     {id:45, cat:"功能优化", title:"AI工具链雷达(TOOLCHAIN_RADAR)上线+推送模板改造", desc:"新增TOOLCHAIN_RADAR数据块（只追踪钟锐工具链：Claude Code+DeepSeek+Harness），index.html新增🔧AI工具链雷达板块，life_os_push.py早晚推送加入工具链速报，daily_update.py模板加入雷达必填项。首次内容：Harness公测/V4涨价4.5倍/Qwen3.8开源/V4-Pro-0813", priority:"P1", status:"已完成"},
     {id:46, cat:"体验优化", title:"INSIGHTS新增verdict结论先行字段（小白友好）", desc:"用户反馈股票板块只有数据没有结论。新增verdict字段：2-4句大白话回答①发生了什么②意味着什么/结果③该不该动④关注信号。首页卡片金色高亮展示🎯结论，详情页verdict置顶。stock/news/ai-track已填实盘内容，daily_update.py模板+CLAUDE.md质量标准已固化。目标：所有板块从【数据罗列】升级为【结果导向】", priority:"P1", status:"已完成"},
+    {id:47, cat:"功能优化", title:"今日决策单(DAILY_DECISIONS)：信息→行动", desc:"基于信息价值理念：首页新增📌今日决策单卡片，每日3-5条可执行决策（做什么/为什么现在/怎么做/优先级P0-P2）。daily_data.js新增DAILY_DECISIONS数据块+index.html渲染+onDataReady接入。首日内容：投递简历/工具链成本评估/股市信号/健身/学习", priority:"P1", status:"已完成"},
+    {id:48, cat:"功能优化", title:"小白课堂(LEARN_PATHS)：每日一课科普", desc:"用户反馈股票/车型等板块看不懂。新增📚小白课堂·每日一课：stock/car/learning/ai-track/house/diet六板块分级学习路径（L1入门→L2进阶→L3精通），每课讲透一个小知识点+记忆要点+下一课预告，支持换一课轮换。首页卡片展示+LEARN_PATHS数据块", priority:"P1", status:"已完成"},
+    {id:49, cat:"功能优化", title:"Agent×大模型组合评分(AGENT_STACKS)", desc:"新增9种常用组合评分（Claude Code/Codex/Harness/Cursor × DeepSeek/Qwen/Claude/GPT/Kimi）：编程/性价比/中文/生态/速度五维+综合分+月成本+优缺点+适配场景+结论建议。ai-track板块新增组合推荐表（点击展开详情）。首日数据：日常主力=Claude Code+DeepSeek V4-Flash，涨价后切Qwen3.8-Max", priority:"P1", status:"已完成"},
+    {id:50, cat:"功能优化", title:"板块价值权重系统+新闻噪音过滤", desc:"personal_config.js新增section_weights（0-5星，按钟锐信息价值偏好：工具链/股市/求职=5星，娱乐=1-2星）+news_filters（关注词/屏蔽词）。首页分类卡片按权重排序+高价值分类🔥标注+低价值降透明度+⭐标记，新闻RSS/推送双重过滤。信息价值最大化：3秒看到今天最重要的事", priority:"P1", status:"已完成"},
   ]
 };
 
 var WEBSITE_GUIDE = {
   updated: "2026-08-15",
-  summary: "欢迎来到钟锐的个人数字空间！这是一个持续进化的智能信息中枢，每天自动更新所有内容。版本1.2.16。新增：🎯结论先行（verdict）——股票/AI/求职板块先给结果再讲数据，小白也能看懂。",
+  summary: "欢迎来到钟锐的个人数字空间！这是一个持续进化的智能信息中枢，每天自动更新所有内容。版本1.3.0。新增：📌今日决策单（信息→行动）+ 📚小白课堂每日一课 + 🤖Agent×大模型组合评分 + 板块价值权重排序。每天打开都是新的，每天都有提升。",
   features: [
     {icon:"🏠", title:"首页仪表盘", desc:"一屏总览所有板块精华。分类卡片快速导航、实时股市/天气/新闻一目了然。点击分类卡片进入分类页。"},
     {icon:"📂", title:"分类浏览", desc:"点击侧边栏分类标题(👤关于/🎮娱乐/🏃生活/📊财经/🤖工具)，进入分类页集中浏览该类别所有板块。"},
@@ -483,8 +637,8 @@ var DAILY_VOCAB = {
 };
 
 var AI_MODEL_COMPARISON = {
-  updated: "2026-08-10",
-  description: "主流大模型全维度对比 · 同系列区分(Flash/Pro/Luna/Sol/Max) · 百分制评分 · 综合加权评分 · 最新价格(含调价标注) · 每日更新",
+  updated: "2026-08-15",
+  description: "主流大模型全维度对比 · 同系列区分(Flash/Pro/Luna/Sol/Max) · 百分制评分 · 综合加权评分 · 最新价格(含调价标注) · 每日更新 · 8/15更新：DeepSeek涨价方案确认+V4-Pro-0813开源+Harness公测+Qwen3.8-Max下周开源",
   models: [
     // ===== DeepSeek 系列 =====
     {name:"DeepSeek V4-Flash", emoji:"⚡", provider:"DeepSeek", series:"V4轻量高频版", tier:"性价比之王",
@@ -494,18 +648,18 @@ var AI_MODEL_COMPARISON = {
      strengths:"速度极快(40s完成GPT需107s的任务)·全球Token消耗量第一·缓存命中仅¥0.02/1M·支持2500并发·Agent基准碾压同级",
      weaknesses:"长上下文(>128K)性能下降·多步复杂Agent任务退化·不支持图片输入·知识截止至2025",
      best_for:"高频API调用·成本敏感场景·简单到中等Agent任务·大规模批处理·原型验证",
-     price_note:"⚠️ 8月6日预告大幅涨价(涨幅待公布)·当前为涨价前价格·建议锁定预算",
+     price_note:"⚠️ 8/17涨价生效：高峰时段输出涨至¥27/百万tokens(约4.5倍)·部分场景最高涨12倍·空闲时段为高峰一半·涨价前价格锁定预算",
      free_tier:"✅ 完全免费(chat.deepseek.com)"
     },
-    {name:"DeepSeek V4-Pro", emoji:"🎯", provider:"DeepSeek", series:"V4旗舰深度版", tier:"旗舰推理(预览中)",
+    {name:"DeepSeek V4-Pro", emoji:"🎯", provider:"DeepSeek", series:"V4旗舰深度版", tier:"旗舰(已开源)",
      input_price:"¥3.00($0.44)", output_price:"¥6.00($0.87)", cost_per_task:"预计$0.08-0.15",
-     intelligence:85, speed:72,性价比:88, 安全:82, 综合:84,
+     intelligence:86, speed:74,性价比:86, 安全:83, 综合:85,
      context:"1M", params:"1.6T(MoE/49B激活)",
-     strengths:"复杂推理深度远超Flash·长上下文性能稳定·多步Agent链式任务·深度代码分析",
-     weaknesses:"目前仅预览版(正式版待发)·并发仅500·速度比Flash慢·预览版Agent基准反而低于Flash正式版",
-     best_for:"复杂推理任务·深度代码审查·多步Agent编排·学术研究·长篇文档分析",
-     price_note:"⚠️ 同受涨价影响·正式版发布后性能将大幅超越预览版·建议观望",
-     free_tier:"❌ 仅API(预览版限时免费)"
+     strengths:"8/13已开源V4-Pro-0813(增强Agent能力)·复杂推理深度远超Flash·长上下文性能稳定·多步Agent链式任务·支持本地部署·Harness官方配套模型",
+     weaknesses:"速度比Flash慢·Agent基准低于Flash正式版·生态仍在建设·涨价后成本上升",
+     best_for:"复杂推理任务·深度代码审查·多步Agent编排·Harness+Pro组合·本地私有化部署",
+     price_note:"🆕 8/13开源V4-Pro-0813·受8/17涨价影响·本地部署可绕开API成本",
+     free_tier:"✅ 开源权重免费下载(本地部署)"
     },
 
     // ===== OpenAI 系列 =====
@@ -616,22 +770,24 @@ var AI_MODEL_COMPARISON = {
    speed: "基于实际API响应速度(TTFT+生成速度)·满分100·90+:极快(<1s首Token)·80-89:快·70-79:中等·<70:慢(深度推理模型常态)",
     综合: "智能50%+性价比35%+速度15%加权·满分100·90+:全能王者·80-89:综合优秀·70-79:偏科型·<70:特定场景专用·可选权益权重(生态/多模态/开源)替换性价比→见scoring_guide末尾",
     安全: "开源透明度+安全围栏+红队测试+对齐投入·满分100·≥85绿(安全标杆:Claude/DeepSeek开源/Qwen开源)·70-84琥珀(有安全措施但透明度不足)·<70灰(安全投入不足:xAI)",
-   updated: "2026-08-10·基于Artificial Analysis+OpenRouter+官方文档+Arena最新榜单"
+   updated: "2026-08-15·基于Artificial Analysis+OpenRouter+官方文档+Arena最新榜单+DeepSeek官方调价公告"
   },
   key_takeaways: [
-    "💰 性价比之王: DeepSeek V4-Flash(98分·$0.03/任务=Claude Fable 5的1/105)·但即将涨价",
+    "💰 性价比之王: DeepSeek V4-Flash(98分·$0.03/任务)·但8/17涨价后高峰成本翻4.5倍→需重新评估",
     "🧠 推理最强: Claude Opus 5(94分)≈GPT-5.6 Sol(92分)·但前者$1.50/任务vs后者$1.86",
-    "🏆 综合最强: DeepSeek V4-Flash综合88分!高性价比+极速拉满·日常首选·Qwen3.8-Max新生力量85分",
-    "🇨🇳 国产新格局: Qwen3.8-Max即将开源(千问旗舰首次)·综合85≈Kimi K3(83)·多模态优势+开源生态·国产三足鼎立",
-    "📈 涨价趋势: DeepSeek预告大幅涨价+中国AI集体提价→低价时代终结·趁涨价前锁定预算",
-    "🎯 推荐策略: 日常用DeepSeek V4-Flash(免费)+国产多模态用Qwen3.8-Max(即将开源·可私有部署)+深度研究用GPT-5.6 Sol"
+    "🏆 综合最强: DeepSeek V4-Flash综合88分!高性价比+极速拉满·日常首选·Qwen3.8-Max 85分紧随",
+    "🇨🇳 国产新格局: Qwen3.8-Max下周开源(千问旗舰首次)+V4-Pro-0813已开源→开源双雄·可私有部署",
+    "🐋 Agent新变量: DeepSeek Harness公测(对标Claude Cowork)+V4-Pro开源→Agent×模型组合成新战场→见AI工具链雷达",
+    "📈 涨价趋势: 8/17 DeepSeek高峰输出¥27/百万tokens(4.5倍)·中国AI集体提价→低价时代终结",
+    "🎯 推荐策略: 涨价前DeepSeek V4-Flash日常用·8/17后切Qwen3.8-Max(下周开源可部署)+Claude Sonnet 4.6(重活)+Codex Luna(免费)"
   ],
   price_adjustments: [
     {model:"GPT-5.6 Luna", date:"2026-07-30", change:"输入↓80%($1.00→$0.20) 输出↓80%($6.00→$1.20)", reason:"应对DeepSeek/Kimi竞争·提升免费用户体验·GPT-5.6 GPU自优化降本20%", impact:"免费用户默认升级·API成本大幅下降·对DeepSeek的性价比优势缩小但未消除"},
-    {model:"DeepSeek全系", date:"2026-08-06预告", change:"预计大幅上涨(具体幅度待公布)", reason:"V4-Flash单日80亿Token致容量告急·从烧钱换规模转向价值定价·创始人:'继续降价不会带来更多需求'", impact:"中国AI低价时代终结·开发者需重新评估成本·但涨价后仍将是全球最便宜旗舰模型"},
+    {model:"DeepSeek全系", date:"2026-08-17生效", change:"高峰时段输出涨至¥27/百万tokens(约4.5倍)·部分场景最高涨12倍·空闲时段为高峰一半", reason:"V4-Flash单日80亿Token致容量告急·从烧钱换规模转向价值定价·创始人:'继续降价不会带来更多需求'", impact:"中国AI低价时代终结·开发者需重新评估成本·涨价后仍将是全球最便宜旗舰模型·8/14官方公布调价方案"},
+    {model:"DeepSeek V4-Pro-0813", date:"2026-08-13", change:"🆕 开源V4-Pro-0813权重(增强Agent能力)", reason:"Harness框架发布·开源V4-Pro支持本地部署·对标Claude Cowork", impact:"Agent场景能力增强·本地部署可绕开API涨价成本·Harness官方配套模型"},
     {model:"Kimi K3", date:"2026年7月", change:"输入涨3倍+输出涨4倍(vs K2.5)", reason:"K3模型能力大幅提升·从价格战转向品质竞争·中国AI行业集体提价趋势", impact:"仍保持国产旗舰性价比最优·中文任务首选地位未变"},
     {model:"Grok 4.6", date:"2026-08-07", change:"不涨价(同Grok 4.5价格)", reason:"Post-training升级·参数量不变·xAI以价格竞争力争取市场份额", impact:"$2/$6的旗舰模型定价极具竞争力·500K上下文+月更速度是差异化优势"},
-    {model:"Qwen3.8-Max", date:"2026-08-03", change:"🆕 全新发布 $2/$6(国际) ¥12/¥36(国内)", reason:"阿里新一代旗舰·2.4T参数·Arena综合第5·PaperBench 93.0创纪录·千问从追赶者变为第一梯队", impact:"国产模型格局从DeepSeek/Kimi双雄→三足鼎立·多模态视觉成差异化武器·8月中旬开源Max+27B·千问旗舰首次"}
+    {model:"Qwen3.8-Max", date:"2026-08-03", change:"🆕 全新发布 $2/$6(国际) ¥12/¥36(国内)·下周开源", reason:"阿里新一代旗舰·2.4T参数·Arena综合第5·PaperBench 93.0创纪录·千问从追赶者变为第一梯队", impact:"国产模型格局从DeepSeek/Kimi双雄→三足鼎立·多模态视觉成差异化武器·8月中旬开源Max+27B·千问旗舰首次"}
   ]
 };
 
