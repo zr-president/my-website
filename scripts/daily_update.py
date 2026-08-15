@@ -22,7 +22,7 @@ Sections updated:
   - WEBSITE_GUIDE date
 """
 
-import sys, os, io, re, subprocess, argparse
+import sys, os, io, re, json, subprocess, argparse
 from datetime import datetime
 
 if sys.platform == 'win32':
@@ -109,6 +109,16 @@ CONFIG = {
     "new_suggestions": [
         # {id, cat, title, desc, priority, status}
     ],
+
+    # TOOLCHAIN_RADAR — 必填！每日更新时如实填写用户工具链动态
+    # 只关注钟锐在用的工具链（Claude Code + DeepSeek + Harness + 其他模型）
+    # 每个 item 回答：发生了什么 → 对我意味着什么 → 价格/性价比变化 → 行动建议
+    "toolchain_radar": {
+        "headline": "一句话概括今日工具链最重要的变化（如：DeepSeek Harness 公测 / V4 API 涨价）",
+        "items": [
+            # {topic, type(新工具/价格变化/替代方案/模型更新/生态观察), summary, impact, action}
+        ],
+    },
 
     # Total suggestion count after adding new ones
     "total_suggestions": 38,
@@ -214,6 +224,42 @@ class DailyUpdater:
         # we search for patterns. This is intentionally left as a manual step for now.
         print("  ⚠ Date fields require manual update — use _update_812.py pattern")
 
+    def update_toolchain_radar(self):
+        """Replace TOOLCHAIN_RADAR block with today's values (must be filled in CONFIG)."""
+        print("\n── TOOLCHAIN_RADAR ──")
+        cfg = self.cfg.get("toolchain_radar", {})
+        items = cfg.get("items", [])
+        if not items:
+            print("  ⚠ toolchain_radar.items 为空 — 跳过（请务必填写！）")
+            return
+
+        def _js_str(s):
+            return json.dumps(str(s), ensure_ascii=False)
+
+        parts = [f"  updated: {_js_str(self.cfg['date_iso'])},"]
+        parts.append(f"  headline: {_js_str(cfg.get('headline', ''))},")
+        parts.append("  items: [")
+        for it in items:
+            parts.append("    {")
+            for k in ("topic", "type", "summary", "impact", "action"):
+                if k in it:
+                    parts.append(f"      {k}: {_js_str(it[k])},")
+            parts.append("    },")
+        parts.append("  ]")
+        new_block = "\n".join(parts)
+
+        # Find and replace the whole TOOLCHAIN_RADAR object (from `var TOOLCHAIN_RADAR = {` to the closing `};` before `// =====` next section marker or end)
+        import re as _re
+        pattern = r"var TOOLCHAIN_RADAR = \{[^}]*\};"
+        m = _re.search(pattern, self.content, _re.S)
+        if m:
+            self.content = self.content[:m.start()] + "var TOOLCHAIN_RADAR = {\n" + new_block + "\n};" + self.content[m.end():]
+            self.changes += 1
+            print(f"  ✓ TOOLCHAIN_RADAR 更新 ({len(items)} 条)")
+        else:
+            self.errors.append("TOOLCHAIN_RADAR block not found")
+            print("  ✗ TOOLCHAIN_RADAR block not found")
+
     def run(self, commit=False):
         print(f"\n{'='*60}")
         print(f"Daily Update — {self.cfg['date_cn']}")
@@ -221,6 +267,7 @@ class DailyUpdater:
 
         self.load()
         self.update_core_fields()
+        self.update_toolchain_radar()
 
         self.save()
         self.validate()

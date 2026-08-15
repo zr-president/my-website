@@ -84,6 +84,14 @@ GitHub：https://github.com/zr-president/my-website
 4. **daily_data.js 的 onDataReady() 调用必须在文件末尾**——否则全部板块不渲染
 5. **版本号三处同步**：daily_data.js (SITE_VERSION) + index.html (缓存破坏符 v=) + WEBSITE_GUIDE
 
+## 内容质量标准（每日更新必读）
+
+1. **板块日期一致性**：更新某个板块的 summary 时，必须同时检查该板块的 trend/tip/reasoning 是否还是旧日期数据——不允许出现【同一板块内沪指点位自相矛盾】这类拼接错误（曾发生：stock.summary 写 +0.01% 收3927.18 又写 +0.32% 收3946.51）
+2. **TOOLCHAIN_RADAR 必填**：每日更新必须填写工具链雷达（Claude Code + DeepSeek + Harness 相关动态），每个条目回答 4 问：发生了什么→对我意味着什么→价格/性价比变化→行动建议。宁可 2 条精确的，不要 5 条泛泛的
+3. **ai-track 板块双视角**：除行业宏观外，至少 1 条是【贴近用户工具链/求职/投资】的落地解读——参考 TOOLCHAIN_RADAR 联动
+4. **禁止只改标题不改正文**：更新 news_headlines / market_summary 时，同步检查 INSIGHTS.news / INSIGHTS.stock 正文，旧日期数据必须一并刷新或明确标注日期
+5. **每个板块至少含一个可行动建议**：tip 字段必须是【今天/本周能做什么】，不能只描述现象
+
 ## 已知待办
 
 - #1-#38 均已实施完成（见 OPTIMIZATION_LOG，38/38 已完成）

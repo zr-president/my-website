@@ -431,6 +431,10 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 </div>
 <div class="card clickable" onclick="openDetail('ai-track')"><h3>📊 查看完整AI模型追踪</h3><p>国内外大模型版本对比+融资动态+技术突破+招聘信息一站式追踪。</p></div></section>
 
+<section id="toolchain-radar" class="section" data-search="工具链 雷达 DeepSeek Harness Claude Code 插件 模型 涨价 性价比 Agent"><div class="section-header"><h2>🔧 AI工具链雷达</h2><p>你正在用的工具 · 有什么更新 · 对你意味着什么</p></div>
+<div id="toolchainRadarContent"><p style="font-size:12px;color:var(--text3)">🔭 加载工具链动态...</p></div>
+<div class="card clickable" onclick="openDetail('toolchain-radar')"><h3>🔭 查看完整工具链分析</h3><p>逐条解析：发生了什么 → 对我意味着什么 → 价格/性价比变化 → 我要不要行动。</p></div></section>
+
 <section id="news" class="section" data-search="新闻 资讯 财经 国际"><div class="section-header"><h2>📰 新闻资讯</h2><p>今日要闻 · 每日阅读方案</p></div>
 <div id="picks-news" class="picks-container"></div>
 <div class="card" style="padding:12px 16px" id="rssNewsFeed"><p style="font-size:12px;color:var(--text3)">📡 正在加载实时资讯...</p></div>
@@ -1397,7 +1401,7 @@ var CATEGORIES = {
   about:    {icon:'👤', name:'关于·求职', subs:'个人介绍 | 求职中心 | 每日待办', sections:['dashboard','about','career']},
   fun:      {icon:'🎮', name:'娱乐空间', subs:'游戏|音乐|小说|动漫|影视', sections:['gaming','music','novel','anime','movie']},
   life:     {icon:'🏃', name:'生活方式', subs:'穿搭|健身|饮食|精酿|生活助手', sections:['fashion','fitness','diet','beer','life-tips']},
-  finance:  {icon:'📊', name:'财经·学习', subs:'股市 | 购车 | 购房 | 学习 | AI追踪 | 旅游 | 新闻', sections:['stock','car','house','learning','ai-track','travel','news']},
+  finance:  {icon:'📊', name:'财经·学习', subs:'股市 | 购车 | 购房 | 学习 | AI追踪 | 工具链雷达 | 旅游 | 新闻', sections:['stock','car','house','learning','ai-track','toolchain-radar','travel','news']},
   tools:    {icon:'🤖', name:'工具·AI', subs:'使用指南 | 工具收藏夹 | AI助手 | 优化日记', sections:['guide','tools-collection','ai-assistant','optimization']}
 };
 
@@ -1770,6 +1774,12 @@ function showView(viewName, categoryKey){
         sdContent.appendChild(wrapper);
       }
     }
+    // Special: toolchain-radar — full detail view
+    if(categoryKey==='toolchain-radar'){
+      var radarHtml = renderToolchainRadarDetail();
+      var sdContent2 = document.getElementById('sectionDetailContent');
+      sdContent2.innerHTML += radarHtml;
+    }
     // Auto-generate TOC from h3/h4 headings
     setTimeout(function(){
       var toc=document.getElementById('sectionTOC');
@@ -2107,11 +2117,54 @@ function renderModelComparison(){
 function onDataReady(){
   var tasks = [
     function(){ var e=document.getElementById('siteVersion'); if(e) e.textContent = (typeof SITE_VERSION!=='undefined'?SITE_VERSION:''); },
-    renderAllPicks, renderBriefing, renderVocab, renderQuiz, renderMusicPlayer, renderModelComparison, checkUpdateStatus
+    renderAllPicks, renderBriefing, renderVocab, renderQuiz, renderMusicPlayer, renderModelComparison, renderToolchainRadar, checkUpdateStatus
   ];
   tasks.forEach(function(fn){
     try { if(typeof fn==='function') fn(); } catch(e){ console.error('Init error:', e.message); }
   });
+}
+
+// ===== AI工具链雷达渲染 =====
+function renderToolchainRadar(){
+  var container = document.getElementById('toolchainRadarContent');
+  if(!container) return;
+  if(typeof TOOLCHAIN_RADAR==='undefined'){ container.innerHTML = '<p style="font-size:12px;color:var(--text3)">🔭 暂无工具链动态</p>'; return; }
+  var r = TOOLCHAIN_RADAR;
+  var typeColors = {'新工具':'#7c3aed','价格变化':'#dc2626','替代方案':'#059669','模型更新':'#0284c7','生态观察':'#d97706'};
+  var h = '';
+  if(r.headline){
+    h += '<div class="highlight-box" style="border-left:3px solid var(--accent);font-size:12px;font-weight:600;margin-bottom:8px">🎯 '+r.headline+'</div>';
+  }
+  (r.items||[]).forEach(function(it){
+    var tc = typeColors[it.type] || 'var(--accent)';
+    h += '<div class="pick-card" style="cursor:default">';
+    h += '<span class="pick-icon">🔧</span>';
+    h += '<span class="pick-info">';
+    h += '<div class="pick-title" style="white-space:normal">'+it.topic+' <span style="display:inline-block;margin-left:4px;padding:1px 7px;border-radius:10px;font-size:9px;font-weight:700;background:'+tc+';color:#fff">'+it.type+'</span></div>';
+    h += '<div class="pick-desc" style="margin-top:2px">'+it.summary+'</div>';
+    h += '<div style="font-size:10px;color:var(--accent);margin-top:3px">💡 '+it.impact+'</div>';
+    h += '<div style="font-size:10px;color:var(--green);margin-top:2px">✅ 行动：'+it.action+'</div>';
+    h += '</span></div>';
+  });
+  container.innerHTML = h;
+}
+
+// Toolchain radar full detail view
+function renderToolchainRadarDetail(){
+  if(typeof TOOLCHAIN_RADAR==='undefined') return '<p>暂无数据</p>';
+  var r = TOOLCHAIN_RADAR;
+  var typeColors = {'新工具':'#7c3aed','价格变化':'#dc2626','替代方案':'#059669','模型更新':'#0284c7','生态观察':'#d97706'};
+  var h = '<div class="callout info" style="margin-bottom:12px"><strong>🎯 '+r.headline+'</strong><br><span style="font-size:11px">更新于 '+r.updated+' · 只追踪你正在用的工具链（Claude Code + DeepSeek + Harness）</span></div>';
+  (r.items||[]).forEach(function(it, i){
+    var tc = typeColors[it.type] || 'var(--accent)';
+    h += '<div class="card" style="padding:14px 16px;margin-bottom:12px">';
+    h += '<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px"><span class="step-num">'+(i+1)+'</span><strong style="font-size:14px">'+it.topic+'</strong><span style="padding:1px 8px;border-radius:10px;font-size:9px;font-weight:700;background:'+tc+';color:#fff">'+it.type+'</span></div>';
+    h += '<div style="font-size:12px;line-height:1.9"><strong>🔍 发生了什么：</strong>'+it.summary+'</div>';
+    h += '<div style="font-size:12px;line-height:1.9;color:var(--text2)"><strong style="color:var(--accent)">💡 对我意味着什么：</strong>'+it.impact+'</div>';
+    h += '<div style="font-size:12px;line-height:1.9;color:var(--green)"><strong>✅ 行动建议：</strong>'+it.action+'</div>';
+    h += '</div>';
+  });
+  return h;
 }
 
 // FAB scroll visibility
@@ -2251,7 +2304,7 @@ function manualRefresh(){
 
 <script src="detail_content.js"></script>
 <script src="personal_config.js"></script>
-<script src="daily_data.js?v=1.2.14"></script>
+<script src="daily_data.js?v=1.2.15"></script>
 <script defer src="knowledge_index.js"></script>
 </body>
 </html>

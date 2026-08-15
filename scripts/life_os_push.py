@@ -258,6 +258,19 @@ def build_morning(data, config):
             lines.append(f"{stock_trend[:100]}")
         lines.append("")
 
+    # AI Toolchain Radar — 用户最关心的工具链动态（Claude Code + DeepSeek + Harness）
+    radar = data.get("TOOLCHAIN_RADAR", {})
+    radar_items = radar.get("items", []) if isinstance(radar, dict) else []
+    if radar_items:
+        lines.append("🔧 **AI工具链雷达**")
+        lines.append(f"🎯 {_safe_get(radar, 'headline', default='')[:80]}")
+        for it in radar_items[:3]:
+            if isinstance(it, dict):
+                topic = _pick(it, 'topic')[:28]
+                impact = _pick(it, 'impact')[:70]
+                lines.append(f"· **{topic}** — {impact}")
+        lines.append("")
+
     # AI News — top headlines, first one gets 🌟
     headlines = _safe_get(daily, "news_headlines", default=[])
     if headlines and len(headlines) > 0:
@@ -382,6 +395,18 @@ def build_evening(data, config):
         if learn_tip:
             lines.append(f"📚 **学习** | {learn_tip}")
             lines.append("")
+
+    # Toolchain action suggestion — 晚间提醒：工具链决策
+    radar = data.get("TOOLCHAIN_RADAR", {})
+    radar_items = radar.get("items", []) if isinstance(radar, dict) else []
+    if radar_items:
+        lines.append("🔧 **工具链决策**")
+        for it in radar_items[:2]:
+            if isinstance(it, dict):
+                topic = _pick(it, 'topic')[:24]
+                action = _pick(it, 'action')[:80]
+                lines.append(f"· **{topic}** → {action}")
+        lines.append("")
 
     lines.append("─" * 20)
     lines.append("📱 zr-president.github.io/my-website | ⏰22:00复盘")
@@ -518,7 +543,7 @@ def main():
 
     data_vars = [
         "DAILY_DATA", "DAILY_BRIEFING", "INSIGHTS", "DAILY_VOCAB",
-        "PICKS", "INSIGHTS_TODAY_UPDATED", "DAILY_QUIZ"
+        "PICKS", "INSIGHTS_TODAY_UPDATED", "DAILY_QUIZ", "TOOLCHAIN_RADAR"
     ]
     data = extract_js_vars(DAILY_DATA_PATH, data_vars)
 
