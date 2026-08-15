@@ -862,7 +862,31 @@ DETAIL["ai-track"] = '<h2>🤖 AI动态追踪 · 模型 + Agent 全对比</h2><p
 '<h3>🤖 完整 Agent×模型组合评分</h3>'+
 '<p>详见下方实时表格（点击行展开优缺点/结论）。当前最优组合：<strong>Harness+V4-Flash（综合91）</strong>。</p>'+
 '<div id="agent-stacks-inline"></div>'+
-'<div class="callout tip"><strong>📌 一句话结论：</strong>日常主力 Harness+V4-Flash（中文/隐私/性价比）或 Claude Code+V4-Flash（生态）→ 涨价后切 Qwen3.8-Max → 重活 Claude Code+Sonnet 4.6 → 免费备胎 Codex+Luna。</div>';
+'<div class="callout tip"><strong>📌 一句话结论：</strong>日常主力 Harness+V4-Flash（中文/隐私/性价比）或 Claude Code+V4-Flash（生态）→ 涨价后切 Qwen3.8-Max → 重活 Claude Code+Sonnet 4.6 → 免费备胎 Codex+Luna。</div>'+
+
+'<h3>🧩 Harness 插件选型指南（8/15 更新 · 针对钟锐需求）</h3>'+
+'<p>Harness 插件生态已收录 270+ 社区插件（V2EX 精选列表）+ 多个插件市场/管理面板，核心插件可直接安装使用。</p>'+
+'<h4>🔍 视觉替代（解决 DeepSeek 不支持图像）</h4>'+
+'<table class="data-table"><tr><th>插件</th><th>解决什么</th><th>适合场景</th></tr>'+
+'<tr style="background:var(--accent-light)"><td><strong>Deepseek-omnimodal</strong>（开源多模态 MCP）</td><td>纯文本 Agent 打通图像/视频/音频识别+生成（经 Qwen/DashScope 路由）</td><td>让 Harness 分析网站图片（穿搭图/海报/个人照片）· 截图看网站渲染效果</td></tr>'+
+'<tr><td><strong>截图/浏览器类插件</strong>（社区有多种）</td><td>截取网页/元素截图</td><td>配合视觉插件「看图改站」——优化网页设计时先截图对比</td></tr>'+
+'</table>'+
+'<h4>🧠 内容深度思考与记忆</h4>'+
+'<table class="data-table"><tr><th>插件</th><th>解决什么</th><th>适合场景</th></tr>'+
+'<tr style="background:var(--accent-light)"><td><strong>dsh-memory-evolve</strong>（跨会话长期记忆）</td><td>五轨记忆 · git 分支感知 · 自我审查 · 技能自我进化 · 四轨待办 · 提示词管理器</td><td>让 Harness 记住网站偏好/隐私规则/内容风格，避免每次重新解释——日常维护网站的刚需</td></tr>'+
+'<tr><td><strong>superpowers-dsh</strong>（技能包）</td><td>TDD/调试/规划/协作技能（源自 obra/superpowers）</td><td>复杂任务（网站重构/代码调试）时结构化思考</td></tr>'+
+'</table>'+
+'<h4>💼 工作生产力（PPT/简历）</h4>'+
+'<table class="data-table"><tr><th>方向</th><th>方案</th><th>说明</th></tr>'+
+'<tr><td><strong>PPT 生成</strong></td><td>Markdown→PPT 类插件（如 Marp 集成）+ 视觉插件</td><td>Harness 生成 Markdown 大纲 → 转 PPT，或调在线 PPT API</td></tr>'+
+'<tr><td><strong>简历修改</strong></td><td>文档处理类插件 + 网站简历 JSON</td><td>直接读简历工作台数据，按目标岗位 JD 优化措辞</td></tr>'+
+'</table>'+
+'<h4>⚙️ 安装方式（社区已有一键安装）</h4>'+
+'<ul><li><strong>插件市场：</strong>WhaleHub-dsh / dsh-plugin-hub（GitHub 插件市场 · 一键启用/停用 · 带详情与安装）</li>'+
+'<li><strong>插件导航：</strong>awesome-dsh-plugin / awesome-deepseek-harness（按用途分类的精选清单）</li>'+
+'<li><strong>推荐装法：</strong>从插件市场一键安装，或 git clone 插件仓库放入插件目录并启用</li></ul>'+
+'<div class="callout tip"><strong>📌 建议优先级：</strong>🔴 长期记忆（dsh-memory-evolve）→ 🔴 视觉（Deepseek-omnimodal）→ 🟡 截图改站 → 🟡 文档处理（简历/PPT）→ 🟢 技能包。装上后 Harness 维护你的网站会更「懂你」。</div>'+
+'<div class="callout info"><strong>📚 参考资源：</strong>插件精选列表(V2EX 270+插件) · awesome-dsh-plugin(GitHub) · dsh-plugin-hub 插件管理面板 · Deepseek-omnimodal(GitHub 多模态) · dsh-memory-evolve(GitHub 长期记忆)</div>';
 
 DETAIL["life-tips"] = '<h2>📋 生活助手 · 办事指南</h2><p class="detail-subtitle">医保 · 护照 · 港澳通行证 · 社保 · 驾驶证</p>'+
 '<h3>🏥 离职后医保怎么续？</h3>'+

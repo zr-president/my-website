@@ -1,4 +1,4 @@
-var SITE_VERSION = "1.4.8";
+var SITE_VERSION = "1.4.9";
 
 var DAILY_DATA = {
   "update_time": "2026-08-15T12:30:00+08:00",
@@ -458,8 +458,8 @@ var AGENT_STACKS = {
 
 var OPTIMIZATION_LOG = {
   date: "2026-08-15",
-  total_suggestions: 60,
-  total_implemented: 56,
+  total_suggestions: 61,
+  total_implemented: 57,
   streak_days: 26,
   suggestions: [
     {id:1, cat:"已归档", title:"AI追踪板块周报自动生成", desc:"每周一自动汇总上周AI融资/模型发布/价格变动→已集成至INSIGHTS.ai-track周度总结", priority:"P1", status:"已完成"},
@@ -522,12 +522,13 @@ var OPTIMIZATION_LOG = {
     {id:58, cat:"内容优化", title:"工具链知识升级：Harness全家桶评分+对比科普+Qwen开源前瞻", desc:"✅ 8/15按用户反馈：①AGENT_STACKS补充Harness+V4-Flash组合（综合91分·缓存命中率高·官方全家桶）；②TOOLCHAIN_RADAR置顶科普Harness vs Claude Code/Codex区别+缓存命中省钱原理；③ai-track更新加入Harness发布头条；④决策单+小白课堂加入实测Harness/Qwen开源提醒", priority:"P1", status:"已完成"},
     {id:59, cat:"内容优化", title:"AI动态追踪分区重构：Agent对比科普+模型数据更新+生活助手分离", desc:"✅ 8/15按用户反馈：①ai-track详情页重建——新增Harness vs Claude Code/Codex对比表（定位/开源/中文/缓存/生态/价格/结论）；②模型对比表更新为8/15最新（V4-Flash 1M上下文/V4-Pro/Qwen3.8-Max等，删除旧128K数据）；③Agent组合评分表内嵌到详情页；④发现并修复生活助手(医保/护照)内容误放在ai-track的问题，恢复为独立DETAIL[life-tips]", priority:"P1", status:"已完成"},
     {id:60, cat:"内容优化", title:"全板块内容时效修复+每日更新全板块强制+时效词扫描", desc:"✅ 8/15按用户反馈：①动漫区从8/12开播日更新为8/15追番状态、游戏区影之刃零从[当日预售]改为[预售已开启]、影视/新闻/周焦点/每日推荐过期表述全部刷新；②CLAUDE.md每日更新清单明确17板块全量更新+时效词硬规则；③daily_update.py新增check_stale_phrases()扫描[当日预售/当日开播]等过期词，接入run()流程", priority:"P1", status:"已完成"},
+    {id:61, cat:"内容优化", title:"AI动态追踪科普区新增 Harness 插件选型指南", desc:"✅ 8/15按用户需求：科普区新增插件选型——①视觉替代(Deepseek-omnimodal多模态MCP，解决DeepSeek不支持图像)；②长期记忆(dsh-memory-evolve跨会话记忆，维护网站刚需)；③PPT/简历文档处理方向；④安装方式(WhaleHub/dsh-plugin-hub一键装+awesome清单)+优先级建议", priority:"P1", status:"已完成"},
   ]
 };
 
 var WEBSITE_GUIDE = {
   updated: "2026-08-15",
-  summary: "欢迎来到钟锐的个人数字空间！这是一个持续进化的智能信息中枢，每天自动更新所有内容。版本1.4.8。新增：📑全屏详情目录(TOC)折叠优化——小说/动漫/影视等长内容分区右下角不再显示整块目录摘要，改为小标签点击展开。每天打开都是新的，每天都有提升。",
+  summary: "欢迎来到钟锐的个人数字空间！这是一个持续进化的智能信息中枢，每天自动更新所有内容。版本1.4.9。新增：🧩AI动态追踪科普区新增 Harness 插件选型指南——视觉替代(omnimodal)/长期记忆(memory-evolve)/PPT简历/安装方式+优先级建议。每天打开都是新的，每天都有提升。",
   features: [
     {icon:"🏠", title:"首页仪表盘", desc:"一屏总览所有板块精华。分类卡片快速导航、实时股市/天气/新闻一目了然。点击分类卡片进入分类页。"},
     {icon:"📂", title:"分类浏览", desc:"点击侧边栏分类标题(👤关于/🎮娱乐/🏃生活/📊财经/🤖工具)，进入分类页集中浏览该类别所有板块。"},
