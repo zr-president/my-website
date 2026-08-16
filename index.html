@@ -2779,7 +2779,7 @@ function renderLearnPathSection(){
     });
     if(all.length===0) return;
     h += '<div class="card" style="padding:14px 16px;margin-bottom:12px;border-left:3px solid '+(secColors[all[0].it.section]||'var(--accent)')+'">';
-    h += '<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="font-size:16px">'+gName.split(' ')[0]+'</span><strong style="font-size:14px">'+gName+'</strong><span style="font-size:10px;color:var(--text3)">'+all.length+' 课</span></div>';
+    h += '<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><strong style="font-size:14px">'+gName+'</strong><span style="font-size:10px;color:var(--text3)">'+all.length+' 课</span></div>';
     all.forEach(function(entry, i){
       var it = entry.it;
       var uid = 'lps_'+gName.replace(/[^\u4e00-\u9fa5A-Za-z]/g,'')+'_'+i;
@@ -3111,7 +3111,7 @@ function manualRefresh(){
 
 <script defer src="detail_content.js"></script>
 <script defer src="personal_config.js"></script>
-<script defer src="daily_data.js?v=1.5.5"></script>
+<script defer src="daily_data.js?v=1.5.6"></script>
 <script defer src="knowledge_index.js"></script>
 </body>
 </html>
