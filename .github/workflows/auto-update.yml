@@ -1,9 +1,10 @@
 name: AI 每日自动更新
 
 on:
-  schedule:
-    # 北京 8:30（UTC 0:30）每日自动更新内容
-    - cron: '30 0 * * *'
+  # schedule 已停用：用户暂不需要自动更新（未配置 DEEPSEEK_API_KEY 也无法运行），保留手动触发
+  # schedule:
+  #   # 北京 8:30（UTC 0:30）每日自动更新内容
+  #   - cron: '30 0 * * *'
   workflow_dispatch:
 
 permissions:

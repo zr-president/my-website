@@ -2,8 +2,9 @@ name: 快速每日更新
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '35 1 * * *'  # 每天9:35 AM 北京时间
+  # schedule 已停用：该工作流只机械改版本号/日期不改内容，会与手动更新冲突
+  # schedule:
+  #   - cron: '35 1 * * *'  # 每天9:35 AM 北京时间
 
 jobs:
   update:
