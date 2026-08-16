@@ -1,4 +1,4 @@
-var SITE_VERSION = "1.5.5";
+var SITE_VERSION = "1.5.6";
 
 var DAILY_DATA = {
   "update_time": "2026-08-16T08:57:00+08:00",
