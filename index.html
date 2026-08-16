@@ -222,11 +222,11 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="切换暗色">🌙</button>
 </div>
 <div style="padding:4px 16px 0"><div style="font-size:9px;color:var(--text3);margin-bottom:4px">🎨 主题色</div><div class="theme-colors"><span class="theme-dot indigo active" onclick="setColorTheme('indigo')" title="靛蓝"></span><span class="theme-dot ocean" onclick="setColorTheme('ocean')" title="深海蓝"></span><span class="theme-dot emerald" onclick="setColorTheme('emerald')" title="墨绿金"></span><span class="theme-dot rose" onclick="setColorTheme('rose')" title="玫瑰金"></span><span class="theme-dot amber" onclick="setColorTheme('amber')" title="琥珀暖"></span><span class="theme-dot slate" onclick="setColorTheme('slate')" title="石墨灰"></span></div></div>
-<div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','about')">👤 关于</div><a href="#dashboard">📋 每日待办</a><a href="#about">🏠 个人介绍</a><a href="#career">💼 求职中心</a></div>
+<div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','about')">👤 关于</div><a href="#dashboard">📋 每日待办</a><a href="#about">🏠 个人介绍</a><a href="#career">💼 求职中心</a><a href="#mock-interview">🎤 模拟面试舱</a></div>
 <div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','fun')">🎮 娱乐</div><a href="#gaming">🎯 游戏区</a><a href="#music">🎵 音乐区</a><a href="#novel">📖 小说区</a><a href="#anime">🎬 动漫区</a><a href="#movie">🎥 影视区</a></div>
 <div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','life')">🏃 生活</div><a href="#fashion">👔 穿搭推荐</a><a href="#fitness">💪 健身方案</a><a href="#diet">🍽️ 饮食助手</a><a href="#beer">🍺 精酿与调酒</a><a href="#life-hacks">🧩 AI生活妙用</a></div>
-<div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','finance')">📊 财经·学习</div><a href="#stock">📈 股市基金</a><a href="#car">🚗 购车推荐</a><a href="#house">🏠 购房租房</a><a href="#learning">🎓 学习区</a><a href="#travel">✈️ 旅游区</a><a href="#ai-track">🤖 AI动态追踪</a></div>
-<div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','tools')">🤖 工具</div><a href="#guide">📖 使用指南</a><a href="#optimization">🔧 优化日记</a><a href="search.html" target="_blank">📚 知识库搜索</a></div>
+<div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','finance')">📊 财经·学习</div><a href="#stock">📈 股市基金</a><a href="#car">🚗 购车推荐</a><a href="#house">🏠 购房租房</a><a href="#learning">🎓 学习区</a><a href="#skill-radar">🧭 技能雷达</a><a href="#travel">✈️ 旅游区</a><a href="#ai-track">🔭 AI动态追踪</a></div>
+<div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','tools')">🤖 工具</div><a href="#guide">📖 使用指南</a><a href="#opportunity">🎯 机会雷达</a><a href="#optimization">🔧 优化日记</a><a href="search.html" target="_blank">📚 知识库搜索</a></div>
 </nav>
 
 <main class="main">
@@ -385,6 +385,9 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 </div>
 </section>
 
+<section id="mock-interview" class="section" data-search="模拟面试 面试 演练 行为面试 产品分析 Prompt 数据分析 求职"><div class="section-header"><h2>🎤 AI 模拟面试舱</h2><p>选题型 → AI出题 → 作答 → 对照要点 → 自评，成长档案沉淀</p></div>
+<div class="card" style="padding:14px 16px" id="mockInterviewContent"><p style="font-size:12px;color:var(--text3)">🎤 加载模拟面试...</p></div></section>
+
 <section id="learning" class="section" data-search="学习 AI 大模型 GPT Claude Agent 智能体 模型对比 SQL 面试 知识 科普"><div class="section-header"><h2>🎓 学习区 · 全站知识中枢</h2><p>今日新知优先 · 各板块新知识每日汇总 · 学院课程按需展开</p></div>
 <div id="todayKnowledge" style="margin-bottom:8px"></div>
 <!-- 今日学习分析（verdict 优先） -->
@@ -461,7 +464,10 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div class="card" style="padding:12px 16px" id="travelWeather"><div class="info-item"><div class="num">--°C</div><div class="label">加载天气中...</div></div></div>
 <div class="card clickable" onclick="openDetail('travel')"><h3>🌴 查看本周出行方案</h3><p>基于7月天气数据，国内3条避暑路线+国际2个推荐目的地，含全程预算和行程安排。</p></div></section>
 
-<section id="ai-track" class="section" data-search="AI 模型 大模型 开源 GPT Claude Kimi DeepSeek 追踪 动态"><div class="section-header"><h2>🤖 AI动态追踪</h2><p>国内/国际大模型最新动态 · 版本更新 · 融资进展</p></div>
+<section id="skill-radar" class="section" data-search="技能 雷达 能力 自评 学习计划 产品思维 SQL Prompt 数据分析"><div class="section-header"><h2>🧭 技能雷达图</h2><p>AI产品运营/增长运营 8 维能力自评 · 每周一次 · 短板自动给学习建议</p></div>
+<div class="card" style="padding:14px 16px" id="skillRadarContent"><p style="font-size:12px;color:var(--text3)">📡 加载技能雷达...</p></div></section>
+
+<section id="ai-track" class="section" data-search="AI 模型 大模型 开源 GPT Claude Kimi DeepSeek 追踪 动态"><div class="section-header"><h2>🔭 AI动态追踪</h2><p>国内/国际大模型最新动态 · 版本更新 · 融资进展</p></div>
 <div id="picks-ai-track" class="picks-container"></div>
 <div id="model-compare-section" style="margin:12px 0">
   <div class="card" style="overflow-x:auto">
@@ -515,7 +521,12 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <button onclick="refreshVocab()" style="padding:5px 12px;border:1px solid var(--border);border-radius:14px;background:var(--bg);cursor:pointer;font-size:11px;color:var(--text2)">🔄 换一批</button>
 <button onclick="showAllVocab()" style="padding:5px 12px;background:var(--accent);color:#fff;border:none;border-radius:14px;cursor:pointer;font-size:11px">📋 查看全部10个</button>
 </div>
-<div id="vocabFullView" style="display:none;margin-top:8px"></div></section>
+<div id="vocabFullView" style="display:none;margin-top:8px"></div>
+<div id="flashcardBox" class="card" style="padding:12px 14px;margin-top:8px">
+  <div style="font-size:12px;font-weight:700;margin-bottom:4px">🧠 记忆闪卡（间隔重复 · 新词当天+3天+7天复习）</div>
+  <div id="flashcardStats" style="font-size:10px;color:var(--text3);margin-bottom:8px"></div>
+  <div id="flashcardList"></div>
+</div></section>
 
 <section id="daily-quiz" class="section" data-search="每日一练 练习 题目 面试 SQL 题库"><div class="section-header"><h2>📝 每日一练</h2><p>首页展示3道 · 共<span id="quizTotalCount">0</span>题</p></div>
 <div id="quizPreview" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px;margin-bottom:8px"></div>
@@ -685,6 +696,8 @@ function doSearch(q){
 // Avatar
 (function(){
   var img=new Image();
+  img.loading='lazy';  // #70: 头像懒加载，减少首屏请求
+  img.decoding='async';
   img.onload=function(){
     var c=document.getElementById('avatarContainer');
     c.style.background='none';c.innerHTML='';
@@ -1523,11 +1536,11 @@ function renderAllPicks(){
 
 // ===== View Router =====
 var CATEGORIES = {
-  about:    {icon:'👤', name:'关于·求职', subs:'个人介绍 | 求职中心 | 每日待办', sections:['dashboard','about','career']},
+  about:    {icon:'👤', name:'关于·求职', subs:'个人介绍 | 求职中心 | 模拟面试舱 | 每日待办', sections:['dashboard','about','career','mock-interview']},
   fun:      {icon:'🎮', name:'娱乐空间', subs:'游戏|音乐|小说|动漫|影视', sections:['gaming','music','novel','anime','movie']},
   life:     {icon:'🏃', name:'生活方式', subs:'穿搭|健身|饮食|精酿|AI生活妙用', sections:['fashion','fitness','diet','beer','life-hacks']},
-  finance:  {icon:'📊', name:'财经·学习', subs:'股市 | 购车 | 购房 | 学习 | AI追踪 | 工具链雷达 | 旅游', sections:['stock','car','house','learning','ai-track','toolchain-radar','travel']},
-  tools:    {icon:'🤖', name:'工具·AI', subs:'使用指南 | 小白课堂 | 优化日记', sections:['guide','learn-path','optimization']}
+  finance:  {icon:'📊', name:'财经·学习', subs:'股市 | 购车 | 购房 | 学习 | 技能雷达 | AI追踪 | 工具链雷达 | 旅游', sections:['stock','car','house','learning','skill-radar','ai-track','toolchain-radar','travel']},
+  tools:    {icon:'🤖', name:'工具·AI', subs:'使用指南 | 机会雷达 | 小白课堂 | 优化日记', sections:['guide','opportunity','learn-path','optimization']}
 };
 
 // Key sections to show on homepage (everything else hidden)
@@ -2315,7 +2328,7 @@ function renderModelComparison(){
 function onDataReady(){
   var tasks = [
     function(){ var e=document.getElementById('siteVersion'); if(e) e.textContent = (typeof SITE_VERSION!=='undefined'?SITE_VERSION:''); },
-    renderAllPicks, renderBriefing, renderVocab, renderQuiz, renderMusicPlayer, renderModelComparison, renderToolchainRadar, renderOpportunityRadar, renderLifeHacks, renderDailyDecisions, renderLearnPath, renderTodayKnowledge, renderLearningInsight, renderLearnPathMini, renderAgentStacks, checkUpdateStatus
+    renderAllPicks, renderBriefing, renderVocab, renderQuiz, renderMusicPlayer, renderModelComparison, renderToolchainRadar, renderOpportunityRadar, renderLifeHacks, renderSkillRadar, renderFlashcards, renderMockInterview, renderDailyDecisions, renderLearnPath, renderTodayKnowledge, renderLearningInsight, renderLearnPathMini, renderAgentStacks, checkUpdateStatus
   ];
   tasks.forEach(function(fn){
     try { if(typeof fn==='function') fn(); } catch(e){ console.error('Init error:', e.message); }
@@ -2344,6 +2357,17 @@ function renderToolchainRadar(){
     h += '<div style="font-size:10px;color:var(--green);margin-top:2px">✅ 行动：'+it.action+'</div>';
     h += '</span></div>';
   });
+  // #73: 工具×我的场景
+  if(r.my_usages){
+    var mu = r.my_usages;
+    h += '<div style="margin-top:10px;padding:10px 12px;background:var(--bg2);border-radius:8px">';
+    h += '<div style="font-size:11px;font-weight:700;margin-bottom:4px">🧰 工具×我的场景：'+mu.tool+'</div>';
+    h += '<div style="font-size:10px;color:var(--text3);margin-bottom:6px">'+mu.intro+'</div>';
+    (mu.items||[]).forEach(function(it){
+      h += '<div style="font-size:11px;color:var(--text2);margin:3px 0"><b>'+it.emoji+' '+it.title+'：</b>'+it.desc+'</div>';
+    });
+    h += '</div>';
+  }
   container.innerHTML = h;
 }
 
@@ -2395,6 +2419,259 @@ function renderLifeHacks(){
   });
   h += '<div style="font-size:10px;color:var(--text3);margin-top:4px">🔄 更新于 '+r.updated+' · 原则：AI 负责【信息检索+策略生成+提醒】，人负责【决策+执行】</div>';
   container.innerHTML = h;
+}
+
+// ===== 技能雷达图渲染（#71：8维自评→雷达图→短板学习计划）=====
+function getSkillScores(){
+  try { return JSON.parse(localStorage.getItem('skillRadar')||'null'); } catch(e){ return null; }
+}
+function saveSkillScores(scores){
+  localStorage.setItem('skillRadar', JSON.stringify(scores));
+}
+function drawSkillRadar(scores){
+  var canvas = document.getElementById('skillRadarCanvas');
+  if(!canvas || typeof SKILL_RADAR==='undefined') return;
+  var ctx = canvas.getContext('2d');
+  var dims = SKILL_RADAR.dimensions;
+  var W = canvas.width = 320, H = canvas.height = 280;
+  var cx = W/2, cy = H/2 - 5, R = 95;
+  ctx.clearRect(0,0,W,H);
+  var n = dims.length;
+  for(var lv=1; lv<=5; lv++){
+    ctx.beginPath();
+    for(var i=0;i<=n;i++){
+      var idx=i%n, ang=-Math.PI/2+idx*2*Math.PI/n;
+      var x=cx+Math.cos(ang)*R*lv/5, y=cy+Math.sin(ang)*R*lv/5;
+      if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    }
+    ctx.closePath();
+    ctx.strokeStyle = lv===5 ? '#c7d2fe' : '#eef2ff';
+    ctx.stroke();
+  }
+  for(var i=0;i<n;i++){
+    var ang=-Math.PI/2+i*2*Math.PI/n;
+    var x1=cx+Math.cos(ang)*R, y1=cy+Math.sin(ang)*R;
+    ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(x1,y1); ctx.strokeStyle='#e5e7eb'; ctx.stroke();
+    var lx=cx+Math.cos(ang)*(R+20), ly=cy+Math.sin(ang)*(R+20);
+    ctx.fillStyle='#6b7280'; ctx.font='10px sans-serif'; ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.fillText(dims[i].name, lx, ly);
+  }
+  var vals = dims.map(function(d,i){ return ((scores&&scores[i])||0)/5; });
+  ctx.beginPath();
+  for(var i=0;i<=n;i++){
+    var idx=i%n, ang=-Math.PI/2+idx*2*Math.PI/n;
+    var x=cx+Math.cos(ang)*R*vals[idx], y=cy+Math.sin(ang)*R*vals[idx];
+    if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+  }
+  ctx.closePath();
+  ctx.fillStyle='rgba(79,70,229,0.22)'; ctx.fill();
+  ctx.strokeStyle='#4f46e5'; ctx.lineWidth=2; ctx.stroke();
+  for(var i=0;i<n;i++){
+    var ang=-Math.PI/2+i*2*Math.PI/n;
+    var x=cx+Math.cos(ang)*R*vals[i], y=cy+Math.sin(ang)*R*vals[i];
+    ctx.beginPath(); ctx.arc(x,y,3,0,Math.PI*2); ctx.fillStyle='#4f46e5'; ctx.fill();
+  }
+}
+function renderSkillRadar(){
+  var container = document.getElementById('skillRadarContent');
+  if(!container) return;
+  if(typeof SKILL_RADAR==='undefined'){ container.style.display='none'; return; }
+  var r = SKILL_RADAR;
+  var scores = getSkillScores() || {};
+  var h = '';
+  h += '<div style="font-size:11px;color:var(--text3);margin-bottom:10px;padding:8px 10px;background:var(--bg2);border-radius:8px">🎯 '+r.role+' · '+r.intro+'</div>';
+  h += '<div style="display:flex;gap:16px;flex-wrap:wrap">';
+  h += '<div style="flex:0 0 320px"><canvas id="skillRadarCanvas" style="max-width:100%"></canvas></div>';
+  h += '<div style="flex:1;min-width:280px">';
+  r.dimensions.forEach(function(d, i){
+    var v = scores[i] || 0;
+    h += '<div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px dashed var(--border)">';
+    h += '<span style="font-size:14px">'+d.emoji+'</span>';
+    h += '<div style="flex:1"><div style="font-size:12px;font-weight:600">'+d.name+'</div><div style="font-size:10px;color:var(--text3)">'+d.desc+'</div></div>';
+    h += '<div style="display:flex;gap:1px;white-space:nowrap">';
+    for(var s=1;s<=5;s++){
+      h += '<span onclick="setSkillScore('+i+','+s+')" style="cursor:pointer;font-size:15px;color:'+(s<=v?'#f59e0b':'#d1d5db')+'">★</span>';
+    }
+    h += '</div></div>';
+  });
+  h += '</div></div>';
+  var rated = r.dimensions.map(function(d,i){return {i:i, v:(scores[i]||0), d:d};}).filter(function(x){return x.v>0;}).sort(function(a,b){return a.v-b.v;});
+  if(rated.length >= 2){
+    h += '<div style="margin-top:12px;padding:10px 12px;background:linear-gradient(135deg,#fef3c7,#fef9c3);border:1px solid #f59e0b;border-radius:10px">';
+    h += '<div style="font-size:12px;font-weight:700;margin-bottom:6px">📋 本周学习计划（按最低分维度生成）</div>';
+    [0,1].forEach(function(k){
+      var it = rated[k];
+      h += '<div style="font-size:11px;color:#1c1917;margin:4px 0"><b>'+it.d.emoji+' '+it.d.name+'（'+it.v+'星）</b><br>→ '+it.d.how+'<br>📚 '+it.d.resource+'</div>';
+    });
+    h += '</div>';
+  } else {
+    h += '<div style="margin-top:12px;padding:10px 12px;background:var(--bg2);border-radius:8px;font-size:11px;color:var(--text3)">💡 点击上方星星完成自评后，自动生成本周学习计划（优先补最低分维度）</div>';
+  }
+  container.innerHTML = h;
+  drawSkillRadar(scores);
+}
+function setSkillScore(i, s){
+  var scores = getSkillScores() || {};
+  scores[i] = s;
+  saveSkillScores(scores);
+  renderSkillRadar();
+}
+
+// ===== 记忆闪卡系统（#66：间隔重复 当天+3天+7天）=====
+var _flashDueList = [];
+function getFlashcards(){ try{ return JSON.parse(localStorage.getItem('vocabFlashcards')||'{}'); }catch(e){ return {}; } }
+function saveFlashcards(f){ localStorage.setItem('vocabFlashcards', JSON.stringify(f)); }
+function todayStr(){ var d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+function addDaysStr(n){ var d=new Date(); d.setDate(d.getDate()+n); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+function renderFlashcards(){
+  var box = document.getElementById('flashcardBox');
+  if(!box) return;
+  if(typeof DAILY_VOCAB==='undefined' || !DAILY_VOCAB.words){ box.style.display='none'; return; }
+  box.style.display='block';
+  var fc = getFlashcards();
+  var today = todayStr();
+  // 自动把当日新词加入学习队列
+  (DAILY_VOCAB.words||[]).forEach(function(w){
+    if(!fc[w.word]) fc[w.word] = {box:1, due:today, first:today};
+  });
+  saveFlashcards(fc);
+  var counts = {1:0,2:0,3:0};
+  Object.keys(fc).forEach(function(k){ var b=fc[k].box; if(b>=1&&b<=3) counts[b]++; });
+  _flashDueList = [];
+  Object.keys(fc).forEach(function(k){
+    var it = fc[k];
+    if(it.box>=1 && it.box<=3 && it.due <= today){
+      var w = null;
+      (DAILY_VOCAB.words||[]).forEach(function(x){ if(x.word===k) w=x; });
+      if(w) _flashDueList.push({w:w, it:it});
+    }
+  });
+  var statsEl = document.getElementById('flashcardStats');
+  if(statsEl){
+    statsEl.innerHTML = '📊 学习中 <b>'+counts[1]+'</b> · 巩固中 <b>'+counts[2]+'</b> · 已掌握 <b>'+counts[3]+'</b> · 今日待复习 <b>'+_flashDueList.length+'</b> 个（😀认识→间隔+3/7天 · 🤔模糊→+1天 · 😵不认识→明天重学）';
+  }
+  var listEl = document.getElementById('flashcardList');
+  if(!listEl) return;
+  if(_flashDueList.length===0){
+    listEl.innerHTML = '<div style="font-size:11px;color:var(--text3)">✅ 今日复习任务完成！'+counts[3]+' 个词已进入长期记忆，明天继续巩固。</div>';
+    return;
+  }
+  var h = '';
+  _flashDueList.slice(0,5).forEach(function(item, i){
+    var w = item.w, it = item.it;
+    h += '<div style="padding:8px 10px;background:var(--bg2);border-radius:8px;margin-bottom:6px">';
+    h += '<div style="font-size:12px;font-weight:600">'+w.emoji+' '+w.word+' <span class="tag" style="font-size:9px;background:var(--accent);color:#fff">盒'+it.box+'</span></div>';
+    h += '<div style="font-size:10px;color:var(--text2);margin-top:2px">'+w.definition+'</div>';
+    h += '<div style="margin-top:6px;display:flex;gap:6px">';
+    h += '<button onclick="reviewFlashcardByIdx('+i+',1)" style="padding:3px 10px;border:1px solid var(--green);border-radius:10px;background:var(--bg);cursor:pointer;font-size:10px;color:var(--green)">😀 认识</button>';
+    h += '<button onclick="reviewFlashcardByIdx('+i+',2)" style="padding:3px 10px;border:1px solid var(--orange);border-radius:10px;background:var(--bg);cursor:pointer;font-size:10px;color:var(--orange)">🤔 模糊</button>';
+    h += '<button onclick="reviewFlashcardByIdx('+i+',3)" style="padding:3px 10px;border:1px solid var(--red);border-radius:10px;background:var(--bg);cursor:pointer;font-size:10px;color:var(--red)">😵 不认识</button>';
+    h += '</div></div>';
+  });
+  if(_flashDueList.length > 5) h += '<div style="font-size:10px;color:var(--text3)">… 还有 ' + (_flashDueList.length-5) + ' 个，复习完前 5 个自动刷新</div>';
+  listEl.innerHTML = h;
+}
+function reviewFlashcardByIdx(i, level){
+  var item = _flashDueList[i];
+  if(!item) return;
+  var fc = getFlashcards();
+  var it = fc[item.w.word];
+  if(!it) return;
+  if(level===1){
+    it.box = Math.min(it.box+1, 3);
+    it.due = it.box===3 ? addDaysStr(30) : (it.box===2 ? addDaysStr(7) : addDaysStr(3));
+  } else if(level===2){
+    it.due = addDaysStr(1);
+  } else {
+    it.box = 1;
+    it.due = addDaysStr(1);
+  }
+  it.last = todayStr();
+  saveFlashcards(fc);
+  renderFlashcards();
+}
+
+// ===== AI 模拟面试舱（#67：选题型→出题→作答→对照要点→自评→成长档案）=====
+var MOCK_TYPES = {
+  '行为面试': ['行为面试'],
+  '产品分析': ['AI产品设计','运营方案设计','用户分层策略'],
+  '数据分析': ['SQL实操','数据思维','增长实验设计','活动ROI计算','A/B测试'],
+  '增长策略': ['增长策略']
+};
+var _curMockQ = null;
+function getMockLog(){ try{ return JSON.parse(localStorage.getItem('mockInterviewLog')||'[]'); }catch(e){ return []; } }
+function saveMockLog(l){ localStorage.setItem('mockInterviewLog', JSON.stringify(l)); }
+function renderMockInterview(){
+  var c = document.getElementById('mockInterviewContent');
+  if(!c) return;
+  if(typeof DAILY_QUIZ==='undefined' || !DAILY_QUIZ.questions){ c.style.display='none'; return; }
+  var log = getMockLog();
+  var stats = {'好':0,'一般':0,'需改进':0};
+  log.forEach(function(x){ if(stats[x.rate]!==undefined) stats[x.rate]++; });
+  var h = '';
+  h += '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px">';
+  h += '<div style="padding:4px 10px;background:var(--bg2);border-radius:10px;font-size:10px">📊 已练 <b>'+log.length+'</b> 题 · 😀好 '+stats['好']+' · 😐一般 '+stats['一般']+' · 😓需改进 '+stats['需改进']+'</div>';
+  h += '<div style="padding:4px 10px;background:var(--bg2);border-radius:10px;font-size:10px;color:var(--text3)">题目来源：每日一练题库（SQL/产品/Prompt/数据/面试）</div>';
+  h += '</div>';
+  h += '<div style="font-size:11px;font-weight:600;margin-bottom:6px">① 选择题型（随机抽题）</div>';
+  h += '<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px">';
+  Object.keys(MOCK_TYPES).forEach(function(t){
+    h += '<button onclick="startMockQuestion(\''+t+'\')" style="padding:5px 12px;border:1px solid var(--accent);border-radius:14px;background:var(--bg);cursor:pointer;font-size:11px;color:var(--accent)">'+t+'</button>';
+  });
+  h += '</div>';
+  h += '<div style="padding:10px 12px;background:var(--bg2);border-radius:8px;margin-bottom:8px">';
+  h += '<div style="font-size:10px;color:var(--text3)">② 题目 + 作答</div>';
+  h += '<div id="mockQuestionText" style="font-size:12px;line-height:1.8;margin-top:6px;color:var(--text3)">点击上方题型开始抽题…</div>';
+  h += '</div>';
+  h += '<textarea id="mockAnswerInput" rows="5" placeholder="✍️ 写下你的回答（尽量用 STAR 法则 / 结构化表达 / 数据支撑）..." style="width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:8px;font-size:12px;font-family:inherit;background:var(--bg);color:var(--text);box-sizing:border-box"></textarea>';
+  h += '<div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap">';
+  h += '<button onclick="showMockTips()" style="padding:5px 12px;background:var(--accent);color:#fff;border:none;border-radius:14px;cursor:pointer;font-size:11px">💡 对照要点</button>';
+  h += '<button onclick="rateMockAnswer(\'好\')" style="padding:5px 12px;border:1px solid var(--green);border-radius:14px;background:var(--bg);cursor:pointer;font-size:11px;color:var(--green)">😀 我答得好</button>';
+  h += '<button onclick="rateMockAnswer(\'一般\')" style="padding:5px 12px;border:1px solid var(--orange);border-radius:14px;background:var(--bg);cursor:pointer;font-size:11px;color:var(--orange)">😐 一般</button>';
+  h += '<button onclick="rateMockAnswer(\'需改进\')" style="padding:5px 12px;border:1px solid var(--red);border-radius:14px;background:var(--bg);cursor:pointer;font-size:11px;color:var(--red)">😓 需改进</button>';
+  h += '</div>';
+  h += '<div id="mockTipsBox" style="display:none;margin-top:8px;padding:10px 12px;background:linear-gradient(135deg,#fef3c7,#fef9c3);border:1px solid #f59e0b;border-radius:8px;font-size:11px;line-height:1.8"></div>';
+  if(log.length > 0){
+    h += '<div style="font-size:11px;font-weight:600;margin:12px 0 6px">③ 面试成长档案（最近10次）</div>';
+    h += '<div style="font-size:10px">';
+    log.slice(-10).reverse().forEach(function(x){
+      h += '<div style="padding:5px 8px;background:var(--bg);border:1px solid var(--border);border-radius:6px;margin-bottom:4px">['+x.date+'] '+x.type+' · '+x.title.substring(0,30)+'… · <b>'+x.rate+'</b></div>';
+    });
+    h += '</div>';
+  }
+  c.innerHTML = h;
+}
+function startMockQuestion(type){
+  var types = MOCK_TYPES[type] || [type];
+  var pool = DAILY_QUIZ.questions.filter(function(q){ return types.indexOf(q.type)>=0; });
+  if(pool.length===0){ alert('该题型暂无题目'); return; }
+  var q = pool[Math.floor(Math.random()*pool.length)];
+  _curMockQ = q;
+  var box = document.getElementById('mockQuestionText');
+  if(box) box.innerHTML = '<b style="color:var(--accent)">【'+type+'】</b> '+q.question;
+  var tips = document.getElementById('mockTipsBox');
+  if(tips){ tips.style.display='none'; tips.innerHTML=''; }
+  var input = document.getElementById('mockAnswerInput');
+  if(input) input.value='';
+}
+function showMockTips(){
+  if(!_curMockQ){ alert('先点击上方题型抽一道题'); return; }
+  var tips = document.getElementById('mockTipsBox');
+  if(!tips) return;
+  tips.style.display='block';
+  tips.innerHTML = '<b>💡 答题要点（参考）：</b><br>' + (_curMockQ.tip||'无');
+}
+function rateMockAnswer(rate){
+  if(!_curMockQ){ alert('先点击上方题型抽一道题'); return; }
+  var input = document.getElementById('mockAnswerInput');
+  var answer = input ? input.value.trim() : '';
+  var log = getMockLog();
+  log.push({date: todayStr(), type: _curMockQ.type, title: _curMockQ.question.substring(0,60), rate: rate, hasAnswer: answer.length>0});
+  saveMockLog(log);
+  renderMockInterview();
+  var tips = document.getElementById('mockTipsBox');
+  if(tips){ tips.style.display='block'; tips.innerHTML='✅ 已记录到成长档案！可以换题型继续练。'; }
+  _curMockQ = null;
 }
 
 // ===== 今日决策单渲染（信息→行动）=====
@@ -2834,9 +3111,9 @@ function manualRefresh(){
 
 </script>
 
-<script src="detail_content.js"></script>
-<script src="personal_config.js"></script>
-<script src="daily_data.js?v=1.5.3"></script>
+<script defer src="detail_content.js"></script>
+<script defer src="personal_config.js"></script>
+<script defer src="daily_data.js?v=1.5.4"></script>
 <script defer src="knowledge_index.js"></script>
 </body>
 </html>
