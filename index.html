@@ -226,7 +226,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','fun')">🎮 娱乐</div><a href="#gaming">🎯 游戏区</a><a href="#music">🎵 音乐区</a><a href="#novel">📖 小说区</a><a href="#anime">🎬 动漫区</a><a href="#movie">🎥 影视区</a></div>
 <div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','life')">🏃 生活</div><a href="#fashion">👔 穿搭推荐</a><a href="#fitness">💪 健身方案</a><a href="#diet">🍽️ 饮食助手</a><a href="#beer">🍺 精酿与调酒</a><a href="#life-tips">📋 生活助手</a></div>
 <div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','finance')">📊 财经·学习</div><a href="#stock">📈 股市基金</a><a href="#car">🚗 购车推荐</a><a href="#house">🏠 购房租房</a><a href="#learning">🎓 学习区</a><a href="#travel">✈️ 旅游区</a><a href="#ai-track">🤖 AI动态追踪</a><a href="#news">📰 新闻资讯</a></div>
-<div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','tools')">🤖 工具</div><a href="#guide">📖 使用指南</a><a href="#ai-assistant">💬 AI助手</a><a href="#optimization">🔧 优化日记</a><a href="search.html" target="_blank">📚 知识库搜索</a></div>
+<div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','tools')">🤖 工具</div><a href="#guide">📖 使用指南</a><a href="#ai-assistant">💬 AI助手</a><a href="#opportunity">🎯 机会雷达</a><a href="#optimization">🔧 优化日记</a><a href="search.html" target="_blank">📚 知识库搜索</a></div>
 </nav>
 
 <main class="main">
@@ -487,6 +487,9 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 </div>
 <div class="card clickable" onclick="openDetail('ai-track')"><h3>📊 查看完整AI模型追踪</h3><p>国内外大模型版本对比+融资动态+技术突破+招聘信息一站式追踪。</p></div>
 <div id="agentStacksSection" style="display:none"></div></section>
+
+<section id="opportunity" class="section" data-search="机会 风口 赚钱 副业 变现 上车 接单 OPC AI内容创作 AI炒股"><div class="section-header"><h2>🎯 机会雷达</h2><p>新事物 → 该不该上车 → 怎么上车（案例调研 · 可行性推理 · 技能/配置/流程图）</p></div>
+<div id="opportunityContent"><p style="font-size:12px;color:var(--text3)">🛰️ 加载机会研判...</p></div></section>
 
 <section id="toolchain-radar" class="section" data-search="工具链 雷达 DeepSeek Harness Claude Code 插件 模型 涨价 性价比 Agent"><div class="section-header"><h2>🔧 AI工具链雷达</h2><p>你正在用的工具 · 有什么更新 · 对你意味着什么</p></div>
 <div id="toolchainRadarContent"><p style="font-size:12px;color:var(--text3)">🔭 加载工具链动态...</p></div>
@@ -1512,7 +1515,7 @@ function renderSectionPicks(sectionId){
 }
 
 function renderAllPicks(){
-  var sections = ['guide','anime','movie','music','novel','beer','life-tips','gaming','ai-track','learning','fashion','fitness','diet','career','car','house','stock','news','tools-collection','optimization'];
+  var sections = ['guide','anime','movie','music','novel','beer','life-tips','gaming','ai-track','opportunity','learning','fashion','fitness','diet','career','car','house','stock','news','tools-collection','optimization'];
   sections.forEach(function(s){ renderSectionPicks(s); });
 }
 
@@ -1522,7 +1525,7 @@ var CATEGORIES = {
   fun:      {icon:'🎮', name:'娱乐空间', subs:'游戏|音乐|小说|动漫|影视', sections:['gaming','music','novel','anime','movie']},
   life:     {icon:'🏃', name:'生活方式', subs:'穿搭|健身|饮食|精酿|生活助手', sections:['fashion','fitness','diet','beer','life-tips']},
   finance:  {icon:'📊', name:'财经·学习', subs:'股市 | 购车 | 购房 | 学习 | AI追踪 | 工具链雷达 | 旅游 | 新闻', sections:['stock','car','house','learning','ai-track','toolchain-radar','travel','news']},
-  tools:    {icon:'🤖', name:'工具·AI', subs:'使用指南 | 工具收藏夹 | AI助手 | 小白课堂 | 优化日记', sections:['guide','tools-collection','ai-assistant','learn-path','optimization']}
+  tools:    {icon:'🤖', name:'工具·AI', subs:'使用指南 | 工具收藏夹 | AI助手 | 小白课堂 | 机会雷达 | 优化日记', sections:['guide','tools-collection','ai-assistant','learn-path','opportunity','optimization']}
 };
 
 // Key sections to show on homepage (everything else hidden)
@@ -2300,7 +2303,7 @@ function renderModelComparison(){
 function onDataReady(){
   var tasks = [
     function(){ var e=document.getElementById('siteVersion'); if(e) e.textContent = (typeof SITE_VERSION!=='undefined'?SITE_VERSION:''); },
-    renderAllPicks, renderBriefing, renderVocab, renderQuiz, renderMusicPlayer, renderModelComparison, renderToolchainRadar, renderDailyDecisions, renderLearnPath, renderTodayKnowledge, renderLearningInsight, renderLearnPathMini, renderAgentStacks, checkUpdateStatus
+    renderAllPicks, renderBriefing, renderVocab, renderQuiz, renderMusicPlayer, renderModelComparison, renderToolchainRadar, renderOpportunityRadar, renderDailyDecisions, renderLearnPath, renderTodayKnowledge, renderLearningInsight, renderLearnPathMini, renderAgentStacks, checkUpdateStatus
   ];
   tasks.forEach(function(fn){
     try { if(typeof fn==='function') fn(); } catch(e){ console.error('Init error:', e.message); }
@@ -2329,6 +2332,34 @@ function renderToolchainRadar(){
     h += '<div style="font-size:10px;color:var(--green);margin-top:2px">✅ 行动：'+it.action+'</div>';
     h += '</span></div>';
   });
+  container.innerHTML = h;
+}
+
+// ===== 机会雷达渲染（新事物→该不该上车→怎么上车）=====
+function renderOpportunityRadar(){
+  var container = document.getElementById('opportunityContent');
+  if(!container) return;
+  if(typeof OPPORTUNITY_RADAR==='undefined'){ container.style.display='none'; return; }
+  var r = OPPORTUNITY_RADAR;
+  var h = '';
+  h += '<div class="highlight-box" style="border-left:3px solid var(--accent);font-size:12px;font-weight:600;margin-bottom:8px">🎯 '+r.headline+'</div>';
+  h += '<div style="font-size:11px;color:var(--text3);margin-bottom:10px;padding:8px 10px;background:var(--bg2);border-radius:8px">💡 '+r.intro+'</div>';
+  (r.items||[]).forEach(function(it){
+    h += '<div class="card" style="padding:14px 16px;margin-bottom:10px;border-left:3px solid var(--accent)">';
+    h += '<div style="font-weight:700;font-size:14px;margin-bottom:6px">'+it.emoji+' '+it.title+' <span class="tag" style="background:var(--accent);color:#fff;font-size:9px">'+it.tag+'</span></div>';
+    h += '<div style="font-size:11px;color:var(--accent);font-weight:600;margin:4px 0"><b>🎯 风口判断：</b>'+it.verdict+'</div>';
+    h += '<div style="font-size:11px;color:var(--text2);margin:4px 0"><b>📚 案例证据（联网调研）：</b>'+it.evidence+'</div>';
+    h += '<div style="font-size:11px;color:var(--text2);margin:4px 0"><b>⚖️ 可行性推理：</b>'+it.feasibility+'</div>';
+    h += '<div style="font-size:11px;color:var(--text2);margin:4px 0"><b>🎓 技能清单：</b>'+it.skills+'</div>';
+    h += '<div style="font-size:11px;color:var(--text2);margin:4px 0"><b>🖥️ 所需配置：</b>'+it.setup+'</div>';
+    h += '<div style="font-size:11px;color:var(--text2);margin:6px 0 2px"><b>🗺️ 上车路径（流程图）：</b></div>';
+    (it.path||[]).forEach(function(p, i){
+      h += '<div style="font-size:11px;color:var(--text2);margin:2px 0 2px 16px">'+(i+1)+'. '+p+'</div>';
+    });
+    h += '<div style="font-size:11px;color:var(--red);margin:6px 0 2px"><b>🚫 避坑提示：</b>'+it.risk+'</div>';
+    h += '</div>';
+  });
+  h += '<div style="font-size:10px;color:var(--text3);margin-top:4px">🔄 更新于 '+r.updated+' · 本板块逻辑：新技术出现→联网调研真实案例→风口/苗头判断→可行性推理（需求×门槛×竞争×匹配度×风险）→上车路径（技能/配置/步骤）</div>';
   container.innerHTML = h;
 }
 
@@ -2771,7 +2802,7 @@ function manualRefresh(){
 
 <script src="detail_content.js"></script>
 <script src="personal_config.js"></script>
-<script src="daily_data.js?v=1.5.0"></script>
+<script src="daily_data.js?v=1.5.1"></script>
 <script defer src="knowledge_index.js"></script>
 </body>
 </html>
