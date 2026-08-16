@@ -408,7 +408,7 @@ DETAIL.novel = '<h2>📖 小说区 · 深度阅读指南</h2><p class="detail-su
 // ===== 股市基金 =====
 DETAIL.stock = '<h2>📈 股市基金 · 从零开始</h2><p class="detail-subtitle">五步法——从小白到能独立判断</p>'+
 
-'<div class="callout warn"><strong>📊 7月26日行情速览（每日自动更新）：</strong>上证~3,867点 | 本周涨+1.33% | 大盘价值领涨（银行+4.5%）| 科技板块调整中 | 外资高盛/花旗喊超配A股 | <strong>新手策略：</strong>短期红利防御+中长期AI主线，先定投沪深300ETF</div>'+
+'<div class="callout warn"><strong>📊 8月16日行情速览（每日自动更新）：</strong>沪指收3927.18（本周-0.33%）| 创业板指周涨1.77% | AI硬件（CPO/存储）领涨·中芯国际Q2营收首破30亿美元 | 下周看8/17开盘能否站稳3927→4000 | <strong>新手策略：</strong>AI硬件主线回调分批+中长期定投沪深300ETF</div>'+
 
 '<h3>💰 第一课：理解四个核心概念</h3>'+
 '<table class="data-table"><tr><th>概念</th><th>公式</th><th>大白话解释</th><th>怎么看</th></tr>'+
@@ -449,7 +449,7 @@ DETAIL.learning = '<h2>🎓 AI学院 · 从零到Agent开发者</h2><p class="de
 '<h3>📊 第二课：主流大模型全面对比（实时数据）</h3>'+
 '<div class="callout info"><strong>🔄 模型数据已接入实时更新</strong><br>本课的模型对比、价格、评分已改为直接引用 <strong>AI动态追踪</strong> 板块的最新数据（每天更新）。<br><br>👉 点击下方按钮查看今日最新模型对比表与 Agent×模型组合推荐：<br><br><a href="javascript:void(0)" onclick="navigateTo(\'section-detail\',\'ai-track\');return false;" style="display:inline-block;padding:8px 16px;background:var(--accent);color:#fff;border-radius:8px;text-decoration:none;font-size:12px">🤖 查看最新模型对比表 →</a></div>'+
 '<div class="highlight-box"><p><strong>💡 学习建议：</strong>模型迭代极快（每月都有新品），不建议死记硬背具体型号参数。要掌握的是<strong>选模型的思维方式</strong>：<br>① <strong>看任务定档位</strong>——日常高频用轻量模型（快+便宜），复杂推理用旗舰模型<br>② <strong>看价格看趋势</strong>——关注调价动态（如8/17 DeepSeek涨价），成本敏感任务及时切换<br>③ <strong>看生态看组合</strong>——Agent×模型组合比单一模型更重要（Claude Code + DeepSeek = 性价比主力）<br>④ <strong>定期更新认知</strong>——每周看一次 AI动态追踪 板块，保持对模型格局的实时认知</p></div>'+
-'<div class="callout tip"><strong>📌 记住：</strong>2026年8月模型格局的关键变化——DeepSeek 8/17涨价4.5倍、Qwen3.8-Max下周开源、Harness公测。具体数据每天在AI动态追踪板块更新。</div>'+
+'<div class="callout tip"><strong>📌 记住：</strong>2026年8月模型格局的关键变化——DeepSeek 8/17涨价4.5倍、Qwen3.8-27B已开源(8/15)·Max陆续开放、Harness公测。具体数据每天在AI动态追踪板块更新。</div>'+
 '<h4>🔬 模型能力五维评分框架（自我评估工具）</h4>'+
 '<table class="data-table"><tr><th>维度</th><th>含义</th><th>高分标准</th></tr>'+
 '<tr><td><strong>🧠 智能</strong></td><td>推理/理解/代码能力</td><td>90+ = 顶级推理（Claude Opus级）</td></tr>'+
@@ -460,7 +460,7 @@ DETAIL.learning = '<h2>🎓 AI学院 · 从零到Agent开发者</h2><p class="de
 '</table>'+
 '<div class="callout warn"><strong>⚠️ 常见误区：</strong>不要只比【参数量】——2.4T参数的Qwen3.8-Max和284B的DeepSeek V4-Flash在不同任务各有胜负。参数大≠更好用，要结合任务+价格+生态综合判断。</div>'+
 '<h3>📊 第二课补充：Agent×模型组合选择（2026.8）</h3>'+
-'<div class="highlight-box"><p><strong>当下最优组合（2026年8月，结合你的使用场景）：</strong><br>① <strong>日常主力：</strong>Claude Code + DeepSeek V4-Flash（性价比最高·涨价前锁定）<br>② <strong>涨价后主力：</strong>Claude Code + Qwen3.8-Max（下周开源·可免费本地部署）<br>③ <strong>重活专用：</strong>Claude Code + Sonnet 4.6（代码质量优先）<br>④ <strong>免费备胎：</strong>Codex + GPT-5.6 Luna（不花钱也能干活）<br><br>👉 完整9种组合评分（编程/性价比/中文/生态/速度五维）见 <strong>AI动态追踪</strong> 板块</p></div>'+
+'<div class="highlight-box"><p><strong>当下最优组合（2026年8月，结合你的使用场景）：</strong><br>① <strong>日常主力：</strong>Claude Code + DeepSeek V4-Flash（性价比最高·涨价前锁定）<br>② <strong>涨价后主力：</strong>Claude Code + Qwen3.8-27B（8/15已开源·本地部署免费·Max陆续开放）<br>③ <strong>重活专用：</strong>Claude Code + Sonnet 4.6（代码质量优先）<br>④ <strong>免费备胎：</strong>Codex + GPT-5.6 Luna（不花钱也能干活）<br><br>👉 完整9种组合评分（编程/性价比/中文/生态/速度五维）见 <strong>AI动态追踪</strong> 板块</p></div>'+
 '<h3>🧠 模型知识补充：MoE架构与推理成本</h3>'+
 '<div class="highlight-box"><p><strong>MoE（混合专家）：</strong>总参数巨大但每次只激活一小部分——Qwen3.8总参数2.4T但每次只激活950亿（约4%）→ 推理成本远低于同规模稠密模型。<br><br><strong>为什么重要：</strong>2026年主流旗舰（DeepSeek/Qwen/Kimi）全部采用MoE——这是【超大模型+低成本推理】的关键技术，也是国产模型性价比优势的底层原因。<br><br><strong>推理成本：</strong>每百万Token输出价格——DeepSeek V4-Flash ¥2（涨价前）vs GPT-5.6 Sol $30（约¥210）——差100倍。理解成本结构=理解模型定价逻辑。</p></div>'+
 '<h3>🤖 第三课：AI Agent vs Chatbot</h3>'+
@@ -827,8 +827,8 @@ DETAIL.diet = '<h2>🍽️ 饮食助手</h2><p class="detail-subtitle">肾结石
 '<tr><td>21:00</td><td>温低脂牛奶200ml</td><td>150</td><td>8g</td></tr></table>'+
 '<h3>🔧 工具</h3><ul><li><a href="https://www.boohee.com" target="_blank">薄荷健康</a></li><li><a href="https://www.myfitnesspal.com" target="_blank">MyFitnessPal</a></li><li><a href="https://www.xiachufang.com" target="_blank">下厨房</a></li></ul>';
 
-DETAIL["ai-track"] = '<h2>🤖 AI动态追踪 · 模型 + Agent 全对比</h2><p class="detail-subtitle">8月15日更新 · 模型数据每日刷新 · Agent选型结论先行</p>'+
-'<div class="callout danger" style="font-size:13px"><strong>🎯 今日头条：DeepSeek Harness 公测——Agent 选型新变量</strong><br>结论：<strong>中文+隐私+成本敏感场景，Harness+V4-Flash 值得实测；英文技术+复杂架构，Claude Code 仍是首选。</strong>详见下方 Agent 对比。</div>'+
+DETAIL["ai-track"] = '<h2>🤖 AI动态追踪 · 模型 + Agent 全对比</h2><p class="detail-subtitle">8月16日更新 · 模型数据每日刷新 · Agent选型结论先行</p>'+
+'<div class="callout danger" style="font-size:13px"><strong>🎯 今日头条：Qwen3.8-27B正式开源 + DeepSeek 8/17涨价明日生效</strong><br>结论：<strong>开源免费平替已落地（本地部署成本趋近0）；DeepSeek 高峰任务今晚重排或切换 Qwen3.8-27B；Max(2.4T)预计陆续开放。</strong>详见下方模型与 Agent 对比。</div>'+
 
 '<h3>🐋 Agent 对比：Harness vs Claude Code vs Codex（2026.8）</h3>'+
 '<table class="data-table"><tr><th>维度</th><th>DeepSeek Harness</th><th>Claude Code</th><th>Codex</th></tr>'+
