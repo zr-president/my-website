@@ -472,7 +472,7 @@ var AGENT_STACKS = {
 
 var OPTIMIZATION_LOG = {
   date: "2026-08-16",
-  total_suggestions: 66,
+  total_suggestions: 70,
   total_implemented: 61,
   streak_days: 27,
   suggestions: [
@@ -542,6 +542,10 @@ var OPTIMIZATION_LOG = {
     {id:64, cat:"内容优化", title:"股市板块周日复盘格式（周线+下周展望）", desc:"✅ 8/16实施：INSIGHTS.stock新增周日复盘模板——周线级别涨跌幅+缩量隐患+下周事件日历（8/17开盘/DeepSeek涨价/游戏发售）+周一操作预案，替代原单日复盘格式", priority:"P2", status:"已完成"},
     {id:65, cat:"内容优化", title:"影之刃零登顶Steam畅销榜专题入库", desc:"✅ 8/16实施：预售登顶畅销榜+甄子丹出任动作监制+DLSS 4.5/光线追踪→gaming/ai-track/news三板块同步更新+knowledge_base新增gaming/2026-08-16.md", priority:"P2", status:"已完成"},
     {id:66, cat:"体验优化", title:"周一开盘前推送DeepSeek涨价生效+黄金投递窗口提醒", desc:"待办：8/17（周一）8:00推送——①DeepSeek涨价生效确认+Qwen3.8-27B部署指引；②9:30-11:00黄金投递窗口+3家目标公司清单；③沪指3927关键点位提示。可在life_os_push.py配置周一专属模板", priority:"P2", status:"待办"},
+    {id:67, cat:"体验优化", title:"今日必看卡片支持手动换一批", desc:"待办：#38今日必看目前固定取DAILY_BRIEFING第1条——增加【换一批】按钮轮换其余highlights，长按可手动置顶某条，满足多主题需求", priority:"P3", status:"待办"},
+    {id:68, cat:"稳定性", title:"AI自动更新失败时PushPlus告警", desc:"待办：auto_update.py新增失败通知——当API调用失败/语法校验不过时，通过PushPlus发送告警给用户（含失败原因摘要），避免静默失败", priority:"P1", status:"待办"},
+    {id:69, cat:"内容优化", title:"自动更新内容质量抽查机制", desc:"待办：自动更新后校验——①17板块updated必须等于今日；②全文扫描【明日/即将/倒计时】等过期词；③随机抽查3个板块summary与昨日对比确保有实质推进；不达标则回滚并告警", priority:"P1", status:"待办"},
+    {id:70, cat:"性能优化", title:"index.html首屏渲染性能优化", desc:"待办：当前单HTML+多JS文件约600KB——评估defer拆分/图片懒加载/emoji图标SVG化，首屏LCP目标<2s（当前移动端约3-4s）", priority:"P3", status:"待办"},
   ]
 };
 

@@ -8,6 +8,14 @@
 - GitHub Pages 自动部署：https://zr-president.github.io/my-website/
 - 推送后 1-2 分钟自动上线
 
+## 自动更新模式（已启用）
+- **GitHub Actions 每日 8:30（北京时间）自动更新**：`.github/workflows/auto-update.yml` 定时触发 → `scripts/auto_update.py` 调用 DeepSeek API（`secrets.DEEPSEEK_API_KEY`）→ 按【状态推进】策略生成当日全部板块内容 → node 校验 → 自动 commit + push
+- **首次启用前需配置**：仓库 Settings → Secrets and variables → Actions → 添加 `DEEPSEEK_API_KEY`（DeepSeek 开放平台的 API Key）
+- **本地手动运行**：`set DEEPSEEK_API_KEY=sk-xxx && python scripts/auto_update.py --commit`
+- **手动触发一次**：GitHub 仓库 Actions 页 → AI 每日自动更新 → Run workflow
+- **失败安全**：API 失败/JSON 解析失败/语法校验失败时不改动文件（自动 git checkout 回滚），不会破坏网站
+- **内容策略**：自动更新做【状态推进】（明日→今日、追番第N天→第N+1天、已发生事件→持续状态），不编造无法确认的新事件数字；重大突发事件仍需人工/AI 手动更新补充
+
 ## 核心文件
 
 | 文件 | 作用 | 约行数 |
@@ -56,6 +64,13 @@ daily_data.js 加载
 4. 新增 knowledge_base 文件
 5. 更新 OPTIMIZATION_LOG（日期 + 新增 3-5 条优化建议 + streak_days+1）
 6. 提交并推送到 GitHub
+
+### 自动更新（替代手动模式）
+已启用 GitHub Actions 每日 8:30 自动更新（见上文「自动更新模式」）。自动更新脚本 `scripts/auto_update.py` 的工作方式：
+- 读取昨日 daily_data.js → 提取各板块摘要作为上下文 → 分 3 次调用 DeepSeek API（核心简报 / 17板块INSIGHTS / 词汇+课堂+优化建议）
+- 自动处理：LEARN_PATHS archive 迁移、OPTIMIZATION_LOG 新增建议+streak+1、版本号三处同步（SITE_VERSION / index.html 缓存符 / WEBSITE_GUIDE）、knowledge_base 当日文件
+- 手动运行同一脚本可复用全部逻辑：`python scripts/auto_update.py --commit`
+- **注意**：自动更新的内容基于【状态推进】策略，无法联网搜索当日新事件——若当天有重大事件（如重磅发布会/大跌大涨），仍建议人工更新补充真实资讯
 
 ### 时效词检查（每次更新必做）
 **禁止在内容里保留过期时效词**。更新完成后全文检查以下词，出现即必须改写：
@@ -111,9 +126,9 @@ GitHub：https://github.com/zr-president/my-website
 
 ## 已知待办
 
-- #1-#38 均已实施完成（见 OPTIMIZATION_LOG，38/38 已完成）
-- 新增优化建议时从 #39 开始编号，并同步 total_suggestions
-- 常规待办：每日更新后同步版本号三处（daily_data.js SITE_VERSION / index.html 缓存符 / WEBSITE_GUIDE）
+- #1-#66 均已实施完成（见 OPTIMIZATION_LOG，66/70 已完成，其中 #67-#70 为待办）
+- 新增优化建议时从当前最大编号+1 开始编号，并同步 total_suggestions（自动更新脚本已自动处理）
+- 常规待办：每日更新后同步版本号三处（daily_data.js SITE_VERSION / index.html 缓存符 / WEBSITE_GUIDE）——自动更新脚本已自动处理
 
 ## 用户偏好
 - 工作目录：项目在桌面「钟锐的个人网站」文件夹，脚本均用相对路径定位（sync.bat 用 %~dp0，Python 用 __file__），两台机器通用
