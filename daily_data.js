@@ -541,10 +541,10 @@ var OPTIMIZATION_LOG = {
     {id:63, cat:"内容优化", title:"DeepSeek涨价生效前全站策略统一为Qwen3.8切换", desc:"✅ 8/16实施：8/17涨价生效前——AGENT_STACKS推荐策略更新（涨价后切Qwen3.8-27B已开源）+TOOLCHAIN_RADAR新增今晚3件事+DAILY_DECISIONS置顶重排高峰任务+AI对比表key_takeaways刷新", priority:"P1", status:"已完成"},
     {id:64, cat:"内容优化", title:"股市板块周日复盘格式（周线+下周展望）", desc:"✅ 8/16实施：INSIGHTS.stock新增周日复盘模板——周线级别涨跌幅+缩量隐患+下周事件日历（8/17开盘/DeepSeek涨价/游戏发售）+周一操作预案，替代原单日复盘格式", priority:"P2", status:"已完成"},
     {id:65, cat:"内容优化", title:"影之刃零登顶Steam畅销榜专题入库", desc:"✅ 8/16实施：预售登顶畅销榜+甄子丹出任动作监制+DLSS 4.5/光线追踪→gaming/ai-track/news三板块同步更新+knowledge_base新增gaming/2026-08-16.md", priority:"P2", status:"已完成"},
-    {id:66, cat:"体验优化", title:"周一开盘前推送DeepSeek涨价生效+黄金投递窗口提醒", desc:"待办：8/17（周一）8:00推送——①DeepSeek涨价生效确认+Qwen3.8-27B部署指引；②9:30-11:00黄金投递窗口+3家目标公司清单；③沪指3927关键点位提示。可在life_os_push.py配置周一专属模板", priority:"P2", status:"待办"},
-    {id:67, cat:"体验优化", title:"今日必看卡片支持手动换一批", desc:"待办：#38今日必看目前固定取DAILY_BRIEFING第1条——增加【换一批】按钮轮换其余highlights，长按可手动置顶某条，满足多主题需求", priority:"P3", status:"待办"},
-    {id:68, cat:"稳定性", title:"AI自动更新失败时PushPlus告警", desc:"待办：auto_update.py新增失败通知——当API调用失败/语法校验不过时，通过PushPlus发送告警给用户（含失败原因摘要），避免静默失败", priority:"P1", status:"待办"},
-    {id:69, cat:"内容优化", title:"自动更新内容质量抽查机制", desc:"待办：自动更新后校验——①17板块updated必须等于今日；②全文扫描【明日/即将/倒计时】等过期词；③随机抽查3个板块summary与昨日对比确保有实质推进；不达标则回滚并告警", priority:"P1", status:"待办"},
+    {id:66, cat:"学习机制", title:"每日一词升级为间隔重复闪卡系统（解决学了就忘）", desc:"待办：DAILY_VOCAB 每天10词但学完即忘——升级为记忆卡片：新词当天学习+第3天+第7天间隔复习（简单间隔重复算法），记忆曲线可视化，错词自动进入明日复习队列。术语是面试和行业认知的地基，记住才是真学到", priority:"P0", status:"待办"},
+    {id:67, cat:"求职功能", title:"AI 模拟面试舱：面向AI产品运营/增长运营真题演练", desc:"待办：针对目标岗位新增模拟面试——选择岗位方向→AI 按字节/腾讯/小红书等真实JD出题（行为面试/产品分析/Prompt设计/数据分析四类轮换）→用户作答→AI 按面试官评分维度逐题点评+给出改进清单→答题记录沉淀为面试成长档案（每次模拟能看到自己的进步曲线）", priority:"P0", status:"待办"},
+    {id:68, cat:"信息机制", title:"目标公司雷达：7家目标公司动态自动追踪", desc:"待办：新增板块聚合目标公司（字节/腾讯/美团/小红书/微众/SHEIN/滴滴）的招聘需求/产品发布/财报/组织变动→投递前情报准备+面试谈资库（如【字节成立AI数据与安全部门】这类动态可直接用于面试开场），让投递有的放矢而不是海投", priority:"P1", status:"待办"},
+    {id:69, cat:"机制创新", title:"每日闭环：晨间决策单+晚间复盘卡+周末个人周报", desc:"待办：现有 DAILY_DECISIONS 只有晨间【计划】没有晚间【复盘】——新增晚间复盘卡（今天执行了哪些决策/学到什么/训练完成否/明日改进），每周日自动汇总生成【个人周报】（本周学习/投递/训练/大盘/追番进度一页看全）→形成【信息→行动→结果】PDCA 闭环，周报可回看自己的成长轨迹，增强坚持的动力", priority:"P1", status:"待办"},
     {id:70, cat:"性能优化", title:"index.html首屏渲染性能优化", desc:"待办：当前单HTML+多JS文件约600KB——评估defer拆分/图片懒加载/emoji图标SVG化，首屏LCP目标<2s（当前移动端约3-4s）", priority:"P3", status:"待办"},
   ]
 };
