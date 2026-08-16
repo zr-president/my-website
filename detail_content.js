@@ -1523,3 +1523,35 @@ DETAIL.news = '<h2>📰 新闻资讯</h2><p class="detail-subtitle">7月26日更
 '</div>'+
 
 '<div class="callout info"><strong>💡 一句话总结：</strong>高质量信息不是你刷出来的——是你<strong>设计</strong>出来的系统产物。花今天1小时搭建这套信息获取框架，之后每天只需45分钟，就能比99%的人获取更高质量、更相关、更有行动价值的信息。信息差不来自你比别人更努力刷手机——而来自你比别人更聪明地<strong>选择</strong>信源。</div>';
+
+// ===== 深度阅读：AI本地部署 与 知识蒸馏（2026-08-16 学习区入口）=====
+DETAIL["local-ai"] = '<h2>📖 深度阅读 · AI本地部署 与 知识蒸馏</h2><p class="detail-subtitle">2026-08-16 · 看完这篇，你就懂了模型选型的底层逻辑（面试加分）</p>'+
+'<div class="callout warn"><strong>⚠️ 三个容易混淆的概念：</strong><br>① <strong>大模型本身</strong>（DeepSeek V4 / Qwen3.8）= 发动机，负责思考<br>② <strong>Agent 框架</strong>（Harness / Claude Code / Codex）= 驾驶舱+司机，负责拆任务/改文件/调工具——<b>不包含模型</b><br>③ <strong>部署方式</strong>（本地 / API / 混合）= 自己发电 vs 电网买电——模型跑在哪<br><br>💡 <strong>关键认知：Harness 和本地部署是不同维度。</strong>Harness 是工具（驾驶舱），本地部署是能源选择（发电机放哪）——两者不冲突，可以组合。</div>'+
+'<h3>一、本地部署 vs API（你现在的方式）</h3>'+
+'<table class="data-table"><tr><th>维度</th><th>本地部署</th><th>API（现状）</th></tr>'+
+'<tr><td>🔒 隐私</td><td>✅ 数据完全不出电脑</td><td>⚠️ 经过厂商服务器</td></tr>'+
+'<tr><td>💰 成本</td><td>一次性硬件+电费（长期趋近0）</td><td>按量付费（DeepSeek 8/17涨价后高峰¥27/百万tokens）</td></tr>'+
+'<tr><td>📴 联网</td><td>✅ 断网可用</td><td>❌ 必须联网</td></tr>'+
+'<tr><td>🧠 能力</td><td>❌ 受显卡限制（只能跑小模型）</td><td>✅ 旗舰模型随便用</td></tr>'+
+'<tr><td>⚡ 速度</td><td>⚠️ 家用电脑慢</td><td>✅ 云端GPU快</td></tr>'+
+'<tr><td>🔧 维护</td><td>自己装环境/调显存</td><td>零维护</td></tr></table>'+
+'<div class="callout info"><strong>🖥️ 硬件门槛：</strong>270亿参数 Qwen3.8-27B 量化后约 16-20GB 显存（RTX 4090 级别）；普通 8GB 显存笔记本只能跑 7-14B 小模型。所以本地部署的意义不是【免费白嫖旗舰】，而是【隐私+省钱+可控】。</div>'+
+'<h3>二、本地部署适用场景</h3>'+
+'<div class="highlight-box"><p><strong>✅ 适合：</strong><br>① <strong>隐私敏感</strong>——简历/面试材料/体检报告（数据不出域最安全）<br>② <strong>高频重复低成本</strong>——网站维护/批量格式化（躲开 DeepSeek 涨价）<br>③ <strong>离线使用</strong>——出差高铁上也能干活<br>④ <strong>学习定制</strong>——随便折腾微调、看内部机制（求职面试加分项）</p></div>'+
+'<div class="callout danger"><strong>❌ 不适合：</strong><br>① 复杂推理/长文写作（小模型写不动 2000 字深度分析）<br>② 需要最新知识（本地模型知识停在训练截止日）<br>③ 多模态/长上下文（看图能力、百万字上下文都弱）</div>'+
+'<h3>三、小模型是"大模型训练出来的"吗？——是的，叫知识蒸馏</h3>'+
+'<div class="highlight-box"><p><strong>👨‍🏫 老师-学生机制（2015年 Hinton 提出，现在 AI 界标配）：</strong><br>① 大模型（老师·2.4万亿参数）生成海量问题+答案+「答题思路」（概率分布/软标签）<br>② 小模型（学生·27亿参数）模仿老师的答案和思路反复练习<br>③ 学生达到老师 80-90% 的能力，体积只有 1%<br><br><strong>关键：</strong>老师教的不仅是正确答案，还有「模糊地带的倾向」（比如这个字最可能是猫，也有 3% 可能是狗）——这种软标签让学生知道老师为什么这么判断，学得远比死记硬背快。<strong>DeepSeek-R1、Qwen 小尺寸版本基本都是蒸馏产物。</strong></p></div>'+
+'<div class="callout warn"><strong>⚠️ 两个真相：</strong><br>① 蒸馏不是唯一方式（也有从头训练，但成本高，小公司玩不起）<br>② <strong>学生有天花板</strong>——老师不会的知识，学生永远学不到（大模型逻辑弱，蒸馏出的小模型只会更弱）</div>'+
+'<h3>四、小模型 vs 大模型</h3>'+
+'<table class="data-table"><tr><th>维度</th><th>大模型（Qwen3.8-Max·2.4T）</th><th>小模型（Qwen3.8-27B）</th></tr>'+
+'<tr><td>参数规模</td><td>2.4万亿（MoE激活950亿）</td><td>270亿（约1/90）</td></tr>'+
+'<tr><td>知识广度</td><td>海量领域+深度推理</td><td>常见任务够用，冷门露怯</td></tr>'+
+'<tr><td>推理深度</td><td>多步逻辑/数学/代码严谨</td><td>复杂推理易出错</td></tr>'+
+'<tr><td>幻觉率</td><td>低</td><td>更高（不懂装懂更频繁）</td></tr>'+
+'<tr><td>速度/成本</td><td>贵、慢（云端GPU集群）</td><td>便宜、快（家用电脑可跑）</td></tr>'+
+'<tr><td>运行环境</td><td>只能厂商云端</td><td>能跑在自己电脑</td></tr></table>'+
+'<h3>五、模型选型 = 面试高频题（答题模板）</h3>'+
+'<div class="callout tip"><strong>💡 核心公式：用户价值（效果）÷ 成本（算力）</strong><br>蒸馏让「用 1% 的成本获得 80% 的效果」成为可能，所以所有主流厂商都在推小模型。面试回答模板：<br>① 什么时候用大模型——复杂任务/容错率低（医疗/法律/金融）<br>② 什么时候小模型够用——高频简单任务/成本敏感/边缘设备<br>③ 蒸馏的代价——能力天花板（学生永远超不过老师）<br>④ 落地案例：Qwen3.8-27B（小·已开源·可本地部署）vs Qwen3.8-Max（大·待开源·只适合云端 API）</div>'+
+'<h3>六、你的实操建议</h3>'+
+'<div class="highlight-box"><p>① 先看显卡显存（任务管理器→性能→GPU 专用显存），≥16GB 再考虑 27B；8GB 先玩 7B 体验<br>② 值得本地部署的场景：求职简历/面试材料等隐私数据（数据不出域最安全）<br>③ 别指望本地替代 Harness——Harness 是你要继续用的驾驶舱，本地部署只是给它换一个更便宜的发动机<br>④ 最快体验路径：装 <strong>Ollama</strong> → 一条命令 <code>ollama run qwen3:8b</code> 跑起来 → 让 Harness 的 API 地址指向本地<br>⑤ 想深入了解：动手部署一次=最好的学习（面试时能讲【我本地部署过模型】是硬加分项）</p></div>'+
+'<div class="callout info"><strong>💡 一句话总结：</strong>Harness 教你开车，本地部署是把加油站搬回家——前者是工具，后者是能源选择，两者不冲突，可以组合。而小模型能存在，靠的是知识蒸馏——用 1% 成本换 80% 效果，这是 2026 年 AI 产品经理必须懂的底层逻辑。</div>';
