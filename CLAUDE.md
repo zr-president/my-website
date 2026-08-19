@@ -89,6 +89,19 @@ daily_data.js 加载
 2. 编辑后 `node -e "new Function(require('fs').readFileSync('daily_data.js','utf8'))"` 校验语法
 3. 或使用 `python scripts/safe_edit.py <target> <script>` 包装器
 
+### 编辑提速经验（8/19 更新教训·必读）
+**1. 先快照再动手**：开始编辑前，先 grep 关键字段确认文件实际状态，不要凭记忆写替换目标——
+- `SITE_VERSION` / `daily_data.js?v=`（index.html）实际版本号
+- `"update_time"` / `"update_date"`（可能被 quick-update 工作流改动，如 08:57:00）
+- WEBSITE_GUIDE summary 里的版本号可能滞后于 SITE_VERSION（quick-update 只改版本号行不改 summary）
+- 每个板块的 `updated:` 日期是否与预期一致
+
+**2. 小粒度替换**：按板块逐个替换（每板块 5-6 行），不要用跨多个板块的大块 old_string——大块拼接极易因一个字符差异（全角/半角、· 符号）导致替换失败，失败后读取确认再重试更费时。
+
+**3. 跨多天更新**：若距上次更新超过 1 天（如 8/16→8/19），先梳理中间积压的时间节点（发售日/调价生效日/公测日等），再逐日推进状态，避免一次性堆大量内容。
+
+**4. 编辑后统一校验**：所有字段改完再一次性 `node` 校验（daily_data.js + index.html 内联 JS），避免每改一块校验一次拖慢节奏。
+
 ### 提交推送
 ```bash
 git add -A
