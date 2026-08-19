@@ -1446,28 +1446,31 @@ function renderSectionPicks(sectionId){
     if(typeof OPTIMIZATION_LOG!=='undefined'){
       var log=OPTIMIZATION_LOG;
       var done=log.suggestions.filter(function(s){return s.status==='已完成';});
-      var active=log.suggestions.filter(function(s){return s.status!=='已完成';});
+      var sorted=log.suggestions.slice().sort(function(a,b){return b.id-a.id;});  // 按id倒序=最新在前
+      var recent=sorted.slice(0,8);  // 最近8条建议（含已完成，直接展示）
+      var olderDone=done.filter(function(s){return recent.indexOf(s)<0;});  // 更早的已完成→归档
       h+='<div class="insight-box">📅 '+log.date+' · 已累计'+log.total_suggestions+'条建议 · 已实施'+done.length+'条 · 连续'+log.streak_days+'天迭代</div>';
-      // Show only active (non-completed) items
-      active.forEach(function(s){
+      h+='<div style="font-size:10px;color:var(--text3);margin-bottom:6px">🆕 最近建议（含已实施 · 已完成自动标记 ✅）</div>';
+      // 最近建议区：无论状态都展示，已完成加标记不折叠
+      recent.forEach(function(s){
         var badge = s.priority==='P0'?'background:var(--red);color:#fff' : s.priority==='P1'?'background:var(--orange);color:#fff' : 'background:var(--blue);color:#fff';
-        var statusBadge = s.status==='实施中'?'background:var(--green);color:#fff' : 'background:var(--bg2);color:var(--text2)';
+        var isDone = s.status==='已完成';
+        var statusBadge = isDone?'background:var(--green);color:#fff' : (s.status==='实施中'?'background:var(--green);color:#fff' : 'background:var(--bg2);color:var(--text2)');
         h+='<div class="pick-card" style="cursor:default">';
-        h+='<span class="pick-icon" style="font-size:14px">#'+s.id+'</span>';
-        h+='<span class="pick-info"><div class="pick-title">'+s.title+' <span style="font-size:9px;padding:1px 5px;border-radius:8px;'+badge+'">'+s.priority+'</span> <span style="font-size:9px;padding:1px 5px;border-radius:8px;'+statusBadge+'">'+s.status+'</span></div><div class="pick-desc">['+s.cat+'] '+s.desc+'</div></span>';
+        h+='<span class="pick-icon" style="font-size:14px">'+(isDone?'✅':'#'+s.id)+'</span>';
+        h+='<span class="pick-info"><div class="pick-title" style="'+(isDone?'text-decoration:line-through':'')+'">'+s.title+' <span style="font-size:9px;padding:1px 5px;border-radius:8px;'+badge+'">'+s.priority+'</span> <span style="font-size:9px;padding:1px 5px;border-radius:8px;'+statusBadge+'">'+s.status+'</span></div><div class="pick-desc">['+s.cat+'] '+s.desc+'</div></span>';
         h+='</div>';
       });
-      // #43: 归档机制 — 已完成默认折叠，只展示摘要
-      if(done.length>0){
-        var recentDone = done.slice(0, 8);  // 最近8条（数组按id倒序=最新在前）
-        var olderCount = done.length - recentDone.length;
-        h+='<div style="font-size:11px;color:var(--accent);cursor:pointer;padding:4px 0" onclick="var e=document.getElementById(\'optArchive\');e.style.display=e.style.display===\'none\'?\'block\':\'none\';this.textContent=e.style.display===\'none\'?\'📂 已归档 ('+done.length+'条) ▸\':\'📂 已归档 ('+done.length+'条) ▾\'">📂 已归档 ('+done.length+'条已完成 · 点击展开) ▸</div>';
+      // 归档：更早的已完成条目折叠
+      if(olderDone.length>0){
+        var olderCount = olderDone.length;
+        h+='<div style="font-size:11px;color:var(--accent);cursor:pointer;padding:4px 0" onclick="var e=document.getElementById(\'optArchive\');e.style.display=e.style.display===\'none\'?\'block\':\'none\';this.textContent=e.style.display===\'none\'?\'📂 更早归档 ('+olderCount+'条) ▸\':\'📂 更早归档 ('+olderCount+'条) ▾\'">📂 更早归档 ('+olderCount+'条已完成 · 点击展开) ▸</div>';
         h+='<div id="optArchive" style="display:none;opacity:.7">';
-        recentDone.forEach(function(s){
+        olderDone.slice(0,8).forEach(function(s){
           h+='<div class="pick-card" style="cursor:default"><span class="pick-icon" style="font-size:14px">✅</span><span class="pick-info"><div class="pick-title" style="text-decoration:line-through">'+s.title+'</div><div class="pick-desc">['+s.cat+'] '+s.desc+'</div></span></div>';
         });
-        if(olderCount>0){
-          h+='<div style="font-size:10px;color:var(--text3);padding:6px 0;text-align:center">… 另有 '+olderCount+' 条更早记录已归档，查看 git 历史或 knowledge_base/changelog.md</div>';
+        if(olderCount>8){
+          h+='<div style="font-size:10px;color:var(--text3);padding:6px 0;text-align:center">… 另有 '+(olderCount-8)+' 条更早记录已归档，查看 git 历史或 knowledge_base/changelog.md</div>';
         }
         h+='</div>';
       }
