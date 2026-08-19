@@ -1824,6 +1824,21 @@ function showView(viewName, categoryKey){
     // Build section detail content
     var detailHtml = '';
 
+    // #81: stock 详情视图也显示市场情绪条（首页隐藏+详情视图缺失的问题）
+    if(categoryKey==='stock' && typeof MARKET_SENTIMENT!=='undefined' && MARKET_SENTIMENT.items){
+      var sent = MARKET_SENTIMENT;
+      var sH = '<div style="font-size:10px;color:var(--text3);margin-bottom:4px">📊 市场情绪（'+sent.updated+' · 当日）</div><div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">';
+      sent.items.forEach(function(it){
+        sH += '<div style="flex:1;min-width:100px;padding:8px 10px;background:var(--bg2);border-radius:8px;text-align:center">';
+        sH += '<div style="font-size:9px;color:var(--text3)">'+it.label+'</div>';
+        sH += '<div style="font-size:16px;font-weight:800;color:'+(it.color||'var(--text)')+'">'+it.value+'</div>';
+        sH += '<div style="font-size:9px;color:var(--text3);line-height:1.4">'+it.note+'</div>';
+        sH += '</div>';
+      });
+      sH += '</div>';
+      detailHtml = sH + detailHtml;
+    }
+
     // Today's update summary tags (#33)
     if(typeof INSIGHTS_TODAY_UPDATED!=='undefined' && INSIGHTS_TODAY_UPDATED.length>0){
       var tagColors = {'stock':'#d97706','ai-track':'#7c3aed','movie':'#e11d48','learning':'#059669','career':'#0284c7','news':'#d97706','gaming':'#7c3aed','novel':'#e11d48','music':'#d97706','anime':'#7c3aed'};
@@ -2525,6 +2540,8 @@ function renderSkillRadar(){
     });
     h += '<div style="font-size:10px;color:var(--text3);margin-top:4px">💡 实测次数=练习投入 · 自评分低+实测差的维度优先补</div>';
     h += '</div>';
+  } else {
+    h += '<div style="margin-top:12px;padding:8px 12px;background:var(--bg2);border-radius:8px;font-size:11px;color:var(--text3)">📝 练习实测：暂无数据——去 <a href="#mock-interview" onclick="navigateTo(\'section-detail\',\'mock-interview\');return false;" style="color:var(--accent)">🎤 模拟面试舱</a> 练一题并自评，练习结果会自动回写到这里（自评+实测双轨评估）</div>';
   }
   if(rated.length >= 2){
     h += '<div style="margin-top:12px;padding:10px 12px;background:linear-gradient(135deg,#fef3c7,#fef9c3);border:1px solid #f59e0b;border-radius:10px">';
@@ -2690,6 +2707,15 @@ function renderMockInterview(){
   }
   containers.forEach(function(c){ c.innerHTML = h; });
 }
+function mockAnswerHtml(q){
+  // 答题要点 + 完整参考答案（折叠）——抽题后自动展示
+  var h = '<b>💡 答题要点：</b>' + (q.tip||'无');
+  if(q.answer){
+    h += '<details style="margin-top:6px"><summary style="cursor:pointer;font-size:11px;color:var(--accent)">📖 完整参考答案（点击展开）</summary>';
+    h += '<div style="font-size:11px;color:var(--text2);line-height:1.8;margin-top:4px;white-space:pre-wrap;max-height:320px;overflow-y:auto">' + q.answer + '</div></details>';
+  }
+  return h;
+}
 function startMockQuestion(type){
   var types = MOCK_TYPES[type] || [type];
   var pool = DAILY_QUIZ.questions.filter(function(q){ return types.indexOf(q.type)>=0; });
@@ -2700,14 +2726,18 @@ function startMockQuestion(type){
   document.querySelectorAll('#mockQuestionText').forEach(function(box){
     box.innerHTML = '<b style="color:var(--accent)">【'+type+'】</b> '+q.question;
   });
-  document.querySelectorAll('#mockTipsBox').forEach(function(tips){ tips.style.display='none'; tips.innerHTML=''; });
+  // 抽题后自动显示答题要点+完整参考答案
+  document.querySelectorAll('#mockTipsBox').forEach(function(tips){
+    tips.style.display='block';
+    tips.innerHTML = mockAnswerHtml(q);
+  });
   document.querySelectorAll('#mockAnswerInput').forEach(function(input){ input.value=''; });
 }
 function showMockTips(){
   if(!_curMockQ){ alert('先点击上方题型抽一道题'); return; }
   document.querySelectorAll('#mockTipsBox').forEach(function(tips){
     tips.style.display='block';
-    tips.innerHTML = '<b>💡 答题要点（参考）：</b><br>' + (_curMockQ.tip||'无');
+    tips.innerHTML = mockAnswerHtml(_curMockQ);
   });
 }
 function rateMockAnswer(rate){
@@ -3169,7 +3199,7 @@ function manualRefresh(){
 
 <script defer src="detail_content.js"></script>
 <script defer src="personal_config.js"></script>
-<script defer src="daily_data.js?v=1.5.8"></script>
+<script defer src="daily_data.js?v=1.5.9"></script>
 <script defer src="knowledge_index.js"></script>
 </body>
 </html>
