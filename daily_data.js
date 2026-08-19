@@ -495,7 +495,7 @@ var AGENT_STACKS = {
 
 var OPTIMIZATION_LOG = {
   date: "2026-08-19",
-  total_suggestions: 79,
+  total_suggestions: 83,
   total_implemented: 68,
   streak_days: 29,
   suggestions: [
@@ -576,6 +576,10 @@ var OPTIMIZATION_LOG = {
     {id:77, cat:"内容优化", title:"DeepSeek涨价生效后工具链切换效果验证", desc:"✅ 8/19实施：TOOLCHAIN_RADAR新增【从Claude Code切到Harness效果验证】——本周做三组合实测（Harness+本地Qwen27B / Harness+DeepSeek / Claude Code+DeepSeek），用数据决定主力配置", priority:"P2", status:"已完成"},
     {id:78, cat:"体验优化", title:"小白课堂分区页图标重复修复", desc:"✅ 8/19实施：修复课堂分区标题emoji显示两次（📈📈股市）——去掉重复的单独emoji渲染，分区标题只显示一次图标", priority:"P3", status:"已完成"},
     {id:79, cat:"求职功能", title:"AI原生岗位面试题库扩充（美团2027校招方向）", desc:"待办：美团等大厂2027校招新增AI原生岗位——模拟面试舱补充【AI原生岗位】题型（大模型原理/Agent应用/AI产品设计/AI原生运营），匹配校招面试场景，让面试练习对齐真实岗位要求", priority:"P1", status:"待办"},
+    {id:80, cat:"学习机制", title:"技能雷达图接入每日练习反馈（自评+数据双轨）", desc:"待办：现在技能雷达只有每周自评——升级为【自评+自动反馈】双轨：每日一练/模拟面试/闪卡的正确率自动回写对应技能维度（SQL/Prompt/数据分析等），雷达图显示自评分与实测分的差距，让评估更客观", priority:"P1", status:"待办"},
+    {id:81, cat:"数据优化", title:"stock板块新增【情绪指标条】（涨跌家数/涨停跌停/成交额）", desc:"待办：8/19七夕劫暴露的问题——只看指数看不出市场情绪。升级：每日在stock板块顶部加一行情绪指标（涨跌家数比/涨停跌停数/成交额较昨日变化），像七夕劫这种普跌行情一眼可见，不再被指数误导", priority:"P1", status:"待办"},
+    {id:82, cat:"机制创新", title:"AI生活妙用新增【台风季天气安全卡】置顶", desc:"待办：广州进入倒水模式+或有2个新台风——在AI生活妙用板块增加【天气安全卡】（台风/暴雨期间自动置顶：出行提醒/积水路段/停课停工信息），极端天气时优先展示安全信息", priority:"P2", status:"待办"},
+    {id:83, cat:"机会雷达", title:"机会雷达方向A落地：Qwen3.8-27B本地部署+Harness跑通第一个接单自动化", desc:"待办：机会雷达首期最契合方向（AI代理接单）从理论到实操——用Qwen3.8-27B本地部署+Harness做一个自用自动化（如每日数据整理/简历批量优化），跑通后再接首单，案例反哺求职作品集", priority:"P1", status:"待办"},
   ]
 };
 
