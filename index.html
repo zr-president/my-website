@@ -449,6 +449,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div class="card clickable" onclick="openDetail('beer')"><h3>🍻 查看精酿品鉴指南</h3><p>啤酒四大原料+风格树+3档酒单+8款鸡尾酒配方+家庭Bar搭建。</p></div></section>
 
 <section id="stock" class="section" data-search="股票 基金 A股 投资 理财"><div class="section-header"><h2>📈 股市基金</h2><p>实时行情 · 趋势分析 · 投资学习</p></div>
+<div id="marketSentiment" class="card" style="padding:10px 12px;margin-bottom:8px"><p style="font-size:12px;color:var(--text3)">📊 加载市场情绪...</p></div>
 <div id="picks-stock" class="picks-container"></div>
 <div class="card" style="padding:12px 16px"><div class="info-grid" id="liveStockTicker" style="margin:0"><div class="info-item"><div class="num">--</div><div class="label">加载中...</div></div></div><p style="font-size:10px;color:var(--text3);text-align:center;margin-top:4px" id="stockUpdateTime">实时数据来自东方财富 · 每60秒刷新</p></div>
 <div class="card clickable" onclick="openDetail('stock')"><h3>📊 股市学习中心</h3><p>从零开始的A股入门教学、10+财经博主推荐、学习路径、交易工具。</p></div></section>
@@ -2329,7 +2330,7 @@ function renderModelComparison(){
 function onDataReady(){
   var tasks = [
     function(){ var e=document.getElementById('siteVersion'); if(e) e.textContent = (typeof SITE_VERSION!=='undefined'?SITE_VERSION:''); },
-    renderAllPicks, renderBriefing, renderVocab, renderQuiz, renderMusicPlayer, renderModelComparison, renderToolchainRadar, renderOpportunityRadar, renderLifeHacks, renderSkillRadar, renderFlashcards, renderMockInterview, renderDailyDecisions, renderLearnPath, renderTodayKnowledge, renderLearningInsight, renderLearnPathMini, renderAgentStacks, checkUpdateStatus
+    renderAllPicks, renderBriefing, renderVocab, renderQuiz, renderMusicPlayer, renderModelComparison, renderToolchainRadar, renderOpportunityRadar, renderLifeHacks, renderSkillRadar, renderFlashcards, renderMockInterview, renderSentiment, renderDailyDecisions, renderLearnPath, renderTodayKnowledge, renderLearningInsight, renderLearnPathMini, renderAgentStacks, checkUpdateStatus
   ];
   tasks.forEach(function(fn){
     try { if(typeof fn==='function') fn(); } catch(e){ console.error('Init error:', e.message); }
@@ -2408,6 +2409,17 @@ function renderLifeHacks(){
   var r = AI_LIFE_HACKS;
   var h = '';
   h += '<div class="highlight-box" style="border-left:3px solid var(--accent);font-size:12px;font-weight:600;margin-bottom:8px">🧩 '+r.headline+'</div>';
+  // #82: 台风季天气安全卡置顶
+  if(r.weather_safety && r.weather_safety.active){
+    var ws = r.weather_safety;
+    h += '<div style="margin-bottom:10px;padding:10px 12px;background:linear-gradient(135deg,#fef3c7,#fef9c3);border:1px solid #f59e0b;border-radius:8px">';
+    h += '<div style="font-size:12px;font-weight:700;color:#92400e;margin-bottom:4px">'+ws.title+' <span style="font-size:9px;font-weight:400;color:var(--text3)">'+ws.date+'</span></div>';
+    h += '<div style="font-size:11px;color:#78350f;margin-bottom:4px">'+ws.summary+'</div>';
+    (ws.items||[]).forEach(function(it){
+      h += '<div style="font-size:11px;color:#78350f;margin:2px 0">'+it+'</div>';
+    });
+    h += '</div>';
+  }
   h += '<div style="font-size:11px;color:var(--text3);margin-bottom:10px;padding:8px 10px;background:var(--bg2);border-radius:8px">💡 '+r.intro+'</div>';
   (r.items||[]).forEach(function(it){
     h += '<div class="card" style="padding:14px 16px;margin-bottom:10px;border-left:3px solid var(--accent)">';
@@ -2499,6 +2511,21 @@ function renderSkillRadar(){
   });
   h += '</div></div>';
   var rated = r.dimensions.map(function(d,i){return {i:i, v:(scores[i]||0), d:d};}).filter(function(x){return x.v>0;}).sort(function(a,b){return a.v-b.v;});
+  // #80: 练习实测区（来自模拟面试舱）
+  var practice = getSkillPractice();
+  if(practice.length>0){
+    var dimAgg = {};
+    practice.forEach(function(p){ if(dimAgg[p.dim]===undefined) dimAgg[p.dim]={n:0,good:0}; dimAgg[p.dim].n++; if(p.rate==='好') dimAgg[p.dim].good++; });
+    h += '<div style="margin-top:12px;padding:10px 12px;background:var(--bg);border:1px solid var(--border);border-radius:8px">';
+    h += '<div style="font-size:11px;font-weight:700;margin-bottom:6px">📝 练习实测（来自模拟面试舱 · 最近'+practice.length+'次）</div>';
+    Object.keys(dimAgg).sort(function(a,b){return dimAgg[b].n-dimAgg[a].n;}).forEach(function(d){
+      var a = dimAgg[d];
+      var di = parseInt(d);
+      h += '<span style="display:inline-block;margin:2px 6px 2px 0;padding:2px 8px;background:var(--bg2);border-radius:10px;font-size:10px">'+r.dimensions[di].emoji+' '+r.dimensions[di].name+'：'+a.n+'次（😀'+a.good+'）</span>';
+    });
+    h += '<div style="font-size:10px;color:var(--text3);margin-top:4px">💡 实测次数=练习投入 · 自评分低+实测差的维度优先补</div>';
+    h += '</div>';
+  }
   if(rated.length >= 2){
     h += '<div style="margin-top:12px;padding:10px 12px;background:linear-gradient(135deg,#fef3c7,#fef9c3);border:1px solid #f59e0b;border-radius:10px">';
     h += '<div style="font-size:12px;font-weight:700;margin-bottom:6px">📋 本周学习计划（按最低分维度生成）</div>';
@@ -2518,6 +2545,24 @@ function setSkillScore(i, s){
   scores[i] = s;
   saveSkillScores(scores);
   renderSkillRadar();
+}
+
+// ===== 市场情绪指标条渲染（#81：涨跌家数/涨停跌停/成交额）=====
+function renderSentiment(){
+  var els = document.querySelectorAll('#marketSentiment');
+  if(els.length===0) return;
+  if(typeof MARKET_SENTIMENT==='undefined' || !MARKET_SENTIMENT.items){ els.forEach(function(e){ e.style.display='none'; }); return; }
+  var s = MARKET_SENTIMENT;
+  var h = '<div style="font-size:10px;color:var(--text3);margin-bottom:4px">📊 市场情绪（'+s.updated+' · 当日）</div><div style="display:flex;gap:8px;flex-wrap:wrap">';
+  (s.items||[]).forEach(function(it){
+    h += '<div style="flex:1;min-width:110px;padding:8px 10px;background:var(--bg2);border-radius:8px;text-align:center">';
+    h += '<div style="font-size:9px;color:var(--text3)">'+it.label+'</div>';
+    h += '<div style="font-size:16px;font-weight:800;color:'+(it.color||'var(--text)')+'">'+it.value+'</div>';
+    h += '<div style="font-size:9px;color:var(--text3);line-height:1.4">'+it.note+'</div>';
+    h += '</div>';
+  });
+  h += '</div>';
+  els.forEach(function(e){ e.innerHTML = h; e.style.display='block'; });
 }
 
 // ===== 记忆闪卡系统（#66：间隔重复 当天+3天+7天）=====
@@ -2595,8 +2640,13 @@ var MOCK_TYPES = {
   '行为面试': ['行为面试'],
   '产品分析': ['AI产品设计','运营方案设计','用户分层策略'],
   '数据分析': ['SQL实操','数据思维','增长实验设计','活动ROI计算','A/B测试'],
-  '增长策略': ['增长策略']
+  '增长策略': ['增长策略'],
+  'AI原生岗位': ['AI原生']
 };
+// #80: 题型→技能雷达维度映射（0产品思维/1数据分析/2SQL/3Prompt/4AI技术认知/5增长/6行业认知/7英语）
+var MOCK_TYPE_TO_SKILL = {'SQL实操':2,'数据思维':1,'AI产品设计':0,'增长策略':5,'行为面试':0,'增长实验设计':5,'活动ROI计算':1,'用户分层策略':0,'A/B测试':1,'运营方案设计':0,'AI原生':4};
+function getSkillPractice(){ try{ return JSON.parse(localStorage.getItem('skillPractice')||'[]'); }catch(e){ return []; } }
+function saveSkillPractice(l){ localStorage.setItem('skillPractice', JSON.stringify(l)); }
 var _curMockQ = null;
 function getMockLog(){ try{ return JSON.parse(localStorage.getItem('mockInterviewLog')||'[]'); }catch(e){ return []; } }
 function saveMockLog(l){ localStorage.setItem('mockInterviewLog', JSON.stringify(l)); }
@@ -2667,7 +2717,15 @@ function rateMockAnswer(rate){
   var log = getMockLog();
   log.push({date: todayStr(), type: _curMockQ.type, title: _curMockQ.question.substring(0,60), rate: rate, hasAnswer: answer.length>0});
   saveMockLog(log);
+  // #80: 练习反馈回写技能雷达
+  var dim = MOCK_TYPE_TO_SKILL[_curMockQ.type];
+  if(dim!==undefined){
+    var practice = getSkillPractice();
+    practice.push({date: todayStr(), dim: dim, rate: rate, type: _curMockQ.type});
+    saveSkillPractice(practice.slice(-60));  // 只保留最近60条
+  }
   renderMockInterview();
+  renderSkillRadar();  // 同步刷新技能雷达实测区
   document.querySelectorAll('#mockTipsBox').forEach(function(tips){ tips.style.display='block'; tips.innerHTML='✅ 已记录到成长档案！可以换题型继续练。'; });
   _curMockQ = null;
 }
@@ -3111,7 +3169,7 @@ function manualRefresh(){
 
 <script defer src="detail_content.js"></script>
 <script defer src="personal_config.js"></script>
-<script defer src="daily_data.js?v=1.5.7"></script>
+<script defer src="daily_data.js?v=1.5.8"></script>
 <script defer src="knowledge_index.js"></script>
 </body>
 </html>
