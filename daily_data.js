@@ -603,13 +603,13 @@ var OPTIMIZATION_LOG = {
     {id:81, cat:"数据优化", title:"stock板块新增【情绪指标条】（涨跌家数/涨停跌停/成交额）", desc:"✅ 8/19已实施：新增MARKET_SENTIMENT数据+stock板块顶部情绪条渲染——涨跌比/跌停数/ETF扫货/强势板块一目了然，七夕劫这类普跌行情一眼可见，不再被指数误导；每日更新时按当日行情填写", priority:"P1", status:"已完成"},
     {id:82, cat:"机制创新", title:"AI生活妙用新增【台风季天气安全卡】置顶", desc:"✅ 8/19已实施：AI_LIFE_HACKS新增weather_safety字段+渲染置顶——极端天气（台风/暴雨）时显示安全卡（出行/雷雨/防潮/计划提醒），首期内容：广州倒水模式+2个新台风预警", priority:"P2", status:"已完成"},
     {id:83, cat:"机会雷达", title:"机会雷达方向A落地：本地部署+首个接单自动化示例", desc:"✅ 8/19已实施：方向A上车路径更新为实操版（装Ollama→跑Qwen3.8-27B→Harness指向本地）+创建scripts/automation_starter.py首个接单自动化示例（每日资讯汇总器·数据整理类最小模板·可改造接单）", priority:"P1", status:"已完成"},
-    {id:84, cat:"体验优化", title:"模拟面试舱支持语音作答（麦克风转文字）", desc:"待办：当前模拟面试只能打字——新增语音作答（Web Speech API转文字填入作答框），模拟真实面试口述场景，训练口头表达能力", priority:"P2", status:"待办"},
-    {id:85, cat:"学习机制", title:"记忆闪卡新增【错词本】专区", desc:"待办：闪卡系统增加错词本——【不认识】次数≥2的词集中展示，支持一键批量重学+导出错词表，针对易错词重点突破", priority:"P2", status:"待办"},
-    {id:86, cat:"求职功能", title:"求职中心新增【目标岗位雷达】关键词监控提醒", desc:"待办：按预设关键词（AI产品运营/AI增长运营+目标公司）监控BOSS直聘/猎聘新发布岗位——新岗位出现即提示，抢占投递先机（参考#68目标公司雷达的思路，用人工检查代替自动抓取）", priority:"P2", status:"待办"},
+    {id:84, cat:"稳定性", title:"启用 AI 每日自动更新（配置 DEEPSEEK_API_KEY + 恢复8:30定时触发）", desc:"待办：当前 auto-update.yml 的 schedule 已注释停用+仓库未配置 DEEPSEEK_API_KEY secret——网站无法每天自动更新。操作：①DeepSeek开放平台申请API Key（充值10-20元够用数月）②GitHub仓库 Settings→Secrets and variables→Actions 添加 DEEPSEEK_API_KEY ③取消 auto-update.yml 中 schedule 注释（每天8:30北京时间）——此后每天自动更新17板块，无需手动", priority:"P0", status:"待办"},
+    {id:85, cat:"性能优化", title:"GitHub Pages 国内访问加速（Cloudflare CDN 免费代理）", desc:"待办：github.io 域名在国内访问时快时慢、偶尔打不开（未备案域名被限速风险）。操作：注册 Cloudflare 免费账号→添加站点（用 CNAME 方式把自定义域名或 github.io 套上 CDN）→免费全球加速，国内访问明显改善——无需买服务器即可缓解访问痛点", priority:"P1", status:"待办"},
+    {id:86, cat:"数据优化", title:"接入网站访问统计（百度统计/Umami 免费）", desc:"待办：网站没有任何访问统计——不知道每天多少人看、看了哪些板块、从哪里来。操作：注册百度统计（免费）→复制统计代码到 index.html →次日即可看到访客量/热门板块/来源渠道——用数据决定内容更新重点（哪个板块该加强、哪个没人看）", priority:"P1", status:"待办"},
     {id:87, cat:"内容优化", title:"GLM-5.3-Flash开源专题全站同步（多模态免费平替）", desc:"✅ 8/29实施：智谱开源GLM-5.3-Flash多模态模型（定价仅Opus 4.8的1/40）——AI动态追踪/学习区/TOOLCHAIN_RADAR/决策单/AI对比表全站同步【三足鼎立】状态+多模态平替候选加入评估", priority:"P1", status:"已完成"},
-    {id:88, cat:"求职功能", title:"求职中心新增【AI行业观察作品集】模块", desc:"待办：把每周写的AI行业观察（GLM开源/英伟达财报/A股复盘等）沉淀为可展示的作品集——按题材分类+日期归档+300字模板，面试时直接分享，让【每周写观察】从自律变成有产出的资产", priority:"P2", status:"待办"},
-    {id:89, cat:"数据优化", title:"TOOLCHAIN_RADAR增加【多模态平替测试】记录区", desc:"待办：GLM-5.3-Flash开源后多模态场景有了免费平替——增加一个测试记录区：同一看图任务分别跑GLM-5.3-Flash/DeepSeek(无多模态)/Qwen3.8-27B，记录完成质量+成本，用数据决定多模态场景主力", priority:"P2", status:"待办"},
-    {id:90, cat:"学习机制", title:"股票板块增加【周线复盘】小课堂", desc:"待办：小白课堂增加周线级别复盘课（周线看方向/日线找买卖点）——结合8月反弹行情（沪指修复至3952）教用户做周度复盘：本周涨跌/板块轮动/下周关注，把复盘养成习惯", priority:"P3", status:"待办"},
+    {id:88, cat:"稳定性", title:"每日更新自动备份+失败回滚（防数据全损事故）", desc:"待办：8/19曾发生脚本替换错误导致 daily_data.js 从568行降至13行的全损事故（靠git恢复）。操作：①每日更新前自动 git tag/备份 daily_data.js（或复制 .bak）②更新后 node 语法校验失败→自动 git checkout 回滚③把该流程固化进 auto_update.py（已内置失败安全，补充备份步骤）——让自动更新跑起来后依然安全", priority:"P1", status:"待办"},
+    {id:89, cat:"内容优化", title:"自定义 404 页面 + 网站 favicon/SEO 标签完善", desc:"待办：当前 404 是默认白页、浏览器标签页无图标、无 meta 描述（搜索引擎收录效果差）。操作：①新建 404.html（好看+带返回首页/搜索入口）②生成 favicon.ico（用头像或 ZR logo）③index.html 补全 title/meta description/OG 标签——提升专业感+搜索引擎收录（未来求职展示给面试官加分）", priority:"P2", status:"待办"},
+    {id:90, cat:"求职功能", title:"求职打招呼语批量生成模板（按公司/JD差异化）", desc:"待办：投递时打招呼语决定 HR 是否点开简历——当前需手动逐家写。操作：把 personal_config 的目标公司+岗位整理成模板，用 Harness/Claude 按【公司特点+JD关键词】批量生成30条差异化打招呼语→存成 templates/greetings.md →投递时直接复制使用，提升回复率", priority:"P2", status:"待办"},
   ]
 };
 
