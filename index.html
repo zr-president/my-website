@@ -293,6 +293,17 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 </div>
 </div>
 <div id="scheduleDisplay" class="card" style="display:none;margin-top:8px"></div>
+<div class="card" style="padding:12px 16px;margin-top:8px" id="calendarCard">
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap">
+<h3 style="font-size:14px;margin:0">📅 我的智能日历 <span style="font-size:10px;color:var(--text3);font-weight:400" id="calendarUpdated"></span></h3>
+<div style="margin-left:auto;display:flex;gap:6px;align-items:center">
+<input type="text" id="calCustom" placeholder="加个人提醒(如: 复查B超 10-01)" style="padding:5px 8px;border:1px solid var(--border);border-radius:6px;font-size:11px;width:190px;background:var(--bg);color:var(--text)" onkeydown="if(event.key==='Enter')addCalEvent()">
+<button onclick="addCalEvent()" style="padding:5px 10px;background:var(--accent);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:11px">＋ 添加</button>
+</div>
+</div>
+<div id="calendarList"></div>
+<p style="font-size:9px;color:var(--text3);margin-top:6px">🔒 个人提醒只存本机浏览器(localStorage)，不会出现在公开网页 — 通用节点(发售/上映/完结/窗口)每日由数据驱动</p>
+</div>
 </section>
 
 <!-- Daily Schedule Panel -->
@@ -336,6 +347,8 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <section id="career" class="section" data-search="求职 简历 面试 工作"><div class="section-header"><h2>💼 求职中心</h2><p>招聘平台直达 · 完整简历</p></div>
 <div id="picks-career" class="picks-container"></div>
 <div class="info-grid"><div class="info-item"><div class="num">09:30-11:00</div><div class="label">黄金投递窗口</div></div><div class="info-item"><div class="num">周二-周四</div><div class="label">最佳投递日</div></div><div class="info-item"><div class="num">20家/天</div><div class="label">投递目标</div></div><div class="info-item"><div class="num">87.7%↑</div><div class="label">AI岗位需求增长</div></div></div>
+<!-- #97: 目标公司雷达卡片墙 -->
+<div id="companyRadar" style="margin-bottom:8px"></div>
 <!-- #40: 每日投递打卡进度条 -->
 <div class="card" style="padding:12px 16px;margin-bottom:8px">
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
@@ -558,7 +571,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div class="card" style="padding:12px 16px" id="optimizationStats"><p style="font-size:12px;color:var(--text3)">📊 加载优化数据...</p></div></section>
 
 <section id="ai-assistant" class="section home-hidden" data-search="AI助手 聊天" style="display:none"><div class="section-header"><h2>💬 AI助手</h2><p>可视化问答 · 个人AI管家</p></div>
-<div class="card" style="padding:0"><div class="chat-box"><div class="chat-messages" id="chatMessages"><div class="chat-msg assistant"><div class="bubble">👋 你好钟锐！我是你的AI助手。可以直接问我求职、AI科普、游戏、学习、健身、饮食等任何问题。</div></div></div><div class="chat-input-area"><input type="text" id="chatInput" placeholder="输入问题，Enter发送..." onkeydown="if(event.key==='Enter')sendMessage()"><button onclick="sendMessage()">发送</button></div></div></div></section>
+<div class="card" style="padding:0"><div class="chat-box"><div class="chat-messages" id="chatMessages"><div class="chat-msg assistant"><div class="bubble">👋 你好钟锐！我是你的AI助手。可以直接问我求职、AI科普、游戏、学习、健身、饮食等任何问题。开启「🤖 AI实时」后，我能基于你的简历与网站内容真实对话。</div></div></div><div class="chat-input-area"><input type="text" id="chatInput" placeholder="输入问题，Enter发送..." onkeydown="if(event.key==='Enter')sendMessage()"><button onclick="sendMessage()">发送</button></div><div style="display:flex;align-items:center;gap:8px;padding:6px 10px;border-top:1px solid var(--border);background:var(--bg)"><span id="aiModeBadge" style="font-size:10px;padding:2px 8px;border-radius:10px;background:var(--bg2);color:var(--text3)">💻 本地模式</span><button onclick="setupAiKey()" id="aiKeyBtn" style="font-size:10px;padding:2px 8px;border:1px solid var(--border);border-radius:10px;background:var(--card);cursor:pointer;color:var(--text2)">🔑 配置AI Key</button><span style="font-size:9px;color:var(--text3)">Key 只存本机浏览器，不进代码仓库</span></div></div></div></section>
 
 <p style="text-align:center;color:var(--text3);font-size:10px;padding:24px 0">钟锐的个人数字空间 · 每天9:35更新 · <span id="lastUpdate"></span> · v<span id="siteVersion"></span></p>
 </div><!-- /dashboardView -->
@@ -717,16 +730,70 @@ function doSearch(q){
   img.src='avatar.jpg';
 })();
 
-// Chat
+// ===== 统一 AI 接入层（#94/#95/#99 共用：本地Key双模式）=====
+// Key 只存本机浏览器 localStorage（不进代码库）；未配置或请求失败自动降级本地规则，不报错
+var AI_KEY_STORE='dsh_ai_key';
+function getAiKey(){try{return localStorage.getItem(AI_KEY_STORE)||'';}catch(e){return '';}}
+function hasAiKey(){var k=getAiKey();return k&&k.length>10;}
+function setAiKey(k){try{localStorage.setItem(AI_KEY_STORE,k);}catch(e){}}
+function setupAiKey(){
+  var cur=getAiKey();
+  var v=prompt('配置 DeepSeek API Key（platform.deepseek.com 获取，只存本机浏览器）：',cur);
+  if(v===null)return;
+  v=v.trim();
+  if(v===''){setAiKey('');alert('已清除 Key，AI 助手将使用本地模式');}
+  else{setAiKey(v);alert('✅ Key 已保存（仅存本机）。现在可以体验 AI 实时对话');}
+  updateAiBadge();
+}
+function updateAiBadge(){
+  var b=document.getElementById('aiModeBadge');
+  if(!b)return;
+  if(hasAiKey()){b.textContent='🤖 AI 实时模式';b.style.background='rgba(5,150,105,.15)';b.style.color='#059669';}
+  else{b.textContent='💻 本地模式';b.style.background='var(--bg2)';b.style.color='var(--text3)';}
+}
+// 个人资料 system prompt（数字分身语料：简历/定位/网站）
+function aiSystemPrompt(){
+  var resume='';
+  try{var r=JSON.parse(localStorage.getItem('zhongrui_resume')||'null');if(r){resume=(r.basic||'')+' '+((r.skills||'')+' '+(r.projects||'')+' '+(r.exp||'')).substring(0,2200);}}catch(e){}
+  return '你是「钟锐的个人数字空间」网站里的钟锐 AI 数字分身（26岁·广州·求职AI产品运营/AI增长运营）。回答基于以下真实简历/资料，语气自然专业、信息具体，不要编造简历外的经历：\n【简历资料】\n'+(resume||'（本机未保存简历，请引导去求职中心查看）')+'\n\n【网站板块】求职/股市/AI动态/游戏/动漫/小说/影视/音乐/健身/饮食/穿搭/精酿调酒/购车/购房/学习。回答可引导用户去对应板块。';
+}
+function chatToAI(userMsg, onOk){
+  var key=getAiKey();
+  if(!hasAiKey()){onOk(null);return;}
+  try{
+    fetch('https://api.deepseek.com/chat/completions',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Authorization':'Bearer '+key},
+      body:JSON.stringify({model:'deepseek-chat',messages:[{role:'system',content:aiSystemPrompt()},{role:'user',content:userMsg}],max_tokens:800,stream:false}),
+      signal:AbortSignal.timeout(25000)
+    }).then(function(r){return r.json();}).then(function(d){
+      var t=d&&d.choices&&d.choices[0]?d.choices[0].message.content:'';
+      onOk(t||'（AI 暂无返回，请重试或检查 Key 余额）');
+    }).catch(function(){onOk(null);});
+  }catch(e){onOk(null);}
+}
+
+// Chat（#94：配置 Key 后走真实 AI 对话，未配置走本地规则降级）
 function sendMessage(){
   var i=document.getElementById('chatInput'),m=i.value.trim();
   if(!m)return;
   var ms=document.getElementById('chatMessages');
   ms.innerHTML+='<div class="chat-msg user"><div class="bubble">'+escHtml(m)+'</div></div>';
-  setTimeout(function(){
-    ms.innerHTML+='<div class="chat-msg assistant"><div class="bubble">'+rep(m)+'</div></div>';
+  function local(){ ms.innerHTML+='<div class="chat-msg assistant"><div class="bubble">'+rep(m)+'</div></div>'; ms.scrollTop=ms.scrollHeight; }
+  if(hasAiKey()){
+    ms.innerHTML+='<div class="chat-msg assistant"><div class="bubble" style="color:var(--text3)">🤖 思考中…</div></div>';
     ms.scrollTop=ms.scrollHeight;
-  },500);
+    chatToAI(m,function(ans){
+      // 移除思考占位
+      var bubbles=ms.querySelectorAll('.chat-msg.assistant .bubble');
+      var last=bubbles[bubbles.length-1];
+      if(last&&last.textContent.indexOf('思考中')>=0) last.parentNode.removeChild(last.parentNode);
+      ms.innerHTML+='<div class="chat-msg assistant"><div class="bubble">'+escHtml(ans!==null?ans:rep(m))+'</div></div>';
+      ms.scrollTop=ms.scrollHeight;
+    });
+  } else {
+    setTimeout(local,400);
+  }
   i.value='';ms.scrollTop=ms.scrollHeight;
 }
 function rep(m){
@@ -1544,6 +1611,70 @@ function renderAllPicks(){
   sections.forEach(function(s){ renderSectionPicks(s); });
 }
 
+// ===== #97 目标公司雷达卡片墙（求职中心）=====
+function renderCompanyRadar(){
+  var el=document.getElementById('companyRadar');
+  if(!el)return;
+  if(typeof TARGET_COMPANIES==='undefined'){el.style.display='none';return;}
+  var tc=TARGET_COMPANIES;
+  // 本地投递进度统计（读 tracker）
+  var tracker=[];try{tracker=JSON.parse(localStorage.getItem('zhongrui_tracker')||'[]');}catch(e){}
+  var h='<div class="insight-box" style="padding:8px 12px;font-size:11px;margin-bottom:8px">🎯 '+tc.headline+' <span style="font-size:10px;color:var(--text3)">更新 '+tc.updated+'</span></div>';
+  h+='<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:8px;margin-bottom:8px">';
+  tc.items.forEach(function(c){
+    var cnt=tracker.filter(function(t){return t.company&&t.company.indexOf(c.name)>=0;}).length;
+    var st=cnt>0?'✅ 已投 '+cnt+' 家':'○ 待投递';
+    h+='<div class="card" style="padding:11px 13px;margin:0">';
+    h+='<div style="display:flex;align-items:center;gap:8px"><span style="font-size:20px">'+c.emoji+'</span><span style="font-weight:700;font-size:13px">'+c.name+'</span><span style="font-size:9px;padding:1px 6px;border-radius:8px;background:var(--accent-light);color:var(--accent)">'+c.tier+'</span></div>';
+    h+='<div style="font-size:11px;color:var(--text2);margin:5px 0;line-height:1.6">🎯 '+c.role+'</div>';
+    h+='<div style="font-size:10px;color:var(--text3);line-height:1.6;border-top:1px solid var(--border);padding-top:5px">💡 '+c.insight+'</div>';
+    h+='<div style="display:flex;gap:6px;margin-top:7px;align-items:center"><span style="font-size:10px;padding:1px 7px;border-radius:8px;background:'+(cnt>0?'rgba(5,150,105,.12);color:#059669':'var(--bg2);color:var(--text3)')+'">'+st+'</span>';
+    h+='<a href="https://www.zhipin.com/" target="_blank" style="margin-left:auto;font-size:10px;color:var(--accent);text-decoration:none">去投递 →</a></div>';
+    h+='</div>';
+  });
+  h+='</div>';
+  h+='<p style="font-size:9px;color:var(--text3);margin:0 0 8px">进度来自「投递追踪表」本地记录 · 打招呼语模板见 templates/greetings.md（每条含公司定制切入点）</p>';
+  el.innerHTML=h;
+}
+
+// ===== #100 我的智能日历（通用节点+本地个人事件）=====
+function loadCalEvents(){try{return JSON.parse(localStorage.getItem('dsh_cal_events')||'[]');}catch(e){return [];}}
+function saveCalEvents(ev){try{localStorage.setItem('dsh_cal_events',JSON.stringify(ev));}catch(e){}}
+function addCalEvent(){
+  var inp=document.getElementById('calCustom');
+  if(!inp)return;
+  var v=inp.value.trim();
+  if(!v)return;
+  var ev=loadCalEvents();
+  ev.push({text:v,added:new Date().toISOString().slice(0,10)});
+  saveCalEvents(ev);
+  inp.value='';
+  renderCalendar();
+}
+function delCalEvent(i){
+  var ev=loadCalEvents();ev.splice(i,1);saveCalEvents(ev);renderCalendar();
+}
+function renderCalendar(){
+  var list=document.getElementById('calendarList');
+  if(!list)return;
+  var up=document.getElementById('calendarUpdated');
+  var h='';
+  // 通用公开节点
+  if(typeof CALENDAR_EVENTS!=='undefined'){
+    if(up)up.textContent='· '+CALENDAR_EVENTS.updated;
+    CALENDAR_EVENTS.items.forEach(function(it){
+      h+='<div style="display:flex;gap:8px;align-items:baseline;padding:4px 0;border-bottom:1px solid var(--border);font-size:11px;line-height:1.6"><span style="flex-shrink:0;font-weight:700;color:var(--accent);min-width:96px">'+it.date+'</span><span>'+it.text+'</span></div>';
+    });
+  }
+  // 本地个人事件（带删除）
+  var ev=loadCalEvents();
+  ev.forEach(function(e,i){
+    h+='<div style="display:flex;gap:8px;align-items:center;padding:4px 0;border-bottom:1px dashed var(--border);font-size:11px;line-height:1.6"><span style="flex-shrink:0;font-weight:700;color:var(--orange);min-width:96px">📌 个人</span><span style="flex:1">'+escHtml(e.text)+'</span><button onclick="delCalEvent('+i+')" style="background:none;border:none;cursor:pointer;color:var(--red);font-size:12px" title="删除">✕</button></div>';
+  });
+  if(!h)h='<p style="font-size:11px;color:var(--text3)">暂无近期事件——通用节点每日由数据更新，个人提醒可在上方添加（仅存本机）</p>';
+  list.innerHTML=h;
+}
+
 // ===== View Router =====
 var CATEGORIES = {
   about:    {icon:'👤', name:'关于·求职', subs:'个人介绍 | 求职中心 | 模拟面试舱 | 每日待办', sections:['dashboard','about','career','mock-interview']},
@@ -2353,7 +2484,7 @@ function renderModelComparison(){
 function onDataReady(){
   var tasks = [
     function(){ var e=document.getElementById('siteVersion'); if(e) e.textContent = (typeof SITE_VERSION!=='undefined'?SITE_VERSION:''); },
-    renderAllPicks, renderBriefing, renderVocab, renderQuiz, renderMusicPlayer, renderModelComparison, renderToolchainRadar, renderOpportunityRadar, renderLifeHacks, renderSkillRadar, renderFlashcards, renderMockInterview, renderSentiment, renderDailyDecisions, renderLearnPath, renderTodayKnowledge, renderLearningInsight, renderLearnPathMini, renderAgentStacks, checkUpdateStatus
+    renderAllPicks, renderBriefing, renderVocab, renderQuiz, renderMusicPlayer, renderModelComparison, renderToolchainRadar, renderOpportunityRadar, renderLifeHacks, renderSkillRadar, renderFlashcards, renderMockInterview, renderSentiment, renderDailyDecisions, renderLearnPath, renderTodayKnowledge, renderLearningInsight, renderLearnPathMini, renderAgentStacks, renderCompanyRadar, renderCalendar, updateAiBadge, checkUpdateStatus
   ];
   tasks.forEach(function(fn){
     try { if(typeof fn==='function') fn(); } catch(e){ console.error('Init error:', e.message); }

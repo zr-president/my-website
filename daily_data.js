@@ -529,8 +529,8 @@ var AGENT_STACKS = {
 
 var OPTIMIZATION_LOG = {
   date: "2026-09-02",
-  total_suggestions: 93,
-  total_implemented: 79,
+  total_suggestions: 101,
+  total_implemented: 81,
   streak_days: 31,
   suggestions: [
     {id:1, cat:"已归档", title:"AI追踪板块周报自动生成", desc:"每周一自动汇总上周AI融资/模型发布/价格变动→已集成至INSIGHTS.ai-track周度总结", priority:"P1", status:"已完成"},
@@ -624,6 +624,14 @@ var OPTIMIZATION_LOG = {
     {id:91, cat:"内容优化", title:"科大讯飞端侧模型开源专题全站同步（端侧AI新赛道）", desc:"✅ 9/2实施：科大讯飞9/1开源词元星火X2.5端侧模型——ai-track/学习区/TOOLCHAIN_RADAR/决策单全站同步【端侧AI新赛道】状态+端侧vs云端架构科普入小白课堂", priority:"P1", status:"已完成"},
     {id:92, cat:"求职功能", title:"金九银十求职冲刺页：秋招岗位日历+投递目标仪表盘", desc:"待办：9月是秋招+社招双高峰——求职中心增加金九银十专属模块：①秋招时间线（9月互联网大厂秋招窗口/笔试面试时间表）②每日投递目标仪表盘（金九银十期间周目标从15家提到20家）③面试高峰预警（投递后3-7天集中面试期准备提醒）——把9月求职窗口用足", priority:"P1", status:"待办"},
     {id:93, cat:"内容优化", title:"9月新番/新片/新游前瞻清单（Re:Zero完结+秋季档+国庆档）", desc:"已回滚：9/2实施过【9月内容前瞻】首页板块（SEPTEMBER_PREVIEW+renderPreview），用户反馈不实用已移除。如需同类功能，可改做【今日内容速览】挂到 DAILY_BRIEFING 下方而非独立板块", priority:"P2", status:"待办"},
+    {id:94, cat:"AI功能", title:"AI 数字分身：首页 AI 助手升级为真实对话（求职作品集杀手锏）", desc:"推进中（框架已落地）：✅统一AI接入层已建（localStorage 存 Key 不进代码库+chatToAI 函数+CORS/无Key 自动降级本地规则）✅#ai-assistant 聊天升级为双模式（配置 Key 后基于简历真实对话，未配置走本地规则）+🔑配置入口+模式徽章。待办：真 AI 效果需本机配置 Key 后体验；若 DeepSeek API 浏览器直连 CORS 受限，后续可上腾讯云轻量代理（呼应服务器方案）", priority:"P0", status:"推进中"},
+    {id:95, cat:"AI功能", title:"AI 简历匹配度分析器（粘贴JD→评分+缺口+优化建议）", desc:"待办：求职中心增加【JD匹配分析】——粘贴目标JD→对比本地简历数据（DEFAULT_RESUME）→输出匹配度评分+缺口清单+简历优化建议+定制打招呼语。配置 Key 后走真 AI 深度分析；无 Key 走本地关键词预检。复用 #94 统一 AI 层", priority:"P0", status:"待办"},
+    {id:96, cat:"内容优化", title:"AI 行业观察档案页（把每日AI分析沉淀为个人思考专题）", desc:"待办：把每日 INSIGHTS.ai-track/news 的 AI 分析按【日期+主题】自动归档为『我的 AI 行业观察』，支持手写追加 300 字观察——既是面试作品集（持续31天+的思考证明），也是个人成长沉淀。避免做成独立不实用板块：挂到求职中心/学习区内部入口", priority:"P1", status:"待办"},
+    {id:97, cat:"求职功能", title:"目标公司雷达卡片墙（7家公司可视化：进度/面试/AI观察）", desc:"✅ 9/2实施：求职中心新增【目标公司雷达】卡片墙——TARGET_COMPANIES 数据块（7家目标公司×定位/岗位/AI观察/打招呼语入口）+renderCompanyRadar 渲染（卡片含投递进度徽章·读本地 tracker 统计·洞察一句话·去投递直达）——一屏看清求职全局，面试前点开即功课", priority:"P1", status:"已完成"},
+    {id:98, cat:"学习机制", title:"知识卡片库+错词本+间隔复习完善（治学了就忘）", desc:"待办：把每日一词/小白课堂统一纳入知识卡片库（#66 闪卡基础上升级）——①每日新知识自动进复习队列（艾宾浩斯间隔：3/7/30天）②不认识≥2次的词自动入【错词本】③错词一键重学+导出——网站成为『第二大脑』", priority:"P1", status:"待办"},
+    {id:99, cat:"AI功能", title:"可交互 AI 生活助手（结合个人约束实时问答）", desc:"待办：把静态的 AI 生活妙用升级为会问会答的生活顾问——结合个人档案（肾结石预防/增肌/170·59kg/广州/预算敏感），实时回答『今天台风天中午吃什么』『体检指标偏高怎么理解』『周末广州周边去哪』。配置 Key 走真 AI；无 Key 本地规则模板。复用 #94 统一 AI 层", priority:"P0", status:"待办"},
+    {id:100, cat:"功能优化", title:"我的智能日历（把散落日期聚合为提醒）", desc:"✅ 9/2实施：每日待办区新增【📅 我的智能日历】卡片——CALENDAR_EVENTS 数据块（通用节点：发售/上映/完结/自动更新/投递窗口）+renderCalendar 渲染+个人提醒添加/删除（存 localStorage 不外泄，隐私保护）——近期关键日期一眼看清", priority:"P1", status:"已完成"},
+    {id:101, cat:"学习机制", title:"板块分级学习路径（L1入门→L2进阶→L3实战）", desc:"待办：为股市/购车/购房/精酿/健身/饮食等板块建立系统课程路径——每天学一节（10分钟）+小节测验（复用每日一练）+进度可视化（『股市 L2 第5/15节』）——把零散知识变成体系，半年后各板块从略知一二到能独立判断（与小白课堂衔接：小白课堂=每日1课，分级路径=板块完整课程）", priority:"P1", status:"待办"},
   ]
 };
 
@@ -1106,6 +1114,36 @@ var SKILL_RADAR = {
     {emoji:"📈", name:"增长方法论", desc:"北极星指标/AARRR/裂变/留存/ROI", how:"每周拆解 1 个 AI 工具的获客/留存案例，画增长漏斗图", resource:"增长黑客案例 / 每日一练增长题 / 面试冲刺"},
     {emoji:"🏭", name:"行业认知", desc:"AI竞争格局/开源生态/商业化/监管", how:"每天读当日 AI 动态+每周写 1 篇 300 字行业观察（可作面试作品集）", resource:"AI动态追踪 / 每日一文 / 机会雷达"},
     {emoji:"🇬🇧", name:"英语", desc:"技术文档阅读/海外资讯/开源社区", how:"每天读 1 条英文 AI 资讯（TechCrunch），不懂的让 AI 精讲", resource:"英文 AI 资讯 RSS / GPT 辅助精读"}
+  ]
+};
+
+// ===== 目标公司雷达（#97：求职中心可视化卡片墙）=====
+// 每日更新时：可刷新 each 公司的 insight（AI 行业观察一句话）；进度从本地 tracker 读取
+var TARGET_COMPANIES = {
+  updated: "2026-09-02",
+  headline: "7 家目标公司 · 定位 AI产品运营 / AI增长运营 · 投递进度实时同步",
+  items: [
+    {emoji:"📱", name:"字节跳动", tier:"🥇第一梯队", role:"AI产品运营/AI增长运营", insight:"豆包生态高速扩张期——AI应用落地深度行业领先，Agent产品化方向与我的作品（AI增长中台）高度契合", greeting:"greetings.md#字节跳动"},
+    {emoji:"🐧", name:"腾讯", tier:"🥇第一梯队", role:"AI产品运营/AI增长运营", insight:"混元/元宝加速产品化+数据生态优势——我做过经营分析（30+BI报表）也做过AI增长，双能力匹配", greeting:"greetings.md#腾讯"},
+    {emoji:"🍔", name:"美团", tier:"🥇第一梯队", role:"AI产品运营", insight:"2027校招新增AI原生岗位——本地生活AI化场景多，我懂线下+线上双场景（平安400+网点经营分析）", greeting:"greetings.md#美团"},
+    {emoji:"📕", name:"小红书", tier:"🥈第二梯队", role:"AI产品运营/AI内容运营", insight:"内容+电商+AI结合最好的平台之一——我本身是B站UP主，懂内容又懂AI，能快速上手UGC运营场景", greeting:"greetings.md#小红书"},
+    {emoji:"🏦", name:"微众银行", tier:"🥈第二梯队", role:"AI增长运营", insight:"数字银行AI化标杆——我金融背景（平安）+AI增长双能力，懂合规又懂增长，组合稀缺", greeting:"greetings.md#微众银行"},
+    {emoji:"👗", name:"SHEIN", tier:"🥈第二梯队", role:"AI增长运营", insight:"供应链+AI全球标杆——我做增长擅长AI渠道归因与成本控制（月毛利80万+），匹配出海增长场景", greeting:"greetings.md#SHEIN"},
+    {emoji:"🚗", name:"滴滴", tier:"🥉第三梯队", role:"AI增长运营", insight:"出行场景数据量大——我做AI增长中台（实时监控+AI归因），供需调度类业务数据密集型匹配", greeting:"greetings.md#滴滴"}
+  ]
+};
+
+// ===== 我的智能日历（#100：把散落日期聚合为提醒·挂每日待办内）=====
+// 公开通用节点（每日更新时维护）；个人事件（体检复查等）由用户在页面本地 localStorage 添加，不外泄
+var CALENDAR_EVENTS = {
+  updated: "2026-09-02",
+  headline: "近期关注 · 一眼看清未来 2 周的关键日期",
+  items: [
+    {date: "9/15", text: "🎮《研究者》STILLTRACE 正式发布（悬疑解谜）"},
+    {date: "9/30", text: "🎬 Re:Zero 第四季【夺还篇】最终话播出"},
+    {date: "10/29", text: "🎮《影之刃零》正式发售（预售中·国产3A）"},
+    {date: "每天6:00", text: "🤖 AI 每日自动更新（17板块状态推进）"},
+    {date: "周一至四 9:30-11:00", text: "💼 投递黄金窗口（金九银十每周10-15家）"}
   ]
 };
 
