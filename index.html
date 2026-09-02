@@ -547,9 +547,6 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <!-- Full quiz detail (hidden by default) -->
 <div id="quizFullView" style="display:none;margin-top:8px"></div></section>
 
-<section id="sep-preview" class="section" data-search="9月 前瞻 日历 新番 新片 新游 内容 预告"><div class="section-header"><h2>📅 9月内容前瞻</h2><p>动漫完结/开播 · 电影档期 · 游戏发售日历 · 更新于<span id="previewDate"></span></p></div>
-<div id="previewGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px"><div class="card"><p style="font-size:12px;color:var(--text3)">⏳ 加载日历...</p></div></div></section>
-
 <section id="guide" class="section" data-search="帮助 指南 使用 说明 教程 功能 介绍"><div class="section-header"><h2>📖 使用指南</h2><p>功能介绍 · 模块说明 · 每日更新</p></div>
 <div id="picks-guide" class="picks-container"></div></section>
 
@@ -1558,7 +1555,7 @@ var CATEGORIES = {
 
 // Key sections to show on homepage (everything else hidden)
 // learning 不在首页展示——点进学习区才显示完整内容（今日新知等），首页只保留小白课堂卡片
-var HOME_SECTIONS = ['dashboard','music-player','daily-vocab','daily-quiz','sep-preview','guide','optimization'];
+var HOME_SECTIONS = ['dashboard','music-player','daily-vocab','daily-quiz','guide','optimization'];
 var vocabShuffled = [];
 var vocabShowingAll = false;
 
@@ -2356,40 +2353,10 @@ function renderModelComparison(){
 function onDataReady(){
   var tasks = [
     function(){ var e=document.getElementById('siteVersion'); if(e) e.textContent = (typeof SITE_VERSION!=='undefined'?SITE_VERSION:''); },
-    renderAllPicks, renderBriefing, renderVocab, renderQuiz, renderMusicPlayer, renderModelComparison, renderToolchainRadar, renderOpportunityRadar, renderLifeHacks, renderSkillRadar, renderFlashcards, renderMockInterview, renderSentiment, renderDailyDecisions, renderLearnPath, renderTodayKnowledge, renderLearningInsight, renderLearnPathMini, renderAgentStacks, renderPreview, checkUpdateStatus
+    renderAllPicks, renderBriefing, renderVocab, renderQuiz, renderMusicPlayer, renderModelComparison, renderToolchainRadar, renderOpportunityRadar, renderLifeHacks, renderSkillRadar, renderFlashcards, renderMockInterview, renderSentiment, renderDailyDecisions, renderLearnPath, renderTodayKnowledge, renderLearningInsight, renderLearnPathMini, renderAgentStacks, checkUpdateStatus
   ];
   tasks.forEach(function(fn){
     try { if(typeof fn==='function') fn(); } catch(e){ console.error('Init error:', e.message); }
-  });
-}
-
-// ===== 9月内容前瞻渲染（#93：动漫完结/开播 + 电影档期 + 游戏发售日历）=====
-function renderPreview(){
-  var el = document.getElementById('previewGrid');
-  if(!el) return;
-  if(typeof SEPTEMBER_PREVIEW==='undefined'){ el.innerHTML = '<div class="card"><p style="font-size:12px;color:var(--text3)">📅 暂无前瞻数据</p></div>'; return; }
-  var p = SEPTEMBER_PREVIEW;
-  var dateEl = document.getElementById('previewDate');
-  if(dateEl && p.updated) dateEl.textContent = p.updated;
-  if(p.headline){
-    var hl = document.createElement('div');
-    hl.className = 'insight-box';
-    hl.style.cssText = 'margin-bottom:8px;font-weight:600';
-    hl.textContent = '🎯 ' + p.headline;
-    el.innerHTML = '';
-    el.appendChild(hl);
-  }
-  p.categories.forEach(function(cat){
-    var card = document.createElement('div');
-    card.className = 'card';
-    card.style.cssText = 'padding:12px 14px';
-    var h = '<div style="display:flex;align-items:center;gap:6px;margin-bottom:6px"><span style="font-size:18px">'+cat.icon+'</span><span style="font-weight:700;font-size:13px">'+cat.name+'</span><span style="margin-left:auto;font-size:10px;color:var(--text3)">'+cat.count+'项</span></div>';
-    cat.items.forEach(function(it){
-      h += '<div style="display:flex;gap:6px;padding:4px 0;border-bottom:1px solid var(--border);font-size:11px;line-height:1.6"><span style="flex-shrink:0;font-weight:700;color:var(--accent);min-width:52px">'+it.date+'</span><span style="flex:1">'+it.text+'</span></div>';
-    });
-    h += '<div style="font-size:10px;color:var(--text3);margin-top:6px">'+cat.note+'</div>';
-    card.innerHTML = h;
-    el.appendChild(card);
   });
 }
 
