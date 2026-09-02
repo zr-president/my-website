@@ -592,7 +592,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div id="picks-optimization" class="picks-container"></div>
 <div class="card" style="padding:12px 16px" id="optimizationStats"><p style="font-size:12px;color:var(--text3)">📊 加载优化数据...</p></div></section>
 
-<section id="ai-assistant" class="section home-hidden" data-search="AI助手 聊天" style="display:none"><div class="section-header"><h2>💬 AI助手</h2><p>可视化问答 · 个人AI管家</p></div>
+<section id="ai-assistant" class="section" data-search="AI助手 聊天 数字分身"><div class="section-header"><h2>💬 AI助手 · 数字分身</h2><p>可视化问答 · 个人AI管家 · 配置Key后可真实对话</p></div>
 <div class="card" style="padding:0"><div class="chat-box"><div class="chat-messages" id="chatMessages"><div class="chat-msg assistant"><div class="bubble">👋 你好钟锐！我是你的AI助手。可以直接问我求职、AI科普、游戏、学习、健身、饮食等任何问题。开启「🤖 AI实时」后，我能基于你的简历与网站内容真实对话。</div></div></div><div class="chat-input-area"><input type="text" id="chatInput" placeholder="输入问题，Enter发送..." onkeydown="if(event.key==='Enter')sendMessage()"><button onclick="sendMessage()">发送</button></div><div style="display:flex;align-items:center;gap:8px;padding:6px 10px;border-top:1px solid var(--border);background:var(--bg)"><span id="aiModeBadge" style="font-size:10px;padding:2px 8px;border-radius:10px;background:var(--bg2);color:var(--text3)">💻 本地模式</span><button onclick="setupAiKey()" id="aiKeyBtn" style="font-size:10px;padding:2px 8px;border:1px solid var(--border);border-radius:10px;background:var(--card);cursor:pointer;color:var(--text2)">🔑 配置AI Key</button><span style="font-size:9px;color:var(--text3)">Key 只存本机浏览器，不进代码仓库</span></div></div></div></section>
 
 <p style="text-align:center;color:var(--text3);font-size:10px;padding:24px 0">钟锐的个人数字空间 · 每天9:35更新 · <span id="lastUpdate"></span> · v<span id="siteVersion"></span></p>
@@ -699,6 +699,7 @@ document.querySelectorAll('.nav-section a').forEach(function(a){
     // Home/dashboard → go to homepage
     if(href==='#home'){e.preventDefault();if(typeof navigateTo==='function') navigateTo('home');return;}
     if(href==='#dashboard'){e.preventDefault();if(typeof navigateTo==='function') navigateTo('section-detail','dashboard');return;}
+    if(href==='#ai-assistant'){e.preventDefault();showView('home');setTimeout(function(){var el=document.getElementById('ai-assistant');if(el)el.scrollIntoView({behavior:'smooth',block:'start'});},120);return;}
     e.preventDefault();
     var sid = href.replace('#','');
     if(typeof navigateTo === 'function') navigateTo('section-detail', sid);
@@ -1819,7 +1820,7 @@ var CATEGORIES = {
 
 // Key sections to show on homepage (everything else hidden)
 // learning 不在首页展示——点进学习区才显示完整内容（今日新知等），首页只保留小白课堂卡片
-var HOME_SECTIONS = ['dashboard','music-player','daily-vocab','daily-quiz','guide','optimization'];
+var HOME_SECTIONS = ['dashboard','music-player','daily-vocab','daily-quiz','guide','optimization','ai-assistant'];
 var vocabShuffled = [];
 var vocabShowingAll = false;
 
@@ -2491,6 +2492,10 @@ window.addEventListener('hashchange', function(){
   var hash = window.location.hash.replace('#','');
   if(!hash || hash==='home'){
     showView('home');
+  } else if(hash==='ai-assistant'){
+    // AI 助手：回到首页并滚动到聊天区（不是空详情页）
+    showView('home');
+    setTimeout(function(){ var el=document.getElementById('ai-assistant'); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); },120);
   } else if(hash.startsWith('category-')){
     showView('category', hash.replace('category-',''));
   } else if(hash && document.getElementById(hash)){
