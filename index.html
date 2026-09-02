@@ -872,17 +872,21 @@ function lifeLocalAnswer(q){
 function chatToAI_safe(sys,user,onOk){
   var key=getAiKey();
   if(!hasAiKey()){onOk(null);return;}
+  var done=false;
+  function fin(v){ if(done)return; done=true; onOk(v); }
   try{
     fetch('https://api.deepseek.com/chat/completions',{
       method:'POST',
       headers:{'Content-Type':'application/json','Authorization':'Bearer '+key},
       body:JSON.stringify({model:'deepseek-chat',messages:[{role:'system',content:sys},{role:'user',content:user}],max_tokens:1200,stream:false}),
-      signal:AbortSignal.timeout(30000)
+      signal:AbortSignal.timeout(25000)
     }).then(function(r){return r.json();}).then(function(d){
       var t=d&&d.choices&&d.choices[0]?d.choices[0].message.content:'';
-      onOk(t||null);
-    }).catch(function(){onOk(null);});
-  }catch(e){onOk(null);}
+      fin(t||null);
+    }).catch(function(){fin(null);});
+  }catch(e){fin(null);}
+  // 兜底：28 秒未返回 → 降级（本地报告/模板），不让界面卡在思考中
+  setTimeout(function(){fin(null);},28000);
 }
 
 // 个人资料 system prompt（数字分身语料：简历/定位/网站）
@@ -894,6 +898,8 @@ function aiSystemPrompt(){
 function chatToAI(userMsg, onOk){
   var key=getAiKey();
   if(!hasAiKey()){onOk(null);return;}
+  var done=false;
+  function fin(v){ if(done)return; done=true; onOk(v); }
   try{
     fetch('https://api.deepseek.com/chat/completions',{
       method:'POST',
@@ -902,31 +908,38 @@ function chatToAI(userMsg, onOk){
       signal:AbortSignal.timeout(25000)
     }).then(function(r){return r.json();}).then(function(d){
       var t=d&&d.choices&&d.choices[0]?d.choices[0].message.content:'';
-      onOk(t||'（AI 暂无返回，请重试或检查 Key 余额）');
-    }).catch(function(){onOk(null);});
-  }catch(e){onOk(null);}
+      fin(t||'（AI 暂无返回，请重试或检查 Key 余额）');
+    }).catch(function(){fin(null);});
+  }catch(e){fin(null);}
+  // 兜底：28 秒仍未返回（极端网络/直连限制）→ 强制走本地降级，绝不让界面卡在思考中
+  setTimeout(function(){fin(null);},28000);
 }
 
-// Chat（#94：配置 Key 后走真实 AI 对话，未配置走本地规则降级）
+// Chat（#94：配置 Key 后走真实 AI 对话，未配置/失败走本地规则降级；占位气泡原地更新，永不卡死）
 function sendMessage(){
   var i=document.getElementById('chatInput'),m=i.value.trim();
   if(!m)return;
   var ms=document.getElementById('chatMessages');
   ms.innerHTML+='<div class="chat-msg user"><div class="bubble">'+escHtml(m)+'</div></div>';
-  function local(){ ms.innerHTML+='<div class="chat-msg assistant"><div class="bubble">'+rep(m)+'</div></div>'; ms.scrollTop=ms.scrollHeight; }
   if(hasAiKey()){
-    ms.innerHTML+='<div class="chat-msg assistant"><div class="bubble" style="color:var(--text3)">🤖 思考中…</div></div>';
+    var ph=document.createElement('div');
+    ph.className='chat-msg assistant';
+    ph.innerHTML='<div class="bubble" style="color:var(--text3)">🤖 思考中…（最长28秒，超时自动切换本地回答）</div>';
+    ms.appendChild(ph);
     ms.scrollTop=ms.scrollHeight;
     chatToAI(m,function(ans){
-      // 移除思考占位
-      var bubbles=ms.querySelectorAll('.chat-msg.assistant .bubble');
-      var last=bubbles[bubbles.length-1];
-      if(last&&last.textContent.indexOf('思考中')>=0) last.parentNode.removeChild(last.parentNode);
-      ms.innerHTML+='<div class="chat-msg assistant"><div class="bubble">'+escHtml(ans!==null?ans:rep(m))+'</div></div>';
+      if(ans!==null){
+        ph.innerHTML='<div class="bubble">'+escHtml(ans)+'</div>';
+      } else {
+        ph.innerHTML='<div class="bubble">⚠️ AI 实时响应失败（网络/Key 余额/直连受限），已用本地模式回答：<br>'+escHtml(rep(m))+'</div>';
+      }
       ms.scrollTop=ms.scrollHeight;
     });
   } else {
-    setTimeout(local,400);
+    setTimeout(function(){
+      ms.innerHTML+='<div class="chat-msg assistant"><div class="bubble">'+rep(m)+'</div></div>';
+      ms.scrollTop=ms.scrollHeight;
+    },400);
   }
   i.value='';ms.scrollTop=ms.scrollHeight;
 }
