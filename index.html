@@ -234,7 +234,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','fun')">🎮 娱乐</div><a href="#gaming">🎯 游戏区</a><a href="#music">🎵 音乐区</a><a href="#novel">📖 小说区</a><a href="#anime">🎬 动漫区</a><a href="#movie">🎥 影视区</a></div>
 <div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','life')">🏃 生活</div><a href="#fashion">👔 穿搭推荐</a><a href="#fitness">💪 健身方案</a><a href="#diet">🍽️ 饮食助手</a><a href="#beer">🍺 精酿与调酒</a><a href="#life-hacks">🧩 AI生活妙用</a></div>
 <div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','finance')">📊 财经·学习</div><a href="#stock">📈 股市基金</a><a href="#car">🚗 购车推荐</a><a href="#house">🏠 购房租房</a><a href="#learning">🎓 学习区</a><a href="#skill-radar">🧭 技能雷达</a><a href="#travel">✈️ 旅游区</a><a href="#ai-track">🔭 AI动态追踪</a></div>
-<div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','tools')">🤖 工具</div><a href="#guide">📖 使用指南</a><a href="#opportunity">🎯 机会雷达</a><a href="#optimization">🔧 优化日记</a><a href="search.html" target="_blank">📚 知识库搜索</a></div>
+<div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','tools')">🤖 工具</div><a href="#guide">📖 使用指南</a><a href="#opportunity">🎯 机会雷达</a><a href="#optimization">🔧 优化日记</a><a href="#life-hacks">🧩 AI生活妙用</a><a href="#ai-assistant">💬 AI助手</a><a href="search.html" target="_blank">📚 知识库搜索</a></div>
 </nav>
 
 <main class="main">
@@ -723,7 +723,7 @@ document.querySelectorAll('.nav-section a').forEach(function(a){
     // Home/dashboard → go to homepage
     if(href==='#home'){e.preventDefault();if(typeof navigateTo==='function') navigateTo('home');return;}
     if(href==='#dashboard'){e.preventDefault();if(typeof navigateTo==='function') navigateTo('section-detail','dashboard');return;}
-    if(href==='#ai-assistant'){e.preventDefault();showView('home');setTimeout(function(){var el=document.getElementById('ai-assistant');if(el)el.scrollIntoView({behavior:'smooth',block:'start'});},120);return;}
+    if(href==='#ai-assistant'||href==='#career'||href==='#life-hacks'){e.preventDefault();showView('home');setTimeout(function(){var el=document.getElementById(href.replace('#',''));if(el)el.scrollIntoView({behavior:'smooth',block:'start'});},120);return;}
     e.preventDefault();
     var sid = href.replace('#','');
     if(typeof navigateTo === 'function') navigateTo('section-detail', sid);
@@ -1857,7 +1857,7 @@ var CATEGORIES = {
 
 // Key sections to show on homepage (everything else hidden)
 // learning 不在首页展示——点进学习区才显示完整内容（今日新知等），首页只保留小白课堂卡片
-var HOME_SECTIONS = ['dashboard','music-player','daily-vocab','daily-quiz','guide','optimization','ai-assistant'];
+var HOME_SECTIONS = ['dashboard','career','music-player','daily-vocab','daily-quiz','guide','optimization','life-hacks','ai-assistant'];
 var vocabShuffled = [];
 var vocabShowingAll = false;
 
@@ -2529,10 +2529,10 @@ window.addEventListener('hashchange', function(){
   var hash = window.location.hash.replace('#','');
   if(!hash || hash==='home'){
     showView('home');
-  } else if(hash==='ai-assistant'){
-    // AI 助手：回到首页并滚动到聊天区（不是空详情页）
+  } else if(hash==='ai-assistant'||hash==='career'||hash==='life-hacks'){
+    // 工具类板块：回到首页并滚动到对应区块（避免空详情页）
     showView('home');
-    setTimeout(function(){ var el=document.getElementById('ai-assistant'); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); },120);
+    setTimeout(function(){ var el=document.getElementById(hash); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); },120);
   } else if(hash.startsWith('category-')){
     showView('category', hash.replace('category-',''));
   } else if(hash && document.getElementById(hash)){
@@ -3660,7 +3660,7 @@ function manualRefresh(){
 
 <script defer src="detail_content.js"></script>
 <script defer src="personal_config.js"></script>
-<script defer src="daily_data.js?v=1.6.3"></script>
+<script defer src="daily_data.js?v=1.6.4"></script>
 <script defer src="knowledge_index.js"></script>
 </body>
 </html>
