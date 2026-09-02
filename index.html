@@ -571,7 +571,21 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
   <div style="font-size:12px;font-weight:700;margin-bottom:4px">🧠 记忆闪卡（间隔重复 · 新词当天+3天+7天复习）</div>
   <div id="flashcardStats" style="font-size:10px;color:var(--text3);margin-bottom:8px"></div>
   <div id="flashcardList"></div>
-</div></section>
+</div>
+<!-- #98: 错词本（复习时点😵不认识≥1次的词） -->
+<details class="card" style="padding:10px 14px;margin-top:8px" id="wrongWordsBox">
+<summary style="cursor:pointer;font-size:12px;font-weight:600">📕 错词本 <span id="wrongWordsCount" style="font-size:10px;color:var(--text3);font-weight:400"></span></summary>
+<div id="wrongWordsList" style="font-size:11px;margin-top:8px;line-height:1.7"></div>
+<div style="display:flex;gap:6px;margin-top:8px">
+<button onclick="wrongWordsRelearnAll()" style="padding:4px 10px;background:var(--accent);color:#fff;border:none;border-radius:10px;cursor:pointer;font-size:10px">🔄 全部重学</button>
+<button onclick="wrongWordsExport()" style="padding:4px 10px;border:1px solid var(--border);border-radius:10px;background:var(--card);cursor:pointer;font-size:10px;color:var(--text2)">📤 导出错词表</button>
+</div>
+</details>
+<!-- #101: 板块分级学习路径 -->
+<details class="card" style="padding:10px 14px;margin-top:8px">
+<summary style="cursor:pointer;font-size:12px;font-weight:600">📚 板块系统课程（L1入门→L2进阶→L3实战）<span id="pathProgressText" style="font-size:10px;color:var(--text3);font-weight:400"></span></summary>
+<div id="subjectPathsList" style="font-size:11px;margin-top:8px"></div>
+</details></section>
 
 <section id="daily-quiz" class="section" data-search="每日一练 练习 题目 面试 SQL 题库"><div class="section-header"><h2>📝 每日一练</h2><p>首页展示3道 · 共<span id="quizTotalCount">0</span>题</p></div>
 <div id="quizPreview" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px;margin-bottom:8px"></div>
@@ -593,7 +607,17 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div class="card" style="padding:12px 16px" id="optimizationStats"><p style="font-size:12px;color:var(--text3)">📊 加载优化数据...</p></div></section>
 
 <section id="ai-assistant" class="section" data-search="AI助手 聊天 数字分身"><div class="section-header"><h2>💬 AI助手 · 数字分身</h2><p>可视化问答 · 个人AI管家 · 配置Key后可真实对话</p></div>
-<div class="card" style="padding:0"><div class="chat-box"><div class="chat-messages" id="chatMessages"><div class="chat-msg assistant"><div class="bubble">👋 你好钟锐！我是你的AI助手。可以直接问我求职、AI科普、游戏、学习、健身、饮食等任何问题。开启「🤖 AI实时」后，我能基于你的简历与网站内容真实对话。</div></div></div><div class="chat-input-area"><input type="text" id="chatInput" placeholder="输入问题，Enter发送..." onkeydown="if(event.key==='Enter')sendMessage()"><button onclick="sendMessage()">发送</button></div><div style="display:flex;align-items:center;gap:8px;padding:6px 10px;border-top:1px solid var(--border);background:var(--bg)"><span id="aiModeBadge" style="font-size:10px;padding:2px 8px;border-radius:10px;background:var(--bg2);color:var(--text3)">💻 本地模式</span><button onclick="setupAiKey()" id="aiKeyBtn" style="font-size:10px;padding:2px 8px;border:1px solid var(--border);border-radius:10px;background:var(--card);cursor:pointer;color:var(--text2)">🔑 配置AI Key</button><span style="font-size:9px;color:var(--text3)">Key 只存本机浏览器，不进代码仓库</span></div></div></div></section>
+<div class="card" style="padding:0"><div class="chat-box"><div class="chat-messages" id="chatMessages"><div class="chat-msg assistant"><div class="bubble">👋 你好钟锐！我是你的AI助手。可以直接问我求职、AI科普、游戏、学习、健身、饮食等任何问题。开启「🤖 AI实时」后，我能基于你的简历与网站内容真实对话。</div></div></div><div class="chat-input-area"><input type="text" id="chatInput" placeholder="输入问题，Enter发送..." onkeydown="if(event.key==='Enter')sendMessage()"><button onclick="sendMessage()">发送</button></div><div style="display:flex;align-items:center;gap:8px;padding:6px 10px;border-top:1px solid var(--border);background:var(--bg)"><span id="aiModeBadge" style="font-size:10px;padding:2px 8px;border-radius:10px;background:var(--bg2);color:var(--text3)">💻 本地模式</span><button onclick="setupAiKey()" id="aiKeyBtn" style="font-size:10px;padding:2px 8px;border:1px solid var(--border);border-radius:10px;background:var(--card);cursor:pointer;color:var(--text2)">🔑 配置AI Key</button><span style="font-size:9px;color:var(--text3)">Key 只存本机浏览器，不进代码仓库</span></div></div></div>
+<!-- #96: AI 行业观察档案（个人思考沉淀：面试作品集 + 成长记录） -->
+<details class="card" style="padding:12px 14px;margin-top:8px">
+<summary style="cursor:pointer;font-size:12px;font-weight:600">📝 我的 AI 行业观察 <span id="aiObsCount" style="font-size:10px;color:var(--text3);font-weight:400"></span></summary>
+<p style="font-size:10px;color:var(--text3);margin:6px 0">把每天 AI 动态沉淀成自己的观察——既是持续思考的证明（面试作品集），也是成长的记录。每次写 300 字左右，配一句"我的判断"。</p>
+<div id="aiObsList" style="font-size:11px;line-height:1.7"></div>
+<div style="display:flex;gap:6px;margin-top:8px">
+<input type="text" id="aiObsInput" placeholder="✍️ 写一句今日观察：主题+你的判断..." style="flex:1;padding:6px 8px;border:1px solid var(--border);border-radius:6px;font-size:11px;background:var(--bg);color:var(--text)" onkeydown="if(event.key==='Enter')addObservation()">
+<button onclick="addObservation()" style="padding:6px 12px;background:var(--accent);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:11px">记录</button>
+</div>
+</details></section>
 
 <p style="text-align:center;color:var(--text3);font-size:10px;padding:24px 0">钟锐的个人数字空间 · 每天9:35更新 · <span id="lastUpdate"></span> · v<span id="siteVersion"></span></p>
 </div><!-- /dashboardView -->
@@ -2635,7 +2659,7 @@ function renderModelComparison(){
 function onDataReady(){
   var tasks = [
     function(){ var e=document.getElementById('siteVersion'); if(e) e.textContent = (typeof SITE_VERSION!=='undefined'?SITE_VERSION:''); },
-    renderAllPicks, renderBriefing, renderVocab, renderQuiz, renderMusicPlayer, renderModelComparison, renderToolchainRadar, renderOpportunityRadar, renderLifeHacks, renderSkillRadar, renderFlashcards, renderMockInterview, renderSentiment, renderDailyDecisions, renderLearnPath, renderTodayKnowledge, renderLearningInsight, renderLearnPathMini, renderAgentStacks, renderCompanyRadar, renderCalendar, updateAiBadge, checkUpdateStatus
+    renderAllPicks, renderBriefing, renderVocab, renderQuiz, renderMusicPlayer, renderModelComparison, renderToolchainRadar, renderOpportunityRadar, renderLifeHacks, renderSkillRadar, renderFlashcards, renderMockInterview, renderSentiment, renderDailyDecisions, renderLearnPath, renderTodayKnowledge, renderLearningInsight, renderLearnPathMini, renderAgentStacks, renderCompanyRadar, renderCalendar, updateAiBadge, renderWrongWords, renderSubjectPaths, renderAiObservations, checkUpdateStatus
   ];
   tasks.forEach(function(fn){
     try { if(typeof fn==='function') fn(); } catch(e){ console.error('Init error:', e.message); }
@@ -2936,10 +2960,157 @@ function reviewFlashcardByIdx(i, level){
   } else {
     it.box = 1;
     it.due = addDaysStr(1);
+    it.wrong = (it.wrong||0)+1;   // #98: 记录不认识次数（错词本数据源）
   }
   it.last = todayStr();
   saveFlashcards(fc);
   renderFlashcards();
+  if(typeof renderWrongWords==='function') renderWrongWords();
+}
+
+// ===== #98 错词本（复习时点😵不认识≥1次的词）=====
+function getWrongWords(){
+  var fc = getFlashcards();
+  var out = [];
+  Object.keys(fc).forEach(function(k){
+    if((fc[k].wrong||0)>=1){
+      var w=null;
+      if(typeof DAILY_VOCAB!=='undefined'&&DAILY_VOCAB.words){
+        DAILY_VOCAB.words.forEach(function(x){ if(x.word===k) w=x; });
+      }
+      out.push({word:k, wrong:fc[k].wrong, last:fc[k].last||'', w:w});
+    }
+  });
+  out.sort(function(a,b){return b.wrong-a.wrong;});
+  return out;
+}
+function renderWrongWords(){
+  var boxes=document.querySelectorAll('#wrongWordsBox');
+  if(boxes.length===0) return;
+  var list=document.getElementById('wrongWordsList');
+  var cnt=document.getElementById('wrongWordsCount');
+  var words=getWrongWords();
+  if(cnt) cnt.textContent='· 易错 '+words.length+' 个';
+  if(!list) return;
+  var h='';
+  if(words.length===0){
+    h='<div style="color:var(--text3);font-size:10px">暂无错词——复习时点「😵 不认识」的词会自动进这里，下次重点重学。</div>';
+  } else {
+    words.forEach(function(o){
+      var def=o.w?o.w.definition:'';
+      h+='<div style="padding:6px 0;border-bottom:1px solid var(--border);display:flex;gap:8px;align-items:flex-start">';
+      h+='<div style="flex:1"><span style="font-weight:700">'+(o.w?o.w.emoji+' ':'')+o.word+'</span> <span style="font-size:9px;padding:0 6px;border-radius:8px;background:#fee2e2;color:#dc2626">错 '+o.wrong+' 次</span>';
+      if(def) h+='<div style="font-size:10px;color:var(--text2)">'+def.substring(0,90)+(def.length>90?'…':'')+'</div>';
+      h+='</div>';
+      h+='<button onclick="wrongWordRelearn(\''+o.word.replace(/\\/g,'\\\\').replace(/'/g,"\\'")+'\')" style="flex-shrink:0;padding:2px 8px;border:1px solid var(--accent);border-radius:10px;background:var(--bg);cursor:pointer;font-size:10px;color:var(--accent)">重学</button>';
+      h+='</div>';
+    });
+  }
+  list.innerHTML=h;
+}
+function wrongWordRelearn(word){
+  var fc=getFlashcards();
+  if(fc[word]){ fc[word].box=1; fc[word].due=todayStr(); fc[word].wrong=0; saveFlashcards(fc); }
+  renderWrongWords(); renderFlashcards();
+}
+function wrongWordsRelearnAll(){
+  var words=getWrongWords();
+  words.forEach(function(o){ wrongWordRelearn(o.word); });
+  alert('✅ 已重置 '+words.length+' 个错词进入今日重学队列');
+}
+function wrongWordsExport(){
+  var words=getWrongWords();
+  if(words.length===0){ alert('暂无错词可导出'); return; }
+  var txt='📕 钟锐·错词表（'+todayStr()+' 导出）\n'+words.length+' 个\n\n'+words.map(function(o){
+    var w=o.w||{};
+    return '【'+o.word+'】错'+o.wrong+'次\n定义：'+(w.definition||'')+'\n为什么重要：'+(w.why_matters||'')+'\n';
+  }).join('\n');
+  if(navigator.clipboard){ navigator.clipboard.writeText(txt).then(function(){alert('✅ 错词表已复制到剪贴板');}); }
+  else { prompt('复制错词表：', txt); }
+}
+
+// ===== #101 板块分级学习路径（L1→L2→L3，进度存本机）=====
+function getPathProgress(){ try{ return JSON.parse(localStorage.getItem('subjectPathProgress')||'{}'); }catch(e){ return {}; } }
+function savePathProgress(p){ try{ localStorage.setItem('subjectPathProgress', JSON.stringify(p)); }catch(e){} }
+function renderSubjectPaths(){
+  var list=document.getElementById('subjectPathsList');
+  var progText=document.getElementById('pathProgressText');
+  if(!list) return;
+  if(typeof SUBJECT_PATHS==='undefined'){ list.innerHTML='<div style="color:var(--text3);font-size:10px">路径数据加载中…</div>'; return; }
+  var prog=getPathProgress();
+  var total=0,done=0;
+  SUBJECT_PATHS.subjects.forEach(function(s){
+    s.levels.forEach(function(lv){ total++; if(prog[s.cat+':L'+lv.L]) done++; });
+  });
+  if(progText) progText.textContent='· 已完成 '+done+'/'+total+' 节';
+  var h='<div style="font-size:10px;color:var(--text3);margin-bottom:6px">🎯 '+SUBJECT_PATHS.headline+'</div>';
+  SUBJECT_PATHS.subjects.forEach(function(s){
+    h+='<div style="margin:8px 0 4px;font-weight:700;font-size:12px">'+s.cat+'</div>';
+    s.levels.forEach(function(lv){
+      var key=s.cat+':L'+lv.L;
+      var on=!!prog[key];
+      h+='<div style="display:flex;gap:8px;align-items:flex-start;padding:5px 0;border-bottom:1px dashed var(--border);font-size:11px;line-height:1.6">';
+      h+='<input type="checkbox" '+(on?'checked':'')+' onchange="togglePathLesson(\''+key.replace(/'/g,"\\'")+'\')" style="margin-top:2px;accent-color:var(--accent);cursor:pointer">';
+      h+='<div style="flex:1"><span style="font-weight:600">L'+lv.L+' '+lv.title+'</span><span style="color:var(--green);font-size:10px">'+(on?' ✓':'')+'</span><div style="font-size:10px;color:var(--text3)">📖 '+lv.guide+'</div></div>';
+      h+='</div>';
+    });
+  });
+  h+='<p style="font-size:9px;color:var(--text3);margin-top:6px">进度只存本机浏览器(localStorage)——每天学一节，勾选完成，半年后每块都能独立判断</p>';
+  list.innerHTML=h;
+}
+function togglePathLesson(key){
+  var prog=getPathProgress();
+  prog[key]=!prog[key];
+  savePathProgress(prog);
+  renderSubjectPaths();
+}
+
+// ===== #96 AI 行业观察档案（每日AI分析沉淀 + 手写追加）=====
+function getMyObservations(){ try{ return JSON.parse(localStorage.getItem('myObservations')||'[]'); }catch(e){ return []; } }
+function saveMyObservations(o){ try{ localStorage.setItem('myObservations', JSON.stringify(o)); }catch(e){} }
+function renderAiObservations(){
+  var list=document.getElementById('aiObsList');
+  var cnt=document.getElementById('aiObsCount');
+  if(!list) return;
+  var mine=getMyObservations();
+  var total=(typeof AI_OBSERVATIONS!=='undefined'?AI_OBSERVATIONS.length:0)+mine.length;
+  if(cnt) cnt.textContent='· 已沉淀 '+total+' 条（含你的 '+mine.length+' 条）';
+  var h='';
+  // 手写观察（最新在前）
+  mine.slice().reverse().forEach(function(o,i){
+    var realIdx=mine.length-1-i;
+    h+='<div style="padding:6px 0;border-bottom:1px solid var(--border);font-size:11px;line-height:1.7">';
+    h+='<span style="font-weight:700;color:var(--accent)">✍️ '+o.date+'</span> '+escHtml(o.text);
+    h+='<button onclick="delObservation('+realIdx+')" style="float:right;background:none;border:none;cursor:pointer;color:var(--red);font-size:11px" title="删除">✕</button>';
+    h+='</div>';
+  });
+  // 每日 AI 动态沉淀（历史时间线）
+  if(typeof AI_OBSERVATIONS!=='undefined'){
+    AI_OBSERVATIONS.forEach(function(o){
+      h+='<div style="padding:6px 0;border-bottom:1px solid dashed var(--border);font-size:11px;line-height:1.7">';
+      h+='<span style="font-weight:700;color:var(--text2)">📌 '+o.date+' · '+escHtml(o.topic)+'</span><div style="font-size:10px;color:var(--text3)">'+escHtml(o.summary)+'</div>';
+      h+='</div>';
+    });
+  }
+  if(!h) h='<div style="color:var(--text3);font-size:10px">暂无观察——AI 动态每日沉淀会自动出现在这里，你也可以在上面手写自己的观察</div>';
+  list.innerHTML=h;
+}
+function addObservation(){
+  var inp=document.getElementById('aiObsInput');
+  if(!inp)return;
+  var t=inp.value.trim();
+  if(!t)return;
+  var mine=getMyObservations();
+  mine.push({date:todayStr(), text:t});
+  saveMyObservations(mine);
+  inp.value='';
+  renderAiObservations();
+}
+function delObservation(i){
+  var mine=getMyObservations();
+  mine.splice(i,1);
+  saveMyObservations(mine);
+  renderAiObservations();
 }
 
 // ===== AI 模拟面试舱（#67：选题型→出题→作答→对照要点→自评→成长档案）=====
