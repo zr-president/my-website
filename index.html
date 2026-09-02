@@ -392,6 +392,18 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div id="resumeContent" style="font-size:12px;line-height:2"></div>
 </div>
 
+<!-- #95: JD 匹配度分析器 -->
+<div class="card" style="padding:14px 16px">
+<h3 style="margin-bottom:6px">🤖 JD 匹配分析器 <span style="font-size:10px;color:var(--text3);font-weight:400">粘贴目标JD → 匹配度评分+缺口清单+简历优化建议+定制打招呼语</span></h3>
+<textarea id="jdInput" placeholder="粘贴目标岗位 JD（职责+要求）..." style="width:100%;min-height:90px;padding:8px 10px;border:1px solid var(--border);border-radius:6px;font-size:12px;font-family:inherit;line-height:1.7;background:var(--bg);color:var(--text);resize:vertical"></textarea>
+<div style="display:flex;gap:6px;margin-top:6px;flex-wrap:wrap;align-items:center">
+<button onclick="analyzeJD('ai')" style="padding:6px 12px;background:var(--accent);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:11px;font-weight:500">🤖 AI 深度分析<span id="jdAiTag" style="font-size:9px;opacity:.8"></span></button>
+<button onclick="analyzeJD('local')" style="padding:6px 12px;border:1px solid var(--border);border-radius:6px;background:var(--card);cursor:pointer;font-size:11px;color:var(--text2)">⚡ 快速预检（本地）</button>
+<span id="jdHint" style="font-size:10px;color:var(--text3)">AI 深度分析需先🔑配置 Key（AI助手处）</span>
+</div>
+<div id="jdResult" style="margin-top:8px;font-size:12px;line-height:1.8"></div>
+</div>
+
 <!-- Interview Log -->
 <div class="card" style="padding:14px 16px">
 <h3 style="margin-bottom:8px">🗒️ 面试复盘本 <span style="font-size:11px;color:var(--text3);font-weight:400" id="interviewStats"></span></h3>
@@ -521,7 +533,17 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div id="opportunityContent"><p style="font-size:12px;color:var(--text3)">🛰️ 加载机会研判...</p></div></section>
 
 <section id="life-hacks" class="section" data-search="生活 妙用 AI生活 抢票 买衣服 比价 菜单 出行 体检 办事 日历 省钱"><div class="section-header"><h2>🧩 AI 生活妙用</h2><p>AI 不止学习赚钱——抢票/买衣服/菜单/比价/办事/出行/体检/阅读，让生活更省心</p></div>
-<div id="lifeHacksContent"><p style="font-size:12px;color:var(--text3)">✨ 加载生活妙用...</p></div></section>
+<div id="lifeHacksContent"><p style="font-size:12px;color:var(--text3)">✨ 加载生活妙用...</p></div>
+<!-- #99: 可交互生活助手 -->
+<div class="card" style="padding:12px 14px;margin-top:8px">
+<div style="font-size:12px;font-weight:700;margin-bottom:4px">💬 问生活助手 <span style="font-size:10px;color:var(--text3);font-weight:400">懂你的约束（肾结石预防/增肌/广州/预算敏感）· 实时问答</span></div>
+<p style="font-size:10px;color:var(--text3);margin-bottom:6px">试试：「今天吃什么」「周末广州周边去哪」「体检这项指标怎么理解」「去深圳面试怎么安排」</p>
+<div style="display:flex;gap:6px">
+<input type="text" id="lifeAskInput" placeholder="输入生活问题..." style="flex:1;padding:8px 10px;border:1px solid var(--border);border-radius:6px;font-size:12px;font-family:inherit;background:var(--bg);color:var(--text);outline:none" onkeydown="if(event.key==='Enter')askLifeAI()">
+<button onclick="askLifeAI()" style="padding:8px 14px;background:var(--accent);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:12px;font-weight:500">问</button>
+</div>
+<div id="lifeAskResult" style="margin-top:8px;font-size:12px;line-height:1.8;display:none"></div>
+</div></section>
 
 <section id="toolchain-radar" class="section" data-search="工具链 雷达 DeepSeek Harness Claude Code 插件 模型 涨价 性价比 Agent"><div class="section-header"><h2>🔧 AI工具链雷达</h2><p>你正在用的工具 · 有什么更新 · 对你意味着什么</p></div>
 <div id="toolchainRadarContent"><p style="font-size:12px;color:var(--text3)">🔭 加载工具链动态...</p></div>
@@ -750,7 +772,118 @@ function updateAiBadge(){
   if(!b)return;
   if(hasAiKey()){b.textContent='🤖 AI 实时模式';b.style.background='rgba(5,150,105,.15)';b.style.color='#059669';}
   else{b.textContent='💻 本地模式';b.style.background='var(--bg2)';b.style.color='var(--text3)';}
+  var tag=document.getElementById('jdAiTag');
+  if(tag) tag.textContent=hasAiKey()?' · 已就绪':' · 需配置Key';
+  var hint=document.getElementById('jdHint');
+  if(hint) hint.style.display=hasAiKey()?'none':'';
 }
+// ===== #95 JD 匹配分析器（AI 深度 / 本地预检 双模式）=====
+function getResumeText(){
+  try{
+    var r=JSON.parse(localStorage.getItem('zhongrui_resume')||'null');
+    if(r&&r.basic)return (r.basic||'')+' '+(r.skills||'')+' '+(r.projects||'')+' '+(r.exp||'');
+  }catch(e){}
+  return (typeof DEFAULT_RESUME!=='undefined')?(DEFAULT_RESUME.basic+' '+DEFAULT_RESUME.skills+' '+DEFAULT_RESUME.projects+' '+DEFAULT_RESUME.exp):'';
+}
+function jdKeywordCheck(jd, resume){
+  var words=['AI','大模型','Agent','智能体','Prompt','提示词','RAG','开源','AIGC','多模态','用户增长','增长','运营','活动','内容','社群','拉新','留存','转化','裂变','私域','SQL','数据分析','Tableau','埋点','漏斗','A/B','实验','BI','投放','广告','渠道','CPA','ROI','预算','素材','产品','需求','竞品','原型','项目管理','沟通','协作'];
+  var jdHits=[],miss=[];
+  words.forEach(function(w){
+    if(jd.indexOf(w)>=0){
+      if(resume.indexOf(w)>=0) jdHits.push(w);
+      else miss.push(w);
+    }
+  });
+  var score=jdHits.length/(jdHits.length+miss.length);
+  return {score:Math.round(score*100),jdHits:jdHits,miss:miss};
+}
+function analyzeJD(mode){
+  var jd=(document.getElementById('jdInput')||{}).value||'';
+  var box=document.getElementById('jdResult');
+  if(!jd.trim()){if(box){box.innerHTML='<span style="color:var(--orange)">⚠️ 请先粘贴目标 JD</span>';box.style.display='block';}return;}
+  var resume=getResumeText();
+  var pre=jdKeywordCheck(jd,resume);
+  // AI 深度模式
+  if(mode==='ai'&&hasAiKey()){
+    box.innerHTML='<span style="color:var(--text3)">🤖 AI 深度分析中（约10-30秒）…</span>';
+    box.style.display='block';
+    var sys='你是资深 AI 产品运营/增长运营招聘顾问+简历优化师。基于候选人真实简历对目标 JD 做匹配分析。输出格式：\n【匹配度】X/100 + 一句理由\n【JD要求对照】逐项：要求 → ✓命中/⚠缺口 + 依据\n【简历优化建议】3条具体可改（如把某段经历改成JD同款关键词）\n【定制打招呼语】80字内，自然不油腻\n要求具体，不空泛。\n\n候选人真实简历：\n'+resume;
+    chatToAI_safe(sys,jd,function(ans){
+      if(ans){box.innerHTML='<div style="white-space:pre-wrap">'+escHtml(ans)+'</div>';}
+      else{box.innerHTML=localJDReport(pre);}
+    });
+    return;
+  }
+  // 本地预检（默认/无Key/用户点本地）
+  box.innerHTML=localJDReport(pre);
+  box.style.display='block';
+}
+function localJDReport(pre){
+  var h='<div style="background:var(--bg2);border-radius:6px;padding:8px 10px">';
+  h+='<div style="font-weight:700;margin-bottom:4px">⚡ 本地预检匹配度：<span style="color:'+(pre.score>=70?'var(--green)':pre.score>=45?'var(--orange)':'var(--red)')+'">'+pre.score+'/100</span></div>';
+  h+='<div style="font-size:11px;margin-bottom:4px">✅ JD 中已覆盖关键词：<span style="color:var(--green)">'+(pre.jdHits.length?pre.jdHits.join(' / '):'（少）')+'</span></div>';
+  h+='<div style="font-size:11px;margin-bottom:6px">⚠️ JD 要求但简历未直接体现：<span style="color:var(--red)">'+(pre.miss.length?pre.miss.join(' / '):'（无，很好）')+'</span></div>';
+  if(pre.miss.length){
+    h+='<div style="font-size:11px;color:var(--text2);background:var(--card);border-left:3px solid var(--orange);padding:6px 8px;border-radius:4px">💡 提示：把「'+pre.miss.slice(0,5).join('」「')+'」等 JD 关键词自然地写进简历对应经历（如项目描述/技能栏），能显著提高机器筛选命中率。</div>';
+  }
+  h+='<div style="font-size:10px;color:var(--text3);margin-top:4px">💡 想要逐条深度对照+定制打招呼语？先🔑配置AI Key，再点「🤖 AI 深度分析」</div></div>';
+  return h;
+}
+
+// ===== #99 可交互生活助手（AI / 本地模板 双模式）=====
+function lifeSystemPrompt(){
+  return '你是钟锐的私人生活 AI 顾问。你了解他的个人情况：26岁男性，170cm/59kg偏瘦，正在增肌期（目标薄肌体型、家庭健身、12周计划已到第8周）；有肾结石预防需求（每天饮水≥2.5L、控草酸：少菠菜苋菜浓茶巧克力、多喝柠檬水）与甲状腺结节（遵医嘱复查）；人在广州（关注广州天气与生活成本），预算敏感；喜欢精酿啤酒/鸡尾酒（适度饮用）、动漫/小说/游戏（偏好克苏鲁、悬疑、智斗）。回答要求：①结合他的真实约束给可执行建议（具体到做法/大致价格/地点）②简洁不空泛，别讲大道理③帮他生活更便捷，可以用AI工具/本地App落地。若涉及健康诊断类问题，提醒以医生为准。';
+}
+function askLifeAI(){
+  var inp=document.getElementById('lifeAskInput');
+  if(!inp)return;
+  var q=inp.value.trim();
+  if(!q)return;
+  var box=document.getElementById('lifeAskResult');
+  box.style.display='block';
+  if(hasAiKey()){
+    box.innerHTML='<span style="color:var(--text3)">🤖 思考中…（约10-30秒）</span>';
+    chatToAI_safe(lifeSystemPrompt(),q,function(ans){
+      box.innerHTML=ans?('<div style="white-space:pre-wrap">'+escHtml(ans)+'</div>'):lifeLocalAnswer(q);
+    });
+  }else{
+    box.innerHTML=lifeLocalAnswer(q);
+  }
+  inp.value='';
+}
+function lifeLocalAnswer(q){
+  var l=q.toLowerCase();
+  var eat=/吃|喝|食谱|饭|餐|夜宵|便当/.test(l);
+  var go=/去哪|周末|玩|旅游|行程|出发|避暑/.test(l);
+  var body=/体检|指标|报告|复查|结石|结节|熬夜|睡/.test(l);
+  var job=/面试|投递|简历|求职|通勤/.test(l);
+  var h='<div style="background:var(--bg2);border-radius:6px;padding:8px 10px">';
+  if(eat)h+='💡 本周推荐：鸡胸肉150-200g+糙米饭+焯水西兰花（便当650kcal/42g蛋白）；加餐选希腊酸奶+蓝莓（蛋白质≥130g/天）。⚠️肾结石预防：每天2.5L水+柠檬水，避开浓茶/菠菜/巧克力。想变花样可以说『换一道新菜谱』（配置AI Key可生成专属菜单）。';
+  else if(go)h+='💡 广州周边短途：①深圳东西涌徒步（7.5km海岸线·当天往返）；②清远漂流/连州地下河；③潮汕两日美食；④佛山岭南天地+顺德鱼生。预算敏感选省内高铁+民宿（人均500-800）。最近雨势减弱但仍多雷雨，出发前查天气。';
+  else if(body)h+='💡 健康提醒：①肾结石：每年/半年B超复查一次，每天2.5L水+柠檬水，少草酸食物；②甲状腺结节：遵医嘱每年复查甲功+B超，十字花科蔬菜煮熟吃；③体检报告指标异常请以医生诊断为准——AI只做科普提醒不替代就医。';
+  else if(job)h+='💡 求职便利：①投递黄金窗口 周一至四 9:30-11:00；②去深圳面试：高铁广州南→深圳北约30分钟（¥75），地铁接驳方便；③打招呼语模板在 templates/greetings.md（含公司定制版）。';
+  else h+='💡 我可以帮你规划：今天吃什么（增肌+防结石）、周末去哪玩（广州周边）、体检指标解读（科普提醒）、求职通勤安排等。配置🔑AI Key 后我能结合你的约束给出更个性化的完整建议！';
+  h+='</div>';
+  return h;
+}
+
+// 供 chatToAI 使用（包装：避免与其他调用冲突命名，等价于 chatToAI）
+function chatToAI_safe(sys,user,onOk){
+  var key=getAiKey();
+  if(!hasAiKey()){onOk(null);return;}
+  try{
+    fetch('https://api.deepseek.com/chat/completions',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Authorization':'Bearer '+key},
+      body:JSON.stringify({model:'deepseek-chat',messages:[{role:'system',content:sys},{role:'user',content:user}],max_tokens:1200,stream:false}),
+      signal:AbortSignal.timeout(30000)
+    }).then(function(r){return r.json();}).then(function(d){
+      var t=d&&d.choices&&d.choices[0]?d.choices[0].message.content:'';
+      onOk(t||null);
+    }).catch(function(){onOk(null);});
+  }catch(e){onOk(null);}
+}
+
 // 个人资料 system prompt（数字分身语料：简历/定位/网站）
 function aiSystemPrompt(){
   var resume='';
