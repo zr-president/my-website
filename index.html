@@ -4,6 +4,14 @@
 <script>!function(){var t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);var c=localStorage.getItem('themeColor')||'indigo';document.documentElement.setAttribute('data-theme-color',c)}()</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>钟锐|个人数字空间</title>
+<meta name="description" content="钟锐的个人数字空间——AI产品运营/增长运营求职者的智能信息中枢：股市/求职/AI动态/游戏/动漫/小说/影视/学习等17个板块每日更新，个人简历与求职工具一站式整合。">
+<meta name="keywords" content="钟锐,AI产品运营,AI增长运营,个人网站,求职,数据分析,股市,AIGC,大模型">
+<meta property="og:title" content="钟锐|个人数字空间">
+<meta property="og:description" content="17个板块每日更新的个人智能信息中枢：求职/股市/AI动态/游戏/动漫/小说/学习一站式整合。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://zr-president.github.io/my-website/">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="alternate icon" href="favicon.ico">
 <style>
 :root{
   --bg:#f5f6f8;--bg2:#eef0f4;--card:#fff;--text:#1a1a2e;--text2:#555;--text3:#888;
@@ -538,6 +546,9 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 </div>
 <!-- Full quiz detail (hidden by default) -->
 <div id="quizFullView" style="display:none;margin-top:8px"></div></section>
+
+<section id="sep-preview" class="section" data-search="9月 前瞻 日历 新番 新片 新游 内容 预告"><div class="section-header"><h2>📅 9月内容前瞻</h2><p>动漫完结/开播 · 电影档期 · 游戏发售日历 · 更新于<span id="previewDate"></span></p></div>
+<div id="previewGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px"><div class="card"><p style="font-size:12px;color:var(--text3)">⏳ 加载日历...</p></div></div></section>
 
 <section id="guide" class="section" data-search="帮助 指南 使用 说明 教程 功能 介绍"><div class="section-header"><h2>📖 使用指南</h2><p>功能介绍 · 模块说明 · 每日更新</p></div>
 <div id="picks-guide" class="picks-container"></div></section>
@@ -1547,7 +1558,7 @@ var CATEGORIES = {
 
 // Key sections to show on homepage (everything else hidden)
 // learning 不在首页展示——点进学习区才显示完整内容（今日新知等），首页只保留小白课堂卡片
-var HOME_SECTIONS = ['dashboard','music-player','daily-vocab','daily-quiz','guide','optimization'];
+var HOME_SECTIONS = ['dashboard','music-player','daily-vocab','daily-quiz','sep-preview','guide','optimization'];
 var vocabShuffled = [];
 var vocabShowingAll = false;
 
@@ -2345,10 +2356,40 @@ function renderModelComparison(){
 function onDataReady(){
   var tasks = [
     function(){ var e=document.getElementById('siteVersion'); if(e) e.textContent = (typeof SITE_VERSION!=='undefined'?SITE_VERSION:''); },
-    renderAllPicks, renderBriefing, renderVocab, renderQuiz, renderMusicPlayer, renderModelComparison, renderToolchainRadar, renderOpportunityRadar, renderLifeHacks, renderSkillRadar, renderFlashcards, renderMockInterview, renderSentiment, renderDailyDecisions, renderLearnPath, renderTodayKnowledge, renderLearningInsight, renderLearnPathMini, renderAgentStacks, checkUpdateStatus
+    renderAllPicks, renderBriefing, renderVocab, renderQuiz, renderMusicPlayer, renderModelComparison, renderToolchainRadar, renderOpportunityRadar, renderLifeHacks, renderSkillRadar, renderFlashcards, renderMockInterview, renderSentiment, renderDailyDecisions, renderLearnPath, renderTodayKnowledge, renderLearningInsight, renderLearnPathMini, renderAgentStacks, renderPreview, checkUpdateStatus
   ];
   tasks.forEach(function(fn){
     try { if(typeof fn==='function') fn(); } catch(e){ console.error('Init error:', e.message); }
+  });
+}
+
+// ===== 9月内容前瞻渲染（#93：动漫完结/开播 + 电影档期 + 游戏发售日历）=====
+function renderPreview(){
+  var el = document.getElementById('previewGrid');
+  if(!el) return;
+  if(typeof SEPTEMBER_PREVIEW==='undefined'){ el.innerHTML = '<div class="card"><p style="font-size:12px;color:var(--text3)">📅 暂无前瞻数据</p></div>'; return; }
+  var p = SEPTEMBER_PREVIEW;
+  var dateEl = document.getElementById('previewDate');
+  if(dateEl && p.updated) dateEl.textContent = p.updated;
+  if(p.headline){
+    var hl = document.createElement('div');
+    hl.className = 'insight-box';
+    hl.style.cssText = 'margin-bottom:8px;font-weight:600';
+    hl.textContent = '🎯 ' + p.headline;
+    el.innerHTML = '';
+    el.appendChild(hl);
+  }
+  p.categories.forEach(function(cat){
+    var card = document.createElement('div');
+    card.className = 'card';
+    card.style.cssText = 'padding:12px 14px';
+    var h = '<div style="display:flex;align-items:center;gap:6px;margin-bottom:6px"><span style="font-size:18px">'+cat.icon+'</span><span style="font-weight:700;font-size:13px">'+cat.name+'</span><span style="margin-left:auto;font-size:10px;color:var(--text3)">'+cat.count+'项</span></div>';
+    cat.items.forEach(function(it){
+      h += '<div style="display:flex;gap:6px;padding:4px 0;border-bottom:1px solid var(--border);font-size:11px;line-height:1.6"><span style="flex-shrink:0;font-weight:700;color:var(--accent);min-width:52px">'+it.date+'</span><span style="flex:1">'+it.text+'</span></div>';
+    });
+    h += '<div style="font-size:10px;color:var(--text3);margin-top:6px">'+cat.note+'</div>';
+    card.innerHTML = h;
+    el.appendChild(card);
   });
 }
 

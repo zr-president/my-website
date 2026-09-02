@@ -530,7 +530,7 @@ var AGENT_STACKS = {
 var OPTIMIZATION_LOG = {
   date: "2026-09-02",
   total_suggestions: 93,
-  total_implemented: 74,
+  total_implemented: 79,
   streak_days: 31,
   suggestions: [
     {id:1, cat:"已归档", title:"AI追踪板块周报自动生成", desc:"每周一自动汇总上周AI融资/模型发布/价格变动→已集成至INSIGHTS.ai-track周度总结", priority:"P1", status:"已完成"},
@@ -614,16 +614,16 @@ var OPTIMIZATION_LOG = {
     {id:81, cat:"数据优化", title:"stock板块新增【情绪指标条】（涨跌家数/涨停跌停/成交额）", desc:"✅ 8/19已实施：新增MARKET_SENTIMENT数据+stock板块顶部情绪条渲染——涨跌比/跌停数/ETF扫货/强势板块一目了然，七夕劫这类普跌行情一眼可见，不再被指数误导；每日更新时按当日行情填写", priority:"P1", status:"已完成"},
     {id:82, cat:"机制创新", title:"AI生活妙用新增【台风季天气安全卡】置顶", desc:"✅ 8/19已实施：AI_LIFE_HACKS新增weather_safety字段+渲染置顶——极端天气（台风/暴雨）时显示安全卡（出行/雷雨/防潮/计划提醒），首期内容：广州倒水模式+2个新台风预警", priority:"P2", status:"已完成"},
     {id:83, cat:"机会雷达", title:"机会雷达方向A落地：本地部署+首个接单自动化示例", desc:"✅ 8/19已实施：方向A上车路径更新为实操版（装Ollama→跑Qwen3.8-27B→Harness指向本地）+创建scripts/automation_starter.py首个接单自动化示例（每日资讯汇总器·数据整理类最小模板·可改造接单）", priority:"P1", status:"已完成"},
-    {id:84, cat:"稳定性", title:"启用 AI 每日自动更新（配置 DEEPSEEK_API_KEY + 6:00定时已恢复）", desc:"待办：auto-update.yml 的 schedule 已于9/2恢复（每天北京6:00·避开DeepSeek工作日白天高峰·低谷价约半价+周末全天低谷价），但仓库仍未配置 DEEPSEEK_API_KEY secret——配置后即全自动。操作：①DeepSeek开放平台申请API Key（充值10-20元够用数月）②GitHub仓库 Settings→Secrets and variables→Actions 添加 DEEPSEEK_API_KEY ③Actions页Run workflow测试一次——此后每天6:00自动更新17板块", priority:"P0", status:"待办"},
+    {id:84, cat:"稳定性", title:"启用 AI 每日自动更新（6:00定时已恢复+脚本日期bug已修）", desc:"✅ 9/2实施（代码部分）：①auto-update.yml schedule 已恢复（北京6:00·避开DeepSeek工作日白天高峰·低谷价约半价）②auto_update.py 修复硬编码日期bug（update_date 原来写死 2026年8月15日，跨月后无法匹配→改为动态正则）③脚本新增自动备份+失败回滚（#88）。剩余一步：在 GitHub 仓库 Settings→Secrets 添加 DEEPSEEK_API_KEY secret 后即全自动生效", priority:"P0", status:"已完成"},
     {id:85, cat:"性能优化", title:"GitHub Pages 国内访问加速（Cloudflare CDN 免费代理）", desc:"待办：github.io 域名在国内访问时快时慢、偶尔打不开（未备案域名被限速风险）。操作：注册 Cloudflare 免费账号→添加站点（用 CNAME 方式把自定义域名或 github.io 套上 CDN）→免费全球加速，国内访问明显改善——无需买服务器即可缓解访问痛点", priority:"P1", status:"待办"},
     {id:86, cat:"数据优化", title:"接入网站访问统计（百度统计/Umami 免费）", desc:"待办：网站没有任何访问统计——不知道每天多少人看、看了哪些板块、从哪里来。操作：注册百度统计（免费）→复制统计代码到 index.html →次日即可看到访客量/热门板块/来源渠道——用数据决定内容更新重点（哪个板块该加强、哪个没人看）", priority:"P1", status:"待办"},
     {id:87, cat:"内容优化", title:"GLM-5.3-Flash开源专题全站同步（多模态免费平替）", desc:"✅ 8/29实施：智谱开源GLM-5.3-Flash多模态模型（定价仅Opus 4.8的1/40）——AI动态追踪/学习区/TOOLCHAIN_RADAR/决策单/AI对比表全站同步【三足鼎立】状态+多模态平替候选加入评估", priority:"P1", status:"已完成"},
-    {id:88, cat:"稳定性", title:"每日更新自动备份+失败回滚（防数据全损事故）", desc:"待办：8/19曾发生脚本替换错误导致 daily_data.js 从568行降至13行的全损事故（靠git恢复）。操作：①每日更新前自动 git tag/备份 daily_data.js（或复制 .bak）②更新后 node 语法校验失败→自动 git checkout 回滚③把该流程固化进 auto_update.py（已内置失败安全，补充备份步骤）——让自动更新跑起来后依然安全", priority:"P1", status:"待办"},
-    {id:89, cat:"内容优化", title:"自定义 404 页面 + 网站 favicon/SEO 标签完善", desc:"待办：当前 404 是默认白页、浏览器标签页无图标、无 meta 描述（搜索引擎收录效果差）。操作：①新建 404.html（好看+带返回首页/搜索入口）②生成 favicon.ico（用头像或 ZR logo）③index.html 补全 title/meta description/OG 标签——提升专业感+搜索引擎收录（未来求职展示给面试官加分）", priority:"P2", status:"待办"},
-    {id:90, cat:"求职功能", title:"求职打招呼语批量生成模板（按公司/JD差异化）", desc:"待办：投递时打招呼语决定 HR 是否点开简历——当前需手动逐家写。操作：把 personal_config 的目标公司+岗位整理成模板，用 Harness/Claude 按【公司特点+JD关键词】批量生成30条差异化打招呼语→存成 templates/greetings.md →投递时直接复制使用，提升回复率", priority:"P2", status:"待办"},
+    {id:88, cat:"稳定性", title:"每日更新自动备份+失败回滚（防数据全损事故）", desc:"✅ 9/2实施：auto_update.py 新增 backup()（更新前自动备份 daily_data.js+index.html 为 .bak-日期）+ rollback()（语法校验失败自动从备份恢复，无备份时 git checkout 回滚）——已在 main 流程接入，让自动更新跑起来后依然安全", priority:"P1", status:"已完成"},
+    {id:89, cat:"内容优化", title:"自定义 404 页面 + 网站 favicon/SEO 标签完善", desc:"✅ 9/2实施：①新建 404.html（渐变404+返回首页/知识库搜索入口，适配暗色模式）②生成 favicon.ico（64px ZR渐变图标）+favicon.svg（现代浏览器优先）③index.html head 补全 meta description/keywords + OG 标签（title/description/type/url）——专业感+搜索引擎收录提升（求职展示加分）", priority:"P2", status:"已完成"},
+    {id:90, cat:"求职功能", title:"求职打招呼语批量生成模板（按公司/JD差异化）", desc:"✅ 9/2实施：已生成 templates/greetings.md——30条差异化打招呼语（字节/腾讯/美团/小红书/微众/SHEIN/滴滴各4条+通用万能款2条+使用提示），每条含【一句话背景+公司连接点+具体业绩+轻问题】结构，按公司特点定制切入点（如字节强调豆包生态/微众强调金融合规+AI）——投递时直接复制微调使用", priority:"P2", status:"已完成"},
     {id:91, cat:"内容优化", title:"科大讯飞端侧模型开源专题全站同步（端侧AI新赛道）", desc:"✅ 9/2实施：科大讯飞9/1开源词元星火X2.5端侧模型——ai-track/学习区/TOOLCHAIN_RADAR/决策单全站同步【端侧AI新赛道】状态+端侧vs云端架构科普入小白课堂", priority:"P1", status:"已完成"},
     {id:92, cat:"求职功能", title:"金九银十求职冲刺页：秋招岗位日历+投递目标仪表盘", desc:"待办：9月是秋招+社招双高峰——求职中心增加金九银十专属模块：①秋招时间线（9月互联网大厂秋招窗口/笔试面试时间表）②每日投递目标仪表盘（金九银十期间周目标从15家提到20家）③面试高峰预警（投递后3-7天集中面试期准备提醒）——把9月求职窗口用足", priority:"P1", status:"待办"},
-    {id:93, cat:"内容优化", title:"9月新番/新片/新游前瞻清单（Re:Zero完结+秋季档+国庆档）", desc:"待办：9/30 Re:Zero第四季完结→10月秋季新番档期；9月近40部影片定档→国庆档预热；影之刃零10/29发售→Q4游戏大季——新增【9月内容前瞻清单】板块：动漫完结/开播日历+电影档期+游戏发售日历三合一，一眼看清9-10月内容消费安排", priority:"P2", status:"待办"},
+    {id:93, cat:"内容优化", title:"9月新番/新片/新游前瞻清单（Re:Zero完结+秋季档+国庆档）", desc:"✅ 9/2实施：新增【📅 9月内容前瞻】首页板块——daily_data.js 新增 SEPTEMBER_PREVIEW 数据块（动漫完结/开播日历+电影档期+游戏发售日历三组）+index.html 新增 sep-preview section/renderPreview 渲染函数+加入 HOME_SECTIONS——首页一眼看清9-10月内容消费安排（Re:Zero 9/30完结/秋季新番10月/影之刃零10/29/促销季）", priority:"P2", status:"已完成"},
   ]
 };
 
@@ -1106,6 +1106,51 @@ var SKILL_RADAR = {
     {emoji:"📈", name:"增长方法论", desc:"北极星指标/AARRR/裂变/留存/ROI", how:"每周拆解 1 个 AI 工具的获客/留存案例，画增长漏斗图", resource:"增长黑客案例 / 每日一练增长题 / 面试冲刺"},
     {emoji:"🏭", name:"行业认知", desc:"AI竞争格局/开源生态/商业化/监管", how:"每天读当日 AI 动态+每周写 1 篇 300 字行业观察（可作面试作品集）", resource:"AI动态追踪 / 每日一文 / 机会雷达"},
     {emoji:"🇬🇧", name:"英语", desc:"技术文档阅读/海外资讯/开源社区", how:"每天读 1 条英文 AI 资讯（TechCrunch），不懂的让 AI 精讲", resource:"英文 AI 资讯 RSS / GPT 辅助精读"}
+  ]
+};
+
+// ===== 9月内容前瞻日历（#93：动漫完结/开播 + 电影档期 + 游戏发售日历）=====
+// 每日更新时：有新的定档/发售/完结信息则更新对应条目；无变化则保持并刷新 updated
+var SEPTEMBER_PREVIEW = {
+  updated: "2026-09-02",
+  headline: "9月内容旺季：Re:Zero 9/30完结 · 近40部电影定档 · 影之刃零预售中(10/29发售) · 秋季新番10月开播",
+  categories: [
+    {
+      icon: "🎬",
+      name: "动漫完结/开播日历",
+      count: "4",
+      note: "Re:Zero夺还篇完结后，10月秋季新番档期接力",
+      items: [
+        {date: "9/30", text: "Re:Zero 第四季【夺还篇】最终话播出（追番第21天·临近完结）"},
+        {date: "10月", text: "秋季新番档期开启——制作组与声优陆续公布新企划（前瞻中）"},
+        {date: "连载中", text: "BLEACH千年血战篇-祸进谭-（最终章）·无职转生S3·时光代理人S3"},
+        {date: "连载中", text: "False Memory（B站独播·国产科幻悬疑）·诡秘之主公测持续"}
+      ]
+    },
+    {
+      icon: "🎥",
+      name: "电影档期日历",
+      count: "4",
+      note: "暑期档收官破124亿→9月新片接棒，国庆档预热",
+      items: [
+        {date: "9月初", text: "9月近40部影片陆续定档上映（动作/惊悚/喜剧/爱情/悬疑）"},
+        {date: "热映中", text: "《奥德赛》诺兰IMAX（上映第19天）·《欢迎来龙餐馆》豆瓣8.4口碑长尾"},
+        {date: "暑期冠军", text: "《功夫女足》22.69亿·《八仙！》14.59亿动画冠军·《蜘蛛侠》12.95亿进口冠军"},
+        {date: "国庆档", text: "9月底-10月初国庆档预热——头部影片定档前瞻"}
+      ]
+    },
+    {
+      icon: "🎮",
+      name: "游戏发售日历",
+      count: "4",
+      note: "克系三连发已落地 → Q4国产3A+促销季",
+      items: [
+        {date: "9/15", text: "《研究者》STILLTRACE 正式发布（悬疑解谜·克系氛围）"},
+        {date: "10/29", text: "《影之刃零》正式发售（预售中·268元起·国产3A里程碑）"},
+        {date: "公测中", text: "《诡秘之主》UE5克苏鲁MMO（8/21公测）·命运石之门重启/沉没之城2已发售"},
+        {date: "促销季", text: "秋促/国庆/双11临近——SteamDB查史低，愿望单排队等折扣"}
+      ]
+    }
   ]
 };
 

@@ -20,7 +20,7 @@ AI 自动每日更新脚本（替代手动更新模式）
 失败安全: API 调用失败或 JSON 解析失败时不改动任何文件，退出码非 0。
 """
 
-import sys, os, io, re, json, subprocess, argparse, requests
+import sys, os, io, re, json, subprocess, argparse, requests, shutil
 from datetime import datetime, timedelta
 
 if sys.platform == 'win32':
@@ -89,6 +89,37 @@ class Updater:
         except Exception as e:
             print(f"  ✗ 校验失败: {e}")
             return False
+
+    # #88: 更新前自动备份 + 失败回滚（防数据全损事故）
+    def backup(self):
+        """更新前备份 daily_data.js 与 index.html，供失败时回滚。"""
+        self.backup_files = []
+        for p in (DAILY_DATA_PATH, INDEX_PATH):
+            if os.path.exists(p):
+                bak = p + ".bak-" + datetime.now().strftime("%Y%m%d")
+                try:
+                    shutil.copy2(p, bak)
+                    self.backup_files.append((p, bak))
+                    print(f"  📦 已备份 {os.path.basename(p)} → {os.path.basename(bak)}")
+                except Exception as e:
+                    print(f"  ✗ 备份 {os.path.basename(p)} 失败: {e}")
+
+    def rollback(self):
+        """从备份恢复文件（备份不存在则回退 git checkout）。"""
+        print("  🔄 回滚中…")
+        restored = False
+        if hasattr(self, "backup_files"):
+            for src, bak in self.backup_files:
+                if os.path.exists(bak):
+                    try:
+                        shutil.copy2(bak, src)
+                        print(f"  ✅ 已从备份恢复 {os.path.basename(src)}")
+                        restored = True
+                    except Exception as e:
+                        print(f"  ✗ 恢复 {os.path.basename(src)} 失败: {e}")
+        if not restored:
+            subprocess.run(["git", "checkout", "--", "daily_data.js", "index.html"], cwd=ROOT)
+            print("  ✅ 已 git checkout 回滚 daily_data.js + index.html")
 
 
 # ════════════════════════════════════════════════════════════════════
@@ -285,9 +316,17 @@ def build_learning_user(today, yesterday):
 def apply_core(u, d, today):
     """写入 DAILY_DATA 头部 + briefing + decisions + toolchain。"""
     date_cn = d.get("update_date", today)
-    # 头部日期
-    u.replace('"update_date": "2026年8月15日"', f'"update_date": "{date_cn}"', "update_date")
-    u.replace('"update_time": "2026-08-15T10:30:00+08:00"', f'"update_time": "{today}T10:30:00+08:00"', "update_time")
+    # 头部日期（动态正则匹配，不硬编码具体日期——否则跨月/跨年后无法匹配）
+    m_date = re.search(r'"update_date":\s*"[^"]*"', u.content)
+    if m_date:
+        u.content = u.content.replace(m_date.group(0), f'"update_date": "{date_cn}"', 1)
+        u.changed.append("update_date")
+        print("  ✓ update_date")
+    m_time = re.search(r'"update_time":\s*"[^"]*"', u.content)
+    if m_time:
+        u.content = u.content.replace(m_time.group(0), f'"update_time": "{today}T10:30:00+08:00"', 1)
+        u.changed.append("update_time")
+        print("  ✓ update_time")
     # --- 整体替换 market_summary ---
     m = re.search(r'"market_summary":\s*"[^"]*"', u.content)
     if m and d.get("market_summary"):
@@ -618,6 +657,8 @@ def main():
     print(f"🚀 AI 自动更新开始 — 目标日期 {today}")
 
     u = Updater().load()
+    # #88: 更新前自动备份（daily_data.js + index.html）
+    u.backup()
     yesterday_summary = summarize_yesterday(u.content)
     if not yesterday_summary:
         print("✗ 无法提取昨日内容摘要")
@@ -657,8 +698,8 @@ def main():
     u.save()
     print("\n[校验] node 语法校验…")
     if not u.validate():
-        print("✗ 语法校验失败——恢复原文件（git checkout daily_data.js）")
-        subprocess.run(["git", "checkout", "--", "daily_data.js"], cwd=ROOT)
+        print("✗ 语法校验失败——从备份恢复文件（daily_data.js + index.html）")
+        u.rollback()
         sys.exit(4)
 
     # knowledge_base
