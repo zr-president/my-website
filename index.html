@@ -723,7 +723,7 @@ document.querySelectorAll('.nav-section a').forEach(function(a){
     // Home/dashboard → go to homepage
     if(href==='#home'){e.preventDefault();if(typeof navigateTo==='function') navigateTo('home');return;}
     if(href==='#dashboard'){e.preventDefault();if(typeof navigateTo==='function') navigateTo('section-detail','dashboard');return;}
-    if(href==='#ai-assistant'||href==='#career'||href==='#life-hacks'){e.preventDefault();showView('home');setTimeout(function(){var el=document.getElementById(href.replace('#',''));if(el)el.scrollIntoView({behavior:'smooth',block:'start'});},120);return;}
+    if(href==='#ai-assistant'){e.preventDefault();showView('home');setTimeout(function(){var el=document.getElementById('ai-assistant');if(el)el.scrollIntoView({behavior:'smooth',block:'start'});},120);return;}
     e.preventDefault();
     var sid = href.replace('#','');
     if(typeof navigateTo === 'function') navigateTo('section-detail', sid);
@@ -1857,7 +1857,7 @@ var CATEGORIES = {
 
 // Key sections to show on homepage (everything else hidden)
 // learning 不在首页展示——点进学习区才显示完整内容（今日新知等），首页只保留小白课堂卡片
-var HOME_SECTIONS = ['dashboard','career','music-player','daily-vocab','daily-quiz','guide','optimization','life-hacks','ai-assistant'];
+var HOME_SECTIONS = ['dashboard','music-player','daily-vocab','daily-quiz','guide','optimization','ai-assistant'];
 var vocabShuffled = [];
 var vocabShowingAll = false;
 
@@ -2017,7 +2017,50 @@ function renderMusicPlayer(page){
 
 // Quiz renders after daily_data.js loads (called via renderQuiz there)
 
+// ===== 工具板块「点开的全屏工具页」（求职中心/AI生活妙用等，从首页隐藏区整体移入详情视图，返回自动归还）=====
+var _toolMoved=null;
+function restoreMovedTool(){
+  if(!_toolMoved) return;
+  var sec=document.getElementById(_toolMoved);
+  var detail=document.getElementById('sectionDetailContent');
+  if(sec && detail && sec.parentNode===detail){
+    var holder=document.getElementById(_toolMoved+'-holder');
+    if(holder && holder.parentNode){ holder.parentNode.insertBefore(sec, holder); holder.remove(); }
+    else { var dv=document.getElementById('dashboardView'); if(dv) dv.appendChild(sec); }
+  }
+  _toolMoved=null;
+}
+function buildToolsSectionView(key){
+  restoreMovedTool();
+  if(typeof setCurrentSection==='function') setCurrentSection(key);
+  var sec=document.getElementById(key);
+  var title='';
+  if(sec){ var h2=sec.querySelector('.section-header h2'); if(h2) title=h2.textContent; }
+  document.getElementById('sectionDetailTitle').textContent = title || key;
+  document.getElementById('sectionDetailSub').textContent = '全屏工具页 · 点击←返回';
+  var detail=document.getElementById('sectionDetailContent');
+  var dash=document.getElementById('dashboardView');
+  if(sec && dash && detail && sec.parentNode===dash){
+    var holder=document.createElement('span');
+    holder.id=key+'-holder';
+    dash.insertBefore(holder, sec);
+    detail.appendChild(sec);          // 板块内容已由 onDataReady 渲染，随 DOM 整体带走
+    sec.classList.remove('home-hidden');
+    sec.style.display='';
+    _toolMoved=key;
+  }
+  document.querySelectorAll('.view-container').forEach(function(v){ v.classList.remove('active'); });
+  document.getElementById('sectionView').classList.add('active');
+  var bc=document.getElementById('breadcrumb');
+  bc.style.display='block';
+  bc.innerHTML='<a onclick="navigateTo(\'home\')">🏠 首页</a> <span>›</span> '+(title||key);
+  window.location.hash=key;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
 function showView(viewName, categoryKey){
+  // 工具全视图（career/life-hacks 等被移入 detail 的板块）切到其他视图前先归还
+  restoreMovedTool();
   // Hide all views
   document.querySelectorAll('.view-container').forEach(function(v){ v.classList.remove('active'); });
   var dashView = document.getElementById('dashboardView');
@@ -2114,6 +2157,11 @@ function showView(viewName, categoryKey){
     if(ct) ct.classList.add('active');
     window.scrollTo({top:0,behavior:'smooth'});
   } else if(viewName==='section-detail' && categoryKey){
+    // 工具板块（求职中心/生活妙用）：以「点开的全屏工具页」呈现（DOM 移入 detail，返回自动归还）
+    if(categoryKey==='career'||categoryKey==='life-hacks'){
+      buildToolsSectionView(categoryKey);
+      return;
+    }
     // Full-page section detail view
     setCurrentSection(categoryKey);
     var secEl = document.getElementById(categoryKey);
@@ -2529,10 +2577,10 @@ window.addEventListener('hashchange', function(){
   var hash = window.location.hash.replace('#','');
   if(!hash || hash==='home'){
     showView('home');
-  } else if(hash==='ai-assistant'||hash==='career'||hash==='life-hacks'){
-    // 工具类板块：回到首页并滚动到对应区块（避免空详情页）
+  } else if(hash==='ai-assistant'){
+    // AI 助手：回到首页并滚动到聊天区（不是空详情页）
     showView('home');
-    setTimeout(function(){ var el=document.getElementById(hash); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); },120);
+    setTimeout(function(){ var el=document.getElementById('ai-assistant'); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); },120);
   } else if(hash.startsWith('category-')){
     showView('category', hash.replace('category-',''));
   } else if(hash && document.getElementById(hash)){
@@ -3660,7 +3708,7 @@ function manualRefresh(){
 
 <script defer src="detail_content.js"></script>
 <script defer src="personal_config.js"></script>
-<script defer src="daily_data.js?v=1.6.4"></script>
+<script defer src="daily_data.js?v=1.6.5"></script>
 <script defer src="knowledge_index.js"></script>
 </body>
 </html>
