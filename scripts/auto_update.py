@@ -407,21 +407,38 @@ def apply_insights(u, d, today):
         pattern = re.compile(
             r'(?<=\n)  ' + re.escape(sec) + r':\s*\{[\s\S]*?(?=\n  \w[\w-]*: \{\n|^\})',
         )
-        # 简化：定位 "sec": { 到下一个顶层 key 或 INSIGHTS 结束
-        m = re.search(re.escape(sec) + r':\s*\{', u.content)
+        # 简化：在 INSIGHTS 区间内定位 "sec": { 到下一个顶层 key 或 INSIGHTS 结束
+        # （限定搜索起点，避免 DAILY_DATA/PICKS/文案中的同名 key 造成误匹配）
+        if not hasattr(u, '_ins_start'):
+            u._ins_start = u.content.find('var INSIGHTS = {')
+            if u._ins_start < 0:
+                u._ins_start = 0
+        m = re.search(re.escape(sec) + r':\s*\{', u.content[u._ins_start:])
         if not m:
             print(f"  ✗ 未找到板块 {sec}")
             u.errors.append(f"section {sec} not found")
             continue
-        start = m.start()
-        # 从 start 找匹配的大括号
+        start = u._ins_start + m.start()
+        # 从 start 找匹配的大括号（字符串感知：跳过 '...' 与 "..." 内的 { }，避免 AI 内容含花括号时配平错乱）
         depth = 0
         i = u.content.find('{', start)
         j = i
-        while j < len(u.content):
-            if u.content[j] == '{':
+        L = len(u.content)
+        while j < L:
+            ch = u.content[j]
+            if ch in ("'", '"'):
+                q = ch
+                j += 1
+                while j < L:
+                    if u.content[j] == '\\':
+                        j += 2
+                        continue
+                    if u.content[j] == q:
+                        break
+                    j += 1
+            elif ch == '{':
                 depth += 1
-            elif u.content[j] == '}':
+            elif ch == '}':
                 depth -= 1
                 if depth == 0:
                     break
@@ -535,10 +552,22 @@ def apply_learning(u, d, today):
             depth = 0
             i = u.content.find('[', start)
             j = i
-            while j < len(u.content):
-                if u.content[j] == '[':
+            L2 = len(u.content)
+            while j < L2:
+                ch = u.content[j]
+                if ch in ("'", '"'):
+                    q = ch
+                    j += 1
+                    while j < L2:
+                        if u.content[j] == '\\':
+                            j += 2
+                            continue
+                        if u.content[j] == q:
+                            break
+                        j += 1
+                elif ch == '[':
                     depth += 1
-                elif u.content[j] == ']':
+                elif ch == ']':
                     depth -= 1
                     if depth == 0:
                         break
