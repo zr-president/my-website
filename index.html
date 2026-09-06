@@ -282,6 +282,29 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <button onclick="event.stopPropagation();checkUpdateStatus()" id="updateCheckBtn" style="background:rgba(255,255,255,.2);color:#fff;border:none;padding:5px 10px;border-radius:6px;cursor:pointer;font-size:11px;font-weight:500;white-space:nowrap" title="检查更新状态">🔍</button>
 </div></div>
 
+	<!-- 整站功能 Hero（zh_hero）：概括网站对工作+生活+学习的价值，不聚焦求职 —— 置于今日必看之前 -->
+	<div id="zhHero" class="zh-hero">
+		<div class="zh-hero-badge">
+			<span class="zh-pill">🔒 数据存本机</span>
+			<span class="zh-pill">🧠 AI 驱动</span>
+			<span class="zh-pill">📅 每日更新</span>
+			<span class="zh-pill">🕘 每天 6:00 自动刷新</span>
+		</div>
+		<h1>你的 AI 个人信息中枢</h1>
+		<div class="zh-sub">把工作 · 求职 · 学习 · 投资 · 生活 · 娱乐，一屏整合成随时可查、每天更新的数字空间</div>
+		<div class="zh-rows">
+			<div class="zh-row">💼 <b>求职</b> 职位雷达 + JD 匹配 + 投递作战台 + 面试题库</div>
+			<div class="zh-row">📈 <b>投资</b> 每日收盘复盘 + 技术面科普 + 定投纪律</div>
+			<div class="zh-row">📚 <b>学习</b> 每日一词 + 小白课堂 + 技能雷达 + AI 行业观察</div>
+			<div class="zh-row">🧘 <b>生活</b> 饮食/健身/穿搭/天气 + 精酿推荐 + 办事日历</div>
+			<div class="zh-row">🎮 <b>娱乐</b> 游戏/动漫/小说/影视/音乐 每日推荐</div>
+		</div>
+		<div class="zh-cta-row">
+			<button class="zh-cta primary" onclick="zh_goObs()">📚 开始探索（看今日内容）</button>
+			<button class="zh-cta ghost" onclick="document.getElementById('dailyBriefing').style.display='block';document.getElementById('dailyBriefing').scrollIntoView({behavior:'smooth',block:'start'})">📡 跳到今日要闻</button>
+		</div>
+	</div>
+
 	<!-- #38: 今日必看置顶聚合卡片 -->
 	<div id="featuredCard" style="background:linear-gradient(135deg,#fef3c7,#fef9c3);border:1px solid #f59e0b;border-radius:12px;padding:12px 16px;margin-bottom:16px;display:none;cursor:pointer;transition:transform .15s,box-shadow .15s" onmouseover="this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 12px rgba(245,158,11,.25)'" onmouseout="this.style.transform='';this.style.boxShadow=''" onclick="openFeaturedCard()">
 	<div style="display:flex;align-items:center;gap:10px">
@@ -304,29 +327,6 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 </div>
 <div id="briefingContent" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:8px"></div>
 </div>
-
-	<!-- 整站功能 Hero（zh_hero）：概括网站对工作+生活+学习的价值，不聚焦求职 -->
-	<div id="zhHero" class="zh-hero">
-		<div class="zh-hero-badge">
-			<span class="zh-pill">🔒 数据存本机</span>
-			<span class="zh-pill">🧠 AI 驱动</span>
-			<span class="zh-pill">📅 每日更新</span>
-			<span class="zh-pill">🕘 每天 6:00 自动刷新</span>
-		</div>
-		<h1>你的 AI 个人信息中枢</h1>
-		<div class="zh-sub">把工作 · 求职 · 学习 · 投资 · 生活 · 娱乐，一屏整合成随时可查、每天更新的数字空间</div>
-		<div class="zh-rows">
-			<div class="zh-row">💼 <b>求职</b> 职位雷达 + JD 匹配 + 投递作战台 + 面试题库</div>
-			<div class="zh-row">📈 <b>投资</b> 每日收盘复盘 + 技术面科普 + 定投纪律</div>
-			<div class="zh-row">📚 <b>学习</b> 每日一词 + 小白课堂 + 技能雷达 + AI 行业观察</div>
-			<div class="zh-row">🧘 <b>生活</b> 饮食/健身/穿搭/天气 + 精酿推荐 + 办事日历</div>
-			<div class="zh-row">🎮 <b>娱乐</b> 游戏/动漫/小说/影视/音乐 每日推荐</div>
-		</div>
-		<div class="zh-cta-row">
-			<button class="zh-cta primary" onclick="zh_goObs()">📚 开始探索（看今日内容）</button>
-			<button class="zh-cta ghost" onclick="document.getElementById('dailyBriefing').style.display='block';document.getElementById('dailyBriefing').scrollIntoView({behavior:'smooth',block:'start'})">📡 跳到今日要闻</button>
-		</div>
-	</div>
 
 <!-- 0. 每日待办汇总 -->
 <section id="dashboard" class="section" data-search="每日待办 行程 打卡 日程">
