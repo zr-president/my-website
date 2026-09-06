@@ -176,13 +176,10 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 .briefing-item::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--accent),transparent);opacity:0;transition:opacity .35s}
 .briefing-item:hover{transform:translateY(-3px) scale(1.01);box-shadow:0 8px 30px rgba(0,0,0,.12),0 0 0 1px var(--accent)}
 
-/* ===== 首页模式切换 bar（今日/内容/作品）===== */
-.zh-modebar{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:9px 12px;margin-bottom:14px;background:var(--card);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow)}
+/* ===== 首页模式切换（今日/内容/作品）===== */
 .zh-mode{display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:10px;font-size:12px;font-weight:600;cursor:pointer;border:none;background:var(--bg);color:var(--text2);transition:.15s;font-family:inherit}
-.zh-mode .zm-ico{font-size:14px}
 .zh-mode:hover{background:var(--accent-light);color:var(--accent)}
 .zh-mode.active{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 2px 8px rgba(79,70,229,.25)}
-.zh-mode-hint{margin-left:auto;font-size:10px;color:var(--text3);font-weight:500}
 .briefing-item:hover::before{opacity:.06}
 
 /* Insight callout */
@@ -290,6 +287,15 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 
 <nav class="sidebar">
 <div class="sidebar-header"><h1>钟锐</h1><p>个人数字空间</p></div>
+<!-- 首页模式切换（今日/内容/作品）——侧边栏顶部，一键切换视角 -->
+<div style="padding:8px 12px 4px;border-bottom:1px solid var(--border);margin-bottom:2px">
+	<div style="font-size:9px;color:var(--text3);margin:0 4px 4px;letter-spacing:.5px">🏠 首页模式</div>
+	<div style="display:flex;gap:5px">
+		<button class="zh-mode" data-mode="today" onclick="zh_setHomeMode('today')" style="flex:1">📌今日</button>
+		<button class="zh-mode" data-mode="content" onclick="zh_setHomeMode('content')" style="flex:1">📚内容</button>
+		<button class="zh-mode" data-mode="work" onclick="zh_setHomeMode('work')" style="flex:1">💼作品</button>
+	</div>
+</div>
 <div class="sidebar-footer">
 <div class="search-box"><input type="text" id="searchInput" placeholder="搜索板块..." oninput="doSearch(this.value)"></div>
 <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="切换暗色">🌙</button>
@@ -395,14 +401,6 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 <p style="font-size:9px;color:var(--text3);margin-top:6px">🔒 个人提醒只存本机浏览器(localStorage)，不会出现在公开网页 — 通用节点(发售/上映/完结/窗口)每日由数据驱动</p>
 </div>
 </section>
-
-<!-- 首页模式切换（今日 / 内容 / 作品）——降低信息负担，一键切换视角 -->
-<div class="zh-modebar">
-	<button class="zh-mode active" data-mode="today" onclick="zh_setHomeMode('today')"><span class="zm-ico">📌</span> 今日</button>
-	<button class="zh-mode" data-mode="content" onclick="zh_setHomeMode('content')"><span class="zm-ico">📚</span> 内容</button>
-	<button class="zh-mode" data-mode="work" onclick="zh_setHomeMode('work')"><span class="zm-ico">💼</span> 作品</button>
-	<span class="zh-mode-hint" id="zhModeHint">今天要看的核心</span>
-</div>
 
 <!-- 板块快速导航（分类卡片墙：放在智能日历之后，作为探索入口） -->
 <div id="homeCategoryGrid"></div>
@@ -2675,6 +2673,14 @@ function showView(viewName, categoryKey){
     }
 
     document.getElementById('sectionDetailContent').innerHTML = detailHtml;
+    // ⚡ 今日行动转化条：在 section-detail 视图顶部注入（主路径），把「知道」变成「做到」
+    if(categoryKey && typeof INSIGHTS!=='undefined' && INSIGHTS[categoryKey] && INSIGHTS[categoryKey].tip){
+      var _tip = INSIGHTS[categoryKey].tip;
+      var _sd = document.getElementById('sectionDetailContent');
+      if(_sd){
+        _sd.insertAdjacentHTML('afterbegin','<div style="margin:0 0 14px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border-radius:12px;padding:13px 16px;font-size:12px;line-height:1.9"><div style="font-size:13px;font-weight:700;margin-bottom:5px">⚡ 今日行动</div>'+_tip+'</div>');
+      }
+    }
     // 学习区全屏详情：今日新知 + 今日学习分析 + 小白课堂置顶（点进学习区的重点内容）
     if(categoryKey==='learning'){
       var sdL = document.getElementById('sectionDetailContent');
@@ -4097,7 +4103,7 @@ function manualRefresh(){
 
 <script defer src="detail_content.js"></script>
 <script defer src="personal_config.js"></script>
-<script defer src="daily_data.js?v=1.7.6"></script>
+<script defer src="daily_data.js?v=1.7.7"></script>
 <script defer src="knowledge_index.js"></script>
 </body>
 </html>
