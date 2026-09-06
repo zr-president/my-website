@@ -1,4 +1,4 @@
-var SITE_VERSION = "1.7.1";
+var SITE_VERSION = "1.7.2";
 
 var DAILY_DATA = {
   "update_time": "2026-09-06T11:45:00+08:00",
@@ -55,7 +55,9 @@ var DAILY_BRIEFING = {
     {priority:3, icon:"🎬", section:"龙餐馆破20亿", headline:"《欢迎来龙餐馆》累计破20亿：2026第四部20亿+影片·超《给阿嬷的情书》居年票房榜第三", summary:"《欢迎来龙餐馆》累计票房突破20亿元——成为2026年第四部破20亿的影片，并超越《给阿嬷的情书》升至年度票房榜第三。沈腾×文牧野转型之作豆瓣8.4的口碑长尾持续兑现。目前年榜前列：《功夫女足》22.69亿、《八仙！》14.59亿动画冠军、龙餐馆20亿。9 月新片持续定档 + 国庆档预热临近，内容大盘热度延续。", action:"查看票房", link:"#movie", deepLink:"https://piaofang.maoyan.com/"},
     {priority:4, icon:"⛈️", section:"新台风或将生成", headline:"台风科罗旺拐弯·新台风『杜鹃』或将生成——广东秋高气爽还能维持几天", summary:"台风动态：『科罗旺』已拐弯远离广东，但新台风『杜鹃』或将生成（路径待观察）。广东近期转为多云到晴、气温回升，迎来难得的『秋高气爽』——但昼夜温差渐大，且新台风消息需持续跟进。广州未来几天多云到晴为主（33C/25C 左右），周末出行宜早不宜晚。若『杜鹃』生成并靠近，沿海地区需留意风雨影响。", action:"查看天气", link:"#life-tips", deepLink:"https://news.qq.com/rain/a/20260905A09Y9U00"},
     {priority:5, icon:"🏦", section:"国产AI资本+产品双热", headline:"国家AI基金注资可灵14亿·阿里更新Qwen3.8-Max·Manus恢复独立运营——中国AI进入资本+产品共振期", summary:"中国 AI 行业资本与产品双热：①国家人工智能基金向快手可灵注资14亿元（AI 视频生成国家队入场）；②阿里更新旗舰模型 Qwen3.8-Max；③AI 智能体产品 Manus 恢复独立运营。叠加 GPT-6 Astra 发布带动全球关注，国产 AI 生态（模型/视频/Agent）持续扩容。对求职信号：AI 应用层与产品化人才需求进入金九银十放量期。", action:"了解详情", link:"#ai-track", deepLink:"https://www.tmtpost.com/index.php/8129653.html"},
-    {priority:6, icon:"💼", section:"金九银十求职窗口", headline:"9月秋招+社招双高峰：GPT-6发布催化AI岗位热度·周一黄金窗口照常", summary:"金九银十招聘季进行中：9月是秋招（2027届）+社招双高峰，GPT-6 Astra 发布进一步催化 AI 岗位热度（AI 产品/运营/Agent 应用岗需求上升）。周末建议：①把 GPT-6 Astra 事件写成 300 字行业观察（安全治理 vs 能力释放，面试必考题）；②复盘本周投递进度；③更新简历技能栏（补『了解 GPT-6 Astra 与 AI 安全治理』）；④周一 9:30-11:00 黄金窗口集中投递。", action:"准备投递", link:"#career", deepLink:"https://www.zhipin.com/"}
+    {priority:6, icon:"💼", section:"金九银十求职窗口", headline:"9月秋招+社招双高峰：GPT-6发布催化AI岗位热度·周一黄金窗口照常", summary:"金九银十招聘季进行中：9月是秋招（2027届）+社招双高峰，GPT-6 Astra 发布进一步催化 AI 岗位热度（AI 产品/运营/Agent 应用岗需求上升）。周末建议：①把 GPT-6 Astra 事件写成 300 字行业观察（安全治理 vs 能力释放，面试必考题）；②复盘本周投递进度；③更新简历技能栏（补『了解 GPT-6 Astra 与 AI 安全治理』）；④周一 9:30-11:00 黄金窗口集中投递。", action:"准备投递", link:"#career", deepLink:"https://www.zhipin.com/"},
+    {priority:7, icon:"🎮", section:"游戏预售", headline:"《影之刃零》预售中：甄子丹动作监制·国产3A商业化验证·10/29发售", summary:"《影之刃零》预售持续（268元起，10/29发售）——甄子丹出任动作监制，虚幻5暗黑武侠3A。继《黑神话：悟空》后国产3A的商业化验证：预售数据=市场信心试金石，从『能不能做出来』到『怎么卖好』。Steam愿望单可退、发售前关注实机评测；秋促/国庆/双11三连促临近，补票最佳窗口。", action:"查看预售", link:"#gaming", deepLink:"https://store.steampowered.com/app/2776930/"},
+    {priority:8, icon:"🎬", section:"动漫完结倒计时", headline:"Re:Zero第四季【夺还篇】追番第25天·最终话9/30定档·完结倒计时24天", summary:"Re:Zero S4 夺还篇追番第25天（8/12开播），最终话9/30定档、还剩24天——486 在丧失记忆后的自我认知博弈进收束阶段，全8集 WHITE FOX 制作。同步追更：BLEACH千年血战篇-祸进谭、无职转生S3、False Memory、时光代理人S3；10月秋季新番档期临近，Re:Zero完结后接力阵容陆续公布，可提前加追番单。", action:"去追番", link:"#anime", deepLink:"https://www.bilibili.com/search?keyword=Re%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E5%BC%82%E4%B8%96%E7%95%8C%E7%94%9F%E6%B4%BB"}
   ]
 };
 
@@ -85,9 +87,9 @@ var PICKS = {
     {icon:"🆕", title:"起点9月新书上架126本", desc:"9月新书潮开启·玄幻/都市/克系多类型·追新书看首订榜", link:"https://www.qidian.com/"}
   ],
   beer: [
-    {icon:"🍸", title:"金汤力 Gin & Tonic", desc:"秋高气爽前的清爽 · 金酒+汤力水+柠檬 · 周末聚会首选", link:"https://s.taobao.com/search?q=哥顿金酒", video:"https://search.bilibili.com/all?keyword=%E9%87%91%E6%B1%A4%E5%8A%9B%E8%B0%83%E9%85%92%E6%95%99%E7%A8%8B", img:"img/ck_gt.svg", tag:"鸡尾酒·清爽"},
-    {icon:"🍺", title:"保拉纳酵母小麦", desc:"德式小麦入门首选 · 比教士更浓郁香蕉酯香 · 换季过渡首选", link:"https://s.taobao.com/search?q=保拉纳小麦啤酒", video:"https://search.bilibili.com/all?keyword=%E7%B2%BE%E9%85%BF%E5%95%A4%E9%85%92%E5%85%A5%E9%97%A8%E6%8E%A8%E8%8D%90", img:"img/ck_weizen.svg", tag:"德式小麦"},
-    {icon:"🍻", title:"酿酒狗朋克IPA", desc:"IPA探险第一站 · 热带水果轰炸 · 芒果/西柚/荔枝香气", link:"https://s.taobao.com/search?q=酿酒狗朋克IPA", video:"https://search.bilibili.com/all?keyword=IPA%E5%95%A4%E9%85%92%E5%93%81%E9%89%B4", img:"img/ck_ipa.svg", tag:"IPA·果香"}
+    {icon:"🍸", title:"金汤力 Gin & Tonic", desc:"秋高气爽前的清爽 · 金酒+汤力水+柠檬 · 周末聚会首选", link:"https://s.taobao.com/search?q=哥顿金酒", video:"https://search.bilibili.com/all?keyword=%E9%87%91%E6%B1%A4%E5%8A%9B%E8%B0%83%E9%85%92%E6%95%99%E7%A8%8B", img:"https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=400&q=60", tag:"鸡尾酒·清爽"},
+    {icon:"🍺", title:"保拉纳酵母小麦", desc:"德式小麦入门首选 · 比教士更浓郁香蕉酯香 · 换季过渡首选", link:"https://s.taobao.com/search?q=保拉纳小麦啤酒", video:"https://search.bilibili.com/all?keyword=%E7%B2%BE%E9%85%BF%E5%95%A4%E9%85%92%E5%85%A5%E9%97%A8%E6%8E%A8%E8%8D%90", img:"https://images.unsplash.com/photo-1608270586620-248524c67de9?auto=format&fit=crop&w=400&q=60", tag:"德式小麦"},
+    {icon:"🍻", title:"酿酒狗朋克IPA", desc:"IPA探险第一站 · 热带水果轰炸 · 芒果/西柚/荔枝香气", link:"https://s.taobao.com/search?q=酿酒狗朋克IPA", video:"https://search.bilibili.com/all?keyword=IPA%E5%95%A4%E9%85%92%E5%93%81%E9%89%B4", img:"https://images.unsplash.com/photo-1566633806327-68e152aaf26d?auto=format&fit=crop&w=400&q=60", tag:"IPA·果香"}
   ],
   gaming: [
     {icon:"⚔️", title:"影之刃零 预售中 🎮", desc:"甄子丹出任动作监制·DLSS 4.5+光线追踪·268元起·10/29发售·国产3A里程碑", link:"https://store.steampowered.com/app/2776930/"},
@@ -106,8 +108,8 @@ var PICKS = {
     {icon:"🛡️", title:"AI安全与对齐入门路径", desc:"前沿模型失控风险→OpenAI Astra事件→安全评估框架→红队测试→对齐技术全景", link:"#ai-track"}
   ],
   fashion: [
-    {icon:"👕", title:"日系简约（换季版）", desc:"重磅T+黑色九分裤+帆布鞋 · 换季过渡 · 极简黑白", link:"https://s.taobao.com/search?q=重磅棉落肩T恤男250g", video:"https://search.bilibili.com/all?keyword=%E7%94%B7%E7%94%9F%E5%A4%8F%E5%AD%A3%E7%A9%BF%E6%90%AD170cm", img:"img/fashion_jp.svg", tag:"通勤·极简"},
-    {icon:"👔", title:"韩系都市通勤", desc:"牛津纺衬衫+卡其裤+德训鞋 · 轻薄抗皱 · 空调房得体", link:"https://s.taobao.com/search?q=优衣库牛津纺衬衫男浅蓝", video:"https://search.bilibili.com/all?keyword=%E7%94%B7%E7%94%9F%E9%9F%A9%E7%B3%BB%E9%80%9A%E5%8B%A4%E7%A9%BF%E6%90%AD", img:"img/fashion_kr.svg", tag:"面试·通勤"}
+    {icon:"👕", title:"日系简约（换季版）", desc:"重磅T+黑色九分裤+帆布鞋 · 换季过渡 · 极简黑白", link:"https://s.taobao.com/search?q=重磅棉落肩T恤男250g", video:"https://search.bilibili.com/all?keyword=%E7%94%B7%E7%94%9F%E5%A4%8F%E5%AD%A3%E7%A9%BF%E6%90%AD170cm", img:"https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?auto=format&fit=crop&w=400&q=60", tag:"通勤·极简"},
+    {icon:"👔", title:"韩系都市通勤", desc:"牛津纺衬衫+卡其裤+德训鞋 · 轻薄抗皱 · 空调房得体", link:"https://s.taobao.com/search?q=优衣库牛津纺衬衫男浅蓝", video:"https://search.bilibili.com/all?keyword=%E7%94%B7%E7%94%9F%E9%9F%A9%E7%B3%BB%E9%80%9A%E5%8B%A4%E7%A9%BF%E6%90%AD", img:"https://images.unsplash.com/photo-1603252109303-2751441dd157?auto=format&fit=crop&w=400&q=60", tag:"面试·通勤"}
   ],
   fitness: [
     {icon:"💪", title:"周日：恢复日", desc:"快走30-40分钟+全身拉伸·泡沫轴放松·增肌期第8周收尾·周一胸+三头", link:"#", video:"https://search.bilibili.com/all?keyword=%E8%82%A9%E9%83%A8%E8%AE%AD%E7%BB%83%E6%95%99%E7%A8%8B"},
@@ -545,7 +547,14 @@ var AGENT_STACKS = {
       pros:"国产旗舰中文最强·长上下文256K·开源生态活跃",
       cons:"英文弱·生态不如Claude/GPT·涨过价",
       best_for:"中文长文档·学术研究·国产替代",
-      verdict:"中文场景的好备选·综合不如Qwen即将开源的性价比"}
+      verdict:"中文场景的好备选·综合不如Qwen即将开源的性价比"},
+    {agent:"—（GPT-6 闭源·不入组合）", model:"GPT-6 Astra", emoji:"🚀",
+      score:{编程:97, 性价比:20, 中文:96, 生态:30, 速度:60}, 综合:60,
+      monthly_cost:"未公开(API未开放)", monthly_cost_note:"闭源无API·无法用于当前工具链",
+      pros:"9/4发布·总裁称AGI时代到来·史上最强·多项智能体任务接近人类专家·可作『AGI』概念与AI安全治理的讨论素材",
+      cons:"闭源+API未开放定价→完全无法接入Claude Code/Codex/Harness·AI安全治理争议大(安全评分仅52)·成本/速度未知·无本地部署",
+      best_for:"前沿能力参考·AI安全治理面试谈资·『AGI』判断——不作日常工具链",
+      verdict:"⚠️ 当前组合不采用——闭源无API，你的开源/本地部署(DeepSeek/Qwen/GLM)路线不受影响。但对求职与行业认知是必学话题"}
   ],
   recommendation: "💡 结论（9/6更新）：日常主力对比——① Harness + V4-Flash：官方全家桶，缓存命中率高+中文强+零配置，中文/隐私环境首选；② Harness + Qwen3.8-27B（本地部署）：8/15已开源+笔记本可运行+本地免费——日常高频/隐私任务用这套；③ 多模态场景：GLM-5.3-Flash（1/40价格）已入候选——看图/截图分析类任务免费平替；④ 端侧/离线场景：科大讯飞端侧模型（9/1开源）——语音/车机/离线工具场景的端侧平替；⑤ Claude Code + V4-Flash：生态更成熟，英文技术场景占优；⑥ 重活专用 = Claude Code + Sonnet 4.6 / Opus 5；⑦ 免费备胎 = Codex + Luna。9/6注：GPT-6 Astra已发布但闭源且未开放API价格，开源/本地组合路线不变，无需切换；可灵14亿注资+Manus独立说明国产Agent/视频产品化加速——组合实测可加入国产Agent对比。建议：下周择机做一次组合实测（Harness+本地Qwen / Harness+GLM / Harness+DeepSeek）的完成质量与成本，数据决定主力。"
 };
@@ -670,7 +679,7 @@ var OPTIMIZATION_LOG = {
 
 var WEBSITE_GUIDE = {
   updated: "2026-09-06",
-  summary: "欢迎来到钟锐的个人数字空间！这是一个持续进化的智能信息中枢。版本1.7.1。9/6多模态升级：穿搭推荐/调酒精酿加入插画卡（图片化更直观）+今日要闻缩至4卡+每日一练默认收起。每天打开都是新的，每天都有提升。",
+  summary: "欢迎来到钟锐的个人数字空间！这是一个持续进化的智能信息中枢。版本1.7.2。9/6多模态升级：穿搭/调酒改用真实网图（更直观）+今日要闻8卡每天显示4卡换批+板块导航墙移到要闻下方+GPT-6 Astra纳入模型/Agent评分表。每天打开都是新的，每天都有提升。",
   features: [
     {icon:"🏠", title:"首页仪表盘", desc:"一屏总览所有板块精华。分类卡片快速导航、实时股市/天气/新闻一目了然。点击分类卡片进入分类页。"},
     {icon:"📂", title:"分类浏览", desc:"点击侧边栏分类标题(👤关于/🎮娱乐/🏃生活/📊财经/🤖工具)，进入分类页集中浏览该类别所有板块。"},
@@ -798,7 +807,7 @@ var DAILY_VOCAB = {
 
 var AI_MODEL_COMPARISON = {
   updated: "2026-09-06",
-  description: "主流大模型全维度对比 · 同系列区分(Flash/Pro/Luna/Sol/Max/27B) · 百分制评分 · 综合加权评分 · 最新价格(含调价标注) · 每日更新 · 9/6更新：GPT-6 Astra已发布(闭源·暂不纳入评分表·AI安全治理成行业新焦点)+国家AI基金注资可灵14亿(视频生成赛道)+阿里更新Qwen3.8-Max持续验证",
+  description: "主流大模型全维度对比 · 同系列区分(Flash/Pro/Luna/Sol/Max/27B) · 百分制评分 · 综合加权评分 · 最新价格(含调价标注) · 每日更新 · 9/6更新：GPT-6 Astra已纳入评分表(闭源·API未开放·AI安全治理争议大·安全评分52)+国家AI基金注资可灵14亿(视频生成赛道)+阿里更新Qwen3.8-Max持续验证",
   models: [
     // ===== DeepSeek 系列 =====
     {name:"DeepSeek V4-Flash", emoji:"⚡", provider:"DeepSeek", series:"V4轻量高频版", tier:"性价比之王",
@@ -842,6 +851,16 @@ var AI_MODEL_COMPARISON = {
      best_for:"高精度专业任务·法律/金融/医疗咨询·深度研究·复杂Agent编排·长篇创作",
      price_note:"🟡 7月30日API未降价(维持$5/$30)·新Fast模式$10/$60(2.5x速度)·订阅价未变",
      free_tier:"❌ 需Plus($20/月)或Pro($200/月)"
+    },
+    {name:"GPT-6 Astra", emoji:"🚀", provider:"OpenAI", series:"里程碑旗舰·AGI争议", tier:"最新旗舰",
+     input_price:"未公开(API暂未开放)", output_price:"未公开", cost_per_task:"—",
+     intelligence:97, speed:64,性价比:40, 安全:52, 综合:72,
+     context:"未公开(预计>1M)", params:"未公开",
+     strengths:"9/4正式发布·总裁称『AGI时代已到来』·被广泛评为史上最强·多项智能体任务接近人类专家·8月因『关键资安能力』(可自主策划网络攻击)暂停研发一月后放行",
+     weaknesses:"闭源且API未开放定价·无法用于当前工具链·AI安全治理争议大(安全评分仅52)·速度/成本未知·本地部署不可行",
+     best_for:"前沿能力参考·AI安全治理讨论素材·『AGI』概念判断——暂不作为日常工具链(闭源无API)",
+     price_note:"🚨 9/4发布即引发『AI安全vs能力释放』全球讨论·因网络安全风险曾暂停研发一个月·闭源+无API=你的开源/本地部署路线不受影响",
+     free_tier:"❌ 闭源·未开放免费/API(至少在可预见期内)"
     },
 
     // ===== Anthropic Claude 系列 =====

@@ -354,6 +354,9 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 <div id="briefingContent" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:8px"></div>
 </div>
 
+<!-- 板块快速导航（分类卡片墙：从学习区中间移到这里，作为探索入口） -->
+<div id="homeCategoryGrid"></div>
+
 <!-- 0. 每日待办汇总 -->
 <section id="dashboard" class="section" data-search="每日待办 行程 打卡 日程">
 <div class="section-header"><h2>📋 每日待办汇总</h2><p id="dashboardDate"></p><span id="pushStatus" style="display:none;font-size:11px;padding:2px 10px;border-radius:12px;background:rgba(5,150,105,.2);color:#059669;margin-left:8px" title="微信推送已配置">📱 推送已开启</span></div>
@@ -646,9 +649,6 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 <div id="picks-news" class="picks-container"></div>
 <div class="card" style="padding:12px 16px" id="rssNewsFeed"><p style="font-size:12px;color:var(--text3)">📡 正在加载实时资讯...</p></div>
 <div class="card clickable" onclick="openDetail('news')"><h3>🌍 资讯获取方案</h3><p>高效信息源配置、每日阅读时间表、RSS订阅方案。</p></div></section>
-
-<!-- Category Navigation Cards -->
-<div id="homeCategoryGrid"></div>
 
 <section id="daily-vocab" class="section" data-search="每日一词 术语 词汇 专业 学习 技能"><div class="section-header"><h2>📚 每日一词</h2><p>首页展示3个 · 共<span id="vocabTotalCount">0</span>个 · AI/金融/科技/数据全覆盖</p></div>
 <div id="vocabPreview" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px;margin-bottom:8px"></div>
@@ -3786,9 +3786,14 @@ function renderBriefing(){
   if(dateEl) dateEl.textContent = DAILY_BRIEFING.date;
   var content = document.getElementById('briefingContent');
   if(!content) return;
-  // Sort by priority, then rotate pages
+  // Sort by priority, then rotate in non-overlapping "pages" of 4
   var pool = DAILY_BRIEFING.highlights.slice().sort(function(a,b){return a.priority-b.priority;});
-  var perPage = 4, offset = (pageState.briefing * perPage) % pool.length;
+  var perPage = 4, total = pool.length;
+  if(total===0){ container.style.display='none'; return; }
+  // #今日要闻8卡：分成若干4卡为一组，换一批切换下一组（不重复），最后一组后回到起点
+  var pageCount = Math.max(1, Math.ceil(total/perPage));
+  var pageIdx = (pageState.briefing % pageCount);
+  var offset = pageIdx * perPage;
   var items = pool.slice(offset, offset+perPage);
   if(items.length < perPage) items = items.concat(pool.slice(0, perPage-items.length));
   pageState.briefing++;
@@ -3903,7 +3908,7 @@ function manualRefresh(){
 
 <script defer src="detail_content.js"></script>
 <script defer src="personal_config.js"></script>
-<script defer src="daily_data.js?v=1.7.1"></script>
+<script defer src="daily_data.js?v=1.7.2"></script>
 <script defer src="knowledge_index.js"></script>
 </body>
 </html>
