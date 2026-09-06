@@ -1,4 +1,4 @@
-var SITE_VERSION = "1.8.0";
+var SITE_VERSION = "1.8.1";
 
 var DAILY_DATA = {
   "update_time": "2026-09-06T11:45:00+08:00",
@@ -133,12 +133,12 @@ var PICKS = {
     {icon:"🏙️", title:"深圳", desc:"新房~5.5万/平米 · 二手~5.0万/平米 · 外围6区非户籍免社保购房", link:"https://www.ke.com"}
   ],
   movie: [
-    {icon:"🏛️", title:"奥德赛 IMAX热映中", desc:"8.14上映·诺兰IMAX巨制·荷马史诗改编·史诗长尾仍在", link:"https://search.bilibili.com/all?keyword=奥德赛电影2026", video:"https://search.bilibili.com/all?keyword=奥德赛电影2026"},
-    {icon:"🧧", title:"欢迎来龙餐馆 🔥", desc:"暑期档口碑领跑·豆瓣8.4·沈腾x文牧野·长尾热映中", link:"https://search.bilibili.com/all?keyword=欢迎来龙餐馆", video:"https://search.bilibili.com/all?keyword=%E6%AC%A2%E8%BF%8E%E6%9D%A5%E9%BE%99%E9%A4%90%E9%A6%86"},
-    {icon:"🧧", title:"八仙！🔥", desc:"14.59亿·豆瓣8.2暑期黑马·动画票房冠军·青绿山水东方美学", link:"https://search.bilibili.com/all?keyword=八仙动画电影", video:"https://search.bilibili.com/all?keyword=八仙动画电影"},
-    {icon:"⚽", title:"功夫女足 🔥", desc:"周星驰执导·22.69亿暑期档总冠军·喜剧运动", link:"https://search.bilibili.com/all?keyword=功夫女足", video:"https://search.bilibili.com/all?keyword=功夫女足"},
-    {icon:"🎬", title:"9月新片前瞻 🆕", desc:"近40部影片定档·动作/惊悚/喜剧/悬疑·金九银十内容旺季", link:"https://search.bilibili.com/all?keyword=2026%E5%B9%B49%E6%9C%88%E7%94%B5%E5%BD%B1", video:"https://search.bilibili.com/all?keyword=9%E6%9C%88%E6%96%B0%E7%89%87"},
-    {icon:"🕷️", title:"蜘蛛侠：崭新之日", desc:"12.95亿·进口片冠军·豆瓣7.8系列最高·成家班武指·IMAX", link:"https://search.bilibili.com/all?keyword=蜘蛛侠崭新之日", video:"https://search.bilibili.com/all?keyword=蜘蛛侠崭新之日"}
+    {icon:"🏛️", title:"奥德赛 IMAX热映中", desc:"8.14上映·诺兰IMAX巨制·荷马史诗改编·史诗长尾仍在", link:"https://search.bilibili.com/all?keyword=奥德赛电影2026", video:"https://search.bilibili.com/all?keyword=奥德赛电影2026", img:"https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=60", tag:"史诗·海洋"},
+    {icon:"🧧", title:"欢迎来龙餐馆 🔥", desc:"暑期档口碑领跑·豆瓣8.4·沈腾x文牧野·长尾热映中", link:"https://search.bilibili.com/all?keyword=欢迎来龙餐馆", video:"https://search.bilibili.com/all?keyword=%E6%AC%A2%E8%BF%8E%E6%9D%A5%E9%BE%99%E9%A4%90%E9%A6%86", img:"https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=400&q=60", tag:"口碑·长尾"},
+    {icon:"🧧", title:"八仙！🔥", desc:"14.59亿·豆瓣8.2暑期黑马·动画票房冠军·青绿山水东方美学", link:"https://search.bilibili.com/all?keyword=八仙动画电影", video:"https://search.bilibili.com/all?keyword=八仙动画电影", tag:"动画·东方"},
+    {icon:"⚽", title:"功夫女足 🔥", desc:"周星驰执导·22.69亿暑期档总冠军·喜剧运动", link:"https://search.bilibili.com/all?keyword=功夫女足", video:"https://search.bilibili.com/all?keyword=功夫女足", img:"https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=400&q=60", tag:"喜剧·运动"},
+    {icon:"🎬", title:"9月新片前瞻 🆕", desc:"近40部影片定档·动作/惊悚/喜剧/悬疑·金九银十内容旺季", link:"https://search.bilibili.com/all?keyword=2026%E5%B9%B49%E6%9C%88%E7%94%B5%E5%BD%B1", video:"https://search.bilibili.com/all?keyword=9%E6%9C%88%E6%96%B0%E7%89%87", img:"https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=400&q=60", tag:"新片·前瞻"},
+    {icon:"🕷️", title:"蜘蛛侠：崭新之日", desc:"12.95亿·进口片冠军·豆瓣7.8系列最高·成家班武指·IMAX", link:"https://search.bilibili.com/all?keyword=蜘蛛侠崭新之日", video:"https://search.bilibili.com/all?keyword=蜘蛛侠崭新之日", img:"https://image.tmdb.org/t/p/w500/7AjIupf0lxNKNq0p8z36jv5ZpiJ.jpg", tag:"超级英雄·官方海报"}
   ],
   "life-tips": [
     {icon:"⛅", title:"秋高气爽+新台风杜鹃或将生成", desc:"科罗旺已远离·广州多云到晴33C/25C·昼夜温差渐大·杜鹃路径待观察", link:"#"},
