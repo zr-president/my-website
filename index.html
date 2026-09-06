@@ -488,6 +488,26 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 	<div id="zhApplyList"></div>
 </section>
 
+<!-- E：AI 增长工作台（求职差异化作品集 · 展示你做出的可量化增长） -->
+<section id="growth-workbench" class="section" style="margin-top:12px">
+	<div class="section-header"><h2>📈 AI 增长工作台</h2><p>可量化的 AI 增长案例 · 技能可视化 · 求职数据看板（面试现场演示）</p></div>
+	<!-- 我的 AI 增长案例（可演示） -->
+	<div id="zhGrowthCases" style="margin-bottom:10px"></div>
+	<!-- 求职数据看板 -->
+	<div class="card" style="padding:13px 15px;margin-bottom:8px">
+		<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap">
+			<h3 style="font-size:13px;margin:0">🎯 求职数据看板</h3>
+			<span style="font-size:10px;color:var(--text3)">金九银十进度 · 存本机浏览器</span>
+		</div>
+		<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px" id="zhJobStats"></div>
+	</div>
+	<!-- 目标公司投递进度条（从投递作战台读取） -->
+	<div class="card" style="padding:13px 15px">
+		<div style="font-size:13px;font-weight:700;margin-bottom:8px">🏢 目标公司投递进度</div>
+		<div id="zhJobProgress"></div>
+	</div>
+</section>
+
 <!-- Resume Workbench -->
 <div class="card" style="padding:14px 16px">
 <h3 style="margin-bottom:10px">📋 简历工作台 <span style="font-size:10px;color:var(--text3);font-weight:400">编辑后自动保存到本地</span></h3>
@@ -801,7 +821,13 @@ function openDetail(id){
     insightHtml+='<strong>📊 今日分析'+(ins.updated?'（'+ins.updated+'更新）':'')+'：</strong><br>';
     insightHtml+=ins.summary+'<br>';
     if(ins.trend) insightHtml+='<span style="font-size:12px;color:var(--text2)">'+ins.trend+'</span><br>';
-    if(ins.tip) insightHtml+='<strong style="color:var(--accent)">'+ins.tip+'</strong>';
+    if(ins.tip){
+      // 今日行动转化条：把「知道」变成「做到」——醒目的下一步动作
+      insightHtml+='<div style="margin-top:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border-radius:10px;padding:11px 14px;font-size:12px;line-height:1.8">';
+      insightHtml+='<div style="font-size:13px;font-weight:700;margin-bottom:4px">⚡ 今日行动</div>';
+      insightHtml+=ins.tip;
+      insightHtml+='</div>';
+    }
     insightHtml+='</div>';
     c=insightHtml+c;
   }
@@ -2282,7 +2308,7 @@ function buildToolsSectionView(key){
 var ZH_HOME_MODES = {
   today:  {name:'今日', hint:'今天要看的核心', sections:['dashboard','daily-vocab','zh-growth','daily-quiz','ai-assistant']},
   content:{name:'内容', hint:'全部每日更新的板块', sections:['dashboard','daily-vocab','zh-growth','daily-quiz','guide','optimization','ai-assistant']},
-  work:   {name:'作品', hint:'求职作品集展示视角', sections:['dashboard','ai-assistant']}
+  work:   {name:'作品', hint:'求职作品集展示视角', sections:['dashboard','growth-workbench','zh-growth','ai-assistant']}
 };
 function zh_setHomeMode(mode){
   if(!ZH_HOME_MODES[mode]) mode = 'today';
@@ -2331,6 +2357,57 @@ function zh_renderGrowth(){
   });
   h+='</div></div>';
   box.innerHTML=h;
+}
+
+// ===== E：AI 增长工作台（求职作品集 · 增长案例 + 数据看板 + 投递进度）=====
+var ZH_GROWTH_CASES = [
+  {emoji:"🚀", title:"自动化求职增长引擎", desc:"AI 简历匹配器 + 投递作战台 + 行业观察周更——把求职从『盲目投』升级为『数据驱动』", metric:"7 家目标公司 · 投递进度实时可视化", status:"已落地"},
+  {emoji:"📈", title:"AI 个人网站增长体系", desc:"17 个板块每日自动更新 + 三模式切换 + 成长热力图——自己就是 AI 增长的最佳实验田", metric:"每日自动更新 · 持续迭代", status:"进行中"},
+  {emoji:"🧠", title:"AI 安全治理研究", desc:"GPT-6 Astra 事件深度观察——写进《AI安全与能力如何平衡》，体现持续行业追踪", metric:"300字行业观察 · 每周沉淀", status:"已沉淀"}
+];
+function zh_renderGrowthWorkbench(){
+  var cases = document.getElementById('zhGrowthCases');
+  if(cases){
+    var h='<div class="img-picks" style="grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:9px">';
+    ZH_GROWTH_CASES.forEach(function(c){
+      h+='<div class="img-card" style="cursor:default;flex-direction:column">';
+      h+='<div style="padding:12px 13px;display:flex;flex-direction:column;flex:1">';
+      h+='<div style="display:flex;align-items:center;gap:6px;margin-bottom:4px"><span style="font-size:18px">'+c.emoji+'</span><span style="font-size:12px;font-weight:700">'+c.title+'</span></div>';
+      h+='<div style="font-size:10px;color:var(--text2);line-height:1.7;flex:1">'+c.desc+'</div>';
+      h+='<div style="margin-top:6px;display:flex;align-items:center;justify-content:space-between"><span style="font-size:9px;color:var(--accent);font-weight:600">'+c.metric+'</span><span style="font-size:8px;padding:1px 7px;border-radius:8px;background:var(--accent-light);color:var(--accent);font-weight:700">'+c.status+'</span></div>';
+      h+='</div></div>';
+    });
+    h+='</div>';
+    cases.innerHTML=h;
+  }
+  var stats = document.getElementById('zhJobStats');
+  if(stats){
+    var count = parseInt(localStorage.getItem('zh_apply_count')||'0',10)||0;
+    var statuses = {};
+    if(typeof TARGET_COMPANIES!=='undefined'&&TARGET_COMPANIES.items){
+      TARGET_COMPANIES.items.forEach(function(c){
+        var st=localStorage.getItem('zh_apply_状态_'+c.name)||'未投递';
+        statuses[st]=(statuses[st]||0)+1;
+      });
+    }
+    var applied = Object.keys(statuses).filter(function(s){return s!=='未投递';}).length;
+    var h2='';
+    [{l:'本周投递', v:count, c:'var(--accent)'},{l:'已推进公司', v:applied+'/7', c:'var(--green)'},{l:'面试中', v:(statuses['面试']||0), c:'var(--orange)'},{l:'已拿Offer', v:(statuses['已拿offer']||0), c:'var(--red)'}].forEach(function(s){
+      h2+='<div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:9px 10px;text-align:center"><div style="font-size:18px;font-weight:800;color:'+s.c+'">'+s.v+'</div><div style="font-size:9px;color:var(--text3);margin-top:1px">'+s.l+'</div></div>';
+    });
+    stats.innerHTML=h2;
+  }
+  var prog = document.getElementById('zhJobProgress');
+  if(prog && typeof TARGET_COMPANIES!=='undefined'&&TARGET_COMPANIES.items){
+    var h3='';
+    TARGET_COMPANIES.items.forEach(function(c){
+      var st=localStorage.getItem('zh_apply_状态_'+c.name)||'未投递';
+      var pct=st==='未投递'?12:st==='已投递'?35:st==='笔试'?55:st==='面试'?78:92;
+      var col=st==='未投递'?'var(--text3)':st==='已投递'?'var(--blue)':st==='笔试'?'var(--orange)':st==='面试'?'var(--accent)':'var(--green)';
+      h3+='<div style="margin-bottom:8px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px"><span style="font-size:10px;font-weight:600">'+c.emoji+' '+c.name+'</span><span style="font-size:9px;color:'+col+';font-weight:700">'+st+'</span></div><div style="height:6px;background:var(--bg2);border-radius:3px;overflow:hidden"><div style="height:100%;width:'+pct+'%;background:'+col+';border-radius:3px;transition:width .4s"></div></div></div>';
+    });
+    prog.innerHTML=h3;
+  }
 }
 
 function showView(viewName, categoryKey){
@@ -2982,7 +3059,7 @@ function renderModelComparison(){
 function onDataReady(){
   var tasks = [
     function(){ var e=document.getElementById('siteVersion'); if(e) e.textContent = (typeof SITE_VERSION!=='undefined'?SITE_VERSION:''); },
-    renderAllPicks, renderBriefing, renderVocab, renderQuiz, renderModelComparison, renderToolchainRadar, renderOpportunityRadar, renderLifeHacks, renderSkillRadar, renderFlashcards, renderMockInterview, renderSentiment, renderDailyDecisions, renderLearnPath, renderTodayKnowledge, renderLearningInsight, renderLearnPathMini, renderAgentStacks, renderCompanyRadar, renderCalendar, updateAiBadge, renderWrongWords, renderSubjectPaths, renderAiObservations, zh_renderApplyBoard, zh_updateApplyCount, zh_renderGrowth, checkUpdateStatus
+    renderAllPicks, renderBriefing, renderVocab, renderQuiz, renderModelComparison, renderToolchainRadar, renderOpportunityRadar, renderLifeHacks, renderSkillRadar, renderFlashcards, renderMockInterview, renderSentiment, renderDailyDecisions, renderLearnPath, renderTodayKnowledge, renderLearningInsight, renderLearnPathMini, renderAgentStacks, renderCompanyRadar, renderCalendar, updateAiBadge, renderWrongWords, renderSubjectPaths, renderAiObservations, zh_renderApplyBoard, zh_updateApplyCount, zh_renderGrowth, zh_renderGrowthWorkbench, checkUpdateStatus
   ];
   tasks.forEach(function(fn){
     try { if(typeof fn==='function') fn(); } catch(e){ console.error('Init error:', e.message); }
@@ -3999,7 +4076,7 @@ function manualRefresh(){
 
 <script defer src="detail_content.js"></script>
 <script defer src="personal_config.js"></script>
-<script defer src="daily_data.js?v=1.7.4"></script>
+<script defer src="daily_data.js?v=1.7.5"></script>
 <script defer src="knowledge_index.js"></script>
 </body>
 </html>
