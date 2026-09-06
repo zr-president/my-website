@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="570" viewBox="0 0 760 570">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eef2ff"/><stop offset="1" stop-color="#f5f3ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="760" height="570" fill="url(#bg)"/>
+  <!-- 背景圆 -->
+  <circle cx="380" cy="300" r="210" fill="#e0e7ff" opacity="0.6"/>
+  <!-- 重磅T（落肩宽松） -->
+  <path d="M290 130 L220 160 L255 240 L290 200 L290 460 L470 460 L470 200 L505 240 L540 160 L470 130 Q430 100 380 100 Q330 100 290 130 Z" fill="#2f3b52"/>
+  <!-- 领口 -->
+  <path d="M330 115 Q380 150 430 115" stroke="#26303f" stroke-width="14" fill="none" stroke-linecap="round"/>
+  <!-- 黑色微锥九分裤 -->
+  <path d="M320 460 L310 550 L350 550 L360 460 L400 460 L410 550 L450 550 L440 460 Z" fill="#1a1a24"/>
+  <!-- 帆布鞋 -->
+  <path d="M300 550 Q280 552 282 568 L368 568 Q372 552 352 550 Z" fill="#fff" stroke="#d1d5db" stroke-width="3"/>
+  <path d="M400 550 Q388 552 388 568 L452 568 Q454 552 442 550 Z" fill="#fff" stroke="#d1d5db" stroke-width="3"/>
+  <text x="380" y="60" text-anchor="middle" font-size="22" font-weight="700" fill="#4f46e5" font-family="sans-serif">日系简约 · 重磅T + 九分裤</text>
+  <text x="380" y="86" text-anchor="middle" font-size="13" fill="#6b7280" font-family="sans-serif">极简黑白 + 帆布鞋 · 换季过渡</text>
+</svg>

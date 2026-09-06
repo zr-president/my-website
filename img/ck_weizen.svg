@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="570" viewBox="0 0 760 570">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fffbeb"/><stop offset="1" stop-color="#fef3c7"/>
+    </linearGradient>
+    <linearGradient id="beer" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff7ed"/><stop offset="1" stop-color="#fed7aa"/>
+    </linearGradient>
+  </defs>
+  <rect width="760" height="570" fill="url(#bg)"/>
+  <circle cx="380" cy="300" r="205" fill="#fde68a" opacity="0.4"/>
+  <!-- 小麦啤杯（郁金香杯型） -->
+  <path d="M320 150 L440 150 L428 420 Q426 465 380 465 Q334 465 332 420 Z" fill="url(#beer)" stroke="#d97706" stroke-width="3"/>
+  <!-- 白色泡沫 -->
+  <path d="M320 150 Q318 120 350 114 Q354 96 378 96 Q400 96 406 112 Q440 116 440 150 L428 185 L332 185 Z" fill="#fff" stroke="#fde68a" stroke-width="2"/>
+  <ellipse cx="380" cy="118" rx="40" ry="10" fill="#fff1c2"/>
+  <text x="380" y="60" text-anchor="middle" font-size="22" font-weight="700" fill="#d97706" font-family="sans-serif">保拉纳酵母小麦</text>
+  <text x="380" y="86" text-anchor="middle" font-size="13" fill="#92400e" font-family="sans-serif">德式小麦入门 · 香蕉酯香浓郁 · 换季首选</text>
+</svg>

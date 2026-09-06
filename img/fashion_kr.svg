@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="570" viewBox="0 0 760 570">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eff6ff"/><stop offset="1" stop-color="#ecfeff"/>
+    </linearGradient>
+  </defs>
+  <rect width="760" height="570" fill="url(#bg)"/>
+  <circle cx="380" cy="300" r="210" fill="#dbeafe" opacity="0.5"/>
+  <!-- 牛津纺衬衫（浅蓝） -->
+  <path d="M300 120 L235 150 L268 235 L300 195 L300 450 L460 450 L460 195 L492 235 L525 150 L460 120 Q420 92 380 92 Q340 92 300 120 Z" fill="#93c5fd"/>
+  <!-- 衬衫领 -->
+  <path d="M335 108 L380 155 L425 108 L405 165 L355 165 Z" fill="#bfdbfe"/>
+  <!-- 卡其裤 -->
+  <path d="M320 450 L308 545 L352 545 L362 450 L398 450 L408 545 L452 545 L440 450 Z" fill="#c8a96a"/>
+  <!-- 德训鞋（白底棕） -->
+  <path d="M300 545 Q282 547 284 563 L368 563 Q372 547 354 545 Z" fill="#fff" stroke="#d1d5db" stroke-width="3"/>
+  <path d="M396 545 Q384 547 384 563 L448 563 Q450 547 438 545 Z" fill="#fff" stroke="#d1d5db" stroke-width="3"/>
+  <text x="380" y="60" text-anchor="middle" font-size="22" font-weight="700" fill="#2563eb" font-family="sans-serif">韩系都市通勤 · 牛津纺 + 卡其裤</text>
+  <text x="380" y="86" text-anchor="middle" font-size="13" fill="#6b7280" font-family="sans-serif">浅蓝衬衫 + 卡其 + 德训鞋 · 空调房得体</text>
+</svg>

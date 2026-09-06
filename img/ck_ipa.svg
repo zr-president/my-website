@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="570" viewBox="0 0 760 570">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff1f2"/><stop offset="1" stop-color="#ffe4e6"/>
+    </linearGradient>
+    <linearGradient id="ipa" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fde68a"/><stop offset="1" stop-color="#f0a04e"/>
+    </linearGradient>
+  </defs>
+  <rect width="760" height="570" fill="url(#bg)"/>
+  <circle cx="380" cy="300" r="205" fill="#fecdd3" opacity="0.4"/>
+  <!-- 品脱杯 -->
+  <path d="M315 150 L445 150 L432 430 Q430 470 380 470 Q330 470 328 430 Z" fill="url(#ipa)" stroke="#e11d48" stroke-width="3"/>
+  <!-- 泡沫 -->
+  <path d="M315 150 Q313 122 345 116 Q350 98 378 98 Q402 98 410 114 Q444 118 445 150 L432 190 L328 190 Z" fill="#fff5d6" stroke="#fbbf24" stroke-width="2"/>
+  <text x="380" y="60" text-anchor="middle" font-size="22" font-weight="700" fill="#e11d48" font-family="sans-serif">酿酒狗朋克 IPA</text>
+  <text x="380" y="86" text-anchor="middle" font-size="13" fill="#9f1239" font-family="sans-serif">热带水果轰炸 · 芒果/西柚/荔枝 · IPA第一站</text>
+</svg>

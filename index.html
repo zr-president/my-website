@@ -163,6 +163,15 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 .pick-card .pick-title{font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pick-card .pick-desc{font-size:10px;color:var(--text3)}
 .pick-card .pick-arrow{font-size:14px;color:var(--accent);flex-shrink:0}
+/* ===== 图片化推荐卡（穿搭/调酒等视觉板块）：顶部大图 + 文字 ===== */
+.img-picks{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:9px}
+.img-card{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;text-decoration:none;color:var(--text);transition:.16s;box-shadow:var(--shadow)}
+.img-card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:var(--shadow-lg)}
+.img-card .img-thumb{width:100%;aspect-ratio:4/3;object-fit:cover;background:var(--bg2);display:block}
+.img-card .img-body{padding:9px 11px}
+.img-card .img-title{font-size:12px;font-weight:700;margin-bottom:3px;line-height:1.4}
+.img-card .img-desc{font-size:10px;color:var(--text2);line-height:1.6}
+.img-card .img-tag{display:inline-block;margin-top:5px;padding:1px 7px;border-radius:8px;font-size:9px;font-weight:700;background:var(--accent-light);color:var(--accent)}
 .briefing-item{transition:all .35s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
 .briefing-item::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--accent),transparent);opacity:0;transition:opacity .35s}
 .briefing-item:hover{transform:translateY(-3px) scale(1.01);box-shadow:0 8px 30px rgba(0,0,0,.12),0 0 0 1px var(--accent)}
@@ -668,14 +677,17 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 <div id="subjectPathsList" style="font-size:11px;margin-top:8px"></div>
 </details></section>
 
-<section id="daily-quiz" class="section" data-search="每日一练 练习 题目 面试 SQL 题库"><div class="section-header"><h2>📝 每日一练</h2><p>首页展示3道 · 共<span id="quizTotalCount">0</span>题</p></div>
-<div id="quizPreview" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px;margin-bottom:8px"></div>
+<section id="daily-quiz" class="section" data-search="每日一练 练习 题目 面试 SQL 题库">
+<details class="card" style="padding:12px 14px;margin:0">
+<summary style="cursor:pointer;font-size:13px;font-weight:700">📝 每日一练 <span style="font-size:10px;color:var(--text3);font-weight:400">首页展示3道 · 共<span id="quizTotalCount">0</span>题 · 点击展开</span></summary>
+<div id="quizPreview" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px;margin:10px 0 8px"></div>
 <div style="display:flex;gap:8px;margin-bottom:4px">
 <button onclick="refreshQuiz()" style="padding:5px 12px;border:1px solid var(--border);border-radius:14px;background:var(--bg);cursor:pointer;font-size:11px;color:var(--text2)">🔄 换一批</button>
 <button onclick="showAllQuiz()" style="padding:5px 12px;background:var(--accent);color:#fff;border:none;border-radius:14px;cursor:pointer;font-size:11px">📋 查看全部10道</button>
 </div>
 <!-- Full quiz detail (hidden by default) -->
-<div id="quizFullView" style="display:none;margin-top:8px"></div></section>
+<div id="quizFullView" style="display:none;margin-top:8px"></div>
+</details></section>
 
 <section id="guide" class="section" data-search="帮助 指南 使用 说明 教程 功能 介绍"><div class="section-header"><h2>📖 使用指南</h2><p>功能介绍 · 模块说明 · 每日更新</p></div>
 <div id="picks-guide" class="picks-container"></div></section>
@@ -1949,24 +1961,43 @@ function renderSectionPicks(sectionId){
   // Show picks
   var picks = (typeof PICKS!=='undefined' && PICKS[sectionId]) ? PICKS[sectionId] : null;
   if(picks && picks.length>0){
-    picks.forEach(function(p){
-      var hasLink = p.link && p.link!=='#';
-      var tag = hasLink ? 'a' : 'div';
-      h+='<'+tag+' '+(hasLink?'href="'+p.link+'" target="_blank" ':'')+'class="pick-card">';
-      h+='<span class="pick-icon">'+p.icon+'</span>';
-      h+='<span class="pick-info"><div class="pick-title">'+p.title+'</div><div class="pick-desc">'+p.desc+'</div>';
-      // #37: Time-sensitive badge for gaming/movie picks
-      var titleLower=(p.title||'').toLowerCase(), descLower=(p.desc||'').toLowerCase();
-      if(titleLower.indexOf('今日')>=0||descLower.indexOf('今日')>=0||titleLower.indexOf('预售')>=0||descLower.indexOf('开播')>=0){
-        h+='<span style="display:inline-block;margin-top:2px;padding:1px 6px;border-radius:8px;font-size:9px;font-weight:700;background:#fee2e2;color:#dc2626">🔥 今日</span>';
-      } else if(titleLower.indexOf('明日')>=0||descLower.indexOf('明天')>=0||descLower.indexOf('倒计时')>=0){
-        h+='<span style="display:inline-block;margin-top:2px;padding:1px 6px;border-radius:8px;font-size:9px;font-weight:700;background:#fef3c7;color:#d97706">⏰ 即将</span>';
-      }
-      if(p.video) h+='<a href=\"'+p.video+'\" target=\"_blank\" onclick=\"event.stopPropagation()\" style=\"display:inline-block;margin-top:3px;font-size:10px;color:#fb7299;text-decoration:none\">📺 B站视频 →</a>';
-      h+='</span>';
-      if(hasLink) h+='<span class="pick-arrow">→</span>';
-      h+='</'+tag+'>';
-    });
+    // #多模态：穿搭/调酒等含 img 字段的板块 → 渲染成图片卡网格（顶部大图+文字）
+    var hasImg = picks.some(function(p){ return p.img; });
+    if(hasImg){
+      h+='<div class="img-picks">';
+      picks.forEach(function(p){
+        var hasLink = p.link && p.link!=='#';
+        var tag = hasLink ? 'a' : 'div';
+        h+='<'+tag+' '+(hasLink?'href="'+p.link+'" target="_blank" ':'')+'class="img-card">';
+        h+='<img class="img-thumb" loading="lazy" src="'+p.img+'" alt="'+p.title+'" onerror="this.style.display=\'none\'">';
+        h+='<div class="img-body">';
+        h+='<div class="img-title">'+p.title+'</div>';
+        h+='<div class="img-desc">'+p.desc+'</div>';
+        if(p.tag) h+='<span class="img-tag">'+p.tag+'</span>';
+        h+='</div>';
+        h+='</'+tag+'>';
+      });
+      h+='</div>';
+    } else {
+      picks.forEach(function(p){
+        var hasLink = p.link && p.link!=='#';
+        var tag = hasLink ? 'a' : 'div';
+        h+='<'+tag+' '+(hasLink?'href="'+p.link+'" target="_blank" ':'')+'class="pick-card">';
+        h+='<span class="pick-icon">'+p.icon+'</span>';
+        h+='<span class="pick-info"><div class="pick-title">'+p.title+'</div><div class="pick-desc">'+p.desc+'</div>';
+        // #37: Time-sensitive badge for gaming/movie picks
+        var titleLower=(p.title||'').toLowerCase(), descLower=(p.desc||'').toLowerCase();
+        if(titleLower.indexOf('今日')>=0||descLower.indexOf('今日')>=0||titleLower.indexOf('预售')>=0||descLower.indexOf('开播')>=0){
+          h+='<span style="display:inline-block;margin-top:2px;padding:1px 6px;border-radius:8px;font-size:9px;font-weight:700;background:#fee2e2;color:#dc2626">🔥 今日</span>';
+        } else if(titleLower.indexOf('明日')>=0||descLower.indexOf('明天')>=0||descLower.indexOf('倒计时')>=0){
+          h+='<span style="display:inline-block;margin-top:2px;padding:1px 6px;border-radius:8px;font-size:9px;font-weight:700;background:#fef3c7;color:#d97706">⏰ 即将</span>';
+        }
+        if(p.video) h+='<a href=\"'+p.video+'\" target=\"_blank\" onclick=\"event.stopPropagation()\" style=\"display:inline-block;margin-top:3px;font-size:10px;color:#fb7299;text-decoration:none\">📺 B站视频 →</a>';
+        h+='</span>';
+        if(hasLink) h+='<span class="pick-arrow">→</span>';
+        h+='</'+tag+'>';
+      });
+    }
   }
 
   if(!h){ container.style.display='none'; return; }
@@ -3757,7 +3788,7 @@ function renderBriefing(){
   if(!content) return;
   // Sort by priority, then rotate pages
   var pool = DAILY_BRIEFING.highlights.slice().sort(function(a,b){return a.priority-b.priority;});
-  var perPage = 5, offset = (pageState.briefing * perPage) % pool.length;
+  var perPage = 4, offset = (pageState.briefing * perPage) % pool.length;
   var items = pool.slice(offset, offset+perPage);
   if(items.length < perPage) items = items.concat(pool.slice(0, perPage-items.length));
   pageState.briefing++;
@@ -3872,7 +3903,7 @@ function manualRefresh(){
 
 <script defer src="detail_content.js"></script>
 <script defer src="personal_config.js"></script>
-<script defer src="daily_data.js?v=1.7.0"></script>
+<script defer src="daily_data.js?v=1.7.1"></script>
 <script defer src="knowledge_index.js"></script>
 </body>
 </html>

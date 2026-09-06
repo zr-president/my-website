@@ -1,4 +1,4 @@
-var SITE_VERSION = "1.7.0";
+var SITE_VERSION = "1.7.1";
 
 var DAILY_DATA = {
   "update_time": "2026-09-06T11:45:00+08:00",
@@ -85,9 +85,9 @@ var PICKS = {
     {icon:"🆕", title:"起点9月新书上架126本", desc:"9月新书潮开启·玄幻/都市/克系多类型·追新书看首订榜", link:"https://www.qidian.com/"}
   ],
   beer: [
-    {icon:"🍸", title:"金汤力 Gin & Tonic", desc:"秋高气爽前的清爽 · 金酒+汤力水+柠檬 · 周末聚会首选", link:"https://s.taobao.com/search?q=哥顿金酒", video:"https://search.bilibili.com/all?keyword=%E9%87%91%E6%B1%A4%E5%8A%9B%E8%B0%83%E9%85%92%E6%95%99%E7%A8%8B"},
-    {icon:"🍺", title:"保拉纳酵母小麦", desc:"德式小麦入门首选 · 比教士更浓郁香蕉酯香 · 换季过渡首选", link:"https://s.taobao.com/search?q=保拉纳小麦啤酒", video:"https://search.bilibili.com/all?keyword=%E7%B2%BE%E9%85%BF%E5%95%A4%E9%85%92%E5%85%A5%E9%97%A8%E6%8E%A8%E8%8D%90"},
-    {icon:"🍻", title:"酿酒狗朋克IPA", desc:"IPA探险第一站 · 热带水果轰炸 · 芒果/西柚/荔枝香气", link:"https://s.taobao.com/search?q=酿酒狗朋克IPA", video:"https://search.bilibili.com/all?keyword=IPA%E5%95%A4%E9%85%92%E5%93%81%E9%89%B4"}
+    {icon:"🍸", title:"金汤力 Gin & Tonic", desc:"秋高气爽前的清爽 · 金酒+汤力水+柠檬 · 周末聚会首选", link:"https://s.taobao.com/search?q=哥顿金酒", video:"https://search.bilibili.com/all?keyword=%E9%87%91%E6%B1%A4%E5%8A%9B%E8%B0%83%E9%85%92%E6%95%99%E7%A8%8B", img:"img/ck_gt.svg", tag:"鸡尾酒·清爽"},
+    {icon:"🍺", title:"保拉纳酵母小麦", desc:"德式小麦入门首选 · 比教士更浓郁香蕉酯香 · 换季过渡首选", link:"https://s.taobao.com/search?q=保拉纳小麦啤酒", video:"https://search.bilibili.com/all?keyword=%E7%B2%BE%E9%85%BF%E5%95%A4%E9%85%92%E5%85%A5%E9%97%A8%E6%8E%A8%E8%8D%90", img:"img/ck_weizen.svg", tag:"德式小麦"},
+    {icon:"🍻", title:"酿酒狗朋克IPA", desc:"IPA探险第一站 · 热带水果轰炸 · 芒果/西柚/荔枝香气", link:"https://s.taobao.com/search?q=酿酒狗朋克IPA", video:"https://search.bilibili.com/all?keyword=IPA%E5%95%A4%E9%85%92%E5%93%81%E9%89%B4", img:"img/ck_ipa.svg", tag:"IPA·果香"}
   ],
   gaming: [
     {icon:"⚔️", title:"影之刃零 预售中 🎮", desc:"甄子丹出任动作监制·DLSS 4.5+光线追踪·268元起·10/29发售·国产3A里程碑", link:"https://store.steampowered.com/app/2776930/"},
@@ -106,8 +106,8 @@ var PICKS = {
     {icon:"🛡️", title:"AI安全与对齐入门路径", desc:"前沿模型失控风险→OpenAI Astra事件→安全评估框架→红队测试→对齐技术全景", link:"#ai-track"}
   ],
   fashion: [
-    {icon:"👕", title:"日系简约（换季版）", desc:"重磅T+黑色九分裤+帆布鞋 · 9月初雨势减弱 · 换季过渡穿搭", link:"https://s.taobao.com/search?q=重磅棉落肩T恤男250g", video:"https://search.bilibili.com/all?keyword=%E7%94%B7%E7%94%9F%E5%A4%8F%E5%AD%A3%E7%A9%BF%E6%90%AD170cm"},
-    {icon:"👔", title:"韩系都市通勤", desc:"牛津纺衬衫+卡其裤+德训鞋 · 轻薄透气抗皱面料 · 空调房内穿", link:"https://s.taobao.com/search?q=优衣库牛津纺衬衫男浅蓝", video:"https://search.bilibili.com/all?keyword=%E7%94%B7%E7%94%9F%E9%9F%A9%E7%B3%BB%E9%80%9A%E5%8B%A4%E7%A9%BF%E6%90%AD"}
+    {icon:"👕", title:"日系简约（换季版）", desc:"重磅T+黑色九分裤+帆布鞋 · 换季过渡 · 极简黑白", link:"https://s.taobao.com/search?q=重磅棉落肩T恤男250g", video:"https://search.bilibili.com/all?keyword=%E7%94%B7%E7%94%9F%E5%A4%8F%E5%AD%A3%E7%A9%BF%E6%90%AD170cm", img:"img/fashion_jp.svg", tag:"通勤·极简"},
+    {icon:"👔", title:"韩系都市通勤", desc:"牛津纺衬衫+卡其裤+德训鞋 · 轻薄抗皱 · 空调房得体", link:"https://s.taobao.com/search?q=优衣库牛津纺衬衫男浅蓝", video:"https://search.bilibili.com/all?keyword=%E7%94%B7%E7%94%9F%E9%9F%A9%E7%B3%BB%E9%80%9A%E5%8B%A4%E7%A9%BF%E6%90%AD", img:"img/fashion_kr.svg", tag:"面试·通勤"}
   ],
   fitness: [
     {icon:"💪", title:"周日：恢复日", desc:"快走30-40分钟+全身拉伸·泡沫轴放松·增肌期第8周收尾·周一胸+三头", link:"#", video:"https://search.bilibili.com/all?keyword=%E8%82%A9%E9%83%A8%E8%AE%AD%E7%BB%83%E6%95%99%E7%A8%8B"},
@@ -670,7 +670,7 @@ var OPTIMIZATION_LOG = {
 
 var WEBSITE_GUIDE = {
   updated: "2026-09-06",
-  summary: "欢迎来到钟锐的个人数字空间！这是一个持续进化的智能信息中枢。版本1.7.0。9/6精简：移除首页「在线音乐」播放器（音乐区保留），首页聚焦：功能概览Hero→今日必看→要闻→待办/学习/题库/AI助手。每天打开都是新的，每天都有提升。",
+  summary: "欢迎来到钟锐的个人数字空间！这是一个持续进化的智能信息中枢。版本1.7.1。9/6多模态升级：穿搭推荐/调酒精酿加入插画卡（图片化更直观）+今日要闻缩至4卡+每日一练默认收起。每天打开都是新的，每天都有提升。",
   features: [
     {icon:"🏠", title:"首页仪表盘", desc:"一屏总览所有板块精华。分类卡片快速导航、实时股市/天气/新闻一目了然。点击分类卡片进入分类页。"},
     {icon:"📂", title:"分类浏览", desc:"点击侧边栏分类标题(👤关于/🎮娱乐/🏃生活/📊财经/🤖工具)，进入分类页集中浏览该类别所有板块。"},
