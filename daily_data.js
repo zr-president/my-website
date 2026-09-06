@@ -155,14 +155,14 @@ var PICKS = {
     {icon:"🤖", title:"千问创作上线Agent Teams", desc:"大模型Agent应用加速落地·OpenAI广告业务爆发式增长·AI商业化验证", link:"https://www.alibaba.com"}
   ],
   "tools-collection": [
-    {icon:"🤖", title:"Claude", desc:"最强推理+超长上下文 · 免费/Pro $20 · AI编程Agent", link:"https://claude.ai"},
-    {icon:"💬", title:"ChatGPT", desc:"生态最完善+多模态 · 免费/Plus $20 · Muse Code新对手", link:"https://chat.openai.com"},
-    {icon:"🇨🇳", title:"DeepSeek", desc:"国产最强+成本极低 · 免费 · 连续14周全球霸榜", link:"https://chat.deepseek.com"},
-    {icon:"🔍", title:"Perplexity", desc:"AI搜索引擎+引用来源 · 免费/Pro $20 · 深度研究首选", link:"https://www.perplexity.ai"},
-    {icon:"💼", title:"BOSS直聘", desc:"AI/互联网岗位最集中 · 免费 · AI岗位需求同比+87.7%", link:"https://www.zhipin.com"},
-    {icon:"📝", title:"Notion", desc:"笔记+知识库+AI · 免费/Plus $10 · 知识管理中枢", link:"https://www.notion.so"},
-    {icon:"📊", title:"牛客网", desc:"SQL题库+面试经验 · 免费 · AI岗位面试必刷", link:"https://www.nowcoder.com"},
-    {icon:"🎓", title:"Coursera", desc:"AI/数据科学课程 · 免费/付费 · Jeff Dean曾开课平台", link:"https://www.coursera.org"}
+    {icon:"🤖", title:"Claude", desc:"最强推理+超长上下文 · 免费/Pro $20 · AI编程Agent", link:"https://claude.ai", use:"编程·复杂推理", tag:"我在用它写码/做深度分析"},
+    {icon:"💬", title:"ChatGPT", desc:"生态最完善+多模态 · 免费/Plus $20 · Muse Code新对手", link:"https://chat.openai.com", use:"多模态·问答", tag:"我在用它看图/多模态任务"},
+    {icon:"🇨🇳", title:"DeepSeek", desc:"国产最强+成本极低 · 免费 · 连续14周全球霸榜", link:"https://chat.deepseek.com", use:"主力·高性价比", tag:"我在用它做日常主力/中文强"},
+    {icon:"🔍", title:"Perplexity", desc:"AI搜索引擎+引用来源 · 免费/Pro $20 · 深度研究首选", link:"https://www.perplexity.ai", use:"研究·带引用", tag:"我在用它查资料/带来源"},
+    {icon:"💼", title:"BOSS直聘", desc:"AI/互联网岗位最集中 · 免费 · AI岗位需求同比+87.7%", link:"https://www.zhipin.com", use:"求职投递", tag:"我在用它投递/求职主阵地"},
+    {icon:"📝", title:"Notion", desc:"笔记+知识库+AI · 免费/Plus $10 · 知识管理中枢", link:"https://www.notion.so", use:"笔记·知识管理", tag:"我在用它沉淀知识"},
+    {icon:"📊", title:"牛客网", desc:"SQL题库+面试经验 · 免费 · AI岗位面试必刷", link:"https://www.nowcoder.com", use:"刷题·面试", tag:"我在用它刷SQL/看面经"},
+    {icon:"🎓", title:"Coursera", desc:"AI/数据科学课程 · 免费/付费 · Jeff Dean曾开课平台", link:"https://www.coursera.org", use:"系统学习", tag:"我在用它补AI基础课"}
   ]
 };
 

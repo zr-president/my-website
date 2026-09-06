@@ -2065,7 +2065,7 @@ function renderSectionPicks(sectionId){
         var tag = hasLink ? 'a' : 'div';
         h+='<'+tag+' '+(hasLink?'href="'+p.link+'" target="_blank" ':'')+'class="pick-card">';
         h+='<span class="pick-icon">'+p.icon+'</span>';
-        h+='<span class="pick-info"><div class="pick-title">'+p.title+'</div><div class="pick-desc">'+p.desc+'</div>';
+        h+='<span class="pick-info"><div class="pick-title">'+p.title+(p.use?' <span style="font-size:9px;color:var(--accent);font-weight:600;background:var(--accent-light);padding:1px 7px;border-radius:8px;margin-left:4px">'+p.use+'</span>':'')+'</div><div class="pick-desc">'+p.desc+(p.tag?'<div style="margin-top:3px;font-size:9px;color:var(--text3)">💬 '+p.tag+'</div>':'')+'</div>';
         // #37: Time-sensitive badge for gaming/movie picks
         var titleLower=(p.title||'').toLowerCase(), descLower=(p.desc||'').toLowerCase();
         if(titleLower.indexOf('今日')>=0||descLower.indexOf('今日')>=0||titleLower.indexOf('预售')>=0||descLower.indexOf('开播')>=0){
