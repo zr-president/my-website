@@ -224,23 +224,32 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 @media print{.sidebar,.detail-overlay,#ai-assistant,#gaming,#music,#novel,#anime,#beer{display:none!important}.main{margin-left:0!important;padding:0!important;max-width:100%!important}.card{box-shadow:none!important;border:1px solid #ddd!important}body{background:#fff!important}}
 
 /* ===== 求职 Hero / 品牌区（zh_）===== */
-.zh-hero{background:linear-gradient(135deg,var(--accent-light),transparent);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;margin-bottom:16px;box-shadow:var(--shadow)}
-.zh-hero h1{font-size:24px;font-weight:700;margin-bottom:6px;letter-spacing:.5px;line-height:1.35}
-.zh-hero .zh-sub{font-size:12px;color:var(--text2);margin-bottom:12px;line-height:1.7}
-.zh-hero .zh-tagline{font-size:10px;color:var(--text3);margin-bottom:10px;letter-spacing:1px}
-.zh-company-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
-.zh-chip-company{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:14px;font-size:11px;background:var(--bg2);border:1px solid var(--border);color:var(--text2);transition:.15s}
-.zh-chip-company:hover{background:var(--accent-light);border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+/* ===== 首页 Hero：整站功能概览（高级感玻璃拟态 + 渐变流光） ===== */
+.zh-hero{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--accent-light) 0%,var(--card) 55%,transparent 130%);border:1px solid var(--border);border-radius:var(--radius);padding:24px 24px 22px;margin-bottom:16px;box-shadow:var(--shadow);isolation:isolate}
+.zh-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(600px 220px at 12% 0%,rgba(124,58,237,.10),transparent 60%),radial-gradient(500px 200px at 88% 100%,rgba(37,99,235,.08),transparent 60%);z-index:-1;animation:zhAura 9s ease-in-out infinite alternate}
+.zh-hero::after{content:'';position:absolute;top:-40%;left:-30%;width:60%;height:180%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.14),transparent);transform:rotate(18deg);animation:zhShine 7s linear infinite;pointer-events:none;z-index:0}
+@keyframes zhAura{0%{opacity:.7}100%{opacity:1}}
+@keyframes zhShine{0%{left:-30%}100%{left:130%}}
+.zh-hero h1{font-size:25px;font-weight:800;margin-bottom:8px;letter-spacing:.3px;line-height:1.3;background:linear-gradient(120deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.zh-hero .zh-sub{font-size:13px;color:var(--text2);margin-bottom:14px;line-height:1.8}
+.zh-hero-badge{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.zh-pill{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:600;background:var(--card);border:1px solid var(--border);color:var(--text2);box-shadow:0 1px 2px rgba(0,0,0,.03)}
+.zh-rows{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:7px;margin-bottom:16px}
+.zh-row{display:flex;align-items:center;gap:7px;padding:8px 11px;border-radius:9px;background:var(--card);border:1px solid var(--border);font-size:11.5px;color:var(--text2);transition:.16s;box-shadow:0 1px 2px rgba(0,0,0,.02)}
+.zh-row b{color:var(--text);font-weight:700}
+.zh-row:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:0 6px 16px rgba(79,70,229,.10)}
 .zh-hero .zh-cta-row{display:flex;flex-wrap:wrap;gap:8px}
 .zh-cta{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:14px;font-size:12px;font-weight:600;cursor:pointer;border:none;transition:all .18s;font-family:inherit}
 .zh-cta.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:var(--shadow)}
-.zh-cta.primary:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(79,70,229,.3);filter:brightness(1.08)}
+.zh-cta.primary:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(79,70,229,.35);filter:brightness(1.08)}
 .zh-cta.ghost{background:var(--card);color:var(--accent);border:1px solid var(--border)}
 .zh-cta.ghost:hover{background:var(--accent-light);border-color:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow)}
 .zh-chip{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:14px;font-size:11px;background:var(--card);border:1px solid var(--border);color:var(--text2);cursor:pointer;transition:.15s;font-family:inherit}
 .zh-chip:hover{background:var(--accent-light);border-color:var(--accent);color:var(--accent)}
 .zh-board-row{display:flex;gap:8px;align-items:center;padding:8px 10px;border:1px solid var(--border);border-radius:8px;margin-bottom:6px;background:var(--card)}
-@media(max-width:620px){.zh-hero h1{font-size:19px}.zh-cta{font-size:11px;padding:8px 12px}}
+/* 全局卡片悬浮微动（高级感）：仅 hover 时轻抬 + 柔光 */
+.card.clickable:hover,.card:not(.no-fx):hover{transition:transform .2s cubic-bezier(.4,0,.2,1),box-shadow .2s}
+@media(max-width:620px){.zh-hero h1{font-size:20px}.zh-cta{font-size:11px;padding:8px 12px}.zh-rows{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -273,50 +282,6 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <button onclick="event.stopPropagation();checkUpdateStatus()" id="updateCheckBtn" style="background:rgba(255,255,255,.2);color:#fff;border:none;padding:5px 10px;border-radius:6px;cursor:pointer;font-size:11px;font-weight:500;white-space:nowrap" title="检查更新状态">🔍</button>
 </div></div>
 
-	<!-- 求职 Hero 品牌区（zh_hero） -->
-	<div id="zhHero" class="zh-hero">
-		<h1>钟锐 · 求职 AI产品运营 / AI增长运营</h1>
-		<div class="zh-sub">把「AI 产品/增长」用作品说话 —— 17 个每日更新板块 + 可交互 AI 作品集</div>
-		<div class="zh-tagline">🎯 目标公司</div>
-		<div class="zh-company-row">
-			<span class="zh-chip-company">字节跳动 🐧</span>
-			<span class="zh-chip-company">腾讯 🍔</span>
-			<span class="zh-chip-company">美团 📕</span>
-			<span class="zh-chip-company">小红书 💳</span>
-			<span class="zh-chip-company">微众银行 👗</span>
-			<span class="zh-chip-company">SHEIN 🚗</span>
-			<span class="zh-chip-company">滴滴</span>
-		</div>
-		<div class="zh-cta-row">
-			<button class="zh-cta primary" onclick="zh_goJD()">🤖 让 AI 分析我的 JD</button>
-			<button class="zh-cta ghost" onclick="zh_goObs()">📚 看看我的 AI 作品集</button>
-		</div>
-	</div>
-
-	<!-- 投递作战台（zh_apply） -->
-	<section id="zhApplyBoard" class="section">
-		<div class="section-header"><h2>🎯 投递作战台</h2><p>目标公司 × 投递状态 × 面试进度 · 存本机浏览器</p></div>
-		<div class="card" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:11px 14px;margin-bottom:8px">
-			<span style="font-size:11px;color:var(--text2)">🚀 金九银十冲刺 · 周目标投 <b>15</b> 家 · 用满 <b>9-11</b> 月窗口</span>
-			<span id="zhApplyCount" style="margin-left:auto;font-size:12px;font-weight:700;color:var(--accent)">🎯 本周投递 0 家</span>
-			<button onclick="zh_applyPlusOne()" style="padding:5px 12px;background:var(--accent);color:#fff;border:none;border-radius:12px;cursor:pointer;font-size:11px;font-weight:500">🎯 本周投递 +1</button>
-		</div>
-		<div id="zhApplyList"></div>
-	</section>
-
-	<!-- AI 行业观察提权（zh_obs） -->
-	<section id="zhObs" class="section">
-		<div class="section-header"><h2>📝 我的 AI 行业观察</h2><p>把每日 AI 思考沉淀成可分享的作品集 · 面试加分</p></div>
-		<div class="card" style="padding:12px 14px">
-			<div id="zhObsCount" style="font-size:10px;color:var(--text3);margin-bottom:6px"></div>
-			<div id="zhObsList" style="font-size:11px;line-height:1.7"></div>
-			<div style="display:flex;gap:6px;margin-top:8px">
-				<input type="text" id="zhObsInput" placeholder="✍️ 写一句今日观察：主题+你的判断..." style="flex:1;padding:6px 8px;border:1px solid var(--border);border-radius:6px;font-size:11px;background:var(--bg);color:var(--text)" onkeydown="if(event.key==='Enter')zh_addObservation()">
-				<button onclick="zh_addObservation()" style="padding:6px 12px;background:var(--accent);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:11px">记录</button>
-			</div>
-		</div>
-	</section>
-
 	<!-- #38: 今日必看置顶聚合卡片 -->
 	<div id="featuredCard" style="background:linear-gradient(135deg,#fef3c7,#fef9c3);border:1px solid #f59e0b;border-radius:12px;padding:12px 16px;margin-bottom:16px;display:none;cursor:pointer;transition:transform .15s,box-shadow .15s" onmouseover="this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 12px rgba(245,158,11,.25)'" onmouseout="this.style.transform='';this.style.boxShadow=''" onclick="openFeaturedCard()">
 	<div style="display:flex;align-items:center;gap:10px">
@@ -339,6 +304,29 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 </div>
 <div id="briefingContent" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:8px"></div>
 </div>
+
+	<!-- 整站功能 Hero（zh_hero）：概括网站对工作+生活+学习的价值，不聚焦求职 -->
+	<div id="zhHero" class="zh-hero">
+		<div class="zh-hero-badge">
+			<span class="zh-pill">🔒 数据存本机</span>
+			<span class="zh-pill">🧠 AI 驱动</span>
+			<span class="zh-pill">📅 每日更新</span>
+			<span class="zh-pill">🕘 每天 6:00 自动刷新</span>
+		</div>
+		<h1>你的 AI 个人信息中枢</h1>
+		<div class="zh-sub">把工作 · 求职 · 学习 · 投资 · 生活 · 娱乐，一屏整合成随时可查、每天更新的数字空间</div>
+		<div class="zh-rows">
+			<div class="zh-row">💼 <b>求职</b> 职位雷达 + JD 匹配 + 投递作战台 + 面试题库</div>
+			<div class="zh-row">📈 <b>投资</b> 每日收盘复盘 + 技术面科普 + 定投纪律</div>
+			<div class="zh-row">📚 <b>学习</b> 每日一词 + 小白课堂 + 技能雷达 + AI 行业观察</div>
+			<div class="zh-row">🧘 <b>生活</b> 饮食/健身/穿搭/天气 + 精酿推荐 + 办事日历</div>
+			<div class="zh-row">🎮 <b>娱乐</b> 游戏/动漫/小说/影视/音乐 每日推荐</div>
+		</div>
+		<div class="zh-cta-row">
+			<button class="zh-cta primary" onclick="zh_goObs()">📚 开始探索（看今日内容）</button>
+			<button class="zh-cta ghost" onclick="document.getElementById('dailyBriefing').style.display='block';document.getElementById('dailyBriefing').scrollIntoView({behavior:'smooth',block:'start'})">📡 跳到今日要闻</button>
+		</div>
+	</div>
 
 <!-- 0. 每日待办汇总 -->
 <section id="dashboard" class="section" data-search="每日待办 行程 打卡 日程">
@@ -443,6 +431,17 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div id="trackerTable" style="max-height:300px;overflow-y:auto;font-size:11px"></div>
 </div>
 <div class="card clickable" onclick="openDetail('career')"><h3>📋 查看完整简历 & 求职攻略</h3><p>完整电子简历、个人优势分析、打招呼模板库、高频面试题深度拆解。</p></div>
+
+<!-- 投递作战台（zh_apply）· 归属求职中心（不在首页） -->
+<section id="zhApplyBoard" class="section" style="margin-top:8px">
+	<div class="section-header"><h2>🎯 投递作战台</h2><p>目标公司 × 投递状态 × 面试进度 · 存本机浏览器</p></div>
+	<div class="card" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:11px 14px;margin-bottom:8px">
+		<span style="font-size:11px;color:var(--text2)">🚀 金九银十冲刺 · 周目标投 <b>15</b> 家 · 用满 <b>9-11</b> 月窗口</span>
+		<span id="zhApplyCount" style="margin-left:auto;font-size:12px;font-weight:700;color:var(--accent)">🎯 本周投递 0 家</span>
+		<button onclick="zh_applyPlusOne()" style="padding:5px 12px;background:var(--accent);color:#fff;border:none;border-radius:12px;cursor:pointer;font-size:11px;font-weight:500">🎯 本周投递 +1</button>
+	</div>
+	<div id="zhApplyList"></div>
+</section>
 
 <!-- Resume Workbench -->
 <div class="card" style="padding:14px 16px">
@@ -1028,14 +1027,21 @@ function zh_go(key){
     if(typeof showView==='function') showView('section-detail',key);
     return;
   }
+  if(key==='zhApplyBoard'){
+    // 投递作战台挂在求职中心(career)里——先切到 career 详情，再滚动到作战台
+    if(typeof showView==='function') showView('section-detail','career');
+    setTimeout(function(){var e=document.getElementById('zhApplyBoard');if(e)e.scrollIntoView({behavior:'smooth',block:'start'});},300);
+    return;
+  }
   var dash=document.getElementById('dashboardView');
   if(dash && !dash.classList.contains('active') && typeof showView==='function') showView('home');
   setTimeout(function(){var e=document.getElementById(key);if(e)e.scrollIntoView({behavior:'smooth',block:'start'});},80);
 }
 function zh_goJD(){ zh_go('jd'); }
 function zh_goObs(){
-  var e=document.getElementById('zhObs')||document.getElementById('ai-assistant');
-  if(e) e.scrollIntoView({behavior:'smooth',block:'start'});
+  // AI 行业观察在 AI 助手折叠区（zhObs 已从首页移除）
+  var e=document.getElementById('ai-assistant');
+  if(e){ if(typeof showView==='function') showView('home'); setTimeout(function(){e.scrollIntoView({behavior:'smooth',block:'start'});},120); }
 }
 function zh_chip(text){
   var inp=document.getElementById('chatInput'); if(inp) inp.value=text;
@@ -2033,7 +2039,7 @@ var CATEGORIES = {
 
 // Key sections to show on homepage (everything else hidden)
 // learning 不在首页展示——点进学习区才显示完整内容（今日新知等），首页只保留小白课堂卡片
-var HOME_SECTIONS = ['dashboard','music-player','daily-vocab','daily-quiz','guide','optimization','ai-assistant','zhObs','zhApplyBoard'];
+var HOME_SECTIONS = ['dashboard','music-player','daily-vocab','daily-quiz','guide','optimization','ai-assistant'];
 var vocabShuffled = [];
 var vocabShowingAll = false;
 
@@ -3893,7 +3899,7 @@ function manualRefresh(){
 
 <script defer src="detail_content.js"></script>
 <script defer src="personal_config.js"></script>
-<script defer src="daily_data.js?v=1.6.7"></script>
+<script defer src="daily_data.js?v=1.6.8"></script>
 <script defer src="knowledge_index.js"></script>
 </body>
 </html>
