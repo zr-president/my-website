@@ -1,4 +1,4 @@
-var SITE_VERSION = "1.7.8";
+var SITE_VERSION = "1.7.9";
 
 var DAILY_DATA = {
   "update_time": "2026-09-06T11:45:00+08:00",
@@ -63,8 +63,8 @@ var DAILY_BRIEFING = {
 
 var PICKS = {
   anime: [
-    {icon:"🥇", title:"Re:Zero S4 夺还篇 追番第25天 🎬", desc:"最终话9/30定档 · 完结倒计时24天 · 486认知博弈最高潮 · 9月必追", link:"https://www.bilibili.com/search?keyword=Re从零开始的异世界生活", video:"https://search.bilibili.com/all?keyword=Re%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E5%BC%82%E4%B8%96%E7%95%8C%E7%94%9F%E6%B4%BB"},
-    {icon:"🥈", title:"BLEACH 千年血战篇-祸进谭-", desc:"20年史诗最终章 · 护廷十三队全员卍解决战 · 战斗密度天花板", link:"https://www.bilibili.com/search?keyword=BLEACH+千年血战", video:"https://search.bilibili.com/all?keyword=BLEACH%E5%8D%83%E5%B9%B4%E8%A1%80%E6%88%98"},
+    {icon:"🥇", title:"Re:Zero S4 夺还篇 追番第25天 🎬", desc:"最终话9/30定档 · 完结倒计时24天 · 486认知博弈最高潮 · 9月必追", link:"https://www.bilibili.com/search?keyword=Re从零开始的异世界生活", video:"https://search.bilibili.com/all?keyword=Re%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E5%BC%82%E4%B8%96%E7%95%8C%E7%94%9F%E6%B4%BB", img:"https://image.tmdb.org/t/p/w500/a1pMK4456dF2j5B9xvkjMEGiOOw.jpg", tag:"异世界·奇幻"},
+    {icon:"🥈", title:"BLEACH 千年血战篇-祸进谭-", desc:"20年史诗最终章 · 护廷十三队全员卍解决战 · 战斗密度天花板", link:"https://www.bilibili.com/search?keyword=BLEACH+千年血战", video:"https://search.bilibili.com/all?keyword=BLEACH%E5%8D%83%E5%B9%B4%E8%A1%80%E6%88%98", img:"https://image.tmdb.org/t/p/w500/tEaeXZZO7SEcDr6yRP31UrrxcX0.jpg", tag:"热血·战斗"},
     {icon:"🥉", title:"无职转生 第三季", desc:"异世界天花板续作·魔法体系完整分级·奇幻成长细腻叙事", link:"https://www.bilibili.com/search?keyword=无职转生", video:"https://search.bilibili.com/all?keyword=%E6%97%A0%E8%81%8C%E8%BD%AC%E7%94%9F"},
     {icon:"🎖️", title:"False Memory", desc:"B站独播更新中 · 国产科幻悬疑Donghua · 记忆收集者设定", link:"https://www.bilibili.com/search?keyword=False+Memory", video:"https://search.bilibili.com/all?keyword=False+Memory+%E5%9B%BD%E6%BC%AB"},
     {icon:"🔮", title:"Link Click S3", desc:"时光代理人第三季热播中 · 悬疑推理国漫之光", link:"https://www.bilibili.com/search?keyword=时光代理人", video:"https://search.bilibili.com/all?keyword=%E6%97%B6%E5%85%89%E4%BB%A3%E7%90%86%E4%BA%BA"},
