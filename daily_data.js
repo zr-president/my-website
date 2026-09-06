@@ -108,7 +108,7 @@ var PICKS = {
     {icon:"🛡️", title:"AI安全与对齐入门路径", desc:"前沿模型失控风险→OpenAI Astra事件→安全评估框架→红队测试→对齐技术全景", link:"#ai-track"}
   ],
   fashion: [
-    {icon:"👕", title:"日系简约（换季版）", desc:"重磅T+黑色九分裤+帆布鞋 · 换季过渡 · 极简黑白", link:"https://s.taobao.com/search?q=重磅棉落肩T恤男250g", video:"https://search.bilibili.com/all?keyword=%E7%94%B7%E7%94%9F%E5%A4%8F%E5%AD%A3%E7%A9%BF%E6%90%AD170cm", img:"https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?auto=format&fit=crop&w=400&q=60", tag:"通勤·极简"},
+    {icon:"👕", title:"日系简约（换季版）", desc:"重磅T+黑色九分裤+帆布鞋 · 换季过渡 · 极简黑白", link:"https://s.taobao.com/search?q=重磅棉落肩T恤男250g", video:"https://search.bilibili.com/all?keyword=%E7%94%B7%E7%94%9F%E5%A4%8F%E5%AD%A3%E7%A9%BF%E6%90%AD170cm", img:"https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&w=400&q=60", tag:"通勤·极简"},
     {icon:"👔", title:"韩系都市通勤", desc:"牛津纺衬衫+卡其裤+德训鞋 · 轻薄抗皱 · 空调房得体", link:"https://s.taobao.com/search?q=优衣库牛津纺衬衫男浅蓝", video:"https://search.bilibili.com/all?keyword=%E7%94%B7%E7%94%9F%E9%9F%A9%E7%B3%BB%E9%80%9A%E5%8B%A4%E7%A9%BF%E6%90%AD", img:"https://images.unsplash.com/photo-1603252109303-2751441dd157?auto=format&fit=crop&w=400&q=60", tag:"面试·通勤"}
   ],
   fitness: [
@@ -125,8 +125,8 @@ var PICKS = {
     {icon:"📝", title:"作品集升级", desc:"用GPT-6 Astra发布写300字行业观察《AI安全与能力如何平衡》 · 面试加分", link:"#"}
   ],
   car: [
-    {icon:"⚡", title:"极氪007焕新版", desc:"19.39万 · 715km续航 · 900V架构 · NVIDIA Thor-U 700TOPS", link:"https://www.dongchedi.com"},
-    {icon:"🚗", title:"小鹏MONA M03 Max", desc:"12.98万起 · 750TOPS算力 · 全场景XNGP · 智驾性价比之王", link:"https://www.dongchedi.com"}
+    {icon:"⚡", title:"极氪007焕新版", desc:"19.39万 · 715km续航 · 900V架构 · NVIDIA Thor-U 700TOPS · 运动轿跑", link:"https://www.dongchedi.com", img:"https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=400&q=60", tag:"运动轿跑"},
+    {icon:"🚗", title:"小鹏MONA M03 Max", desc:"12.98万起 · 750TOPS算力 · 全场景XNGP · 智驾性价比之王", link:"https://www.dongchedi.com", img:"https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=400&q=60", tag:"纯电SUV"}
   ],
   house: [
     {icon:"🏠", title:"广州", desc:"新房~3.2万/平米 · 二手~2.8万/平米 · 首付15%历史最低", link:"https://www.ke.com"},

@@ -99,6 +99,10 @@ DETAIL.fashion = '<h2>👔 穿搭推荐 · 分层购买指南</h2><p class="deta
 // ===== 动漫区 - 观看指南 =====
 DETAIL.anime = '<h2>🎬 动漫区 · 完整观看指南</h2><p class="detail-subtitle">日漫×国漫 · 追番路线图 · 入坑指南</p>'+
 
+'<div class="img-picks" style="margin:12px 0">'+
+'<a class="img-card" href="https://www.bilibili.com/search?keyword=Re%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E5%BC%82%E4%B8%96%E7%95%8C%E7%94%9F%E6%B4%BB" target="_blank" style="display:flex;flex-direction:column;background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;text-decoration:none;color:var(--text);box-shadow:var(--shadow)"><img class="img-thumb" loading="lazy" src="https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?auto=format&fit=crop&w=500&q=60" alt="动漫追番" style="width:100%;aspect-ratio:4/3;object-fit:cover;background:var(--bg2)"><div class="img-body" style="padding:9px 11px"><div class="img-title" style="font-size:12px;font-weight:700;margin-bottom:3px">🎌 追番进行时</div><div class="img-desc" style="font-size:10px;color:var(--text2);line-height:1.6">Re:Zero夺还篇第25天(9/30完结) · BLEACH千年血战 · 无职转生S3 · 秋季新番前瞻</div><span class="img-tag" style="display:inline-block;margin-top:5px;padding:1px 7px;border-radius:8px;font-size:9px;font-weight:700;background:var(--accent-light);color:var(--accent)">动漫·追番</span></div></a>'+
+'</div>'+
+
 '<h3>📊 你的追番DNA分析</h3>'+
 '<p>30+部日漫核心：<strong>战斗热血 40% + 智斗博弈 25% + 奇幻世界观 25% + 情感调剂 10%</strong>。国漫主攻玄幻修真改编。</p>'+
 '<div class="highlight-box"><p><strong>关键洞察：</strong>你偏好的本质是"在规则系统中看强者博弈"——JOJO的替身规则、Fate的圣杯战争、咒术的咒力体系，你对<strong>有规则限制的智力对抗</strong>远比无脑升级感兴趣。所以推荐优先级：智斗型热血 > 纯燃型热血 > 日常/恋爱。</p></div>'+
@@ -413,7 +417,7 @@ DETAIL.novel = '<h2>📖 小说区 · 深度阅读指南</h2><p class="detail-su
 // ===== 股市基金 =====
 DETAIL.stock = '<h2>📈 股市基金 · 从零开始</h2><p class="detail-subtitle">五步法——从小白到能独立判断</p>'+
 
-'<div class="callout warn"><strong>📊 8月16日行情速览（每日自动更新）：</strong>沪指收3927.18（本周-0.33%）| 创业板指周涨1.77% | AI硬件（CPO/存储）领涨·中芯国际Q2营收首破30亿美元 | 下周看8/17开盘能否站稳3927→4000 | <strong>新手策略：</strong>AI硬件主线回调分批+中长期定投沪深300ETF</div>'+
+'<div class="callout warn"><strong>📊 9/6行情速览（周末休市 · 最新为周五9/4收盘）：</strong>沪指-0.30%收3930.12（日K连三黑·9月开局偏弱）| 科创50跌2.1%领跌 | 农业板块逆市上涨（防御切换）| 量能萎缩观望浓 | <strong>下周一(9/8)关注：</strong>①3930能否企稳 ②GPT-6发布后AI算力/应用情绪传导 ③农业/红利防御主线延续 | <strong>新手策略：</strong>震荡期不追高不恐慌·3900-3930是分批定投区域·防御(农业/红利)与进攻(AI回调后)搭配</div>'+
 
 '<h3>💰 第一课：理解四个核心概念</h3>'+
 '<table class="data-table"><tr><th>概念</th><th>公式</th><th>大白话解释</th><th>怎么看</th></tr>'+
@@ -832,10 +836,10 @@ DETAIL.diet = '<h2>🍽️ 饮食助手</h2><p class="detail-subtitle">肾结石
 '<tr><td>21:00</td><td>温低脂牛奶200ml</td><td>150</td><td>8g</td></tr></table>'+
 '<h3>🔧 工具</h3><ul><li><a href="https://www.boohee.com" target="_blank">薄荷健康</a></li><li><a href="https://www.myfitnesspal.com" target="_blank">MyFitnessPal</a></li><li><a href="https://www.xiachufang.com" target="_blank">下厨房</a></li></ul>';
 
-DETAIL["ai-track"] = '<h2>🤖 AI动态追踪 · 模型 + Agent 全对比</h2><p class="detail-subtitle">8月16日更新 · 模型数据每日刷新 · Agent选型结论先行</p>'+
-'<div class="callout danger" style="font-size:13px"><strong>🎯 今日头条：Qwen3.8-27B正式开源 + DeepSeek 8/17涨价明日生效</strong><br>结论：<strong>开源免费平替已落地（本地部署成本趋近0）；DeepSeek 高峰任务今晚重排或切换 Qwen3.8-27B；Max(2.4T)预计陆续开放。</strong>详见下方模型与 Agent 对比。</div>'+
+DETAIL["ai-track"] = '<h2>🤖 AI动态追踪 · 模型 + Agent 全对比</h2><p class="detail-subtitle">9月6日更新 · 模型数据每日刷新 · Agent选型结论先行</p>'+
+'<div class="callout danger" style="font-size:13px"><strong>🎯 今日头条：GPT-6 Astra正式发布 + 国家AI基金注资可灵14亿</strong><br>结论：OpenAI 9/4发布GPT-6 Astra（总裁称AGI时代到来），8月曾因网络安全风险暂停研发一个月后放行→【AI安全治理vs能力释放】成全球焦点；国产侧国家AI基金注资可灵14亿+阿里更新Qwen3.8-Max+Manus恢复独立。**对工具链：GPT-6闭源无API，你的开源/本地部署(DeepSeek/Qwen/GLM)路线不变。**详见下方模型与 Agent 对比。</div>'+
 
-'<h3>🐋 Agent 对比：Harness vs Claude Code vs Codex（2026.8）</h3>'+
+'<h3>🐋 Agent 对比：Harness vs Claude Code vs Codex（2026.9）</h3>'+
 '<table class="data-table"><tr><th>维度</th><th>DeepSeek Harness</th><th>Claude Code</th><th>Codex</th></tr>'+
 '<tr><td><strong>厂商</strong></td><td>DeepSeek（国产）</td><td>Anthropic（美国）</td><td>OpenAI（美国）</td></tr>'+
 '<tr><td><strong>定位</strong></td><td>开源 Agent 框架·一切皆插件</td><td>终端/IDE Agent·生态最成熟</td><td>GPT 深度绑定·Agent 编排强</td></tr>'+
@@ -849,8 +853,9 @@ DETAIL["ai-track"] = '<h2>🤖 AI动态追踪 · 模型 + Agent 全对比</h2><p
 '</table>'+
 '<div class="highlight-box"><p><strong>💡 给你的选型结论：</strong><br>① <strong>中文+隐私+成本敏感 → Harness + V4-Flash</strong>（综合91分）：全家桶适配、缓存命中率高、可本地部署数据不出域——你的日常编程/学习/求职文档场景最合适；<br>② <strong>英文技术+复杂架构 → Claude Code</strong>：生态最成熟、代码工具链最全，重活（架构设计/复杂算法）用它；<br>③ <strong>免费备胎 → Codex + Luna</strong>：不花钱也能干活；<br>④ <strong>实测建议：</strong>装 Harness 跑一周，用你自己的任务对比两套完成质量+缓存命中+成本，数据说话。</p></div>'+
 
-'<h3>📊 文本/对话模型 · 核心对比（8/15最新）</h3>'+
+'<h3>📊 文本/对话模型 · 核心对比（9/6最新 · 含GPT-6 Astra）</h3>'+
 '<table class="data-table"><tr><th>模型</th><th>厂商</th><th>参数</th><th>上下文</th><th>输入价格</th><th>输出价格</th><th>性价比</th></tr>'+
+'<tr style="background:var(--accent-light)"><td><strong>GPT-6 Astra</strong></td><td>OpenAI</td><td>未公开</td><td>未公开</td><td>未开放</td><td>未开放</td><td>🚀 史上最强·AGI争议·安全52分</td></tr>'+
 '<tr style="background:var(--accent-light)"><td><strong>DeepSeek V4-Flash</strong></td><td>深度求索</td><td>284B MoE</td><td>1M</td><td>¥1/M</td><td>¥2/M(涨价前)</td><td>⭐⭐⭐⭐⭐ 性价比之王</td></tr>'+
 '<tr style="background:var(--accent-light)"><td><strong>DeepSeek V4-Pro</strong></td><td>深度求索</td><td>1.6T MoE</td><td>1M</td><td>¥3/M</td><td>¥6/M</td><td>⭐⭐⭐⭐ 深推理·已开源</td></tr>'+
 '<tr><td><strong>Qwen3.8-Max</strong></td><td>阿里</td><td>2.4T MoE</td><td>1M</td><td>$2(¥12)</td><td>$6(¥36)</td><td>⭐⭐⭐⭐ 下周开源·平替首选</td></tr>'+
@@ -862,14 +867,14 @@ DETAIL["ai-track"] = '<h2>🤖 AI动态追踪 · 模型 + Agent 全对比</h2><p
 '<tr><td><strong>Grok 4.6</strong></td><td>xAI</td><td>1.5T</td><td>500K</td><td>$2</td><td>$6</td><td>⭐⭐⭐⭐ 实时信息</td></tr>'+
 '<tr><td><strong>GLM-5.2</strong></td><td>智谱AI</td><td>未公布</td><td>1M</td><td>¥1/M</td><td>¥3/M</td><td>⭐⭐⭐⭐ 超长上下文</td></tr>'+
 '</table>'+
-'<div class="callout warn"><strong>⚠️ 8/17 DeepSeek 涨价提醒：</strong>高峰时段输出涨至¥27/百万tokens（约4.5倍），部分场景最高12倍。涨价后重活切 Qwen3.8-Max（下周开源免费部署）或 Kimi K3。</div>'+
+'<div class="callout warn"><strong>⚠️ 9/6 重要提醒：</strong>DeepSeek 8/17涨价已生效（高峰时段输出¥27/M、部分场景最高12倍）——日常高频任务仍可 Harness+V4-Flash；涨价敏感的重活切 Qwen3.8-Max / Kimi K3 / 本地部署。GPT-6 Astra 闭源无API，不入组合。</div>'+
 
 '<h3>🤖 完整 Agent×模型组合评分</h3>'+
 '<p>详见下方实时表格（点击行展开优缺点/结论）。当前最优组合：<strong>Harness+V4-Flash（综合91）</strong>。</p>'+
 '<div id="agent-stacks-inline"></div>'+
 '<div class="callout tip"><strong>📌 一句话结论：</strong>日常主力 Harness+V4-Flash（中文/隐私/性价比）或 Claude Code+V4-Flash（生态）→ 涨价后切 Qwen3.8-Max → 重活 Claude Code+Sonnet 4.6 → 免费备胎 Codex+Luna。</div>'+
 
-'<h3>🧩 Harness 插件选型指南（8/15 更新 · 针对钟锐需求）</h3>'+
+'<h3>🧩 Harness 插件选型指南（9/6 更新 · 针对钟锐需求）</h3>'+
 '<p>Harness 插件生态已收录 270+ 社区插件（V2EX 精选列表）+ 多个插件市场/管理面板，核心插件可直接安装使用。</p>'+
 '<h4>🔍 视觉替代（解决 DeepSeek 不支持图像）</h4>'+
 '<table class="data-table"><tr><th>插件</th><th>解决什么</th><th>适合场景</th></tr>'+
@@ -1241,7 +1246,11 @@ DETAIL.beer = '<section>'+
 '</section>';
 
 
-DETAIL.movie = '<h2>🎥 影视区 · 完整推荐</h2><p class="detail-subtitle">按偏好分类 · 超级英雄/悬疑探案/怪兽/喜剧/烧脑/动作</p>'+'<h3>🦸 超级英雄类</h3>'+'<table class="data-table"><tr><th>电影</th><th>类型</th><th>推荐理由</th><th>观看</th></tr>'+'<tr style="background:var(--accent-light)"><td>复仇者联盟：秘密战争</td><td>超英/史诗</td><td>漫威第六阶段收官，全员回归，全球票房25亿美元。</td><td><a href="https://search.bilibili.com/all?keyword=复仇者联盟秘密战争" target="_blank">B站解说 →</a></td></tr>'+'<tr><td>死侍与金刚狼</td><td>超英/喜剧</td><td>R级超英，狼叔与贱贱同框。</td><td><a href="https://search.bilibili.com/all?keyword=死侍与金刚狼" target="_blank">B站 →</a></td></tr>'+'</table>'+'<h3>🔍 悬疑探案类</h3>'+'<table class="data-table"><tr><th>电影/剧集</th><th>类型</th><th>推荐理由</th></tr>'+'<tr style="background:var(--accent-light)"><td>利刃出鞘3</td><td>悬疑/推理</td><td>丹尼尔·克雷格回归，阿加莎式古典推理+现代讽刺，豆瓣9.1。</td></tr>'+'<tr><td>威尼斯惊魂夜</td><td>悬疑/恐怖</td><td>肯尼思·布拉纳执导波罗系列，万圣节威尼斯密室杀人案。</td></tr>'+'<tr><td>真探：夜之国度</td><td>悬疑/探案</td><td>HBO经典回归，阿拉斯加极夜连环命案。</td></tr>'+'</table>'+'<h3>🦖 怪兽/灾难类</h3>'+'<table class="data-table"><tr><th>电影</th><th>类型</th><th>推荐理由</th></tr>'+'<tr><td>哥斯拉×金刚：新帝国</td><td>怪兽/动作</td><td>怪兽宇宙新篇章，金刚与哥斯拉联手对抗新威胁。</td></tr>'+'<tr><td>哥斯拉-1.0</td><td>怪兽/剧情</td><td>日本东宝制作，战后日本的创伤与哥斯拉的象征意义。奥斯卡最佳视效。</td></tr>'+'</table>'+'<h3>🧠 烧脑/科幻类</h3>'+'<table class="data-table"><tr><th>电影</th><th>类型</th><th>推荐理由</th></tr>'+'<tr style="background:var(--accent-light)"><td>奥本海默</td><td>传记/烧脑</td><td>诺兰作品，原子弹之父的道德困境。IMAX重映不容错过。</td></tr>'+'<tr><td>沙丘2</td><td>科幻/史诗</td><td>维伦纽瓦续写太空史诗。</td></tr>'+'</table>'+'<h3>🥋 武打动作类</h3>'+'<table class="data-table"><tr><th>电影</th><th>类型</th><th>推荐理由</th></tr>'+'<tr><td>疾速追杀4</td><td>动作/枪战</td><td>基努·里维斯回归，动作设计登峰造极。</td></tr>'+'<tr><td>碟中谍8：最终清算</td><td>动作/特工</td><td>阿汤哥最后一部碟中谍，实拍特技极限。</td></tr>'+'<tr><td>九龙城寨之围城</td><td>动作/港式</td><td>香港动作片复兴之作，九龙城寨场景还原极致。</td></tr>'+'</table>'+'<div class="callout tip"><strong>💡 观看平台推荐：</strong>B站（影评/解说/花絮）| 腾讯视频/爱奇艺/优酷（正版影片）| Netflix/HBO/Disney+（海外剧集）。建议先从B站影评了解剧情，再决定是否观看原片。</div>';DETAIL.gaming = '<h2>🎯 游戏区</h2><p class="detail-subtitle">B站UP主·Steam·促销</p>'+
+DETAIL.movie = '<h2>🎥 影视区 · 完整推荐</h2><p class="detail-subtitle">按偏好分类 · 超级英雄/悬疑探案/怪兽/喜剧/烧脑/动作</p>'+
+'<div class="img-picks" style="margin:12px 0">'+
+'<a class="img-card" href="https://search.bilibili.com/all?keyword=2026%E5%B9%B49%E6%9C%88%E7%94%B5%E5%BD%B1" target="_blank" style="display:flex;flex-direction:column;background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;text-decoration:none;color:var(--text);box-shadow:var(--shadow)"><img class="img-thumb" loading="lazy" src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=500&q=60" alt="影视热映" style="width:100%;aspect-ratio:4/3;object-fit:cover;background:var(--bg2)"><div class="img-body" style="padding:9px 11px"><div class="img-title" style="font-size:12px;font-weight:700;margin-bottom:3px">🍿 影院热映中</div><div class="img-desc" style="font-size:10px;color:var(--text2);line-height:1.6">龙餐馆破20亿年榜第三 · 奥德赛IMAX · 功夫女足22.69亿 · 9月新片前瞻</div><span class="img-tag" style="display:inline-block;margin-top:5px;padding:1px 7px;border-radius:8px;font-size:9px;font-weight:700;background:var(--accent-light);color:var(--accent)">影视·影院</span></div></a>'+
+'</div>'+
+'<h3>🦸 超级英雄类</h3>'+'<table class="data-table"><tr><th>电影</th><th>类型</th><th>推荐理由</th><th>观看</th></tr>'+'<tr style="background:var(--accent-light)"><td>复仇者联盟：秘密战争</td><td>超英/史诗</td><td>漫威第六阶段收官，全员回归，全球票房25亿美元。</td><td><a href="https://search.bilibili.com/all?keyword=复仇者联盟秘密战争" target="_blank">B站解说 →</a></td></tr>'+'<tr><td>死侍与金刚狼</td><td>超英/喜剧</td><td>R级超英，狼叔与贱贱同框。</td><td><a href="https://search.bilibili.com/all?keyword=死侍与金刚狼" target="_blank">B站 →</a></td></tr>'+'</table>'+'<h3>🔍 悬疑探案类</h3>'+'<table class="data-table"><tr><th>电影/剧集</th><th>类型</th><th>推荐理由</th></tr>'+'<tr style="background:var(--accent-light)"><td>利刃出鞘3</td><td>悬疑/推理</td><td>丹尼尔·克雷格回归，阿加莎式古典推理+现代讽刺，豆瓣9.1。</td></tr>'+'<tr><td>威尼斯惊魂夜</td><td>悬疑/恐怖</td><td>肯尼思·布拉纳执导波罗系列，万圣节威尼斯密室杀人案。</td></tr>'+'<tr><td>真探：夜之国度</td><td>悬疑/探案</td><td>HBO经典回归，阿拉斯加极夜连环命案。</td></tr>'+'</table>'+'<h3>🦖 怪兽/灾难类</h3>'+'<table class="data-table"><tr><th>电影</th><th>类型</th><th>推荐理由</th></tr>'+'<tr><td>哥斯拉×金刚：新帝国</td><td>怪兽/动作</td><td>怪兽宇宙新篇章，金刚与哥斯拉联手对抗新威胁。</td></tr>'+'<tr><td>哥斯拉-1.0</td><td>怪兽/剧情</td><td>日本东宝制作，战后日本的创伤与哥斯拉的象征意义。奥斯卡最佳视效。</td></tr>'+'</table>'+'<h3>🧠 烧脑/科幻类</h3>'+'<table class="data-table"><tr><th>电影</th><th>类型</th><th>推荐理由</th></tr>'+'<tr style="background:var(--accent-light)"><td>奥本海默</td><td>传记/烧脑</td><td>诺兰作品，原子弹之父的道德困境。IMAX重映不容错过。</td></tr>'+'<tr><td>沙丘2</td><td>科幻/史诗</td><td>维伦纽瓦续写太空史诗。</td></tr>'+'</table>'+'<h3>🥋 武打动作类</h3>'+'<table class="data-table"><tr><th>电影</th><th>类型</th><th>推荐理由</th></tr>'+'<tr><td>疾速追杀4</td><td>动作/枪战</td><td>基努·里维斯回归，动作设计登峰造极。</td></tr>'+'<tr><td>碟中谍8：最终清算</td><td>动作/特工</td><td>阿汤哥最后一部碟中谍，实拍特技极限。</td></tr>'+'<tr><td>九龙城寨之围城</td><td>动作/港式</td><td>香港动作片复兴之作，九龙城寨场景还原极致。</td></tr>'+'</table>'+'<div class="callout tip"><strong>💡 观看平台推荐：</strong>B站（影评/解说/花絮）| 腾讯视频/爱奇艺/优酷（正版影片）| Netflix/HBO/Disney+（海外剧集）。建议先从B站影评了解剧情，再决定是否观看原片。</div>';DETAIL.gaming = '<h2>🎯 游戏区</h2><p class="detail-subtitle">B站UP主·Steam·促销</p>'+
 '<div class="resource-card"><div class="rc-icon">🎬</div><div class="rc-info"><div class="rc-name">B站：疯癫小居士</div><div class="rc-desc">CF刀战个人竞技·大神级</div></div><a href="https://space.bilibili.com/59710188" target="_blank" class="rc-link">打开 →</a></div>'+
 '<div class="resource-card"><div class="rc-icon">📊</div><div class="rc-info"><div class="rc-name">SteamDB</div><div class="rc-desc">查历史最低价</div></div><a href="https://steamdb.info" target="_blank" class="rc-link">打开 →</a></div>'+
 '<h3>🎮 推荐</h3><table class="data-table"><tr><th>游戏</th><th>史低</th><th>理由</th></tr><tr><td>只狼</td><td>¥134</td><td>拼刀巅峰</td></tr><tr><td>MH荒野</td><td>¥146</td><td>联机狩猎</td></tr><tr><td>龙珠ZERO</td><td>¥298</td><td>龙珠粉必入</td></tr></table>'+

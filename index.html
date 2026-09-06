@@ -354,9 +354,6 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 <div id="briefingContent" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:8px"></div>
 </div>
 
-<!-- 板块快速导航（分类卡片墙：从学习区中间移到这里，作为探索入口） -->
-<div id="homeCategoryGrid"></div>
-
 <!-- 0. 每日待办汇总 -->
 <section id="dashboard" class="section" data-search="每日待办 行程 打卡 日程">
 <div class="section-header"><h2>📋 每日待办汇总</h2><p id="dashboardDate"></p><span id="pushStatus" style="display:none;font-size:11px;padding:2px 10px;border-radius:12px;background:rgba(5,150,105,.2);color:#059669;margin-left:8px" title="微信推送已配置">📱 推送已开启</span></div>
@@ -390,6 +387,9 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 <p style="font-size:9px;color:var(--text3);margin-top:6px">🔒 个人提醒只存本机浏览器(localStorage)，不会出现在公开网页 — 通用节点(发售/上映/完结/窗口)每日由数据驱动</p>
 </div>
 </section>
+
+<!-- 板块快速导航（分类卡片墙：放在智能日历之后，作为探索入口） -->
+<div id="homeCategoryGrid"></div>
 
 <!-- Daily Schedule Panel -->
 <div id="schedulePanel" style="display:none"></div>
