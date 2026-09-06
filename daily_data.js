@@ -1,4 +1,4 @@
-var SITE_VERSION = "1.8.1";
+var SITE_VERSION = "1.8.2";
 
 var DAILY_DATA = {
   "update_time": "2026-09-06T11:45:00+08:00",
@@ -125,8 +125,8 @@ var PICKS = {
     {icon:"📝", title:"作品集升级", desc:"用GPT-6 Astra发布写300字行业观察《AI安全与能力如何平衡》 · 面试加分", link:"#"}
   ],
   car: [
-    {icon:"⚡", title:"极氪007焕新版", desc:"19.39万 · 715km续航 · 900V架构 · NVIDIA Thor-U 700TOPS · 运动轿跑", link:"https://www.dongchedi.com", img:"https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=400&q=60", tag:"运动轿跑"},
-    {icon:"🚗", title:"小鹏MONA M03 Max", desc:"12.98万起 · 750TOPS算力 · 全场景XNGP · 智驾性价比之王", link:"https://www.dongchedi.com", img:"https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=400&q=60", tag:"纯电SUV"}
+    {icon:"⚡", title:"极氪007焕新版", desc:"19.39万 · 715km续航 · 900V架构 · NVIDIA Thor-U 700TOPS · 运动轿跑", link:"https://www.dongchedi.com", img:"https://paultan.org/cn/image/2023/11/Zeekr-007-2-e1700100010257-630x330.jpg", tag:"运动轿跑"},
+    {icon:"🚗", title:"小鹏MONA M03 Max", desc:"12.98万起 · 750TOPS算力 · 全场景XNGP · 智驾性价比之王", link:"https://www.dongchedi.com", img:"https://c2.gasgoo.com/autonews/moblogo/News/UEditor/image/20240611/6385371600188037263856413.png", tag:"纯电轿跑"}
   ],
   house: [
     {icon:"🏠", title:"广州", desc:"新房~3.2万/平米 · 二手~2.8万/平米 · 首付15%历史最低", link:"https://www.ke.com"},
@@ -679,7 +679,7 @@ var OPTIMIZATION_LOG = {
 
 var WEBSITE_GUIDE = {
   updated: "2026-09-06",
-  summary: "欢迎来到钟锐的个人数字空间！这是一个持续进化的智能信息中枢。版本1.7.8。9/6穿搭图优化：换成得体清爽的男士通勤/面试风格图（平铺套装+修身西装），不再用尴尬人像。每天打开都是新的，每天都有提升。",
+  summary: "欢迎来到钟锐的个人数字空间！这是一个持续进化的智能信息中枢。版本1.8.2。9/6图赏升级：动漫用官方海报(Re:Zero/死神/无职转生/时光代理人)、影视用蜘蛛侠官方海报+契合图、购车用极氪007/小鹏MONA真实官图。每天打开都是新的，每天都有提升。",
   features: [
     {icon:"🏠", title:"首页仪表盘", desc:"一屏总览所有板块精华。分类卡片快速导航、实时股市/天气/新闻一目了然。点击分类卡片进入分类页。"},
     {icon:"📂", title:"分类浏览", desc:"点击侧边栏分类标题(👤关于/🎮娱乐/🏃生活/📊财经/🤖工具)，进入分类页集中浏览该类别所有板块。"},
