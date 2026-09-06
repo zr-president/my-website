@@ -15,6 +15,8 @@ jobs:
   auto-update:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    outputs:
+      update_status: ${{ steps.run_update.outcome }}
 
     steps:
       - name: Checkout repository
@@ -31,6 +33,7 @@ jobs:
         run: pip install -r scripts/requirements.txt
 
       - name: Run AI auto update
+        id: run_update
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
         run: |
@@ -39,3 +42,26 @@ jobs:
             exit 0
           fi
           python scripts/auto_update.py --commit
+
+  # #105: 自动更新结果监控——失败时让 run 显式失败（Actions 徽章可见）+ 可选 PushPlus 告警
+  notify-on-fail:
+    needs: auto-update
+    if: ${{ always() && needs.auto-update.outputs.update_status != 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Mark run as failed so GitHub shows it in the Actions badge
+        run: |
+          echo "❌ AI 每日自动更新未能成功完成（状态: ${{ needs.auto-update.outputs.update_status }}）"
+          echo "请在 Actions 页查看日志定位原因（常见：DEEPSEEK_API_KEY 失效 / 脚本报错 / 网络超时）"
+          exit 1
+
+      - name: Send PushPlus notification (only if token configured)
+        if: ${{ secrets.PUSHPLUS_TOKEN != '' }}
+        env:
+          PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
+        run: |
+          curl -s -X POST "https://www.pushplus.plus/send" \
+            -H "Content-Type: application/json" \
+            -d "{\"token\":\"$PUSHPLUS_TOKEN\",\"title\":\"⚠️ 网站自动更新失败\",\"content\":\"AI 每日自动更新未能成功（${{ needs.auto-update.outputs.update_status }}）。请前往 GitHub Actions 查看日志。\"}"
+          echo "已发送 PushPlus 失败告警"

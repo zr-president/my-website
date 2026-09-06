@@ -1,4 +1,4 @@
-var SITE_VERSION = "1.6.6";
+var SITE_VERSION = "1.6.7";
 
 var DAILY_DATA = {
   "update_time": "2026-09-06T11:45:00+08:00",
@@ -552,9 +552,9 @@ var AGENT_STACKS = {
 
 var OPTIMIZATION_LOG = {
   date: "2026-09-06",
-  total_suggestions: 105,
-  total_implemented: 87,
-  streak_days: 32,
+  total_suggestions: 111,
+  total_implemented: 94,
+  streak_days: 33,
   suggestions: [
     {id:1, cat:"已归档", title:"AI追踪板块周报自动生成", desc:"每周一自动汇总上周AI融资/模型发布/价格变动→已集成至INSIGHTS.ai-track周度总结", priority:"P1", status:"已完成"},
     {id:2, cat:"已归档", title:"cron更新后自动验证关键板块内容", desc:"检查DAILY_BRIEFING/INSIGHTS/PICKS非空+日期正确→daily_data.js增加校验注释标记", priority:"P1", status:"已完成"},
@@ -645,8 +645,8 @@ var OPTIMIZATION_LOG = {
     {id:89, cat:"内容优化", title:"自定义 404 页面 + 网站 favicon/SEO 标签完善", desc:"✅ 9/2实施：①新建 404.html（渐变404+返回首页/知识库搜索入口，适配暗色模式）②生成 favicon.ico（64px ZR渐变图标）+favicon.svg（现代浏览器优先）③index.html head 补全 meta description/keywords + OG 标签（title/description/type/url）——专业感+搜索引擎收录提升（求职展示加分）", priority:"P2", status:"已完成"},
     {id:90, cat:"求职功能", title:"求职打招呼语批量生成模板（按公司/JD差异化）", desc:"✅ 9/2实施：已生成 templates/greetings.md——30条差异化打招呼语（字节/腾讯/美团/小红书/微众/SHEIN/滴滴各4条+通用万能款2条+使用提示），每条含【一句话背景+公司连接点+具体业绩+轻问题】结构，按公司特点定制切入点（如字节强调豆包生态/微众强调金融合规+AI）——投递时直接复制微调使用", priority:"P2", status:"已完成"},
     {id:91, cat:"内容优化", title:"科大讯飞端侧模型开源专题全站同步（端侧AI新赛道）", desc:"✅ 9/2实施：科大讯飞9/1开源词元星火X2.5端侧模型——ai-track/学习区/TOOLCHAIN_RADAR/决策单全站同步【端侧AI新赛道】状态+端侧vs云端架构科普入小白课堂", priority:"P1", status:"已完成"},
-    {id:92, cat:"求职功能", title:"金九银十求职冲刺页：秋招岗位日历+投递目标仪表盘", desc:"待办：9月是秋招+社招双高峰——求职中心增加金九银十专属模块：①秋招时间线（9月互联网大厂秋招窗口/笔试面试时间表）②每日投递目标仪表盘（金九银十期间周目标从15家提到20家）③面试高峰预警（投递后3-7天集中面试期准备提醒）——把9月求职窗口用足", priority:"P1", status:"待办"},
-    {id:93, cat:"内容优化", title:"9月新番/新片/新游前瞻清单（Re:Zero完结+秋季档+国庆档）", desc:"已回滚：9/2实施过【9月内容前瞻】首页板块（SEPTEMBER_PREVIEW+renderPreview），用户反馈不实用已移除。如需同类功能，可改做【今日内容速览】挂到 DAILY_BRIEFING 下方而非独立板块", priority:"P2", status:"待办"},
+    {id:92, cat:"求职功能", title:"金九银十求职冲刺页：秋招岗位日历+投递目标仪表盘", desc:"✅ 9/6重做：#92 改为『投递作战台』(#107)——从秋招岗位日历这类外部信息汇总，改为真正能用的个人投递管理工具（7家公司投递状态×面试进度×本周计数，存本机）", priority:"P1", status:"已完成"},
+    {id:93, cat:"内容优化", title:"9月新番/新片/新游前瞻清单（Re:Zero完结+秋季档+国庆档）", desc:"❌ 已取消：9/2实施过【9月内容前瞻】用户反馈不实用已移除；用户9/6确认不再重做，标记归档。如需同类功能可改做【今日内容速览】挂 DAILY_BRIEFING 下方", priority:"P2", status:"已归档"},
     {id:94, cat:"AI功能", title:"AI 数字分身：首页 AI 助手升级为真实对话（求职作品集杀手锏）", desc:"推进中（框架已落地）：✅统一AI接入层已建（localStorage 存 Key 不进代码库+chatToAI 函数+CORS/无Key 自动降级本地规则）✅#ai-assistant 聊天升级为双模式（配置 Key 后基于简历真实对话，未配置走本地规则）+🔑配置入口+模式徽章。待办：真 AI 效果需本机配置 Key 后体验；若 DeepSeek API 浏览器直连 CORS 受限，后续可上腾讯云轻量代理（呼应服务器方案）", priority:"P0", status:"推进中"},
     {id:95, cat:"AI功能", title:"AI 简历匹配度分析器（粘贴JD→评分+缺口+优化建议）", desc:"✅ 9/2实施：求职中心新增【🤖 JD匹配分析器】——粘贴JD→①⚡本地预检（关键词覆盖对照：命中/缺口+机器筛选优化提示，无需Key立即可用）②🤖AI深度分析（配置Key后：匹配度评分/逐项对照/3条简历优化建议/80字定制打招呼语，走统一AI层）。已连 #90 打招呼语与 #97 公司雷达", priority:"P0", status:"已完成"},
     {id:96, cat:"内容优化", title:"AI 行业观察档案页（把每日AI分析沉淀为个人思考专题）", desc:"✅ 9/2实施：AI助手区新增【📝 我的AI行业观察】折叠卡——AI_OBSERVATIONS 数据块（历史主题时间线：讯飞端侧/Anthropic算力/英伟达财报/GLM开源等）+手写观察追加/删除（localStorage 存个人记录）——持续思考的证明（面试作品集）+成长记录", priority:"P1", status:"已完成"},
@@ -658,13 +658,19 @@ var OPTIMIZATION_LOG = {
     {id:102, cat:"内容优化", title:"GPT-6 Astra 发布专题全站同步（AI安全vs能力释放）", desc:"✅ 9/6实施：OpenAI 9/4发布GPT-6 Astra——ai-track/news/career/AI_OBSERVATIONS 全站同步【GPT-6发布】头条+AI安全治理成面试高频议题", priority:"P0", status:"已完成"},
     {id:103, cat:"AI功能", title:"AI 数字分身升级：注入 GPT-6/AI 安全语料+按板块精准回答", desc:"待办：把每日 AI_OBSERVATIONS/小白课堂也注入数字分身 system prompt，让 AI 能回答『今天网站学了什么』『GPT-6 你怎么看』，并支持『去某板块』跳转", priority:"P1", status:"待办"},
     {id:104, cat:"求职功能", title:"AI 安全/AI 治理岗位雷达（GPT-6催化新增量方向）", desc:"待办：目标公司雷达(#97)扩展——新增『AI安全/AI治理/AI合规』方向关键词与岗位洞察(Astra事件后需求上升、门槛相对友好)，给该方向的投递清单", priority:"P2", status:"待办"},
-    {id:105, cat:"稳定性", title:"AI 自动更新失败监控与自愈（连续失败告警）", desc:"待办：9/3-9/4 自动更新两次失败(脚本配平bug已修)但无告警——增加 workflow 失败自动标记、连续2次失败触发 PushPlus 告警、验证修复后连续3天成功再转自动", priority:"P1", status:"待办"},
+    {id:105, cat:"稳定性", title:"AI 自动更新失败监控与自愈（连续失败告警）", desc:"✅ 9/6实施：给 auto-update workflow 增加失败告警（失败时自动发 GitHub 站内信+PushPlus 通知，连续2次失败进入告警），验证自动更新可靠性后撤销人工盯守", priority:"P1", status:"已完成"},
+    {id:106, cat:"求职功能", title:"首屏 Hero 品牌区：让面试官 3 秒看懂『我是谁+我要什么』", desc:"✅ 9/6实施：首页顶部新增求职品牌 Hero——『钟锐·求职AI产品/增长运营』大标题+定位副标题+7家目标公司徽标行+两个强CTA（让AI分析我的JD/看看我的AI作品集），解决首屏无定位、信息过载问题", priority:"P0", status:"已完成"},
+    {id:107, cat:"求职功能", title:"求职投递作战台（重做#92）：7家公司投递状态×面试进度×本周计数", desc:"✅ 9/6实施：首屏新增可交互『投递作战台』——从 TARGET_COMPANIES 读取7家目标公司，每行一个状态下拉（未投递/已投递/笔试/面试/已拿offer）+备注，存 localStorage，刷新保留；本周投递计数+1；把#92原本『秋招岗位日历』这类外部信息汇总改为真正能用的个人投递管理工具", priority:"P0", status:"已完成"},
+    {id:108, cat:"AI功能", title:"#94数字分身升级为『懂你的管家』：板块跳转+快捷指令+今日内容注入", desc:"✅ 9/6实施：①AI聊天支持意图识别自动跳转（问学习→每日一词/问股票→股市区/问投递→作战台/GPT-6→AI动态）②聊天框上方4-6个一键快捷指令chips③把今日AI观察(AI_OBSERVATIONS最近2条)注入上下文，让数字分身能回答『今天网站学了什么』——从『能对话』升级为『懂你的管家』", priority:"P0", status:"已完成"},
+    {id:109, cat:"求职功能", title:"AI 行业观察提权为首屏可分享作品集（#96升级）", desc:"✅ 9/6实施：把折叠在AI助手里的『我的AI行业观察』提为首屏独立高权重板块——《把每日AI思考沉淀成可分享的个人作品集》，面试时可直接演示，是最强差异化资产", priority:"P1", status:"已完成"},
+    {id:110, cat:"视觉优化", title:"首屏信息密度减肥+强CTA：优化日记默认折叠+语义分区", desc:"✅ 9/6实施：①优化日记默认可折叠只显示前3条，『展开全部』一键看全——降低首屏阅读压力②hero 区两个强CTA带hover③聊天框下加『现场演示给面试官看』引导——解决首屏拥挤、无行动引导", priority:"P1", status:"已完成"},
+    {id:111, cat:"性能优化", title:"接入访问统计（Umami 免费自托管，无隐私问题）", desc:"🔶 进行中：已规划接入 Umami 轻量访问统计——看每天多少人访问、哪个板块最受欢迎，用数据反哺内容。待用户注册 Umami Cloud（免费）拿到 site ID 后，把 script 天关接入 index.html head 即生效（代码已留好占位）", priority:"P2", status:"待办"},
   ]
 };
 
 var WEBSITE_GUIDE = {
   updated: "2026-09-06",
-  summary: "欢迎来到钟锐的个人数字空间！这是一个持续进化的智能信息中枢。版本1.6.6。9/6更新：GPT-6 Astra发布+可灵14亿注资+龙餐馆破20亿+A股9月开局偏弱。每天打开都是新的，每天都有提升。",
+  summary: "欢迎来到钟锐的个人数字空间！这是一个持续进化的智能信息中枢。版本1.6.7。9/6功能升级：首屏求职品牌Hero+投递作战台+AI助手升级为懂你的管家+AI行业观察提权+自动更新失败告警。每天打开都是新的，每天都有提升。",
   features: [
     {icon:"🏠", title:"首页仪表盘", desc:"一屏总览所有板块精华。分类卡片快速导航、实时股市/天气/新闻一目了然。点击分类卡片进入分类页。"},
     {icon:"📂", title:"分类浏览", desc:"点击侧边栏分类标题(👤关于/🎮娱乐/🏃生活/📊财经/🤖工具)，进入分类页集中浏览该类别所有板块。"},

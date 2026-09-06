@@ -12,6 +12,9 @@
 <meta property="og:url" content="https://zr-president.github.io/my-website/">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="alternate icon" href="favicon.ico">
+<!-- #111: 访问统计（Umami 轻量无隐私）——注册 Umami Cloud(免费) 拿到 site ID 后，把下方两个占位替换为你的真实值即生效
+<script async src="https://cloud.umami.is/script.js" data-website-id="REPLACE_WITH_YOUR_UMAMI_SITE_ID"></script>
+-->
 <style>
 :root{
   --bg:#f5f6f8;--bg2:#eef0f4;--card:#fff;--text:#1a1a2e;--text2:#555;--text3:#888;
@@ -219,6 +222,25 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 @media(max-width:900px){.mobile-tabbar{display:flex}.fab-top{bottom:70px}.section{padding-bottom:20px}.main{padding:16px 12px}#homeCategoryGrid{grid-template-columns:1fr}.pick-card{font-size:11px}.cat-card{padding:14px}}@media(max-width:500px){.main{padding:12px 8px}.cat-card{padding:12px}.search-box input{font-size:10px}}
 
 @media print{.sidebar,.detail-overlay,#ai-assistant,#gaming,#music,#novel,#anime,#beer{display:none!important}.main{margin-left:0!important;padding:0!important;max-width:100%!important}.card{box-shadow:none!important;border:1px solid #ddd!important}body{background:#fff!important}}
+
+/* ===== 求职 Hero / 品牌区（zh_）===== */
+.zh-hero{background:linear-gradient(135deg,var(--accent-light),transparent);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;margin-bottom:16px;box-shadow:var(--shadow)}
+.zh-hero h1{font-size:24px;font-weight:700;margin-bottom:6px;letter-spacing:.5px;line-height:1.35}
+.zh-hero .zh-sub{font-size:12px;color:var(--text2);margin-bottom:12px;line-height:1.7}
+.zh-hero .zh-tagline{font-size:10px;color:var(--text3);margin-bottom:10px;letter-spacing:1px}
+.zh-company-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.zh-chip-company{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:14px;font-size:11px;background:var(--bg2);border:1px solid var(--border);color:var(--text2);transition:.15s}
+.zh-chip-company:hover{background:var(--accent-light);border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+.zh-hero .zh-cta-row{display:flex;flex-wrap:wrap;gap:8px}
+.zh-cta{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:14px;font-size:12px;font-weight:600;cursor:pointer;border:none;transition:all .18s;font-family:inherit}
+.zh-cta.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:var(--shadow)}
+.zh-cta.primary:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(79,70,229,.3);filter:brightness(1.08)}
+.zh-cta.ghost{background:var(--card);color:var(--accent);border:1px solid var(--border)}
+.zh-cta.ghost:hover{background:var(--accent-light);border-color:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow)}
+.zh-chip{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:14px;font-size:11px;background:var(--card);border:1px solid var(--border);color:var(--text2);cursor:pointer;transition:.15s;font-family:inherit}
+.zh-chip:hover{background:var(--accent-light);border-color:var(--accent);color:var(--accent)}
+.zh-board-row{display:flex;gap:8px;align-items:center;padding:8px 10px;border:1px solid var(--border);border-radius:8px;margin-bottom:6px;background:var(--card)}
+@media(max-width:620px){.zh-hero h1{font-size:19px}.zh-cta{font-size:11px;padding:8px 12px}}
 </style>
 </head>
 <body>
@@ -230,11 +252,13 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="切换暗色">🌙</button>
 </div>
 <div style="padding:4px 16px 0"><div style="font-size:9px;color:var(--text3);margin-bottom:4px">🎨 主题色</div><div class="theme-colors"><span class="theme-dot indigo active" onclick="setColorTheme('indigo')" title="靛蓝"></span><span class="theme-dot ocean" onclick="setColorTheme('ocean')" title="深海蓝"></span><span class="theme-dot emerald" onclick="setColorTheme('emerald')" title="墨绿金"></span><span class="theme-dot rose" onclick="setColorTheme('rose')" title="玫瑰金"></span><span class="theme-dot amber" onclick="setColorTheme('amber')" title="琥珀暖"></span><span class="theme-dot slate" onclick="setColorTheme('slate')" title="石墨灰"></span></div></div>
-<div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','about')">👤 关于</div><a href="#dashboard">📋 每日待办</a><a href="#about">🏠 个人介绍</a><a href="#career">💼 求职中心</a><a href="#mock-interview">🎤 模拟面试舱</a></div>
+<div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','about')">👤 关于求职</div><a href="#dashboard">📋 每日待办</a><a href="#about">🏠 个人介绍</a><a href="#career">💼 求职中心</a><a href="#mock-interview">🎤 模拟面试舱</a></div>
 <div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','fun')">🎮 娱乐</div><a href="#gaming">🎯 游戏区</a><a href="#music">🎵 音乐区</a><a href="#novel">📖 小说区</a><a href="#anime">🎬 动漫区</a><a href="#movie">🎥 影视区</a></div>
 <div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','life')">🏃 生活</div><a href="#fashion">👔 穿搭推荐</a><a href="#fitness">💪 健身方案</a><a href="#diet">🍽️ 饮食助手</a><a href="#beer">🍺 精酿与调酒</a><a href="#life-hacks">🧩 AI生活妙用</a></div>
-<div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','finance')">📊 财经·学习</div><a href="#stock">📈 股市基金</a><a href="#car">🚗 购车推荐</a><a href="#house">🏠 购房租房</a><a href="#learning">🎓 学习区</a><a href="#skill-radar">🧭 技能雷达</a><a href="#travel">✈️ 旅游区</a><a href="#ai-track">🔭 AI动态追踪</a></div>
-<div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','tools')">🤖 工具</div><a href="#guide">📖 使用指南</a><a href="#opportunity">🎯 机会雷达</a><a href="#optimization">🔧 优化日记</a><a href="#life-hacks">🧩 AI生活妙用</a><a href="#ai-assistant">💬 AI助手</a><a href="search.html" target="_blank">📚 知识库搜索</a></div>
+<div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','finance')">📊 财经</div><a href="#stock">📈 股市基金</a><a href="#car">🚗 购车推荐</a><a href="#house">🏠 购房租房</a><a href="#travel">✈️ 旅游区</a><a href="#ai-track">🔭 AI动态追踪</a></div>
+<div class="nav-section"><div class="nav-section-title" style="cursor:default">📚 学习</div><a href="#learning">🎓 学习区</a><a href="#skill-radar">🧭 技能雷达</a></div>
+<div class="nav-section"><div class="nav-section-title" style="cursor:pointer" onclick="navigateTo('category','tools')">🤖 工具</div><a href="#guide">📖 使用指南</a><a href="#opportunity">🎯 机会雷达</a><a href="#optimization">🔧 优化日记</a><a href="search.html" target="_blank">📚 知识库搜索</a></div>
+<div class="nav-section"><div class="nav-section-title" style="cursor:default">💬 AI助手</div><a href="#ai-assistant">💬 AI助手</a></div>
 </nav>
 
 <main class="main">
@@ -248,6 +272,50 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <button onclick="event.stopPropagation();manualRefresh()" id="refreshBtn" style="background:rgba(255,255,255,.2);color:#fff;border:none;padding:5px 10px;border-radius:6px;cursor:pointer;font-size:11px;font-weight:500">🔄 每日推荐</button>
 <button onclick="event.stopPropagation();checkUpdateStatus()" id="updateCheckBtn" style="background:rgba(255,255,255,.2);color:#fff;border:none;padding:5px 10px;border-radius:6px;cursor:pointer;font-size:11px;font-weight:500;white-space:nowrap" title="检查更新状态">🔍</button>
 </div></div>
+
+	<!-- 求职 Hero 品牌区（zh_hero） -->
+	<div id="zhHero" class="zh-hero">
+		<h1>钟锐 · 求职 AI产品运营 / AI增长运营</h1>
+		<div class="zh-sub">把「AI 产品/增长」用作品说话 —— 17 个每日更新板块 + 可交互 AI 作品集</div>
+		<div class="zh-tagline">🎯 目标公司</div>
+		<div class="zh-company-row">
+			<span class="zh-chip-company">字节跳动 🐧</span>
+			<span class="zh-chip-company">腾讯 🍔</span>
+			<span class="zh-chip-company">美团 📕</span>
+			<span class="zh-chip-company">小红书 💳</span>
+			<span class="zh-chip-company">微众银行 👗</span>
+			<span class="zh-chip-company">SHEIN 🚗</span>
+			<span class="zh-chip-company">滴滴</span>
+		</div>
+		<div class="zh-cta-row">
+			<button class="zh-cta primary" onclick="zh_goJD()">🤖 让 AI 分析我的 JD</button>
+			<button class="zh-cta ghost" onclick="zh_goObs()">📚 看看我的 AI 作品集</button>
+		</div>
+	</div>
+
+	<!-- 投递作战台（zh_apply） -->
+	<section id="zhApplyBoard" class="section">
+		<div class="section-header"><h2>🎯 投递作战台</h2><p>目标公司 × 投递状态 × 面试进度 · 存本机浏览器</p></div>
+		<div class="card" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:11px 14px;margin-bottom:8px">
+			<span style="font-size:11px;color:var(--text2)">🚀 金九银十冲刺 · 周目标投 <b>15</b> 家 · 用满 <b>9-11</b> 月窗口</span>
+			<span id="zhApplyCount" style="margin-left:auto;font-size:12px;font-weight:700;color:var(--accent)">🎯 本周投递 0 家</span>
+			<button onclick="zh_applyPlusOne()" style="padding:5px 12px;background:var(--accent);color:#fff;border:none;border-radius:12px;cursor:pointer;font-size:11px;font-weight:500">🎯 本周投递 +1</button>
+		</div>
+		<div id="zhApplyList"></div>
+	</section>
+
+	<!-- AI 行业观察提权（zh_obs） -->
+	<section id="zhObs" class="section">
+		<div class="section-header"><h2>📝 我的 AI 行业观察</h2><p>把每日 AI 思考沉淀成可分享的作品集 · 面试加分</p></div>
+		<div class="card" style="padding:12px 14px">
+			<div id="zhObsCount" style="font-size:10px;color:var(--text3);margin-bottom:6px"></div>
+			<div id="zhObsList" style="font-size:11px;line-height:1.7"></div>
+			<div style="display:flex;gap:6px;margin-top:8px">
+				<input type="text" id="zhObsInput" placeholder="✍️ 写一句今日观察：主题+你的判断..." style="flex:1;padding:6px 8px;border:1px solid var(--border);border-radius:6px;font-size:11px;background:var(--bg);color:var(--text)" onkeydown="if(event.key==='Enter')zh_addObservation()">
+				<button onclick="zh_addObservation()" style="padding:6px 12px;background:var(--accent);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:11px">记录</button>
+			</div>
+		</div>
+	</section>
 
 	<!-- #38: 今日必看置顶聚合卡片 -->
 	<div id="featuredCard" style="background:linear-gradient(135deg,#fef3c7,#fef9c3);border:1px solid #f59e0b;border-radius:12px;padding:12px 16px;margin-bottom:16px;display:none;cursor:pointer;transition:transform .15s,box-shadow .15s" onmouseover="this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 12px rgba(245,158,11,.25)'" onmouseout="this.style.transform='';this.style.boxShadow=''" onclick="openFeaturedCard()">
@@ -602,12 +670,13 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <section id="tools-collection" class="section" data-search="工具 收藏 AI 求职 效率 学习 资源"><div class="section-header"><h2>🧰 工具收藏夹</h2><p>AI工具 · 求职工具 · 效率工具 · 学习资源</p></div>
 <div id="picks-tools-collection" class="picks-container"></div></section>
 
-<section id="optimization" class="section" data-search="优化 建议 改进 迭代 日记"><div class="section-header"><h2>🔧 网站优化日记</h2><p>每日10条改进建议 · 自我迭代 · 持续进化</p></div>
+<section id="optimization" class="section" data-search="优化 建议 改进 迭代 日记"><div class="section-header"><h2>🔧 网站优化日记</h2><p>每日10条改进建议 · 自我迭代 · 持续进化</p><button id="optExpandBtn" onclick="zh_optCollapse()" style="display:none;margin-top:4px;padding:4px 12px;background:var(--accent);color:#fff;border:none;border-radius:12px;cursor:pointer;font-size:11px">📖 展开全部优化建议</button></div>
 <div id="picks-optimization" class="picks-container"></div>
 <div class="card" style="padding:12px 16px" id="optimizationStats"><p style="font-size:12px;color:var(--text3)">📊 加载优化数据...</p></div></section>
 
 <section id="ai-assistant" class="section" data-search="AI助手 聊天 数字分身"><div class="section-header"><h2>💬 AI助手 · 数字分身</h2><p>可视化问答 · 个人AI管家 · 配置Key后可真实对话</p></div>
-<div class="card" style="padding:0"><div class="chat-box"><div class="chat-messages" id="chatMessages"><div class="chat-msg assistant"><div class="bubble">👋 你好钟锐！我是你的AI助手。可以直接问我求职、AI科普、游戏、学习、健身、饮食等任何问题。开启「🤖 AI实时」后，我能基于你的简历与网站内容真实对话。</div></div></div><div class="chat-input-area"><input type="text" id="chatInput" placeholder="输入问题，Enter发送..." onkeydown="if(event.key==='Enter')sendMessage()"><button onclick="sendMessage()">发送</button></div><div style="display:flex;align-items:center;gap:8px;padding:6px 10px;border-top:1px solid var(--border);background:var(--bg)"><span id="aiModeBadge" style="font-size:10px;padding:2px 8px;border-radius:10px;background:var(--bg2);color:var(--text3)">💻 本地模式</span><button onclick="setupAiKey()" id="aiKeyBtn" style="font-size:10px;padding:2px 8px;border:1px solid var(--border);border-radius:10px;background:var(--card);cursor:pointer;color:var(--text2)">🔑 配置AI Key</button><span style="font-size:9px;color:var(--text3)">Key 只存本机浏览器，不进代码仓库</span></div></div></div>
+<div class="card" style="padding:0"><div class="chat-box"><div class="chat-messages" id="chatMessages"><div class="chat-msg assistant"><div class="bubble">👋 你好钟锐！我是你的AI助手。可以直接问我求职、AI科普、游戏、学习、健身、饮食等任何问题。开启「🤖 AI实时」后，我能基于你的简历与网站内容真实对话。</div></div></div><div class="zh-chips" style="display:flex;flex-wrap:wrap;gap:6px;padding:6px 10px;border-top:1px solid var(--border);background:var(--bg2)"><button class="zh-chip" onclick="zh_chip('今天的 AI 动态是什么？')">🤖 讲讲今天的 AI 动态</button><button class="zh-chip" onclick="zh_chip('帮我分析一份 JD')">💼 帮我分析这个 JD</button><button class="zh-chip" onclick="zh_chip('今天网站学了什么？')">📚 今天学什么</button><button class="zh-chip" onclick="zh_chip('我的投递进度怎么样了？')">🎯 我的投递进度</button><button class="zh-chip" onclick="zh_chip('今天吃什么？')">🍽️ 今天吃什么</button><button class="zh-chip" onclick="zh_chip('今天股票怎么样？')">📈 股票怎么样</button></div><div class="chat-input-area"><input type="text" id="chatInput" placeholder="输入问题，Enter发送..." onkeydown="if(event.key==='Enter')sendMessage()"><button onclick="sendMessage()">发送</button></div><div style="display:flex;align-items:center;gap:8px;padding:6px 10px;border-top:1px solid var(--border);background:var(--bg)"><span id="aiModeBadge" style="font-size:10px;padding:2px 8px;border-radius:10px;background:var(--bg2);color:var(--text3)">💻 本地模式</span><button onclick="setupAiKey()" id="aiKeyBtn" style="font-size:10px;padding:2px 8px;border:1px solid var(--border);border-radius:10px;background:var(--card);cursor:pointer;color:var(--text2)">🔑 配置AI Key</button><span style="font-size:9px;color:var(--text3)">Key 只存本机浏览器，不进代码仓库</span></div></div></div>
+<p style="font-size:10px;color:var(--text3);margin:8px 2px 0;text-align:center">💡 想展示给面试官看？点上面的【让 AI 分析我的 JD】现场演示</p>
 <!-- #96: AI 行业观察档案（个人思考沉淀：面试作品集 + 成长记录） -->
 <details class="card" style="padding:12px 14px;margin-top:8px">
 <summary style="cursor:pointer;font-size:12px;font-weight:600">📝 我的 AI 行业观察 <span id="aiObsCount" style="font-size:10px;color:var(--text3);font-weight:400"></span></summary>
@@ -917,7 +986,7 @@ function chatToAI_safe(sys,user,onOk){
 function aiSystemPrompt(){
   var resume='';
   try{var r=JSON.parse(localStorage.getItem('zhongrui_resume')||'null');if(r){resume=(r.basic||'')+' '+((r.skills||'')+' '+(r.projects||'')+' '+(r.exp||'')).substring(0,2200);}}catch(e){}
-  return '你是「钟锐的个人数字空间」网站里的钟锐 AI 数字分身（26岁·广州·求职AI产品运营/AI增长运营）。回答基于以下真实简历/资料，语气自然专业、信息具体，不要编造简历外的经历：\n【简历资料】\n'+(resume||'（本机未保存简历，请引导去求职中心查看）')+'\n\n【网站板块】求职/股市/AI动态/游戏/动漫/小说/影视/音乐/健身/饮食/穿搭/精酿调酒/购车/购房/学习。回答可引导用户去对应板块。';
+  return '你是「钟锐的个人数字空间」网站里的钟锐 AI 数字分身，同时是「领域专家 + 网站实时内容助手」（26岁·广州·求职AI产品运营/AI增长运营）。\n【双重角色】① 领域专家：深耕 AI 产品运营/AI 增长，能专业分析简历、JD 匹配、产品/增长策略、模型对比；② 网站实时内容助手：能基于网站今日更新的各板块内容（求职/股市/AI动态/游戏/动漫/小说/影视/音乐/健身/饮食/穿搭/精酿调酒/购车/购房/学习）实时作答。\n【实时上下文】系统会在用户消息里注入今日 AI 行业观察（格式【今天的AI观察】），你需要据此回答「今天网站学了什么」这类问题，引用其中的 topic 与 summary 并给一句你的判断；语气自然专业、信息具体，不要编造简历外或观察外的事实。\n【简历资料】\n'+(resume||'（本机未保存简历，请引导去求职中心查看）')+'\n\n【网站板块】求职/股市/AI动态/游戏/动漫/小说/影视/音乐/健身/饮食/穿搭/精酿调酒/购车/购房/学习。回答可引导用户去对应板块。';
 }
 function chatToAI(userMsg, onOk){
   var key=getAiKey();
@@ -939,19 +1008,115 @@ function chatToAI(userMsg, onOk){
   setTimeout(function(){fin(null);},28000);
 }
 
+// ===== zh_ 增强（B1 板块跳转指令 / B3 观察注入 / C1 投递作战台 / B2 快捷 chips）=====
+function zh_navIntent(m){
+  var t=(m||'').toLowerCase();
+  if(/今天学什么|今日课程|小白课堂|学习/.test(t)) return {key:'daily-vocab', msg:'📚 今日学习：去【每日一词】看今日新词+小白课堂'};
+  if(/股票|大盘|a股|股市/.test(t)) return {key:'stock', msg:'📈 去【股市区】看今日收盘+操作预案（近期：沪指3930一线防守）'};
+  if(/gpt-6|gpt6|今天的ai|ai动态|模型/.test(t)) return {key:'ai-track', msg:'🔭 去【AI动态追踪】看 GPT-6 Astra 发布专题'};
+  if(/投递|投了|进度|岗位/.test(t)) return {key:'zhApplyBoard', msg:'🎯 打开【投递作战台】看你的目标公司进度'};
+  if(/简历优化|jd|匹配/.test(t)) return {key:'jd', msg:'🤖 去【JD 匹配分析器】粘贴岗位 JD 试试'};
+  return null;
+}
+function zh_go(key){
+  if(key==='jd'){
+    if(typeof showView==='function') showView('section-detail','career');
+    setTimeout(function(){var e=document.getElementById('jdInput');if(e){e.scrollIntoView({behavior:'smooth',block:'center'});e.focus();}},260);
+    return;
+  }
+  if(key==='stock'||key==='ai-track'){
+    if(typeof showView==='function') showView('section-detail',key);
+    return;
+  }
+  var dash=document.getElementById('dashboardView');
+  if(dash && !dash.classList.contains('active') && typeof showView==='function') showView('home');
+  setTimeout(function(){var e=document.getElementById(key);if(e)e.scrollIntoView({behavior:'smooth',block:'start'});},80);
+}
+function zh_goJD(){ zh_go('jd'); }
+function zh_goObs(){
+  var e=document.getElementById('zhObs')||document.getElementById('ai-assistant');
+  if(e) e.scrollIntoView({behavior:'smooth',block:'start'});
+}
+function zh_chip(text){
+  var inp=document.getElementById('chatInput'); if(inp) inp.value=text;
+  if(typeof sendMessage==='function') sendMessage();
+}
+function zh_buildUserMsg(m){
+  if(typeof AI_OBSERVATIONS==='undefined'||!AI_OBSERVATIONS||!AI_OBSERVATIONS.length) return m;
+  var pre='【今天的AI观察】';
+  AI_OBSERVATIONS.slice(-2).forEach(function(o){
+    pre+='\n- '+((o.date?o.date+' ':'')+(o.topic||'未命名主题'))+': '+(o.summary||'');
+  });
+  return pre+'\n\n【用户提问】'+m;
+}
+// ---- C1 投递作战台（读 window.TARGET_COMPANIES · localStorage 持久化）----
+var ZH_APPLY_STATUSES=['未投递','已投递','笔试','面试','已拿offer'];
+function zh_renderApplyBoard(){
+  var box=document.getElementById('zhApplyList');
+  if(!box) return;
+  if(typeof TARGET_COMPANIES==='undefined'||!TARGET_COMPANIES.items||!TARGET_COMPANIES.items.length){
+    box.innerHTML='<div style="font-size:12px;color:var(--text3);padding:10px">去 AI助手/求职中心 查看目标公司。</div>';
+    return;
+  }
+  var items=TARGET_COMPANIES.items, h='';
+  items.forEach(function(c){
+    var nm=c.name, role=c.role||'', insight=c.insight||'';
+    var st=localStorage.getItem('zh_apply_状态_'+nm)||'未投递';
+    var rk=localStorage.getItem('zh_apply_备注_'+nm)||'';
+    var opts='';
+    ZH_APPLY_STATUSES.forEach(function(s){ opts+='<option value="'+s+'"'+(st===s?' selected':'')+'>'+s+'</option>'; });
+    h+='<div class="zh-board-row">';
+    h+='<div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:600">'+escHtml(nm)+'</div><div style="font-size:10px;color:var(--text2)">🎯 '+escHtml(role)+'</div><div style="font-size:9px;color:var(--text3);margin-top:2px">💡 '+escHtml(insight)+'</div></div>';
+    h+='<select onchange="zh_applySet(this,\''+nm+'\')" style="padding:4px 6px;border:1px solid var(--border);border-radius:6px;font-size:11px;background:var(--bg);color:var(--text)">'+opts+'</select>';
+    h+='<input type="text" value="'+escHtml(rk).replace(/"/g,'&quot;')+'" placeholder="备注..." oninput="zh_applyRemark(this,\''+nm+'\')" style="width:110px;padding:4px 6px;border:1px solid var(--border);border-radius:6px;font-size:11px;background:var(--bg);color:var(--text)">';
+    h+='</div>';
+  });
+  box.innerHTML=h;
+  zh_updateApplyCount();
+}
+function zh_applySet(sel,nm){ localStorage.setItem('zh_apply_状态_'+nm,sel.value); }
+function zh_applyRemark(inp,nm){ localStorage.setItem('zh_apply_备注_'+nm,inp.value); }
+function zh_applyPlusOne(){
+  var c=parseInt(localStorage.getItem('zh_apply_count')||'0',10)||0;
+  c++; localStorage.setItem('zh_apply_count',String(c));
+  zh_updateApplyCount();
+}
+function zh_updateApplyCount(){
+  var el=document.getElementById('zhApplyCount');
+  var c=parseInt(localStorage.getItem('zh_apply_count')||'0',10)||0;
+  if(el) el.textContent='🎯 本周投递 '+c+' 家';
+}
+// ---- C3 优化日记折叠（默认只显示前 3 条 + 展开全部）----
+function zh_optCollapse(){
+  var more=document.getElementById('optMore');
+  var btn=document.getElementById('optExpandBtn');
+  if(!more||!btn) return;
+  var show=more.style.display==='none';
+  more.style.display=show?'block':'none';
+  btn.textContent=show?'📕 收起优化建议':'📖 展开全部优化建议';
+}
+
 // Chat（#94：配置 Key 后走真实 AI 对话，未配置/失败走本地规则降级；占位气泡原地更新，永不卡死）
 function sendMessage(){
   var i=document.getElementById('chatInput'),m=i.value.trim();
   if(!m)return;
   var ms=document.getElementById('chatMessages');
   ms.innerHTML+='<div class="chat-msg user"><div class="bubble">'+escHtml(m)+'</div></div>';
+  // B1: 板块跳转指令（本地直接跳转，不再走 AI）
+  var nb=zh_navIntent(m);
+  if(nb){
+    ms.innerHTML+='<div class="chat-msg assistant"><div class="bubble">'+escHtml(nb.msg)+'</div></div>';
+    i.value='';ms.scrollTop=ms.scrollHeight;
+    zh_go(nb.key);
+    return;
+  }
   if(hasAiKey()){
     var ph=document.createElement('div');
     ph.className='chat-msg assistant';
     ph.innerHTML='<div class="bubble" style="color:var(--text3)">🤖 思考中…（最长28秒，超时自动切换本地回答）</div>';
     ms.appendChild(ph);
     ms.scrollTop=ms.scrollHeight;
-    chatToAI(m,function(ans){
+    chatToAI(zh_buildUserMsg(m),function(ans){
       if(ans!==null){
         ph.innerHTML='<div class="bubble">'+escHtml(ans)+'</div>';
       } else {
@@ -1695,8 +1860,10 @@ function renderSectionPicks(sectionId){
       var done=log.suggestions.filter(function(s){return s.status==='已完成';});
       var active=log.suggestions.filter(function(s){return s.status!=='已完成';});
       h+='<div class="insight-box">📅 '+log.date+' · 已累计'+log.total_suggestions+'条建议 · 已实施'+done.length+'条 · 连续'+log.streak_days+'天迭代 · 待实施'+active.length+'条</div>';
-      // 待实施建议（含待办/实施中）——每天新增的待实施方向在这里看
-      active.forEach(function(s){
+      // 待实施建议（含待办/实施中）——每天新增的待实施方向在这里看（默认只显示前 3 条，其余折叠）
+      h+='<div id="optActiveWrap">';
+      active.forEach(function(s, i){
+        if(i===3){ h+='<div id="optMore" style="display:none">'; }
         var badge = s.priority==='P0'?'background:var(--red);color:#fff' : s.priority==='P1'?'background:var(--orange);color:#fff' : 'background:var(--blue);color:#fff';
         var statusBadge = s.status==='实施中'?'background:var(--green);color:#fff' : 'background:var(--bg2);color:var(--text2)';
         h+='<div class="pick-card" style="cursor:default">';
@@ -1704,6 +1871,8 @@ function renderSectionPicks(sectionId){
         h+='<span class="pick-info"><div class="pick-title">'+s.title+' <span style="font-size:9px;padding:1px 5px;border-radius:8px;'+badge+'">'+s.priority+'</span> <span style="font-size:9px;padding:1px 5px;border-radius:8px;'+statusBadge+'">'+s.status+'</span></div><div class="pick-desc">['+s.cat+'] '+s.desc+'</div></span>';
         h+='</div>';
       });
+      if(active.length>3){ h+='</div>'; } // close #optMore
+      h+='</div>'; // close #optActiveWrap
       // 归档：已完成条目折叠
       if(done.length>0){
         var recentDone = done.slice(0, 8);  // 最近8条（数组按id倒序=最新在前）
@@ -1720,6 +1889,13 @@ function renderSectionPicks(sectionId){
       }
     }
     if(h){ container.innerHTML=h; }
+    // C3: 展开全部按钮——仅在活跃建议超过 3 条时显示
+    var expandBtn=document.getElementById('optExpandBtn');
+    if(expandBtn){
+      var ac=(typeof active!=='undefined'&&active)?active.length:0;
+      if(ac>3){ expandBtn.style.display='inline-block'; expandBtn.textContent='📖 展开全部优化建议'; }
+      else { expandBtn.style.display='none'; }
+    }
     // Update stats card
     var statsEl=document.getElementById('optimizationStats');
     if(statsEl && typeof OPTIMIZATION_LOG!=='undefined'){
@@ -1857,7 +2033,7 @@ var CATEGORIES = {
 
 // Key sections to show on homepage (everything else hidden)
 // learning 不在首页展示——点进学习区才显示完整内容（今日新知等），首页只保留小白课堂卡片
-var HOME_SECTIONS = ['dashboard','music-player','daily-vocab','daily-quiz','guide','optimization','ai-assistant'];
+var HOME_SECTIONS = ['dashboard','music-player','daily-vocab','daily-quiz','guide','optimization','ai-assistant','zhObs','zhApplyBoard'];
 var vocabShuffled = [];
 var vocabShowingAll = false;
 
@@ -2707,7 +2883,7 @@ function renderModelComparison(){
 function onDataReady(){
   var tasks = [
     function(){ var e=document.getElementById('siteVersion'); if(e) e.textContent = (typeof SITE_VERSION!=='undefined'?SITE_VERSION:''); },
-    renderAllPicks, renderBriefing, renderVocab, renderQuiz, renderMusicPlayer, renderModelComparison, renderToolchainRadar, renderOpportunityRadar, renderLifeHacks, renderSkillRadar, renderFlashcards, renderMockInterview, renderSentiment, renderDailyDecisions, renderLearnPath, renderTodayKnowledge, renderLearningInsight, renderLearnPathMini, renderAgentStacks, renderCompanyRadar, renderCalendar, updateAiBadge, renderWrongWords, renderSubjectPaths, renderAiObservations, checkUpdateStatus
+    renderAllPicks, renderBriefing, renderVocab, renderQuiz, renderMusicPlayer, renderModelComparison, renderToolchainRadar, renderOpportunityRadar, renderLifeHacks, renderSkillRadar, renderFlashcards, renderMockInterview, renderSentiment, renderDailyDecisions, renderLearnPath, renderTodayKnowledge, renderLearningInsight, renderLearnPathMini, renderAgentStacks, renderCompanyRadar, renderCalendar, updateAiBadge, renderWrongWords, renderSubjectPaths, renderAiObservations, zh_renderApplyBoard, zh_updateApplyCount, checkUpdateStatus
   ];
   tasks.forEach(function(fn){
     try { if(typeof fn==='function') fn(); } catch(e){ console.error('Init error:', e.message); }
@@ -3117,12 +3293,8 @@ function togglePathLesson(key){
 function getMyObservations(){ try{ return JSON.parse(localStorage.getItem('myObservations')||'[]'); }catch(e){ return []; } }
 function saveMyObservations(o){ try{ localStorage.setItem('myObservations', JSON.stringify(o)); }catch(e){} }
 function renderAiObservations(){
-  var list=document.getElementById('aiObsList');
-  var cnt=document.getElementById('aiObsCount');
-  if(!list) return;
   var mine=getMyObservations();
   var total=(typeof AI_OBSERVATIONS!=='undefined'?AI_OBSERVATIONS.length:0)+mine.length;
-  if(cnt) cnt.textContent='· 已沉淀 '+total+' 条（含你的 '+mine.length+' 条）';
   var h='';
   // 手写观察（最新在前）
   mine.slice().reverse().forEach(function(o,i){
@@ -3141,10 +3313,23 @@ function renderAiObservations(){
     });
   }
   if(!h) h='<div style="color:var(--text3);font-size:10px">暂无观察——AI 动态每日沉淀会自动出现在这里，你也可以在上面手写自己的观察</div>';
-  list.innerHTML=h;
+  // 两个入口（原 #ai-assistant 折叠 + 新 zhObs 提权卡）显示同一份数据
+  ['aiObsList','zhObsList'].forEach(function(id){ var el=document.getElementById(id); if(el) el.innerHTML=h; });
+  ['aiObsCount','zhObsCount'].forEach(function(id){ var el=document.getElementById(id); if(el) el.textContent='· 已沉淀 '+total+' 条（含你的 '+mine.length+' 条）'; });
 }
 function addObservation(){
   var inp=document.getElementById('aiObsInput');
+  if(!inp)return;
+  var t=inp.value.trim();
+  if(!t)return;
+  var mine=getMyObservations();
+  mine.push({date:todayStr(), text:t});
+  saveMyObservations(mine);
+  inp.value='';
+  renderAiObservations();
+}
+function zh_addObservation(){
+  var inp=document.getElementById('zhObsInput');
   if(!inp)return;
   var t=inp.value.trim();
   if(!t)return;
@@ -3708,7 +3893,7 @@ function manualRefresh(){
 
 <script defer src="detail_content.js"></script>
 <script defer src="personal_config.js"></script>
-<script defer src="daily_data.js?v=1.6.6"></script>
+<script defer src="daily_data.js?v=1.6.7"></script>
 <script defer src="knowledge_index.js"></script>
 </body>
 </html>
