@@ -1,4 +1,4 @@
-var SITE_VERSION = "1.7.3";
+var SITE_VERSION = "1.7.4";
 
 var DAILY_DATA = {
   "update_time": "2026-09-06T11:45:00+08:00",
@@ -108,7 +108,7 @@ var PICKS = {
     {icon:"🛡️", title:"AI安全与对齐入门路径", desc:"前沿模型失控风险→OpenAI Astra事件→安全评估框架→红队测试→对齐技术全景", link:"#ai-track"}
   ],
   fashion: [
-    {icon:"👕", title:"日系简约（换季版）", desc:"重磅T+黑色九分裤+帆布鞋 · 换季过渡 · 极简黑白", link:"https://s.taobao.com/search?q=重磅棉落肩T恤男250g", video:"https://search.bilibili.com/all?keyword=%E7%94%B7%E7%94%9F%E5%A4%8F%E5%AD%A3%E7%A9%BF%E6%90%AD170cm", img:"https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&w=400&q=60", tag:"通勤·极简"},
+    {icon:"👕", title:"日系简约（换季版）", desc:"重磅T+黑色九分裤+帆布鞋 · 换季过渡 · 极简黑白", link:"https://s.taobao.com/search?q=重磅棉落肩T恤男250g", video:"https://search.bilibili.com/all?keyword=%E7%94%B7%E7%94%9F%E5%A4%8F%E5%AD%A3%E7%A9%BF%E6%90%AD170cm", img:"https://images.unsplash.com/photo-1516257984-b1b4d707412e?auto=format&fit=crop&w=400&q=60", tag:"街头·潮流"},
     {icon:"👔", title:"韩系都市通勤", desc:"牛津纺衬衫+卡其裤+德训鞋 · 轻薄抗皱 · 空调房得体", link:"https://s.taobao.com/search?q=优衣库牛津纺衬衫男浅蓝", video:"https://search.bilibili.com/all?keyword=%E7%94%B7%E7%94%9F%E9%9F%A9%E7%B3%BB%E9%80%9A%E5%8B%A4%E7%A9%BF%E6%90%AD", img:"https://images.unsplash.com/photo-1603252109303-2751441dd157?auto=format&fit=crop&w=400&q=60", tag:"面试·通勤"}
   ],
   fitness: [
@@ -679,7 +679,7 @@ var OPTIMIZATION_LOG = {
 
 var WEBSITE_GUIDE = {
   updated: "2026-09-06",
-  summary: "欢迎来到钟锐的个人数字空间！这是一个持续进化的智能信息中枢。版本1.7.3。9/6多模态升级：穿搭/购车/动漫/影视加入真实网图（更直观）+板块卡片墙移到智能日历后+AI动态/股市详情页日期修复至9/6。每天打开都是新的，每天都有提升。",
+  summary: "欢迎来到钟锐的个人数字空间！这是一个持续进化的智能信息中枢。版本1.7.4。9/6系统迭代：首页三模式切换(今日/内容/作品)+成长热力打卡+AI助手按板块注入实时数据+各板块配主题契合图。每天打开都是新的，每天都有提升。",
   features: [
     {icon:"🏠", title:"首页仪表盘", desc:"一屏总览所有板块精华。分类卡片快速导航、实时股市/天气/新闻一目了然。点击分类卡片进入分类页。"},
     {icon:"📂", title:"分类浏览", desc:"点击侧边栏分类标题(👤关于/🎮娱乐/🏃生活/📊财经/🤖工具)，进入分类页集中浏览该类别所有板块。"},

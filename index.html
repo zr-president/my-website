@@ -175,6 +175,14 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 .briefing-item{transition:all .35s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
 .briefing-item::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--accent),transparent);opacity:0;transition:opacity .35s}
 .briefing-item:hover{transform:translateY(-3px) scale(1.01);box-shadow:0 8px 30px rgba(0,0,0,.12),0 0 0 1px var(--accent)}
+
+/* ===== 首页模式切换 bar（今日/内容/作品）===== */
+.zh-modebar{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:9px 12px;margin-bottom:14px;background:var(--card);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow)}
+.zh-mode{display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:10px;font-size:12px;font-weight:600;cursor:pointer;border:none;background:var(--bg);color:var(--text2);transition:.15s;font-family:inherit}
+.zh-mode .zm-ico{font-size:14px}
+.zh-mode:hover{background:var(--accent-light);color:var(--accent)}
+.zh-mode.active{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 2px 8px rgba(79,70,229,.25)}
+.zh-mode-hint{margin-left:auto;font-size:10px;color:var(--text3);font-weight:500}
 .briefing-item:hover::before{opacity:.06}
 
 /* Insight callout */
@@ -387,6 +395,14 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 <p style="font-size:9px;color:var(--text3);margin-top:6px">🔒 个人提醒只存本机浏览器(localStorage)，不会出现在公开网页 — 通用节点(发售/上映/完结/窗口)每日由数据驱动</p>
 </div>
 </section>
+
+<!-- 首页模式切换（今日 / 内容 / 作品）——降低信息负担，一键切换视角 -->
+<div class="zh-modebar">
+	<button class="zh-mode active" data-mode="today" onclick="zh_setHomeMode('today')"><span class="zm-ico">📌</span> 今日</button>
+	<button class="zh-mode" data-mode="content" onclick="zh_setHomeMode('content')"><span class="zm-ico">📚</span> 内容</button>
+	<button class="zh-mode" data-mode="work" onclick="zh_setHomeMode('work')"><span class="zm-ico">💼</span> 作品</button>
+	<span class="zh-mode-hint" id="zhModeHint">今天要看的核心</span>
+</div>
 
 <!-- 板块快速导航（分类卡片墙：放在智能日历之后，作为探索入口） -->
 <div id="homeCategoryGrid"></div>
@@ -676,6 +692,10 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 <summary style="cursor:pointer;font-size:12px;font-weight:600">📚 板块系统课程（L1入门→L2进阶→L3实战）<span id="pathProgressText" style="font-size:10px;color:var(--text3);font-weight:400"></span></summary>
 <div id="subjectPathsList" style="font-size:11px;margin-top:8px"></div>
 </details></section>
+
+<section id="zh-growth" class="section" data-search="成长 打卡 热力 进步 学习 健身">
+<div id="zhGrowthBox"></div>
+</section>
 
 <section id="daily-quiz" class="section" data-search="每日一练 练习 题目 面试 SQL 题库">
 <details class="card" style="padding:12px 14px;margin:0">
@@ -1074,12 +1094,26 @@ function zh_chip(text){
   if(typeof sendMessage==='function') sendMessage();
 }
 function zh_buildUserMsg(m){
-  if(typeof AI_OBSERVATIONS==='undefined'||!AI_OBSERVATIONS||!AI_OBSERVATIONS.length) return m;
-  var pre='【今天的AI观察】';
-  AI_OBSERVATIONS.slice(-2).forEach(function(o){
-    pre+='\n- '+((o.date?o.date+' ':'')+(o.topic||'未命名主题'))+': '+(o.summary||'');
-  });
-  return pre+'\n\n【用户提问】'+m;
+  var l=(m||'').toLowerCase(), ctx='';
+  // I：按问题关键词注入对应板块实时数据，让回答更精准
+  function grab(sectionKey, label){
+    if(typeof INSIGHTS!=='undefined' && INSIGHTS[sectionKey] && INSIGHTS[sectionKey].summary){
+      return '【'+label+'·今日核心】'+INSIGHTS[sectionKey].summary.substring(0,160)+'...';
+    }
+    return '';
+  }
+  if(/(股票|大盘|a股|股市|基金)/.test(l)) ctx+=grab('stock','股市')+'\n';
+  if(/(ai|大模型|gpt|模型|agent)/.test(l)) ctx+=grab('ai-track','AI动态')+'\n';
+  if(/(求职|招聘|投递|岗位|简历|面试)/.test(l)) ctx+=grab('career','求职')+'\n';
+  if(/(健身|训练|增肌)/.test(l)) ctx+=grab('fitness','健身')+'\n';
+  if(/(动漫|番|追番)/.test(l)) ctx+=grab('anime','动漫')+'\n';
+  // 今日 AI 观察
+  if(typeof AI_OBSERVATIONS!=='undefined'&&AI_OBSERVATIONS&&AI_OBSERVATIONS.length){
+    var obs='【今天的AI观察】';
+    AI_OBSERVATIONS.slice(-2).forEach(function(o){ obs+='\n- '+((o.date?o.date+' ':'')+(o.topic||''))+': '+(o.summary||''); });
+    ctx+=obs+'\n';
+  }
+  return ctx? (ctx+'\n【用户提问】'+m) : m;
 }
 // ---- C1 投递作战台（读 window.TARGET_COMPANIES · localStorage 持久化）----
 var ZH_APPLY_STATUSES=['未投递','已投递','笔试','面试','已拿offer'];
@@ -2244,6 +2278,61 @@ function buildToolsSectionView(key){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
+// ===== 首页三模式切换（今日/内容/作品）=====
+var ZH_HOME_MODES = {
+  today:  {name:'今日', hint:'今天要看的核心', sections:['dashboard','daily-vocab','zh-growth','daily-quiz','ai-assistant']},
+  content:{name:'内容', hint:'全部每日更新的板块', sections:['dashboard','daily-vocab','zh-growth','daily-quiz','guide','optimization','ai-assistant']},
+  work:   {name:'作品', hint:'求职作品集展示视角', sections:['dashboard','ai-assistant']}
+};
+function zh_setHomeMode(mode){
+  if(!ZH_HOME_MODES[mode]) mode = 'today';
+  HOME_SECTIONS = ZH_HOME_MODES[mode].sections;
+  document.querySelectorAll('.zh-mode').forEach(function(b){
+    b.classList.toggle('active', b.getAttribute('data-mode')===mode);
+  });
+  var hint = document.getElementById('zhModeHint');
+  if(hint) hint.textContent = ZH_HOME_MODES[mode].hint;
+  // 重新应用首页 section 显隐
+  document.querySelectorAll('.section').forEach(function(s){
+    var sect = document.getElementById(s.id);
+    if(sect && sect.parentNode===document.getElementById('dashboardView')){
+      if(HOME_SECTIONS.indexOf(sect.id) >= 0) { sect.classList.remove('home-hidden'); sect.style.display=''; }
+      else { sect.classList.add('home-hidden'); sect.style.display='none'; }
+    }
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ===== 成长热力图（D：学习/健身/投递 每日打卡 · GitHub 风格 · localStorage 记录）=====
+var ZH_GROWTH_TYPES = ['🧠 学AI','💻 写码','💪 健身','💼 投递'];
+function zh_growthKey(){ var d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+function zh_growthToggle(t){
+  var k='zh_growth_'+zh_growthKey();
+  var a=[]; try{a=JSON.parse(localStorage.getItem(k)||'[]');}catch(e){}
+  var i=a.indexOf(t); if(i>=0)a.splice(i,1); else a.push(t);
+  localStorage.setItem(k,JSON.stringify(a));
+  zh_renderGrowth();
+}
+function zh_renderGrowth(){
+  var box=document.getElementById('zhGrowthBox');
+  if(!box) return;
+  var today=zh_growthKey();
+  var a=[]; try{a=JSON.parse(localStorage.getItem('zh_growth_'+today)||'[]');}catch(e){}
+  // 近 14 天打卡数（用于概览）
+  var daysLog={};
+  for(var i=0;i<14;i++){ var d=new Date(); d.setDate(d.getDate()-i); var k=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); var ra=[]; try{ra=JSON.parse(localStorage.getItem('zh_growth_'+k)||'[]');}catch(e){} daysLog[k]=ra.length; }
+  var total14=0; Object.keys(daysLog).forEach(function(k){ total14+=daysLog[k]; });
+  var h='<div class="card" style="padding:13px 15px">';
+  h+='<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap"><h3 style="font-size:14px;margin:0">🔥 今日成长打卡</h3><span style="font-size:10px;color:var(--text3)">近14天累计 '+total14+' 次 · 每天进步一点点</span></div>';
+  h+='<div style="display:flex;gap:6px;flex-wrap:wrap">';
+  ZH_GROWTH_TYPES.forEach(function(t){
+    var on=a.indexOf(t)>=0;
+    h+='<button onclick="zh_growthToggle(\''+t+'\')" style="padding:5px 11px;border-radius:14px;font-size:11px;font-weight:600;cursor:pointer;border:1px solid '+(on?'var(--accent)':'var(--border)')+';background:'+(on?'var(--accent)':'var(--bg)')+';color:'+(on?'#fff':'var(--text2)')+';font-family:inherit;transition:.15s">'+(on?'✓ ':'')+t+'</button>';
+  });
+  h+='</div></div>';
+  box.innerHTML=h;
+}
+
 function showView(viewName, categoryKey){
   // 工具全视图（career/life-hacks 等被移入 detail 的板块）切到其他视图前先归还
   restoreMovedTool();
@@ -2893,11 +2982,13 @@ function renderModelComparison(){
 function onDataReady(){
   var tasks = [
     function(){ var e=document.getElementById('siteVersion'); if(e) e.textContent = (typeof SITE_VERSION!=='undefined'?SITE_VERSION:''); },
-    renderAllPicks, renderBriefing, renderVocab, renderQuiz, renderModelComparison, renderToolchainRadar, renderOpportunityRadar, renderLifeHacks, renderSkillRadar, renderFlashcards, renderMockInterview, renderSentiment, renderDailyDecisions, renderLearnPath, renderTodayKnowledge, renderLearningInsight, renderLearnPathMini, renderAgentStacks, renderCompanyRadar, renderCalendar, updateAiBadge, renderWrongWords, renderSubjectPaths, renderAiObservations, zh_renderApplyBoard, zh_updateApplyCount, checkUpdateStatus
+    renderAllPicks, renderBriefing, renderVocab, renderQuiz, renderModelComparison, renderToolchainRadar, renderOpportunityRadar, renderLifeHacks, renderSkillRadar, renderFlashcards, renderMockInterview, renderSentiment, renderDailyDecisions, renderLearnPath, renderTodayKnowledge, renderLearningInsight, renderLearnPathMini, renderAgentStacks, renderCompanyRadar, renderCalendar, updateAiBadge, renderWrongWords, renderSubjectPaths, renderAiObservations, zh_renderApplyBoard, zh_updateApplyCount, zh_renderGrowth, checkUpdateStatus
   ];
   tasks.forEach(function(fn){
     try { if(typeof fn==='function') fn(); } catch(e){ console.error('Init error:', e.message); }
   });
+  // 默认今日模式（降低首屏信息负担）
+  try { if(typeof zh_setHomeMode==='function') zh_setHomeMode('today'); } catch(e){}
 }
 
 // ===== AI工具链雷达渲染 =====
@@ -3908,7 +3999,7 @@ function manualRefresh(){
 
 <script defer src="detail_content.js"></script>
 <script defer src="personal_config.js"></script>
-<script defer src="daily_data.js?v=1.7.3"></script>
+<script defer src="daily_data.js?v=1.7.4"></script>
 <script defer src="knowledge_index.js"></script>
 </body>
 </html>
