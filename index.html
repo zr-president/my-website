@@ -486,6 +486,7 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 		<button onclick="zh_applyPlusOne()" style="padding:5px 12px;background:var(--accent);color:#fff;border:none;border-radius:12px;cursor:pointer;font-size:11px;font-weight:500">🎯 本周投递 +1</button>
 	</div>
 	<div id="zhApplyList"></div>
+	<div id="zhGreetTip" style="display:none;margin-top:6px;padding:7px 10px;background:#ecfdf5;border:1px solid #a7f3d0;border-radius:8px;font-size:11px;color:#065f46"></div>
 </section>
 
 <!-- E：AI 增长工作台（求职差异化作品集 · 展示你做出的可量化增长） -->
@@ -1161,6 +1162,7 @@ function zh_renderApplyBoard(){
     h+='<div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:600">'+escHtml(nm)+'</div><div style="font-size:10px;color:var(--text2)">🎯 '+escHtml(role)+'</div><div style="font-size:9px;color:var(--text3);margin-top:2px">💡 '+escHtml(insight)+'</div></div>';
     h+='<select onchange="zh_applySet(this,\''+nm+'\')" style="padding:4px 6px;border:1px solid var(--border);border-radius:6px;font-size:11px;background:var(--bg);color:var(--text)">'+opts+'</select>';
     h+='<input type="text" value="'+escHtml(rk).replace(/"/g,'&quot;')+'" placeholder="备注..." oninput="zh_applyRemark(this,\''+nm+'\')" style="width:110px;padding:4px 6px;border:1px solid var(--border);border-radius:6px;font-size:11px;background:var(--bg);color:var(--text)">';
+    h+='<button onclick="zh_applyGreet(\''+nm+'\')" title="按公司定制打招呼语" style="padding:4px 8px;border:1px solid var(--accent);border-radius:6px;background:var(--accent-light);color:var(--accent);cursor:pointer;font-size:10px;font-weight:600;white-space:nowrap">💬 打招呼</button>';
     h+='</div>';
   });
   box.innerHTML=h;
@@ -1168,6 +1170,25 @@ function zh_renderApplyBoard(){
 }
 function zh_applySet(sel,nm){ localStorage.setItem('zh_apply_状态_'+nm,sel.value); }
 function zh_applyRemark(inp,nm){ localStorage.setItem('zh_apply_备注_'+nm,inp.value); }
+// G：投递+简历打通——按公司定制打招呼语（用 TARGET_COMPANIES 的 insight + 简历），复制到剪贴板
+function zh_applyGreet(nm){
+  var it=null;
+  if(typeof TARGET_COMPANIES!=='undefined'&&TARGET_COMPANIES.items){
+    TARGET_COMPANIES.items.forEach(function(c){ if(c.name===nm) it=c; });
+  }
+  var insight=it&&it.insight?it.insight:'';
+  var greet='您好！我是钟锐，正在求职 '+((it&&it.role)||'AI产品/增长运营')+'。'+insight+' 您看我是否符合贵司该岗位的要求，方便的话期待和您进一步交流。';
+  var t=document.getElementById('zhGreetTip');
+  if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(greet).then(function(){zh_showGreet(greet);}); }
+  else { var ta=document.createElement('textarea'); ta.value=greet; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); zh_showGreet(greet); }
+}
+function zh_showGreet(greet){
+  var tip=document.getElementById('zhGreetTip');
+  if(!tip) return;
+  tip.style.display='block';
+  tip.textContent='✅ 已复制 '+greet.substring(0,40)+'... 粘贴到 BOSS直聘/猎聘 打招呼即可';
+  setTimeout(function(){ tip.style.display='none'; },6000);
+}
 function zh_applyPlusOne(){
   var c=parseInt(localStorage.getItem('zh_apply_count')||'0',10)||0;
   c++; localStorage.setItem('zh_apply_count',String(c));
@@ -4076,7 +4097,7 @@ function manualRefresh(){
 
 <script defer src="detail_content.js"></script>
 <script defer src="personal_config.js"></script>
-<script defer src="daily_data.js?v=1.7.5"></script>
+<script defer src="daily_data.js?v=1.7.6"></script>
 <script defer src="knowledge_index.js"></script>
 </body>
 </html>
