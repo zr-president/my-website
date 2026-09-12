@@ -180,6 +180,36 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 .zh-mode{display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:10px;font-size:12px;font-weight:600;cursor:pointer;border:none;background:var(--bg);color:var(--text2);transition:.15s;font-family:inherit}
 .zh-mode:hover{background:var(--accent-light);color:var(--accent)}
 
+/* ===== 判断台账（突破一：把信息消费转为能力资产）===== */
+.jd-stats{display:flex;gap:10px;align-items:center;flex-wrap:wrap;background:linear-gradient(135deg,var(--accent-light),var(--card));border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin-bottom:10px}
+.jd-ring{position:relative;width:66px;height:66px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.jd-ring-in{position:absolute;width:50px;height:50px;border-radius:50%;background:var(--card);display:flex;align-items:center;justify-content:center;flex-direction:column}
+.jd-ring-in b{font-size:15px;color:var(--accent);line-height:1}
+.jd-ring-in span{font-size:8px;color:var(--text3)}
+.jd-nums{display:flex;gap:14px;flex-wrap:wrap;flex:1}
+.jd-num b{font-size:17px;color:var(--text);display:block;line-height:1.2}
+.jd-num span{font-size:9px;color:var(--text3)}
+.jd-card{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--text3);border-radius:9px;padding:10px 12px;margin-bottom:7px}
+.jd-card.ok{border-left-color:var(--green)}
+.jd-card.bad{border-left-color:var(--red)}
+.jd-card.pending{border-left-color:var(--orange)}
+.jd-head{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px}
+.jd-topic{font-size:12px;font-weight:700;color:var(--text)}
+.jd-badge{font-size:9px;font-weight:700;padding:1px 7px;border-radius:8px;white-space:nowrap}
+.jd-badge.ok{background:#ecfdf5;color:#059669}
+.jd-badge.bad{background:#fef2f2;color:#dc2626}
+.jd-badge.pending{background:#fff7ed;color:#ea580c}
+.jd-date{font-size:9px;color:var(--text3);margin-left:auto}
+.jd-body{font-size:11px;color:var(--text2);line-height:1.7}
+.jd-ev{font-size:10px;color:var(--accent);line-height:1.6;margin-top:3px}
+.jd-actions{display:flex;gap:5px;margin-top:6px}
+.jd-actions button{font-size:9px;padding:3px 9px;border-radius:8px;cursor:pointer;font-family:inherit;border:1px solid var(--border);background:var(--bg);color:var(--text2)}
+.jd-actions button.y{border-color:var(--green);color:var(--green)}
+.jd-actions button.n{border-color:var(--red);color:var(--red)}
+.jd-form{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.jd-form input{grid-column:span 1;padding:6px 9px;border:1px solid var(--border);border-radius:7px;font-size:11px;font-family:inherit;background:var(--bg);color:var(--text)}
+.jd-form input.full{grid-column:span 2}
+
 /* ===== 周训练计划可视化（健身区）===== */
 .wk-plan{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:8px;margin:12px 0}
 .wk-day{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px 8px;text-align:center;position:relative;overflow:hidden;transition:.15s;cursor:default}
@@ -764,6 +794,26 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 <section id="ai-assistant" class="section" data-search="AI助手 聊天 数字分身"><div class="section-header"><h2>💬 AI助手 · 数字分身</h2><p>可视化问答 · 个人AI管家 · 配置Key后可真实对话</p></div>
 <div class="card" style="padding:0"><div class="chat-box"><div class="chat-messages" id="chatMessages"><div class="chat-msg assistant"><div class="bubble">👋 你好钟锐！我是你的AI助手。可以直接问我求职、AI科普、游戏、学习、健身、饮食等任何问题。开启「🤖 AI实时」后，我能基于你的简历与网站内容真实对话。</div></div></div><div class="zh-chips" style="display:flex;flex-wrap:wrap;gap:6px;padding:6px 10px;border-top:1px solid var(--border);background:var(--bg2)"><button class="zh-chip" onclick="zh_chip('今天的 AI 动态是什么？')">🤖 讲讲今天的 AI 动态</button><button class="zh-chip" onclick="zh_chip('帮我分析一份 JD')">💼 帮我分析这个 JD</button><button class="zh-chip" onclick="zh_chip('今天网站学了什么？')">📚 今天学什么</button><button class="zh-chip" onclick="zh_chip('我的投递进度怎么样了？')">🎯 我的投递进度</button><button class="zh-chip" onclick="zh_chip('今天吃什么？')">🍽️ 今天吃什么</button><button class="zh-chip" onclick="zh_chip('今天股票怎么样？')">📈 股票怎么样</button></div><div class="chat-input-area"><input type="text" id="chatInput" placeholder="输入问题，Enter发送..." onkeydown="if(event.key==='Enter')sendMessage()"><button onclick="sendMessage()">发送</button></div><div style="display:flex;align-items:center;gap:8px;padding:6px 10px;border-top:1px solid var(--border);background:var(--bg)"><span id="aiModeBadge" style="font-size:10px;padding:2px 8px;border-radius:10px;background:var(--bg2);color:var(--text3)">💻 本地模式</span><button onclick="setupAiKey()" id="aiKeyBtn" style="font-size:10px;padding:2px 8px;border:1px solid var(--border);border-radius:10px;background:var(--card);cursor:pointer;color:var(--text2)">🔑 配置AI Key</button><span style="font-size:9px;color:var(--text3)">Key 只存本机浏览器，不进代码仓库</span></div></div></div>
 <p style="font-size:10px;color:var(--text3);margin:8px 2px 0;text-align:center">💡 想展示给面试官看？点上面的【让 AI 分析我的 JD】现场演示</p>
+<!-- 突破一：我的 AI 判断台账（把信息消费转为能力资产） -->
+<div id="zhJudgments" class="card" style="padding:13px 15px;margin-top:8px">
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap">
+<h3 style="font-size:13px;margin:0">⚖️ 我的 AI 判断台账</h3>
+<span style="font-size:10px;color:var(--text3)">记录判断 → 事后验证 → 积累准确率（能力资产）</span>
+<button onclick="zh_toggleJdForm()" style="margin-left:auto;padding:3px 10px;border:1px solid var(--accent);border-radius:9px;background:var(--accent-light);color:var(--accent);cursor:pointer;font-size:10px;font-weight:600">＋ 记一条判断</button>
+</div>
+<div id="zhJdForm" style="display:none;margin-bottom:10px">
+<div class="jd-form">
+<input type="text" id="jdTopic" class="full" placeholder="主题（如：AI Agent岗位需求）">
+<input type="text" id="jdJudgment" class="full" placeholder="我的判断（要可验证，如：6个月内Agent岗位需求翻倍）">
+<input type="text" id="jdVerifyDate" placeholder="验证日期（如 2027-03-12）">
+<input type="text" id="jdEvidence" placeholder="当前依据/线索（可选）">
+</div>
+<button onclick="zh_addJudgment()" style="margin-top:6px;padding:5px 14px;background:var(--accent);color:#fff;border:none;border-radius:9px;cursor:pointer;font-size:11px;font-weight:600">保存判断</button>
+</div>
+<div id="zhJdStats"></div>
+<div id="zhJdList"></div>
+</div>
+
 <!-- #96: AI 行业观察档案（个人思考沉淀：面试作品集 + 成长记录） -->
 <details class="card" style="padding:12px 14px;margin-top:8px">
 <summary style="cursor:pointer;font-size:12px;font-weight:600">📝 我的 AI 行业观察 <span id="aiObsCount" style="font-size:10px;color:var(--text3);font-weight:400"></span></summary>
@@ -2452,6 +2502,76 @@ function zh_renderGrowthWorkbench(){
   }
 }
 
+// ===== 判断台账（突破一）=====
+function zh_toggleJdForm(){
+  var f=document.getElementById('zhJdForm');
+  if(f) f.style.display = f.style.display==='none' ? 'block' : 'none';
+}
+function zh_jdAll(){
+  var built=(typeof AI_JUDGMENTS!=='undefined'&&AI_JUDGMENTS.items)?AI_JUDGMENTS.items.slice():[];
+  var mine=[]; try{ mine=JSON.parse(localStorage.getItem('myJudgments')||'[]'); }catch(e){}
+  mine.forEach(function(m){ m._mine=true; });
+  return built.concat(mine);
+}
+function zh_addJudgment(){
+  var t=(document.getElementById('jdTopic')||{}).value||'';
+  var j=(document.getElementById('jdJudgment')||{}).value||'';
+  var v=(document.getElementById('jdVerifyDate')||{}).value||'';
+  var e=(document.getElementById('jdEvidence')||{}).value||'';
+  if(!t.trim()||!j.trim()){ alert('请填写主题和判断'); return; }
+  var mine=[]; try{ mine=JSON.parse(localStorage.getItem('myJudgments')||'[]'); }catch(e2){}
+  var d=new Date();
+  mine.push({date:d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'),
+    topic:t.trim(), judgment:j.trim(), verifyDate:v.trim(), evidence:e.trim(), status:'待验证', result:'', _mine:true});
+  localStorage.setItem('myJudgments', JSON.stringify(mine));
+  document.getElementById('jdTopic').value=''; document.getElementById('jdJudgment').value='';
+  document.getElementById('jdVerifyDate').value=''; document.getElementById('jdEvidence').value='';
+  zh_toggleJdForm();
+  zh_renderJudgments();
+}
+function zh_verifyJudgment(i, result){
+  var mine=[]; try{ mine=JSON.parse(localStorage.getItem('myJudgments')||'[]'); }catch(e){}
+  if(mine[i]){ mine[i].status='已验证'; mine[i].result=result; localStorage.setItem('myJudgments', JSON.stringify(mine)); }
+  zh_renderJudgments();
+}
+function zh_renderJudgments(){
+  var box=document.getElementById('zhJdList'), st=document.getElementById('zhJdStats');
+  if(!box) return;
+  var all=zh_jdAll();
+  var verified=all.filter(function(j){return j.status==='已验证';});
+  var correct=verified.filter(function(j){return j.result==='正确';});
+  var acc=verified.length?Math.round(correct.length/verified.length*100):0;
+  var pending=all.filter(function(j){return j.status!=='已验证';});
+  if(st){
+    var col = acc>=70?'var(--green)':acc>=50?'var(--orange)':'var(--red)';
+    st.innerHTML='<div class="jd-stats">'+
+      '<div class="jd-ring" style="background:conic-gradient('+col+' '+(acc*3.6)+'deg, var(--bg2) 0deg)"><div class="jd-ring-in"><b>'+acc+'%</b><span>准确率</span></div></div>'+
+      '<div class="jd-nums">'+
+      '<div class="jd-num"><b>'+all.length+'</b><span>累计判断</span></div>'+
+      '<div class="jd-num"><b style="color:var(--green)">'+correct.length+'</b><span>已验证正确</span></div>'+
+      '<div class="jd-num"><b style="color:var(--orange)">'+pending.length+'</b><span>待验证</span></div>'+
+      '</div></div>';
+  }
+  var h='';
+  function card(j, mineIdx){
+    var cls = j.status==='已验证' ? (j.result==='正确'?'ok':'bad') : 'pending';
+    var badge = j.status==='已验证' ? (j.result==='正确'?'<span class="jd-badge ok">✓ 已验证·正确</span>':'<span class="jd-badge bad">✗ 已验证·错误</span>') : '<span class="jd-badge pending">⏳ 待验证</span>';
+    h+='<div class="jd-card '+cls+'">';
+    h+='<div class="jd-head"><span class="jd-topic">'+escHtml(j.topic)+'</span>'+badge+'<span class="jd-date">'+escHtml(j.date||'')+(j.verifyDate?' → '+escHtml(j.verifyDate):'')+'</span></div>';
+    h+='<div class="jd-body">📌 '+escHtml(j.judgment||'')+'</div>';
+    if(j.evidence) h+='<div class="jd-ev">🔍 '+escHtml(j.evidence)+'</div>';
+    if(mineIdx!==null && j.status!=='已验证'){
+      h+='<div class="jd-actions"><button class="y" onclick="zh_verifyJudgment('+mineIdx+',\'正确\')">✓ 验证：正确</button><button class="n" onclick="zh_verifyJudgment('+mineIdx+',\'错误\')">✗ 验证：错误</button></div>';
+    }
+    h+='</div>';
+  }
+  if(pending.length){ h+='<div style="font-size:10px;color:var(--text3);margin:8px 0 4px;font-weight:700">⏳ 待验证（'+pending.length+'）</div>'; 
+    var mi=0; var mine=[]; try{ mine=JSON.parse(localStorage.getItem('myJudgments')||'[]'); }catch(e){}
+    pending.forEach(function(j){ card(j, (j._mine && j.status!=='已验证') ? mine.indexOf(j) : null); }); }
+  if(verified.length){ h+='<div style="font-size:10px;color:var(--text3);margin:10px 0 4px;font-weight:700">✓ 已验证（'+verified.length+'）</div>'; verified.forEach(function(j){ card(j, null); }); }
+  box.innerHTML=h;
+}
+
 function showView(viewName, categoryKey){
   // 工具全视图（career/life-hacks 等被移入 detail 的板块）切到其他视图前先归还
   restoreMovedTool();
@@ -3109,7 +3229,7 @@ function renderModelComparison(){
 function onDataReady(){
   var tasks = [
     function(){ var e=document.getElementById('siteVersion'); if(e) e.textContent = (typeof SITE_VERSION!=='undefined'?SITE_VERSION:''); },
-    renderAllPicks, renderBriefing, renderVocab, renderQuiz, renderModelComparison, renderToolchainRadar, renderOpportunityRadar, renderLifeHacks, renderSkillRadar, renderFlashcards, renderMockInterview, renderSentiment, renderDailyDecisions, renderLearnPath, renderTodayKnowledge, renderLearningInsight, renderLearnPathMini, renderAgentStacks, renderCompanyRadar, renderCalendar, updateAiBadge, renderWrongWords, renderSubjectPaths, renderAiObservations, zh_renderApplyBoard, zh_updateApplyCount, zh_renderGrowth, zh_renderGrowthWorkbench, checkUpdateStatus
+    renderAllPicks, renderBriefing, renderVocab, renderQuiz, renderModelComparison, renderToolchainRadar, renderOpportunityRadar, renderLifeHacks, renderSkillRadar, renderFlashcards, renderMockInterview, renderSentiment, renderDailyDecisions, renderLearnPath, renderTodayKnowledge, renderLearningInsight, renderLearnPathMini, renderAgentStacks, renderCompanyRadar, renderCalendar, updateAiBadge, renderWrongWords, renderSubjectPaths, renderAiObservations, zh_renderApplyBoard, zh_updateApplyCount, zh_renderGrowth, zh_renderGrowthWorkbench, zh_renderJudgments, checkUpdateStatus
   ];
   tasks.forEach(function(fn){
     try { if(typeof fn==='function') fn(); } catch(e){ console.error('Init error:', e.message); }
@@ -4126,7 +4246,7 @@ function manualRefresh(){
 
 <script defer src="detail_content.js"></script>
 <script defer src="personal_config.js"></script>
-<script defer src="daily_data.js?v=1.8.5"></script>
+<script defer src="daily_data.js?v=1.8.6"></script>
 <script defer src="knowledge_index.js"></script>
 </body>
 </html>

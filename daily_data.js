@@ -1,4 +1,4 @@
-var SITE_VERSION = "1.8.5";
+var SITE_VERSION = "1.8.6";
 
 var DAILY_DATA = {
   "update_time": "2026-09-12T11:55:00+08:00",
@@ -669,7 +669,7 @@ var OPTIMIZATION_LOG = {
 
 var WEBSITE_GUIDE = {
   updated: "2026-09-06",
-  summary: "欢迎来到钟锐的个人数字空间！这是一个持续进化的智能信息中枢。版本1.8.5。9/12优化：健身区训练计划可视化(周计划卡片/动作清单表/强度进阶表)+DeepSeek V4.1 Flash模型评分。每天打开都是新的，每天都有提升。",
+  summary: "欢迎来到钟锐的个人数字空间！这是一个持续进化的智能信息中枢。版本1.8.6。9/12突破：新增『我的AI判断台账』(记录判断→事后验证→准确率，把信息消费转为能力资产)+健身计划可视化。每天打开都是新的，每天都有提升。",
   features: [
     {icon:"🏠", title:"首页仪表盘", desc:"一屏总览所有板块精华。分类卡片快速导航、实时股市/天气/新闻一目了然。点击分类卡片进入分类页。"},
     {icon:"📂", title:"分类浏览", desc:"点击侧边栏分类标题(👤关于/🎮娱乐/🏃生活/📊财经/🤖工具)，进入分类页集中浏览该类别所有板块。"},
@@ -1200,6 +1200,20 @@ var CALENDAR_EVENTS = {
 
 // ===== AI 行业观察档案（#96：每日AI分析的沉淀，可手写追加）=====
 // 每日更新时：把当日 ai-track/news 的核心分析提炼为一条观察（date+topic+summary）加到数组头部
+// ===== 我的 AI 判断台账（突破一：把信息消费转为能力资产）=====
+// 每条 = 主题 + 我的判断(可验证的预测) + 判断日期 + 验证日期 + 结果 + 证据
+// 渲染时合并内置示例 + 用户本机自记(localStorage: myJudgments) → 自动算准确率
+var AI_JUDGMENTS = {
+  updated: "2026-09-12",
+  items: [
+    {date:'2026-09-07', topic:'开源模型追平闭源旗舰', judgment:'我判断：3-6个月内，开源模型会在主流benchmark追平闭源旗舰（Opus/GPT系列），且保持成本优势', verifyDate:'2026-12-07', status:'已验证', result:'正确', evidence:'9/10 DeepSeek V4.1 Flash 发布——多个benchmark超Claude Opus 5与GPT-5.6 Sol，MIT开源、API峰值$0.3/$1.2，验证了判断（比预期更快）'},
+    {date:'2026-09-04', topic:'GPT-6会引爆AI安全治理议题', judgment:'我判断：GPT-6 Astra（8月因安全暂停）发布后，"AI安全治理"会从技术圈话题变成行业/政策议题', verifyDate:'2026-09-11', status:'已验证', result:'正确', evidence:'9/9-9/11 美国加州签署AI安全法案（Anthropic/OpenAI支持）；OpenAI系统卡披露推理可监控性下降引发安全研究者关注——安全治理确实进入政策议程'},
+    {date:'2026-09-11', topic:'AI硬件是A股结构主线', judgment:'我判断：AI硬件（覆铜板/元件/光通信）在普跌行情中会持续跑赢，是政策+涨价双驱动的结构主线', verifyDate:'2026-09-18', status:'待验证', result:'', evidence:'9/11 覆铜板+4.31%/元件+1.80%/MLCC+1.76% 逆势走强（沪指-1.18%），初步验证中'},
+    {date:'2026-09-12', topic:'V4.1 Flash将拉低Agent应用成本', judgment:'我判断：V4.1 Flash（KV缓存降至1/3.9+API降价）会让Agent/自动化应用的推理成本显著下降，2026Q4会出现更多低价Agent产品', verifyDate:'2026-12-12', status:'待验证', result:'', evidence:'V4.1 Flash AutomationBench-AA 超 GPT-6 Astra 拿第一（事务Agent）；Agents API 标准化中'},
+    {date:'2026-09-12', topic:'AI Agent岗位需求将上升', judgment:'我判断：6个月内"AI Agent产品/应用"相关岗位需求会明显上升（OpenAI Agents API标准化+Agent-Native模型出现）', verifyDate:'2027-03-12', status:'待验证', result:'', evidence:'OpenAI Agents API公开测试；无问芯穹发布Agent-Native模型NeoHorse；招聘侧待观察'}
+  ]
+};
+
 var AI_OBSERVATIONS = [
   {date:'2026-09-12', topic:'DeepSeek V4.1 Flash发布，开源追平闭源旗舰', summary:'9/10发布：5520亿MoE、原生视觉理解、多个benchmark超Claude Opus 5/GPT-5.6 Sol、AutomationBench-AA超GPT-6 Astra拿第一、MIT开源、API峰值$0.3/$1.2——开源模型与闭源旗舰的能力差距正在消失，本地部署/私有化方案竞争力质变'},
   {date:'2026-09-12', topic:'AI治理立法化+Agent标准化', summary:'美国加州签署AI安全法案(Anthropic/OpenAI支持)+OpenAI推出Agents API公开测试版+无问芯穹发布Agent-Native模型NeoHorse——AI安全从企业自律走向立法，Agent开发走向标准化，AI安全/治理与Agent产品岗位需求上升'},
