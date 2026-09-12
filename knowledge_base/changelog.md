@@ -1,5 +1,12 @@
 # 网站更新日志
 
+## 2026-09-12（能力训练平台回流 · v1.8.12）
+- 新增「能力训练平台进度」卡片（成长打卡区）：读取同源 localStorage（键 tp_summary_v1），
+  显示 7 个训练模块进度（SQL训练场/数据集实验室/指标设计/实验分析/Case拆解/AI Agent）+ 能力雷达达成度
+- 训练平台已上线：https://zr-president.github.io/training/（4 个阶段全部完成）
+- 同源机制：两个站点都在 zr-president.github.io 下，localStorage 共享 → 训练进度自动显示在个人网站
+- 版本三处同步 1.8.11 → 1.8.12
+
 ## 2026-09-12（周六版）
 - 版本升级 v1.8.3 → v1.8.4 每日更新（跨9/8-9/12积压事件状态推进）
 - 头条：DeepSeek V4.1 Flash 发布(9/10)——多个benchmark超Claude Opus 5/GPT-5.6 Sol·原生视觉·MIT开源·API大降价(峰值# 网站更新日志
