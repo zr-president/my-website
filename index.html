@@ -2586,15 +2586,26 @@ function zh_buildBattlePlan(){
   var hh='<div class="bp-wrap">';
   hh+='<div class="bp-head"><h3>🎯 今日作战计划</h3><span style="font-size:10px;padding:2px 9px;border-radius:9px;background:rgba(255,255,255,.16)">AI 自动生成</span><span class="bp-date">'+dateStr+'</span></div>';
   hh+='<div class="bp-stance">🧭 <b>今日态势</b>：'+stance+'</div>';
-  if(acts.length){
-    hh+='<div class="bp-sec-t">⚡ 今天优先做的 ' + acts.length + ' 件事</div>';
-    acts.forEach(function(a){
-      var pc = a.priority==='P0'?'':'p1';
-      hh+='<div class="bp-act"><span class="bp-p '+pc+'">'+a.priority+'</span><span>'+escHtml(a.action||'')+(a.why?'<br><span style="opacity:.72">理由：'+escHtml(a.why).slice(0,80)+'</span>':'')+'</span></div>';
+  // ② 待验证判断提醒（与今日决策单分工：这里给「判断/提醒」，决策单给「行动清单」）
+  var pendingJ=[];
+  try{
+    if(typeof AI_JUDGMENTS!=='undefined' && AI_JUDGMENTS.items){
+      AI_JUDGMENTS.items.forEach(function(j){ if(j.status!=='已验证') pendingJ.push(j); });
+    }
+    var mineJ=[]; try{ mineJ=JSON.parse(localStorage.getItem('myJudgments')||'[]'); }catch(e){}
+    mineJ.forEach(function(j){ if(j.status!=='已验证') pendingJ.push(j); });
+  }catch(e){}
+  if(pendingJ.length){
+    hh+='<div class="bp-sec-t">⚖️ 待验证判断（今天留意这些信号）</div>';
+    pendingJ.slice(0,2).forEach(function(j){
+      hh+='<div class="bp-act"><span class="bp-p p1">判断</span><span>'+escHtml(j.topic||'')+'：'+escHtml((j.judgment||'').slice(0,60))+
+          (j.action?'<br><span style="opacity:.8">👉 '+escHtml(j.action).slice(0,90)+'</span>':'')+'</span></div>';
     });
   }
   if(risk) hh+='<div class="bp-risk">⚠️ <b>风险提示</b>：'+escHtml(risk)+'</div>';
-  hh+='<div class="bp-foot">依据当日市场情绪 / 决策单 / 板块分析自动合成 · 每日更新</div>';
+  var decCount=0;
+  try{ if(typeof DAILY_DECISIONS!=='undefined'&&DAILY_DECISIONS.items) decCount=DAILY_DECISIONS.items.length; }catch(e){}
+  hh+='<div class="bp-foot">🧭 本卡=AI判断层（态势/判断提醒/风险）｜行动清单见下方「📌 今日决策单」'+(decCount?('（'+decCount+' 件事）'):'')+' · 每日更新</div>';
   hh+='</div>';
   box.innerHTML=hh;
 }
@@ -2657,6 +2668,7 @@ function zh_renderJudgments(){
     h+='<div class="jd-head"><span class="jd-topic">'+escHtml(j.topic)+'</span>'+badge+'<span class="jd-date">'+escHtml(j.date||'')+(j.verifyDate?' → '+escHtml(j.verifyDate):'')+'</span></div>';
     h+='<div class="jd-body">📌 '+escHtml(j.judgment||'')+'</div>';
     if(j.evidence) h+='<div class="jd-ev">🔍 '+escHtml(j.evidence)+'</div>';
+    if(j.action) h+='<div style="font-size:10px;line-height:1.65;margin-top:4px;padding:5px 8px;background:var(--accent-light);border-radius:6px;color:var(--accent);font-weight:600">👉 '+escHtml(j.action)+'</div>';
     if(mineIdx!==null && j.status!=='已验证'){
       h+='<div class="jd-actions"><button class="y" onclick="zh_verifyJudgment('+mineIdx+',\'正确\')">✓ 验证：正确</button><button class="n" onclick="zh_verifyJudgment('+mineIdx+',\'错误\')">✗ 验证：错误</button></div>';
     }
@@ -4345,7 +4357,7 @@ function manualRefresh(){
 
 <script defer src="detail_content.js"></script>
 <script defer src="personal_config.js"></script>
-<script defer src="daily_data.js?v=1.8.9"></script>
+<script defer src="daily_data.js?v=1.8.10"></script>
 <script defer src="knowledge_index.js"></script>
 </body>
 </html>
