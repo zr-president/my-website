@@ -179,6 +179,29 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 /* ===== 首页模式切换（今日/内容/作品）===== */
 .zh-mode{display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:10px;font-size:12px;font-weight:600;cursor:pointer;border:none;background:var(--bg);color:var(--text2);transition:.15s;font-family:inherit}
 .zh-mode:hover{background:var(--accent-light);color:var(--accent)}
+
+/* ===== 周训练计划可视化（健身区）===== */
+.wk-plan{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:8px;margin:12px 0}
+.wk-day{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px 8px;text-align:center;position:relative;overflow:hidden;transition:.15s;cursor:default}
+.wk-day:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.wk-day::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--text3)}
+.wk-day.cardio::before{background:linear-gradient(90deg,#f59e0b,#fbbf24)}
+.wk-day.abs::before{background:linear-gradient(90deg,#8b5cf6,#a78bfa)}
+.wk-day.strength::before{background:linear-gradient(90deg,#3b82f6,#60a5fa)}
+.wk-day.rest::before{background:linear-gradient(90deg,#94a3b8,#cbd5e1)}
+.wk-day .wk-w{font-size:10px;color:var(--text3);font-weight:700;letter-spacing:.5px}
+.wk-day .wk-i{font-size:19px;margin:3px 0}
+.wk-day .wk-t{font-size:11px;font-weight:700;line-height:1.35;color:var(--text)}
+.wk-day .wk-m{font-size:9px;color:var(--text3);margin-top:3px;line-height:1.4}
+.wk-day.rest{opacity:.72}
+.wk-legend{display:flex;gap:14px;flex-wrap:wrap;font-size:10px;color:var(--text2);margin:0 0 14px}
+.wk-legend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+/* 动作执行清单（可视化勾选样式·静态展示） */
+.ex-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:7px;margin:10px 0}
+.ex-item{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:8px;padding:8px 11px;font-size:11px}
+.ex-item .ex-n{font-weight:700;color:var(--text);flex:1}
+.ex-item .ex-s{font-size:10px;color:var(--accent);font-weight:700;white-space:nowrap}
+.ex-item.c1{border-left-color:#f59e0b}.ex-item.c2{border-left-color:#8b5cf6}.ex-item.c3{border-left-color:#3b82f6}.ex-item.c4{border-left-color:#10b981}
 .zh-mode.active{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 2px 8px rgba(79,70,229,.25)}
 .briefing-item:hover::before{opacity:.06}
 
@@ -4103,7 +4126,7 @@ function manualRefresh(){
 
 <script defer src="detail_content.js"></script>
 <script defer src="personal_config.js"></script>
-<script defer src="daily_data.js?v=1.8.4"></script>
+<script defer src="daily_data.js?v=1.8.5"></script>
 <script defer src="knowledge_index.js"></script>
 </body>
 </html>
