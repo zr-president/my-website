@@ -1,5 +1,16 @@
 # 网站更新日志
 
+## 2026-09-12（周六版）
+- 版本升级 v1.8.3 → v1.8.4 每日更新（跨9/8-9/12积压事件状态推进）
+- 头条：DeepSeek V4.1 Flash 发布(9/10)——多个benchmark超Claude Opus 5/GPT-5.6 Sol·原生视觉·MIT开源·API大降价(峰值# 网站更新日志
+.3/$1.2)
+- AI模型评分表更新：AI_MODEL_COMPARISON 新增 DeepSeek V4.1 Flash 行(智能86/速度90/性价比96/综合91)+AGENT_STACKS 新增 Harness+V4.1 Flash 组合(综合93·强推升级)
+- A股9/11放量下挫：沪指-1.18%收3888.11失守3900·超4870只个股下跌·赚钱效应11%——AI硬件(覆铜板+4.31%/元件)/军工/电力逆势·有色领跌
+- 工信部《人工智能+软件专项行动》+加州AI安全法案+OpenAI Agents API测试
+- 国庆档4部影片定档+陈思诚新片·哪吒获百花奖最佳影片
+- **健身区升级：新增8周腹肌专项计划**（针对体脂率15-18%瘦胖子·跳绳HIIT+腹肌A/B+俯卧撑变式+拉力绳+饮食方案）
+- 17板块INSIGHTS全部刷新至9/12·DAILY_BRIEFING 8卡·TOOLCHAIN_RADAR(V4.1 Flash重点)·DAILY_DECISIONS·AI_OBSERVATIONS
+- 新增 knowledge_base(ai/stock/news/fitness)
 ## 2026-09-07（周一版）
 - 版本升级 v1.8.2 → v1.8.3 每日更新（周一工作日版）
 - 头条：GPT-6开启新叙事——模型竞争从Coding转向长程Agent/Computer Use（10万卡训练+Recurrent Depth架构+API价$10/$50）
