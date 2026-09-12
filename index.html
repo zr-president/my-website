@@ -365,6 +365,16 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 		<button class="zh-mode" data-mode="work" onclick="zh_setHomeMode('work')" style="flex:1">💼作品</button>
 	</div>
 </div>
+<!-- 能力训练平台 · 直达入口（外链） -->
+<a href="https://zr-president.github.io/training/" target="_blank" rel="noopener" id="zhTrainEntry"
+   style="display:flex;align-items:center;gap:9px;margin:8px 12px 6px;padding:10px 12px;border-radius:11px;text-decoration:none;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 4px 14px rgba(79,70,229,.28);transition:.2s">
+	<span style="font-size:16px">🎓</span>
+	<span style="flex:1;line-height:1.35;min-width:0">
+		<span style="display:block;font-size:12.5px;font-weight:700">能力训练平台</span>
+		<span style="display:block;font-size:9.5px;opacity:.88" id="zhTrainSideMeta">SQL · 数据分析 · AI 产品</span>
+	</span>
+	<span style="font-size:13px;opacity:.9">→</span>
+</a>
 <div class="sidebar-footer">
 <div class="search-box"><input type="text" id="searchInput" placeholder="搜索板块..." oninput="doSearch(this.value)"></div>
 <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="切换暗色">🌙</button>
@@ -2456,6 +2466,7 @@ function zh_growthToggle(t){
 function zh_renderTraining(){
   var box=document.getElementById('zhTrainingBox');
   if(!box) return;
+  try{ if(typeof zh_updateTrainEntry==='function') zh_updateTrainEntry(); }catch(e){}
   var TRAIN_URL='https://zr-president.github.io/training/';
   var s=null;
   try{ var raw=localStorage.getItem('tp_summary_v1'); if(raw) s=JSON.parse(raw); }catch(e){}
@@ -2501,6 +2512,15 @@ function zh_renderTraining(){
     rows+radarHtml+
     '<div style="font-size:9.5px;color:var(--text3);margin-top:8px">数据来自训练平台（同源 localStorage，只存本机）'+(s.updated?' · 最近 '+s.updated:'')+'</div>'+
     '</div>';
+}
+// 同步侧边栏入口的进度文案
+function zh_updateTrainEntry(){
+  var el=document.getElementById('zhTrainSideMeta');
+  if(!el) return;
+  var s=null;
+  try{ var raw=localStorage.getItem('tp_summary_v1'); if(raw) s=JSON.parse(raw); }catch(e){}
+  if(s && s.total){ el.textContent='已练 '+s.done+'/'+s.total+'（'+s.pct+'%）· 点击进入'; }
+  else { el.textContent='SQL · 数据分析 · AI 产品 · 点击进入'; }
 }
 
 function zh_renderGrowth(){
@@ -3393,7 +3413,7 @@ function renderModelComparison(){
 function onDataReady(){
   var tasks = [
     function(){ var e=document.getElementById('siteVersion'); if(e) e.textContent = (typeof SITE_VERSION!=='undefined'?SITE_VERSION:''); },
-    renderAllPicks, renderBriefing, renderVocab, renderQuiz, renderModelComparison, renderToolchainRadar, renderOpportunityRadar, renderLifeHacks, renderSkillRadar, renderFlashcards, renderMockInterview, renderSentiment, renderDailyDecisions, renderLearnPath, renderTodayKnowledge, renderLearningInsight, renderLearnPathMini, renderAgentStacks, renderCompanyRadar, renderCalendar, updateAiBadge, renderWrongWords, renderSubjectPaths, renderAiObservations, zh_renderApplyBoard, zh_updateApplyCount, zh_renderGrowth, zh_renderGrowthWorkbench, zh_renderJudgments, zh_buildBattlePlan, zh_renderTraining, checkUpdateStatus
+    renderAllPicks, renderBriefing, renderVocab, renderQuiz, renderModelComparison, renderToolchainRadar, renderOpportunityRadar, renderLifeHacks, renderSkillRadar, renderFlashcards, renderMockInterview, renderSentiment, renderDailyDecisions, renderLearnPath, renderTodayKnowledge, renderLearningInsight, renderLearnPathMini, renderAgentStacks, renderCompanyRadar, renderCalendar, updateAiBadge, renderWrongWords, renderSubjectPaths, renderAiObservations, zh_renderApplyBoard, zh_updateApplyCount, zh_renderGrowth, zh_renderGrowthWorkbench, zh_renderJudgments, zh_buildBattlePlan, zh_renderTraining, zh_updateTrainEntry, checkUpdateStatus
   ];
   tasks.forEach(function(fn){
     try { if(typeof fn==='function') fn(); } catch(e){ console.error('Init error:', e.message); }
@@ -4410,7 +4430,7 @@ function manualRefresh(){
 
 <script defer src="detail_content.js"></script>
 <script defer src="personal_config.js"></script>
-<script defer src="daily_data.js?v=1.8.12"></script>
+<script defer src="daily_data.js?v=1.8.13"></script>
 <script defer src="knowledge_index.js"></script>
 </body>
 </html>
