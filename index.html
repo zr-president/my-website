@@ -2276,7 +2276,7 @@ function renderVocabCards(words, containerId, limit){
   if(!el) return;
   var h = '';
   var list = words.slice(0, limit || words.length);
-  var catColors = {'AI':'#7c3aed','金融':'#d97706','科技':'#0284c7','数据':'#059669','产品':'#e11d48'};
+  var catColors = {'AI':'#7c3aed','金融':'#d97706','科技':'#0284c7','数据':'#059669','产品':'#e11d48','健身':'#059669','运营':'#2563eb','财经':'#d97706','饮食':'#ea580c','营养':'#ea580c','生活方式':'#0891b2','求职':'#4f46e5'};
   list.forEach(function(v, i){
     var catColor = catColors[v.category] || 'var(--accent)';
     var vid = 'vocab_detail_'+Date.now()+'_'+i;
