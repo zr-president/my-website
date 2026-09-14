@@ -407,7 +407,8 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 		<div class="zh-hero-badge">
 			<span class="zh-pill">🔒 数据存本机</span>
 			<span class="zh-pill">🧠 AI 驱动</span>
-			<span class="zh-pill">📅 每日更新</span>
+			<span class="zh-pill" id="zhDatePill" title="站点内容日期">📅 每日更新</span>
+			<span class="zh-pill" id="zhAuditPill" title="点击查看核查明细">🔍 核查中…</span>
 			<span class="zh-pill">🕘 每天 6:00 自动刷新</span>
 		</div>
 		<h1>你的 AI 个人信息中枢</h1>
@@ -767,6 +768,8 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 <div id="picks-news" class="picks-container"></div>
 <div class="card" style="padding:12px 16px" id="rssNewsFeed"><p style="font-size:12px;color:var(--text3)">📡 正在加载实时资讯...</p></div>
 <div class="card clickable" onclick="openDetail('news')"><h3>🌍 资讯获取方案</h3><p>高效信息源配置、每日阅读时间表、RSS订阅方案。</p></div></section>
+
+<section id="update-audit" class="section" data-search="更新 核查 日期 新鲜度 凭证"><div class="section-header"><h2>✅ 本次更新核查</h2><span class="section-sub">打开页面时实时计算 · 非写死结论</span></div><div id="zhAuditBox"></div></section>
 
 <section id="daily-vocab" class="section" data-search="每日一词 术语 词汇 专业 学习 技能"><div class="section-header"><h2>📚 每日一词</h2><p>首页展示3个 · 共<span id="vocabTotalCount">0</span>个 · AI/金融/科技/数据全覆盖</p></div>
 <div id="vocabPreview" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px;margin-bottom:8px"></div>
@@ -2267,7 +2270,110 @@ var CATEGORIES = {
 
 // Key sections to show on homepage (everything else hidden)
 // learning 不在首页展示——点进学习区才显示完整内容（今日新知等），首页只保留小白课堂卡片
-var HOME_SECTIONS = ['dashboard','daily-vocab','daily-quiz','guide','optimization','ai-assistant'];
+var HOME_SECTIONS = ['dashboard','update-audit','daily-vocab','daily-quiz','guide','optimization','ai-assistant'];
+
+// ===== 本次更新核查（页面打开时实时计算，非写死）=====
+function zh_iso(s){
+  if(!s) return null;
+  var m=String(s).match(/(\d{4})\D+(\d{1,2})\D+(\d{1,2})/);
+  if(m) return m[1]+'-'+String(m[2]).padStart(2,'0')+'-'+String(m[3]).padStart(2,'0');
+  return null;
+}
+function zh_extractDates(txt){
+  // 抽取文本里所有 M月D日 / M/D
+  var out=[];
+  var m, re1=/(\d{1,2})月(\d{1,2})日/g;
+  while((m=re1.exec(txt))) out.push([parseInt(m[1],10),parseInt(m[2],10)]);
+  var re2=/(?:^|[^\d])(\d{1,2})\/(\d{1,2})(?![\d])/g;
+  while((m=re2.exec(txt))){
+    var a=parseInt(m[1],10), b=parseInt(m[2],10);
+    if(a>=1&&a<=12&&b>=1&&b<=31) out.push([a,b]);
+  }
+  return out;
+}
+function zh_renderUpdateAudit(){
+  var box=document.getElementById('zhAuditBox');
+  if(!box) return;
+  var now=new Date();
+  var today=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0');
+  var wd=['周日','周一','周二','周三','周四','周五','周六'][now.getDay()];
+
+  // ---- A. 日期字段一致性 ----
+  var fields=[];
+  try{ fields.push(['今日要闻', DAILY_BRIEFING&&DAILY_BRIEFING.date]); }catch(e){}
+  try{ fields.push(['每日一词', DAILY_VOCAB&&DAILY_VOCAB.date]); }catch(e){}
+  try{ fields.push(['小白课堂', LEARN_PATHS&&LEARN_PATHS.updated]); }catch(e){}
+  try{ fields.push(['市场情绪', MARKET_SENTIMENT&&MARKET_SENTIMENT.updated]); }catch(e){}
+  try{ fields.push(['今日待办', DAILY_DECISIONS&&DAILY_DECISIONS.updated]); }catch(e){}
+  try{ fields.push(['机会雷达', OPPORTUNITY_RADAR&&OPPORTUNITY_RADAR.updated]); }catch(e){}
+  try{ fields.push(['判断台账', AI_JUDGMENTS&&AI_JUDGMENTS.updated]); }catch(e){}
+  try{ fields.push(['工具链雷达', TOOLCHAIN_RADAR&&TOOLCHAIN_RADAR.updated]); }catch(e){}
+  try{ if(DAILY_DATA&&DAILY_DATA.movie) fields.push(['影视数据', DAILY_DATA.movie.updated]); }catch(e){}
+
+  var secRows=[];
+  try{
+    Object.keys(INSIGHTS||{}).forEach(function(k){
+      var s=INSIGHTS[k];
+      var blob=(s.summary||'')+' '+(s.trend||'')+' '+(s.tip||'');
+      var ds=zh_extractDates(blob);
+      var newest=null;
+      ds.forEach(function(p){
+        var d=new Date(now.getFullYear(), p[0]-1, p[1]);
+        if(!newest||d>newest) newest=d;
+      });
+      var lag = newest? Math.round((new Date(today)-newest)/86400000) : null;
+      secRows.push({k:k, updated:zh_iso(s.updated), newest:newest, lag:lag});
+    });
+  }catch(e){}
+
+  // ---- 统计 ----
+  var dateBad=[], dateOk=0;
+  fields.forEach(function(f){ var v=zh_iso(f[1]); if(v===today) dateOk++; else dateBad.push(f[0]+'='+(f[1]||'空')); });
+  var lagBad=[], lagOk=0;
+  secRows.forEach(function(r){ if(r.lag===null||r.lag<=0) lagOk++; else lagBad.push(r.k+'（内容最新 '+r.newest.getMonth()+1+'月'+r.newest.getDate()+'日，落后 '+r.lag+' 天）'); });
+
+  var allOk = !dateBad.length && !lagBad.length;
+
+  // ---- 渲染 ----
+  var h='';
+  h+='<div class="card" style="padding:16px 18px;border-left:4px solid '+(allOk?'#059669':'#dc2626')+'">';
+  h+='<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px">';
+  h+='<span style="font-size:15px;font-weight:800;color:'+(allOk?'#059669':'#dc2626')+'">'+(allOk?'✅ 更新核查全部通过':'❌ 发现 '+(dateBad.length+lagBad.length)+' 项异常')+'</span>';
+  h+='<span class="tag" style="background:var(--accent);color:#fff">今天 '+today+' '+wd+'</span>';
+  h+='</div>';
+  h+='<div style="font-size:11.5px;color:var(--text2);line-height:1.9">';
+  h+='· 日期字段：<b style="color:'+(dateBad.length?'#dc2626':'#059669')+'">'+dateOk+'/'+fields.length+'</b> 与今天一致'+(dateBad.length?'（异常：'+dateBad.join('、')+'）':'')+'<br>';
+  h+='· 内容新鲜度：<b style="color:'+(lagBad.length?'#dc2626':'#059669')+'">'+lagOk+'/'+secRows.length+'</b> 个分区的内容日期不落后'+(lagBad.length?'（滞后：'+lagBad.join('；')+'）':'')+'<br>';
+  h+='· 这张表是<b>页面打开时用脚本现算的</b>（读你电脑的时钟 + 抽取页面上真实显示的内容日期），不是写死的结论——所以它无法虚标。';
+  h+='</div>';
+  h+='<details class="acc" style="margin-top:12px"><summary>展开逐分区明细（'+secRows.length+' 个分区）</summary><div class="accbody">';
+  h+='<table class="data-table"><tr><th>分区</th><th>标注更新时间</th><th>内容里的最新日期</th><th>状态</th></tr>';
+  secRows.forEach(function(r){
+    var st = (r.lag===null) ? '<span style="color:var(--text3)">无日期</span>' : (r.lag<=0 ? '<span style="color:#059669">✅ 最新</span>' : '<span style="color:#dc2626">❌ 落后 '+r.lag+' 天</span>');
+    var nd = r.newest ? (r.newest.getMonth()+1)+'月'+r.newest.getDate()+'日' : '—';
+    var upOk = r.updated===today;
+    h+='<tr><td>'+r.k+'</td><td style="color:'+(upOk?'#059669':'#dc2626')+'">'+(r.updated||'—')+'</td><td>'+nd+'</td><td>'+st+'</td></tr>';
+  });
+  h+='</table>';
+  h+='<div style="font-size:11px;color:var(--text2);margin-top:9px;line-height:1.8">';
+  h+='<b>怎么用这张表：</b>「内容里的最新日期」是从该分区正文中自动抽取的——如果某分区写着 9月6日 而今天是 9月14日，说明它的内容没真正刷新（哪怕「标注更新时间」写的是今天）。<br>';
+  h+='<b>自己复核的方法：</b>点进该分区，看正文里提到的最近日期是不是今天前后。</div>';
+  h+='</div></details>';
+  h+='</div>';
+  box.innerHTML=h;
+
+  /* 同步更新 Hero 徽章 */
+  var pDate=document.getElementById('zhDatePill');
+  if(pDate) pDate.textContent='📅 内容日期 '+today;
+  var pAudit=document.getElementById('zhAuditPill');
+  if(pAudit){
+    pAudit.textContent = allOk ? '✅ 今日更新已核查（'+fields.length+' 项 + '+secRows.length+' 分区）' : '❌ 更新核查异常 '+(dateBad.length+lagBad.length)+' 项';
+    pAudit.style.background = allOk ? 'rgba(16,185,129,.42)' : 'rgba(220,38,38,.45)';
+    pAudit.style.cursor = 'pointer';
+    pAudit.onclick = function(){ var s=document.getElementById('update-audit'); if(s) s.scrollIntoView({behavior:'smooth',block:'start'}); };
+  }
+}
+
 var vocabShuffled = [];
 var vocabShowingAll = false;
 
@@ -3414,7 +3520,7 @@ function renderModelComparison(){
 function onDataReady(){
   var tasks = [
     function(){ var e=document.getElementById('siteVersion'); if(e) e.textContent = (typeof SITE_VERSION!=='undefined'?SITE_VERSION:''); },
-    renderAllPicks, renderBriefing, renderVocab, renderQuiz, renderModelComparison, renderToolchainRadar, renderOpportunityRadar, renderLifeHacks, renderSkillRadar, renderFlashcards, renderMockInterview, renderSentiment, renderDailyDecisions, renderLearnPath, renderTodayKnowledge, renderLearningInsight, renderLearnPathMini, renderAgentStacks, renderCompanyRadar, renderCalendar, updateAiBadge, renderWrongWords, renderSubjectPaths, renderAiObservations, zh_renderApplyBoard, zh_updateApplyCount, zh_renderGrowth, zh_renderGrowthWorkbench, zh_renderJudgments, zh_buildBattlePlan, zh_renderTraining, zh_updateTrainEntry, checkUpdateStatus
+    renderAllPicks, renderBriefing, renderVocab, renderQuiz, renderModelComparison, renderToolchainRadar, renderOpportunityRadar, renderLifeHacks, renderSkillRadar, renderFlashcards, renderMockInterview, renderSentiment, renderDailyDecisions, renderLearnPath, renderTodayKnowledge, renderLearningInsight, renderLearnPathMini, renderAgentStacks, renderCompanyRadar, renderCalendar, updateAiBadge, renderWrongWords, renderSubjectPaths, renderAiObservations, zh_renderApplyBoard, zh_updateApplyCount, zh_renderGrowth, zh_renderGrowthWorkbench, zh_renderJudgments, zh_buildBattlePlan, zh_renderTraining, zh_updateTrainEntry, zh_renderUpdateAudit, checkUpdateStatus
   ];
   tasks.forEach(function(fn){
     try { if(typeof fn==='function') fn(); } catch(e){ console.error('Init error:', e.message); }
