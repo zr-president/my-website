@@ -1,0 +1,184 @@
+{
+ "1489599849927-2ee91cede3ba.jpg": {
+  "dir": "assets/img",
+  "size": [
+   800,
+   533
+  ],
+  "accent": "#6b0004",
+  "accentSoft": "#decccd",
+  "source": "hue",
+  "luminance": 9.9,
+  "darkAdjust": "brightness(1.06)",
+  "objectPosition": "center 50%"
+ },
+ "1507525428034-b723cf961d3e.jpg": {
+  "dir": "assets/img",
+  "size": [
+   800,
+   532
+  ],
+  "accent": "#91ac9c",
+  "accentSoft": "#e4e8e5",
+  "source": "hue",
+  "luminance": 184.9,
+  "darkAdjust": "brightness(.86) saturate(.92)",
+  "objectPosition": "center 50%"
+ },
+ "1514362545857-3bc16c4c7d1b.jpg": {
+  "dir": "assets/img",
+  "size": [
+   800,
+   533
+  ],
+  "accent": "#843e00",
+  "accentSoft": "#e2d6cc",
+  "source": "hue",
+  "luminance": 26.3,
+  "darkAdjust": "brightness(1.06)",
+  "objectPosition": "center 50%"
+ },
+ "1552566626-52f8b828add9.jpg": {
+  "dir": "assets/img",
+  "size": [
+   800,
+   533
+  ],
+  "accent": "#88533a",
+  "accentSoft": "#e2dad6",
+  "source": "hue",
+  "luminance": 103.9,
+  "darkAdjust": "none",
+  "objectPosition": "center 50%"
+ },
+ "1566633806327-68e152aaf26d.jpg": {
+  "dir": "assets/img",
+  "size": [
+   800,
+   533
+  ],
+  "accent": "#774112",
+  "accentSoft": "#dfd7cf",
+  "source": "hue",
+  "luminance": 69.9,
+  "darkAdjust": "brightness(1.06)",
+  "objectPosition": "center 50%"
+ },
+ "1579952363873-27f3bade9f55.jpg": {
+  "dir": "assets/img",
+  "size": [
+   800,
+   1067
+  ],
+  "accent": "#5c6b49",
+  "accentSoft": "#dbded8",
+  "source": "hue",
+  "luminance": 74.6,
+  "darkAdjust": "none",
+  "objectPosition": "center 26%"
+ },
+ "1608270586620-248524c67de9.jpg": {
+  "dir": "assets/img",
+  "size": [
+   800,
+   533
+  ],
+  "accent": "#9a6300",
+  "accentSoft": "#e5dccc",
+  "source": "hue",
+  "luminance": 31.2,
+  "darkAdjust": "brightness(1.06)",
+  "objectPosition": "center 50%"
+ },
+ "7AjIupf0lxNKNq0p8z36jv5ZpiJ.jpg": {
+  "dir": "assets/img",
+  "size": [
+   500,
+   750
+  ],
+  "accent": "#791a17",
+  "accentSoft": "#e0d1d0",
+  "source": "hue",
+  "luminance": 130.6,
+  "darkAdjust": "none",
+  "objectPosition": "center 26%"
+ },
+ "8uBae3fsFRhYNrNBxuWJCXlBFKE.jpg": {
+  "dir": "assets/img",
+  "size": [
+   500,
+   750
+  ],
+  "accent": "#5c587a",
+  "accentSoft": "#dbdbe0",
+  "source": "hue",
+  "luminance": 150.7,
+  "darkAdjust": "none",
+  "objectPosition": "center 26%"
+ },
+ "Zeekr_007_2_e1700100010257_630x330.jpg": {
+  "dir": "assets/img",
+  "size": [
+   630,
+   330
+  ],
+  "accent": "#32506b",
+  "accentSoft": "#d4d9de",
+  "source": "hue",
+  "luminance": 150.7,
+  "darkAdjust": "none",
+  "objectPosition": "center 50%"
+ },
+ "a1pMK4456dF2j5B9xvkjMEGiOOw.jpg": {
+  "dir": "assets/img",
+  "size": [
+   500,
+   667
+  ],
+  "accent": "#5d7d83",
+  "accentSoft": "#dbe0e1",
+  "source": "hue",
+  "luminance": 154.3,
+  "darkAdjust": "none",
+  "objectPosition": "center 26%"
+ },
+ "tEaeXZZO7SEcDr6yRP31UrrxcX0.jpg": {
+  "dir": "assets/img",
+  "size": [
+   500,
+   740
+  ],
+  "accent": "#87624b",
+  "accentSoft": "#e2dcd8",
+  "source": "hue",
+  "luminance": 145.0,
+  "darkAdjust": "none",
+  "objectPosition": "center 26%"
+ },
+ "u7LWdKmEdEr6Ui3GZMsFGlKZQBd.jpg": {
+  "dir": "assets/img",
+  "size": [
+   500,
+   707
+  ],
+  "accent": "#6b6b58",
+  "accentSoft": "#dededb",
+  "source": "hue",
+  "luminance": 134.3,
+  "darkAdjust": "none",
+  "objectPosition": "center 26%"
+ },
+ "xiaopeng_mona_m03.jpg": {
+  "dir": "assets/img",
+  "size": [
+   760,
+   462
+  ],
+  "accent": "#374b8b",
+  "accentSoft": "#d5d8e3",
+  "source": "hue",
+  "luminance": 83.3,
+  "darkAdjust": "none",
+  "objectPosition": "center 50%"
+ }
+}

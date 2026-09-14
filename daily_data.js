@@ -135,11 +135,11 @@ var DAILY_BRIEFING = {
 
 var PICKS = {
   anime: [
-    {icon:"🥇", title:"Re:Zero S4 夺还篇 追番第25天 🎬", desc:"最终话9/30定档 · 完结倒计时24天 · 486认知博弈最高潮 · 9月必追", link:"https://www.bilibili.com/search?keyword=Re从零开始的异世界生活", video:"https://search.bilibili.com/all?keyword=Re%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E5%BC%82%E4%B8%96%E7%95%8C%E7%94%9F%E6%B4%BB", img:"https://image.tmdb.org/t/p/w500/a1pMK4456dF2j5B9xvkjMEGiOOw.jpg", tag:"异世界·奇幻"},
-    {icon:"🥈", title:"BLEACH 千年血战篇-祸进谭-", desc:"20年史诗最终章 · 护廷十三队全员卍解决战 · 战斗密度天花板", link:"https://www.bilibili.com/search?keyword=BLEACH+千年血战", video:"https://search.bilibili.com/all?keyword=BLEACH%E5%8D%83%E5%B9%B4%E8%A1%80%E6%88%98", img:"https://image.tmdb.org/t/p/w500/tEaeXZZO7SEcDr6yRP31UrrxcX0.jpg", tag:"热血·战斗"},
-    {icon:"🥉", title:"无职转生 第三季", desc:"异世界天花板续作·魔法体系完整分级·奇幻成长细腻叙事", link:"https://www.bilibili.com/search?keyword=无职转生", video:"https://search.bilibili.com/all?keyword=%E6%97%A0%E8%81%8C%E8%BD%AC%E7%94%9F", img:"https://image.tmdb.org/t/p/w500/u7LWdKmEdEr6Ui3GZMsFGlKZQBd.jpg", tag:"异世界·成长"},
+    {icon:"🥇", title:"Re:Zero S4 夺还篇 追番第25天 🎬", desc:"最终话9/30定档 · 完结倒计时24天 · 486认知博弈最高潮 · 9月必追", link:"https://www.bilibili.com/search?keyword=Re从零开始的异世界生活", video:"https://search.bilibili.com/all?keyword=Re%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E5%BC%82%E4%B8%96%E7%95%8C%E7%94%9F%E6%B4%BB", img:"assets/img/a1pMK4456dF2j5B9xvkjMEGiOOw.jpg", tag:"异世界·奇幻"},
+    {icon:"🥈", title:"BLEACH 千年血战篇-祸进谭-", desc:"20年史诗最终章 · 护廷十三队全员卍解决战 · 战斗密度天花板", link:"https://www.bilibili.com/search?keyword=BLEACH+千年血战", video:"https://search.bilibili.com/all?keyword=BLEACH%E5%8D%83%E5%B9%B4%E8%A1%80%E6%88%98", img:"assets/img/tEaeXZZO7SEcDr6yRP31UrrxcX0.jpg", tag:"热血·战斗"},
+    {icon:"🥉", title:"无职转生 第三季", desc:"异世界天花板续作·魔法体系完整分级·奇幻成长细腻叙事", link:"https://www.bilibili.com/search?keyword=无职转生", video:"https://search.bilibili.com/all?keyword=%E6%97%A0%E8%81%8C%E8%BD%AC%E7%94%9F", img:"assets/img/u7LWdKmEdEr6Ui3GZMsFGlKZQBd.jpg", tag:"异世界·成长"},
     {icon:"🎖️", title:"False Memory", desc:"B站独播更新中 · 国产科幻悬疑Donghua · 记忆收集者设定", link:"https://www.bilibili.com/search?keyword=False+Memory", video:"https://search.bilibili.com/all?keyword=False+Memory+%E5%9B%BD%E6%BC%AB", tag:"国产·悬疑"},
-    {icon:"🔮", title:"Link Click S3", desc:"时光代理人第三季热播中 · 悬疑推理国漫之光", link:"https://www.bilibili.com/search?keyword=时光代理人", video:"https://search.bilibili.com/all?keyword=%E6%97%B6%E5%85%89%E4%BB%A3%E7%90%86%E4%BA%BA", img:"https://image.tmdb.org/t/p/w500/8uBae3fsFRhYNrNBxuWJCXlBFKE.jpg", tag:"悬疑·国漫"},
+    {icon:"🔮", title:"Link Click S3", desc:"时光代理人第三季热播中 · 悬疑推理国漫之光", link:"https://www.bilibili.com/search?keyword=时光代理人", video:"https://search.bilibili.com/all?keyword=%E6%97%B6%E5%85%89%E4%BB%A3%E7%90%86%E4%BA%BA", img:"assets/img/8uBae3fsFRhYNrNBxuWJCXlBFKE.jpg", tag:"悬疑·国漫"},
     {icon:"🍂", title:"秋季新番前瞻 🆕", desc:"10月新番档期临近 · Re:Zero完结后接力阵容公布中 · 提前种草", link:"https://www.bilibili.com/search?keyword=2026%E5%B9%B4%E7%A7%8B%E5%AD%A3%E6%96%B0%E7%95%AA", video:"https://search.bilibili.com/all?keyword=%E7%A7%8B%E5%AD%A3%E6%96%B0%E7%95%AA"}
   ],
   music: [
@@ -159,9 +159,9 @@ var PICKS = {
     {icon:"🆕", title:"起点9月新书上架126本", desc:"9月新书潮开启·玄幻/都市/克系多类型·追新书看首订榜", link:"https://www.qidian.com/"}
   ],
   beer: [
-    {icon:"🍸", title:"金汤力 Gin & Tonic", desc:"秋高气爽前的清爽 · 金酒+汤力水+柠檬 · 周末聚会首选", link:"https://s.taobao.com/search?q=哥顿金酒", video:"https://search.bilibili.com/all?keyword=%E9%87%91%E6%B1%A4%E5%8A%9B%E8%B0%83%E9%85%92%E6%95%99%E7%A8%8B", img:"https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=400&q=60", tag:"鸡尾酒·清爽"},
-    {icon:"🍺", title:"保拉纳酵母小麦", desc:"德式小麦入门首选 · 比教士更浓郁香蕉酯香 · 换季过渡首选", link:"https://s.taobao.com/search?q=保拉纳小麦啤酒", video:"https://search.bilibili.com/all?keyword=%E7%B2%BE%E9%85%BF%E5%95%A4%E9%85%92%E5%85%A5%E9%97%A8%E6%8E%A8%E8%8D%90", img:"https://images.unsplash.com/photo-1608270586620-248524c67de9?auto=format&fit=crop&w=400&q=60", tag:"德式小麦"},
-    {icon:"🍻", title:"酿酒狗朋克IPA", desc:"IPA探险第一站 · 热带水果轰炸 · 芒果/西柚/荔枝香气", link:"https://s.taobao.com/search?q=酿酒狗朋克IPA", video:"https://search.bilibili.com/all?keyword=IPA%E5%95%A4%E9%85%92%E5%93%81%E9%89%B4", img:"https://images.unsplash.com/photo-1566633806327-68e152aaf26d?auto=format&fit=crop&w=400&q=60", tag:"IPA·果香"}
+    {icon:"🍸", title:"金汤力 Gin & Tonic", desc:"秋高气爽前的清爽 · 金酒+汤力水+柠檬 · 周末聚会首选", link:"https://s.taobao.com/search?q=哥顿金酒", video:"https://search.bilibili.com/all?keyword=%E9%87%91%E6%B1%A4%E5%8A%9B%E8%B0%83%E9%85%92%E6%95%99%E7%A8%8B", img:"assets/img/1514362545857-3bc16c4c7d1b.jpg", tag:"鸡尾酒·清爽"},
+    {icon:"🍺", title:"保拉纳酵母小麦", desc:"德式小麦入门首选 · 比教士更浓郁香蕉酯香 · 换季过渡首选", link:"https://s.taobao.com/search?q=保拉纳小麦啤酒", video:"https://search.bilibili.com/all?keyword=%E7%B2%BE%E9%85%BF%E5%95%A4%E9%85%92%E5%85%A5%E9%97%A8%E6%8E%A8%E8%8D%90", img:"assets/img/1608270586620-248524c67de9.jpg", tag:"德式小麦"},
+    {icon:"🍻", title:"酿酒狗朋克IPA", desc:"IPA探险第一站 · 热带水果轰炸 · 芒果/西柚/荔枝香气", link:"https://s.taobao.com/search?q=酿酒狗朋克IPA", video:"https://search.bilibili.com/all?keyword=IPA%E5%95%A4%E9%85%92%E5%93%81%E9%89%B4", img:"assets/img/1566633806327-68e152aaf26d.jpg", tag:"IPA·果香"}
   ],
   gaming: [
     {icon:"⚔️", title:"影之刃零 预售中 🎮", desc:"甄子丹出任动作监制·DLSS 4.5+光线追踪·268元起·10/29发售·国产3A里程碑", link:"https://store.steampowered.com/app/2776930/"},
@@ -180,8 +180,8 @@ var PICKS = {
     {icon:"🛡️", title:"AI安全与对齐入门路径", desc:"前沿模型失控风险→OpenAI Astra事件→安全评估框架→红队测试→对齐技术全景", link:"#ai-track"}
   ],
   fashion: [
-    {icon:"👕", title:"日系简约（换季版）", desc:"重磅T+黑色九分裤+帆布鞋 · 换季过渡 · 极简黑白", link:"https://s.taobao.com/search?q=重磅棉落肩T恤男250g", video:"https://search.bilibili.com/all?keyword=%E7%94%B7%E7%94%9F%E5%A4%8F%E5%AD%A3%E7%A9%BF%E6%90%AD170cm", img:"https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=400&q=60", tag:"通勤·极简"},
-    {icon:"👔", title:"韩系都市通勤", desc:"牛津纺衬衫+卡其裤+德训鞋 · 轻薄抗皱 · 空调房得体", link:"https://s.taobao.com/search?q=优衣库牛津纺衬衫男浅蓝", video:"https://search.bilibili.com/all?keyword=%E7%94%B7%E7%94%9F%E9%9F%A9%E7%B3%BB%E9%80%9A%E5%8B%A4%E7%A9%BF%E6%90%AD", img:"https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?auto=format&fit=crop&w=400&q=60", tag:"面试·通勤"}
+    {icon:"👕", title:"日系简约（换季版）", desc:"重磅T+黑色九分裤+帆布鞋 · 换季过渡 · 极简黑白", link:"https://s.taobao.com/search?q=重磅棉落肩T恤男250g", video:"https://search.bilibili.com/all?keyword=%E7%94%B7%E7%94%9F%E5%A4%8F%E5%AD%A3%E7%A9%BF%E6%90%AD170cm", img:"img/fashion_jp.svg", tag:"通勤·极简"},
+    {icon:"👔", title:"韩系都市通勤", desc:"牛津纺衬衫+卡其裤+德训鞋 · 轻薄抗皱 · 空调房得体", link:"https://s.taobao.com/search?q=优衣库牛津纺衬衫男浅蓝", video:"https://search.bilibili.com/all?keyword=%E7%94%B7%E7%94%9F%E9%9F%A9%E7%B3%BB%E9%80%9A%E5%8B%A4%E7%A9%BF%E6%90%AD", img:"img/fashion_kr.svg", tag:"面试·通勤"}
   ],
   fitness: [
     {icon:"💪", title:"增肌 + 腹肌 双目标 · 新版周计划", desc:"4力量日+1有氧日 · 新增练腿(原来完全没有) · 跳绳减到1-2次 · 瘦胖子该增肌不该减脂", link:"#", video:"https://www.youtube.com/@JeremyEthier"},
@@ -197,20 +197,20 @@ var PICKS = {
     {icon:"📝", title:"作品集升级", desc:"用GPT-6 Astra发布写300字行业观察《AI安全与能力如何平衡》 · 面试加分", link:"#"}
   ],
   car: [
-    {icon:"⚡", title:"极氪007焕新版", desc:"19.39万 · 715km续航 · 900V架构 · NVIDIA Thor-U 700TOPS · 运动轿跑", link:"https://www.dongchedi.com", img:"https://paultan.org/cn/image/2023/11/Zeekr-007-2-e1700100010257-630x330.jpg", tag:"运动轿跑"},
-    {icon:"🚗", title:"小鹏MONA M03 Max", desc:"12.98万起 · 750TOPS算力 · 全场景XNGP · 智驾性价比之王", link:"https://www.dongchedi.com", img:"https://c2.gasgoo.com/autonews/moblogo/News/UEditor/image/20240611/6385371600188037263856413.png", tag:"纯电轿跑"}
+    {icon:"⚡", title:"极氪007焕新版", desc:"19.39万 · 715km续航 · 900V架构 · NVIDIA Thor-U 700TOPS · 运动轿跑", link:"https://www.dongchedi.com", img:"assets/img/Zeekr_007_2_e1700100010257_630x330.jpg", tag:"运动轿跑"},
+    {icon:"🚗", title:"小鹏MONA M03 Max", desc:"12.98万起 · 750TOPS算力 · 全场景XNGP · 智驾性价比之王", link:"https://www.dongchedi.com", img:"assets/img/xiaopeng_mona_m03.jpg", tag:"纯电轿跑"}
   ],
   house: [
     {icon:"🏠", title:"广州", desc:"新房~3.2万/平米 · 二手~2.8万/平米 · 首付15%历史最低", link:"https://www.ke.com"},
     {icon:"🏙️", title:"深圳", desc:"新房~5.5万/平米 · 二手~5.0万/平米 · 外围6区非户籍免社保购房", link:"https://www.ke.com"}
   ],
   movie: [
-    {icon:"🏛️", title:"奥德赛 IMAX热映中", desc:"8.14上映·诺兰IMAX巨制·荷马史诗改编·史诗长尾仍在", link:"https://search.bilibili.com/all?keyword=奥德赛电影2026", video:"https://search.bilibili.com/all?keyword=奥德赛电影2026", img:"https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=60", tag:"史诗·海洋"},
-    {icon:"🧧", title:"欢迎来龙餐馆 🔥", desc:"暑期档口碑领跑·豆瓣8.4·沈腾x文牧野·长尾热映中", link:"https://search.bilibili.com/all?keyword=欢迎来龙餐馆", video:"https://search.bilibili.com/all?keyword=%E6%AC%A2%E8%BF%8E%E6%9D%A5%E9%BE%99%E9%A4%90%E9%A6%86", img:"https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=400&q=60", tag:"口碑·长尾"},
+    {icon:"🏛️", title:"奥德赛 IMAX热映中", desc:"8.14上映·诺兰IMAX巨制·荷马史诗改编·史诗长尾仍在", link:"https://search.bilibili.com/all?keyword=奥德赛电影2026", video:"https://search.bilibili.com/all?keyword=奥德赛电影2026", img:"assets/img/1507525428034-b723cf961d3e.jpg", tag:"史诗·海洋"},
+    {icon:"🧧", title:"欢迎来龙餐馆 🔥", desc:"暑期档口碑领跑·豆瓣8.4·沈腾x文牧野·长尾热映中", link:"https://search.bilibili.com/all?keyword=欢迎来龙餐馆", video:"https://search.bilibili.com/all?keyword=%E6%AC%A2%E8%BF%8E%E6%9D%A5%E9%BE%99%E9%A4%90%E9%A6%86", img:"assets/img/1552566626-52f8b828add9.jpg", tag:"口碑·长尾"},
     {icon:"🧧", title:"八仙！🔥", desc:"14.59亿·豆瓣8.2暑期黑马·动画票房冠军·青绿山水东方美学", link:"https://search.bilibili.com/all?keyword=八仙动画电影", video:"https://search.bilibili.com/all?keyword=八仙动画电影", tag:"动画·东方"},
-    {icon:"⚽", title:"功夫女足 🔥", desc:"周星驰执导·22.69亿暑期档总冠军·喜剧运动", link:"https://search.bilibili.com/all?keyword=功夫女足", video:"https://search.bilibili.com/all?keyword=功夫女足", img:"https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=400&q=60", tag:"喜剧·运动"},
-    {icon:"🎬", title:"9月新片前瞻 🆕", desc:"近40部影片定档·动作/惊悚/喜剧/悬疑·金九银十内容旺季", link:"https://search.bilibili.com/all?keyword=2026%E5%B9%B49%E6%9C%88%E7%94%B5%E5%BD%B1", video:"https://search.bilibili.com/all?keyword=9%E6%9C%88%E6%96%B0%E7%89%87", img:"https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=400&q=60", tag:"新片·前瞻"},
-    {icon:"🕷️", title:"蜘蛛侠：崭新之日", desc:"12.95亿·进口片冠军·豆瓣7.8系列最高·成家班武指·IMAX", link:"https://search.bilibili.com/all?keyword=蜘蛛侠崭新之日", video:"https://search.bilibili.com/all?keyword=蜘蛛侠崭新之日", img:"https://image.tmdb.org/t/p/w500/7AjIupf0lxNKNq0p8z36jv5ZpiJ.jpg", tag:"超级英雄·官方海报"}
+    {icon:"⚽", title:"功夫女足 🔥", desc:"周星驰执导·22.69亿暑期档总冠军·喜剧运动", link:"https://search.bilibili.com/all?keyword=功夫女足", video:"https://search.bilibili.com/all?keyword=功夫女足", img:"assets/img/1579952363873-27f3bade9f55.jpg", tag:"喜剧·运动"},
+    {icon:"🎬", title:"9月新片前瞻 🆕", desc:"近40部影片定档·动作/惊悚/喜剧/悬疑·金九银十内容旺季", link:"https://search.bilibili.com/all?keyword=2026%E5%B9%B49%E6%9C%88%E7%94%B5%E5%BD%B1", video:"https://search.bilibili.com/all?keyword=9%E6%9C%88%E6%96%B0%E7%89%87", img:"assets/img/1489599849927-2ee91cede3ba.jpg", tag:"新片·前瞻"},
+    {icon:"🕷️", title:"蜘蛛侠：崭新之日", desc:"12.95亿·进口片冠军·豆瓣7.8系列最高·成家班武指·IMAX", link:"https://search.bilibili.com/all?keyword=蜘蛛侠崭新之日", video:"https://search.bilibili.com/all?keyword=蜘蛛侠崭新之日", img:"assets/img/7AjIupf0lxNKNq0p8z36jv5ZpiJ.jpg", tag:"超级英雄·官方海报"}
   ],
   "life-tips": [
     {icon:"⛅", title:"秋高气爽+新台风杜鹃或将生成", desc:"科罗旺已远离·广州多云到晴33C/25C·昼夜温差渐大·杜鹃路径待观察", link:"#"},
