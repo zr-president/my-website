@@ -169,7 +169,7 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 .img-card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:var(--shadow-lg)}
 .img-card .img-thumb{width:100%;aspect-ratio:4/3;object-fit:cover;background:var(--bg2);display:block}
 /* ===== 图片卡片统一设计语言（多模态主色驱动）===== */
-.img-picks{display:grid;grid-template-columns:repeat(auto-fill,minmax(196px,1fr));gap:11px}
+.img-picks{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(196px,100%),1fr));gap:11px}
 .img-card{position:relative;display:flex;flex-direction:column;background:var(--card);
   border:1px solid var(--border);border-top:2px solid var(--ic,var(--border));
   border-radius:12px;overflow:hidden;text-decoration:none;color:var(--text);
@@ -189,13 +189,30 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 .img-card .img-desc{font-size:10.5px;color:var(--text2);line-height:1.65}
 .img-card .img-tag{display:inline-block;margin-top:6px;padding:1.5px 8px;border-radius:8px;
   font-size:9.5px;font-weight:700;background:var(--icf,rgba(128,128,128,.12));color:var(--ic,var(--accent))}
+/* ===== 图片统一色调 + 加载淡入（消除多源素材的拼凑感）===== */
+.img-card .img-thumb{
+  filter:saturate(.96) contrast(1.03);
+  opacity:0;transition:opacity .45s ease,transform .38s ease,filter .3s}
+.img-card .img-thumb.loaded{opacity:1}
+[data-theme="dark"] .img-card .img-thumb{filter:saturate(.94) contrast(1.02) var(--if,none);}
+/* 底部叠一层极淡的卡片主色，让图片与文字区同色系 */
+.img-card:has(.img-thumb)::after{content:'';position:absolute;left:0;right:0;top:0;aspect-ratio:4/3;
+  pointer-events:none;border-radius:12px 12px 0 0;
+  background:linear-gradient(180deg,transparent 62%,var(--icf,rgba(0,0,0,0)) 100%)}
+/* ===== 图片卡片：窄屏适配（防止网格溢出 / 卡片过窄）===== */
+@media(max-width:620px){
+  .img-picks{grid-template-columns:repeat(auto-fill,minmax(min(150px,100%),1fr))!important;gap:9px}
+  .img-card{border-radius:11px}
+  .img-card .img-title{font-size:12px}
+  .img-card .img-desc{font-size:10px;line-height:1.6}
+  .img-picks[style]{grid-template-columns:repeat(auto-fill,minmax(min(150px,100%),1fr))!important}
+}
+@media(max-width:400px){
+  .img-picks,.img-picks[style]{grid-template-columns:1fr!important}
+}
 /* 竖版海报：给顶部叠一层非常淡的暗角，让标题区更稳 */
 .img-card.portrait .img-thumb{mask-image:linear-gradient(180deg,#000 78%,rgba(0,0,0,.86) 100%)}
 
-.img-card .img-body{padding:9px 11px}
-.img-card .img-title{font-size:12px;font-weight:700;margin-bottom:3px;line-height:1.4}
-.img-card .img-desc{font-size:10px;color:var(--text2);line-height:1.6}
-.img-card .img-tag{display:inline-block;margin-top:5px;padding:1px 7px;border-radius:8px;font-size:9px;font-weight:700;background:var(--accent-light);color:var(--accent)}
 .briefing-item{transition:all .35s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
 .briefing-item::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--accent),transparent);opacity:0;transition:opacity .35s}
 .briefing-item:hover{transform:translateY(-3px) scale(1.01);box-shadow:0 8px 30px rgba(0,0,0,.12),0 0 0 1px var(--accent)}
@@ -2181,7 +2198,12 @@ function renderSectionPicks(sectionId){
         var st = (typeof IMG_STYLE!=='undefined' && IMG_STYLE[p.img]) ? IMG_STYLE[p.img] : null;
         var cst = st ? ('--ic:'+st.c+';--ip:'+st.p+';--if:'+st.d+';--icf:'+st.c+'1f;') : '';
         h+='<'+tag+' '+(hasLink?'href="'+p.link+'" target="_blank" ':'')+'class="img-card" style="'+cst+'">';
-        h+='<img class="img-thumb" loading="lazy" src="'+p.img+'" alt="'+p.title+'" onerror="this.style.display=\'none\'">';
+        if(p.img){
+          h+='<img class="img-thumb" loading="lazy" src="'+p.img+'" alt="'+p.title+'" onerror="this.style.display=\'none\'">';
+        } else {
+          /* #多模态：该卡片没有配图 → 用同高的设计感占位块，保持网格整齐且不出现破图 */
+          h+='<div class="img-ph"><span>'+(p.icon||'📌')+'</span><em>'+(p.tag||'')+'</em></div>';
+        }
         h+='<div class="img-body">';
         h+='<div class="img-title">'+p.title+'</div>';
         h+='<div class="img-desc">'+p.desc+'</div>';
@@ -2699,7 +2721,7 @@ var ZH_GROWTH_CASES = [
 function zh_renderGrowthWorkbench(){
   var cases = document.getElementById('zhGrowthCases');
   if(cases){
-    var h='<div class="img-picks" style="grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:9px">';
+    var h='<div class="img-picks" style="grid-template-columns:repeat(auto-fill,minmax(min(240px,100%),1fr));gap:9px">';
     ZH_GROWTH_CASES.forEach(function(c){
       h+='<div class="img-card" style="cursor:default;flex-direction:column">';
       h+='<div style="padding:12px 13px;display:flex;flex-direction:column;flex:1">';
@@ -4566,5 +4588,21 @@ function manualRefresh(){
 <script defer src="img_style.js?v=1.8.15"></script>
 <script defer src="daily_data.js?v=1.8.15"></script>
 <script defer src="knowledge_index.js"></script>
+<script>
+// 图片加载完成后淡入（避免灰块闪烁）
+(function(){
+  function mark(im){ if(im.complete && im.naturalWidth>0){ im.classList.add('loaded'); } }
+  function scan(){
+    document.querySelectorAll('.img-thumb:not(.loaded)').forEach(function(im){
+      if(im.complete){ mark(im); } else { im.addEventListener('load',function(){im.classList.add('loaded')},{once:true}); }
+    });
+  }
+  if(document.readyState!=='loading') setTimeout(scan,300);
+  document.addEventListener('DOMContentLoaded',function(){setTimeout(scan,600)});
+  window.addEventListener('load',function(){setTimeout(scan,300)});
+  setInterval(scan,2500);
+  window.zh_markImgs = scan;
+})();
+</script>
 </body>
 </html>
