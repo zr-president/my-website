@@ -1,4 +1,4 @@
-var SITE_VERSION = "1.8.22";
+var SITE_VERSION = "1.8.23";
 
 var DAILY_DATA = {
   "update_time": "2026-10-18T12:31:27+08:00",
@@ -114,8 +114,8 @@ var DAILY_BRIEFING = {
       "priority": 7,
       "icon": "🤖",
       "section": "AI 动态",
-      "headline": "AI 跟踪从【每天看】转为【每两周复盘】：三个值得关注的信号",
-      "summary": "9-10 月跟踪的两条线（DSH 桌面端、Jev 决策模型）结论未变：DSH 继续用网页版，Jev 现在不接入。这类基础设施型变化不需要每天盯，每两周看一次足够。三个值得关注的信号：① 桌面端是否发布 rc → 正式版（正式版才值得重新评估）② Jev 是否出现带后端的产品案例（决定它的适用边界）③ PTC（程序化工具调用）是否成为 Agent 工程的主流做法。",
+      "headline": "REA 登上 GitHub 周榜第一：一个 MCP 如何让 Agent「看懂」软件",
+      "summary": "REA（Reverse Engineer Anything）以 29 万星登 GitHub 周榜第一，周增 24.9 万。它本质是一个 MCP 服务器：让 Agent 能读应用、网页、二进制，并给出证据位置。最值得学的不是「逆向」这个用途，而是它的三层分工——MCP 提供工具、Skill 提供调查流程、CLI 提供人工入口。这是 2026 下半年 AI 产品设计最值得记住的结构。另附：DeepSeek-V4.1-Flash-1017（10/17）你已经在用（模型名仍为 deepseek-flash）；Meta Muse Wonder Full 幻觉率仅 23%，但知识广度偏低。",
       "action": "看 AI 追踪",
       "link": "#ai-track",
       "deepLink": "#ai-track"
@@ -335,15 +335,15 @@ var INSIGHTS = {
     updated: '2026-10-18'
   },
   "ai-track": {
-    verdict: "🎯 假期收官（10/7）：9 月 AI 两条线（DSH 桌面端 / Jev 决策模型）已完成沉淀，结论不变——① DSH 桌面端：<b>继续用网页版</b>；② Jev：<b>现在不接入</b>，列入待观察。明日 10/8 起把这两份分析用出去（投递附件 + 面试素材）。",
-    summary: "<b>10月18日（周日）AI 动态【10 月下半月 · 从跟踪转向复盘】</b>——9-10 月跟踪的两条线（DSH 桌面端、Jev 决策模型）现在可以做阶段性小结：结论自 9 月底以来<b>没有改变</b>（DSH 继续用网页版；Jev 现在不接入）。<br><br><b>这类基础设施型变化不需要每天盯</b>，每两周看一次足够。三个值得关注的信号：<br>① <b>桌面端是否发布 rc → 正式版</b>——预览版不值得评估，正式版才值得重新判断。<br>② <b>Jev 是否出现带后端的产品案例</b>——这决定它的适用边界（有判断密集型后端的系统才用得上）。<br>③ <b>PTC（程序化工具调用）是否成为 Agent 工程主流</b>——它把往返次数从 N 次压到 1 次，是当前降延迟的明确方向。<br><br><b>节后的正确动作依然是把理解写成作品</b>：DSH 桌面端 vs 网页版的取舍、Jev 的接入边界，这两份分析已在国庆期间整理成框架，现在应该用出去（投递附件 + 面试素材），而不是继续补充细节。",
-    trend: "<b>节后（10/8 起）怎么用这两份分析</b><br><br>假期写完的文档不是放着看的，10/8 起有三个明确用途：① <b>投递附件</b>——作为作品集的一部分随简历发出，展示架构判断力；② <b>面试素材</b>——【多端形态怎么取舍】【什么时候该用专门模型而不是通用大模型】是 AI 产品岗的高频题，你有真实的一手材料（版本号、对比维度、实测数据）；③ <b>复盘底稿</b>——三个月后回看当时的判断，检验哪些成立、哪些是当时的误判。<br><br><b>两份文档的骨架</b>（每份两页以内）：<br>《DSH 桌面端 vs 网页版：多端形态的取舍逻辑》→ 背景 / 对比维度（成本·隐私·平台·能力复用）/ 结论与依据 / <b>改变结论的条件</b><br>《Jev 接入决策：决策模型与生成模型的边界》→ 它解决什么 / 不能解决什么 / 实测数据 / 什么条件下才该接入 / <b>两个易误读的宣传点</b><br><br>【附】假期沉淀的核心对比表：<br><br><table class=\"data-table\"><tr><th>维度</th><th>网页版</th><th>桌面端（预览版）</th></tr><tr><td><b>获取成本</b></td><td style=\"color:var(--green)\">注册即用，免费</td><td style=\"color:var(--red)\">需充值 + <b>需实名认证</b></td></tr><tr><td><b>安装</b></td><td style=\"color:var(--green)\">零安装</td><td>需下载安装包</td></tr><tr><td><b>平台</b></td><td style=\"color:var(--green)\">全平台（含 Linux/平板）</td><td>仅 Win x64 + macOS arm64</td></tr><tr><td><b>本机文件访问</b></td><td style=\"color:var(--green)\">完全可用</td><td>同样可用</td></tr><tr><td><b>Agent 能力</b></td><td colspan=\"2\" style=\"text-align:center\">同一套（官方复用运行逻辑）</td></tr><tr><td><b>Agent 档位</b></td><td>—</td><td style=\"color:var(--green)\">四种：标准 / PTC / 极简 / 创造</td></tr><tr><td><b>插件管理</b></td><td>命令行</td><td style=\"color:var(--green)\">可视化面板</td></tr><tr><td><b>稳定性</b></td><td style=\"color:var(--green)\">已稳定</td><td style=\"color:var(--red)\">rc 预览版</td></tr></table>",
-    tip: "<b>10/7 收尾清单（明天就能用出去）</b><br><br>① <b>检查两份文档是否达到【可发出】标准</b>：有没有结论、有没有依据、有没有写明【改变结论的条件】。三者缺一，就还是笔记而不是作品。<br>② <b>准备一句话摘要</b>：每份文档配一句 20 字以内的说明，方便放进邮件正文或简历的项目描述里。<br>③ <b>不接入、不充值</b>——假期结束也不改变这个结论。求职期现金流优先，等你有了带后端的判断密集型系统再评估 Jev。<br><br><b>假期具体做什么（把理解变成作品）</b><br><br><b>① 写两份产品分析文档</b>（每份 2 页以内，用表格）<br>· 《DSH 桌面端 vs 网页版：多端形态的取舍逻辑》——覆盖成本/隐私/平台/能力复用四个维度<br>· 《Jev 接入决策：决策模型与生成模型的边界》——覆盖它解决什么、不能解决什么、什么条件下才该用<br><br><b>② 每份文档都要有【改变结论的条件】</b>——这是产品分析区别于使用体验的关键。例如：DSH 桌面端在什么条件下建议切换（开发插件 / 重度 PTC 流水线 / 有稳定收入）；Jev 在什么条件下建议接入（有带后端的判断密集型系统 / 批量任务 / 判断成本敏感）。<br><br><b>③ 把两个容易误读的宣传点写进去</b><br>· Jev 的「零幻觉」只保证<b>输出结构不跑出 schema</b>，不代表判断正确<br>· 概率输出在阈值附近仍会波动（人工下限 2.00 / 模型给 1.99，15 次重复有 3 题横跳）<br><br><b>④ 不接入、不充值</b>——假期不做任何需要花钱的接入动作。求职期现金流优先。",
-    reasoning: "为什么假期结束、结论依然不变：<br><br><b>① 两者的适用场景你仍然不具备。</b>DSH 桌面端多出来的能力集中在插件开发与重度 Agent 流水线；Jev 需要的是一个有大量判断环节的<b>后端系统</b>。你目前是纯前端项目 + 内容产出。<br><br><b>② 它们代表的两个产品范式值得带走。</b>DSH 桌面端体现【<b>多端复用架构</b>】——官方选择 Electron 并复用同一套运行逻辑，说明产品形态已稳定，桌面端是【入口扩展】而非【能力分叉】。Jev 体现【<b>模型分工</b>】——把写作/推理交给通用大模型，把边界清晰的小判断交给专门组件，用 0.73 秒替代 5.58 秒。<br><br><b>③ 这两个范式恰好是 AI 产品岗的高频面试题。</b>你现在有真实的一手材料（版本号、对比维度、实测数据），把它整理成结构化的分析，比背通用答案有说服力。<br><br><b>④ 所以节后的动作依然是【沉淀】而不是【接入】。</b>接入需要花钱花时间且当前无场景；沉淀成本几乎为零，产出直接服务求职。",
+    verdict: "🎯 <b>10/18 三条结论（AI 动态）</b>：<br><br>① <b>REA（Reverse Engineer Anything）</b>——GitHub 周榜第一（29 万星·周增 24.9 万），本质是 <b>MCP 服务器</b>，把应用/网页/二进制的逆向分析能力交给 Agent。<b>结论：理解优先，使用谨慎</b>——它不属于你的场景，但是「Agent 能力扩展」最好的教学案例。<br><br>② <b>DeepSeek-V4.1-Flash-1017</b>（10/17 上线）——<b>你正在用的就是它</b>（模型名仍是 deepseek-flash，旧调用自动升级）。代码与 Agent 基准大幅提升，且同时降延迟与输出长度。<br><br>③ <b>Meta Muse Wonder / Full</b>（10/12）——AA 智能指数 56（六周涨 8 分），SWE-Marathon 57.5% 超越 Opus 5.5 与 GPT-6 Astra，幻觉率仅 23%。<b>前沿模型重回三强格局</b>。",
+    summary: "<b>10月18日（周日）更新 · 一、REA：一个 MCP 如何让 Agent「看懂」软件</b><br>REA 全称 <b>Reverse Engineer Anything</b>（仓库 <code>morluto/rea</code>，TypeScript）。截至 10/17，GitHub 总星 <b>29.1 万</b>、周增 <b>24.9 万</b>，位列 GitHub Trending weekly 第一；npm 与 Release 版本为 <b>6.4.0</b>。<br><br>它不是「输入软件就还原源码」的魔法。真实链路是：<b>Agent 提出问题 → REA 调用本地分析工具取证 → Agent 解释行为</b>。官方要求结果必须包含<b>观察依据、推断、以及未解决的问题</b>三部分——这一点很关键，它把「猜测」和「证据」分开了。<br><br>支持的目标：原生二进制（借 Hopper/Ghidra/IDA 读伪代码与调用关系）、JavaScript/Electron 应用、.NET 程序集、网站（需 Chrome 系浏览器）、Android APK（需 JADX + JDK）、固件、网络抓包、进程行为。<b>其中静态 JS 与 .NET 检查门槛最低</b>——不运行目标、不装原生分析引擎就能开始。<br><br><b>三层分工</b>（这是最值得学的部分）：<b>MCP</b> 负责暴露分析工具给 Agent；<b>Skill</b> 是调查流程说明，教 Agent 何时调用哪个工具、怎么看证据；<b>CLI</b> 让人不经过 Agent 也能在终端直接分析。注意：只装 Skill 不会自动获得 MCP 工具，这两件事是分开的。<br><br><b>二、DeepSeek-V4.1-Flash-1017（10/17 上线）</b><br>已同步上线网页端、App 与 API。API 模型名<b>仍是 <code>deepseek-flash</code></b>，旧名 <code>deepseek-v4-flash</code> 会自动路由到新版，<b>不需要改接口地址</b>。1M 上下文、最高 384K 输出，支持图像理解与工具调用。<br><br>官方基准（对上一版）：HLE <b>42.6</b>(+5.8)、Terminal-Bench 4.0 <b>42.3</b>(+11.1)、ProgramBench <b>29.1</b>(+8.8)、DeepSWE v1.1 <b>77.0</b>(+2.8)、NL2Repo <b>68.2</b>(+2.8)、Automation-Bench <b>60.5</b>(+5.7)。官方强调的不只是分数，而是<b>同时减少了运行时间与输出长度</b>，称为「性能—费用帕累托改进」。<br><br>最容易被感知的能力是「<b>许愿式编程</b>」：用带自反馈的强化学习，让模型写完第一版代码后自己检查、发现问题、再修改，而不是只生成一次就结束。官方演示了故宫 3D 场景、网页赛车、Godot 复刻《传送门 2》等案例。<b>看点不是「一句话替代开发团队」，而是任务链被拉长了</b>：需求理解 → 规划 → 生成 → 运行 → 检查 → 修复可以连续发生。<br><br>配套：<b>DeepSeek Harness 升到 0.2.1-rc.2</b>（10/17），已适配新模型与 <b>Search / Fetch API</b>（<code>/v1/tools/search</code>、<code>/v1/tools/fetch</code>，Search 支持 site:/lang:/after:/before: 操作符；每千次成功请求 ¥5，<b>2026-11-01 00:00 前通过 Harness 调用暂不收费</b>，账户级 5 QPS）。<br><br><b>三、Meta Muse Wonder / Muse Wonder Full（10/12）</b><br>两档旗舰，均支持 1M 上下文、原生多模态（文本/高分辨率图/超长视频/连续音频），搭载 <b>Active Memory</b>（长会话自动保留偏好与约束）与 <b>Active Focus</b>（遇阻主动换策略、出错自检、实时调整计划）。诞生于 Meta 吉瓦级算力的 Prometheus 数据中心，经 14 个月基础设施重构，用大量长周期、多文件真实编程任务强化训练。<br><br>第三方测评（Artificial Analysis / Vals AI，10-12 数据）：AA 智能指数 Full <b>56</b>（与 Claude Sonnet 5.5 并列）、Wonder <b>52</b>；上代 Spark 1.3 为 48，<b>六周涨 8 分</b>。SWE-Marathon 完成率：Full <b>57.5%</b>、Wonder 53.1%，对比 Opus 5.5 46.3%、GPT-6 Astra 42.5%。Terminal-Bench 4.0：Full <b>57%</b>（上代仅 33%，提升 24pt）。法律专项 Harvey LAB-AA：Full <b>13.1</b> 分，是 Opus 5.5（4.2）的 3.1 倍。<br><br><b>幻觉率是它最特别的一项</b>：Full <b>23%</b>，远低于 Astra 51%、Opus 59%。但代价是知识指数仅 30（Astra 43、Opus 46）——它更倾向「不确定就不答」。所以判断标准是：<b>要高置信度选它，要广度知识仍选 Opus/Astra</b>。",
+    trend: "<b>REA vs Jev：两者根本不是同一层的东西</b><br><br>很多人会把它们放在一起比，因为都「和 AI 有关、都叫新东西」。但它们的层次完全不同：<br><br><table class=\"data-table\"><tr><th>维度</th><th>REA</th><th>Jev</th></tr><tr><td><b>所在层次</b></td><td><b>工具层</b>（MCP 服务器）</td><td><b>模型层</b>（决策模型）</td></tr><tr><td><b>解决什么</b></td><td>让 Agent 能<b>取证</b>：读应用、网页、二进制</td><td>让输出变成<b>结构化判断</b></td></tr><tr><td><b>输出形态</b></td><td>证据 + 追踪路径（自然语言 + 证据位置）</td><td><code>choice</code> / <code>score</code> / <code>probability</code>（JSON）</td></tr><tr><td><b>接入方式</b></td><td>挂到 Codex / Claude Code 等 Agent 上</td><td>嵌进自己的后端代码</td></tr><tr><td><b>前提条件</b></td><td>目标需自有或获授权；本机运行分析</td><td>需要有大量判断环节的后端系统</td></tr><tr><td><b>对幻觉的态度</b></td><td>不承诺零幻觉，但强制列出<b>证据与未知项</b></td><td>结构性零幻觉（不出 schema），但<b>判断不保证正确</b></td></tr><tr><td><b>依赖成本</b></td><td>原生分析需 Hopper/Ghidra/IDA；JS/.NET 静态分析零依赖</td><td>只要 API Key + 后端</td></tr><tr><td><b>对你的价值</b></td><td>理解 <b>MCP 三层分工</b>（求职高频设计题）</td><td>当前无场景，继续观察</td></tr></table><br><b>一句话区分：REA 给 Agent 加「眼睛」，Jev 给模型换「大脑」。</b><br><br><b>从 GitHub 周榜（10/17）看更大的趋势</b>：<br>榜单一 REA，榜单六 <code>mattpocock/skills</code>（29.4 万星·可组合 Agent Skills），榜单八 <code>context-mode</code>（3 万星·为 Agent 优化上下文窗口的 MCP + Hook），榜单十 <code>anthropics/claude-plugins-official</code>（4 万星·官方插件目录）。这组项目共同说明一件事：<b>Agent 的竞争点正在从「能不能写一段代码」移到「能不能稳定完成一套工程动作」</b>。而这个能力的组织方式已经收敛成三层——<b>MCP 提供工具、Skill 提供流程、CLI 提供人工入口</b>。这是 2026 下半年 AI 产品设计最值得记住的结构。",
+    tip: "<b>我的建议：学 REA 的思路，别急着上 REA 的工具</b><br><br><b>✅ 值得学的部分（成本低、回报高）</b><br>① <b>MCP / Skill / CLI 三层分工</b>——这是 AI 产品岗的高频设计题：什么该做成工具、什么该写成流程说明、什么该留给人直接用。REA 的 README 把这三层讲得很清楚，是现成的教材。<br>② <b>「证据 + 推断 + 未知项」的输出规范</b>——它解决的是 AI 输出最让人不放心的点：分不清哪句是事实、哪句是猜的。这个规范可以直接搬到你自己的产品设计里。<br>③ <b>能力边界的诚实标注</b>——REA 明确写了「不同目标需要的引擎不同」「不保证结论完整」。这种写法本身就是好的产品文档示范。<br><br><b>⚠️ 现在不建议真正上手的原因</b><br>① <b>你没有逆向需求</b>——你目前的项目是纯前端，没有需要分析二进制或第三方应用的场景。<br>② <b>法律边界</b>——官方免责声明限定在「自有或获授权软件」的分析。这个边界一旦模糊，风险不在技术层面。<br>③ <b>隐私</b>——REA 在本机分析，但<b>分析结果会进入 Agent 的对话上下文</b>，数据如何流转取决于模型服务商的政策。<br>④ <b>依赖重</b>——原生二进制分析要装 Hopper/Ghidra/IDA，和你「能用就行」的取向不符。<br><br><b>🎯 如果只想花 15 分钟验证一下（推荐这个）</b><br>用<b>自己项目的已解包 JavaScript / Electron 应用</b>做静态检查，不需要任何原生引擎：<br><code>npx rea-agents@latest setup</code>（选 Codex，注意向导会修改配置，会先给 dry-run 计划）<br><code>npx -y rea-agents@latest analyze-javascript-application /绝对路径 --json</code><br>要求：Node.js 22.19+ / 24.11+ / 26+。结果如果很大，先存文件再看摘要，<b>不要把完整分析一次塞进对话</b>。<br><br><b>📌 顺带一个立刻能用的结论：你已经在用新模型了。</b><br>DeepSeek-V4.1-Flash-1017（10/17）对已有调用是<b>自动生效</b>的（模型名仍是 <code>deepseek-flash</code>），不需要改任何配置。所以「要不要升级」这个问题不存在——<b>要判断的是要不要改用法</b>：既然它更擅长长任务链，那就可以把以前拆成多轮的任务合并成一轮交给它。<br><br><b>还有一个省钱的点</b>：deepseek-flash 高峰时段（工作日 9-12、14-18）输入 ¥2/输出 ¥8，<b>闲时减半</b>。批量任务排到晚上或周末跑，直接省一半。",
+    reasoning: "为什么这三件事值得一起看，而 REA 值得优先理解：<br><br><b>① 它们分别代表三个不同层面的变化。</b>DeepSeek 的更新是<b>模型层</b>（同一个模型更强、更快、更省）；Meta Muse Wonder 是<b>竞争格局层</b>（前沿模型从两家独大回到三家竞争，且各有明确长板）；REA 是<b>工具/接入层</b>（Agent 能做什么，取决于它能调用什么工具、怎么组织流程）。只看模型会误判——因为模型能力已经足够，瓶颈正在往「工具与流程」移动。<br><br><b>② GitHub 周榜是比发布会更早的信号。</b>前十名里有五个是 Agent 工具链项目（REA、skills、context-mode、claude-plugins-official、diagram-design）。一次发布会说明「某家公司打算做什么」，而榜单说明「开发者已经在用什么」。对求职者来说，后者的信息量更大——面试官问的往往是「你实际用过什么、怎么组织的」。<br><br><b>③ 为什么 REA 优先于 Jev。</b>Jev 的适用前提是「你有一个带后端的、判断密集的系统」，你现在没有；而 REA 揭示的<b>三层分工</b>是任何 AI 产品都要面对的架构问题，你即便不装它，也必须理解它——这正是我上次说的「理解的价值 &gt; 使用的价值」，只是这一次 REA 的理解价值更高、学习成本更低。<br><br><b>④ 一个容易被忽略的共同点：都在强调「证据」。</b>REA 强制输出证据与未知项；Muse Wonder 用「不确定就拒答」把幻觉率压到 23%；DeepSeek 把「减少输出长度」作为与分数提升并列的目标。三件事指向同一个方向：<b>AI 产品的评价标准，正在从「答案看起来对不对」转向「这个答案凭什么可信」</b>。理解这一条，比记住任何单个版本号都有用。",
     updated: "2026-10-18"
   },
   news: {
-    "summary": "<b>10月18日（周日）资讯速览</b>：<br>① <b>A股</b>：10/8 开市至今 7 个交易日（10/8-10/16），国庆前定下的三个观察点（量能 / 3900 / AI 硬件主线）现在可以开始逐条验证；10 月下旬叠加三季报密集披露。<br>② <b>游戏</b>：影之刃零 <b>10/29 发售</b>，倒计时 11 天，国产 3A 商业化的关键验证进入最后阶段。<br>③ <b>学习/求职</b>：10 月过半，秋招进入补投与面试准备阶段；本月学习计划到了该做完成率复盘的时间点。<br>④ <b>生活</b>：广州进入入秋转折期，白天 28-30C、夜间 22-24C，温差 6-8C，早晚需加薄外套。<br>⑤ <b>动漫</b>：秋季新番开播第三周，到了用三集法则定档追番名单的时点；Re:Zero 夺还篇已于 9/30 收官。",
+    "summary": "<b>10月18日 AI 资讯速览</b>：<br>① <b>REA（Reverse Engineer Anything）</b>登 GitHub 周榜第一——总星 29.1 万、周增 24.9 万，MCP 服务器形式把应用/网页/二进制分析交给 Agent，官方要求输出含证据与未知项；v6.4.0（10/11）。<br>② <b>DeepSeek-V4.1-Flash-1017</b>（10/17）上线——Terminal-Bench 4.0 42.3(+11.1)、ProgramBench 29.1(+8.8)、DeepSWE 77.0；模型名仍为 deepseek-flash，旧调用自动升级；1M 上下文 + 384K 输出。<br>③ <b>DeepSeek Harness 0.2.1-rc.2</b>（10/17）——适配新模型与 Search/Fetch API；Search/Fetch 每千次成功请求 ¥5，11/1 前通过 Harness 调用免收，账户级 5 QPS。<br>④ <b>Meta Muse Wonder / Full</b>（10/12）——AA 智能指数 56（六周 +8），SWE-Marathon 57.5% 超 Opus 5.5 与 GPT-6 Astra，幻觉率 23%（Opus 59%），Full 仅订阅制。<br>⑤ <b>A股</b>：10/8 开市至今 7 个交易日，国庆前三个观察点可开始验证；10 月下旬三季报密集披露。<br>⑥ <b>游戏</b>：影之刃零 10/29 发售，倒计时 11 天。<br>⑦ <b>生活</b>：广州入秋转折期，白天 28-30C、夜间 22-24C，温差 6-8C。",
     "trend": "本周资讯三条主线：①<b>多端复用成为主流工程选择</b>——DSH 桌面端选择 Electron 复用 Web UI 而非重做，说明产品形态稳定的前提下，多端是入口扩展而非能力分叉；②<b>Agent 工程从【往返式】走向【程序化编排】</b>——PTC 模式用一段代码批量调度工具，把往返次数从 N 次压到 1 次；③<b>A股维持结构市</b>——指数与个股分化，判断行情性质的关键仍是量能。",
     "tip": "今日跟踪：①把 DSH 桌面端对比整理进作品集（这是现成的 AI 产品分析）②确认 Jev 的接入时机条件（有后端系统 + 有大量判断环节时）③国庆前完成节前仓位决定并回填判断台账。",
     "updated": "2026-10-18"
@@ -1357,7 +1357,7 @@ var OPTIMIZATION_LOG = {
 
 var WEBSITE_GUIDE = {
   updated: "2026-09-06",
-  summary: "欢迎来到钟锐的个人数字空间！这是一个持续进化的智能信息中枢。版本1.8.22。10/18（周日）更新：主题为【10 月过半的复盘窗口 —— 从跟踪转向验证】——A股 10/8 开市至今 7 个交易日，stock 区把国庆前定下的三个观察点（量能/3900/AI硬件主线）转为可打勾的验证清单，并提示 10 月下旬三季报密集披露；健身进入第 30 天/第 5 周，给出首次减载评估的三个指标；求职转入反馈期，用反馈率区分【简历问题】与【面试问题】；另有秋季新番三集法则、入秋穿搭与精酿选择、影视与楼市 10 月下旬节奏。17 个分区内容全部重写。每日一词与小白课堂各 10 个领域。",
+  summary: "欢迎来到钟锐的个人数字空间！这是一个持续进化的智能信息中枢。版本1.8.23。10/18 追加更新【AI 动态追踪】：① REA（Reverse Engineer Anything）科普——GitHub 周榜第一的 MCP 服务器，讲清它的三层分工（MCP工具/Skill流程/CLI入口）、能力边界与授权前提；② 与 Jev 的 8 维对比表（REA 给 Agent 加眼睛，Jev 给模型换大脑）；③ DeepSeek-V4.1-Flash-1017 与 Meta Muse Wonder/Full 的实测数据；④ 评分表更新至 16 个模型、8 条结论、11 条调价记录。结论：REA 学思路（MCP 三层分工）优先于上手工具。",
   features: [
     {icon:"🏠", title:"首页仪表盘", desc:"一屏总览所有板块精华。分类卡片快速导航、实时股市/天气/新闻一目了然。点击分类卡片进入分类页。"},
     {icon:"📂", title:"分类浏览", desc:"点击侧边栏分类标题(👤关于/🎮娱乐/🏃生活/📊财经/🤖工具)，进入分类页集中浏览该类别所有板块。"},
@@ -1554,8 +1554,8 @@ var DAILY_VOCAB = {
 };
 
 var AI_MODEL_COMPARISON = {
-  updated: "2026-09-06",
-  description: "主流大模型全维度对比 · 同系列区分(Flash/Pro/Luna/Sol/Max/27B/V4.1) · 百分制评分 · 综合加权评分 · 最新价格(含调价标注) · 每日更新 · 9/12更新：DeepSeek V4.1 Flash发布(9/10·5520亿MoE·原生视觉·超Opus5/GPT-5.6 Sol·MIT开源·API降价)+GPT-6 Astra(闭源·API $10/$50)",
+  updated: "2026-10-18",
+  description: "主流大模型全维度对比 · 同系列区分(Flash/Pro/Luna/Sol/Max/27B/V4.1/Muse) · 百分制评分 · 综合加权评分 · 最新价格(含调价标注) · 每日更新 · <b>10/18 更新</b>：① DeepSeek-V4.1-Flash-1017 上线(10/17·Terminal-Bench 4.0 42.3↑11.1·DeepSWE 77.0·“许愿式编程”端到端生成) ② Meta Muse Wonder / Muse Wonder Full 发布(10/12·AA智能指数56·SWE-Marathon 57.5%超越Opus 5.5与GPT-6 Astra·幻觉率仅23%) ③ REA 成为 GitHub 周榜第一(MCP逆向分析·周增24.9万星)。评分含推算值，已在 scoring_guide 标注口径",
   models: [
     // ===== DeepSeek 系列 =====
     {name:"DeepSeek V4-Flash", emoji:"⚡", provider:"DeepSeek", series:"V4轻量高频版", tier:"性价比之王",
@@ -1568,14 +1568,14 @@ var AI_MODEL_COMPARISON = {
      price_note:"⚠️ 8/17涨价生效：高峰时段输出涨至¥27/百万tokens(约4.5倍)·部分场景最高涨12倍·空闲时段为高峰一半·涨价前价格锁定预算",
      free_tier:"✅ 完全免费(chat.deepseek.com)"
     },
-    {name:"DeepSeek V4.1 Flash", emoji:"🐳", provider:"DeepSeek", series:"V4.1新架构·原生视觉", tier:"🆕 开源旗舰(9/10发布)",
-     input_price:"$0.30(峰值)", output_price:"$1.20(峰值·非峰值半价)", cost_per_task:"≈$0.02",
-     intelligence:86, speed:90,性价比:96, 安全:86, 综合:91,
-     context:"未公开(继承1M级)", params:"5520亿MoE(激活:输入80亿/输出160亿)",
-     strengths:"9/10发布·多个benchmark超Claude Opus 5与GPT-5.6 Sol·原生视觉理解(图像输入)·AutomationBench-AA事务Agent性能超GPT-6 Astra拿第一·AA智能指数v4.3得40分(超GPT-5.6 Luna)·KV缓存token降至V4-Flash的1/3.9(显存1/4·存储1/8)·MIT开源可本地部署",
-     weaknesses:"任务输出token偏多(比Claude Fable 5.1多·单任务成本未必最优)·速度略逊Gemini 3.8 Flash/Muse Spark 1.3·生态适配仍在完善",
-     best_for:"日常主力升级(替代V4-Flash)·多模态任务(原生视觉)·Agent/自动化工作流·成本敏感+隐私场景·本地部署",
-     price_note:"🆕 9/10发布·API大幅降价：峰值输入$0.3/缓存输入$0.006/输出$1.2·非峰值半价·MIT开源可免费本地部署",
+    {name:"DeepSeek V4.1-Flash-1017", emoji:"🐳", provider:"DeepSeek", series:"V4.1 迭代版(10/17)", tier:"🆕 开源旗舰·Agent优化",
+     input_price:"¥1.00/¥2.00(缓存未命中)", output_price:"¥4.00/¥8.00(闲时/高峰)", cost_per_task:"≈$0.02",
+     intelligence:87, speed:92,性价比:97, 安全:86, 综合:91,
+     context:"1M(输出上限384K)", params:"5520亿MoE(激活:输入80亿/输出160亿)",
+     strengths:"10/17 上线·代码/Agent/视觉全面提升：Terminal-Bench 4.0 42.3(+11.1)·ProgramBench 29.1(+8.8)·HLE 42.6(+5.8)·DeepSWE v1.1 77.0·Automation-Bench 60.5·NL2Repo 68.2·官方称为“性能—费用帕累托改进”(同时降延迟与输出长度)·“许愿式编程”带自反馈RL可端到端生成可运行项目·原生视觉·1M上下文+384K输出·MIT开源",
+     weaknesses:"基准为官方自测(harmess 不同不可直接拼排名)·知识广度仍是短板·中文长文写作未验证·输出仍偏长·生态适配仍在完善",
+     best_for:"日常主力(替代V4-Flash)·仓库级代码修改·多步Agent任务·多模态编程·联网检索流程·成本敏感+隐私场景·本地部署",
+     price_note:"🆕 10/17 上线：模型名仍为 deepseek-flash，旧名 deepseek-v4-flash 自动路由到新版。闲时输入¥1/输出¥4·高峰(工作日9-12/14-18)输入¥2/输出¥8·缓存命中输入¥0.02/¥0.04。MIT开源可本地部署",
      free_tier:"✅ MIT开源·HuggingFace/ModelScope可下载·官网免费"
     },
     {name:"DeepSeek V4-Pro", emoji:"🎯", provider:"DeepSeek", series:"V4旗舰深度版", tier:"旗舰(已开源)",
@@ -1709,7 +1709,27 @@ var AI_MODEL_COMPARISON = {
      best_for:"多模态任务·图片/视频理解·快速原型·Google Workspace集成·轻量Agent",
      price_note:"稳定·Gemini系列价格分层清晰·Flash/Fast/Pro/Ultra四级",
      free_tier:"✅ 有限免费(gemini.google.com)"
-    }
+    },
+
+    // ===== Meta Muse 系列（2026-10-12 新增）=====
+    {name:"Meta Muse Wonder", emoji:"🌀", provider:"Meta", series:"Muse · 标准版", tier:"🆕 长任务编程新秀",
+     input_price:"$4.00(¥28)", output_price:"$20.00(¥140)", cost_per_task:"≈$0.08",
+     intelligence:80, speed:78,性价比:68, 安全:85, 综合:76,
+     context:"1M", params:"未公开",
+     strengths:"SWE-Marathon 53.1%·DeepSWE v1.1 78.8%(超GPT-6 Astra 74.1%)·Terminal-Bench 4.0 57%·Coding Agents Index 63·Active Memory(长会话记住偏好与约束)·Active Focus(遇阻主动换策略并自检)·原生多模态(文本/高分辨率图/超长视频/连续音频)·1M上下文不加价",
+     weaknesses:"AA知识指数偏低(约30)·幻觉率23%的代价是拒答变多·API价格中上($4/$20)·中文场景未验证·生态刚起步·总量数据均来自第三方测评",
+     best_for:"长任务编程·多文件仓库修改·需反复运行验证的Agent工作·专业工作(金融/法律)·超长上下文分析",
+     price_note:"2026-10-12 发布·输入$4/输出$20 每百万token·缓存输入$0.20·1M上下文不额外加价·Meta Model API 与 Muse Code 均已上线",
+     free_tier:"❌ 无免费额度"},
+    {name:"Meta Muse Wonder Full", emoji:"🌌", provider:"Meta", series:"Muse · 高配版", tier:"专业工作旗舰",
+     input_price:"订阅制($50/$200每月)", output_price:"含在订阅内", cost_per_task:"按订阅折算",
+     intelligence:84, speed:72,性价比:60, 安全:88, 综合:74,
+     context:"1M", params:"未公开",
+     strengths:"AA智能指数56(与Claude Sonnet 5.5并列·上代Spark 1.3为48·六周涨8分)·SWE-Marathon 57.5%(超Opus 5.5 11.2pt)·Harvey法律LAB-AA 13.1分(Opus 5.5的3.1倍)·幻觉率仅23%(Astra 51%/Opus 59%)·ProofBench输出token少40%(450万→270万)·解题步骤120→62·Vals综合64.57排第五(超所有OpenAI模型)",
+     weaknesses:"无独立API(仅 Muse Code 订阅)·知识广度低于Astra(43)与Opus(46)·订阅制无法按量弹性·$50/月起门槛·价格折算成本高",
+     best_for:"高置信度专业工作(法律/合规/金融)·超长任务软件开发·对幻觉零容忍的场景·需要少token完成复杂推理",
+     price_note:"⚠️ 仅通过 Muse Code 订阅开放：Power $50/月(基础档20倍用量) / Maximum $200/月(80倍)·独立API未公布时间表",
+     free_tier:"❌ 无免费额度"}
   ],
   scoring_guide: {
     intelligence: "基于Artificial Analysis Intelligence Index+Agent基准+代码能力综合评估·满分100·90+:顶级推理·80-89:旗舰水平·70-79:优秀中端·<70:入门/轻量",
@@ -1725,16 +1745,19 @@ var AI_MODEL_COMPARISON = {
    updated: "2026-08-16"
   },
   key_takeaways: [
-    "🎤 端侧AI新赛道: 科大讯飞9/1开源词元星火X2.5端侧模型→手机/车机离线推理·端侧vs云端架构差异成面试高频题",
-    "🏦 算力军备竞赛: Anthropic 350亿美元算力协议(与Nvidia投资Lambda)→算力=AI时代的地产·算力产业链确定性增强",
-    "🐬 多模态新选择: GLM-5.3-Flash已开源(8/29)·定价仅Opus 4.8的1/40→看图/截图分析类任务免费平替",
-    "💰 性价比之王: DeepSeek V4-Flash(98分·$0.03/任务)·但8/17涨价后部分场景最高1100%→高峰任务需切换",
-    "🆓 免费新选择: Qwen3.8-Max已开源(2.4万亿)+27B笔记本可运行→本地部署时代来临·免费平替彻底落地",
-    "🧠 推理最强: Claude Opus 5(94分)≈GPT-5.6 Sol(92分)·但前者$1.50/任务vs后者$1.86",
-    "🏆 综合最强: DeepSeek V4-Flash综合88分!高性价比+极速拉满·日常首选·Qwen3.8-27B 88分并列",
-    "🎯 推荐策略: 日常高频/隐私任务用Qwen3.8-27B本地部署(免费)·多模态用GLM-5.3-Flash(1/40价格)·端侧/离线用讯飞端侧模型·重活用Claude Sonnet 4.6/Opus 5·免费备胎Codex Luna"
+    "🔍 本周最强信号: REA(morluto/rea)登 GitHub 周榜第一——29万星/周增24.9万·MCP 把逆向分析工具交给 Agent→Agent 竞争点从「能不能写代码」移到「能不能稳定完成一套工程动作」",
+    "🛠️ Agent 三层分工成型: MCP 暴露工具 / Skill 教 Agent 何时调用 / CLI 供人直接用——REA 是这个范式的教科书案例·面试高频题",
+    "🐳 DeepSeek V4.1-Flash-1017: Terminal-Bench 4.0 42.3(+11.1)·ProgramBench +8.8·同时降延迟与输出长度→竞争从「榜单分数」转向「完成任务要多少时间/输出/工具调用」",
+    "🌌 Meta Muse Wonder Full: AA智能指数56(六周+8)·SWE-Marathon 57.5%超Opus 5.5 11pt·幻觉率仅23%(Opus 59%)→高置信度专业工作首次有国产外替代",
+    "⚖️ 幻觉率是双刃剑: Muse Full 23%靠的是「不确定就拒答」·但知识指数仅30(Astra 43/Opus 46)→合规场景选它·广度问答仍选Opus/Astra",
+    "💰 价格时段化: deepseek-flash 高峰(工作日9-12/14-18)输入¥2/输出¥8·闲时减半→批量任务排到夜间可省一半",
+    "🆓 Search/Fetch 免费用: DeepSeek Search/Fetch 每千次成功请求¥5·2026-11-01 前通过 Harness/Claude Code/Codex 调用暂不收费·5 QPS 限制",
+    "🎯 选型策略: 日常主力 DeepSeek V4.1-Flash-1017(91分)·长任务编程 Meta Muse Wonder·高置信度专业工作 Muse Full·多模态 GLM-5.3-Flash·本地隐私 Qwen3.8-27B"
   ],
   price_adjustments: [
+    {model:"DeepSeek V4.1-Flash-1017", date:"2026-10-17", change:"🆕 上线·代码/Agent/视觉全面提升且同时降延迟与输出长度", reason:"官方称「性能—费用帕累托改进」：Terminal-Bench 4.0 42.3(+11.1)、ProgramBench 29.1(+8.8)、HLE 42.6(+5.8)、DeepSWE 77.0；带自反馈RL支持「许愿式编程」", impact:"模型名不变(deepseek-flash)旧调用自动升级·1M上下文+384K输出·MIT开源；竞争焦点从榜单分数转向「完成任务的时间/输出/工具调用数」"},
+    {model:"Meta Muse Wonder / Full", date:"2026-10-12", change:"🆕 发布·AA智能指数56(Wonder Full)·六周自48涨8分", reason:"Meta 投入吉瓦级算力的 Prometheus 数据中心·14个月基础设施重构·用长周期多文件真实编程任务强化训练·搭载 Active Memory 与 Active Focus", impact:"SWE-Marathon 57.5% 超越 Claude Opus 5.5(46.3%)与 GPT-6 Astra(42.5%)·幻觉率23%(Astra 51%/Opus 59%)·Full 仅订阅制 $50/$200 每月·前沿模型竞争重回三强格局"},
+    {model:"REA (morluto/rea)", date:"2026-10-11", change:"🆕 v6.4.0·GitHub 周榜第一(29万星·周增24.9万)", reason:"Reverse Engineer Anything：用 MCP 把应用/网页/二进制分析能力交给 Agent，本地运行、结果含证据与未知项", impact:"Agent 工具生态的分层范式落地(MCP工具/Skill流程/CLI直用)·逆向分析门槛大幅降低·同时带来授权与隐私边界问题(结果会进入Agent上下文)"},
     {model:"GLM-5.3-Flash", date:"2026-08-29", change:"🆕 正式开源多模态模型·定价仅为Claude Opus 4.8的1/40", reason:"智谱AI开源多模态模型·全国产算力卡承载·对标主流旗舰性能", impact:"多模态能力（图像理解）进入白菜价时代·补齐DeepSeek无多模态短板·国产开源三足鼎立格局确立·多模态场景免费平替落地"},
     {model:"Qwen3.8-Max", date:"2026-08-18/19", change:"🆕 正式开源2.4万亿旗舰权重+27B笔记本可运行版本", reason:"阿里回应Meta AI挑战·押注开源路线·全球最大开源模型之一·千问旗舰首次开源", impact:"本地部署门槛大降·开源旗舰时代来临·DeepSeek涨价后的主力平替彻底落地·国产模型三足鼎立格局强化"},
     {model:"Qwen3.8-27B", date:"2026-08-15", change:"🆕 正式开源270亿参数权重(8/15)+笔记本可运行版", reason:"阿里千问3.8系列首发开源·旗舰Max(2.4T)紧随其后·国产开源潮延续", impact:"DeepSeek涨价后的免费平替落地·本地部署成本趋近0·中国开源模型全球下载第一(41%)"},
