@@ -10,6 +10,11 @@
 <meta property="og:description" content="17个板块每日更新的个人智能信息中枢：求职/股市/AI动态/游戏/动漫/小说/学习一站式整合。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://zr-president.github.io/my-website/">
+<meta property="og:image" content="https://zr-president.github.io/my-website/assets/img/a1pMK4456dF2j5B9xvkjMEGiOOw.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="钟锐|个人数字空间">
+<meta name="twitter:description" content="17个板块每日更新的个人智能信息中枢">
+<link rel="canonical" href="https://zr-president.github.io/my-website/">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="alternate icon" href="favicon.ico">
 <!-- #111: 访问统计（Umami 轻量无隐私）——注册 Umami Cloud(免费) 拿到 site ID 后，把下方两个占位替换为你的真实值即生效
@@ -929,6 +934,30 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 <div class="detail-overlay" id="detailOverlay" onclick="if(event.target===this.querySelector('.backdrop'))closeDetail()"><div class="backdrop"></div><div class="detail-panel" id="detailPanel"><button class="detail-close" onclick="closeDetail()">✕</button><div class="detail-panel-inner" id="detailContent"></div></div></div>
 
 <script>
+
+// ===== 知识库索引：按需加载（首屏省 371.8KB）=====
+window.__kiLoading=false; window.__kiCbs=[];
+function ensureKnowledgeIndex(cb){
+  if(typeof KNOWLEDGE_INDEX!=='undefined'){ if(cb)try{cb()}catch(e){} return; }
+  if(window.__kiCbs && window.__kiCbs.length>=0 && window.__kiLoading){ window.__kiCbs.push(cb); return; }
+  window.__kiLoading=true;
+  window.__kiCbs=[cb];
+  var s=document.createElement('script');
+  s.src='knowledge_index.js?v=' + '1.8.27';
+  s.async=true;
+  s.onload=function(){
+    window.__kiLoading=false;
+    var cbs=window.__kiCbs||[]; window.__kiCbs=[];
+    cbs.forEach(function(f){ try{ f&&f(); }catch(e){} });
+  };
+  s.onerror=function(){
+    window.__kiLoading=false;
+    var cbs=window.__kiCbs||[]; window.__kiCbs=[];
+    cbs.forEach(function(f){ try{ f&&f(); }catch(e){} });
+  };
+  document.head.appendChild(s);
+}
+
 // ===== Theme System =====
 function toggleTheme(){
   const h=document.documentElement,is=h.getAttribute('data-theme')==='dark';
@@ -3301,6 +3330,11 @@ function doSectionQuery(){
   var resultBox = document.getElementById('queryResultBox');
   if(!resultBox) return;
 
+  // 知识库索引按需加载（371.8KB，只在真正查询时才下载）
+  if(typeof KNOWLEDGE_INDEX==='undefined'){
+    ensureKnowledgeIndex(function(){ try{ doSectionQuery(); }catch(e){} });
+  }
+
   // Show searching
   resultBox.innerHTML = '<div style="margin-top:8px;padding:10px;background:var(--bg);border-radius:6px;font-size:12px;color:var(--text2)">🔍 正在搜索站内数据...<br><span style="font-size:10px">检索范围：PICKS推荐 + INSIGHTS分析 + DETAIL完整指南</span></div>';
 
@@ -4583,11 +4617,11 @@ function manualRefresh(){
 
 </script>
 
-<script defer src="detail_content.js"></script>
-<script defer src="personal_config.js"></script>
-<script defer src="img_style.js?v=1.8.15"></script>
-<script defer src="daily_data.js?v=1.8.26"></script>
-<script defer src="knowledge_index.js"></script>
+<script defer src="detail_content.js?v=1.8.27"></script>
+<script defer src="personal_config.js?v=1.8.27"></script>
+<script defer src="img_style.js?v=1.8.27"></script>
+<script defer src="daily_data.js?v=1.8.27"></script>
+
 <script>
 // 图片加载完成后淡入（避免灰块闪烁）
 (function(){
