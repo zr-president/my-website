@@ -45,32 +45,32 @@ ins_fit = insight_block('fitness')
 ins_diet = insight_block('diet')
 
 # ---------- 1) 热量口径一致 ----------
-CAL = '训练日 2400'
+CAL = '训练日 2600'
 for name, txt in [('DETAIL.diet', diet), ('INSIGHTS.diet', ins_diet)]:
-    if CAL in txt or '训练日 2400' in txt:
-        ok(name + ' 含热量口径「训练日 2400」')
+    if CAL in txt or '训练日 2600' in txt:
+        ok(name + ' 含热量口径「训练日 2600」')
     else:
-        err(name + ' 缺热量口径「训练日 2400」')
+        err(name + ' 缺热量口径「训练日 2600」')
 
-if '训练日 2400' in fitness or '训练日 2400' in ins_fit or '训练日 +200' in fitness or '训练日+200' in fitness:
-    ok('健身侧含热量口径（训练日 2400 / +200）')
+if '训练日 2600' in fitness or '训练日 2600' in ins_fit or '训练日 +200' in fitness or '训练日+200' in fitness:
+    ok('健身侧含热量口径（训练日 2600 / +200）')
 else:
-    warn('健身侧未明确出现「训练日 2400」')
+    warn('健身侧未明确出现「训练日 2600」')
 
-if '休息日 2200' in diet and '休息日 2200' in ins_diet:
-    ok('休息日 2200 口径一致')
+if '休息日 2400' in diet and '休息日 2400' in ins_diet:
+    ok('休息日 2400 口径一致')
 else:
-    warn('休息日 2200 口径未在两处同时出现')
+    warn('休息日 2400 口径未在两处同时出现')
 
 # ---------- 2) 蛋白口径一致 ----------
-if '125-135g' in diet:
-    ok('DETAIL.diet 含蛋白口径 125-135g')
+if '130-140g' in diet:
+    ok('DETAIL.diet 含蛋白口径 130-140g')
 else:
-    err('DETAIL.diet 缺蛋白口径 125-135g')
-if '125-135g' in ins_diet:
-    ok('INSIGHTS.diet 含蛋白口径 125-135g')
+    err('DETAIL.diet 缺蛋白口径 130-140g')
+if '130-140g' in ins_diet:
+    ok('INSIGHTS.diet 含蛋白口径 130-140g')
 else:
-    err('INSIGHTS.diet 缺蛋白口径 125-135g')
+    err('INSIGHTS.diet 缺蛋白口径 130-140g')
 
 # ---------- 3) 食谱只应有一处（健身区不得再有完整菜单表）----------
 meal_markers = ['无糖希腊酸奶', '糙米饭 1.5 碗', '清蒸鱼 100g']
