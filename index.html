@@ -2189,7 +2189,7 @@ function renderSectionPicks(sectionId){
     if(statsEl && typeof OPTIMIZATION_LOG!=='undefined'){
       var doneCount=OPTIMIZATION_LOG.suggestions.filter(function(s){return s.status==='已完成';}).length;
       var prog=OPTIMIZATION_LOG.suggestions.filter(function(s){return s.status==='实施中';}).length;
-      var pend=OPTIMIZATION_LOG.total_suggestions-doneCount-prog;
+      var pend=OPTIMIZATION_LOG.suggestions.filter(function(s){return s.status==='待办'||s.status==='推进中';}).length;
       statsEl.innerHTML='<div style="display:flex;gap:16px;flex-wrap:wrap;font-size:13px"><div>✅ 已完成 <strong style="color:var(--green)">'+doneCount+'</strong></div><div>🚧 实施中 <strong style="color:var(--orange)">'+prog+'</strong></div><div>📋 待实施 <strong>'+pend+'</strong></div><div>🔥 连续迭代 <strong style="color:var(--accent)">'+OPTIMIZATION_LOG.streak_days+'</strong> 天</div></div>';
     }
     return;
@@ -4617,10 +4617,10 @@ function manualRefresh(){
 
 </script>
 
-<script defer src="detail_content.js?v=1.8.28"></script>
-<script defer src="personal_config.js?v=1.8.27"></script>
-<script defer src="img_style.js?v=1.8.27"></script>
-<script defer src="daily_data.js?v=1.8.28"></script>
+<script defer src="detail_content.js?v=1.8.29"></script>
+<script defer src="personal_config.js?v=1.8.29"></script>
+<script defer src="img_style.js?v=1.8.29"></script>
+<script defer src="daily_data.js?v=1.8.29"></script>
 
 <script>
 // 图片加载完成后淡入（避免灰块闪烁）

@@ -1,4 +1,4 @@
-var SITE_VERSION = "1.8.28";
+var SITE_VERSION = "1.8.29";
 
 var DAILY_DATA = {
   "update_time": "2026-10-20T19:04:08+08:00",
@@ -1311,11 +1311,11 @@ var AGENT_STACKS = {
 };
 
 var OPTIMIZATION_LOG = {
-  date: "2026-09-06",
-  total_suggestions: 111,
-  total_implemented: 94,
-  streak_days: 33,
-  suggestions: [
+  date: "2026-10-20",
+  total_suggestions: 115,
+  total_implemented: 102,
+  streak_days: 44,
+    suggestions: [
     {id:1, cat:"已归档", title:"AI追踪板块周报自动生成", desc:"每周一自动汇总上周AI融资/模型发布/价格变动→已集成至INSIGHTS.ai-track周度总结", priority:"P1", status:"已完成"},
     {id:2, cat:"已归档", title:"cron更新后自动验证关键板块内容", desc:"检查DAILY_BRIEFING/INSIGHTS/PICKS非空+日期正确→daily_data.js增加校验注释标记", priority:"P1", status:"已完成"},
     {id:3, cat:"已归档", title:"黑暗模式下增加深蓝/墨绿配色微调", desc:"dark模式下增加navy(深蓝#1a1f3a)和teal(墨绿#0d3b3b)两种新的accent变体选项", priority:"P2", status:"已完成"},
@@ -1398,8 +1398,6 @@ var OPTIMIZATION_LOG = {
     {id:82, cat:"机制创新", title:"AI生活妙用新增【台风季天气安全卡】置顶", desc:"✅ 8/19已实施：AI_LIFE_HACKS新增weather_safety字段+渲染置顶——极端天气（台风/暴雨）时显示安全卡（出行/雷雨/防潮/计划提醒），首期内容：广州倒水模式+2个新台风预警", priority:"P2", status:"已完成"},
     {id:83, cat:"机会雷达", title:"机会雷达方向A落地：本地部署+首个接单自动化示例", desc:"✅ 8/19已实施：方向A上车路径更新为实操版（装Ollama→跑Qwen3.8-27B→Harness指向本地）+创建scripts/automation_starter.py首个接单自动化示例（每日资讯汇总器·数据整理类最小模板·可改造接单）", priority:"P1", status:"已完成"},
     {id:84, cat:"稳定性", title:"启用 AI 每日自动更新（6:00定时已恢复+脚本日期bug已修）", desc:"✅ 9/2实施（代码部分）：①auto-update.yml schedule 已恢复（北京6:00·避开DeepSeek工作日白天高峰·低谷价约半价）②auto_update.py 修复硬编码日期bug（update_date 原来写死 2026年8月15日，跨月后无法匹配→改为动态正则）③脚本新增自动备份+失败回滚（#88）。剩余一步：在 GitHub 仓库 Settings→Secrets 添加 DEEPSEEK_API_KEY secret 后即全自动生效", priority:"P0", status:"已完成"},
-    {id:85, cat:"性能优化", title:"GitHub Pages 国内访问加速（Cloudflare CDN 免费代理）", desc:"待办：github.io 域名在国内访问时快时慢、偶尔打不开（未备案域名被限速风险）。操作：注册 Cloudflare 免费账号→添加站点（用 CNAME 方式把自定义域名或 github.io 套上 CDN）→免费全球加速，国内访问明显改善——无需买服务器即可缓解访问痛点", priority:"P1", status:"待办"},
-    {id:86, cat:"数据优化", title:"接入网站访问统计（百度统计/Umami 免费）", desc:"待办：网站没有任何访问统计——不知道每天多少人看、看了哪些板块、从哪里来。操作：注册百度统计（免费）→复制统计代码到 index.html →次日即可看到访客量/热门板块/来源渠道——用数据决定内容更新重点（哪个板块该加强、哪个没人看）", priority:"P1", status:"待办"},
     {id:87, cat:"内容优化", title:"GLM-5.3-Flash开源专题全站同步（多模态免费平替）", desc:"✅ 8/29实施：智谱开源GLM-5.3-Flash多模态模型（定价仅Opus 4.8的1/40）——AI动态追踪/学习区/TOOLCHAIN_RADAR/决策单/AI对比表全站同步【三足鼎立】状态+多模态平替候选加入评估", priority:"P1", status:"已完成"},
     {id:88, cat:"稳定性", title:"每日更新自动备份+失败回滚（防数据全损事故）", desc:"✅ 9/2实施：auto_update.py 新增 backup()（更新前自动备份 daily_data.js+index.html 为 .bak-日期）+ rollback()（语法校验失败自动从备份恢复，无备份时 git checkout 回滚）——已在 main 流程接入，让自动更新跑起来后依然安全", priority:"P1", status:"已完成"},
     {id:89, cat:"内容优化", title:"自定义 404 页面 + 网站 favicon/SEO 标签完善", desc:"✅ 9/2实施：①新建 404.html（渐变404+返回首页/知识库搜索入口，适配暗色模式）②生成 favicon.ico（64px ZR渐变图标）+favicon.svg（现代浏览器优先）③index.html head 补全 meta description/keywords + OG 标签（title/description/type/url）——专业感+搜索引擎收录提升（求职展示加分）", priority:"P2", status:"已完成"},
@@ -1407,7 +1405,6 @@ var OPTIMIZATION_LOG = {
     {id:91, cat:"内容优化", title:"科大讯飞端侧模型开源专题全站同步（端侧AI新赛道）", desc:"✅ 9/2实施：科大讯飞9/1开源词元星火X2.5端侧模型——ai-track/学习区/TOOLCHAIN_RADAR/决策单全站同步【端侧AI新赛道】状态+端侧vs云端架构科普入小白课堂", priority:"P1", status:"已完成"},
     {id:92, cat:"求职功能", title:"金九银十求职冲刺页：秋招岗位日历+投递目标仪表盘", desc:"✅ 9/6重做：#92 改为『投递作战台』(#107)——从秋招岗位日历这类外部信息汇总，改为真正能用的个人投递管理工具（7家公司投递状态×面试进度×本周计数，存本机）", priority:"P1", status:"已完成"},
     {id:93, cat:"内容优化", title:"9月新番/新片/新游前瞻清单（Re:Zero完结+秋季档+国庆档）", desc:"❌ 已取消：9/2实施过【9月内容前瞻】用户反馈不实用已移除；用户9/6确认不再重做，标记归档。如需同类功能可改做【今日内容速览】挂 DAILY_BRIEFING 下方", priority:"P2", status:"已归档"},
-    {id:94, cat:"AI功能", title:"AI 数字分身：首页 AI 助手升级为真实对话（求职作品集杀手锏）", desc:"推进中（框架已落地）：✅统一AI接入层已建（localStorage 存 Key 不进代码库+chatToAI 函数+CORS/无Key 自动降级本地规则）✅#ai-assistant 聊天升级为双模式（配置 Key 后基于简历真实对话，未配置走本地规则）+🔑配置入口+模式徽章。待办：真 AI 效果需本机配置 Key 后体验；若 DeepSeek API 浏览器直连 CORS 受限，后续可上腾讯云轻量代理（呼应服务器方案）", priority:"P0", status:"推进中"},
     {id:95, cat:"AI功能", title:"AI 简历匹配度分析器（粘贴JD→评分+缺口+优化建议）", desc:"✅ 9/2实施：求职中心新增【🤖 JD匹配分析器】——粘贴JD→①⚡本地预检（关键词覆盖对照：命中/缺口+机器筛选优化提示，无需Key立即可用）②🤖AI深度分析（配置Key后：匹配度评分/逐项对照/3条简历优化建议/80字定制打招呼语，走统一AI层）。已连 #90 打招呼语与 #97 公司雷达", priority:"P0", status:"已完成"},
     {id:96, cat:"内容优化", title:"AI 行业观察档案页（把每日AI分析沉淀为个人思考专题）", desc:"✅ 9/2实施：AI助手区新增【📝 我的AI行业观察】折叠卡——AI_OBSERVATIONS 数据块（历史主题时间线：讯飞端侧/Anthropic算力/英伟达财报/GLM开源等）+手写观察追加/删除（localStorage 存个人记录）——持续思考的证明（面试作品集）+成长记录", priority:"P1", status:"已完成"},
     {id:97, cat:"求职功能", title:"目标公司雷达卡片墙（7家公司可视化：进度/面试/AI观察）", desc:"✅ 9/2实施：求职中心新增【目标公司雷达】卡片墙——TARGET_COMPANIES 数据块（7家目标公司×定位/岗位/AI观察/打招呼语入口）+renderCompanyRadar 渲染（卡片含投递进度徽章·读本地 tracker 统计·洞察一句话·去投递直达）——一屏看清求职全局，面试前点开即功课", priority:"P1", status:"已完成"},
@@ -1416,21 +1413,30 @@ var OPTIMIZATION_LOG = {
     {id:100, cat:"功能优化", title:"我的智能日历（把散落日期聚合为提醒）", desc:"✅ 9/2实施：每日待办区新增【📅 我的智能日历】卡片——CALENDAR_EVENTS 数据块（通用节点：发售/上映/完结/自动更新/投递窗口）+renderCalendar 渲染+个人提醒添加/删除（存 localStorage 不外泄，隐私保护）——近期关键日期一眼看清", priority:"P1", status:"已完成"},
     {id:101, cat:"学习机制", title:"板块分级学习路径（L1入门→L2进阶→L3实战）", desc:"✅ 9/2实施：每日一词区新增【📚 板块系统课程】折叠卡——SUBJECT_PATHS 数据块（股市/精酿调酒/购车/购房/健身饮食 5板块 × L1-L3 课程，每节附学习指引：看详情页/小白课堂/生活助手联动）+勾选进度（localStorage·已完成N/M节）——把零散知识变成体系，每天学一节半年后各板块能独立判断", priority:"P1", status:"已完成"},
     {id:102, cat:"内容优化", title:"GPT-6 Astra 发布专题全站同步（AI安全vs能力释放）", desc:"✅ 9/6实施：OpenAI 9/4发布GPT-6 Astra——ai-track/news/career/AI_OBSERVATIONS 全站同步【GPT-6发布】头条+AI安全治理成面试高频议题", priority:"P0", status:"已完成"},
-    {id:103, cat:"AI功能", title:"AI 数字分身升级：注入 GPT-6/AI 安全语料+按板块精准回答", desc:"待办：把每日 AI_OBSERVATIONS/小白课堂也注入数字分身 system prompt，让 AI 能回答『今天网站学了什么』『GPT-6 你怎么看』，并支持『去某板块』跳转", priority:"P1", status:"待办"},
-    {id:104, cat:"求职功能", title:"AI 安全/AI 治理岗位雷达（GPT-6催化新增量方向）", desc:"待办：目标公司雷达(#97)扩展——新增『AI安全/AI治理/AI合规』方向关键词与岗位洞察(Astra事件后需求上升、门槛相对友好)，给该方向的投递清单", priority:"P2", status:"待办"},
     {id:105, cat:"稳定性", title:"AI 自动更新失败监控与自愈（连续失败告警）", desc:"✅ 9/6实施：给 auto-update workflow 增加失败告警（失败时自动发 GitHub 站内信+PushPlus 通知，连续2次失败进入告警），验证自动更新可靠性后撤销人工盯守", priority:"P1", status:"已完成"},
     {id:106, cat:"求职功能", title:"首屏 Hero 品牌区：让面试官 3 秒看懂『我是谁+我要什么』", desc:"✅ 9/6实施：首页顶部新增求职品牌 Hero——『钟锐·求职AI产品/增长运营』大标题+定位副标题+7家目标公司徽标行+两个强CTA（让AI分析我的JD/看看我的AI作品集），解决首屏无定位、信息过载问题", priority:"P0", status:"已完成"},
     {id:107, cat:"求职功能", title:"求职投递作战台（重做#92）：7家公司投递状态×面试进度×本周计数", desc:"✅ 9/6实施：首屏新增可交互『投递作战台』——从 TARGET_COMPANIES 读取7家目标公司，每行一个状态下拉（未投递/已投递/笔试/面试/已拿offer）+备注，存 localStorage，刷新保留；本周投递计数+1；把#92原本『秋招岗位日历』这类外部信息汇总改为真正能用的个人投递管理工具", priority:"P0", status:"已完成"},
     {id:108, cat:"AI功能", title:"#94数字分身升级为『懂你的管家』：板块跳转+快捷指令+今日内容注入", desc:"✅ 9/6实施：①AI聊天支持意图识别自动跳转（问学习→每日一词/问股票→股市区/问投递→作战台/GPT-6→AI动态）②聊天框上方4-6个一键快捷指令chips③把今日AI观察(AI_OBSERVATIONS最近2条)注入上下文，让数字分身能回答『今天网站学了什么』——从『能对话』升级为『懂你的管家』", priority:"P0", status:"已完成"},
     {id:109, cat:"求职功能", title:"AI 行业观察提权为首屏可分享作品集（#96升级）", desc:"✅ 9/6实施：把折叠在AI助手里的『我的AI行业观察』提为首屏独立高权重板块——《把每日AI思考沉淀成可分享的个人作品集》，面试时可直接演示，是最强差异化资产", priority:"P1", status:"已完成"},
     {id:110, cat:"视觉优化", title:"首屏信息密度减肥+强CTA：优化日记默认折叠+语义分区", desc:"✅ 9/6实施：①优化日记默认可折叠只显示前3条，『展开全部』一键看全——降低首屏阅读压力②hero 区两个强CTA带hover③聊天框下加『现场演示给面试官看』引导——解决首屏拥挤、无行动引导", priority:"P1", status:"已完成"},
-    {id:111, cat:"性能优化", title:"接入访问统计（Umami 免费自托管，无隐私问题）", desc:"🔶 进行中：已规划接入 Umami 轻量访问统计——看每天多少人访问、哪个板块最受欢迎，用数据反哺内容。待用户注册 Umami Cloud（免费）拿到 site ID 后，把 script 天关接入 index.html head 即生效（代码已留好占位）", priority:"P2", status:"待办"},
+    {id:112, cat:"求职功能", title:"JD 匹配度体检器：粘贴岗位描述 → 本地打分 → 指出缺口", desc:"投递前 60 秒自检，避免盲投。做法：粘贴任意 JD → 用本地能力映射表（SQL/指标拆解/A-B实验/AI产品/增长/工具链/行业理解）逐项关键词命中打分 → 输出「已匹配 N 项 / 缺失 M 项 / 简历该补哪一句」。纯前端规则引擎，无需 API、可离线。创新点：它不是简历生成器，而是【投递前的反向体检】——先看缺口，再决定投不投", priority:"P0", status:"待办"},
+    {id:113, cat:"求职功能", title:"「招聘视角」30 秒模式：一键切成 HR 看得懂的一屏", desc:"招聘方不会探索 17 个板块。做法：一键切换独立视图（如 #hire），一屏内只留 定位（我是谁+要什么）+ 3 个最强证据 + 作品集入口 + 联系方式，其余全部收起，可独立分享链接。与 #106 Hero 改造的区别：#106 是首屏信息密度优化，本条是【给陌生人看的专用视图】。价值：把「信息中枢」和「求职名片」拆成两种用途", priority:"P0", status:"待办"},
+    {id:114, cat:"体验优化", title:"「今日行动」可打勾 + 连续天数：把「读到」变成「做到」", desc:"现状：今日行动只是静态文本，读完即结束。做法：tip 渲染成可勾选 checklist → localStorage 持久化 → 顶部显示「连续执行 X 天」。成本极低（约 80 行代码），但形成行为闭环。价值：① 你真会去做 ② 面试可讲「我用 streak 机制解决内容型产品的执行力问题」", priority:"P0", status:"待办"},
+    {id:115, cat:"求职功能", title:"作品集一键导出：一页 PDF + 1080×1920 分享长图", desc:"做法：① window.print() + 专用 print CSS，把「AI 观察 + 产品分析 + 能力雷达」排成一页纸，Ctrl+P 存 PDF；② Canvas 绘制分享长图。零依赖、零后端。用途：邮件附件投递 / 朋友圈曝光 / 面试现场直接给人看。价值：把「网站」变成「可发送的资产」", priority:"P1", status:"待办"},
+    {id:116, cat:"数据优化", title:"逐条数据来源与更新角标：从「今日已核查」升级为「本条更新于X·来源Y」", desc:"现状：全站只有一个模糊的「今日更新已核查」徽章。做法：给 INSIGHTS 每个分区加 sources 数组，渲染时在角落显示来源与时间戳。价值：面试官问「这些数据哪来的」时能当场点开——这是可信度，也是产品思维（AI 产品最缺的就是可追溯性）", priority:"P1", status:"待办"},
+    {id:117, cat:"机制创新", title:"观点演化时间线：保留 7 次快照，能切换「7 天前 vs 现在」", desc:"做法：每次更新把该分区 summary 哈希后存入 localStorage（仅保留最近 7 次），提供「看变化」入口。价值：① 自己复盘判断有没有迭代 ② 面试可展示「我对一件事的看法是如何随证据修正的」——比结论本身更有说服力。创新点：多数人只展示结论，你展示的是【判断的进化过程】", priority:"P1", status:"待办"},
+    {id:118, cat:"内容优化", title:"周报自动生成 + 分享长图：本周我关注的 7 件事", desc:"做法：汇总近 7 天 DAILY_BRIEFING → 生成周报页 + Canvas 长图，一键保存。零后端（数据本来就在本地）。用途：小红书/朋友圈持续曝光 + 证明「连续输出能力」。价值：日更的成本已经付出，周报是【同一份内容的第二次变现】", priority:"P1", status:"待办"},
+    {id:119, cat:"性能优化", title:"内联 JS 200KB 外置 + 历史数据拆分（每日更新只重下 48KB）", desc:"实测：首屏 1.28MB（index.html 307KB 含 200.5KB 内联 JS + 4 个脚本 976KB）。做法：① 内联 JS 拆成 app.js → 内容更新时 HTML 只重下 48KB（现在每次都重下 307KB）；② OPTIMIZATION_LOG(22KB) + LEARN_PATHS.archive(34KB) 拆到 history_data.js 按需加载 → 首屏再 -56KB。预期：首屏 1.28MB → 约 0.95MB，重复访问省 200KB+", priority:"P1", status:"待办"},
+    {id:120, cat:"学习机制", title:"间隔重复复习（SM-2）：每天从历史题库抽 3 题", desc:"做法：从 DAILY_QUIZ / LEARN_PATHS 历史库按 SM-2 算法每日抽 3 题，答错的更早再出现。纯前端实现，无需后端。价值：把「学过」变成「记住」——面试前两周的复习效率远高于重新通读。呼应 #101 学习路径：路径解决「学什么」，此题解决「记住没」", priority:"P2", status:"待办"},
+    {id:121, cat:"功能优化", title:"PWA 离线可用：通勤/断网也能看今日内容", desc:"做法：加 manifest.json + Service Worker，缓存今日内容与核心 JS。收益：① 地铁上可读（国内网络不稳）② 面试现场断网也能演示——这本身是个好故事。注意：GitHub Pages 支持 HTTPS，满足 SW 要求", priority:"P2", status:"待办"},
+    {id:122, cat:"视觉优化", title:"可访问性补全：aria-label + 键盘导航 + 焦点可见", desc:"实测现状：整站 aria-label 为 0、h1 有 2 个（侧栏品牌 + 主区）、无 :focus-visible 样式。做法：补约 20 处 aria-label、h1 收敛为 1 个、加键盘焦点样式、检查 Tab 顺序。价值：既是基础质量，也是「产品细节」的面试谈资（多数个人站完全不管可访问性）", priority:"P2", status:"待办"},
+    {id:123, cat:"求职功能", title:"投递看板规则提醒：7 天无回应→跟话术；面试前 1 天→备 STAR", desc:"现状：#107 投递作战台只是状态记录，不会主动提醒。做法：加本地规则引擎——投递 7 天无回应 → 提示「该跟进」并生成跟进话术模板；面试前 1 天 → 提示「准备 3 个 STAR 案例」；连续 5 天零动作 → 提示「本周投递量为 0」。无需后端，纯规则。价值：把看板从「记录工具」变成「执行助手」", priority:"P2", status:"待办"},
   ]
 };
 
 var WEBSITE_GUIDE = {
   updated: "2026-09-06",
-  summary: "欢迎来到钟锐的个人数字空间！这是一个持续进化的智能信息中枢。版本1.8.28。10/20 追加更新【健身按照片重估】：照片显示体脂约 12-14%（比此前估的低），腹肌清晰、腰细无多余脂肪 —— 结论是【不需要减脂，一克都不用】，问题只有一个：负荷太轻。证据是每天 100 个俯卧撑一个月胸肌基本没长。重排优先级为【背 > 肩 > 负重化 > 后链 > 核心】；拉类改用租房友好方案（桌下反向划船 0 元 + 弹力带门锚 50-100 元），明确不推荐门框单杠（怕压坏房东门框）；「放松时肚子软」解释为腹肌厚度不足 + 腹横肌弱（不是脂肪），给出死虫/空心支撑/呼吸训练；热量上调到训练日 2600 / 休息日 2400、蛋白 130-140g。",
+  summary: "欢迎来到钟锐的个人数字空间！这是一个持续进化的智能信息中枢。版本1.8.29。10/20 更新【优化日记】——待办从 6 条基础设施类（CDN/统计/API Key，都依赖你注册账号）换成 12 条纯前端可做、直接服务求职的建议：P0 三条（JD 匹配度体检器 / 招聘视角 30 秒模式 / 今日行动可打勾+连续天数）、P1 五条（作品集一键导出 PDF / 逐条数据来源角标 / 观点演化时间线 / 周报生成 / 内联JS外置）、P2 四条（SM-2 间隔重复 / PWA 离线 / 可访问性补全 / 投递看板规则提醒）。102 条历史记录保留。同时修正待办统计口径（不再把已归档算作待办）。",
   features: [
     {icon:"🏠", title:"首页仪表盘", desc:"一屏总览所有板块精华。分类卡片快速导航、实时股市/天气/新闻一目了然。点击分类卡片进入分类页。"},
     {icon:"📂", title:"分类浏览", desc:"点击侧边栏分类标题(👤关于/🎮娱乐/🏃生活/📊财经/🤖工具)，进入分类页集中浏览该类别所有板块。"},
