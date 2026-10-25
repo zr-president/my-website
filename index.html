@@ -2603,7 +2603,7 @@ function zh_renderUpdateAudit(){
 
   /* 同步更新 Hero 徽章 */
   var pDate=document.getElementById('zhDatePill');
-  if(pDate) pDate.textContent='📅 内容日期 '+today;
+  if(pDate) pDate.textContent='📅 今天 '+today;
   var pAudit=document.getElementById('zhAuditPill');
   if(pAudit){
     pAudit.textContent = allOk ? '✅ 今日更新已核查（'+fields.length+' 项 + '+secRows.length+' 分区）' : '❌ 更新核查异常 '+(dateBad.length+lagBad.length)+' 项';
@@ -4779,10 +4779,10 @@ function manualRefresh(){
 
 </script>
 
-<script defer src="detail_content.js?v=1.8.34"></script>
-<script defer src="personal_config.js?v=1.8.34"></script>
-<script defer src="img_style.js?v=1.8.34"></script>
-<script defer src="daily_data.js?v=1.8.34"></script>
+<script defer src="detail_content.js?v=1.8.35"></script>
+<script defer src="personal_config.js?v=1.8.35"></script>
+<script defer src="img_style.js?v=1.8.35"></script>
+<script defer src="daily_data.js?v=1.8.35"></script>
 
 <script>
 // 图片加载完成后淡入（避免灰块闪烁）

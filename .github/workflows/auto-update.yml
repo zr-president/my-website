@@ -1,9 +1,9 @@
 name: AI 每日自动更新
 
 on:
-  # 北京 6:00（UTC 22:00 前一日）每日自动更新内容
-  # 选 6:00 的原因：①DeepSeek 峰谷定价——工作日白天为高峰（部分场景最高涨1100%），凌晨为低谷约半价
-  # ②周末全天按低谷价计费（8/23 新规）③6:00 跑完，用户 8 点起床看到的就是最新内容
+  # 北京 6:00 = UTC 22:00（前一日）
+  # 选 6:00 的原因：①DeepSeek 峰谷定价——工作日白天为高峰，凌晨为低谷约半价
+  # ②周末全天按低谷价计费 ③6:00 跑完，用户 8 点起床看到的就是最新内容
   schedule:
     - cron: '0 22 * * *'
   workflow_dispatch:
@@ -11,12 +11,18 @@ on:
 permissions:
   contents: write
 
+# 关键：GitHub 运行器默认 UTC，脚本里的 datetime.now() 会拿到前一天。
+# 统一设成北京时间，避免「内容日期比现实落后一天」。
+env:
+  TZ: Asia/Shanghai
+
 jobs:
   auto-update:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     outputs:
       update_status: ${{ steps.run_update.outcome }}
+      skipped: ${{ steps.guard.outputs.skipped }}
 
     steps:
       - name: Checkout repository
@@ -32,30 +38,40 @@ jobs:
       - name: Install dependencies
         run: pip install -r scripts/requirements.txt
 
-      - name: Run AI auto update
-        id: run_update
+      # 先判断 Key 是否存在，并把它记成显式状态。
+      # 旧写法在缺 Key 时直接 exit 0，会让 GitHub 显示"成功"——静默失败比报错更危险。
+      - name: Check API key
+        id: guard
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
         run: |
           if [ -z "$DEEPSEEK_API_KEY" ]; then
-            echo "::warning::DEEPSEEK_API_KEY secret 未配置 —— 跳过自动更新（可在仓库 Settings → Secrets and variables → Actions 中添加）"
-            exit 0
+            echo "::warning::DEEPSEEK_API_KEY secret 未配置 —— 本次跳过自动更新（仓库 Settings → Secrets and variables → Actions 中添加）"
+            echo "skipped=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skipped=false" >> "$GITHUB_OUTPUT"
           fi
-          python scripts/auto_update.py --commit
+
+      - name: Verify timezone
+        run: |
+          echo "当前时间: $(date '+%Y-%m-%d %H:%M:%S %Z')"
+          echo "python: $(python -c 'from datetime import datetime; print(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))')"
+
+      - name: Run AI auto update
+        id: run_update
+        if: steps.guard.outputs.skipped != 'true'
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+        run: python scripts/auto_update.py --commit
 
   # #105: 自动更新结果监控——失败时让 run 显式失败（Actions 徽章可见）+ 可选 PushPlus 告警
+  # 通知步骤必须排在「标记失败」之前，否则 exit 1 之后的通知永远跑不到。
   notify-on-fail:
     needs: auto-update
-    if: ${{ always() && needs.auto-update.outputs.update_status != 'success' }}
+    if: ${{ always() && needs.auto-update.outputs.skipped != 'true' && needs.auto-update.outputs.update_status != 'success' }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Mark run as failed so GitHub shows it in the Actions badge
-        run: |
-          echo "❌ AI 每日自动更新未能成功完成（状态: ${{ needs.auto-update.outputs.update_status }}）"
-          echo "请在 Actions 页查看日志定位原因（常见：DEEPSEEK_API_KEY 失效 / 脚本报错 / 网络超时）"
-          exit 1
-
       - name: Send PushPlus notification (only if token configured)
         if: ${{ secrets.PUSHPLUS_TOKEN != '' }}
         env:
@@ -63,5 +79,11 @@ jobs:
         run: |
           curl -s -X POST "https://www.pushplus.plus/send" \
             -H "Content-Type: application/json" \
-            -d "{\"token\":\"$PUSHPLUS_TOKEN\",\"title\":\"⚠️ 网站自动更新失败\",\"content\":\"AI 每日自动更新未能成功（${{ needs.auto-update.outputs.update_status }}）。请前往 GitHub Actions 查看日志。\"}"
-          echo "已发送 PushPlus 失败告警"
+            -d "{\"token\":\"$PUSHPLUS_TOKEN\",\"title\":\"⚠️ 网站自动更新失败\",\"content\":\"AI 每日自动更新未能成功（${{ needs.auto-update.outputs.update_status }}）。请前往 GitHub Actions 查看日志。\"}" || true
+          echo "已尝试发送 PushPlus 失败告警"
+
+      - name: Mark run as failed so GitHub shows it in the Actions badge
+        run: |
+          echo "❌ AI 每日自动更新未能成功完成（状态: ${{ needs.auto-update.outputs.update_status }}）"
+          echo "请在 Actions 页查看日志定位原因（常见：DEEPSEEK_API_KEY 失效 / 脚本报错 / 网络超时）"
+          exit 1

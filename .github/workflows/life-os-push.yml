@@ -76,5 +76,9 @@ jobs:
           fi
 
       - name: Run push script
+        # 只给这一步设北京时间：脚本里 datetime.now() 用来生成"月/日"和星期，
+        # 用 UTC 在跨零点时会显示错日期（上面 case 用的仍是 UTC 小时，保持不变）。
+        env:
+          TZ: Asia/Shanghai
         run: |
           python scripts/life_os_push.py --mode ${{ steps.mode.outputs.mode }} --token '${{ secrets.PUSHPLUS_TOKEN }}'
