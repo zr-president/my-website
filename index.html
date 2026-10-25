@@ -892,7 +892,7 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 <div id="picks-fitness" class="picks-container"></div>
 <div class="card clickable" onclick="openDetail('fitness')"><h3>🏋️ 查看完整训练体系（增肌+腹肌双目标）</h3><p>瘦胖子为什么该增肌不该减脂、新版周计划（含练腿）、12周渐进超负荷、饮食调整、博主和App推荐。</p></div></section>
 
-<section id="diet" class="section" data-search="饮食 食谱 营养 肾结石"><div class="section-header"><h2>🍽️ 饮食助手</h2><p>今日食谱 · 增肌饮食方案</p></div>
+<section id="diet" class="section" data-search="饮食 食谱 营养 低草酸"><div class="section-header"><h2>🍽️ 饮食助手</h2><p>今日食谱 · 增肌饮食方案</p></div>
 <div id="picks-diet" class="picks-container"></div>
 <div class="card clickable" onclick="openDetail('diet')"><h3>🥗 查看完整饮食方案</h3><p>疾病饮食红线、一日六餐精准食谱（含营养素计算）、饮水追踪。</p></div></section>
 
@@ -959,7 +959,7 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 <div id="lifeHacksContent"><p style="font-size:12px;color:var(--text3)">✨ 加载生活妙用...</p></div>
 <!-- #99: 可交互生活助手 -->
 <div class="card" style="padding:12px 14px;margin-top:8px">
-<div style="font-size:12px;font-weight:700;margin-bottom:4px">💬 问生活助手 <span style="font-size:10px;color:var(--text3);font-weight:400">懂你的约束（肾结石预防/增肌/广州/预算敏感）· 实时问答</span></div>
+<div style="font-size:12px;font-weight:700;margin-bottom:4px">💬 问生活助手 <span style="font-size:10px;color:var(--text3);font-weight:400">懂你的约束（低草酸饮食/增肌/广州/预算敏感）· 实时问答</span></div>
 <p style="font-size:10px;color:var(--text3);margin-bottom:6px">试试：「今天吃什么」「周末广州周边去哪」「体检这项指标怎么理解」「去深圳面试怎么安排」</p>
 <div style="display:flex;gap:6px">
 <input type="text" id="lifeAskInput" placeholder="输入生活问题..." style="flex:1;padding:8px 10px;border:1px solid var(--border);border-radius:6px;font-size:12px;font-family:inherit;background:var(--bg);color:var(--text);outline:none" onkeydown="if(event.key==='Enter')askLifeAI()">
@@ -1335,7 +1335,7 @@ function localJDReport(pre){
 
 // ===== #99 可交互生活助手（AI / 本地模板 双模式）=====
 function lifeSystemPrompt(){
-  return '你是钟锐的私人生活 AI 顾问。你了解他的个人情况：26岁男性，170cm/59kg偏瘦，正在增肌期（目标薄肌体型、家庭健身、12周计划已到第8周）；有肾结石预防需求（每天饮水≥2.5L、控草酸：少菠菜苋菜浓茶巧克力、多喝柠檬水）与甲状腺结节（遵医嘱复查）；人在广州（关注广州天气与生活成本），预算敏感；喜欢精酿啤酒/鸡尾酒（适度饮用）、动漫/小说/游戏（偏好克苏鲁、悬疑、智斗）。回答要求：①结合他的真实约束给可执行建议（具体到做法/大致价格/地点）②简洁不空泛，别讲大道理③帮他生活更便捷，可以用AI工具/本地App落地。若涉及健康诊断类问题，提醒以医生为准。';
+  return '你是钟锐的私人生活 AI 顾问。你了解他的个人情况：26岁男性，170cm/59kg偏瘦，正在增肌期（目标薄肌体型、家庭健身、12周计划已到第8周）；有饮水与饮食方面的健康约束（每天饮水≥2.5L、控草酸：少菠菜苋菜浓茶巧克力、多喝柠檬水）与健康注意（遵医嘱复查）；人在广州（关注广州天气与生活成本），预算敏感；喜欢精酿啤酒/鸡尾酒（适度饮用）、动漫/小说/游戏（偏好克苏鲁、悬疑、智斗）。回答要求：①结合他的真实约束给可执行建议（具体到做法/大致价格/地点）②简洁不空泛，别讲大道理③帮他生活更便捷，可以用AI工具/本地App落地。若涉及健康诊断类问题，提醒以医生为准。';
 }
 function askLifeAI(){
   var inp=document.getElementById('lifeAskInput');
@@ -1361,9 +1361,9 @@ function lifeLocalAnswer(q){
   var body=/体检|指标|报告|复查|结石|结节|熬夜|睡/.test(l);
   var job=/面试|投递|简历|求职|通勤/.test(l);
   var h='<div style="background:var(--bg2);border-radius:6px;padding:8px 10px">';
-  if(eat)h+='💡 本周推荐：鸡胸肉150-200g+糙米饭+焯水西兰花（便当650kcal/42g蛋白）；加餐选希腊酸奶+蓝莓（蛋白质≥130g/天）。⚠️肾结石预防：每天2.5L水+柠檬水，避开浓茶/菠菜/巧克力。想变花样可以说『换一道新菜谱』（配置AI Key可生成专属菜单）。';
+  if(eat)h+='💡 本周推荐：鸡胸肉150-200g+糙米饭+焯水西兰花（便当650kcal/42g蛋白）；加餐选希腊酸奶+蓝莓（蛋白质≥130g/天）。⚠️低草酸饮食：每天2.5L水+柠檬水，避开浓茶/菠菜/巧克力。想变花样可以说『换一道新菜谱』（配置AI Key可生成专属菜单）。';
   else if(go)h+='💡 广州周边短途：①深圳东西涌徒步（7.5km海岸线·当天往返）；②清远漂流/连州地下河；③潮汕两日美食；④佛山岭南天地+顺德鱼生。预算敏感选省内高铁+民宿（人均500-800）。最近雨势减弱但仍多雷雨，出发前查天气。';
-  else if(body)h+='💡 健康提醒：①肾结石：每年/半年B超复查一次，每天2.5L水+柠檬水，少草酸食物；②甲状腺结节：遵医嘱每年复查甲功+B超，十字花科蔬菜煮熟吃；③体检报告指标异常请以医生诊断为准——AI只做科普提醒不替代就医。';
+  else if(body)h+='💡 健康提醒：①每天饮水≥2.5L（可加柠檬水），少高草酸食物，按医嘱定期复查；②按医嘱定期复查，十字花科蔬菜煮熟吃；③体检报告指标异常请以医生诊断为准——AI只做科普提醒不替代就医。';
   else if(job)h+='💡 求职便利：①投递黄金窗口 周一至四 9:30-11:00；②去深圳面试：高铁广州南→深圳北约30分钟（¥75），地铁接驳方便；③打招呼语模板在 templates/greetings.md（含公司定制版）。';
   else h+='💡 我可以帮你规划：今天吃什么（增肌+防结石）、周末去哪玩（广州周边）、体检指标解读（科普提醒）、求职通勤安排等。配置🔑AI Key 后我能结合你的约束给出更个性化的完整建议！';
   h+='</div>';
@@ -4779,10 +4779,10 @@ function manualRefresh(){
 
 </script>
 
-<script defer src="detail_content.js?v=1.8.33"></script>
-<script defer src="personal_config.js?v=1.8.29"></script>
-<script defer src="img_style.js?v=1.8.29"></script>
-<script defer src="daily_data.js?v=1.8.33"></script>
+<script defer src="detail_content.js?v=1.8.34"></script>
+<script defer src="personal_config.js?v=1.8.34"></script>
+<script defer src="img_style.js?v=1.8.34"></script>
+<script defer src="daily_data.js?v=1.8.34"></script>
 
 <script>
 // 图片加载完成后淡入（避免灰块闪烁）

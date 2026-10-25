@@ -11,11 +11,6 @@ var PERSONAL_CONFIG = {
     job_status: "求职中",
     target_roles: ["AI产品运营", "AI增长运营"],
     target_companies: ["字节跳动", "腾讯", "美团", "小红书", "微众银行", "SHEIN", "滴滴"],
-    height_cm: 170,
-    weight_kg: 59,
-    dietary: ["肾结石预防", "甲状腺结节"],
-    fitness_goal: "增肌",
-    fitness_week: 3
   },
 
   // --- 自选股 ---
@@ -64,7 +59,7 @@ var PERSONAL_CONFIG = {
     "daily-vocab": 4,       // 每日一词：知识积累
     "daily-quiz": 4,        // 每日一练：能力训练
     "fitness": 3,           // 健身：健康相关
-    "diet": 3,              // 饮食：健康相关（肾结石/甲状腺）
+    "diet": 3,              // 饮食
     "news": 3,              // 新闻：精选后有价值
     "car": 2,               // 购车：中长期决策
     "house": 2,             // 购房：中长期决策
