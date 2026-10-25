@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>数据备份与恢复 · 钟锐</title>
+<meta name="robots" content="noindex">
+<style>
+:root{
+  --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:24px; --sp-6:32px; --sp-8:48px;
+  --r-sm:8px; --r-md:10px; --r-lg:12px; --r-pill:999px;
+  --fs-aux:12px; --fs-sm:13px; --fs-body:15px; --fs-lg:17px;
+  --fs-h3:18px; --fs-h2:22px; --fs-h1:30px;
+  --lh-tight:1.35; --lh-body:1.7;
+  --bg:#f6f7f9; --card:#fff; --text:#161821; --text2:#4a4f5c; --text3:#7d8391;
+  --border:#e3e6ec; --border2:#d3d8e0;
+  --accent:#3b4fd8; --accent-light:#eef0fe;
+  --done:#0f766e; --warn:#b45309; --danger:#b91c1c;
+  --mono:ui-monospace,"JetBrains Mono","SF Mono",Menlo,Consolas,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:var(--fs-body);line-height:var(--lh-body);-webkit-font-smoothing:antialiased}
+.wrap{max-width:820px;margin:0 auto;padding:var(--sp-8) var(--sp-6)}
+h1{font-size:var(--fs-h1);font-weight:800;letter-spacing:-.5px;line-height:var(--lh-tight)}
+.sub{color:var(--text2);margin-top:var(--sp-2);font-size:var(--fs-body)}
+h2{font-size:var(--fs-h2);font-weight:800;margin:var(--sp-8) 0 var(--sp-4);padding-bottom:var(--sp-2);border-bottom:2px solid var(--border);letter-spacing:-.3px}
+h2:first-of-type{margin-top:var(--sp-6)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);padding:var(--sp-5);margin-bottom:var(--sp-4)}
+.warn{background:#fff8ef;border:1px solid #f3d9b3;border-left:4px solid var(--warn)}
+.danger{background:#fef3f2;border:1px solid #f3c6c4;border-left:4px solid var(--danger)}
+.ok{background:#f0fdfa;border:1px solid #bfe6e0;border-left:4px solid var(--done)}
+.btn{background:var(--accent);color:#fff;border:none;border-radius:var(--r-pill);padding:11px 22px;font-size:var(--fs-sm);font-weight:800;cursor:pointer;font-family:var(--sans);transition:filter .15s}
+.btn:hover{filter:brightness(1.08)}
+.btn:disabled{opacity:.45;cursor:not-allowed;filter:none}
+.btn.ghost{background:var(--card);color:var(--text2);border:1px solid var(--border2)}
+.btn.warnbtn{background:var(--warn)}
+table{width:100%;border-collapse:collapse;font-size:var(--fs-sm);margin:var(--sp-3) 0}
+th,td{text-align:left;padding:var(--sp-2) var(--sp-3);border-bottom:1px solid var(--border)}
+th{background:var(--bg);font-size:var(--fs-aux);font-weight:800;color:var(--text2)}
+td.n{font-family:var(--mono);text-align:right;white-space:nowrap}
+tr:last-child td{border-bottom:none}
+.mono{font-family:var(--mono);font-size:var(--fs-sm)}
+.row{display:flex;gap:var(--sp-2);flex-wrap:wrap;align-items:center}
+.muted{color:var(--text3);font-size:var(--fs-aux);line-height:1.75}
+#msg{margin-top:var(--sp-3);font-size:var(--fs-sm);line-height:1.75}
+#msg.okc{color:var(--done)} #msg.errc{color:var(--danger)} #msg.warnc{color:var(--warn)}
+input[type=file]{font-size:var(--fs-sm)}
+code{font-family:var(--mono);font-size:var(--fs-sm);background:var(--bg);padding:1px 5px;border-radius:4px;border:1px solid var(--border)}
+footer{margin-top:var(--sp-8);padding-top:var(--sp-4);border-top:1px solid var(--border);font-size:var(--fs-aux);color:var(--text3);line-height:1.8}
+kbd{font-family:var(--mono);font-size:var(--fs-aux);border:1px solid var(--border2);border-bottom-width:2px;border-radius:4px;padding:0 5px;background:var(--card)}
+@media (max-width:640px){.wrap{padding:var(--sp-5) var(--sp-4)}h1{font-size:24px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>数据备份与恢复</h1>
+  <p class="sub">你的简历、投递记录、110 题的作答与自评、日历——全部只存在这个浏览器的 localStorage 里。<br>清缓存、换电脑、隐私模式，都会让它们消失。</p>
+
+  <!-- ================= 当前数据 ================= -->
+  <h2>一、当前浏览器里有什么</h2>
+  <div id="statsBox" class="card"><span class="muted">读取中…</span></div>
+
+  <div class="card">
+    <div class="row">
+      <button class="btn" id="btnExport">⬇️ 导出备份（下载 JSON）</button>
+      <span class="muted">导出的文件建议存到网盘或 U 盘，不要只留在下载目录</span>
+    </div>
+  </div>
+
+  <!-- ================= 恢复 ================= -->
+  <h2>二、从备份恢复</h2>
+
+  <div class="card warn">
+    <strong>⚠️ 恢复前必读</strong>
+    <div class="muted" style="margin-top:6px">
+      · 恢复会<b>覆盖</b>同名的数据项；<b>备份里没有的当前数据不会被删除</b>（会保留）<br>
+      · 点「确认恢复」时会<b>先自动下载一份当前数据的备份</b>，所以操作本身可回退<br>
+      · 恢复后页面会自动刷新
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="row">
+      <input type="file" id="fileInput" accept=".json,application/json">
+    </div>
+    <div id="msg"></div>
+    <div id="planBox"></div>
+  </div>
+
+  <!-- ================= 说明 ================= -->
+  <h2>三、这个备份包含什么</h2>
+  <div class="card">
+    <table>
+      <tr><th>分组</th><th>内容</th></tr>
+      <tr><td><b>训练场</b></td><td>所有题目的作答、3/5 维自评、复查时间戳、能力雷达、SQL 与实验室记录</td></tr>
+      <tr><td><b>简历与求职</b></td><td>简历正文、投递状态与备注、模拟面试记录</td></tr>
+      <tr><td><b>日历与日程</b></td><td>你添加的事件</td></tr>
+      <tr><td><b>学习记录</b></td><td>词汇卡、判断记录、技能练习、成长记录</td></tr>
+      <tr><td><b>偏好设置</b></td><td>主题、主题色</td></tr>
+    </table>
+    <div class="muted">
+      两个站同源（<code>zr-president.github.io</code>），localStorage 共享 —— 所以这一份备份同时包含<b>个人站和训练场</b>的数据。
+    </div>
+  </div>
+
+  <footer>
+    操作全部在本地完成，不会上传到任何服务器。<br>
+    页面版本 v1 ｜ 与个人站、训练场共用同一套设计规范
+  </footer>
+</div>
+
+<script src="backup.js?v=1"></script>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var pending = null;   /* 已通过校验、等待确认的备份 */
+
+  function fmtBytes(b) {
+    if (b < 1024) return b + ' B';
+    if (b < 1024 * 1024) return (b / 1024).toFixed(1) + ' KB';
+    return (b / 1024 / 1024).toFixed(2) + ' MB';
+  }
+  function say(text, cls) {
+    var el = $('msg');
+    el.className = cls || '';
+    el.textContent = text || '';
+  }
+
+  /* ---------- 当前数据统计 ---------- */
+  function renderStats() {
+    var box = $('statsBox');
+    try {
+      var payload = BackupKit.collect();
+      var keys = Object.keys(payload.data);
+      if (!keys.length) {
+        box.innerHTML = '<div class="muted">这个浏览器里还没有任何本工具认识的数据。先去个人站或训练场用一用，再回来备份。</div>';
+        return;
+      }
+      var groups = BackupKit.groupStats(payload.data);
+      var h = '<div class="row" style="justify-content:space-between;margin-bottom:10px">' +
+              '<div><b style="font-size:17px">' + keys.length + '</b> 项数据 · 约 <b>' + fmtBytes(payload.meta.bytes) + '</b></div>' +
+              '<div class="muted">浏览器存储上限通常 5 MB</div></div>';
+      h += '<table><tr><th>分组</th><th style="text-align:right">项数</th><th style="text-align:right">大小</th></tr>';
+      groups.forEach(function (g) {
+        if (!g.count) return;
+        h += '<tr><td>' + g.label + '</td><td class="n">' + g.count + '</td><td class="n">' + fmtBytes(g.bytes) + '</td></tr>';
+      });
+      h += '</table>';
+      box.innerHTML = h;
+    } catch (e) {
+      box.innerHTML = '<div class="muted">统计失败：' + (e.message || e) + '</div>';
+    }
+  }
+
+  /* ---------- 导出 ---------- */
+  $('btnExport').onclick = function () {
+    try {
+      var payload = BackupKit.collect();
+      if (!Object.keys(payload.data).length) { say('没有任何数据可导出。', 'warnc'); return; }
+      var blob = new Blob([BackupKit.stringify(payload)], { type: 'application/json;charset=utf-8' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url; a.download = BackupKit.fileName();
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      setTimeout(function () { URL.revokeObjectURL(url); }, 3000);
+      say('已导出 ' + Object.keys(payload.data).length + ' 项数据（' + fmtBytes(payload.meta.bytes) + '）。请把文件保存到安全位置。', 'okc');
+    } catch (e) {
+      say('导出失败：' + (e.message || e), 'errc');
+    }
+  };
+
+  /* ---------- 选择文件并校验 ---------- */
+  $('fileInput').onchange = function (ev) {
+    pending = null;
+    $('planBox').innerHTML = '';
+    say('');
+    var f = ev.target.files && ev.target.files[0];
+    if (!f) return;
+    if (f.size > 8 * 1024 * 1024) { say('文件太大（' + fmtBytes(f.size) + '），不像是本工具的备份。', 'errc'); return; }
+
+    var reader = new FileReader();
+    reader.onload = function () {
+      var obj;
+      try { obj = JSON.parse(String(reader.result)); }
+      catch (e) { say('不是有效的 JSON 文件：' + (e.message || e), 'errc'); return; }
+
+      var v = BackupKit.validate(obj);
+      if (!v.ok) { say('这份备份不能用：' + v.error, 'errc'); return; }
+
+      /* 生成导入计划 */
+      var curKeys = BackupKit.collect().data;
+      var plan = BackupKit.planImport(v.data, Object.keys(curKeys));
+      pending = v;
+
+      var h = '<div class="card ok" style="margin-top:12px">';
+      h += '<div style="font-size:13px;font-weight:800;color:var(--done);margin-bottom:8px">✅ 文件已通过校验</div>';
+      h += '<div class="muted">备份时间：<span class="mono">' + (v.meta.exportedAt || '未知') + '</span><br>' +
+           '数据项：<b>' + Object.keys(v.data).length + '</b> 项 · 约 <b>' + fmtBytes(v.meta.bytes || 0) + '</b></div>';
+      if (v.warning) h += '<div style="margin-top:8px;color:var(--warn);font-size:13px">' + v.warning + '</div>';
+      h += '<div style="margin-top:10px;padding:10px 12px;background:var(--bg);border-radius:8px;font-size:13px">' +
+           '<b>恢复计划</b><br>' + plan.summary + '</div>';
+
+      if (plan.overwrite.length) {
+        h += '<div style="margin-top:8px" class="muted">将被覆盖的项（前 8 个）：<span class="mono">' +
+             plan.overwrite.slice(0, 8).join(', ') + (plan.overwrite.length > 8 ? ' …' : '') + '</span></div>';
+      }
+      h += '<div class="row" style="margin-top:14px"><button class="btn warnbtn" id="btnConfirm">确认恢复</button>' +
+           '<button class="btn ghost" id="btnCancel">取消</button></div>';
+      h += '</div>';
+      $('planBox').innerHTML = h;
+
+      $('btnCancel').onclick = function () {
+        pending = null; $('planBox').innerHTML = ''; $('fileInput').value = ''; say('');
+      };
+      $('btnConfirm').onclick = doImport;
+    };
+    reader.onerror = function () { say('读取文件失败。', 'errc'); };
+    reader.readAsText(f, 'utf-8');
+  };
+
+  /* ---------- 执行恢复 ---------- */
+  function doImport() {
+    if (!pending) return;
+    try {
+      /* 先把当前数据导出一份，保证可回退 */
+      var cur = BackupKit.collect();
+      if (Object.keys(cur.data).length) {
+        var blob = new Blob([BackupKit.stringify(cur)], { type: 'application/json;charset=utf-8' });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url; a.download = 'zhongrui-before-restore-' + BackupKit.timeStampName() + '.json';
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+        setTimeout(function () { URL.revokeObjectURL(url); }, 3000);
+      }
+
+      var res = BackupKit.applyImport(null, pending.data);
+      say('已恢复 ' + res.written + ' 项数据' +
+          (res.failed.length ? '，其中 ' + res.failed.length + ' 项写入失败（可能超出存储上限）：' + res.failed.slice(0, 3).join(', ') : '') +
+          '。页面即将刷新…', res.failed.length ? 'warnc' : 'okc');
+      setTimeout(function () { location.reload(); }, 1600);
+    } catch (e) {
+      say('恢复失败：' + (e.message || e), 'errc');
+    }
+  }
+
+  renderStats();
+})();
+</script>
+</body>
+</html>

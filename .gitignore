@@ -2,3 +2,7 @@ node_modules/
 .claude/
 __pycache__/
 *.pyc
+
+# 无头浏览器临时用户目录
+_bkprof/
+_bk*.html
