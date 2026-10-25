@@ -100,6 +100,20 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 .nav-section a:hover::before,.nav-section a.active::before{opacity:.08}
 .sidebar-footer{padding:10px 16px;border-top:1px solid var(--border);margin-top:auto;display:flex;gap:8px;align-items:center}
 .theme-toggle{width:34px;height:34px;border-radius:50%;border:1px solid var(--border);background:var(--card);cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;color:var(--text)}
+/* ===== 知识问答面板（S03 知识卡 + S04 可核对问答）===== */
+#qaPanel{display:none;margin:6px 0 10px;max-height:52vh;overflow:auto;padding-right:2px}
+#qaPanel::-webkit-scrollbar{width:5px}
+#qaPanel::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+.qa-hd{font-size:12px;color:var(--text3);margin:0 0 6px;line-height:1.6}
+.qa-hd span{display:block;font-size:12px;opacity:.85}
+.qa-card{background:var(--bg2);border-left:3px solid var(--accent);border-radius:8px;padding:8px 10px;margin-bottom:6px}
+.qa-kw{font-size:12px;font-weight:700;color:var(--text);margin-bottom:3px}
+.qa-info{font-size:12px;color:var(--text2);line-height:1.7}
+.qa-src{font-size:12px;color:var(--text3);margin-top:5px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.qa-src a{color:var(--accent);text-decoration:none;font-weight:600;white-space:nowrap}
+.qa-src a:hover{text-decoration:underline}
+.qa-empty{font-size:12px;color:var(--text2);line-height:1.7;background:var(--bg2);border-left:3px solid var(--orange);border-radius:8px;padding:9px 11px}
+.qa-empty span{display:block;font-size:12px;color:var(--text3);margin-top:4px}
 .search-box{flex:1}.search-box input{width:100%;padding:6px 10px;border:1px solid var(--border);border-radius:8px;font-size:12px;font-family:inherit;background:var(--bg);color:var(--text);outline:none}
 
 /* Theme color picker */
@@ -205,10 +219,10 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 /* 图片到文字的过渡：用主色做一层极淡的渐变，替代生硬的切边 */
 .img-card .img-body{padding:10px 12px 11px;position:relative;
   background:linear-gradient(180deg,var(--icf,rgba(128,128,128,.05)) 0%,var(--card) 46%)}
-.img-card .img-title{font-size:12.5px;font-weight:700;margin-bottom:4px;line-height:1.45}
-.img-card .img-desc{font-size:10.5px;color:var(--text2);line-height:1.65}
+.img-card .img-title{font-size:13px;font-weight:700;margin-bottom:4px;line-height:1.45}
+.img-card .img-desc{font-size:12px;color:var(--text2);line-height:1.65}
 .img-card .img-tag{display:inline-block;margin-top:6px;padding:1.5px 8px;border-radius:8px;
-  font-size:9.5px;font-weight:700;background:var(--icf,rgba(128,128,128,.12));color:var(--ic,var(--accent))}
+  font-size:12px;font-weight:700;background:var(--icf,rgba(128,128,128,.12));color:var(--ic,var(--accent))}
 /* ===== 图片统一色调 + 加载淡入（消除多源素材的拼凑感）===== */
 .img-card .img-thumb{
   filter:saturate(.96) contrast(1.03);
@@ -250,7 +264,7 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 .bp-stance{background:rgba(255,255,255,.11);border-radius:10px;padding:9px 12px;font-size:12px;line-height:1.75;margin-bottom:10px;border-left:3px solid #a5b4fc}
 .bp-stance b{color:#fde68a}
 .bp-sec-t{font-size:12px;font-weight:800;letter-spacing:1px;opacity:.72;margin:9px 0 5px}
-.bp-act{display:flex;gap:8px;align-items:flex-start;background:rgba(255,255,255,.07);border-radius:9px;padding:8px 11px;margin-bottom:5px;font-size:11.5px;line-height:1.65}
+.bp-act{display:flex;gap:8px;align-items:flex-start;background:rgba(255,255,255,.07);border-radius:9px;padding:8px 11px;margin-bottom:5px;font-size:12px;line-height:1.65}
 .bp-act .bp-p{font-size:12px;font-weight:800;padding:1px 6px;border-radius:7px;background:#f59e0b;color:#1c1917;flex-shrink:0;margin-top:2px}
 .bp-act .bp-p.p1{background:#a5b4fc;color:#1e1b4b}
 .bp-act .bp-p.p2{background:rgba(255,255,255,.3);color:#fff}
@@ -397,7 +411,7 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 .zh-hero-badge{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
 .zh-pill{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:12px;font-weight:600;background:var(--card);border:1px solid var(--border);color:var(--text2);box-shadow:0 1px 2px rgba(0,0,0,.03)}
 .zh-rows{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:7px;margin-bottom:16px}
-.zh-row{display:flex;align-items:center;gap:7px;padding:8px 11px;border-radius:9px;background:var(--card);border:1px solid var(--border);font-size:11.5px;color:var(--text2);transition:.16s;box-shadow:0 1px 2px rgba(0,0,0,.02)}
+.zh-row{display:flex;align-items:center;gap:7px;padding:8px 11px;border-radius:9px;background:var(--card);border:1px solid var(--border);font-size:12px;color:var(--text2);transition:.16s;box-shadow:0 1px 2px rgba(0,0,0,.02)}
 .zh-row b{color:var(--text);font-weight:700}
 .zh-row:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:0 6px 16px rgba(79,70,229,.10)}
 .zh-hero .zh-cta-row{display:flex;flex-wrap:wrap;gap:8px}
@@ -432,13 +446,14 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
    style="display:flex;align-items:center;gap:9px;margin:8px 12px 6px;padding:10px 12px;border-radius:11px;text-decoration:none;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 4px 14px rgba(79,70,229,.28);transition:.2s">
 	<span style="font-size:16px">🎓</span>
 	<span style="flex:1;line-height:1.35;min-width:0">
-		<span style="display:block;font-size:12.5px;font-weight:700">能力训练平台</span>
-		<span style="display:block;font-size:9.5px;opacity:.88" id="zhTrainSideMeta">SQL · 数据分析 · AI 产品</span>
+		<span style="display:block;font-size:13px;font-weight:700">能力训练平台</span>
+		<span style="display:block;font-size:12px;opacity:.88" id="zhTrainSideMeta">SQL · 数据分析 · AI 产品</span>
 	</span>
 	<span style="font-size:13px;opacity:.9">→</span>
 </a>
 <div class="sidebar-footer">
-<div class="search-box"><input type="text" id="searchInput" placeholder="搜索板块..." oninput="doSearch(this.value)"></div>
+<div class="search-box"><input type="text" id="searchInput" placeholder="问点什么…（搜板块 + 查知识库）" oninput="doSearch(this.value);kbAsk(this.value)"></div>
+<div id="qaPanel"></div>
 <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="切换暗色">🌙</button>
 </div>
 <div style="padding:4px 16px 0"><div style="font-size:12px;color:var(--text3);margin-bottom:4px">🎨 主题色</div><div class="theme-colors"><span class="theme-dot indigo active" onclick="setColorTheme('indigo')" title="靛蓝"></span><span class="theme-dot ocean" onclick="setColorTheme('ocean')" title="深海蓝"></span><span class="theme-dot emerald" onclick="setColorTheme('emerald')" title="墨绿金"></span><span class="theme-dot rose" onclick="setColorTheme('rose')" title="玫瑰金"></span><span class="theme-dot amber" onclick="setColorTheme('amber')" title="琥珀暖"></span><span class="theme-dot slate" onclick="setColorTheme('slate')" title="石墨灰"></span></div></div>
@@ -1254,6 +1269,101 @@ function doSearch(q){
     }
     s.classList.add('search-none');
   });
+}
+
+
+/* ===== 知识问答：S03 知识卡 + S04 可核对问答 =====
+   只做检索、不生成内容；每条结果必须带来源与更新时间；
+   相关度不足时明确说「没有找到可靠依据」——宁可承认不知道，也不硬凑。 */
+var __qaTimer = null;
+function kbAsk(v){
+  if(__qaTimer) clearTimeout(__qaTimer);
+  __qaTimer = setTimeout(function(){ try{ kbAskNow(v); }catch(e){} }, 260);
+}
+function kbTokenize(q){
+  var s = String(q).toLowerCase().replace(/[\s，。！？、；：""''（）\[\]{}<>《》~!@#$%^&*()_+|\\/=\-\+.,:;"'?]+/g, ' ');
+  var parts = s.split(' ').filter(function(t){ return t.length >= 2; });
+  if(!parts.length && String(q).trim().length >= 2) parts = [String(q).trim().toLowerCase()];
+  return parts;
+}
+function kbScore(entry, qLower, tokens){
+  var kw = String(entry.keyword||'').toLowerCase();
+  var info = String(entry.info||'').toLowerCase();
+  var s = 0;
+  if(kw === qLower) s = 100;
+  /* 子串匹配要求关键词至少 2 个字：否则单字关键词（如「铁」）会被
+     「拿铁」这类查询误命中，相关性直接崩掉 */
+  else if(kw.length >= 2 && (qLower.indexOf(kw) >= 0 || kw.indexOf(qLower) >= 0)) s = 85;
+  else if(qLower.length >= 2 && info.indexOf(qLower) >= 0) s = 70;
+  else {
+    var hit = 0;
+    for(var i=0;i<tokens.length;i++){
+      var t = tokens[i];
+      if(t.length < 2) continue;
+      if(kw.indexOf(t) >= 0) hit += 2;
+      else if(info.indexOf(t) >= 0) hit += 1;
+    }
+    if(hit > 0) s = Math.min(60, 20 + hit * 8);
+  }
+  return s;
+}
+function kbClose(){
+  var p = document.getElementById('qaPanel');
+  if(p){ p.style.display = 'none'; p.innerHTML = ''; }
+  var inp = document.getElementById('searchInput');
+  if(inp) inp.value = '';
+  document.querySelectorAll('.section').forEach(function(s){ s.classList.remove('search-none'); });
+}
+function kbAskNow(q){
+  var panel = document.getElementById('qaPanel');
+  if(!panel) return;
+  q = String(q||'').trim();
+  if(q.length < 2){ panel.style.display = 'none'; panel.innerHTML = ''; return; }
+  panel.style.display = 'block';
+
+  if(typeof KNOWLEDGE_INDEX === 'undefined'){
+    panel.innerHTML = '<div class="qa-empty">正在加载知识索引（1573 条）…</div>';
+    if(typeof ensureKnowledgeIndex === 'function'){
+      ensureKnowledgeIndex(function(){ try{ kbAskNow(q); }catch(e){} });
+    }
+    return;
+  }
+
+  var qLower = q.toLowerCase();
+  var tokens = kbTokenize(q);
+  var hits = [];
+  for(var i=0;i<KNOWLEDGE_INDEX.length;i++){
+    var s = kbScore(KNOWLEDGE_INDEX[i], qLower, tokens);
+    if(s > 0) hits.push({ s: s, e: KNOWLEDGE_INDEX[i] });
+  }
+  hits.sort(function(a,b){ return b.s - a.s; });
+
+  if(!hits.length || hits[0].s < 45){
+    panel.innerHTML = '<div class="qa-empty">🔍 没有找到可靠依据' +
+      '<span>这个知识库里没有对得上的条目。换个说法再试；如果换几种说法都找不到，就说明它确实没有 —— 这种情况我不会编一个答案给你。</span></div>';
+    return;
+  }
+
+  var per = {}, out = [];
+  for(var j=0;j<hits.length && out.length<8;j++){
+    var sec = hits[j].e.section;
+    per[sec] = (per[sec]||0) + 1;
+    if(per[sec] <= 3) out.push(hits[j]);
+  }
+
+  var html = '<div class="qa-hd">找到 ' + hits.length + ' 条相关 · 显示前 ' + out.length + ' 条' +
+             '<span>点「核对原文」跳到对应分区自己看一遍</span></div>';
+  for(var k=0;k<out.length;k++){
+    var e = out[k].e;
+    var upd = (typeof INSIGHTS !== 'undefined' && INSIGHTS[e.section] && INSIGHTS[e.section].updated) || '—';
+    html += '<div class="qa-card">' +
+            '<div class="qa-kw">' + escHtml(e.keyword) + '</div>' +
+            '<div class="qa-info">' + escHtml(e.info) + '</div>' +
+            '<div class="qa-src"><span>📚 ' + escHtml(e.section) + ' · 更新 ' + escHtml(upd) + '</span>' +
+            '<a href="#' + escHtml(e.section) + '" onclick="kbClose()">核对原文 →</a></div>' +
+            '</div>';
+  }
+  panel.innerHTML = html;
 }
 
 // Avatar
@@ -2595,7 +2705,7 @@ function zh_renderUpdateAudit(){
   h+='<span style="font-size:15px;font-weight:800;color:'+(allOk?'#059669':'#dc2626')+'">'+(allOk?'✅ 更新核查全部通过':'❌ 发现 '+(dateBad.length+lagBad.length)+' 项异常')+'</span>';
   h+='<span class="tag" style="background:var(--accent);color:#fff">今天 '+today+' '+wd+'</span>';
   h+='</div>';
-  h+='<div style="font-size:11.5px;color:var(--text2);line-height:1.9">';
+  h+='<div style="font-size:12px;color:var(--text2);line-height:1.9">';
   h+='· 日期字段：<b style="color:'+(dateBad.length?'#dc2626':'#059669')+'">'+dateOk+'/'+fields.length+'</b> 与今天一致'+(dateBad.length?'（异常：'+dateBad.join('、')+'）':'')+'<br>';
   h+='· 内容新鲜度：<b style="color:'+(lagBad.length?'#dc2626':'#059669')+'">'+lagOk+'/'+secRows.length+'</b> 个分区的内容日期不落后'+(lagBad.length?'（滞后：'+lagBad.join('；')+'）':'')+'<br>';
   h+='· 这张表是<b>页面打开时用脚本现算的</b>（读你电脑的时钟 + 抽取页面上真实显示的内容日期），不是写死的结论——所以它无法虚标。';
@@ -2838,7 +2948,7 @@ function zh_renderTraining(){
       '<span style="font-size:12px;color:var(--text3)">策略运营 / 用户增长 · 7 个训练模块</span>'+
       '<a href="'+TRAIN_URL+'" target="_blank" rel="noopener" style="margin-left:auto;font-size:12px;font-weight:600;color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent2));padding:5px 13px;border-radius:9px;text-decoration:none">去训练 →</a>'+
       '</div>'+
-      '<div style="font-size:11.5px;color:var(--text2);line-height:1.75;margin-top:7px">'+
+      '<div style="font-size:12px;color:var(--text2);line-height:1.75;margin-top:7px">'+
       '还没开始练。SQL 训练场 / 数据集实验室 / 指标设计 / 实验分析 / Case 拆解 / AI Agent / 能力雷达——全部在浏览器里动手做，数据只存本机。'+
       '</div></div>';
     return;
@@ -2850,10 +2960,10 @@ function zh_renderTraining(){
     var pct=m.total?Math.round(m.done/m.total*100):0;
     var col=pct>=100?'var(--green, #10b981)':pct>0?'var(--accent)':'var(--text3)';
     rows+='<div style="display:flex;align-items:center;gap:9px;padding:5px 0;border-bottom:1px solid var(--border)">'+
-      '<span style="font-size:11.5px;color:var(--text2);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+m.name+(m.extra&&m.extra.mastery!==undefined?' <span style="font-size:12px;color:var(--text3)">一次做对率 '+m.extra.mastery+'%</span>':'')+'</span>'+
+      '<span style="font-size:12px;color:var(--text2);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+m.name+(m.extra&&m.extra.mastery!==undefined?' <span style="font-size:12px;color:var(--text3)">一次做对率 '+m.extra.mastery+'%</span>':'')+'</span>'+
       '<span style="width:88px;height:5px;background:var(--bg2);border-radius:3px;overflow:hidden;flex:0 0 auto">'+
       '<span style="display:block;height:100%;width:'+pct+'%;background:'+col+';border-radius:3px"></span></span>'+
-      '<span style="font-size:10.5px;font-family:var(--mono,monospace);color:'+col+';width:52px;text-align:right;flex:0 0 auto">'+m.done+'/'+m.total+'</span>'+
+      '<span style="font-size:12px;font-family:var(--mono,monospace);color:'+col+';width:52px;text-align:right;flex:0 0 auto">'+m.done+'/'+m.total+'</span>'+
       '</div>';
   });
   var radarHtml='';
@@ -2871,7 +2981,7 @@ function zh_renderTraining(){
     '<div style="height:7px;background:var(--bg2);border-radius:4px;overflow:hidden;margin-bottom:10px">'+
     '<div style="height:100%;width:'+pctAll+'%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:4px"></div></div>'+
     rows+radarHtml+
-    '<div style="font-size:9.5px;color:var(--text3);margin-top:8px">数据来自训练平台（同源 localStorage，只存本机）'+(s.updated?' · 最近 '+s.updated:'')+'</div>'+
+    '<div style="font-size:12px;color:var(--text3);margin-top:8px">数据来自训练平台（同源 localStorage，只存本机）'+(s.updated?' · 最近 '+s.updated:'')+'</div>'+
     '</div>';
 }
 // 同步侧边栏入口的进度文案
@@ -4794,10 +4904,10 @@ function manualRefresh(){
 
 </script>
 
-<script defer src="detail_content.js?v=1.8.36"></script>
-<script defer src="personal_config.js?v=1.8.36"></script>
-<script defer src="img_style.js?v=1.8.36"></script>
-<script defer src="daily_data.js?v=1.8.36"></script>
+<script defer src="detail_content.js?v=1.8.37"></script>
+<script defer src="personal_config.js?v=1.8.37"></script>
+<script defer src="img_style.js?v=1.8.37"></script>
+<script defer src="daily_data.js?v=1.8.37"></script>
 
 <script>
 // 图片加载完成后淡入（避免灰块闪烁）
