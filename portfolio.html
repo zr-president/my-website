@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>钟锐 · AI 产品运营 / 增长运营 / 产品经理</title>
+<meta name="description" content="钟锐的个人作品集：把「每天重复的事」变成「可以被自动检查的流程」。AI 产品运营 / AI 增长运营 / AI 产品经理。">
+<meta property="og:title" content="钟锐 · AI 产品运营 / 增长运营 / 产品经理">
+<meta property="og:description" content="把「每天重复的事」变成「可以被自动检查的流程」。两个自建产品 + 137 道训练题。">
+<meta property="og:type" content="profile">
+<style>
+:root{
+  /* V01 设计规范 token（与两站同一套） */
+  --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:24px; --sp-6:32px; --sp-8:48px;
+  --r-sm:8px; --r-md:10px; --r-lg:12px; --r-pill:999px;
+  --fs-aux:12px; --fs-sm:13px; --fs-body:15px; --fs-lg:17px;
+  --fs-h3:18px; --fs-h2:22px; --fs-h1:32px; --fs-display:38px;
+  --lh-tight:1.35; --lh-body:1.75;
+
+  --bg:#f6f7f9; --card:#fff; --text:#161821; --text2:#4a4f5c; --text3:#7d8391;
+  --border:#e3e6ec; --border2:#d3d8e0;
+  --accent:#3b4fd8; --accent-light:#eef0fe;
+  --done:#0f766e; --warn:#b45309; --danger:#b91c1c;
+  --mono:ui-monospace,"JetBrains Mono","SF Mono",Menlo,Consolas,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:var(--sans);background:var(--bg);color:var(--text);
+  font-size:var(--fs-body);line-height:var(--lh-body);
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:880px;margin:0 auto;padding:var(--sp-8) var(--sp-6) var(--sp-8)}
+
+/* ---------- 顶部 ---------- */
+.hero{margin-bottom:var(--sp-8)}
+.hero h1{font-size:var(--fs-h1);line-height:var(--lh-tight);letter-spacing:-.5px;font-weight:800}
+.hero .role{font-size:var(--fs-lg);color:var(--accent);font-weight:700;margin-top:var(--sp-2)}
+.hero .one{font-size:var(--fs-lg);color:var(--text2);margin-top:var(--sp-4);line-height:1.65;max-width:640px}
+.hero .meta{font-size:var(--fs-aux);color:var(--text3);margin-top:var(--sp-4);display:flex;gap:var(--sp-3);flex-wrap:wrap}
+.hero .meta span{background:var(--card);border:1px solid var(--border);border-radius:var(--r-pill);padding:3px 12px}
+
+/* ---------- 数字条 ---------- */
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:var(--sp-3);margin-bottom:var(--sp-8)}
+.fig{background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);padding:var(--sp-4);position:relative}
+.fig::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);border-radius:var(--r-lg) 0 0 var(--r-lg)}
+.fig b{display:block;font-family:var(--mono);font-size:26px;font-weight:800;color:var(--accent);letter-spacing:-1px;line-height:1.2}
+.fig span{display:block;font-size:var(--fs-aux);color:var(--text3);margin-top:var(--sp-1);line-height:1.5}
+
+/* ---------- 章节 ---------- */
+h2{font-size:var(--fs-h2);font-weight:800;letter-spacing:-.3px;margin:var(--sp-8) 0 var(--sp-4);padding-bottom:var(--sp-2);border-bottom:2px solid var(--border)}
+h2:first-of-type{margin-top:0}
+
+/* ---------- 案例 ---------- */
+.case{background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);padding:var(--sp-5);margin-bottom:var(--sp-4)}
+.case h3{font-size:var(--fs-h3);font-weight:800;margin-bottom:var(--sp-1);letter-spacing:-.2px}
+.case .sub{font-size:var(--fs-aux);color:var(--text3);margin-bottom:var(--sp-4)}
+.case dl{display:grid;gap:var(--sp-3)}
+.case dt{font-size:var(--fs-aux);font-weight:800;color:var(--accent);letter-spacing:.3px;margin-bottom:2px}
+.case dd{font-size:var(--fs-body);color:var(--text2);line-height:var(--lh-body)}
+.case dd ul{margin:var(--sp-1) 0 0 var(--sp-4)}
+.case dd li{margin-bottom:3px}
+.case code{font-family:var(--mono);font-size:var(--fs-sm);background:var(--bg);padding:1px 5px;border-radius:4px;border:1px solid var(--border)}
+.proof{margin-top:var(--sp-4);padding-top:var(--sp-3);border-top:1px dashed var(--border2);font-size:var(--fs-aux);color:var(--text3);line-height:1.7}
+.proof b{color:var(--done)}
+
+/* ---------- 判断练习 ---------- */
+.think{background:var(--accent-light);border-left:3px solid var(--accent);border-radius:var(--r-md);padding:var(--sp-4) var(--sp-5);margin-bottom:var(--sp-5)}
+.think .q{font-size:var(--fs-body);color:var(--text);font-weight:700;margin-bottom:var(--sp-2)}
+.think .a{font-size:var(--fs-body);color:var(--text2);line-height:var(--lh-body)}
+
+/* ---------- 能力表 ---------- */
+table{width:100%;border-collapse:collapse;font-size:var(--fs-sm);margin-bottom:var(--sp-4);background:var(--card);border-radius:var(--r-md);overflow:hidden}
+th,td{text-align:left;padding:var(--sp-3);border-bottom:1px solid var(--border);vertical-align:top}
+th{background:var(--bg);font-size:var(--fs-aux);font-weight:800;color:var(--text2);letter-spacing:.3px}
+tr:last-child td{border-bottom:none}
+td.ev{color:var(--text3);font-size:var(--fs-aux)}
+
+/* ---------- 联系 ---------- */
+.contact{background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);padding:var(--sp-5);display:grid;gap:var(--sp-2)}
+.contact a{color:var(--accent);text-decoration:none;font-weight:700}
+.contact a:hover{text-decoration:underline}
+.contact .row{display:flex;gap:var(--sp-3);flex-wrap:wrap;font-size:var(--fs-body)}
+.contact .k{color:var(--text3);font-size:var(--fs-aux);min-width:64px}
+
+/* ---------- 工具条（打印时隐藏） ---------- */
+.toolbar{position:fixed;right:20px;bottom:20px;display:flex;gap:var(--sp-2);z-index:10}
+.btn{background:var(--accent);color:#fff;border:none;border-radius:var(--r-pill);padding:11px 20px;font-size:var(--fs-sm);font-weight:800;cursor:pointer;font-family:var(--sans);box-shadow:0 4px 16px rgba(59,79,216,.3)}
+.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:var(--card);color:var(--text2);border:1px solid var(--border);box-shadow:none}
+footer{margin-top:var(--sp-8);padding-top:var(--sp-4);border-top:1px solid var(--border);font-size:var(--fs-aux);color:var(--text3);line-height:1.8}
+
+/* ---------- 打印：A4 一页起 ---------- */
+@media print{
+  :root{--bg:#fff;--card:#fff}
+  body{font-size:10.5pt;line-height:1.55;background:#fff}
+  .wrap{max-width:none;padding:0}
+  .toolbar,footer .noprint{display:none !important}
+  @page{size:A4;margin:14mm 12mm}
+  h2{margin:14pt 0 7pt;font-size:14pt;break-after:avoid}
+  .case,.think,.contact{break-inside:avoid;box-shadow:none;border-color:#ccc;padding:9pt}
+  .case{margin-bottom:8pt}
+  .figs{grid-template-columns:repeat(4,1fr);gap:6pt;margin-bottom:14pt}
+  .fig{padding:7pt}
+  .fig b{font-size:16pt}
+  .hero{margin-bottom:12pt}
+  .hero h1{font-size:20pt}
+  .hero .one{font-size:10.5pt}
+  table{font-size:8.5pt}
+  th,td{padding:4pt 6pt}
+}
+@media (max-width:640px){
+  .wrap{padding:var(--sp-5) var(--sp-4)}
+  .hero h1{font-size:26px}
+  .figs{grid-template-columns:1fr 1fr}
+  .fig b{font-size:22px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ============ 顶部 ============ -->
+  <header class="hero">
+    <h1>钟锐</h1>
+    <div class="role">AI 产品运营 / AI 增长运营 / AI 产品经理</div>
+    <p class="one">
+      我的做法是：<strong>把「每天都要重复做的事」，变成「可以被自动检查的流程」。</strong><br>
+      因为重复劳动的问题不是慢，是<b>每次都会以不同的方式出错</b> —— 而人能记住的规则只有三五条。
+    </p>
+    <div class="meta">
+      <span>广州 · 求职中</span>
+      <span>两个自建产品（纯前端 · 线上运行）</span>
+      <span>137 道训练题</span>
+    </div>
+  </header>
+
+  <!-- ============ 数字 ============ -->
+  <div class="figs">
+    <div class="fig"><b>17</b><span>内容分区每日更新<br>26 个日期字段自动同步</span></div>
+    <div class="fig"><b>22</b><span>项自动一致性检查<br>+ 30 组合视觉体检</span></div>
+    <div class="fig"><b>137</b><span>道训练题<br>覆盖 SQL / 数据 / AI 工作流</span></div>
+    <div class="fig"><b>4</b><span>个真实 bug 已修复<br>并写了回归测试</span></div>
+  </div>
+
+  <!-- ============ 案例 ============ -->
+  <h2>三个案例</h2>
+
+  <article class="case">
+    <h3>案例 1 · 个人网站：把每日更新变成 22 项自动检查</h3>
+    <div class="sub">纯前端 · GitHub Pages · 线上运行中 · 版本迭代到 1.8.37</div>
+    <dl>
+      <dt>问题</dt>
+      <dd>17 个内容分区、26 个日期字段，每天要刷新一遍。靠人眼验收必然漏 —— 而且内容由模型生成，它不会报错，只会<b>顺畅地写错</b>（把日期写成昨天的、把某个字段漏掉、把数字口径换成另一套）。</dd>
+
+      <dt>我的判断</dt>
+      <dd>能被机器验证的部分，就不该占用人。所以真正要做的工作不是「写更多内容」，是<b>把验收变成可执行的东西</b>。</dd>
+
+      <dt>做法</dt>
+      <dd>
+        <ul>
+          <li><b>单一数据源 + 脚本化校验</b>：内容只存在一处，所有检查跑同一份数据</li>
+          <li><b>检查前置</b>：先写检查、再写内容。每加一项检查，都要能说出它防的是哪个具体错误</li>
+          <li><b>失败可见</b>：检查本身也要能报错。我做过一次「注入错误」测试 —— 故意把某个日期改错，确认检查会喊，而不是静默通过</li>
+          <li><b>先读系统时钟</b>：日期一律从系统时间取，绝不从上一次的内容往前推</li>
+        </ul>
+      </dd>
+
+      <dt>结果</dt>
+      <dd>这套检查抓到了 5 个我自己看不见的错误，其中 3 个已经发生过不止一次：日期用「上次 +1」推算、只改了摘要没改行动项、评分表漏了新模型。</dd>
+    </dl>
+    <div class="proof">
+      <b>可核对</b>：22 项一致性检查 · 30 组合视觉体检（10 个分区 × 3 视口）· 首屏体积从 1.28 MB 优化到约 0.9 MB（把 372 KB 的知识索引改成按需加载）· 我把整套规则写成了一份可复用的技能文档，含正向 / 负向触发条件与 8 条禁止项
+    </div>
+  </article>
+
+  <article class="case">
+    <h3>案例 2 · AI 能力训练平台：把求职能力拆成可打勾的模块</h3>
+    <div class="sub">纯前端 · 本地持久化 · 137 道题</div>
+    <dl>
+      <dt>问题</dt>
+      <dd>求职准备的真实困难不是「不知道学什么」，是<b>知道该学但每天不学</b>。而市面上的学习内容往往一大坨，打开就放弃。</dd>
+
+      <dt>我的判断</dt>
+      <dd>把大目标拆成「10 分钟能完成的最小单元」，并且让进度可见。所以这个平台的重点不是内容多，是<b>每一格都能打勾</b>。</dd>
+
+      <dt>做法</dt>
+      <dd>
+        <ul>
+          <li><b>11 个模块</b>：SQL、数据集分析、指标设计、A/B 实验、Case 拆解、Python、AI 产品经理、AI 工作流……每个模块只练一种能力</li>
+          <li><b>判读题而非知识题</b>：不考「A/B 测试的定义」，考「这组数据能不能上线」</li>
+          <li><b>AI 工作流设计题 36 道</b>：给真实场景 + 约束，要求设计工作流（拆解 / 工具 / 人工确认点 / 可测的验收标准），并给出 3 维自查量规</li>
+          <li><b>进度存在本地</b>，不上传服务器</li>
+        </ul>
+      </dd>
+
+      <dt>结果</dt>
+      <dd>其中 4 道题直接来自我做过的真实项目（网站更新工作流、检查怎么设计、怎么判断 AI 给的方案该采纳哪几条、技能文档的触发边界）。这些题只有我能答，答完就是面试素材。</dd>
+    </dl>
+    <div class="proof">
+      <b>可核对</b>：137 道题（SQL 31 / 数据集 12 / 指标 8 / A/B 9 / Case 7 / AI PM 判读 12 / PRD 4 / 面试 18 / AI 工作流 36）· 构建时自检 61 项全过 · SQL 判题 30 条参考解全部可执行
+    </div>
+  </article>
+
+  <article class="case">
+    <h3>案例 3 · 用另一个模型做方案评审：我怎么判断哪几条该采纳</h3>
+    <div class="sub">一次真实的模型分工实践</div>
+    <dl>
+      <dt>问题</dt>
+      <dd>我要升级上面两个项目，但没有精力自己从零做完整评估。于是我让另一个更强的模型先出一份评审方案。</dd>
+
+      <dt>我的判断</dt>
+      <dd><b>方案的价值是「发现问题」，不是「替你定方向」。</b>方向必须由我的目标决定 —— 而那个模型了解我的代码，不了解我在求职。</dd>
+
+      <dt>做法</dt>
+      <dd>
+        <ul>
+          <li><b>先复现，再采纳</b>：它说的每个问题，我都要自己跑一遍确认存在</li>
+          <li><b>三个筛子</b>：① 它修的是不是可复现的真 bug ② 是否服务于我当前的目标 ③ 成本是否可承受</li>
+          <li><b>分三类处置</b>：做 / 推迟 / 不做 —— 每一项都写一句理由，不允许挂在「待评估」</li>
+        </ul>
+      </dd>
+
+      <dt>结果</dt>
+      <dd>采纳了 4 条真 bug（含两个我自己一直没发现的：SQL 结果比较用分隔符拼接会产生歧义、可以构造反例被判成「完全正确」；以及「掌握度」指标的分母用错了，导致通过一题就显示 100%）。<b>拒绝了它的技术栈重写建议</b> —— 那会花掉两三周，而重写本身不产生任何求职价值。</dd>
+    </dl>
+    <div class="proof">
+      <b>可核对</b>：4 个 bug 都写了回归测试（掌握度分母 / 通过后答错要重新进错题本 / SQL 行比较歧义 / 执行隔离），测试里保留了旧写法的碰撞复现，证明 bug 曾真实存在
+    </div>
+  </article>
+
+  <!-- ============ 我怎么想问题 ============ -->
+  <h2>我怎么想问题</h2>
+
+  <div class="think">
+    <div class="q">一条我反复用到的判断：看一个比率，先找分母。</div>
+    <div class="a">
+      几乎所有误导性的指标，问题都不在分子，在分母。<br><br>
+      举个真实的例子：我做的训练平台里原来有个「掌握度」指标，算法是「一次做对的题数 ÷ 已通过的题数」。
+      看上去很合理，实际上这个数<b>永远接近 100%</b> —— 因为分母只统计已通过的题，只算做对的当然全对。<br><br>
+      修正后分母改成「总题数」，同时把原来那个数改名为「一次做对率」（分母是「实际做过的题」）。
+      同一个数据，两个指标，回答的是两个不同问题：<b>你掌握了多少</b>，和<b>你做过的那部分质量如何</b>。
+    </div>
+  </div>
+
+  <!-- ============ 能力证据 ============ -->
+  <h2>能力证据</h2>
+  <table>
+    <tr><th style="width:26%">能力</th><th>证据</th><th style="width:26%">在哪能核对</th></tr>
+    <tr>
+      <td><b>把流程做成可复用规范</b></td>
+      <td>把「每天更新网站」这套流程写成技能文档：正向触发 5 条 / 负向触发 5 条 / 7 步流程 / 8 条禁止项 / 5 条历史 bug 对应规则 / 13 项自检清单</td>
+      <td class="ev">文档已发布在站点仓库</td>
+    </tr>
+    <tr>
+      <td><b>设计可执行的验收标准</b></td>
+      <td>22 项一致性检查 + 逐字段审计（防止新摘要掩盖旧行动项）+ 30 组合视觉体检；每条检查都能说出它防的是哪个真实错误</td>
+      <td class="ev">检查脚本可复跑</td>
+    </tr>
+    <tr>
+      <td><b>排查与归因</b></td>
+      <td>两个报表数字差 30% 这类问题：先量化差值 → 列候选来源 → 逐个排除到各来源贡献之和≈总差值 → 最后才定义口径</td>
+      <td class="ev">训练题 w12 / AI 工作流模块</td>
+    </tr>
+    <tr>
+      <td><b>AI 工具的边界判断</b></td>
+      <td>36 道 AI 工作流设计题：每题要求说清「哪一步交给 AI、哪一步必须人看、怎么证明它没做错」。含合同审查（漏标比误标危险）、体检报告（诊断是硬边界）、简历改写（防动词升级）</td>
+      <td class="ev">训练平台 · AI 工作流模块</td>
+    </tr>
+    <tr>
+      <td><b>可核对的知识检索</b></td>
+      <td>站内做了带来源的问答：跨 1573 条知识索引检索，每条结果都显示「来源分区 + 更新时间 + 核对原文」；相关度不足时明确说「没有找到可靠依据」而不是硬凑</td>
+      <td class="ev">个人网站 · 侧栏搜索</td>
+    </tr>
+    <tr>
+      <td><b>数据敏感度</b></td>
+      <td>发现公开站点上有不该公开的个人信息后，做了脱敏：保留实用建议、去掉诊断名称，并逐一核查 4 个公开文件、确认线上已清除</td>
+      <td class="ev">站点版本记录</td>
+    </tr>
+  </table>
+
+  <!-- ============ 联系 ============ -->
+  <h2>联系方式</h2>
+  <div class="contact">
+    <div class="row"><span class="k">个人网站</span><a href="https://zr-president.github.io/my-website/" target="_blank" rel="noopener">zr-president.github.io/my-website</a></div>
+    <div class="row"><span class="k">训练平台</span><a href="https://zr-president.github.io/training/" target="_blank" rel="noopener">zr-president.github.io/training</a></div>
+    <div class="row"><span class="k">代码</span><a href="https://github.com/zr-president" target="_blank" rel="noopener">github.com/zr-president</a></div>
+    <div class="row"><span class="k">邮箱</span><span style="color:var(--text3)">（请在沟通时确认）</span></div>
+  </div>
+
+  <footer>
+    这份作品集本身也是一个证据：它是一个独立页面，和我的个人站共用同一套设计规范（间距 4/8 网格、圆角 8-12px、字号阶梯、只有一种强调色）。
+    <span class="noprint">可以用右下角按钮打印成一页 A4 PDF。</span><br>
+    最后更新：2026-10-25
+  </footer>
+</div>
+
+<div class="toolbar">
+  <button class="btn ghost" onclick="history.length>1?history.back():location.href='./'">← 返回</button>
+  <button class="btn" onclick="window.print()">打印 / 存为 PDF</button>
+</div>
+
+</body>
+</html>
