@@ -4813,7 +4813,7 @@ function populateFeaturedCard(){
   var hl = document.getElementById('featuredHeadline');
   var sm = document.getElementById('featuredSummary');
   if(hl) hl.textContent = top.icon + ' ' + top.headline;
-  if(sm) sm.textContent = top.summary;
+  if(sm) sm.innerHTML = top.summary;  /* 用 innerHTML：summary 是站内自写数据，含 <b> 强调，textContent 会把标签当文字显示 */
   card.setAttribute('data-link', top.link || '');
   card.setAttribute('data-deep', top.deepLink || '');
   card.style.display = 'block';
@@ -4897,10 +4897,10 @@ function manualRefresh(){
 
 </script>
 
-<script defer src="detail_content.js?v=1.8.40"></script>
-<script defer src="personal_config.js?v=1.8.40"></script>
-<script defer src="img_style.js?v=1.8.40"></script>
-<script defer src="daily_data.js?v=1.8.40"></script>
+<script defer src="detail_content.js?v=1.8.41"></script>
+<script defer src="personal_config.js?v=1.8.41"></script>
+<script defer src="img_style.js?v=1.8.41"></script>
+<script defer src="daily_data.js?v=1.8.41"></script>
 
 <script>
 // 图片加载完成后淡入（避免灰块闪烁）
