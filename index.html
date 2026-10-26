@@ -816,15 +816,6 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 <p style="margin:0;font-size:13px;color:var(--text2)"><b>方法论直接用文档的</b>：SKILL.md 用 YAML front matter + Markdown；<b>边界要写正反两面</b>（Use when: 用户说「更新网站」/ Don't use: 只是想改一个错别字）；<b>评测驱动</b>——把过去每次返工的原因记下来，那就是 Skill 的第一版需求。</p></div>
 
 <div class="card" style="margin-bottom:12px"><h4 style="margin:0 0 8px">✅ 方向 4：建个人知识库，让 AI 有依据 <span style="font-size:12px;color:var(--green);font-weight:400">（2026-10-20 已建）</span></h4><p style="margin:0 0 8px"><b>已落地</b>：桌面 <code>知识库</code> 目录，9 个文件 + 1 个质检脚本，7 条验收标准全部可执行。</p><table class="data-table" style="margin:8px 0"><tr><th>目录</th><th>文件</th><th>装什么</th></tr><tr><td><code>01-简历与投递</code></td><td>简历正文 · 投递记录</td><td>目标岗位、投递状态与反馈率</td></tr><tr><td><code>02-项目复盘</code></td><td>个人网站 · 训练平台 · 求职作品集素材</td><td>做过什么、当时怎么想、踩过什么坑</td></tr><tr><td><code>03-AI观察</code></td><td>模型与产品判断 · 工具与工作流</td><td>5 条带「改变结论条件」的判断</td></tr><tr><td><code>04-生活训练</code></td><td>训练与饮食</td><td>60.65kg 基线、4+3 周计划、租房友好拉类方案</td></tr></table><p style="margin:8px 0"><b>质检脚本</b>：<code>python _check_kb.py</code> → 34 项自动检查（四类覆盖 / 最后更新 / 超期 30 天 / README 索引 / H1+H2 / 隐私模式 / 文件名规范）。</p><p style="margin:0 0 8px"><b>失败可见性已验证</b>：注入 5 类违规（缺日期 · 索引未收录 · 身份证号 · 卡号 · 文件名带空格），脚本全部抓住并返回退出码 1；清理后 34 项全过、退出码 0。</p><p style="margin:0;font-size:13px;color:var(--text2)"><b>判断标准</b>（文档原话）：<b>「问它问题，它敢不敢给出来源」</b>——现在问「我的目标岗位是什么」，答案能指回 <code>01-简历与投递/简历正文.md</code> 的具体小节。</p></div>
-<p style="margin:0 0 8px"><b>现状</b>：我现在的 AI 是「每次都从零开始的助手」——它不知道我的简历、不知道我的项目复盘、不知道我上次为什么那样决策。所以我只能每次重新复述背景。</p>
-<p style="margin:0 0 8px"><b>该做</b>：桌面建一个 <code>知识库</code> 目录，全部用 Markdown，放四类：<br>
-· 简历与投递记录（哪家、什么岗位、结果）<br>
-· 项目复盘（做了什么、当时怎么想、结果如何）<br>
-· AI 观察笔记（模型发布、产品判断）<br>
-· 生活与训练记录（可选）<br>
-<b>收益</b>：AI 能直接读这些文件，不用每次复述；面试前可以让我基于真实记录生成 STAR 案例。</p>
-<p style="margin:0;font-size:13px;color:var(--text2)"><b>判断标准</b>（文档原话）：<b>「问它问题，它敢不敢给出来源」</b>——如果 AI 的回答能指回某个 md 文件和具体段落，说明知识库建对了。</p></div>
-
 <div class="card" style="margin-bottom:12px"><h4 style="margin:0 0 8px">🟢 方向 5：从「看结果」升级为「定标准」（评委能力）</h4>
 <p style="margin:0 0 8px"><b>好消息</b>：我其实已经在做——会质疑「今日行动没更新」、会发现「Opus 5.5 不在表里」、会追问「启动器到底有没有用」。这些是<b>评委能力</b>的雏形。</p>
 <p style="margin:0 0 8px"><b>该做的升级</b>：把「事后质疑」变成「事前清单」。为每类任务列一张验收清单（网站更新 / 简历 / 作品集 / 数据分析），交付时逐条打勾。<b>清单本身是可复用的资产</b>。</p>
@@ -4906,10 +4897,10 @@ function manualRefresh(){
 
 </script>
 
-<script defer src="detail_content.js?v=1.8.38"></script>
-<script defer src="personal_config.js?v=1.8.38"></script>
-<script defer src="img_style.js?v=1.8.38"></script>
-<script defer src="daily_data.js?v=1.8.38"></script>
+<script defer src="detail_content.js?v=1.8.39"></script>
+<script defer src="personal_config.js?v=1.8.39"></script>
+<script defer src="img_style.js?v=1.8.39"></script>
+<script defer src="daily_data.js?v=1.8.39"></script>
 
 <script>
 // 图片加载完成后淡入（避免灰块闪烁）
