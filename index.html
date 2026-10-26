@@ -2687,7 +2687,7 @@ function zh_renderUpdateAudit(){
   var dateBad=[], dateOk=0;
   fields.forEach(function(f){ var v=zh_iso(f[1]); if(v===today) dateOk++; else dateBad.push(f[0]+'='+(f[1]||'空')); });
   var lagBad=[], lagOk=0;
-  secRows.forEach(function(r){ if(r.lag===null||r.lag<=0) lagOk++; else lagBad.push(r.k+'（内容最新 '+r.newest.getMonth()+1+'月'+r.newest.getDate()+'日，落后 '+r.lag+' 天）'); });
+  secRows.forEach(function(r){ if(r.lag===null||r.lag<=0) lagOk++; else lagBad.push(r.k+'（内容最新 '+(r.newest.getMonth()+1)+'月'+r.newest.getDate()+'日，落后 '+r.lag+' 天）'); });
 
   var allOk = !dateBad.length && !lagBad.length;
 
@@ -4897,10 +4897,10 @@ function manualRefresh(){
 
 </script>
 
-<script defer src="detail_content.js?v=1.8.39"></script>
-<script defer src="personal_config.js?v=1.8.39"></script>
-<script defer src="img_style.js?v=1.8.39"></script>
-<script defer src="daily_data.js?v=1.8.39"></script>
+<script defer src="detail_content.js?v=1.8.40"></script>
+<script defer src="personal_config.js?v=1.8.40"></script>
+<script defer src="img_style.js?v=1.8.40"></script>
+<script defer src="daily_data.js?v=1.8.40"></script>
 
 <script>
 // 图片加载完成后淡入（避免灰块闪烁）
