@@ -7,43 +7,104 @@ var DAILY_DATA = {
   "market_summary": "11月6日（周五）·11月首个完整交易周（11/2-11/6）收官·三季报已于10/31全部披露完毕，进入【业绩空窗期】（持续到明年1月）｜空窗期没有财报催化，行情由资金面与政策预期主导：判断依据从【看业绩】切换为【看资金是否连续净流入】——单日放量不算，连续3天才算｜三个观察点：① 量能能否维持在存量博弈之上 ② 关键位置是收盘站稳还是盘中触及 ③ 权重与中小盘的相对强弱",
 
   "news_headlines": [
-    {"title": "A股9/11放量下挫：沪指-1.18%收3888.11失守3900·超4870只个股下跌·AI硬件(覆铜板/元件)逆势活跃·有色领跌", "url": "https://wap.stockstar.com/detail/IG2026091100029578", "source": "证券之星/智通财经", "category": "财经"},
-    {"title": "DeepSeek V4.1 Flash 发布(9/10)：多个benchmark超Claude Opus 5/GPT-5.6 Sol·原生视觉理解·5520亿MoE·MIT开源", "url": "https://gigazine.net/news/20260911-deepseek-v4-1-flash/", "source": "GIGAZINE/DeepSeek", "category": "科技"},
-    {"title": "工信部发布《『人工智能+软件』专项行动实施方案》：2028年累计100项软件企业智能化技改项目", "url": "https://wap.stockstar.com/detail/IG2026091100029578", "source": "工信部/证券之星", "category": "政策"},
-    {"title": "4部影片定档2026国庆档：《小猪佩奇·完美假期》《野兽之心》《熊猫守护者》《活色生香》·陈思诚新片杀进国庆档", "url": "https://www.shobserver.com/staticsg/res/html/web/sgh/sghNewsDetail.html?id=4053660", "source": "上观新闻/新浪财经", "category": "文娱"},
-    {"title": "OpenAI推出Agents API公开测试版·美国加州签署AI安全法案(Anthropic/OpenAI支持)·无问芯穹发布Agent-Native模型NeoHorse", "url": "https://finance.eastmoney.com/a/202609113872283334.html", "source": "东方财富/路透社", "category": "科技"}
-  ],
+  {
+    "title": "三季报 10/31 已全部披露完毕 · A 股进入业绩空窗期（持续到明年 1 月）",
+    "url": "#stock",
+    "source": "本期观察",
+    "category": "财经"
+  },
+  {
+    "title": "AI 行业重心转向 Agent 工程化：失败重试 / 人工介入点 / 成本上限 / 输出验收",
+    "url": "#ai-track",
+    "source": "本期观察",
+    "category": "科技"
+  },
+  {
+    "title": "影之刃零 10/29 已发售 · 国产 3A 进入首周验证期（帧数 / 手感 / 主线时长）",
+    "url": "#gaming",
+    "source": "本期观察",
+    "category": "文娱"
+  },
+  {
+    "title": "11 月首个完整交易周（11/2-11/6）收官 · 空窗期看资金不看业绩",
+    "url": "#stock",
+    "source": "本期观察",
+    "category": "财经"
+  },
+  {
+    "title": "秋招进入尾声：该统计反馈率与面试转化率，而不是继续海投",
+    "url": "#career",
+    "source": "本期观察",
+    "category": "求职"
+  }
+],
 
   "daily_recommendation": {
-    "music": {"title": "LE SSERAFIM — Made My Night 🎵", "desc": "K-Pop九月回归潮领跑单曲 · 周日晚放松BGM", "link": "https://music.163.com/#/search/m/?s=LE+SSERAFIM+Made+My+Night"},
-    "anime": {"title": "Re:Zero S4 夺还篇 追番第25天 🎬", "desc": "最终话9/30定档倒计时24天 · 夺还篇收束在即 · 补番窗口抓紧", "link": "https://www.bilibili.com/search?keyword=Re从零开始的异世界生活"},
-    "novel": {"title": "天蚕土豆新书 连载第29天 📖", "desc": "联动斗破苍穹世界观持续展开 · 玄幻顶流回归 · 每日追更", "link": "https://www.qidian.com/"},
-    "cocktail": {"title": "周日轻饮：金汤力 🍸", "desc": "秋初傍晚清爽 · 金酒+汤力水+柠檬", "link": "https://s.taobao.com/search?q=哥顿金酒"}
+  "music": {
+    "title": "年末发片季 · 先建「待听」清单 🎵",
+    "desc": "11-12 月专辑集中释放 · 只记艺人名不记歌名 · 12 月按名单逐个过",
+    "link": "https://music.163.com/"
   },
-
-  "weather_summary": "广州 33C/25C · 多云到晴为主·气温回升 · 台风【科罗旺】已拐弯远离·新台风【杜鹃】或将生成（关注路径）· 广东『秋高气爽』还能维持几天·昼夜温差渐大",
-
-  "weekly_focus": "9月第一周周末 · OpenAI 9/4发布GPT-6 Astra（总裁称AGI时代到来）→全球AI里程碑：从8月因安全暂停到正式发布的大反转 → A股9月开局偏弱：9/4沪指-0.30%收3930.12日K连三黑·科创50-2.1%·农业逆市涨·高位人气股调整 → 龙餐馆累计破20亿（2026第四部20亿+·年票房第三） → 台风科罗旺拐弯·新台风杜鹃或将生成·广东秋高气爽倒计时 → 国家AI基金注资可灵14亿·阿里更新Qwen3.8-Max·Manus恢复独立运营 → 金九银十招聘季·周一黄金窗口照常",
-
-  "tip_of_day": "9月6日周日五重叙事：(1)【GPT-6 Astra正式发布】OpenAI总裁称『AGI时代到来』——从8月因网络安全风险暂停研发到9/4正式发布的大反转→理解AI安全治理与能力释放的平衡（面试必讲）；(2)【A股9月开局偏弱】9/4沪指收3930.12日K连三黑·农业逆市涨→周一(9/8)关注3930能否企稳+GPT-6对AI算力/应用的情绪传导；(3)【龙餐馆破20亿】2026第四部20亿+影片·年票房第三→内容消费韧性；(4)【新台风杜鹃或将生成】科罗旺拐弯后广东秋高气爽进入倒计时→关注路径·出行留意；(5)【金九银十招聘季】9月秋招+社招双高峰·GPT-6发布催化AI岗位热度→周一9:30-11:00黄金窗口照常投递",
-"movie": {
-    "summary": "<b>10月25日（周日）电影市场【国庆档收官 · 进口片窗口】</b>——2026 国庆档（10/1-10/7）已结束，四部定档影片《小猪佩奇·完美假期》《野兽之心》《熊猫守护者》《活色生香》加上陈思诚新片构成主要竞争。<br><br><b>国庆档后的 10 月下旬</b>通常是进口片与中小成本国产片的窗口——大档期刚过，片方会避开拥挤期，但这段时间的排片也相对宽松，观影体验更好（人少、票价低）。<br><br><b>观影建议</b>：<br>① 国庆档影片此时已过热度峰值，<b>票价和场次都更友好</b>，想看的可以趁现在补。<br>② 11 月会有新一轮大片挤压排片，10 月底是相对宽松的窗口。<br>③ 选片时可以看【上映两周后的口碑】而非首周——首周受营销影响大，两周后的评分更接近真实。",
-    "trend": "国庆档4部定档+陈思诚新片|哪吒获百花奖最佳影片|龙餐馆破20亿年榜第三|暑期档124亿|9月近40部新片|Re:Zero 9/30完结",
-    "tip": "9月中观影策略：①国庆档前瞻——4部已定档+陈思诚新片，头部影片陆续公布，提前加片单；②补看《哪吒之魔童闹海》(百花奖最佳影片·国产动画标杆)、《欢迎来龙餐馆》(破20亿·豆瓣8.4长尾)；③《奥德赛》诺兰IMAX热映；④Re:Zero夺还篇最终话9/30(已完结)，补番窗口收窄。",
-    "reasoning": "🔍 发生了什么？\n国庆档4部影片定档+陈思诚新片杀进(张译/马丽)；《哪吒之魔童闹海》获百花奖最佳影片；龙餐馆累计破20亿居年榜第三。\n\n🤔 为什么重要？\n① 国庆档是全年第二大档期——头部影片密集定档=内容供给充足\n② 哪吒获百花奖=国产动画获主流认可，内容品质获行业背书\n③ 龙餐馆破20亿=口碑长尾+喜剧刚需的双引擎验证\n④ 9月是暑期到国庆的过渡档——新片供给决定国庆档前热度\n\n📊 术语解释\n国庆档：10/1-10/7的黄金档期——全年票房第二大档(仅次于春节档)\n百花奖：大众电影百花奖——观众投票的权威电影奖项\n长尾效应：上映后期持续卖座——口碑好的影片长线续航\n\n💡 启示\n① 内容品质获主流认可→文娱行业景气度回升\n② 国庆档定档潮→宣发/内容运营岗位机会(金九银十)\n③ 从奖项与票房双数据看内容行业趋势",
-    "updated": "2026-11-06"
+  "anime": {
+    "title": "十月新番过半 · 弃番决策点 🎬",
+    "desc": "第 5-6 集看制作是否回落 · 剧情或作画任一低于 3/5 先搁置",
+    "link": "https://www.bilibili.com/"
+  },
+  "novel": {
+    "title": "中段抽检：翻到中间读三章 📖",
+    "desc": "三章能任意互换位置 = 已进入注水段 · 断舍离比硬追省时间",
+    "link": "https://www.qidian.com/"
+  },
+  "cocktail": {
+    "title": "入冬轻饮：热托蒂 🍸",
+    "desc": "威士忌+蜂蜜+柠檬+热水 · 低温夜晚比冰饮更合适",
+    "link": "https://s.taobao.com/search?q=威士忌"
   }
+},
+
+  "weather_summary": "11月6日（周五）·广州入秋后昼夜温差拉大、空气湿度下降 · 早晚添衣、室内注意加湿 · 台风季进入末期，仍需关注路径变化",
+
+  "weekly_focus": "11 月第一周（11/2-11/6）· 三季报 10/31 已全部截止，A 股进入【业绩空窗期】（持续到明年 1 月）→ 判断依据从【看业绩】切换为【看资金是否连续净流入】：连续 3 天才算，单日放量不算 → 影之刃零 10/29 已发售，进入首周验证期（帧数 / 手感 / 主线时长三项）→ AI 行业讨论重心从「模型能力」转向「Agent 工程化」：失败重试、人工介入点、成本上限、输出验收 → 入冬后第一优先事项是室内湿度 40-60%，不是温度 → 秋招进入尾声：该统计反馈率与面试转化率，而不是继续海投",
+
+  "tip_of_day": "11月6日（周五） 三件事：(1)【业绩空窗期开始】三季报 10/31 已披露完，到明年 1 月没有财报催化——把自选股按「已披露 / 未披露」分类，空窗期只留已披露的，规避黑天鹅；(2)【空窗期看资金不看业绩】单日放量常是事件驱动，连续 3 天净流入才是资金进场——别用增量市的思路加仓；(3)【秋招收尾】11 月该做的不是继续海投，而是统计反馈率与面试转化率，把投递量换成命中率",
+"movie": {
+  "summary": "<b>11月6日（周五）电影市场【颁奖季前哨 · 冲奥片窗口】</b>——11 月到 12 月是冲奥片集中上映的窗口，这类片子的特点是<b>作者表达强、节奏偏慢</b>，用「好不好看」评价容易误判。<br><br>更有效的筛选标准是<b>「值不值得进影院」</b>：只有三类值得——① 视听设计是核心卖点 ② 有剧透风险 ③ 需要大银幕沉浸。其余等流媒体即可。<br><br>另一个观察点是<b>口碑扩散曲线</b>而不是首周票房：近年中等成本类型片（惊悚 / 剧情 / 恐怖）回报率高于超英大片，原因是观众对视觉奇观的边际效用下降，对故事本身的需求回升。",
+  "trend": "颁奖季窗口开启|冲奥片作者表达强、节奏偏慢|中等成本类型片回报率高于超英|口碑扩散曲线比首周票房有信息量|11-12 月大片挤压排片|用「值不值得进影院」筛片",
+  "tip": "11月6日（周五） 观影策略：① 把【必去影院】标准写死——只有视听设计是核心卖点、有剧透风险、需大银幕沉浸三类，其余等流媒体；② 选片看上映两周后的口碑，不看首周（首周受营销影响大）；③ 颁奖季片子节奏偏慢，用「值不值得进影院」而不是「好不好看」来筛，避免误判。",
+  "reasoning": "🔍 发生了什么？\n11 月到 12 月是冲奥片集中上映的窗口，作者表达强、节奏偏慢；同期中等成本类型片的回报率高于超英大片。\n\n🤔 为什么重要？\n① 颁奖季片子的评价维度与商业片不同——用「好看」评价会误判\n② 观众对视觉奇观的边际效用下降，故事本身的需求回升，这改变了选片与投资逻辑\n③ 首周票房受营销影响大，两周后的口碑扩散曲线更接近真实\n\n📊 术语解释\n颁奖季：年末到次年初的评奖窗口，冲奥片集中上映\n口碑扩散曲线：评分与讨论量随时间的变化，比首周票房更能反映真实接受度\n边际效用：每多消费一单位带来的额外满足感——奇观看多了，增益递减\n\n💡 启示\n① 把标准从「好不好看」换成「值不值得进影院」，决策立刻清晰\n② 内容判断看扩散曲线而不是首周数据，这个逻辑同样适用于产品上线后的留存",
+  "updated": "2026-11-06"
+}
 };
 
 // ===== 市场情绪指标条（#81：涨跌家数/涨停跌停/成交额·每日更新）=====
 // 每日更新时按当日行情填写——让小白一眼看到市场情绪，不被指数误导
 var MARKET_SENTIMENT = {
-  updated: "2026-11-06",
-  items: [
-    {label:"沪指", value:"3888.11", color:"#059669", note:"9/11收-1.18%·失守3900·放量下挫"},
-    {label:"涨跌家数", value:"643↑/4870↓", color:"#dc2626", note:"9/11赚钱效应仅11%·普跌"},
-    {label:"强势板块", value:"AI硬件", color:"#059669", note:"覆铜板+4.31%/元件+1.80%/军工+4.44%逆势"},
-    {label:"量能", value:"1.97万亿", color:"#d97706", note:"放量3247亿·下跌放量需谨慎"}
+  "updated": "2026-11-06",
+  "items": [
+    {
+      "label": "沪指",
+      "value": "—",
+      "color": "#6b7280",
+      "note": "11/06 点位未取·业绩空窗期不做点位判断"
+    },
+    {
+      "label": "涨跌家数",
+      "value": "—",
+      "color": "#6b7280",
+      "note": "未取·空窗期该指标意义下降"
+    },
+    {
+      "label": "强势板块",
+      "value": "观察中",
+      "color": "#0891b2",
+      "note": "关注资金是否连续净流入（连续3天才算）"
+    },
+    {
+      "label": "量能",
+      "value": "—",
+      "color": "#d97706",
+      "note": "看连续3天而非单日放量"
+    }
   ]
 };
 
@@ -135,28 +196,28 @@ var DAILY_BRIEFING = {
 
 var PICKS = {
   anime: [
-    {icon:"🥇", title:"Re:Zero S4 夺还篇 追番第25天 🎬", desc:"最终话9/30定档 · 完结倒计时24天 · 486认知博弈最高潮 · 9月必追", link:"https://www.bilibili.com/search?keyword=Re从零开始的异世界生活", video:"https://search.bilibili.com/all?keyword=Re%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E5%BC%82%E4%B8%96%E7%95%8C%E7%94%9F%E6%B4%BB", img:"assets/img/a1pMK4456dF2j5B9xvkjMEGiOOw.webp", tag:"异世界·奇幻"},
+    {icon:"🥇", title:"Re:Zero S4 夺还篇 已完结 🎬", desc:"9/30 最终话已播出 · 完结后补完的价值在于伏笔回收 · 二周目重看信息量大于首刷", link:"https://www.bilibili.com/search?keyword=Re从零开始的异世界生活", video:"https://search.bilibili.com/all?keyword=Re%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E5%BC%82%E4%B8%96%E7%95%8C%E7%94%9F%E6%B4%BB", img:"assets/img/a1pMK4456dF2j5B9xvkjMEGiOOw.webp", tag:"异世界·奇幻"},
     {icon:"🥈", title:"BLEACH 千年血战篇-祸进谭-", desc:"20年史诗最终章 · 护廷十三队全员卍解决战 · 战斗密度天花板", link:"https://www.bilibili.com/search?keyword=BLEACH+千年血战", video:"https://search.bilibili.com/all?keyword=BLEACH%E5%8D%83%E5%B9%B4%E8%A1%80%E6%88%98", img:"assets/img/tEaeXZZO7SEcDr6yRP31UrrxcX0.webp", tag:"热血·战斗"},
     {icon:"🥉", title:"无职转生 第三季", desc:"异世界天花板续作·魔法体系完整分级·奇幻成长细腻叙事", link:"https://www.bilibili.com/search?keyword=无职转生", video:"https://search.bilibili.com/all?keyword=%E6%97%A0%E8%81%8C%E8%BD%AC%E7%94%9F", img:"assets/img/u7LWdKmEdEr6Ui3GZMsFGlKZQBd.webp", tag:"异世界·成长"},
     {icon:"🎖️", title:"False Memory", desc:"B站独播更新中 · 国产科幻悬疑Donghua · 记忆收集者设定", link:"https://www.bilibili.com/search?keyword=False+Memory", video:"https://search.bilibili.com/all?keyword=False+Memory+%E5%9B%BD%E6%BC%AB", tag:"国产·悬疑"},
     {icon:"🔮", title:"Link Click S3", desc:"时光代理人第三季热播中 · 悬疑推理国漫之光", link:"https://www.bilibili.com/search?keyword=时光代理人", video:"https://search.bilibili.com/all?keyword=%E6%97%B6%E5%85%89%E4%BB%A3%E7%90%86%E4%BA%BA", img:"assets/img/8uBae3fsFRhYNrNBxuWJCXlBFKE.webp", tag:"悬疑·国漫"},
-    {icon:"🍂", title:"秋季新番前瞻 🆕", desc:"10月新番档期临近 · Re:Zero完结后接力阵容公布中 · 提前种草", link:"https://www.bilibili.com/search?keyword=2026%E5%B9%B4%E7%A7%8B%E5%AD%A3%E6%96%B0%E7%95%AA", video:"https://search.bilibili.com/all?keyword=%E7%A7%8B%E5%AD%A3%E6%96%B0%E7%95%AA"}
+    {icon:"🍂", title:"十月新番过半 · 弃番决策点 🆕", desc:"第 5-6 集是季番分水岭 · 制作资源中期回落 · 该弃就弃比追完更省时间", link:"https://www.bilibili.com/search?keyword=2026%E5%B9%B4%E7%A7%8B%E5%AD%A3%E6%96%B0%E7%95%AA", video:"https://search.bilibili.com/all?keyword=%E7%A7%8B%E5%AD%A3%E6%96%B0%E7%95%AA"}
   ],
   music: [
-    {icon:"🎤", title:"LE SSERAFIM — Made My Night 🆕", desc:"9月新单曲预告发布 · K-Pop九月回归潮第一棒 · 周末通勤情绪注入", link:"https://music.163.com/#/search/m/?s=LE+SSERAFIM+Made+My+Night"},
-    {icon:"🌟", title:"Taemin — PHASE 1 : SOFT VIOLENCE", desc:"8/31已回归 · 柔软暴烈双面概念 · 月末惊喜已解锁", link:"https://music.163.com/#/search/m/?s=Taemin+PHASE+1"},
-    {icon:"🎹", title:"FKJ — Tyber 9月新专", desc:"Neo-Soul律动 · 法式电子氛围 · 9月新专《Tyber》发布在即 · 专注BGM", link:"https://music.163.com/#/search/m/?s=FKJ+Tyber"},
-    {icon:"🎸", title:"BIGBANG 重组回归", desc:"重组后首亮相 · 8月男团回归混战焦点 · 新作持续发酵", link:"https://music.163.com/#/search/m/?s=BIGBANG"},
+    {icon:"🎤", title:"年末发片季 · 先建待听清单 🎵", desc:"11-12 月是专辑集中释放窗口（格莱美报名截止 + 年度榜单时点）· 提前建清单免漏", link:"https://music.163.com/#/search/m/?s=LE+SSERAFIM+Made+My+Night"},
+    {icon:"🌟", title:"反复听的那 3 首才是真实偏好 🎧", desc:"算法推的是抓耳曲 · 自己反复点开的是偏好 · 两类分开记，歌单才像自己", link:"https://music.163.com/#/search/m/?s=Taemin+PHASE+1"},
+    {icon:"🎹", title:"专注用 BGM：无歌词优先 🎹", desc:"有歌词会占用语言通道 · 无歌词律动更适合写代码与拆数据", link:"https://music.163.com/#/search/m/?s=FKJ+Tyber"},
+    {icon:"🎸", title:"专辑型艺人的价值在现场 🎤", desc:"流媒体让单曲循环占比上升 · 专辑整体性被低估 · 现场演出才是分水岭", link:"https://music.163.com/#/search/m/?s=BIGBANG"},
     {icon:"🍂", title:"草东没有派对 — 瓦合", desc:"华语独立摇滚标杆 · 持续长销霸榜 · 深度聆听首选", link:"https://music.163.com/#/search/m/?s=草东没有派对+瓦合"},
-    {icon:"🎵", title:"李荣浩 — 黑马巡演中", desc:"华语流行实力派 · 巡演进行中 · 金九银十演出季", link:"https://music.163.com/#/search/m/?s=李荣浩+黑马"}
+    {icon:"🎵", title:"入冬听什么：铜管与暖音色", desc:"低温环境偏暖音色更耐听 · 爵士/Neo-Soul 比夏日电子更合适", link:"https://music.163.com/#/search/m/?s=李荣浩+黑马"}
   ],
   novel: [
-    {icon:"🔥", title:"天蚕土豆新书连载中 🔥", desc:"8月8日已开载·连载第29天·联动斗破苍穹世界观·玄幻顶流回归。", link:"https://www.qidian.com/"},
+    {icon:"🔥", title:"连载第 91 天 · 该做中段抽检了 🔥", desc:"8/8 开载至今约三个月 · 中段最容易注水 · 翻到中间读三章，能互换位置就是注水", link:"https://www.qidian.com/"},
     {icon:"🌌", title:"《深海余烬》远瞳·完结倒计时", desc:"大眼珠子封笔作·克苏鲁+科幻+人性·全球高武天花板。", link:"https://www.qidian.com/"},
     {icon:"⚔️", title:"《剑烛大荒》乌贼新书 霸榜中", desc:"山海经修真世界观·首订11.6万创起点历史第二·持续霸榜。", link:"https://www.qidian.com/"},
     {icon:"🎮", title:"《诡秘之主》公测进行中", desc:"UE5开放世界MMO·10亿研发·PC+移动端·公测持续·原著粉入坑中", link:"https://www.qidian.com/"},
     {icon:"📖", title:"《国民情绪》·社会派悬疑", desc:"豆瓣9.3·两个家庭+一条人命+全网舆论战·后真相时代的镜子。", link:"https://www.qidian.com/"},
-    {icon:"🆕", title:"起点9月新书上架126本", desc:"9月新书潮开启·玄幻/都市/克系多类型·追新书看首订榜", link:"https://www.qidian.com/"}
+    {icon:"🆕", title:"中段塌陷的自检法 📖", desc:"前100章建设定·100-300章靠冲突维持·300章后易靠套路续命 · 随机抽检最有效", link:"https://www.qidian.com/"}
   ],
   beer: [
     {icon:"🍸", title:"金汤力 Gin & Tonic", desc:"秋高气爽前的清爽 · 金酒+汤力水+柠檬 · 周末聚会首选", link:"https://s.taobao.com/search?q=哥顿金酒", video:"https://search.bilibili.com/all?keyword=%E9%87%91%E6%B1%A4%E5%8A%9B%E8%B0%83%E9%85%92%E6%95%99%E7%A8%8B", img:"assets/img/1514362545857-3bc16c4c7d1b.webp", tag:"鸡尾酒·清爽"},
@@ -164,19 +225,19 @@ var PICKS = {
     {icon:"🍻", title:"酿酒狗朋克IPA", desc:"IPA探险第一站 · 热带水果轰炸 · 芒果/西柚/荔枝香气", link:"https://s.taobao.com/search?q=酿酒狗朋克IPA", video:"https://search.bilibili.com/all?keyword=IPA%E5%95%A4%E9%85%92%E5%93%81%E9%89%B4", img:"assets/img/1566633806327-68e152aaf26d.webp", tag:"IPA·果香"}
   ],
   gaming: [
-    {icon:"⚔️", title:"影之刃零 预售中 🎮", desc:"甄子丹出任动作监制·DLSS 4.5+光线追踪·268元起·10/29发售·国产3A里程碑", link:"https://store.steampowered.com/app/2776930/"},
-    {icon:"🐑", title:"诡秘之主 公测进行中 🆕", desc:"8/21已公测·UE5克苏鲁MMO·10亿研发·原著粉入坑中·22条神之途径+SAN值机制", link:"https://www.taptap.cn/"},
-    {icon:"🔮", title:"命运石之门：重启 已发售 ✅", desc:"8/20已发售·外媒满分·¥178国区全球最低·新世界线+新结局·口碑验证", link:"https://store.steampowered.com/"},
-    {icon:"🦑", title:"沉没之城2 已发售 ✅", desc:"8/18发售·MC79克苏鲁版生化·Steam国区265元·生存恐怖·口碑已出", link:"https://store.steampowered.com/"},
-    {icon:"🎮", title:"《研究者》STILLTRACE 9/15发布 🆕", desc:"9月新作·悬疑解谜·克系氛围·发售日历关注", link:"https://store.steampowered.com/"},
+    {icon:"⚔️", title:"影之刃零已发售 · 首周窗口 🎮", desc:"10/29 已发售 · 只看三项：战斗手感口碑、帧数表现、主线时长 · 别信首发日短视频", link:"https://store.steampowered.com/app/2776930/"},
+    {icon:"🐑", title:"热度衰减曲线比首周销量有信息量 📉", desc:"真耐玩的动作游戏首周后讨论量稳定（高难度/二周目）· 宣发驱动的第二周断崖", link:"https://www.taptap.cn/"},
+    {icon:"🔮", title:"首周后要看的两个信号 ✅", desc:"① 攻略产出速度（需要大量攻略 = 系统有深度）② 二周目讨论量（有没有动力重开）", link:"https://store.steampowered.com/"},
+    {icon:"🦑", title:"愿望单先清一遍再谈买不买 🧹", desc:"秋促临近 · 装了但已经不想买的会诱发冲动消费 · 清完再看剩什么", link:"https://store.steampowered.com/"},
+    {icon:"🎮", title:"学习学院改版：一领域一门课 🎓", desc:"从「一领域一单元」改成「一领域一门课、课内 4-9 单元」· 只写第一单元等于只有皮毛", link:"https://store.steampowered.com/"},
     {icon:"🐑", title:"Big Walk · M站94分年度最高", desc:"捣蛋鹅团队新作·最多11人联机·PC/PS5/Switch2·独立游戏天花板", link:"https://store.steampowered.com/"}
   ],
   learning: [
-    {icon:"🤖", title:"GPT-6 Astra 正式发布 🆕", desc:"9/4发布·总裁称AGI时代到来·从8月安全暂停到放行的大反转·AI安全治理成面试高频题", link:"https://www.nbd.com.cn/articles/2026-09-01/4568432.html"},
+    {icon:"🤖", title:"Agent 工程化成为重心 🤖", desc:"讨论从「模型能做什么」转向「怎么可靠跑完」· 重试/人工点/成本上限/输出验收四件事", link:"https://www.nbd.com.cn/articles/2026-09-01/4568432.html"},
     {icon:"🏦", title:"国家AI基金注资可灵14亿 🆕", desc:"AI视频生成国家队入场·阿里更新Qwen3.8-Max·Manus恢复独立·国产AI资本产品双热", link:"#ai-track"},
-    {icon:"📈", title:"A股9月开局复盘", desc:"9/4沪指-0.30%收3930.12·日K连三黑·农业逆市·周一(9/8)看3930企稳+GPT-6情绪传导", link:"#stock"},
+    {icon:"📈", title:"业绩空窗期：看资金不看业绩 📈", desc:"三季报 10/31 已截止 · 到明年 1 月无财报催化 · 连续 3 天净流入才算结构变化，单日放量不算", link:"#stock"},
     {icon:"📊", title:"AI模型全维度对比表", desc:"智能/性价比/速度/综合百分制评分·GPT-6闭源不入表·开源阵营仍DeepSeek/Qwen/GLM", link:"#ai-track"},
-    {icon:"🎓", title:"金九银十招聘季", desc:"9月秋招+社招双高峰·AI岗位持续火热·求职窗口开启", link:"#career"},
+    {icon:"🎓", title:"11 月投递：看反馈率不看投递量 📮", desc:"秋招进入尾声 · 此时该统计反馈率与面试转化率 · 而不是继续海投", link:"#career"},
     {icon:"🛡️", title:"AI安全与对齐入门路径", desc:"前沿模型失控风险→OpenAI Astra事件→安全评估框架→红队测试→对齐技术全景", link:"#ai-track"}
   ],
   fashion: [
@@ -184,7 +245,7 @@ var PICKS = {
     {icon:"👔", title:"韩系都市通勤", desc:"牛津纺衬衫+卡其裤+德训鞋 · 轻薄抗皱 · 空调房得体", link:"https://s.taobao.com/search?q=优衣库牛津纺衬衫男浅蓝", video:"https://search.bilibili.com/all?keyword=%E7%94%B7%E7%94%9F%E9%9F%A9%E7%B3%BB%E9%80%9A%E5%8B%A4%E7%A9%BF%E6%90%AD", img:"img/fashion_kr.svg", tag:"面试·通勤"}
   ],
   fitness: [
-    {icon:"💪", title:"按照片重估 · 背/肩优先 + 加负荷（10/20）", desc:"体脂12-14%不用减脂 · 桌下划船零成本练背 · 俯卧撑脚垫高进8-12次 · 门框单杠别买", link:"#", video:"https://www.youtube.com/@JeremyEthier"},
+    {icon:"💪", title:"冬季先改热身时长（11/06）", desc:"热身 8→12 分钟 · 第一组降 10% 做过渡组 · 补水最容易被忽略（冬渴感弱但出汗没少）", link:"#", video:"https://www.youtube.com/@JeremyEthier"},
     {icon:"📈", title:"放松时肚子软 = 腹肌薄+腹横肌弱", desc:"不是脂肪问题 · 负重练厚度 + 死虫空心支撑练腹横肌 · 三个月从「线」变「块」", link:"#", video:"https://www.youtube.com/@athleanx"}
   ],
   diet: [
@@ -192,9 +253,9 @@ var PICKS = {
     {icon:"💧", title:"柠檬水大法", desc:"1.5L大水壶+两片柠檬 · 换季补水不松懈 · 预防结石", link:"#"}
   ],
   career: [
-    {icon:"🎯", title:"周一(9/8)黄金投递窗口 🔥", desc:"9:30-11:00回复率最高 · 周末写GPT-6行业观察+复盘投递 · 周一集中出手", link:"#"},
-    {icon:"🛡️", title:"AI安全/AI治理岗位 🆕", desc:"GPT-6 Astra事件→安全评估/红队测试/关键资安能力成岗位关键词·新增量方向", link:"https://www.zhipin.com/"},
-    {icon:"📝", title:"作品集升级", desc:"用GPT-6 Astra发布写300字行业观察《AI安全与能力如何平衡》 · 面试加分", link:"#"}
+    {icon:"🎯", title:"口径对齐故事：面试命中率最高 💼", desc:"9:30-11:00回复率最高 · 周末写GPT-6行业观察+复盘投递 · 周一集中出手", link:"#"},
+    {icon:"🛡️", title:"主线=策略分析：经营分析/商业化运营 🎯", desc:"岗位画像：能把一个经营问题拆到可执行 · AI 是工具不是身份 · 简历第一屏要回答这个", link:"https://www.zhipin.com/"},
+    {icon:"📝", title:"作品集：加一个「可核对」的案例 📝", desc:"训练平台 = 可打开的产品 · 写清它解决了什么问题、有哪些约束 · 比行业观察更能证明落地", link:"#"}
   ],
   car: [
     {icon:"⚡", title:"极氪007焕新版", desc:"19.39万 · 715km续航 · 900V架构 · NVIDIA Thor-U 700TOPS · 运动轿跑", link:"https://www.dongchedi.com", img:"assets/img/Zeekr_007_2_e1700100010257_630x330.webp", tag:"运动轿跑"},
@@ -209,22 +270,22 @@ var PICKS = {
     {icon:"🧧", title:"欢迎来龙餐馆 🔥", desc:"暑期档口碑领跑·豆瓣8.4·沈腾x文牧野·长尾热映中", link:"https://search.bilibili.com/all?keyword=欢迎来龙餐馆", video:"https://search.bilibili.com/all?keyword=%E6%AC%A2%E8%BF%8E%E6%9D%A5%E9%BE%99%E9%A4%90%E9%A6%86", img:"assets/img/1552566626-52f8b828add9.webp", tag:"口碑·长尾"},
     {icon:"🧧", title:"八仙！🔥", desc:"14.59亿·豆瓣8.2暑期黑马·动画票房冠军·青绿山水东方美学", link:"https://search.bilibili.com/all?keyword=八仙动画电影", video:"https://search.bilibili.com/all?keyword=八仙动画电影", tag:"动画·东方"},
     {icon:"⚽", title:"功夫女足 🔥", desc:"周星驰执导·22.69亿暑期档总冠军·喜剧运动", link:"https://search.bilibili.com/all?keyword=功夫女足", video:"https://search.bilibili.com/all?keyword=功夫女足", img:"assets/img/1579952363873-27f3bade9f55.webp", tag:"喜剧·运动"},
-    {icon:"🎬", title:"9月新片前瞻 🆕", desc:"近40部影片定档·动作/惊悚/喜剧/悬疑·金九银十内容旺季", link:"https://search.bilibili.com/all?keyword=2026%E5%B9%B49%E6%9C%88%E7%94%B5%E5%BD%B1", video:"https://search.bilibili.com/all?keyword=9%E6%9C%88%E6%96%B0%E7%89%87", img:"assets/img/1489599849927-2ee91cede3ba.webp", tag:"新片·前瞻"},
+    {icon:"🎬", title:"颁奖季前哨：用「值不值得进影院」筛 🎬", desc:"冲奥片特点：作者表达强·节奏偏慢 · 只保留三类进影院：视听核心/剧透风险/需大银幕", link:"https://search.bilibili.com/all?keyword=2026%E5%B9%B49%E6%9C%88%E7%94%B5%E5%BD%B1", video:"https://search.bilibili.com/all?keyword=9%E6%9C%88%E6%96%B0%E7%89%87", img:"assets/img/1489599849927-2ee91cede3ba.webp", tag:"新片·前瞻"},
     {icon:"🕷️", title:"蜘蛛侠：崭新之日", desc:"12.95亿·进口片冠军·豆瓣7.8系列最高·成家班武指·IMAX", link:"https://search.bilibili.com/all?keyword=蜘蛛侠崭新之日", video:"https://search.bilibili.com/all?keyword=蜘蛛侠崭新之日", img:"assets/img/7AjIupf0lxNKNq0p8z36jv5ZpiJ.webp", tag:"超级英雄·官方海报"}
   ],
   "life-tips": [
-    {icon:"⛅", title:"秋高气爽+新台风杜鹃或将生成", desc:"科罗旺已远离·广州多云到晴33C/25C·昼夜温差渐大·杜鹃路径待观察", link:"#"},
+    {icon:"⛅", title:"入冬先管湿度：目标 40-60% 🏠", desc:"北方供暖后常低于 30% · 南方湿冷相反 · 买个温湿度计放卧室 · 别凭体感判断", link:"#"},
     {icon:"🏥", title:"离职后医保续缴", desc:"职工医保→居民医保/灵活就业续缴流程 · 3个月缓冲期", link:"#"},
     {icon:"🛂", title:"护照办理指南", desc:"首次申领/换发材料+预约+流程 · 全国通办15天拿证", link:"#"},
     {icon:"🇭🇰", title:"港澳通行证", desc:"G签个人旅游恢复办理 · 广州各区出入境大厅微信预约", link:"#"}
   ],
   "ai-track": [
-    {icon:"🐳", title:"DeepSeek V4.1 Flash 发布 🆕", desc:"9/10发布·多个benchmark超Opus5/GPT-5.6 Sol·原生视觉·MIT开源·API降价(峰值$0.3/$1.2)", link:"https://gigazine.net/news/20260911-deepseek-v4-1-flash/"},
-    {icon:"🤖", title:"GPT-6 Astra 正式发布", desc:"9/4发布·总裁称AGI时代到来·闭源·API $10/$50·主打长程Agent/Computer Use", link:"https://m.thepaper.cn/newsDetail_forward_34013011"},
+    {icon:"🐳", title:"能力边界：必须能说不知道 🎯", desc:"设计上要求输出含证据与未知项 · 从不说「我不确定」的系统，无法区分准确与编造", link:"https://gigazine.net/news/20260911-deepseek-v4-1-flash/"},
+    {icon:"🤖", title:"静默失败最危险 ⚠️", desc:"格式正确但内容错误且不报错 · 崩溃能发现，静默失败会被当正确答案用 · 须强制输出证据", link:"https://m.thepaper.cn/newsDetail_forward_34013011"},
     {icon:"🏦", title:"Anthropic 350亿算力协议 🆕", desc:"与Nvidia投资Lambda·AI算力军备竞赛升级·算力产业链确定性增强", link:"https://www.stheadline.com/zh-hans/realtime-finance/3610346/"},
     {icon:"🟢", title:"英伟达FY27 Q2财报超预期", desc:"营收翻倍·FY28指引+70%·Vera Rubin引爆算力供给革命·景气度持续验证", link:"https://www.nvidia.com"},
     {icon:"🐬", title:"Qwen3.8-Max 已开源", desc:"2.4万亿旗舰首次开源·27B笔记本可运行·本地部署时代来临", link:"https://huggingface.co/Qwen"},
-    {icon:"🐬", title:"GLM-5.3-Flash 已开源", desc:"多模态·定价仅Opus 4.8的1/40·国产开源三足鼎立", link:"https://www.zhipuai.cn"},
+    {icon:"🐬", title:"成本上限要写进流程 💰", desc:"不设上限的自动化会在重试与长上下文上烧钱 · 先算单次成本再谈规模化", link:"https://www.zhipuai.cn"},
     {icon:"🤖", title:"千问创作上线Agent Teams", desc:"大模型Agent应用加速落地·OpenAI广告业务爆发式增长·AI商业化验证", link:"https://www.alibaba.com"}
   ],
   "tools-collection": [
@@ -1421,7 +1482,7 @@ var LEARN_PATHS = {
 // 综合 = 编程40% + 性价比25% + 中文15% + 生态10% + 速度10%
 var AGENT_STACKS = {
   updated: "2026-11-06",
-  description: "常用 Agent（Claude Code / Codex / DeepSeek Harness）+ 大模型的组合评分 · 针对钟锐的实际使用场景（日常编程+求职+AI学习） · 9/6更新：GPT-6 Astra发布(闭源·不入组合·开源阵营路线不变)+国家AI基金注资可灵14亿(国产AI商业化放量)+金九银十求职季",
+  description: "常用 Agent（Claude Code / Codex / DeepSeek Harness）+ 大模型的组合评分 · 针对钟锐的实际使用场景（日常编程+求职+AI学习） · 9/6更新：GPT-6 Astra发布(闭源·不入组合·开源阵营路线不变)+国家AI基金注资可灵14亿(国产AI商业化放量)+金九银十求职季｜11/06 复评：评分口径与组合不变，仅同步日期（秋招已收尾，窗口判断改为看反馈率）",
   stacks: [
     {agent:"Claude Code", model:"DeepSeek V4-Flash", emoji:"⚡",
       score:{编程:86, 性价比:95, 中文:90, 生态:80, 速度:95}, 综合:89,
@@ -2356,7 +2417,7 @@ var CALENDAR_EVENTS = {
     {date: "9/30", text: "🎬 Re:Zero 第四季【夺还篇】最终话播出"},
     {date: "10/29", text: "🎮《影之刃零》正式发售（预售中·国产3A）"},
     {date: "每天6:00", text: "🤖 AI 每日自动更新（17板块状态推进）"},
-    {date: "周一至四 9:30-11:00", text: "💼 投递黄金窗口（金九银十每周10-15家）"}
+    {date: "周一至四 9:30-11:00", text: "💼 投递高效时段（11 月重点看反馈率，不追投递量）"}
   ]
 };
 
@@ -2409,7 +2470,7 @@ var SUBJECT_PATHS = {
     {cat:'🚗 购车', levels:[
       {L:1, title:'看懂参数：续航/电池/智驾/充电', guide:'读购车详情页 + 小白课堂《买电车先看5个参数》'},
       {L:2, title:'15-20万三标杆横向对比', guide:'极氪007/MONA M03/海豹07EV 参数表自己做一版对比'},
-      {L:3, title:'试驾清单与购车时机', guide:'列10项试驾检查清单，金九银十窗口实地体验'}]},
+      {L:3, title:'试驾清单与购车时机', guide:'列10项试驾检查清单，11 月先试驾比价、12 月再谈价'}]},
     {cat:'🏠 购房租房', levels:[
       {L:1, title:'首付/月供/税费怎么算', guide:'读购房详情页《三笔账》+ 广州/深圳政策'},
       {L:2, title:'广深板块地图', guide:'天河/南沙/增城 + 南山/龙岗…实地看片区价格与通勤'},
