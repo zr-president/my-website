@@ -9,7 +9,7 @@ var PERSONAL_CONFIG = {
     city: "广州",
     timezone: "Asia/Shanghai",
     job_status: "求职中",
-    target_roles: ["AI产品运营", "AI增长运营"],
+    target_roles: ["经营分析", "商业化运营", "渠道运营", "数据运营"],
     target_companies: ["字节跳动", "腾讯", "美团", "小红书", "微众银行", "SHEIN", "滴滴"],
   },
 

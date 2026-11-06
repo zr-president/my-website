@@ -1600,9 +1600,9 @@ var OPTIMIZATION_LOG = {
     {id:64, cat:"内容优化", title:"股市板块周日复盘格式（周线+下周展望）", desc:"✅ 8/16实施：INSIGHTS.stock新增周日复盘模板——周线级别涨跌幅+缩量隐患+下周事件日历（8/17开盘/DeepSeek涨价/游戏发售）+周一操作预案，替代原单日复盘格式", priority:"P2", status:"已完成"},
     {id:65, cat:"内容优化", title:"影之刃零登顶Steam畅销榜专题入库", desc:"✅ 8/16实施：预售登顶畅销榜+甄子丹出任动作监制+DLSS 4.5/光线追踪→gaming/ai-track/news三板块同步更新+knowledge_base新增gaming/2026-08-16.md", priority:"P2", status:"已完成"},
     {id:66, cat:"学习机制", title:"每日一词升级为间隔重复闪卡系统（解决学了就忘）", desc:"✅ 8/16已实施：每日一词板块新增记忆闪卡——今日新词自动进入学习队列，复习按【😀认识→间隔+3/7/30天·🤔模糊→+1天·😵不认识→明天重学】三盒制推进，localStorage 保存状态与统计（学习中/巩固中/已掌握），记忆曲线可视化", priority:"P0", status:"已完成"},
-    {id:67, cat:"求职功能", title:"AI 模拟面试舱：面向AI产品运营/增长运营真题演练", desc:"✅ 8/16已实施：求职中心新增模拟面试舱——行为面试/产品分析/数据分析/增长策略四类题型随机抽题（复用每日一练题库）→文本框作答→对照答题要点→自评（好/一般/需改进）→成长档案沉淀（localStorage 记录最近10次+自评统计），面试练习从无到有", priority:"P0", status:"已完成"},
+    {id:67, cat:"求职功能", title:"AI 模拟面试舱：面向经营分析/商业化运营真题演练", desc:"✅ 8/16已实施：求职中心新增模拟面试舱——行为面试/产品分析/数据分析/增长策略四类题型随机抽题（复用每日一练题库）→文本框作答→对照答题要点→自评（好/一般/需改进）→成长档案沉淀（localStorage 记录最近10次+自评统计），面试练习从无到有", priority:"P0", status:"已完成"},
     {id:70, cat:"性能优化", title:"index.html首屏渲染性能优化", desc:"✅ 8/16已实施：detail_content.js/personal_config.js/daily_data.js 全部加 defer 延迟加载（不阻塞首屏解析）+头像 img 加 loading=lazy/decoding=async——首屏关键请求从 3 个大 JS 变为仅 HTML+内联，移动端首屏明显加速", priority:"P3", status:"已完成"},
-    {id:71, cat:"学习机制", title:"技能雷达图：AI产品运营/AI增长运营能力可视化", desc:"✅ 8/16已实施：新增技能雷达图板块——8维能力模型（产品思维/数据分析/SQL/Prompt工程/AI技术认知/增长方法论/行业认知/英语）点击星星自评 1-5 星→Canvas 雷达图实时绘制→自动按最低分 2 维生成本周学习计划（怎么做+看什么）→localStorage 保存可重评，学习从【看内容】变【补短板】", priority:"P0", status:"已完成"},
+    {id:71, cat:"学习机制", title:"技能雷达图：经营分析/商业化运营能力可视化", desc:"✅ 8/16已实施：新增技能雷达图板块——8维能力模型（产品思维/数据分析/SQL/Prompt工程/AI技术认知/增长方法论/行业认知/英语）点击星星自评 1-5 星→Canvas 雷达图实时绘制→自动按最低分 2 维生成本周学习计划（怎么做+看什么）→localStorage 保存可重评，学习从【看内容】变【补短板】", priority:"P0", status:"已完成"},
     {id:72, cat:"机制创新", title:"机会雷达板块上线（首期3个方向研判）", desc:"✅ 8/16已实施：新增OPPORTUNITY_RADAR板块——联网调研真实案例（ClawWork 11小时赚$15K/OpenClaw月入过万/AI漫剧单人创作/AI炒股被证伪）→给出3个方向的【风口判断/案例证据/可行性推理/技能清单/配置/上车路径/避坑】：AI代理接单(⭐最契合)·AI内容创作(窗口期)·AI炒股(避坑)。以后每次新技术出现，更新该板块即可", priority:"P0", status:"已完成"},
     {id:73, cat:"内容优化", title:"TOOLCHAIN_RADAR升级为【工具×我的场景】", desc:"✅ 8/16已实施：工具链雷达新增【工具×我的场景】卡片——以 Harness 为例给出 5 个用法（求职自动化/学习陪练/副业接单/投资研究/生活提效），新工具到手先问【怎么服务我的生活学习工作】而不是只当资讯看", priority:"P1", status:"已完成"},
     {id:74, cat:"机制创新", title:"AI 生活妙用板块上线：AI 改善生活品质的 8 个场景", desc:"✅ 8/16已实施：新增AI_LIFE_HACKS板块——抢票策略/穿搭买手/菜单生成/全网比价/办事日历/出行规划/体检解读/每日一文，每个场景给【AI怎么做/工具/技巧/注意】。原则：AI负责信息检索+策略生成+提醒，人负责决策+执行——AI 的复利不只学习赚钱，更在改善生活品质", priority:"P0", status:"已完成"},
@@ -2123,7 +2123,7 @@ var OPPORTUNITY_RADAR = {
       emoji: "🤖",
       title: "AI 代理接单（OPC 一人公司）",
       tag: "⭐ 最契合你",
-      verdict: "风口已现但竞争未饱和——你已掌握 Claude Code/Harness，做 AI 代理接单是【技能复用】而非从零开始，且与求职（AI产品运营）互为作品集",
+      verdict: "风口已现但竞争未饱和——你已掌握 Claude Code/Harness，做 AI 代理接单是【技能复用】而非从零开始，且与求职（经营分析）互为作品集",
       evidence: "真实案例：ClawWork 用 OpenClaw 11 小时赚 $15K（GitHub 热榜）；OpenClaw 接单月入 ¥10,000+ 完整指南（掘金）；「龙虾」OPC 模式一人开公司 25 分钟赚 8000 元；00 后应届生靠 AIGC 年营收近千万。核心逻辑：中小企业降本刚需+AI 自动化供给不足=信息差红利",
       feasibility: "需求真实（企业数据整理/爬虫/文档自动化/PPT/周报是高频外包）· 门槛中等（会调 Agent+找单渠道）· 竞争初期（会的人还不多）· 我的匹配度高（工具链已就绪+有网站维护实战）· 风险：平台政策与价格战",
       skills: "Agent 框架（Harness/Claude Code/OpenClaw 三选一精通）· 提示词工程 · 基础编程（Python/Node）· 需求沟通与交付规范",
@@ -2312,12 +2312,12 @@ var AI_LIFE_HACKS = {
   ]
 };
 
-// ===== 技能雷达图（AI产品运营/增长运营能力模型·每周自评）=====
+// ===== 技能雷达图（经营分析/商业化运营能力模型·每周自评）=====
 // 机制：8维自评1-5星 → 雷达图可视化 → 短板自动给学习建议 → localStorage 保存可重评
 var SKILL_RADAR = {
   updated: "2026-11-06",
-  role: "AI产品运营 / AI增长运营 能力模型",
-  intro: "每周自评一次（点击星星 1-5 星）→ 雷达图可视化差距 → 自动按短板生成学习建议。数据保存在本机浏览器，可随时重评。目标岗位：字节/腾讯/美团/小红书/微众/SHEIN/滴滴 的 AI 产品运营、AI 增长运营。",
+  role: "经营分析 / 商业化运营 能力模型",
+  intro: "每周自评一次（点击星星 1-5 星）→ 雷达图可视化差距 → 自动按短板生成学习建议。数据保存在本机浏览器，可随时重评。目标岗位：字节/腾讯/美团/小红书/微众/SHEIN/滴滴 的 经营分析、商业化运营。",
   dimensions: [
     {emoji:"🧠", name:"产品思维", desc:"需求分析/功能设计/PRD/用户洞察", how:"每周拆解 1 个 AI 产品（豆包/Kimi/钉钉AI）的迭代逻辑，写 1 个功能假设+验证方法", resource:"人人都是产品经理·AI产品专栏 / AI学院课程"},
     {emoji:"📊", name:"数据分析", desc:"指标拆解/漏斗分析/A/B实验解读", how:"用 SQL 跑 1 个用户行为漏斗；每周复盘 stock 板块数据练手", resource:"牛客网数据分析题库 / 每日一练数据分析题"},
@@ -2334,15 +2334,15 @@ var SKILL_RADAR = {
 // 每日更新时：可刷新 each 公司的 insight（AI 行业观察一句话）；进度从本地 tracker 读取
 var TARGET_COMPANIES = {
   updated: "2026-11-06",
-  headline: "7 家目标公司 · 定位 AI产品运营 / AI增长运营 · 投递进度实时同步",
+  headline: "7 家目标公司 · 定位 经营分析 / 商业化运营 · 投递进度实时同步",
   items: [
-    {emoji:"📱", name:"字节跳动", tier:"🥇第一梯队", role:"AI产品运营/AI增长运营", insight:"豆包生态高速扩张期——AI应用落地深度行业领先，Agent产品化方向与我的作品（AI增长中台）高度契合", greeting:"greetings.md#字节跳动"},
-    {emoji:"🐧", name:"腾讯", tier:"🥇第一梯队", role:"AI产品运营/AI增长运营", insight:"混元/元宝加速产品化+数据生态优势——我做过经营分析（30+BI报表）也做过AI增长，双能力匹配", greeting:"greetings.md#腾讯"},
-    {emoji:"🍔", name:"美团", tier:"🥇第一梯队", role:"AI产品运营", insight:"2027校招新增AI原生岗位——本地生活AI化场景多，我懂线下+线上双场景（平安400+网点经营分析）", greeting:"greetings.md#美团"},
-    {emoji:"📕", name:"小红书", tier:"🥈第二梯队", role:"AI产品运营/AI内容运营", insight:"内容+电商+AI结合最好的平台之一——我本身是B站UP主，懂内容又懂AI，能快速上手UGC运营场景", greeting:"greetings.md#小红书"},
-    {emoji:"🏦", name:"微众银行", tier:"🥈第二梯队", role:"AI增长运营", insight:"数字银行AI化标杆——我金融背景（平安）+AI增长双能力，懂合规又懂增长，组合稀缺", greeting:"greetings.md#微众银行"},
-    {emoji:"👗", name:"SHEIN", tier:"🥈第二梯队", role:"AI增长运营", insight:"供应链+AI全球标杆——我做增长擅长AI渠道归因与成本控制（月毛利80万+），匹配出海增长场景", greeting:"greetings.md#SHEIN"},
-    {emoji:"🚗", name:"滴滴", tier:"🥉第三梯队", role:"AI增长运营", insight:"出行场景数据量大——我做AI增长中台（实时监控+AI归因），供需调度类业务数据密集型匹配", greeting:"greetings.md#滴滴"}
+    {emoji:"📱", name:"字节跳动", tier:"🥇第一梯队", role:"经营分析/商业化运营", insight:"豆包生态高速扩张期——AI应用落地深度行业领先，Agent产品化方向与我的作品（AI增长中台）高度契合", greeting:"greetings.md#字节跳动"},
+    {emoji:"🐧", name:"腾讯", tier:"🥇第一梯队", role:"经营分析/商业化运营", insight:"混元/元宝加速产品化+数据生态优势——我做过经营分析（30+BI报表）也做过AI增长，双能力匹配", greeting:"greetings.md#腾讯"},
+    {emoji:"🍔", name:"美团", tier:"🥇第一梯队", role:"经营分析", insight:"2027校招新增AI原生岗位——本地生活AI化场景多，我懂线下+线上双场景（平安400+网点经营分析）", greeting:"greetings.md#美团"},
+    {emoji:"📕", name:"小红书", tier:"🥈第二梯队", role:"经营分析/内容运营", insight:"内容+电商+AI结合最好的平台之一——我本身是B站UP主，懂内容又懂AI，能快速上手UGC运营场景", greeting:"greetings.md#小红书"},
+    {emoji:"🏦", name:"微众银行", tier:"🥈第二梯队", role:"商业化运营", insight:"数字银行AI化标杆——我金融背景（平安）+AI增长双能力，懂合规又懂增长，组合稀缺", greeting:"greetings.md#微众银行"},
+    {emoji:"👗", name:"SHEIN", tier:"🥈第二梯队", role:"商业化运营", insight:"供应链+AI全球标杆——我做增长擅长AI渠道归因与成本控制（月毛利80万+），匹配出海增长场景", greeting:"greetings.md#SHEIN"},
+    {emoji:"🚗", name:"滴滴", tier:"🥉第三梯队", role:"商业化运营", insight:"出行场景数据量大——我做AI增长中台（实时监控+AI归因），供需调度类业务数据密集型匹配", greeting:"greetings.md#滴滴"}
   ]
 };
 
