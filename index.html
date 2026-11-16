@@ -333,6 +333,12 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 .briefing-src{display:inline-flex;align-items:center;gap:4px;font-size:11.5px;color:var(--accent);text-decoration:none;font-weight:500}
 .briefing-src:hover{text-decoration:underline}
 .briefing-act{font-size:11.5px;color:var(--text3)}
+.brief-hd{font-size:12px;font-weight:700;color:var(--text2);margin-bottom:7px}
+.brief-row{display:flex;gap:7px;align-items:flex-start;font-size:12px;color:var(--text2);line-height:1.7;padding:3px 0}
+.brief-row .bi{flex:0 0 auto}
+.brief-row a{color:var(--accent);text-decoration:none;font-size:11px}
+.brief-row a:hover{text-decoration:underline}
+
 
 
 /* Insight callout */
@@ -537,6 +543,7 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 </div>
 <div id="briefingNotice" style="display:none;margin-bottom:8px;padding:8px 12px;border-left:3px solid var(--orange);background:var(--bg2);border-radius:6px;font-size:12px;color:var(--text2);line-height:1.7"></div>
 <div id="briefingContent" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:8px"></div>
+<div id="briefingBriefs" style="display:none;margin-top:10px;padding:10px 14px;border:1px dashed var(--border);border-radius:8px;background:var(--bg2)"></div>
 </div>
 
 <!-- 0. 每日待办汇总 -->
@@ -4827,6 +4834,22 @@ function renderBriefing(){
   });
   content.innerHTML = h;
   container.style.display = 'block';
+  /* 短讯栏：今日还发生（不直接改变决策，但让信息缺口可见） */
+  var bf = document.getElementById('briefingBriefs');
+  if(bf){
+    var briefs = DAILY_BRIEFING.briefs || [];
+    if(briefs.length){
+      var bh = '<div class="brief-hd">📌 今日还发生（' + briefs.length + ' 条 · 不直接改变决策，但不该不知道）</div>';
+      briefs.forEach(function(b){
+        bh += '<div class="brief-row"><span class="bi">' + (b.icon||'·') + '</span><span>' + (b.text||'') + ' ';
+        if(b.sourceUrl) bh += '<a href="' + b.sourceUrl + '" target="_blank" rel="noopener noreferrer">[' + (b.source||'原文') + ']</a>';
+        else if(b.source) bh += '<span style="font-size:11px;color:var(--text3)">[' + b.source + ']</span>';
+        bh += '</span></div>';
+      });
+      bf.innerHTML = bh;
+      bf.style.display = 'block';
+    } else { bf.style.display = 'none'; }
+  }
   populateFeaturedCard();
 }
 
@@ -4934,10 +4957,10 @@ function manualRefresh(){
 
 </script>
 
-<script defer src="detail_content.js?v=1.8.44"></script>
-<script defer src="personal_config.js?v=1.8.44"></script>
-<script defer src="img_style.js?v=1.8.44"></script>
-<script defer src="daily_data.js?v=1.8.44"></script>
+<script defer src="detail_content.js?v=1.8.45"></script>
+<script defer src="personal_config.js?v=1.8.45"></script>
+<script defer src="img_style.js?v=1.8.45"></script>
+<script defer src="daily_data.js?v=1.8.45"></script>
 
 <script>
 // 图片加载完成后淡入（避免灰块闪烁）
