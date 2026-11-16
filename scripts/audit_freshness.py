@@ -15,7 +15,7 @@ Object.keys(c.INSIGHTS||{}).forEach(k=>{
   out.sections[k]={updated:s.updated, summary:s.summary||'', trend:s.trend||'', tip:s.tip||''};
 });
 out.decisions=(c.DAILY_DECISIONS.items||[]).map(x=>x.action);
-out.briefing=(c.DAILY_BRIEFING.highlights||[]).map(x=>({s:x.section,h:x.headline,m:x.summary}));
+out.briefing=(c.DAILY_BRIEFING.highlights||[]).map(x=>({s:x.tag||x.section||'',h:x.headline,m:x.fact||x.summary||''}));
 console.log(JSON.stringify(out));
 """
 r = subprocess.run(['node', '-e', NODE], capture_output=True, text=True, encoding='utf-8', cwd=BASE)

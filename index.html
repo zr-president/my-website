@@ -326,6 +326,14 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 .ex-item.c1{border-left-color:#f59e0b}.ex-item.c2{border-left-color:#8b5cf6}.ex-item.c3{border-left-color:#3b82f6}.ex-item.c4{border-left-color:#10b981}
 .zh-mode.active{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 2px 8px rgba(79,70,229,.25)}
 .briefing-item:hover::before{opacity:.06}
+.briefing-tag{font-size:11.5px;color:var(--text3);background:var(--bg2);padding:1px 6px;border-radius:8px;white-space:nowrap}
+.briefing-day{font-size:11px;color:var(--text3);background:var(--bg);border:1px solid var(--border);padding:0 5px;border-radius:6px;font-family:var(--mono);white-space:nowrap}
+.briefing-fact{font-size:12.5px;color:var(--text2);line-height:1.75;margin:4px 0 0}
+.briefing-why{font-size:12px;color:var(--text3);line-height:1.7;margin-top:5px;padding-left:2px}
+.briefing-src{display:inline-flex;align-items:center;gap:4px;font-size:11.5px;color:var(--accent);text-decoration:none;font-weight:500}
+.briefing-src:hover{text-decoration:underline}
+.briefing-act{font-size:11.5px;color:var(--text3)}
+
 
 /* Insight callout */
 .insight-box{background:linear-gradient(135deg,var(--accent-light),var(--bg2));border-left:3px solid var(--accent);border-radius:8px;padding:10px 14px;margin-bottom:7px;font-size:12px;line-height:1.8}
@@ -520,14 +528,15 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 	</div>
 	</div>
 
-<!-- Daily Briefing (safe: event delegation, no inline onclick) -->
+<!-- Daily Briefing v2：外部资讯，每条带来源与日期，点卡片开原文 -->
 <div id="dailyBriefing" style="margin-bottom:16px;display:none">
-<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap">
 <h2 style="font-size:15px">📡 今日要闻速览</h2>
 <span style="font-size:12px;color:var(--text3)" id="briefingDate"></span>
-<button onclick="event.stopPropagation();renderBriefing()" style="margin-left:auto;padding:3px 8px;border:1px solid var(--border);border-radius:10px;background:var(--bg);cursor:pointer;font-size:12px;color:var(--text2)">🔄 换一批</button>
+<button id="briefingMore" onclick="event.stopPropagation();renderBriefing()" style="margin-left:auto;padding:3px 8px;border:1px solid var(--border);border-radius:10px;background:var(--bg);cursor:pointer;font-size:12px;color:var(--text2)">🔄 换一批</button>
 </div>
-<div id="briefingContent" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:8px"></div>
+<div id="briefingNotice" style="display:none;margin-bottom:8px;padding:8px 12px;border-left:3px solid var(--orange);background:var(--bg2);border-radius:6px;font-size:12px;color:var(--text2);line-height:1.7"></div>
+<div id="briefingContent" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:8px"></div>
 </div>
 
 <!-- 0. 每日待办汇总 -->
@@ -4774,33 +4783,50 @@ function renderBriefing(){
   if(!container) return;
   if(typeof DAILY_BRIEFING==='undefined'){ container.style.display='none'; return; }
   var dateEl = document.getElementById('briefingDate');
-  if(dateEl) dateEl.textContent = DAILY_BRIEFING.date;
+  if(dateEl) dateEl.textContent = DAILY_BRIEFING.date + (DAILY_BRIEFING.checkedAt ? ' · 联网核查 ' + DAILY_BRIEFING.checkedAt : '');
+  var noticeEl = document.getElementById('briefingNotice');
+  if(noticeEl){
+    if(DAILY_BRIEFING.notice){
+      noticeEl.textContent = 'ℹ️ ' + DAILY_BRIEFING.notice;
+      noticeEl.style.display = 'block';
+    } else { noticeEl.style.display = 'none'; }
+  }
   var content = document.getElementById('briefingContent');
   if(!content) return;
-  // Sort by priority, then rotate in non-overlapping "pages" of 4
-  var pool = DAILY_BRIEFING.highlights.slice().sort(function(a,b){return a.priority-b.priority;});
-  var perPage = 4, total = pool.length;
-  if(total===0){ container.style.display='none'; return; }
-  // #今日要闻8卡：分成若干4卡为一组，换一批切换下一组（不重复），最后一组后回到起点
+  var pool = DAILY_BRIEFING.highlights.slice().sort(function(a,b){return (a.priority||9)-(b.priority||9);});
+  var total = pool.length;
+  if(total===0){ content.innerHTML=''; container.style.display='block'; return; }
+  /* 条数少时一页显示完，不让人点「换一批」看 1 条 */
+  var perPage = total <= 6 ? total : 4;
   var pageCount = Math.max(1, Math.ceil(total/perPage));
   var pageIdx = (pageState.briefing % pageCount);
-  var offset = pageIdx * perPage;
-  var items = pool.slice(offset, offset+perPage);
-  if(items.length < perPage) items = items.concat(pool.slice(0, perPage-items.length));
+  var items = pool.slice(pageIdx*perPage, pageIdx*perPage+perPage);
   pageState.briefing++;
+  var moreBtn = document.getElementById('briefingMore');
+  if(moreBtn) moreBtn.style.display = pageCount > 1 ? '' : 'none';
   var h='';
-  items.forEach(function(item, i){
+  items.forEach(function(item){
     var bc = item.priority===1?'var(--red)':item.priority===2?'var(--accent)':item.priority===3?'var(--orange)':'var(--border)';
-    h+='<div class="briefing-item" data-link="'+item.link.replace('#','')+'" data-deep="'+(item.deepLink||'')+'" style="background:var(--card);border-left:3px solid '+bc+';border-radius:8px;padding:10px 14px;transition:.15s;cursor:pointer">';
-    h+='<div style="display:flex;align-items:center;gap:6px;margin-bottom:2px"><span style="font-size:16px">'+item.icon+'</span><span style="font-size:12px;color:var(--text3);background:var(--bg2);padding:1px 6px;border-radius:8px">'+item.section+'</span><span style="font-size:13px;font-weight:700;color:var(--text)">'+item.headline+'</span></div>';
-    h+='<div style="font-size:12px;color:var(--text2);margin-bottom:6px">'+item.summary+'</div>';
-    h+='<div style="display:flex;gap:8px"><span class="briefing-action" data-link="'+item.link.replace('#','')+'" style="font-size:12px;color:var(--accent);cursor:pointer;font-weight:500">'+item.action+' →</span>';
-    if(item.deepLink) h+='<a href="'+item.deepLink+'" target="_blank" style="font-size:12px;color:var(--accent);text-decoration:none;font-weight:500">🤖 AI深究 →</a>';
+    var attrs = '';
+    if(item.link) attrs += ' data-link="'+String(item.link).replace('#','')+'"';
+    if(item.sourceUrl) attrs += ' data-src="'+item.sourceUrl+'"';
+    h+='<div class="briefing-item"'+attrs+' style="background:var(--card);border-left:3px solid '+bc+';border-radius:8px;padding:10px 14px;transition:.15s;cursor:pointer">';
+    h+='<div style="display:flex;align-items:center;gap:6px;margin-bottom:2px;flex-wrap:wrap">';
+    h+='<span style="font-size:16px">'+(item.icon||'•')+'</span>';
+    if(item.tag||item.section) h+='<span class="briefing-tag">'+(item.tag||item.section)+'</span>';
+    if(item.date) h+='<span class="briefing-day">'+item.date+'</span>';
+    h+='<span style="font-size:13px;font-weight:700;color:var(--text)">'+(item.headline||'')+'</span>';
+    h+='</div>';
+    if(item.fact) h+='<div class="briefing-fact">'+item.fact+'</div>';
+    if(item.why) h+='<div class="briefing-why">↳ '+item.why+'</div>';
+    h+='<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:7px;align-items:center">';
+    if(item.sourceUrl) h+='<a class="briefing-src" href="'+item.sourceUrl+'" target="_blank" rel="noopener noreferrer">来源：'+(item.source||'原文')+' ↗</a>';
+    else if(item.source) h+='<span class="briefing-act">来源：'+item.source+'</span>';
+    if(item.act) h+='<span class="briefing-act">· '+item.act+'</span>';
     h+='</div></div>';
   });
   content.innerHTML = h;
   container.style.display = 'block';
-  // #38: Populate featured card from top briefing
   populateFeaturedCard();
 }
 
@@ -4808,12 +4834,18 @@ function renderBriefing(){
 function populateFeaturedCard(){
   var card = document.getElementById('featuredCard');
   if(!card || typeof DAILY_BRIEFING==='undefined') return;
-  var top = DAILY_BRIEFING.highlights.slice().sort(function(a,b){return a.priority-b.priority;})[0];
+  var top = DAILY_BRIEFING.highlights.slice().sort(function(a,b){return (a.priority||9)-(b.priority||9);})[0];
   if(!top) return;
   var hl = document.getElementById('featuredHeadline');
   var sm = document.getElementById('featuredSummary');
-  if(hl) hl.textContent = top.icon + ' ' + top.headline;
-  if(sm) sm.innerHTML = top.summary;  /* 用 innerHTML：summary 是站内自写数据，含 <b> 强调，textContent 会把标签当文字显示 */
+  if(hl) hl.textContent = (top.icon||'') + ' ' + (top.headline||'');
+  if(sm){
+    var s2 = top.fact || top.summary || '';
+    if(top.why) s2 += '<div style="margin-top:6px;color:var(--text3)">↳ ' + top.why + '</div>';
+    if(top.source) s2 += '<div style="margin-top:6px;font-size:11px;color:var(--text3)">来源：' + top.source + (top.date ? ' · ' + top.date : '') + '</div>';
+    sm.innerHTML = s2;  /* innerHTML：fact 含 <b> 强调 */
+  }
+  card.setAttribute('data-src', top.sourceUrl || '');
   card.setAttribute('data-link', top.link || '');
   card.setAttribute('data-deep', top.deepLink || '');
   card.style.display = 'block';
@@ -4823,21 +4855,26 @@ function populateFeaturedCard(){
 function openFeaturedCard(){
   var card = document.getElementById('featuredCard');
   if(!card) return;
+  var src = card.getAttribute('data-src');
+  if(src){ window.open(src, '_blank', 'noopener'); return; }
   var deepLink = card.getAttribute('data-deep');
   if(deepLink){
     window.open(deepLink, '_blank');
   } else {
     var link = card.getAttribute('data-link');
-    if(link && typeof navigateTo === 'function') navigateTo('section-detail', link.replace('#',''));
+    if(link && typeof navigateTo === 'function') navigateTo('section-detail', String(link).replace('#',''));
   }
 }
 
 // Event delegation for briefing clicks (no inline onclick!)
 document.addEventListener('click', function(e){
   var target = e.target;
-  // Handle briefing-item clicks → navigate to section
+  // 要闻卡点击：有外部来源就开原文，否则站内跳转
   var item = target.closest('.briefing-item');
   if(item){
+    if(target.closest('a')) return;            /* 让原生 <a> 自己处理，避免抢跳 */
+    var src = item.getAttribute('data-src');
+    if(src){ window.open(src, '_blank', 'noopener'); return; }
     var link = item.getAttribute('data-link');
     if(link && typeof navigateTo === 'function') navigateTo('section-detail', link);
     return;
@@ -4845,8 +4882,8 @@ document.addEventListener('click', function(e){
   // Handle briefing-action clicks
   var action = target.closest('.briefing-action');
   if(action){
-    var link = action.getAttribute('data-link');
-    if(link && typeof navigateTo === 'function') navigateTo('section-detail', link);
+    var alink = action.getAttribute('data-link');
+    if(alink && typeof navigateTo === 'function') navigateTo('section-detail', alink);
     return;
   }
 });
@@ -4897,10 +4934,10 @@ function manualRefresh(){
 
 </script>
 
-<script defer src="detail_content.js?v=1.8.43"></script>
-<script defer src="personal_config.js?v=1.8.43"></script>
-<script defer src="img_style.js?v=1.8.43"></script>
-<script defer src="daily_data.js?v=1.8.43"></script>
+<script defer src="detail_content.js?v=1.8.44"></script>
+<script defer src="personal_config.js?v=1.8.44"></script>
+<script defer src="img_style.js?v=1.8.44"></script>
+<script defer src="daily_data.js?v=1.8.44"></script>
 
 <script>
 // 图片加载完成后淡入（避免灰块闪烁）
