@@ -153,11 +153,11 @@ var PICKS = {
     {icon:"🍻", title:"酿酒狗朋克IPA", desc:"IPA探险第一站 · 热带水果轰炸 · 芒果/西柚/荔枝香气", link:"https://s.taobao.com/search?q=酿酒狗朋克IPA", video:"https://search.bilibili.com/all?keyword=IPA%E5%95%A4%E9%85%92%E5%93%81%E9%89%B4", img:"assets/img/1566633806327-68e152aaf26d.webp", tag:"IPA·果香"}
   ],
   gaming: [
-    {icon:"⚔️", title:"GTA6 11/19 全球解锁 · M站 99 分但帧数有争议 🎮", desc:"十三年等待落地 · 媒体口径 99 分 vs 玩家口径帧数 · 设计成立、优化没跟上 → 等补丁比等口碑实际", link:"https://store.steampowered.com/app/2776930/"},
+    {icon:"⚔️", title:"GTA6 11/19 全球解锁 · M站 99 分但帧数有争议 🎮", desc:"十三年等待落地 · 媒体口径 99 分 vs 玩家口径帧数 · 设计成立、优化没跟上 → 等补丁比等口碑实际", link:"https://www.rockstargames.com/"},
     {icon:"🐑", title:"热度衰减曲线比首周销量有信息量 📉", desc:"真耐玩的动作游戏首周后讨论量稳定（高难度/二周目）· 宣发驱动的第二周断崖", link:"https://www.taptap.cn/"},
     {icon:"🔮", title:"首周后要看的两个信号 ✅", desc:"① 攻略产出速度（需要大量攻略 = 系统有深度）② 二周目讨论量（有没有动力重开）", link:"https://store.steampowered.com/"},
     {icon:"🦑", title:"愿望单先清一遍再谈买不买 🧹", desc:"秋促临近 · 装了但已经不想买的会诱发冲动消费 · 清完再看剩什么", link:"https://store.steampowered.com/"},
-    {icon:"🎮", title:"学习学院改版：一领域一门课 🎓", desc:"从「一领域一单元」改成「一领域一门课、课内 4-9 单元」· 只写第一单元等于只有皮毛", link:"https://store.steampowered.com/"},
+    {icon:"🎓", title:"学习学院 15 门课 88 单元全部成稿 🎓", desc:"从「一领域一单元」到「一领域一门课、课内 2-9 单元」· 现在瓶颈是消化不是生产：已学习数还是 0", link:"https://zr-president.github.io/training/#/academy"},
     {icon:"🐑", title:"Big Walk · M站94分年度最高", desc:"捣蛋鹅团队新作·最多11人联机·PC/PS5/Switch2·独立游戏天花板", link:"https://store.steampowered.com/"}
   ],
   learning: [
